@@ -1,0 +1,10 @@
+[wsl2]
+networkingMode=mirrored
+dnsTunneling=true
+firewall=true
+autoProxy=true
+
+[experimental]
+# requires dnsTunneling but are also OPTIONAL
+bestEffortDnsParsing=true
+useWindowsDnsCache=true

@@ -1,0 +1,10 @@
+.private.env.sh
+.private.env.ps1
+nvim/tt.*
+nvim/.tests
+nvim/doc/tags
+nvim/debug
+nvim/.repro
+nvim/foo.*
+nvim/*.log
+nvim/data

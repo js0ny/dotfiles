@@ -1,0 +1,16 @@
+fork = false
+frame = "full"
+idle = true
+maximized = false
+no-multigrid = false
+srgb = false
+tabs = true
+theme = "auto"
+title-hidden = true
+vsync = false
+wsl = true
+neovim-bin = "/opt/nvim-linux64/bin/nvim"
+
+[font]
+normal = ["CaskaydiaCove Nerd Font"] # Will use the bundled Fira Code Nerd Font by default
+size = 14.0
