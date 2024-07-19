@@ -39,7 +39,6 @@ ${function:doku}     = { Set-Location -Path ~\doku && Get-ChildItem }
 Set-Alias "touch" "New-Item"
 Set-Alias "ll"    "Get-ChildItem"
 Set-Alias "curl"  "Invoke-WebRequest"
-Set-Alias "cd"    "Set-Location"
 Set-Alias "man"   "Get-Help"
 Set-Alias "kill"  "Stop-Process"
 
@@ -87,8 +86,6 @@ function cdls { param( [string] $dirname)
 
 
 ### Modules ###
-
-Import-Module -Name Microsoft.WinGet.CommandNotFound #f45873b3-b655-43a6-b217-97c00aa0db58
 
 Import-Module CompletionPredictor
 
