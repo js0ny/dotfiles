@@ -8,3 +8,4 @@ autoProxy=true
 # requires dnsTunneling but are also OPTIONAL
 bestEffortDnsParsing=true
 useWindowsDnsCache=true
+hostAddressLoopback=true
