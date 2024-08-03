@@ -18,19 +18,19 @@ Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
 # Relative navigation #
 
 # ${function:~}        = { Set-Location -Path ~ } cd is better
-${function:...}      = { Set-Location -Path ..\.. }
-${function:....}     = { Set-Location -Path ..\..\.. }
-${function:.....}    = { Set-Location -Path ..\..\..\.. }
-${function:......}   = { Set-Location -Path ..\..\..\..\.. }
+${function:...}      = { Set-Location -Path ../.. }
+${function:....}     = { Set-Location -Path ../../.. }
+${function:.....}    = { Set-Location -Path ../../../.. }
+${function:......}   = { Set-Location -Path ../../../../.. }
 
 # Absolute navigation #
 
-${function:docs}     = { Set-Location -Path ~\Documents }
-${function:down}     = { Set-Location -Path ~\Downloads }
-${function:dt}       = { Set-Location -Path ~\Desktop }
-${function:mytmp}    = { Set-Location -Path ~\Temp }
-${function:one}      = { Set-Location -Path ~\OneDrive }
-${function:doku}     = { Set-Location -Path ~\doku && Get-ChildItem }
+${function:docs}     = { Set-Location -Path ~/Documents }
+${function:down}     = { Set-Location -Path ~/Downloads }
+${function:dt}       = { Set-Location -Path ~/Desktop }
+${function:mytmp}    = { Set-Location -Path ~/Temp }
+${function:one}      = { Set-Location -Path ~/OneDrive }
+${function:doku}     = { Set-Location -Path ~/doku && Get-ChildItem }
 
 ### Aliases ###
 
@@ -39,7 +39,6 @@ ${function:doku}     = { Set-Location -Path ~\doku && Get-ChildItem }
 Set-Alias "touch" "New-Item"
 Set-Alias "ll"    "Get-ChildItem"
 Set-Alias "curl"  "Invoke-WebRequest"
-Set-Alias "cd"    "Set-Location"
 Set-Alias "man"   "Get-Help"
 Set-Alias "kill"  "Stop-Process"
 
@@ -52,13 +51,20 @@ ${function:reload}   = { Invoke-Expression $PROFILE }
 ${function:csi}      = { dotnet script }
 ${function:pulldots} = { Set-Location -Path $DOTFILES && git pull }
 Set-Alias "pwshcfg" "shcfg"
-Set-Alias "python3" "python"
-Set-Alias "pip3"    "pip"
-Set-Alias "py"      "python"
 Set-Alias "cl"      "clang"
 Set-Alias "cl++"    "clang++"
 Set-Alias "clang"   "clang -std=c99"
 Set-Alias "clang++" "clang++ -std=c++2b"
+
+# Python & Conda #
+
+Set-Alias "python3" "python"
+Set-Alias "pip3"    "pip"
+Set-Alias "py"      "python"
+Set-Alias "pyact"   "conda activate"
+Set-Alias "pylsenv" "conda env list"
+Set-Alias "pydeact" "conda deactivate"
+Set-Alias "pymkenv" "conda create --name"
 
 # Editors #
 
@@ -88,8 +94,8 @@ function cdls { param( [string] $dirname)
 
 ### Modules ###
 
-Import-Module -Name Microsoft.WinGet.CommandNotFound #f45873b3-b655-43a6-b217-97c00aa0db58
-
 Import-Module CompletionPredictor
+# Import-Module syntax-highlighting
 
 ### Misc ###
+

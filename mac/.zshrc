@@ -42,6 +42,10 @@ alias ......="cd ../../../../.."
 
 alias doku="cd ~/doku && ls"
 alias dotfiles="cd $DOTFILES && ls"
+alias docs="cd ~/Documents"
+alias dt="cd ~/Desktop"
+alias down="cd ~/Downloads"
+alias one="cd ~/OneDrive"
 
 ### Aliases ###
 
@@ -56,20 +60,32 @@ alias cls=clear
 
 alias g++='g++ -std=c++2b' # Set the default C++ standard to C++20
 alias gcc='gcc -std=c99' # Set the default C standard to C99
-alias cl='clang'
-alias cl++='clang++'
+alias cl='clang -std=c99'
+alias clp='clang++ -std=c++2b'
 alias python=python3 # Set the default Python version to Python 3
 alias py=python # Alias for Python
 alias bashcfg="nvim ~/.bashrc"
 alias zshcfg="nvim ~/.zshrc"
 alias shcfg=zshcfg
+alias reload="source ~/.zshrc"
 alias nvimrc="nvim ~/.config/nvim/"
 alias ohmyzsh="code ~/.oh-my-zsh"
+alias pulldots="cd $DOTFILES && git pull"
+
+# Conda #
+
+alias cact="conda activate"
+alias cenvs="conda env list"
+alias cdact="conda deactivate"
+
+# Git #
+
+
+
 
 # Editors #
 
 alias v=nvim
-alias gvi=neovide
 alias c=code
 
 # Misc #
@@ -107,14 +123,14 @@ open() {
 }
 
 # WSL Neovide
-neovide() {
+gvi() {
   local target=$1
 
   if command -v neovide.exe > /dev/null; then
     neovide.exe "$target"
   else
     if command -v neovide > /dev/null; then
-      neovide "$target"
+       neovide "$target"
     else
       echo "neovide is not installed"
     fi
@@ -125,15 +141,24 @@ neovide() {
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="$HOME/miniconda3/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('$HOME/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
