@@ -69,7 +69,6 @@ alias ohmyzsh="code ~/.oh-my-zsh"
 # Editors #
 
 alias v=nvim
-alias gvi=neovide
 alias c=code
 
 # Misc #
@@ -107,7 +106,7 @@ open() {
 }
 
 # WSL Neovide
-neovide() {
+gvi() {
   local target=$1
 
   if command -v neovide.exe > /dev/null; then

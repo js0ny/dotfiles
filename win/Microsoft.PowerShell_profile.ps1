@@ -1,5 +1,6 @@
 ### Variables ###
 
+$EDITOR = "code"
 $DOTFILES = "$HOME\Documents\.dotfiles"
 
 ### PSReadLine ###
@@ -39,20 +40,48 @@ ${function:doku}     = { Set-Location -Path ~\MyDocuments && Get-ChildItem }
 Set-Alias "touch" "New-Item"
 Set-Alias "open"  "explorer.exe" 
 
-# Dev #
+# Shell Configurations #
 
-${function:shcfg}    = { code $PROFILE }
+${function:shcfg}    = { $EDITOR $PROFILE }
 ${function:reload}   = { Invoke-Expression $PROFILE }
-${function:csi}      = { dotnet script }
 ${function:pulldots} = { Set-Location -Path $DOTFILES && git pull }
 Set-Alias "pwshcfg" "shcfg"
+
+# Dotnet #
+
+${function:csi}      = { dotnet script }
+
+# C & C++ #
+
+Set-Alias "cl"      "clang"
+Set-Alias "clp"    "clang++"
+Set-Alias "clang"   "clang -std=c99"
+Set-Alias "clang++" "clang++ -std=c++2b"
+
+# Python & Conda #
+
 Set-Alias "python3" "python"
 Set-Alias "pip3"    "pip"
 Set-Alias "py"      "python"
-Set-Alias "cl"      "clang"
-Set-Alias "cl++"    "clang++"
-Set-Alias "clang"   "clang -std=c99"
-Set-Alias "clang++" "clang++ -std=c++2b"
+Set-Alias "pyact"   "conda activate"
+Set-Alias "pylsenv" "conda env list"
+Set-Alias "pydeact" "conda deactivate"
+Set-Alias "pymkenv" "conda create --name"
+
+# # Git #
+
+# Set-Alias "g" "git"
+# Set-Alias "ginit" "git init"
+# Set-Alias "ga" "git add"
+# Set-Alias "gaa" "git add --all"
+# Set-Alias "gc" "git commit --message"
+# Set-Alias "gca" "git commit --all --message"
+# Set-Alias "gcl" "git clone"
+# Set-Alias "gclnh" "git clone --depth 1"
+# Set-Alias "gs" "git status"
+# Set-Alias "gpl" "git pull"
+# Set-Alias "gps" "git push"
+
 
 # Editors #
 
@@ -77,8 +106,6 @@ function tv { param ( [string] $filename)
 function cdls { param( [string] $dirname)
 	Set-Location $dirname && Get-ChildItem
 }
-
-
 
 ### Modules ###
 

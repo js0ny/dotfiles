@@ -36,6 +36,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
+Plug 'easymotion/vim-easymotion'
 
 """ Keybindings """
 
@@ -46,18 +47,27 @@ nnoremap <leader>vr :source ~/.ideavimrc<CR>
 "" NERDTree ""
 nnoremap <leader>e :NERDTreeToggle<CR>
 
+"" EasyMotion ""
+nmap s <Plug>(easymotion-f)
+nmap S <Plug>(easymotion-F)
+
+"" Sneak ""
+nmap f <Plug>(sneak-s)
+nmap F <Plug>(sneak-S)
+
 "" Miscs ""
 nnoremap <leader>: :action GotoAction<CR>
 
 "" AI Related <leader>a + ""
 nnoremap <leader>ac :action copilot.chat.show<CR>
-nnoremap <leader>ad :action copilot.disabelCopilot<CR>
-nnoremap <leader>ae :action copilot.enabelCopilot<CR>
+nnoremap <leader>ad :action copilot.disableCopilot<CR>
+nnoremap <leader>ae :action copilot.enableCopilot<CR>
 nnoremap <leader>ai :action copilot.openCopilot<CR>
 
 "" Codes Action <leader>c + ""
 nnoremap <leader>cf :action ReformatCode<CR>
 nnoremap <leader>cs :action GotoSymbol<CR>
+nnoremap <leader>c/ :action CommentByLineComment<CR>
 
 "" Project Action <leader>p + ""
 nnoremap <leader>pr :action Run<CR>
