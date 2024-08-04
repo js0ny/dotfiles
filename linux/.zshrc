@@ -122,6 +122,8 @@ gvi() {
 
 ### Misc ###
 
+# Conda #
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -136,3 +138,14 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Ubuntu Command Not Found #
+
+if [[ -x /usr/lib/command-not-found ]] ; then
+        if (( ! ${+functions[command_not_found_handler]} )) ; then
+                function command_not_found_handler {
+                        [[ -x /usr/lib/command-not-found ]] || return 1
+                        /usr/lib/command-not-found -- ${1+"$1"} && :
+                }
+        fi
+fi

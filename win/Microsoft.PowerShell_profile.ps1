@@ -1,7 +1,10 @@
 ### Variables ###
 
-$EDITOR = "code"
 $DOTFILES = "$HOME\Documents\.dotfiles"
+
+### Load Configs ###
+
+Get-ChildItem -Path $DOTFILES\powershell -Filter *.ps1 | ForEach-Object {. $_}
 
 ### PSReadLine ###
 
@@ -12,7 +15,14 @@ Set-PSReadLineOption -ContinuationPrompt  "`e[36m CR > "   # Continuation Prompt
 
 ### Keybindings ###
 
-Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
+Set-PSReadLineKeyHandler -Chord "Ctrl+Shift+f" -Function ForwardWord
+Set-PSReadLineKeyHandler -Chord "Ctrl+Shift+b" -Function BackwardWord
+Set-PSReadLineKeyHandler -Chord "Alt+f"	   -Function ForwardChar
+Set-PSReadLineKeyHandler -Chord "Ctrl+b"	   -Function BackwardChar
+Set-PSReadLineKeyHandler -Chord "Ctrl+p"	   -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Chord "Ctrl+n"	   -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Chord "Ctrl+a"	   -Function BeginningOfLine
+Set-PSReadLineKeyHandler -Chord "Ctrl+e"	   -Function EndOfLine
 
 ### Navigator ###
 
@@ -42,8 +52,8 @@ Set-Alias "open"  "explorer.exe"
 
 # Shell Configurations #
 
-${function:shcfg}    = { $EDITOR $PROFILE }
-${function:reload}   = { Invoke-Expression $PROFILE }
+${function:shcfg}    = { code $PROFILE }
+${function:reload}   = { . $PROFILE }
 ${function:pulldots} = { Set-Location -Path $DOTFILES && git pull }
 Set-Alias "pwshcfg" "shcfg"
 
@@ -54,7 +64,7 @@ ${function:csi}      = { dotnet script }
 # C & C++ #
 
 Set-Alias "cl"      "clang"
-Set-Alias "clp"    "clang++"
+Set-Alias "clpp"    "clang++"
 Set-Alias "clang"   "clang -std=c99"
 Set-Alias "clang++" "clang++ -std=c++2b"
 
@@ -82,6 +92,11 @@ Set-Alias "pymkenv" "conda create --name"
 # Set-Alias "gpl" "git pull"
 # Set-Alias "gps" "git push"
 
+
+# WSL #
+
+${function:wsl1} = {wsl.exe --distribution Debian}
+${function:wsl2} = {wsl.exe --distribution Ubuntu-22.04}
 
 # Editors #
 
@@ -124,3 +139,24 @@ If (Test-Path "$HOME\miniconda3\Scripts\conda.exe") {
     (& "$HOME\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Where-Object{$_} | Invoke-Expression
 }
 #endregion
+
+### Check Start Up ###
+
+$SystemlogFilePath = "$env:USERPROFILE\.PowerShellStartup.log"
+
+# 检查日志文件是否存在
+if (-not (Test-Path $SystemlogFilePath)) {
+	New-Item -Path $SystemlogFilePath -ItemType File -Force | Out-Null
+}
+
+# 读取日志文件的最后一行（即上次启动日期）
+$__lastStartup = Get-Content -Path $SystemlogFilePath -Tail 1 -ErrorAction SilentlyContinue
+$_currentDate = (Get-Date).ToString("yyyy-MM-dd")
+
+if (-not ($__lastStartup -eq $_currentDate)) {
+	Get-Date
+	Update-ForexData &
+	Write-Host "今天是第一次启动 PowerShell。"
+	# 记录当前日期到日志文件
+	$_currentDate | Out-File -FilePath $SystemlogFilePath -Append
+}
