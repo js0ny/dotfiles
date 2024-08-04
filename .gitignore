@@ -1,5 +1,4 @@
-.private.env.sh
-.private.env.ps1
+.private.env.*
 nvim/tt.*
 nvim/.tests
 nvim/doc/tags
