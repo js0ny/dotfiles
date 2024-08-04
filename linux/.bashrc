@@ -165,4 +165,4 @@ wsp(){
 doku() {
   cd ~/doku/ && ls
 }
-source ~/.private.env
+source ~/.private.env.sh

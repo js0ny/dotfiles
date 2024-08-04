@@ -61,7 +61,7 @@ alias cls=clear
 alias g++='g++ -std=c++2b' # Set the default C++ standard to C++20
 alias gcc='gcc -std=c99' # Set the default C standard to C99
 alias cl='clang -std=c99'
-alias clp='clang++ -std=c++2b'
+alias clpp='clang++ -std=c++2b'
 alias python=python3 # Set the default Python version to Python 3
 alias py=python # Alias for Python
 alias bashcfg="nvim ~/.bashrc"

@@ -7,4 +7,9 @@ nvim/.repro
 nvim/foo.*
 nvim/*.log
 nvim/data
+nvim/lazy-lock.json
+nvim/lazyvim.json
 test/
+*.gz
+*.tar
+*.zip
