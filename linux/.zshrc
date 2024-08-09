@@ -21,7 +21,8 @@ ZSH_THEME="avit"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
-plugins=(git web-search jsontools z vi-mode zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git web-search jsontools z vi-mode zsh-autosuggestions)
+#plugins=(git web-search jsontools z vi-mode zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -56,15 +57,28 @@ alias cls=clear
 
 alias g++='g++ -std=c++2b' # Set the default C++ standard to C++20
 alias gcc='gcc -std=c99' # Set the default C standard to C99
-alias cl='clang'
-alias cl++='clang++'
+alias cl='clang -std=c99'
+alias clpp='clang++ -std=c++2b'
 alias python=python3 # Set the default Python version to Python 3
 alias py=python # Alias for Python
 alias bashcfg="nvim ~/.bashrc"
 alias zshcfg="nvim ~/.zshrc"
 alias shcfg=zshcfg
+alias reload="source ~/.zshrc"
 alias nvimrc="nvim ~/.config/nvim/"
 alias ohmyzsh="code ~/.oh-my-zsh"
+alias pulldots="cd $DOTFILES && git pull"
+
+# Conda #
+
+alias cact="conda activate"
+alias cenvs="conda env list"
+alias cdact="conda deactivate"
+
+# Git #
+
+
+
 
 # Editors #
 
@@ -122,18 +136,20 @@ gvi() {
 
 ### Misc ###
 
+export PATH=/opt/bin:$PATH
+
 # Conda #
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/js0ny/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/js0ny/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/js0ny/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="$HOME/miniconda3/bin:$PATH"
+        export PATH="/home/js0ny/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
