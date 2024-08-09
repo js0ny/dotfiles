@@ -48,7 +48,13 @@ ${function:doku}     = { Set-Location -Path ~\MyDocuments && Get-ChildItem }
 # Shell Equivalents #
 
 Set-Alias "touch" "New-Item"
-Set-Alias "open"  "explorer.exe" 
+function open {
+	if ($args.Count -eq 0) {
+		explorer.exe .
+	} else {
+		explorer.exe $args[0]
+	}
+}
 
 # Shell Configurations #
 
@@ -63,20 +69,20 @@ ${function:csi}      = { dotnet script }
 
 # C & C++ #
 
-Set-Alias "cl"      "clang"
-Set-Alias "clpp"    "clang++"
-Set-Alias "clang"   "clang -std=c99"
-Set-Alias "clang++" "clang++ -std=c++2b"
+# Set-Alias "cl"      "clang"
+# Set-Alias "clpp"    "clang++"
+# ${function:clang} = { clang -std=c99 $args[0] }
+# ${function:clang++} = { clang -std=c++2b $args[0] }
 
 # Python & Conda #
 
 Set-Alias "python3" "python"
 Set-Alias "pip3"    "pip"
 Set-Alias "py"      "python"
-Set-Alias "pyact"   "conda activate"
-Set-Alias "pylsenv" "conda env list"
-Set-Alias "pydeact" "conda deactivate"
-Set-Alias "pymkenv" "conda create --name"
+${function:pyact} = { conda activate $args[0] }
+${function:pylsenvs} = { conda env list }
+${function:pydact} = { conda deactivate }
+${function:pymkenv} = { conda create --name $args[0] }
 
 # # Git #
 
@@ -106,32 +112,22 @@ Set-Alias "gvi" "neovide"
 
 # Miscs #
 
-Set-Alias mcd CreateAndSet-Directory
 
 ### Functions ###
 
-function tc { param ( [string] $filename)
-	New-Item $filename && code $filename
-}
-
-function tv { param ( [string] $filename)
-	New-Item $filename && nvim $filename
-}
-
-function cdls { param( [string] $dirname)
-	Set-Location $dirname && Get-ChildItem
-}
+function mkcd { param ( [string] $dirname) mkdir $dirname && Set-Location $dirname}
+function tc { param ( [string] $filename) New-Item $filename && code $filename }
+function tv { param ( [string] $filename) New-Item $filename && nvim $filename }
+function cdls { param( [string] $dirname) Set-Location $dirname && Get-ChildItem }
 
 ### Modules ###
 
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) { Import-Module "$ChocolateyProfile" }
-
 Import-Module -Name Microsoft.WinGet.CommandNotFound #f45873b3-b655-43a6-b217-97c00aa0db58
-
 Import-Module CompletionPredictor
 
 ### Misc ###
+
+## Conda ##
 
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
@@ -140,19 +136,15 @@ If (Test-Path "$HOME\miniconda3\Scripts\conda.exe") {
 }
 #endregion
 
-### Check Start Up ###
-
+## Check Start Up ##
 $SystemlogFilePath = "$env:USERPROFILE\.PowerShellStartup.log"
-
 # 检查日志文件是否存在
 if (-not (Test-Path $SystemlogFilePath)) {
 	New-Item -Path $SystemlogFilePath -ItemType File -Force | Out-Null
 }
-
 # 读取日志文件的最后一行（即上次启动日期）
 $__lastStartup = Get-Content -Path $SystemlogFilePath -Tail 1 -ErrorAction SilentlyContinue
 $_currentDate = (Get-Date).ToString("yyyy-MM-dd")
-
 if (-not ($__lastStartup -eq $_currentDate)) {
 	Get-Date
 	Update-ForexData &
@@ -160,3 +152,8 @@ if (-not ($__lastStartup -eq $_currentDate)) {
 	# 记录当前日期到日志文件
 	$_currentDate | Out-File -FilePath $SystemlogFilePath -Append
 }
+
+## Chocolatey ##
+
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) { Import-Module "$ChocolateyProfile" }
