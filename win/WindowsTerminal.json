@@ -158,7 +158,9 @@
             "font": 
             {
                 "face": "CaskaydiaCove Nerd Font"
-            }
+            },
+            "opacity": 100,
+            "useAcrylic": false
         },
         "list": 
         [
@@ -171,7 +173,8 @@
                 "name": "PowerShell",
                 "opacity": 100,
                 "scrollbarState": "hidden",
-                "source": "Windows.Terminal.PowershellCore"
+                "source": "Windows.Terminal.PowershellCore",
+                "useAcrylic": true
             },
             {
                 "guid": "{3c5d580b-1c52-55ce-89c9-57119457e5a7}",

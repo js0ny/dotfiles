@@ -1,0 +1,19 @@
+{
+    ".bashrc": "~/.bashrc",
+    ".zshrc": "~/.zshrc",
+    "nvim/": "~/.config/nvim/",
+    ".condarc": "~/.condarc",
+    ".gitconfig": "~/.gitconfig",
+    ".ideavimrc": "~/.ideavimrc",
+    "pip.conf": "~/.config/pip/pip.conf",
+    ".npmrc": "~/.npmrc",
+    "Microsoft.PowerShell_profile.ps1": {
+        "Mac": "~/.config/powershell/Microsoft.PowerShell_profile.ps1",
+        "Windows": "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+    },
+    ".wslconfig": "~/.wslconfig",
+    "neovide.toml": {
+        "Mac": "~/.config/neovide/neovide.toml",
+        "Windows": "~/AppData/Local/neovide/neovide.toml"
+    }
+}
