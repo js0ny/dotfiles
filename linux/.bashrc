@@ -165,4 +165,20 @@ wsp(){
 doku() {
   cd ~/doku/ && ls
 }
-source ~/.private.env.sh
+source ~/.private.env.sheval "$(/bin/brew shellenv)"
+eval "$(/bin/brew shellenv)"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/js0ny/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/js0ny/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

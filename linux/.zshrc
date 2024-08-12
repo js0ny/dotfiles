@@ -165,3 +165,19 @@ if [[ -x /usr/lib/command-not-found ]] ; then
                 }
         fi
 fi
+
+# LinuxBrew #
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Set PATH, MANPATH, etc., for Homebrew.
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/js0ny/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
