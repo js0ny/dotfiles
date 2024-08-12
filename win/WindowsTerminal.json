@@ -4,14 +4,6 @@
     "actions": 
     [
         {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
-        },
-        {
             "command": "unbound",
             "keys": "alt+shift+plus"
         },
@@ -48,6 +40,22 @@
             "keys": "alt+shift+left"
         },
         {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "keys": "ctrl+k"
+        },
+        {
             "command": "paste",
             "keys": "ctrl+v"
         },
@@ -60,12 +68,8 @@
             "keys": "ctrl+shift+k"
         },
         {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "keys": "ctrl+k"
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -74,10 +78,6 @@
                 "direction": "left"
             },
             "keys": "ctrl+shift+h"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -91,18 +91,18 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "down"
-            },
-            "keys": "ctrl+j"
-        },
-        {
-            "command": 
-            {
                 "action": "splitPane",
                 "split": "right"
             },
             "keys": "alt+shift+/"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "keys": "ctrl+j"
         },
         {
             "command": 
@@ -159,8 +159,8 @@
             {
                 "face": "CaskaydiaCove Nerd Font"
             },
-            "opacity": 95,
-            "useAcrylic": true
+            "opacity": 100,
+            "useAcrylic": false
         },
         "list": 
         [
@@ -171,7 +171,7 @@
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
-                "opacity": 30,
+                "opacity": 100,
                 "scrollbarState": "hidden",
                 "source": "Windows.Terminal.PowershellCore",
                 "useAcrylic": true
