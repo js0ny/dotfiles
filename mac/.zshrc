@@ -74,9 +74,10 @@ alias pulldots="cd $DOTFILES && git pull"
 
 # Conda #
 
-alias cact="conda activate"
-alias cenvs="conda env list"
-alias cdact="conda deactivate"
+alias pyact="conda activate"
+alias pydact="conda deactivate"
+alias pylsenv="conda env list"
+alias pymkenv="conda create --name"
 
 # Git #
 
@@ -95,7 +96,7 @@ alias cf=cfiles
 ### Functions ###
 
 mcd() {
-  mkdir -p -- "$1" && cd -P -- "$1"
+  mkdir -p -- "$0" && cd -P -- "$1"
 }
 cdls(){
 	cd $1 && ls 
