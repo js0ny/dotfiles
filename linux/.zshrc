@@ -71,9 +71,9 @@ alias pulldots="cd $DOTFILES && git pull"
 
 # Conda #
 
-alias cact="conda activate"
-alias cenvs="conda env list"
-alias cdact="conda deactivate"
+alias pyact="conda activate"
+alias pylsenvs="conda env list"
+alias pydact="conda deactivate"
 
 # Git #
 
