@@ -13,3 +13,4 @@ test/
 *.gz
 *.tar
 *.zip
+*_private/

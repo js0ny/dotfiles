@@ -4,6 +4,7 @@
 
 - [Windows](./win/readme.md)
 - [Linux](./linux/readme.md)
+- [Mac](./mac/readme.md)
 
 - [Neovim](./nvim/readme.md)
 - [VSCode](./vscode/readme.md)
@@ -14,10 +15,5 @@
 
 - [pip](./pip.conf)
 - [npm](./.npmrc)
+- [conda](./.condarc)
 
-
-### Scripts
-
-- [Install Neovim *nix](./install_nvim.sh)
-- [Set Mirror *nix](./set_mirror.sh)
-- [Set Mirror PowerShell](./set_mirror.ps1)
