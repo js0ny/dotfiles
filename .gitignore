@@ -10,6 +10,8 @@ nvim/data
 nvim/lazy-lock.json
 nvim/lazyvim.json
 test/
+test.*
 *.gz
 *.tar
+*.tgz
 *.zip
