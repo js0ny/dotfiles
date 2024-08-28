@@ -92,6 +92,7 @@ alias c=code
 # Misc #
 
 alias cf=cfiles
+alias gdb=aarch64-elf-gdb
 
 ### Functions ###
 
