@@ -1,0 +1,24 @@
+{
+    "description": "Map fn+tab to cmd+tab",
+    "manipulators": [
+        {
+            "from": {
+                "key_code": "tab",
+                "modifiers": {
+                    "mandatory": [
+                        "fn"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "tab",
+                    "modifiers": [
+                        "left_command"
+                    ]
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}

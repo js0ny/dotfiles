@@ -88,6 +88,10 @@ if (-not ($__lastStartup -eq $_currentDate)) {
 	$_currentDate | Out-File -FilePath $SystemlogFilePath -Append
 }
 
+Remove-Variable SystemlogFilePath
+Remove-Variable __lastStartup
+Remove-Variable _currentDate
+
 ## Chocolatey ##
 
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
