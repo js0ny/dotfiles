@@ -8,8 +8,7 @@ tabs = true
 theme = "auto"
 title-hidden = true
 vsync = false
-wsl = true
-neovim-bin = "/opt/nvim-linux64/bin/nvim"
+wsl = false
 
 [font]
 normal = ["CaskaydiaCove Nerd Font"] # Will use the bundled Fira Code Nerd Font by default
