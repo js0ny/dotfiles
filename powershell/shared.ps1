@@ -4,7 +4,6 @@ Set-PSReadLineOption -EditMode            vi               # Vi Keybindings
 Set-PSReadLineOption -PredictionViewStyle ListView         
 Set-PSReadLineOption -PredictionSource    HistoryAndPlugin 
 Set-PSReadLineOption -ContinuationPrompt  "`e[36m CR > "   
-
 ### Keybindings ###
 
 Set-PSReadLineKeyHandler -Chord "Ctrl+Shift+f" -Function ForwardWord
@@ -77,6 +76,7 @@ ${function:pydact} = { conda deactivate }
 ${function:pylsenvs} = { conda env list }
 ${function:pymkenv} = { conda create --name $args[0] }
 ${function:pyrmenv} = { conda remove --name $args[0] --all }
+
 
 # C & C++ #
 

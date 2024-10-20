@@ -1,4 +1,4 @@
-*_private/
+*private*
 .private.env.*
 nvim/tt.*
 nvim/.tests
@@ -16,3 +16,4 @@ test.*
 *.tar
 *.zip
 *.tgz
+WindowsTerminal.json
