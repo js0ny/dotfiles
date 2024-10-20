@@ -46,6 +46,7 @@ alias docs="cd ~/Documents"
 alias dt="cd ~/Desktop"
 alias down="cd ~/Downloads"
 alias one="cd ~/OneDrive"
+alias gdrive="cd ~/Google\ Drive"
 
 ### Aliases ###
 
@@ -132,7 +133,7 @@ gvi() {
     neovide.exe "$target"
   else
     if command -v neovide > /dev/null; then
-       neovide "$target"
+       neovide "$target" &
     else
       echo "neovide is not installed"
     fi
