@@ -1,0 +1,5 @@
+# ~/.config/conda/condarc.yaml
+# New-Item -ItemType SymbolicLink -Path ~\.config\conda\.condarc -Target ~\.dotfiles\.config\conda\condarc.yaml
+# mkdir -p ~/.config/conda/ && ln -s ~/.dotfiles/.config/conda/condarc.yaml ~/.config/conda/.condarc
+# Reference: https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html
+auto_activate_base: false 

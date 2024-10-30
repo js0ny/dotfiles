@@ -1,6 +1,8 @@
-" Put this in ~/.vscode.vimrc
+" ~/.config/vscode/vscode.vimrc
+" New-Item -ItemType SymbolicLink -Path ~\.config\vscode\vscode.vimrc -Target ~\.dotfiles\vscode\vscode.vimrc
+" mkdir -p ~/.config/vscode && ln -s ~/.config/vscode/vscode.vimrc ~/.vimrc
 " And go to vscode vim setting:
-    "vim.vimrc.path": "$HOME/.vscode.vimrc", 
+    "vim.vimrc.path": "$HOME/.config/vscode/vscode.vimrc",
 
 " Word wrap
 noremap n gj
