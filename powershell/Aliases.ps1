@@ -1,25 +1,5 @@
 ### VARIABLES ###
 $EDITOR = "code"
-
-### Navigator ###
-
-# Relative navigation #
-# ${function:~}        = { Set-Location -Path ~ } cd is better
-${function:...}      = { Set-Location -Path ..\.. }
-${function:....}     = { Set-Location -Path ..\..\.. }
-${function:.....}    = { Set-Location -Path ..\..\..\.. }
-${function:......}   = { Set-Location -Path ..\..\..\..\.. }
-
-# Absolute navigation
-${function:docs}     = { Set-Location -Path ~/Documents }
-${function:down}     = { Set-Location -Path ~/Downloads }
-${function:dt}       = { Set-Location -Path ~/Desktop }
-${function:mytmp}    = { Set-Location -Path ~/Temp }
-${function:one}      = { Set-Location -Path ~/OneDrive }
-${function:doku}     = { Set-Location -Path ~/doku && Get-ChildItem }
-
-### Alias ###
-
 # Shell Equivalents #
 Set-Alias "touch" "New-Item"
 ${function:ll} = { Get-ChildItem -Force } 
@@ -55,6 +35,3 @@ ${function:pydact} = { conda deactivate }
 ${function:pylsenvs} = { conda env list }
 ${function:pymkenv} = { conda create --name $args[0] }
 ${function:pyrmenv} = { conda remove --name $args[0] --all }
-
-
-# C & C++ #
