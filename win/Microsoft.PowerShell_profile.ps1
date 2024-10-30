@@ -1,60 +1,33 @@
-### Variables ###
-
-$DOTFILES = "$HOME\Documents\.dotfiles"
-
 ### Load Configs ###
-
+$DOTFILES = "$HOME\.dotfiles"
 Get-ChildItem -Path $DOTFILES\powershell -Filter *.ps1 | ForEach-Object {. $_}
 Get-ChildItem -Path $DOTFILES\powershell_private -Filter *.ps1 | ForEach-Object {. $_}
 
 ### Aliases ###
 
 # Shell Equivalents #
-
-Set-Alias "open" "Invoke-Item" # Use ii instead of explorer.exe
+Set-Alias "grep" "Select-String"
+${function:which}    = { (Get-Command $args[0]).Path }
 
 # Shell Configurations #
-
 ${function:shcfg}    = { code $PROFILE }
-${function:reload}   = { . $PROFILE }
+${function:reload}   = { & $PROFILE }
 ${function:pulldots} = { Set-Location -Path $DOTFILES && git pull }
 Set-Alias "pwshcfg" "shcfg"
 
 # C & C++ #
-
 # Set-Alias "cl"      "clang"
 # Set-Alias "clpp"    "clang++"
 # ${function:clang} = { clang -std=c99 $args[0] }
 # ${function:clang++} = { clang -std=c++2b $args[0] }
 
-# Python & Conda #
-
-Set-Alias "python3" "python"
-Set-Alias "pip3"    "pip"
-
-# Git #
-
-# Set-Alias "g" "git"
-# Set-Alias "ginit" "git init"
-# Set-Alias "ga" "git add"
-# Set-Alias "gaa" "git add --all"
-# Set-Alias "gc" "git commit --message"
-# Set-Alias "gca" "git commit --all --message"
-# Set-Alias "gcl" "git clone"
-# Set-Alias "gclnh" "git clone --depth 1"
-# Set-Alias "gs" "git status"
-# Set-Alias "gpl" "git pull"
-# Set-Alias "gps" "git push"
-
-
 # WSL #
-
 ${function:wsl1} = {wsl.exe --distribution Debian}
 ${function:wsl2} = {wsl.exe --distribution Ubuntu-22.04}
+New-PSDrive -Name WSL -PSProvider FileSystem -Root \\wsl.localhost\Ubuntu-22.04
 
 # Search Software #
-
-function Get-AppPackageListRemote {
+function Find-AppPackageListRemote {
     param(
       [string]$Name
     )
@@ -68,16 +41,14 @@ function Get-AppPackageListRemote {
     Write-Host "=== choco ==="
     choco search $Name
 }
-
 Set-Alias "pkgsearch" "Get-AppPackageListRemote"
-
 function Get-AppPackageListLocal {
 	winget list
 	choco list
 	scoop list
 }
-# Toggle Theme #
 
+# Toggle Theme #
 function Set-SystemTheme {
   $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
   $currentMode = Get-ItemProperty -Path $regPath -Name "AppsUseLightTheme"
@@ -90,27 +61,14 @@ function Set-SystemTheme {
     Write-Host "已切换到浅色模式"
   }
 }
-
 Set-Alias "theme" "Set-SystemTheme"
 
 # Miscs #
 
-### Modules ###
-
-Import-Module -Name Microsoft.WinGet.CommandNotFound #f45873b3-b655-43a6-b217-97c00aa0db58
-Import-Module CompletionPredictor
-# Import-Module syntax-highlighting # Buggy
-
 ### Misc ###
-
 ${function:qwen} = "ollama run qwen2.5:14b"
 
-# ## Oh-My-Posh ##
-
-# Oh-My-Posh init pwsh --config "$HOME\AppData\Local\Programs\oh-my-posh\themes\tokyonight_storm.omp.json" | Invoke-Expression
-
 ## Conda ##
-
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 If (Test-Path "$HOME\miniconda3\Scripts\conda.exe") {
@@ -134,12 +92,6 @@ if (-not ($__lastStartup -eq $_currentDate)) {
 	# 记录当前日期到日志文件
 	$_currentDate | Out-File -FilePath $SystemlogFilePath -Append
 }
-
 Remove-Variable SystemlogFilePath
 Remove-Variable __lastStartup
 Remove-Variable _currentDate
-
-## Chocolatey ##
-
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) { Import-Module "$ChocolateyProfile" }

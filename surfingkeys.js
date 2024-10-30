@@ -1,4 +1,6 @@
 // Paste this into surfingkeys advanced settings
+// or use:
+// Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/surfingkeys.js
 
 /** Examples
 
@@ -17,29 +19,90 @@ api.unmap('<ctrl-i>');
 */
 // Settings
 settings.language = "zh-CN"	;
-settings.showModeStatus = true;
-// Colemak hjkl (hnei)
-//  map('h', 'h')   // left no change
-api.map('n', 'j')   // down
-api.vmap('n', 'j')  // down
-api.map('e', 'k')   // up
-api.vmap('e', 'k')  // up
-api.map('i', 'l')   // right
-api.vmap('i', 'l')  // right
-// DELETED map j -> e : use j to scroll up half page
-api.vmap('j', 'e')  // end of word
-api.map('k', 'n')   // search next word (Original Position of n)
-api.vmap('k', 'n')  // search next word (Original Position of n)
-api.map('l', 'i')   // insert mode, similar position to original i
-api.vmap('l', 'i')  // insert mode, similar position to original i
-api.map('L', 'I')   // insert mode with vim popup, similar pos to I
+settings.showModeStatus = false;
+// Keymap, reference https://github.com/texiwustion/colemak_config_for_surfingkeys/tree/main
+const forward = {
+    add: function (key) { // 转发即将被 unmap 的键
+        return api.map(`for${key}`, key)
+    },
+    cancel: function (key) { // 删除转发生成的键
+        api.unmap(`for${key}`)
+        api.unmap(key)
+    },
+    use: function (key) {
+        return `for${key}`
+    }
+}
 
-// Prev/Next Page (WASD-like left-hand navigation)
-api.map('A', 'E')
-api.map('S', 'R')
-//  map('d', 'd') for scroll down half page
-api.map('j', 'u') //scrool up half page
-api.map('T', 'C') // Open in new tab
+const colemak = {
+    forward: function (key) { // 转发即将被 unmap 的键
+        api.map(key, `col${key}`)
+        api.unmap(`col${key}`)
+        
+    },
+    use: function (key) {
+        return `col${key}`
+    },
+    map: function (a, b) {
+        api.map(colemak.use(a), forward.use(b))
+    }
+}
+
+const forwardFactory = {
+    push: function (mapLists) { // forward original keys
+        for (let key in mapLists) {
+            forward.add(mapLists[key])
+        }
+    },
+    map: function (mapLists) {
+        for (let key in mapLists) {
+        colemak.map(key, mapLists[key])
+    }
+    },
+    pull: function (mapLists) {
+        for (let key in mapLists) {
+            forward.cancel(mapLists[key])
+        }
+        for (let key in mapLists) {
+            colemak.forward(key)
+        }
+    }
+}
+
+const mapLists = {
+    /// scroll page
+    // Arrow
+    'n': 'j',
+    'e': 'k',
+    'i': 'l',
+    // l <-> i
+    'l': 'i',
+    'L': 'I',
+    // k <-> n
+    'k': 'n',
+    'K': 'N',
+    // j <-> e
+    'j': 'e',
+    'J': 'E',
+    // 缩放
+    'zu': 'zi',
+    'zo': 'ze',
+    'zz': 'zr',
+}
+
+forwardFactory.push(mapLists)
+api.unmap('t') 
+forwardFactory.map(mapLists)
+// 鼠标点击
+api.unmap('gi')
+api.unmap('[[')
+api.unmap(']]')
+api.unmap(';m')
+api.unmap(';fs')
+api.unmap('O')
+api.unmap('C')
+forwardFactory.pull(mapLists)
+
 
 // Search Alias
 api.addSearchAlias('f', 'Felo', 'https://felo.ai/search?q=', 's', 'https://duckduckgo.com/ac/?q=', function(response) {
@@ -62,42 +125,236 @@ api.addSearchAlias('r', 'Raindrop', 'https://app.raindrop.io/my/0/', 's', 'https
 });
 
 
-// Theme  
+// Theme, reference to https://github.com/Foldex/surfingkeys-config
+api.Hints.style('border: solid 2px #4C566A; color:#A3BE8C; background: initial; background-color: #3B4252;');
+api.Hints.style("border: solid 2px #4C566A !important; padding: 1px !important; color: #E5E9F0 !important; background: #3B4252 !important;", "text");
+api.Visual.style('marks', 'background-color: #A3BE8C99;');
+api.Visual.style('cursor', 'background-color: #88C0D0;');
 settings.theme = `
+fg: #E5E9F0;
+bg: #3B4252;
+bg-dark: #2E3440;
+border: #4C566A;
+main-fg: #88C0D0;
+accent-fg: #A3BE8C;
+info-fg: #5E81AC;
+select: #4C566A;
+/* ---------- Generic ---------- */
 .sk_theme {
-    font-family: Input Sans Condensed, Charcoal, sans-serif;
-    font-size: 10pt;
-    background: #24272e;
-    color: #abb2bf;
+background: var(--bg);
+color: var(--fg);
+  background-color: var(--bg);
+  border-color: var(--border);
+  font-family: var(--font);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
 }
+
+input {
+  font-family: var(--font);
+  font-weight: var(--font-weight);
+}
+
 .sk_theme tbody {
-    color: #fff;
+  color: var(--fg);
 }
+
 .sk_theme input {
-    color: #d0d0d0;
+  color: var(--fg);
 }
+
+/* Hints */
+#sk_hints .begin {
+  color: var(--accent-fg) !important;
+}
+
+#sk_tabs .sk_tab {
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+}
+
+#sk_tabs .sk_tab_title {
+  color: var(--fg);
+}
+
+#sk_tabs .sk_tab_url {
+  color: var(--main-fg);
+}
+
+#sk_tabs .sk_tab_hint {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--accent-fg);
+}
+
+.sk_theme #sk_frame {
+  background: var(--bg);
+  opacity: 0.2;
+  color: var(--accent-fg);
+}
+
+/* ---------- Omnibar ---------- */
+/* Uncomment this and use settings.omnibarPosition = 'bottom' for Pentadactyl/Tridactyl style bottom bar */
+/* .sk_theme#sk_omnibar {
+  width: 100%;
+  left: 0;
+} */
+
+.sk_theme .title {
+  color: var(--accent-fg);
+}
+
 .sk_theme .url {
-    color: #61afef;
+  color: var(--main-fg);
 }
+
 .sk_theme .annotation {
-    color: #56b6c2;
+  color: var(--accent-fg);
 }
+
 .sk_theme .omnibar_highlight {
-    color: #528bff;
+  color: var(--accent-fg);
 }
+
 .sk_theme .omnibar_timestamp {
-    color: #e5c07b;
+  color: var(--info-fg);
 }
+
 .sk_theme .omnibar_visitcount {
-    color: #98c379;
+  color: var(--accent-fg);
 }
+
 .sk_theme #sk_omnibarSearchResult ul li:nth-child(odd) {
-    background: #303030;
+  background: var(--bg-dark);
 }
+
 .sk_theme #sk_omnibarSearchResult ul li.focused {
-    background: #3e4452;
+  background: var(--border);
 }
-#sk_status, #sk_find {
-    font-size: 20pt;
+
+.sk_theme #sk_omnibarSearchArea {
+  border-top-color: var(--border);
+  border-bottom-color: var(--border);
+}
+
+.sk_theme #sk_omnibarSearchArea input,
+.sk_theme #sk_omnibarSearchArea span {
+  font-size: var(--font-size);
+}
+
+.sk_theme .separator {
+  color: var(--accent-fg);
+}
+
+/* ---------- Popup Notification Banner ---------- */
+#sk_banner {
+  font-family: var(--font);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  background: var(--bg);
+  border-color: var(--border);
+  color: var(--fg);
+  opacity: 0.9;
+}
+
+/* ---------- Popup Keys ---------- */
+#sk_keystroke {
+  background-color: var(--bg);
+}
+
+.sk_theme kbd .candidates {
+  color: var(--info-fg);
+}
+
+.sk_theme span.annotation {
+  color: var(--accent-fg);
+}
+
+/* ---------- Popup Translation Bubble ---------- */
+#sk_bubble {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+  border-color: var(--border) !important;
+}
+
+#sk_bubble * {
+  color: var(--fg) !important;
+}
+
+#sk_bubble div.sk_arrow div:nth-of-type(1) {
+  border-top-color: var(--border) !important;
+  border-bottom-color: var(--border) !important;
+}
+
+#sk_bubble div.sk_arrow div:nth-of-type(2) {
+  border-top-color: var(--bg) !important;
+  border-bottom-color: var(--bg) !important;
+}
+
+/* ---------- Search ---------- */
+#sk_status,
+#sk_find {
+  font-size: var(--font-size);
+  border-color: var(--border);
+}
+
+.sk_theme kbd {
+  background: var(--bg-dark);
+  border-color: var(--border);
+  box-shadow: none;
+  color: var(--fg);
+}
+
+.sk_theme .feature_name span {
+  color: var(--main-fg);
+}
+
+/* ---------- ACE Editor ---------- */
+#sk_editor {
+  background: var(--bg-dark) !important;
+  height: 50% !important;
+  /* Remove this to restore the default editor size */
+}
+
+.ace_dialog-bottom {
+  border-top: 1px solid var(--bg) !important;
+}
+
+.ace-chrome .ace_print-margin,
+.ace_gutter,
+.ace_gutter-cell,
+.ace_dialog {
+  background: var(--bg) !important;
+}
+
+.ace-chrome {
+  color: var(--fg) !important;
+}
+
+.ace_gutter,
+.ace_dialog {
+  color: var(--fg) !important;
+}
+
+.ace_cursor {
+  color: var(--fg) !important;
+}
+
+.normal-mode .ace_cursor {
+  background-color: var(--fg) !important;
+  border: var(--fg) !important;
+  opacity: 0.7 !important;
+}
+
+.ace_marker-layer .ace_selection {
+  background: var(--select) !important;
+}
+
+.ace_editor,
+.ace_dialog span,
+.ace_dialog input {
+  font-family: var(--font);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
 }`;
 // click `Save` button to make above settings to take effect.</ctrl-i></ctrl-y>
