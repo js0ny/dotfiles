@@ -17,3 +17,4 @@ test.*
 *.zip
 *.tgz
 WindowsTerminal.json
+PowerToys/

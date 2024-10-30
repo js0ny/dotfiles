@@ -1,29 +1,23 @@
-"vim.vimrc.path": "$HOME/.vscode.vimrc", // from vscode settings.json
+" ~/.config/vscode/vscode.vimrc
+" New-Item -ItemType SymbolicLink -Path ~\.config\vscode\vscode.vimrc -Target ~\.dotfiles\vscode\vscode.vimrc
+" mkdir -p ~/.config/vscode && ln -s ~/.config/vscode/vscode.vimrc ~/.vimrc
+" And go to vscode vim setting:
+    "vim.vimrc.path": "$HOME/.config/vscode/vscode.vimrc",
 
-" Colemak 方向键映射 (hnei）
-nnoremap k n
-nnoremap K N
-nnoremap j e
-vnoremap j e
-nnoremap l i
-nnoremap N J
-nnoremap E K
-nnoremap I L
-nnoremap J E
-vnoremap J E
-nnoremap L I
-nnoremap k n
-nnoremap K N
-nnoremap j e
-vnoremap j e
-nnoremap l i
-nnoremap N J
-nnoremap E K
-nnoremap I L
-nnoremap J E
-vnoremap J E
-nnoremap L I
-" 方向键映射
-noremap n <Down>     " 向下
-noremap e <Up>       " 向上
-noremap i <Right>    " 向右
+" Word wrap
+noremap n gj
+noremap e gk
+noremap i l
+
+" Similar position to i
+noremap l i
+noremap L I
+" ne[k]st
+noremap k n
+noremap K N
+" [j]ump 
+noremap j e
+noremap J E
+
+" Y to yank to end of line
+noremap Y y$

@@ -1,11 +1,12 @@
-; [wsl2]
-; networkingMode=mirrored
-; dnsTunneling=true
-; firewall=true
-; autoProxy=true
+# ~/.wslconfig
+# New-Item -ItemType SymbolicLink -Path ~\.wslconfig -Target ~\.dotfiles\win\.wslconfig
+[wsl2]
+networkingMode=mirrored
+dnsTunneling=true
+firewall=true
+autoProxy=true
 
-; [experimental]
-; # requires dnsTunneling but are also OPTIONAL
-; bestEffortDnsParsing=true
-; useWindowsDnsCache=true
-; hostAddressLoopback=true
+[experimental]
+# requires dnsTunneling but are also OPTIONAL
+bestEffortDnsParsing=true
+hostAddressLoopback=true
