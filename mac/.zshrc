@@ -1,9 +1,12 @@
 # ~/.config/zsh/.zshrc
-# ln -s ~/.dotfiles/wsl/.zshrc ~/.config/zsh/.zshrc
+# ln -s ~/.dotfiles/mac/.zshrc ~/.config/zsh/.zshrc
 ### Variables ###
 
 export DOTFILES="$HOME/.dotfiles"
-source $DOTFILES/zsh/*.zsh
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+for file in $DOTFILES/zsh/*.zsh; do
+  source $file
+done
 export ARCHFLAGS="-arch arm64"
 
 ### Navigation ###

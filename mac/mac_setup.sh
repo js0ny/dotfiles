@@ -40,6 +40,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 ### Dotfiles Setup ###
 export $DOTFILES="$HOME/.dotfiles"
 git clone https://www.github.com/js0ny/dotfiles.git $DOTFILES
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 ln -s $DOTFILES/.condarc ~/.condarc
 ln -s $DOTFILES/.gitconfig ~/.gitconfig
 ln -s $DOTFILES/.haskeline ~/.haskeline
@@ -142,4 +143,9 @@ mas install 451108668 # QQ
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 sudo rm -rf ~/.zshrc
-ln -s $DOTFILES/mac/.zshrc ~/.zshrc
+mkdir -p ~/.config/zsh
+ln -s $DOTFILES/zsh/.zshenv ~/.zshenv
+ln -s $DOTFILES/mac/.zshrc ~/.config/zsh/.zshrc
+source ~/.config/zsh/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting

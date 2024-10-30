@@ -1,6 +1,6 @@
 ### ZSH Config ###
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$ZDOTDIR/ohmyzsh"
 ZSH_THEME="avit"
 # DISABLE_MAGIC_FUNCTIONS="true"
 # DISABLE_LS_COLORS="true"

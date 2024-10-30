@@ -12,7 +12,7 @@ Get-ChildItem -Path $DOTFILES\powershell_private -Filter *.ps1 | ForEach-Object 
 # PowerShell Equivalents #
 
 # Set-Alias "curl"  "Invoke-WebRequest"
-Set-Alias "man"   "Get-Help"
+# Set-Alias "man"   "Get-Help"
 Set-Alias "kill"  "Stop-Process"
 Set-Alias "open" "Invoke-Item" # Use ii instead of open
 
