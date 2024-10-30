@@ -1,3 +1,4 @@
+*private*
 .private.env.*
 nvim/tt.*
 nvim/.tests
@@ -10,6 +11,10 @@ nvim/data
 nvim/lazy-lock.json
 nvim/lazyvim.json
 test/
+test.*
 *.gz
 *.tar
 *.zip
+*.tgz
+WindowsTerminal.json
+PowerToys/
