@@ -1,3 +1,5 @@
+# ~/.gitconfig
+# ln -sf  ~/.dotfiles/.gitconfig ~/.gitconfig
 [user]
 	name = js0ny
 	email = json.y@outlook.com
