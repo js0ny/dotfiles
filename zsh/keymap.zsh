@@ -1,4 +1,4 @@
-# ~/.dotfiles/keymap.zsh
+# $DOTFILES/keymap.zsh
 bindkey -v # Vi Keybindings
 
 # Colemak hnei

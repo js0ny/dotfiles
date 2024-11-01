@@ -4,5 +4,5 @@
 - `j->e`, `k->n`, `h->h`, `l->i`
 
 ```sh
-ln -s ~/.dotfiles/.config/nvim/ ~/.config/nvim
+ln -s $DOTFILES/.config/nvim/ ~/.config/nvim
 ```

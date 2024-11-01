@@ -1,5 +1,7 @@
-# ~/.config/neovide/config.toml
-# ln -sf ~/.dotfiles/mac/neovide.toml ~/.config/neovide/config.toml
+# $XDG_CONFIG_HOME/neovide/config.toml
+# ln -sf $DOTFILES/mac/neovide.toml $XDG_CONFIG_HOME/neovide/config.toml
+# New-Item -ItemType SymbolicLink -Path $Env:XDG_CONFIG_HOME/neovide/config.toml -Value $DOTFILES\mac\neovide.toml (Mac)
+# https://neovide.dev/config-file.html?highlight=toml#config-file
 fork = false
 frame = "full"
 idle = true

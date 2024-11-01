@@ -1,5 +1,5 @@
 # ~/.zshenv
-# ln -s ~/.dotfiles/zsh/.zshenv ~/.zshenv
+# ln -s $DOTFILES/zsh/.zshenv ~/.zshenv
 # This file is sourced by all zsh sessions upon startup.
 
 # Use XDG Base Directory Specification

@@ -2,12 +2,15 @@
 # This script is used to setup a new mac
 
 # Xcode Command Line Tools 
+echo [INFO] Installing Xcode Command Line Tools
 xcode-select --install
 
 # System Preferences 
 # Installation Sources
+echo [INFO] Setting Installation Sources
 sudo spctl --master-disable
 ## Finder
+echo [INFO] Setting Finder Preferences
 defaults write com.apple.finder QuitMenuItem -bool true # Quit with CMD+Q
 defaults write com.apple.finder AppleShowAllFiles -bool false # Don't show Hidden Files
 defaults write com.apple.finder ShowPathbar -bool true  # Show Path Bar
@@ -25,6 +28,7 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 killall Finder
 ## Dock
+echo [INFO] Setting Dock Preferences
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
 defaults write com.apple.dock autohide -bool true # Autohide Dock
@@ -38,19 +42,48 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 # Development #
 ### Dotfiles Setup ###
+echo [INFO] Setting Up Dotfiles
 export $DOTFILES="$HOME/.dotfiles"
 git clone https://www.github.com/js0ny/dotfiles.git $DOTFILES
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-ln -s $DOTFILES/.condarc ~/.condarc
-ln -s $DOTFILES/.gitconfig ~/.gitconfig
-ln -s $DOTFILES/.haskeline ~/.haskeline
-ln -s $DOTFILES/.ideavimrc ~/.ideavimrc
-ln -s $DOTFILES/.tmux.conf ~/.tmux.conf
+ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
+echo [INFO] 'source ~/.zshenv' to use XDG_CONFIG_HOME
+source ~/.zshenv
+    # export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+    # export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+echo [INFO] Setting Up Oh-My-Zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
+ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
+source $XDG_CONFIG_HOME/zsh/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
+source $XDG_CONFIG_HOME/zsh/.zshrc
+
+echo [INFO] Setting Up dotfiles
+mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/nvim $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode
+mkdir -p ~/.config/zellij # Not support XDG_CONFIG_HOME but same directory
+ln -sf $DOTFILES/.config/conda/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
+ln -sf $DOTFILES/.config/git/config $XDG_CONFIG_HOME/git/config
+ln -sf $DOTFILES/.haskeline ~/.haskeline
+ln -sf $DOTFILES/.ideavimrc ~/.ideavimrc
+ln -sf $DOTFILES/.tmux.conf ~/.tmux.conf
+ln -sf $DOTFILES/.config/markdownlint/.markdownlintrc.json $XDG_CONFIG_HOME/markdownlint/markdownlintrc.json
+ln -sf $DOTFILES/.config/zellij/config.kdl ~/.config/zellij/config.kdl
+ln -sf $DOTFILES/.npmrc ~/.npmrc
+ln -sf $DOTFILES/.config/pip/pip.conf $XDG_CONFIG_HOME/pip/pip.conf
+ln -sf $DOTFILES/mac/neovide.toml $XDG_CONFIG_HOME/neovide/config.toml
+ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
+ln -sf $DOTFILES/vscode/vscode.vimrc $XDG_CONFIG_HOME/vscode.vimrc
+
+# Brew
+echo [INFO] Installing Homebrew
+echo [ACTION] Request Human Input
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo [INFO] Installing Brew Packages
 brew install mas # Mac App Store CLI
 
 # File Management
-brew install --cask keka # Archive
+brew install --cask keka # Archiver
 brew install --cask google-drive # Cloud Storage
 
 # CLI
@@ -64,11 +97,15 @@ brew install --formula ripgrep
 brew install --formula tmux
 brew install --formula tree
 brew install --formula pandoc
+brew install --formula zellij # Better Tmux for me
 
 # Editors
 brew install --cask visual-studio-code
 brew install --formula neovim
 brew install --formula neovide
+
+# IDE
+brew install --cask qt-creator
 
 # Programming Languages
 brew install --formula lua
@@ -97,6 +134,8 @@ brew install --cask squirrel
 # PKM
 brew install --cask obsidian
 brew install --cask typora
+brew install --cask notion
+brew install --cask notion-calendar
 
 # Media
 brew install --cask iina
@@ -111,7 +150,7 @@ brew install --cask ltspice
 brew install --cask mactex-no-gui
 
 # Browser
-brew install --cask arc
+brew install --cask vivaldi
 brew install --cask firefox@nightly
 
 # Fonts
@@ -140,12 +179,3 @@ brew install --cask telegram-desktop
 mas install 836500024 # WeChat
 mas install 451108668 # QQ
 
-# Oh My Zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-sudo rm -rf ~/.zshrc
-mkdir -p ~/.config/zsh
-ln -s $DOTFILES/zsh/.zshenv ~/.zshenv
-ln -s $DOTFILES/mac/.zshrc ~/.config/zsh/.zshrc
-source ~/.config/zsh/.zshrc
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting

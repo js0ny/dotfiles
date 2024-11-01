@@ -1,0 +1,24 @@
+// ~/.config/zellij/config.kdl
+// ln -sf $DOTFILES/.config/zellij/config.kdl ~.config/zellij/config.kdl
+// https://zellij.dev/documentation/configuration
+keybinds {
+    // keybinds are divided into modes
+    normal {
+        // bind instructions can include one or more keys (both keys will be bound separately)
+        // bind keys can include one or more actions (all actions will be performed with no sequential guarantees)
+        bind "Ctrl g" { SwitchToMode "locked"; }
+        bind "Ctrl p" { SwitchToMode "pane"; }
+        bind "Alt n" { NewPane; }
+        bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
+    }
+    pane {
+        bind "h" "Left" { MoveFocus "Left"; }
+        bind "i" "Right" { MoveFocus "Right"; }
+        bind "n" "Down" { MoveFocus "Down"; }
+        bind "e" "Up" { MoveFocus "Up"; }
+        bind "p" { SwitchFocus; }
+    }
+    locked {
+        bind "Ctrl g" { SwitchToMode "normal"; }
+    }
+}

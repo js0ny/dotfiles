@@ -1,8 +1,27 @@
-" ~/.config/ideavim/ideavimrc
-" New-Item -ItemType SymbolicLink -Path ~\.config\ideavim/ideavimrc -Target ~\.dotfiles\.config/ideavim/ideavimrc
-" ln -sf ~/.dotfiles/.config/ideavim/ideavimrc
+"$XDG_CONFIG_HOME/ideavim/ideavimrc
+" New-Item -ItemType SymbolicLink -Path ~\.ideavimrc -Target $DOTFILES\.config\ideavim\ideavimrc.vimrc
+" ln -sf $DOTFILES/.config/ideavim/ideavimrc $XDG_CONFIG_HOME/ideavim/ideavimrc 
 """ Basic Configs """
 let mapleader = " " " set <leader> to <space>
+
+""" Colemak """
+" Word wrap
+noremap n gj
+noremap e gk
+noremap i l
+
+" Similar position to i
+noremap l i
+noremap L I
+" ne[k]st
+noremap k n
+noremap K N
+" [j]ump 
+noremap j e
+noremap J E
+
+" Y to yank to end of line
+noremap Y y$
 
 """ Options """
 " search for actions: :actionlist <patter>
