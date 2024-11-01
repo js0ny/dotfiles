@@ -1,3 +1,5 @@
+# $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
+# ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
 ### Variables ###
 
 $DOTFILES = "$HOME\.dotfiles"

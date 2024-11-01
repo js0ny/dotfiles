@@ -13,7 +13,7 @@ alias bashcfg="nvim ~/.bashrc"
 alias zshcfg="nvim ~/.zshrc"
 alias shcfg=zshcfg
 alias reload="source ~/.zshrc"
-alias nvimrc="nvim ~/.config/nvim/"
+alias nvimrc="nvim $XDG_CONFIG_HOME/nvim/"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias pulldots="cd $DOTFILES && git pull"
 

@@ -1,6 +1,6 @@
-" ~/.config/vscode/vscode.vimrc
+" $XDG_CONFIG_HOME/vscode/vscode.vimrc
 " New-Item -ItemType SymbolicLink -Path ~\.config\vscode\vscode.vimrc -Target ~\.dotfiles\vscode\vscode.vimrc
-" ln -sf $DOTFILES/vscode/vscode.vimrc ~/.config/vscode/vscode.vimrc
+" ln -sf $DOTFILES/vscode/vscode.vimrc $XDG_CONFIG_HOME/vscode/vscode.vimrc
 " And go to vscode vim setting:
     "vim.vimrc.path": "$HOME/.config/vscode/vscode.vimrc",
 

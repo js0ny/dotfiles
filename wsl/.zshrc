@@ -1,5 +1,5 @@
-# ~/.config/zsh/.zshrc
-# ln -s $DOTFILES/wsl/.zshrc ~/.config/zsh/.zshrc
+# $XDG_CONFIG_HOME/zsh/.zshrc
+# ln -s $DOTFILES/wsl/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
 ### Variables ###
 
 export DOTFILES="$HOME/.dotfiles"

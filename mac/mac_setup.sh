@@ -60,7 +60,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/p
 source $XDG_CONFIG_HOME/zsh/.zshrc
 
 echo [INFO] Setting Up dotfiles
-mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/nvim $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode
+mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode
 mkdir -p ~/.config/zellij # Not support XDG_CONFIG_HOME but same directory
 ln -sf $DOTFILES/.config/conda/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
 ln -sf $DOTFILES/.config/git/config $XDG_CONFIG_HOME/git/config
@@ -74,6 +74,7 @@ ln -sf $DOTFILES/.config/pip/pip.conf $XDG_CONFIG_HOME/pip/pip.conf
 ln -sf $DOTFILES/mac/neovide.toml $XDG_CONFIG_HOME/neovide/config.toml
 ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
 ln -sf $DOTFILES/vscode/vscode.vimrc $XDG_CONFIG_HOME/vscode.vimrc
+ln -sf $DOTFILES/.config/nvim/ $XDG_CONFIG_HOME/nvim
 
 # Brew
 echo [INFO] Installing Homebrew
