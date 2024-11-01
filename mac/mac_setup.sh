@@ -54,7 +54,7 @@ echo [INFO] Setting Up Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
-source $XDG_CONFIG_HOME/zsh/.zshrc
+source $XDG_CONFIG.vimrc_HOME/zsh/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
 source $XDG_CONFIG_HOME/zsh/.zshrc
@@ -62,19 +62,23 @@ source $XDG_CONFIG_HOME/zsh/.zshrc
 echo [INFO] Setting Up dotfiles
 mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode
 mkdir -p ~/.config/zellij # Not support XDG_CONFIG_HOME but same directory
+# $DOTFILES/.config
 ln -sf $DOTFILES/.config/conda/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
-ln -sf $DOTFILES/.config/git/config $XDG_CONFIG_HOME/git/config
-ln -sf $DOTFILES/.haskeline ~/.haskeline
-ln -sf $DOTFILES/.ideavimrc ~/.ideavimrc
-ln -sf $DOTFILES/.tmux.conf ~/.tmux.conf
-ln -sf $DOTFILES/.config/markdownlint/.markdownlintrc.json $XDG_CONFIG_HOME/markdownlint/markdownlintrc.json
-ln -sf $DOTFILES/.config/zellij/config.kdl ~/.config/zellij/config.kdl
-ln -sf $DOTFILES/.npmrc ~/.npmrc
+ln -sf $DOTFILES/.config/git/.gitconfig $XDG_CONFIG_HOME/git/config
+ln -sf $DOTFILES/.config/ideavim/ideavimrc.vimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
+ln -sf $DOTFILES/.config/markdownlint/.markdownlint.json $XDG_CONFIG_HOME/markdownlint/markdownlint.json
+ln -sf $DOTFILES/.config/nvim/ $XDG_CONFIG_HOME/nvim
 ln -sf $DOTFILES/.config/pip/pip.conf $XDG_CONFIG_HOME/pip/pip.conf
+ln -sf $DOTFILES/.config/zellij/config.kdl ~/.config/zellij/config.kdl
+# $DOTFILES/mac
 ln -sf $DOTFILES/mac/neovide.toml $XDG_CONFIG_HOME/neovide/config.toml
 ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
+# $DOTFILES/vscode
 ln -sf $DOTFILES/vscode/vscode.vimrc $XDG_CONFIG_HOME/vscode.vimrc
-ln -sf $DOTFILES/.config/nvim/ $XDG_CONFIG_HOME/nvim
+# $DOTFILES root
+ln -sf $DOTFILES/.haskeline ~/.haskeline
+ln -sf $DOTFILES/.npmrc ~/.npmrc
+ln -sf $DOTFILES/.tmux.conf ~/.tmux.conf
 
 # Brew
 echo [INFO] Installing Homebrew
@@ -158,7 +162,6 @@ brew install --cask firefox@nightly
 brew tap homebrew/cask-fonts
 brew install --cask font-caskaydia-cove-nerd-font
 brew install --cask font-lxgw-wenkai
-brew install --cask clash-verge-rev
 
 # Quick Look
 brew install --cask qlmarkdown
@@ -173,6 +176,7 @@ brew install --cask betterdisplay
 brew install --cask karabiner-elements # Keyboard Customization
 brew install --cask scroll-reverser # Let Trackpad and Mouse Scroll in the Same Direction like Windows
 # brew install --cask orbstack # VM
+brew install --cask clash-verge-rev
 
 
 # Social

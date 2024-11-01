@@ -1,6 +1,6 @@
 # $XDG_CONFIG_HOME/git/config
-# ln -sf  $DOTFILES/.gitconfig $XDG_CONFIG_HOME/git/config
-# New-Item -ItemType SymbolicLink -Path $Env:XDG_CONFIG_HOME/git/ -Value $DOTFILES\.config\git\config
+# ln -sf  $DOTFILES/.config/git/.gitconfig $XDG_CONFIG_HOME/git/.config
+# New-Item -ItemType SymbolicLink -Path $Env:XDG_CONFIG_HOME/git/config -Value $DOTFILES\.config\git\.gitconfig
 [user]
 	name = js0ny
 	email = json.y@outlook.com
