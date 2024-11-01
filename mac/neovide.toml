@@ -1,0 +1,19 @@
+# ~/.config/neovide/config.toml
+# ln -sf ~/.dotfiles/mac/neovide.toml ~/.config/neovide/config.toml
+fork = false
+frame = "full"
+idle = true
+maximized = false
+neovim-bin = "/opt/homebrew/bin/nvim"
+no-multigrid = false
+srgb = false
+tabs = true
+theme = "auto"
+title-hidden = true
+vsync = true
+wsl = false
+
+[font]
+normal = ["CaskaydiaCove Nerd Font"] # Will use the bundled Fira Code Nerd Font by default
+size = 14.0
+

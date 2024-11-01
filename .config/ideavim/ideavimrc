@@ -1,3 +1,6 @@
+" ~/.config/ideavim/ideavimrc
+" New-Item -ItemType SymbolicLink -Path ~\.config\ideavim/ideavimrc -Target ~\.dotfiles\.config/ideavim/ideavimrc
+" ln -sf ~/.dotfiles/.config/ideavim/ideavimrc
 """ Basic Configs """
 let mapleader = " " " set <leader> to <space>
 
