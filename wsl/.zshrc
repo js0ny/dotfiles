@@ -3,7 +3,9 @@
 ### Variables ###
 
 export DOTFILES="$HOME/.dotfiles"
-source $DOTFILES/zsh/*.zsh
+for file in $DOTFILES/zsh/*.zsh; do
+  source $file
+done
 export ARCHFLAGS="-arch x86_64"
 
 # Absolute navigation
@@ -60,27 +62,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Ubuntu Command Not Found #
 
-if [[ -x /usr/lib/command-not-found ]] ; then
-        if (( ! ${+functions[command_not_found_handler]} )) ; then
-                function command_not_found_handler {
-                        [[ -x /usr/lib/command-not-found ]] || return 1
-                        /usr/lib/command-not-found -- ${1+"$1"} && :
-                }
-        fi
+if [ -f /usr/share/doc/pkgfile/command-not-found.sh ]; then
+    source /usr/share/doc/pkgfile/command-not-found.sh
 fi
 
-# LinuxBrew #
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# Set PATH, MANPATH, etc., for Homebrew.
+# vcpkg
 
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/home/js0ny/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
+export VCPKG_ROOT=~/vcpkg

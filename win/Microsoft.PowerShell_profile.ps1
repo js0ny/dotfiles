@@ -22,9 +22,8 @@ Set-Alias "pwshcfg" "shcfg"
 # ${function:clang++} = { clang -std=c++2b $args[0] }
 
 # WSL #
-${function:wsl1} = {wsl.exe --distribution Debian}
+${function:wsl1} = {wsl.exe --distribution Arch}
 ${function:wsl2} = {wsl.exe --distribution Ubuntu-22.04}
-New-PSDrive -Name WSL -PSProvider FileSystem -Root \\wsl.localhost\Ubuntu-22.04
 
 # Search Software #
 function Find-AppPackageListRemote {
@@ -41,7 +40,7 @@ function Find-AppPackageListRemote {
     Write-Host "=== choco ==="
     choco search $Name
 }
-Set-Alias "pkgsearch" "Get-AppPackageListRemote"
+Set-Alias "pkgsearch" "Find-AppPackageListRemote"
 function Get-AppPackageListLocal {
 	winget list
 	choco list
