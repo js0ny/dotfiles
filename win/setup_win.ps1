@@ -15,8 +15,8 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 # Set Dotfiles
-New-Item -ItemType SymbolicLink -Path "~\.condarc" -Target "$DOTFILES\.condarc"
-New-Item -ItemType SymbolicLink -Path "~\.gitconfig" -Target "$DOTFILES\.gitconfig"
+New-Item -ItemType SymbolicLink -Path "$Env:XDG_CONFIG_HOME\conda\.condarc" -Target "$DOTFILES\.config\conda\condarc.yaml"
+New-Item -ItemType SymbolicLink -Path "$Env:XDG_CONFIG_HOME\git\config" -Target "$DOTFILES\.config\git\.gitconfig"
 New-Item -ItemType SymbolicLink -Path "~\.haskline" -Target "$DOTFILES\.haskline"
 New-Item -ItemType SymbolicLink -Path "~\.ideavimrc" -Target "$DOTFILES\.ideavimrc"
 New-Item -ItemType SymbolicLink -Path "~\.markdownlint.json" -Target "$DOTFILES\.markdownlint.json"
@@ -46,9 +46,9 @@ scoop add bucket nerd-fonts
 scoop add bucket extras
 
 # CLI Tools
-winget install -e --id GnuWin32.Grep
+# winget install -e --id GnuWin32.Grep # Use Select-String instead
 winget install -e --id GnuWin32.Make
-winget install -e --id GnuWin32.Which
+# winget install -e --id GnuWin32.Which # Use Get-Command instead
 winget install -e --id junegunn.fzf
 winget install -e --id BurntSushi.ripgrep.MSVC
 winget install -e --id JernejSimoncic.Wget
@@ -68,9 +68,11 @@ winget install -e --id Microsoft.PowerToys
 winget install -e --id Guru3D.Afterburner
 winget install -e --id Yuanli.uTools
 winget install -e --id GeekUninstaller.GeekUninstaller
-# winget install -e --id Flow-Launcher.Flow-Launcher
-winget install -e --id AutoHotkey.AutoHotkey
+winget install -e --id Flow-Launcher.Flow-Launcher
+# winget install -e --id AutoHotkey.AutoHotkey
+winget install -e --id 9PLQFDG8HH9D --source msstore # AutoHotkey v2 Store Edition
 winget install -e --id Mactype.Mactype
+winget install -e --id Eassos.DiskGenius
 # winget install -e --id Nilesoft.Shell
 # scoop install umi-ocr-paddle
 
@@ -86,15 +88,16 @@ winget install -e --id Bitwarden.Bitwarden
 
 # PKM
 winget install -e --id Obsidian.Obsidian
-winget install -e --id B3log.SiYuan
+winget install -e --id 9P7HPMXP73K4 # Siyuan 
 winget install -e --id appmakes.Typora
 winget install -e --id DigitalScholar.Zotero
 winget install -e --id Anki.Anki
 winget install -e --id Notion.Notion
 
 # Browser
-winget install -e --id TheBrowserCompany.Arc
-winget install -e --id Mozilla.Firefox.Nightly
+# Use Microsoft Edge directly
+# winget install -e --id TheBrowserCompany.Arc 
+# winget install -e --id Mozilla.Firefox.Nightly # Not working
 
 # Programming Languages
 winget install -e --id Python.Python.3.12
@@ -111,12 +114,15 @@ winget install -e --id JesseDuffield.lazygit
 winget install -e --id Valve.Steam
 
 # IME
-winget install -e --id Rime.Weasel
+winget install -e --id Rime.Weasel # 小狼毫 Rime
+
+# Misc
+winget install --id 9N5LW3JBCXKF --source msstore # MSIX Packaging Tool
 
 # Social
 winget install -e --id 9N97ZCKPD60Q --source msstore # Unigram (Telegram client)
 winget install -e --id Tencent.QQ.NT
-winget install -e --id Tencent.WeChat
+winget install -e --id XPFCKBRNFZQ62G --source msstore # WeChat in Windows Store (MSIX)
 
 # Others
 winget install -e --id Appest.TickTick
