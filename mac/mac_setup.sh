@@ -14,7 +14,9 @@ xcode-select --install
 # System Preferences 
 # Installation Sources
 echo "[INFO] Setting Installation Sources"
-sudo spctl --master-disable
+# sudo spctl --master-disable
+# In Mac OS Sequoia, the command above is not working
+# Should be set up manually (System Preferences -> Security & Privacy -> General -> Allow apps downloaded from: Anywhere)
 ## Finder
 echo "[INFO] Setting Finder Preferences"
 defaults write com.apple.finder QuitMenuItem -bool true # Quit with CMD+Q
