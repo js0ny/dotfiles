@@ -126,9 +126,14 @@ winget install -e --id XPFCKBRNFZQ62G --source msstore # WeChat in Windows Store
 
 # Others
 winget install -e --id Appest.TickTick
+winget install -e --id 9NBLGGH4Z1SP --source msstore # ShareX (screen capture)
 
 # Fonts
 scoop install FiraCode-NF
 scoop install CascadiaCode-NF
 scoop install LXGWWenKai       # 霞鹜文楷
 scoop install LXGWWenKaiMono   # 霞鹜文楷Mono
+
+# WSL
+scoop install archwsl
+wsl --set-version Arch 1

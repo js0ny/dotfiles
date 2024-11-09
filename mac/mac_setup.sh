@@ -1,10 +1,14 @@
 #! /bin/zsh
 # This script is used to setup a new mac
+# In a new mac (Sequoia)
+# Enter the following command in the terminal
+#! curl -fsSL https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/mac/mac_setup.sh | zsh
 
 echo "Running the setup script"
 
 # Xcode Command Line Tools 
 echo "[INFO] Installing Xcode Command Line Tools"
+echo "[ACTION] Request Human Takeover"
 xcode-select --install
 
 # System Preferences 

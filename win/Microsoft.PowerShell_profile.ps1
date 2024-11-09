@@ -60,7 +60,7 @@ function Set-SystemTheme {
     Write-Host "已切换到浅色模式"
   }
 }
-Set-Alias "theme" "Set-SystemTheme"
+Set-Alias "dark-mode" "Set-SystemTheme" # Consistent with macOS (`dark-mode`)
 
 # Miscs #
 
