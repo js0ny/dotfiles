@@ -59,11 +59,11 @@ echo "[INFO] 'source ~/.zshenv' to use XDG_CONFIG_HOME"
 source ~/.zshenv
     # export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
     # export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-echo "[INFO] Setting Up Oh-My-Zsh"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "[INFO] Setting Up Zsh for Initial Use"
 ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
 source $XDG_CONFIG_HOME/zsh/.zshrc
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
 source $XDG_CONFIG_HOME/zsh/.zshrc
@@ -263,3 +263,12 @@ duti -s com.jetbrains.rider .fsproj all
 # Video -> IINA
 duti -s com.colliderli.iina .mp4 all
 duti -s com.colliderli.iina .mkv all
+
+echo "[INFO] Setting Up Oh-My-Zsh"
+ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
+ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
+source $XDG_CONFIG_HOME/zsh/.zshrc
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
+source $XDG_CONFIG_HOME/zsh/.zshrc
