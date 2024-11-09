@@ -53,7 +53,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 ### Dotfiles Setup ###
 echo "[INFO] Setting Up Dotfiles"
 export $DOTFILES="$HOME/.dotfiles"
-git clone https://www.github.com/js0ny/dotfiles.git $DOTFILES
+git clone https://www.github.com/js0ny/dotfiles.git ~/.dotfiles
 ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 echo "[INFO] 'source ~/.zshenv' to use XDG_CONFIG_HOME"
 source ~/.zshenv
