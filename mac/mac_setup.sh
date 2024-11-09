@@ -63,7 +63,7 @@ echo "[INFO] Setting Up Oh-My-Zsh"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
-source $XDG_CONFIG/zsh/.zshrc
+source $XDG_CONFIG_HOME/zsh/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
 source $XDG_CONFIG_HOME/zsh/.zshrc
