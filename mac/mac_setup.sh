@@ -2,7 +2,7 @@
 # This script is used to setup a new mac
 # In a new mac (Sequoia)
 # Enter the following command in the terminal
-#! curl -fsSL https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/mac/mac_setup.sh | zsh
+#! curl -fsSL https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/mac/mac_setup.sh | sh
 
 echo "Running the setup script"
 
@@ -52,7 +52,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 # Development #
 ### Dotfiles Setup ###
 echo "[INFO] Setting Up Dotfiles"
-export $DOTFILES="$HOME/.dotfiles"
+export DOTFILES="$HOME/.dotfiles"
 git clone https://www.github.com/js0ny/dotfiles.git ~/.dotfiles
 ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 echo "[INFO] 'source ~/.zshenv' to use XDG_CONFIG_HOME"
