@@ -99,7 +99,7 @@ brew install mas # Mac App Store CLI
 
 # File Management
 brew install --cask keka # Archiver
-brew install --cask google-drive # Cloud Storage
+brew install --cask google-drive # `sudo` # Cloud Storage
 
 # CLI
 brew install --formula cfiles
@@ -129,6 +129,7 @@ brew install --cask rider
 # Programming Languages
 brew install --formula lua
 brew install --formula luajit
+brew install --formula luarocks
 brew install --formula node
 brew install --formula dotnet
 brew install --formula go
@@ -136,7 +137,7 @@ brew install --formula go
 brew install --cask miniconda
 
 # PowerShells
-brew install --cask powershell
+brew install --cask powershell # `sudo`
 
 # Launchers
 brew install --cask raycast
@@ -147,7 +148,7 @@ brew install --cask iterm2
 
 
 # IME
-brew install --cask squirrel
+brew install --cask squirrel # `sudo`
 
 # PKM
 brew install --cask obsidian
@@ -162,7 +163,7 @@ brew install --cask iina
 brew install --cask keyguard
 
 # Engineering
-brew install --cask ltspice
+brew install --cask ltspice # `sudo`
 
 # Office
 brew install --cask mactex-no-gui
