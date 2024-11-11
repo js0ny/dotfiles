@@ -60,11 +60,11 @@ echo "[INFO] 'source ~/.zshenv' to use XDG_CONFIG_HOME"
 source ~/.zshenv
     # export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
     # export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-echo "[INFO] Setting Up Oh-My-Zsh"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "[INFO] Setting Up Zsh for Initial Use"
 ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
-source $XDG_CONFIG/zsh/.zshrc
+source $XDG_CONFIG_HOME/zsh/.zshrc
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
 source $XDG_CONFIG_HOME/zsh/.zshrc
@@ -100,7 +100,7 @@ brew install mas # Mac App Store CLI
 
 # File Management
 brew install --cask keka # Archiver
-brew install --cask google-drive # Cloud Storage
+brew install --cask google-drive # `sudo` # Cloud Storage
 
 # CLI
 # brew install --formula cfiles # Not Available
@@ -134,6 +134,7 @@ brew install --cask rider
 # Programming Languages
 brew install --formula lua
 brew install --formula luajit
+brew install --formula luarocks
 brew install --formula node
 brew install --formula dotnet
 brew install --formula go
@@ -141,7 +142,7 @@ brew install --formula go
 brew install --cask miniconda
 
 # PowerShells
-brew install --cask powershell
+brew install --cask powershell # `sudo`
 
 # Launchers
 brew install --cask raycast
@@ -152,7 +153,7 @@ brew install --cask iterm2
 
 
 # IME
-brew install --cask squirrel
+brew install --cask squirrel # `sudo`
 
 # PKM
 brew install --cask obsidian
@@ -167,7 +168,7 @@ brew install --cask iina
 brew install --cask keyguard
 
 # Engineering
-brew install --cask ltspice
+brew install --cask ltspice # `sudo`
 
 # Office
 brew install --cask mactex-no-gui
@@ -269,10 +270,3 @@ duti -s com.jetbrains.rider .fsproj all
 # Video -> IINA
 duti -s com.colliderli.iina .mp4 all
 duti -s com.colliderli.iina .mkv all
-
-
-# Install `code` command to path
-cat << EOF >> ~/.config/zsh/.zprofile
-# Add Visual Studio Code (code)
-export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-EOF

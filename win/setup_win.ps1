@@ -24,7 +24,8 @@ New-Item -ItemType SymbolicLink -Path "~\.npmrc" -Target "$DOTFILES\.npmrc"
 New-Item -ItemType SymbolicLink -Path "~\.pip.conf" -Target "$DOTFILES\.pip.conf"
 New-Item -ItemType SymbolicLink -Path "~\.wslconfig" -Target "$DOTFILES\win\.wslconfig"
 New-Item -ItemType SymbolicLink -Path "~\.vscode.vimrc" -Target "$DOTFILES\vscode\vscode.vimrc"
-Get-ChildItem -Force -Filter .* | ForEach-Object { $_.Attributes += "Hidden" }  # Hide dotfiles
+# Hide dotfiles 
+Get-ChildItem -Force -Filter .* | ForEach-Object { $_.Attributes += "Hidden" } 
 
 # Windows Terminal
 if (Get-Command wt -ErrorAction SilentlyContinue) {
@@ -42,57 +43,62 @@ Get-AppxPackage *Map* | Remove-AppxPackage # 地圖
 # Get-AppxPackage *clipchamp* | Remove-AppxPackage # 其實這個還行
 
 # Added Packages
-scoop add bucket nerd-fonts
-scoop add bucket extras
+scoop bucket add main
+scoop bucket add nerd-fonts
+scoop bucket add extras
+scoop bucket add nonportable
 
 # CLI Tools
 # winget install -e --id GnuWin32.Grep # Use Select-String instead
-winget install -e --id GnuWin32.Make
+scoop install main/make
 # winget install -e --id GnuWin32.Which # Use Get-Command instead
-winget install -e --id junegunn.fzf
-winget install -e --id BurntSushi.ripgrep.MSVC
-winget install -e --id JernejSimoncic.Wget
-winget install -e --id GNU.Wget2
+scoop install main/fzf
+scoop install main/ripgrep
+scoop install main/wget
+scoop install main/wget2
+scoop install main/cmake
 
 # File Management
-winget install -e --id voidtools.Everything
-winget install -e --id 7zip.7zip
-winget install -e --id Bandisoft.Bandizip
-winget install -e --id JohnMacFarlane.Pandoc
-winget install -e --id SumatraPDF.SumatraPDF
+scoop install extras/everything
+scoop install main/7zip
+scoop install extras/bandizip
+scoop install main/pandoc
+scoop install extras/sumatrapdf
 winget install -e --id Google.GoogleDrive
 
 # System Enhancements
-winget install -e --id Rem0o.FanControl
-winget install -e --id Microsoft.PowerToys
-winget install -e --id Guru3D.Afterburner
+scoop install extras/fancontrol
+scoop install extras/powertoys
+scoop install extras/msiafterburner
 winget install -e --id Yuanli.uTools
-winget install -e --id GeekUninstaller.GeekUninstaller
-winget install -e --id Flow-Launcher.Flow-Launcher
+scoop install extras/geekuninstaller
+scoop install extras/flow-launcher
 # winget install -e --id AutoHotkey.AutoHotkey
-winget install -e --id 9PLQFDG8HH9D --source msstore # AutoHotkey v2 Store Edition
-winget install -e --id Mactype.Mactype
-winget install -e --id Eassos.DiskGenius
+scoop install extras/autohotkey
+scoop install nonportable/mactype-np
+scoop install extras/diskgenius
 # winget install -e --id Nilesoft.Shell
 # scoop install umi-ocr-paddle
 
 # Editor
-winget install -e --id vim.vim
-winget install -e --id Neovim.Neovim
-winget install -e --id VSCodium.VSCodium
-winget install -e --id Microsoft.VisualStudioCode
-winget install -e --id Neovide.Neovide
+scoop install main/vim
+scoop install main/neovim
+scoop install extras/vscodium
+scoop install extras/vscode
+scoop install extras/neovide
+
 
 # Security
-winget install -e --id Bitwarden.Bitwarden
+scoop install main/bitwarden-cli
+scoop install extras/bitwarden
 
 # PKM
-winget install -e --id Obsidian.Obsidian
+scoop install extras/obsidian
 winget install -e --id 9P7HPMXP73K4 # Siyuan 
-winget install -e --id appmakes.Typora
-winget install -e --id DigitalScholar.Zotero
-winget install -e --id Anki.Anki
-winget install -e --id Notion.Notion
+scoop install extras/typora
+scoop install extras/zotero
+scoop install extras/anki
+# winget install -e --id Notion.Notion
 
 # Browser
 # Use Microsoft Edge directly
@@ -100,15 +106,18 @@ winget install -e --id Notion.Notion
 # winget install -e --id Mozilla.Firefox.Nightly # Not working
 
 # Programming Languages
-winget install -e --id Python.Python.3.12
+winget install -e --id Python.Python.3.13
 winget install -e --id Anaconda.Miniconda3
 winget install -e --id OpenJS.NodeJS
 winget install -e --id Rustlang.Rustup
 winget install -e --id Microsoft.DotNet.SDK.8
 
-# Dev/IDE
-winget install -e --id Docker.DockerDesktop
-winget install -e --id JesseDuffield.lazygit
+# Dev
+scoop install extras/docker
+scoop install extras/lazygit
+
+# IDE
+scoop install extras/rider
 
 # Gaming
 winget install -e --id Valve.Steam
@@ -117,7 +126,9 @@ winget install -e --id Valve.Steam
 winget install -e --id Rime.Weasel # 小狼毫 Rime
 
 # Misc
-winget install --id 9N5LW3JBCXKF --source msstore # MSIX Packaging Tool
+winget install -e --id 9N5LW3JBCXKF --source msstore # MSIX Packaging Tool
+winget install -e --id 9PKTQ5699M62 --source msstore # iCloud
+winget install -e --id RazerInc.RazerInstaller # Razer Synapse
 
 # Social
 winget install -e --id 9N97ZCKPD60Q --source msstore # Unigram (Telegram client)
