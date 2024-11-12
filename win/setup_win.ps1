@@ -57,6 +57,9 @@ scoop install main/ripgrep
 scoop install main/wget
 scoop install main/wget2
 scoop install main/cmake
+scoop install main/bat
+scoop install main/zoxide
+scoop install main/dos2unix
 
 # File Management
 scoop install extras/everything
@@ -89,8 +92,8 @@ scoop install extras/neovide
 
 
 # Security
-scoop install main/bitwarden-cli
-scoop install extras/bitwarden
+scoop bucket add keyguard https://github.com/AChep/keyguard-repo-scoop
+scoop install keyguard/keyguard
 
 # PKM
 scoop install extras/obsidian

@@ -17,5 +17,5 @@ test.*
 *.tar
 *.zip
 *.tgz
-WindowsTerminal.json
+# WindowsTerminal.json
 PowerToys/

@@ -1,9 +1,9 @@
 # aka PSReadLine
 # PSReadLineOptions
-Set-PSReadLineOption -EditMode            vi               # Vi Keybindings
+Set-PSReadLineOption -EditMode            Vi               # Vi Keybindings
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -PredictionSource    HistoryAndPlugin
-Set-PSReadLineOption -ContinuationPrompt  "`e[36m CR > "
+# Set-PSReadLineOption -ContinuationPrompt  "`e[36m CR > " # Use Starship instead
 # PSReadLineKeyHandlers
 ## Colemak hnei
 Set-PSReadLineKeyHandler -Chord "n" -Function NextHistory -ViMode Command            
