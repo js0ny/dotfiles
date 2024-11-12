@@ -1,7 +1,6 @@
 # starship.toml
 # ~/.config/starship.toml
 format = '''$os$time $username @ $hostname $directory $all$character'''
-continuation_prompt = "[$ ](bold cyan) "
 
 add_newline = true
 
@@ -17,11 +16,6 @@ show_always = true
 [hostname]
 ssh_only = false
 ssh_symbol = '󰞉 '
-
-[character]
-success_symbol = "[$ ](bold green)"
-error_symbol   = "[$ ](bold red)"
-vimcmd_symbol     = "[: ](bold green)"
 
 [directory]
 truncation_length = 2
