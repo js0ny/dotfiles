@@ -43,6 +43,7 @@ defaults write com.apple.dock autohide -bool true # Autohide Dock
 defaults write com.apple.dock autohide-time-modifier -float 0.5 
 defaults write com.apple.dock autohide-delay -float 0 # Immediately Autohide Dock
 defaults write com.apple.dock show-recents -bool false # Hide Recent Applications
+killall Dock
 ## Trackpad
 echo "[INFO] Setting Trackpad Preferences"
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
@@ -102,7 +103,7 @@ brew install --cask keka # Archiver
 brew install --cask google-drive # `sudo` # Cloud Storage
 
 # CLI
-brew install --formula cfiles
+# brew install --formula cfiles # Not Available
 brew install --formula fastfetch # 這輩子有了
 brew install --formula fzf
 brew install --formula ffmpeg
@@ -116,6 +117,10 @@ brew install --formula zellij # Better Tmux for me
 brew install --formula wget
 brew install --formula wget2
 brew install --formula speedtest-cli
+brew install --formula tldr # Simplified man pages
+brew install --formula cmake
+brew install --formula bat
+brew install --formula lsd
 
 # Editors
 brew install --cask visual-studio-code
@@ -169,7 +174,7 @@ brew install --cask ltspice # `sudo`
 brew install --cask mactex-no-gui
 
 # Browser
-brew install --cask edge # Default
+brew install --cask microsoft-edge # Default
 brew install --cask arc
 brew install --cask firefox@nightly
 
@@ -208,6 +213,7 @@ curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bas
 # Set default apps (duti)
 # The id of the app can be found by running 
 # `osascript -e 'id of app "AppName"'`
+brew install --formula duti
 echo "[INFO] Setting Default Apps"
 # Markdown -> Typora
 duti -s abnerworks.Typora .md all
@@ -264,12 +270,3 @@ duti -s com.jetbrains.rider .fsproj all
 # Video -> IINA
 duti -s com.colliderli.iina .mp4 all
 duti -s com.colliderli.iina .mkv all
-
-echo "[INFO] Setting Up Oh-My-Zsh"
-ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
-ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
-source $XDG_CONFIG_HOME/zsh/.zshrc
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
-source $XDG_CONFIG_HOME/zsh/.zshrc
