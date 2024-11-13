@@ -1,5 +1,5 @@
 # ~/.zshenv
-# ln -s $DOTFILES/zsh/.zshenv ~/.zshenv
+# ln -s $DOTFILES/zsh/.zshenv $ZDOTDIR/.zshenv
 # This file is sourced by all zsh sessions upon startup.
 
 # Use XDG Base Directory Specification
@@ -16,3 +16,5 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # Also put in /etc/zsh/zshenv
 # or /etc/zshenv in macOS
+# sudo cp $DOTFILES/zsh/.zshenv /etc/zsh/zshenv
+# sudo cp $DOTFILES/zsh/.zshenv /etc/zshenv

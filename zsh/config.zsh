@@ -25,16 +25,38 @@ source .private.env.sh
 
 # Use XDG Base Directory Specification
 
+# ~/.azure/ -> $XDG_DATA_HOME/azure/
+export AZURE_CONFIG_DIR="$XDG_DATA_HOME"/azure
+# ~/.cgdb/ -> $XDG_CONFIG_HOME/cgdb/
+export CGDB_DIR="$XDG_CONFIG_HOME"/cgdb
+# ~/.nv -> $XDG_CACHE_HOME/nv (CUDA)
+# macOS does not have Cuda; Check if CUDA is installed
+if [ "$(uname)" != "Darwin" ] && [ -d "/usr/local/cuda" ]; then
+    export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+fi
+# ~/.docker -> $XDG_CONFIG_HOME/docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 # ~/.dotnet -> $XDG_DATA_HOME/dotnet
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 # ~/.gnupg -> $XDG_CONFIG_HOME/gnupg
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 # ~/go -> $XDG_DATA_HOME/go
 export GOPATH="$XDG_DATA_HOME"/go
-# ~/.node_repl_history -> $XDG_STATE_HOME/node/repl_history
-export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/repl_history
-# ~/.npmrc -> $XDG_CONFIG_HOME/npm/npmrc
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+# ~/.juliaup/ -> $XDG_DATA_HOME/julia/
+export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
+# Check if node is installed
+if command -v node > /dev/null; then
+    # ~/.node_repl_history -> $XDG_STATE_HOME/node/repl_history
+    export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/repl_history
+    # ~/.ts_node_repl_history -> $XDG_STATE_HOME/node/ts_node_repl_history
+    export TS_NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/ts_node_repl_history
+    # ~/.npmrc -> $XDG_CONFIG_HOME/npm/npmrc
+    export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+    # ~/.npm -> $XDG_CACHE_HOME/npm
+    export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
+    export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
+    export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
+fi
 # ~/.python_history -> $XDG_DATA_HOME/python/history 
 # Works only with Python 3.13.0a3 and later
 export PYTHON_HISTORY="$XDG_DATA_HOME"/python/history

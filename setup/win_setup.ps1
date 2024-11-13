@@ -1,6 +1,5 @@
 #!C:\Program Files\WindowsApps\Microsoft.PowerShell_7.4.6.0_x64__8wekyb3d8bbwe\pwsh.EXE
 # Run with PowerShell 7
-# Use PowerShell as Administrator 
 winget install -e --id Git.Git
 git clone https://github.com/js0ny/dotfiles.git ~\.dotfiles
 Set-Location -Path ~\.dotfiles
