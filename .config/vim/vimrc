@@ -31,7 +31,7 @@ set wrap
 set scrolloff=3
 set hlsearch
 set incsearch
-est ignorecase
+set ignorecase
 set smartcase
 
 " XDG Directory Specifications
@@ -49,4 +49,4 @@ set backupdir=$XDG_STATE_HOME/vim/backup
 set directory=$XDG_STATE_HOME/vim/swap
 set undodir=$XDG_STATE_HOME/vim/undo
 set viewdir=$XDG_STATE_HOME/vim/view
-set shada+=n$XDG_STATE_HOME/vim/shada
+" set shada+=n$XDG_STATE_HOME/vim/shada

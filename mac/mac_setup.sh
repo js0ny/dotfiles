@@ -24,6 +24,7 @@ defaults write com.apple.finder AppleShowAllFiles -bool false # Don't show Hidde
 defaults write com.apple.finder ShowPathbar -bool true  # Show Path Bar
 defaults write com.apple.finder ShowStatusBar -bool true # Show Status Bar
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true  # Show All File Extensions
+defaults write com.apple.finder AppleShowAllFiles -bool true # Show Hidden Files
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Documents" # Open New Finder Windows in Documents
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FinderSpawnTab -bool true
@@ -109,35 +110,48 @@ echo "[INFO] Installing Homebrew"
 echo "[ACTION] Request Human Input"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo "[INFO] Installing Softwares"
+# Tap
+brew tap daipeihust/tap # for `im-select`
+brew tap homebrew/cask-fonts
+
 brew install mas # Mac App Store CLI
+
+
+# CLI
+# brew install --formula cfiles # Not Available
+# File Management
+brew install --formula bat
+brew install --formula fzf
+brew install --formula glow # Markdown Preview
+brew install --formula less # Pager, overwrites system less, no XDG support
+brew install --formula ripgrep
+brew install --formula tree
+brew install --formula lsd
+# Network
+brew install --formula wget
+brew install --formula wget2
+brew install --formula speedtest-cli
+# Development
+brew install --formula cmake
+brew install --formula lazygit
+# Shell
+brew install --formula starship # Shell Prompt
+brew install --formula tmux
+brew install --formula zellij 
+# System Info
+brew install --formula fastfetch # 這輩子有了
+# Utilities
+brew install --formula ffmpeg
+brew install --formula daipeihust/tap/im-select # IME Selector (for Vim modes)
+brew install --formula pandoc
+brew install --formula tldr
 
 # File Management
 brew install --cask keka # Archiver
 brew install --cask google-drive # `sudo` # Cloud Storage
 
-# CLI
-# brew install --formula cfiles # Not Available
-brew install --formula fastfetch # 這輩子有了
-brew install --formula fzf
-brew install --formula ffmpeg
-brew install --formula im-select # Switch IME (For Vim)
-brew install --formula lazygit
-brew install --formula ripgrep
-brew install --formula tmux
-brew install --formula tree
-brew install --formula pandoc
-brew install --formula zellij # Better Tmux for me
-brew install --formula wget
-brew install --formula wget2
-brew install --formula speedtest-cli
-brew install --formula tldr # Simplified man pages
-brew install --formula cmake
-brew install --formula bat
-brew install --formula lsd
-brew install --formula starship # Shell Prompt
-brew install --formula glow # Markdown Preview
-
 # Editors
+brew install --formula vim # Overwrite System Vim since no XDG support
 brew install --cask visual-studio-code
 brew install --formula neovim
 brew install --formula neovide
@@ -194,7 +208,6 @@ brew install --cask arc
 brew install --cask firefox@nightly
 
 # Fonts
-brew tap homebrew/cask-fonts
 brew install --cask font-caskaydia-cove-nerd-font
 brew install --cask font-lxgw-wenkai
 
