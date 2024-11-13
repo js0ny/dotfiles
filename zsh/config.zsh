@@ -68,7 +68,7 @@ export W3M_DIR="$XDG_DATA_HOME"/w3m
 # ~/.wakatime/ -> $XDG_CONFIG_HOME/wakatime/
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 # ~/.wget-hsts -> $XDG_DATA_HOME/wget-hsts
-alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 # ~/.z -> $XDG_DATA_HOME/z
 export _Z_DATA="$XDG_DATA_HOME/z"
 # ~/.zcompdump* -> $XDG_CACHE_HOME/zsh/zcompdump*
