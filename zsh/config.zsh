@@ -22,3 +22,29 @@ source .private.env.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # export LANG= "en_US.UTF-8"
+
+# Use XDG Base Directory Specification
+
+# ~/.dotnet -> $XDG_DATA_HOME/dotnet
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+# ~/.gnupg -> $XDG_CONFIG_HOME/gnupg
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+# ~/go -> $XDG_DATA_HOME/go
+export GOPATH="$XDG_DATA_HOME"/go
+# ~/.npmrc -> $XDG_CONFIG_HOME/npm/npmrc
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+# ~/.python_history -> $XDG_DATA_HOME/python/history 
+# Works only with Python 3.13.0a3 and later
+export PYTHON_HISTORY="$XDG_DATA_HOME"/python/history
+# ~/.w3m -> $XDG_DATA_HOME/w3m
+export W3M_DIR="$XDG_DATA_HOME"/w3m
+# ~/.wakatime.cfg -> $XDG_CONFIG_HOME/wakatime.cfg
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+# ~/.wget-hsts -> $XDG_DATA_HOME/wget-hsts
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+# ~/.z -> $XDG_DATA_HOME/z
+export _Z_DATA="$XDG_DATA_HOME/z"
+# ~/.zcompdump* -> $XDG_CACHE_HOME/zsh/zcompdump*
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+# ~/.zsh_history -> $XDG_STATE_HOME/zsh/history
+export HISTFILE="$XDG_STATE_HOME"/zsh/history

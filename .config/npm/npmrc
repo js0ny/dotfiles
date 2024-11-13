@@ -1,0 +1,4 @@
+# export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+# $XDG_CONFIG_HOME/npm/npmrc
+# ln -s $DOTFILES/.config/npm/npmrc $NPM_CONFIG_USERCONFIG
+# registry=https://registry.npmmirror.com

@@ -19,3 +19,4 @@ test.*
 *.tgz
 # WindowsTerminal.json
 PowerToys/
+xdg-ninja/
