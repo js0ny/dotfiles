@@ -34,7 +34,11 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false   
 # No DS_Store on Network
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+# Keyboard
+# Disable Accent Menu
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -boolean false
 killall Finder
+killall Dock
 ## Dock
 echo "[INFO] Setting Dock Preferences"
 defaults write com.apple.dock persistent-apps -array
@@ -121,6 +125,7 @@ brew install --formula tldr # Simplified man pages
 brew install --formula cmake
 brew install --formula bat
 brew install --formula lsd
+brew install --formula starship # Shell Prompt
 
 # Editors
 brew install --cask visual-studio-code
