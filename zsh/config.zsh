@@ -31,14 +31,19 @@ export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 # ~/go -> $XDG_DATA_HOME/go
 export GOPATH="$XDG_DATA_HOME"/go
+# ~/.node_repl_history -> $XDG_STATE_HOME/node/repl_history
+export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/repl_history
 # ~/.npmrc -> $XDG_CONFIG_HOME/npm/npmrc
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # ~/.python_history -> $XDG_DATA_HOME/python/history 
 # Works only with Python 3.13.0a3 and later
 export PYTHON_HISTORY="$XDG_DATA_HOME"/python/history
+# ~/.tldrc/ -> $XDG_CACHE_HOME/tldr
+export TLDR_CACHE_DIR="$XDG_CACHE_HOME"/tldr
 # ~/.w3m -> $XDG_DATA_HOME/w3m
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 # ~/.wakatime.cfg -> $XDG_CONFIG_HOME/wakatime.cfg
+# ~/.wakatime/ -> $XDG_CONFIG_HOME/wakatime/
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 # ~/.wget-hsts -> $XDG_DATA_HOME/wget-hsts
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'

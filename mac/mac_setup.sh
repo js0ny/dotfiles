@@ -59,32 +59,43 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 echo "[INFO] Setting Up Dotfiles"
 export DOTFILES="$HOME/.dotfiles"
 git clone https://www.github.com/js0ny/dotfiles.git ~/.dotfiles
-ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
-echo "[INFO] 'source ~/.zshenv' to use XDG_CONFIG_HOME"
-source ~/.zshenv
+sudo cp ~/.dotfiles/zsh/.zshenv /etc/zshenv
+echo "[INFO] 'source etc/zshenv' to use XDG_CONFIG_HOME"
+source /etc/zshenv
     # export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
     # export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 echo "[INFO] Setting Up Zsh for Initial Use"
-ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
-ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
-source $XDG_CONFIG_HOME/zsh/.zshrc
+mkdir -p $ZDOTDIR
+ln -sf $DOTFILES/zsh/.zshenv $ZDOTDIR/.zshenv
+ln -sf $DOTFILES/mac/.zshrc $ZDOTDIR/.zshrc
+mv ~/.zprofile $ZDOTDIR/.zprofile
+source $ZDOTDIR/.zshrc
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
-source $XDG_CONFIG_HOME/zsh/.zshrc
+source /etc/zshenv
+source $ZDOTDIR/.zshrc
+rm -f ~/.zshrc ~/.zprofile ~/.zsh_history ~/.zshenv
+rm -rf ~/.zsh_sessions
 
 echo "[INFO] Setting Up dotfiles"
-mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet
+mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet $XDG_CONFIG_HOME/vim $XDG_CONFIG_HOME/tmux $XDG_CONFIG_HOME/npm
 mkdir -p ~/.config/zellij # Not support XDG_CONFIG_HOME but same directory
+mkdir -p $WAKATIME_HOME
+mkdir -p $XDG_STATE_HOME/vim/undo $XDG_STATE_HOME/vim/backup $XDG_STATE_HOME/vim/swap  $XDG_STATE_HOME/vim/view
 # $DOTFILES/.config
 ln -sf $DOTFILES/.config/conda/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
 ln -sf $DOTFILES/.config/git/.gitconfig $XDG_CONFIG_HOME/git/config
 ln -sf $DOTFILES/.config/ideavim/ideavimrc.vimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
 ln -sf $DOTFILES/.config/markdownlint/.markdownlint.json $XDG_CONFIG_HOME/markdownlint/markdownlint.json
+ln -sf $DOTFILES/.config/npm/npmrc $NPM_CONFIG_USERCONFIG
 ln -sf $DOTFILES/.config/NuGet/NuGet.Config $XDG_CONFIG_HOME/NuGet/NuGet.Config
 ln -sf $DOTFILES/.config/nvim/ $XDG_CONFIG_HOME/nvim
 ln -sf $DOTFILES/.config/pip/pip.conf $XDG_CONFIG_HOME/pip/pip.conf
+ln -sf $DOTFILES/.config/tmux/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
+ln -sf $DOTFILES/.config/vim/vimrc $XDG_CONFIG_HOME/vim/vimrc
 ln -sf $DOTFILES/.config/zellij/config.kdl ~/.config/zellij/config.kdl
+ln -sf $DOTFILES/.config/lesskey $XDG_CONFIG_HOME/lesskey
 # $DOTFILES/mac
 ln -sf $DOTFILES/mac/neovide.toml $XDG_CONFIG_HOME/neovide/config.toml
 ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
@@ -92,8 +103,6 @@ ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershel
 ln -sf $DOTFILES/vscode/vscode.vimrc $XDG_CONFIG_HOME/vscode.vimrc
 # $DOTFILES root
 ln -sf $DOTFILES/.haskeline ~/.haskeline
-ln -sf $DOTFILES/.npmrc ~/.npmrc
-ln -sf $DOTFILES/.tmux.conf ~/.tmux.conf
 
 # Brew
 echo "[INFO] Installing Homebrew"
@@ -126,6 +135,7 @@ brew install --formula cmake
 brew install --formula bat
 brew install --formula lsd
 brew install --formula starship # Shell Prompt
+brew install --formula glow # Markdown Preview
 
 # Editors
 brew install --cask visual-studio-code
