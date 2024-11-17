@@ -298,3 +298,6 @@ duti -s com.jetbrains.rider .fsproj all
 # Video -> IINA
 duti -s com.colliderli.iina .mp4 all
 duti -s com.colliderli.iina .mkv all
+
+mkdir -p $DOTFILES/powershell_private
+touch $ZDOTDIR/.private.env.sh
