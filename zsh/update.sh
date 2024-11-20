@@ -11,3 +11,8 @@ for plugin in $ZDOTDIR/plugins/*; do
     git pull --quiet --no-edit
   fi
 done
+
+if [ which brew > /dev/null ]; then
+  brew update
+  brew upgrade
+fi

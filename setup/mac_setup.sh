@@ -71,9 +71,10 @@ ln -sf $DOTFILES/zsh/.zshenv $ZDOTDIR/.zshenv
 ln -sf $DOTFILES/mac/.zshrc $ZDOTDIR/.zshrc
 mv ~/.zprofile $ZDOTDIR/.zprofile
 source $ZDOTDIR/.zshrc
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+mkdir -p $ZDOTDIR/plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZDOTDIR/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting
 source /etc/zshenv
 source $ZDOTDIR/.zshrc
 rm -f ~/.zshrc ~/.zprofile ~/.zsh_history ~/.zshenv
@@ -280,4 +281,8 @@ duti -s com.colliderli.iina .mp4 all
 duti -s com.colliderli.iina .mkv all
 
 mkdir -p $DOTFILES/powershell_private
-touch $ZDOTDIR/.private.env.sh
+
+mkdir -p ~/Documents/Source/Forks
+mkdir -p ~/Documents/Source/Projects
+mkdir -p ~/Documents/Source/Scripts
+mkdir -p ~/Documents/Source/Tutorials
