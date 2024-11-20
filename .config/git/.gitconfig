@@ -1,11 +1,18 @@
 # $XDG_CONFIG_HOME/git/config
+# %USERPROFILE%\.gitconfig # No XDG support on Windows
 # ln -sf  $DOTFILES/.config/git/.gitconfig $XDG_CONFIG_HOME/git/config
 # New-Item -ItemType SymbolicLink -Path "$Env:XDG_CONFIG_HOME\git\config" -Target "$DOTFILES\.config\git\.gitconfig"
 [user]
 	name = js0ny
 	email = json.y@outlook.com
 [core]
-	editor = vim
+	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

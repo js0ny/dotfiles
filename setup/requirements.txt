@@ -1,0 +1,19 @@
+# This file lists all the must-have libraries for installing a new computer
+# For scripting use
+# pip install -r requirements.txt
+colorama
+# Basic Mathemetics
+numpy
+matplotlib
+# Data Analysis
+pandas
+# Image Processing
+pillow
+# Web Scraping
+requests
+beautifulsoup4
+# Testing
+pytest
+mypy
+# Healthy Neovim
+pynvim

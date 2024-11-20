@@ -29,18 +29,18 @@ alias pymkenv="conda create --name"
 alias v=nvim
 alias c=code
 
-# lsd # 
+# lsd #
 alias ls='lsd -a'
 alias l='lsd -lah'
 # Misc #
 alias cf=cfiles
 
 # Functions #
-mcd() {
+mkcd() {
   mkdir -p -- "$0" && cd -P -- "$1"
 }
 cdls(){
-	cd $1 && ls 
+	cd $1 && ls
 }
 tc(){
 	touch $1 && code $1

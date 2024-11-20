@@ -16,7 +16,9 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 # Set Environment Variables
 # Use %PATH_EXT% to prevent PATH from being too long
 [System.Environment]::SetEnvironmentVariable("Path_EXT_0", "D:\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_1", "", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_0", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_1", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
 [System.Environment]::SetEnvironmentVariable("Path_EXT_2", "", "User")
 $currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
 if ($currentPath -notlike "*%PATH_EXT%*") {
@@ -59,7 +61,7 @@ New-Item -ItemType Directory -Path "$Env:AppData\aws" -Force
 # ~\.dotnet -> %LocalAppData%\dotNET :: .NET Core
 [System.Environment]::SetEnvironmentVariable("DOTNET_CLI_HOME", "$Env:LocalAppData\dotNET", "User")
 # ~\.emacs.d -> %AppData%\.emacs.d :: Emacs (This is default)
-# [System.Environment]::SetEnvironmentVariable("EMACS_HOME", "$Env:AppData\emacs.d", "User") 
+# [System.Environment]::SetEnvironmentVariable("EMACS_HOME", "$Env:AppData\emacs.d", "User")
 # ~\go -> %LocalAppData%\GO :: golang
 [System.Environment]::SetEnvironmentVariable("GOPATH", "$Env:LocalAppData\GO", "User")
 # ~\.ipython -> %AppData%\ipython :: IPython
@@ -125,14 +127,14 @@ New-Item -ItemType SymbolicLink -Path "$Env:XDG_CONFIG_HOME\Vim\_vimrc" -Target 
 New-Item -ItemType SymbolicLink -Path "~\.wslconfig" -Target "$DOTFILES\win\.wslconfig" -Force
 New-Item -ItemType SymbolicLink -Path "$Env:AppData\neovide\config.toml" -Target "$DOTFILES\win\neovide.toml" -Force
 # New-Item -ItemType SymbolicLink -Path "~\.vscode.vimrc" -Target "$DOTFILES\vscode\vscode.vimrc" Use Absolute Path
-# Hide dotfiles 
-Get-ChildItem -Force -Filter .* -Path $HOME | ForEach-Object { $_.Attributes += "Hidden" } 
+# Hide dotfiles
+Get-ChildItem -Force -Filter .* -Path $HOME | ForEach-Object { $_.Attributes += "Hidden" }
 @(
     Join-Path $HOME '.config'
     Join-Path $HOME '.dotfiles'
-) | ForEach-Object { 
+) | ForEach-Object {
     $_.Attributes -band -bnot [System.IO.FileAttributes]::Hidden
-} 
+}
 Set-Location $HOME\Documents
 # Match WindowsPowerShell and PowerShell
 Get-ChildItem -Force -Filter *owerShell | ForEach-Object { $_.Attributes += "Hidden" }
@@ -167,9 +169,12 @@ scoop install main/ripgrep
 scoop install main/wget
 scoop install main/wget2
 scoop install main/cmake
-scoop install main/bat
-scoop install main/zoxide
-scoop install main/dos2unix
+scoop install main/bat             # modern cat
+scoop install main/zoxide          # Directory Jump
+scoop install main/dos2unix        # Convert line endings
+scoop install main/hyperfine       # Benchmark
+scoop install main/bottom          # System Monitor
+scoop install main/delta           # diff
 
 # File Management
 scoop install extras/everything
@@ -207,7 +212,7 @@ scoop install keyguard/keyguard
 
 # PKM
 scoop install extras/obsidian
-winget install -e --id 9P7HPMXP73K4 # Siyuan 
+winget install -e --id 9P7HPMXP73K4 # Siyuan
 scoop install extras/typora
 scoop install extras/zotero
 scoop install extras/anki
@@ -215,7 +220,7 @@ scoop install extras/anki
 
 # Browser
 # Use Microsoft Edge directly
-# winget install -e --id TheBrowserCompany.Arc 
+# winget install -e --id TheBrowserCompany.Arc
 # winget install -e --id Mozilla.Firefox.Nightly # Not working
 
 # Programming Languages
@@ -223,7 +228,7 @@ winget install -e --id Python.Python.3.13
 winget install -e --id Anaconda.Miniconda3
 winget install -e --id OpenJS.NodeJS
 winget install -e --id Rustlang.Rustup
-winget install -e --id Microsoft.DotNet.SDK.8
+winget install -e --id Microsoft.DotNet.SDK.9
 
 # Dev
 scoop install extras/docker
