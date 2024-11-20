@@ -1,6 +1,6 @@
 # $XDG_CONFIG_HOME/lesskey -- less options
 # ln -sf $DOTFILES/.config/lesskey $XDG_CONFIG_HOME/lesskey
-# Ne
+# work for less -V > 582, for mac, use brew install less to override the system less
 
 # Format: key action
 

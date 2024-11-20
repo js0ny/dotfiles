@@ -2,12 +2,12 @@
 # ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
 ### Variables ###
 
-$DOTFILES = "$HOME\.dotfiles"
+$DOTFILES = "$HOME/.dotfiles"
 
 ### Load Configs ### 
 
-Get-ChildItem -Path $DOTFILES\powershell -Filter *.ps1 | ForEach-Object {. $_}
-Get-ChildItem -Path $DOTFILES\powershell_private -Filter *.ps1 | ForEach-Object {. $_}
+Get-ChildItem -Path $DOTFILES/powershell -Filter *.ps1 | ForEach-Object {. $_}
+Get-ChildItem -Path $DOTFILES/powershell_private -Filter *.ps1 | ForEach-Object {. $_}
 
 ## Aliases ###
 

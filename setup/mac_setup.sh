@@ -1,8 +1,8 @@
-#! /bin/zsh
+#! /bin/sh
 # This script is used to setup a new mac
 # In a new mac (Sequoia)
 # Enter the following command in the terminal
-#! curl -fsSL https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/mac/mac_setup.sh | sh
+#! curl -fsSL https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/setup/mac_setup.sh | sh # Do not use this command
 
 echo "Running the setup script"
 
@@ -24,6 +24,7 @@ defaults write com.apple.finder AppleShowAllFiles -bool false # Don't show Hidde
 defaults write com.apple.finder ShowPathbar -bool true  # Show Path Bar
 defaults write com.apple.finder ShowStatusBar -bool true # Show Status Bar
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true  # Show All File Extensions
+defaults write com.apple.finder AppleShowAllFiles -bool true # Show Hidden Files
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Documents" # Open New Finder Windows in Documents
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FinderSpawnTab -bool true
@@ -34,7 +35,11 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false   
 # No DS_Store on Network
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+# Keyboard
+# Disable Accent Menu
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -boolean false
 killall Finder
+killall Dock
 ## Dock
 echo "[INFO] Setting Dock Preferences"
 defaults write com.apple.dock persistent-apps -array
@@ -55,74 +60,78 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 echo "[INFO] Setting Up Dotfiles"
 export DOTFILES="$HOME/.dotfiles"
 git clone https://www.github.com/js0ny/dotfiles.git ~/.dotfiles
-ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
-echo "[INFO] 'source ~/.zshenv' to use XDG_CONFIG_HOME"
-source ~/.zshenv
+sudo cp ~/.dotfiles/zsh/.zshenv /etc/zshenv
+echo "[INFO] 'source etc/zshenv' to use XDG_CONFIG_HOME"
+source /etc/zshenv
     # export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
     # export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 echo "[INFO] Setting Up Zsh for Initial Use"
-ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
-ln -sf $DOTFILES/mac/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
-source $XDG_CONFIG_HOME/zsh/.zshrc
+mkdir -p $ZDOTDIR
+ln -sf $DOTFILES/zsh/.zshenv $ZDOTDIR/.zshenv
+ln -sf $DOTFILES/mac/.zshrc $ZDOTDIR/.zshrc
+mv ~/.zprofile $ZDOTDIR/.zprofile
+source $ZDOTDIR/.zshrc
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
-source $XDG_CONFIG_HOME/zsh/.zshrc
+source /etc/zshenv
+source $ZDOTDIR/.zshrc
+rm -f ~/.zshrc ~/.zprofile ~/.zsh_history ~/.zshenv
+rm -rf ~/.zsh_sessions
 
 echo "[INFO] Setting Up dotfiles"
-mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet
-mkdir -p ~/.config/zellij # Not support XDG_CONFIG_HOME but same directory
-# $DOTFILES/.config
-ln -sf $DOTFILES/.config/conda/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
-ln -sf $DOTFILES/.config/git/.gitconfig $XDG_CONFIG_HOME/git/config
-ln -sf $DOTFILES/.config/ideavim/ideavimrc.vimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
-ln -sf $DOTFILES/.config/markdownlint/.markdownlint.json $XDG_CONFIG_HOME/markdownlint/markdownlint.json
-ln -sf $DOTFILES/.config/NuGet/NuGet.Config $XDG_CONFIG_HOME/NuGet/NuGet.Config
-ln -sf $DOTFILES/.config/nvim/ $XDG_CONFIG_HOME/nvim
-ln -sf $DOTFILES/.config/pip/pip.conf $XDG_CONFIG_HOME/pip/pip.conf
-ln -sf $DOTFILES/.config/zellij/config.kdl ~/.config/zellij/config.kdl
+. $DOTFILES/setup/set_symblink_unix.sh
 # $DOTFILES/mac
 ln -sf $DOTFILES/mac/neovide.toml $XDG_CONFIG_HOME/neovide/config.toml
 ln -sf $DOTFILES/mac/Microsoft.PowerShell_profile.ps1 $XDG_CONFIG_HOME/powershell/Microsoft.PowerShell_profile.ps1
-# $DOTFILES/vscode
-ln -sf $DOTFILES/vscode/vscode.vimrc $XDG_CONFIG_HOME/vscode.vimrc
-# $DOTFILES root
-ln -sf $DOTFILES/.haskeline ~/.haskeline
-ln -sf $DOTFILES/.npmrc ~/.npmrc
-ln -sf $DOTFILES/.tmux.conf ~/.tmux.conf
 
 # Brew
 echo "[INFO] Installing Homebrew"
 echo "[ACTION] Request Human Input"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo "[INFO] Installing Softwares"
+# Tap
+brew tap daipeihust/tap # for `im-select`
+brew tap homebrew/cask-fonts
+
 brew install mas # Mac App Store CLI
+
+
+# CLI
+# brew install --formula cfiles # Not Available
+# File Management
+brew install --formula bat
+brew install --formula fzf
+brew install --formula glow # Markdown Preview
+brew install --formula less # Pager, overwrites system less, no XDG support
+brew install --formula ripgrep
+brew install --formula tree
+brew install --formula lsd
+# Network
+brew install --formula wget
+brew install --formula wget2
+brew install --formula speedtest-cli
+# Development
+brew install --formula cmake
+brew install --formula lazygit
+# Shell
+brew install --formula starship # Shell Prompt
+brew install --formula tmux
+brew install --formula zellij 
+# System Info
+brew install --formula fastfetch # 這輩子有了
+# Utilities
+brew install --formula ffmpeg
+brew install --formula daipeihust/tap/im-select # IME Selector (for Vim modes)
+brew install --formula pandoc
+brew install --formula tldr
 
 # File Management
 brew install --cask keka # Archiver
 brew install --cask google-drive # `sudo` # Cloud Storage
 
-# CLI
-# brew install --formula cfiles # Not Available
-brew install --formula fastfetch # 這輩子有了
-brew install --formula fzf
-brew install --formula ffmpeg
-brew install --formula im-select # Switch IME (For Vim)
-brew install --formula lazygit
-brew install --formula ripgrep
-brew install --formula tmux
-brew install --formula tree
-brew install --formula pandoc
-brew install --formula zellij # Better Tmux for me
-brew install --formula wget
-brew install --formula wget2
-brew install --formula speedtest-cli
-brew install --formula tldr # Simplified man pages
-brew install --formula cmake
-brew install --formula bat
-brew install --formula lsd
-
 # Editors
+brew install --formula vim # Overwrite System Vim since no XDG support
 brew install --cask visual-studio-code
 brew install --formula neovim
 brew install --formula neovide
@@ -179,7 +188,6 @@ brew install --cask arc
 brew install --cask firefox@nightly
 
 # Fonts
-brew tap homebrew/cask-fonts
 brew install --cask font-caskaydia-cove-nerd-font
 brew install --cask font-lxgw-wenkai
 
@@ -270,3 +278,6 @@ duti -s com.jetbrains.rider .fsproj all
 # Video -> IINA
 duti -s com.colliderli.iina .mp4 all
 duti -s com.colliderli.iina .mkv all
+
+mkdir -p $DOTFILES/powershell_private
+touch $ZDOTDIR/.private.env.sh
