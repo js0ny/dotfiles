@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -23,7 +23,7 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -41,15 +41,15 @@
     "focusFollowMouse": false,
     "language": "zh-Hans",
     "minimizeToNotificationArea": false,
-    "newTabMenu": 
+    "newTabMenu":
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "adjustIndistinguishableColors": "always",
             "antialiasingMode": "cleartype",
@@ -58,11 +58,11 @@
             "colorScheme": "Catppuccin Mocha",
             "compatibility.reloadEnvironmentVariables": false,
             "experimental.retroTerminalEffect": false,
-            "font": 
+            "font":
             {
                 "colorGlyphs": true,
                 "face": "CaskaydiaCove Nerd Font",
-                "features": 
+                "features":
                 {
                     "rlig": 1
                 }
@@ -72,7 +72,7 @@
             "showMarksOnScrollbar": true,
             "useAcrylic": true
         },
-        "list": 
+        "list":
         [
             {
                 "colorScheme": "Catppuccin Frappe",
@@ -108,7 +108,7 @@
             {
                 "colorScheme": "Ubuntu-ColorScheme",
                 "commandline": "C:\\WINDOWS\\system32\\wsl.exe -d Ubuntu-22.04",
-                "font": 
+                "font":
                 {
                     "face": "CaskaydiaCove Nerd Font"
                 },
@@ -117,6 +117,16 @@
                 "icon": "D:\\Assets\\Icons\\ubuntu.png",
                 "name": "Ubuntu",
                 "startingDirectory": "~"
+            },
+            {
+              "colorScheme": "Catppuccin Frappe",
+              "commandline": "C:\\Users\\citoy\\AppData\\Local\\Programs\\nu\\bin\\nu.exe",
+              "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+              "hidden": false,
+              "name": "PowerShell",
+              "opacity": 50,
+              "source": "Windows.Terminal.PowershellCore",
+              "tabTitle": "PS"
             },
             {
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
@@ -138,7 +148,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#303446",
@@ -260,23 +270,23 @@
     "startOnUserLogin": true,
     "tabWidthMode": "titleLength",
     "theme": "Catppuccin Macchiato",
-    "themes": 
+    "themes":
     [
         {
             "name": "Catppuccin Frappe",
-            "tab": 
+            "tab":
             {
                 "background": "#303446FF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#292C3CFF",
                 "unfocusedBackground": "#232634FF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
@@ -287,19 +297,19 @@
         },
         {
             "name": "Catppuccin Latte",
-            "tab": 
+            "tab":
             {
                 "background": "#EFF1F5FF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#E6E9EFFF",
                 "unfocusedBackground": "#DCE0E8FF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "light",
                 "experimental.rainbowFrame": false,
@@ -310,19 +320,19 @@
         },
         {
             "name": "Catppuccin Macchiato",
-            "tab": 
+            "tab":
             {
                 "background": "#24273AFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#1E2030FF",
                 "unfocusedBackground": "#181926FF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
@@ -333,19 +343,19 @@
         },
         {
             "name": "Catppuccin Mocha",
-            "tab": 
+            "tab":
             {
                 "background": "#1E1E2EFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#181825FF",
                 "unfocusedBackground": "#11111BFF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,

@@ -31,7 +31,7 @@ alias c=code
 alias cf=cfiles
 
 # Functions #
-mcd() {
+mkcd() {
   mkdir -p -- "$0" && cd -P -- "$1"
 }
 cdls(){

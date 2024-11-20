@@ -39,6 +39,9 @@ function Find-AppPackageListRemote {
     winget search $Name
     Write-Host "=== choco ==="
     choco search $Name
+#     Too slow!
+#     Write-Host "=== scoop ==="
+#     scoop search $Name
 }
 Set-Alias "pkgsearch" "Find-AppPackageListRemote"
 function Get-AppPackageListLocal {
@@ -94,3 +97,14 @@ if (-not ($__lastStartup -eq $_currentDate)) {
 Remove-Variable SystemlogFilePath
 Remove-Variable __lastStartup
 Remove-Variable _currentDate
+
+# Use some unix commands
+${function:tree} = { wsl tree $args}
+${function:ln}   = { coreutils.exe ln $args}
+${function:la}   = { lsd.exe -la $args}
+
+# Set default applications
+$Env:PAGER = "less"
+$Env:EDITOR = "code --wait"
+$Env:VISUAL = "code --wait"
+$Env:FILE_MANAGER = "dopus.exe"
