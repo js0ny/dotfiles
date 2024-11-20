@@ -71,3 +71,10 @@ fi
 # vcpkg
 
 export VCPKG_ROOT=~/vcpkg
+
+# Package Manager
+
+alias pac="sudo pacman"
+alias paci="sudo pacman -S"
+alias pacr="sudo pacman -R"
+alias pacu="sudo pacman -Ss"

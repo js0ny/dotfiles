@@ -16,7 +16,7 @@ PAGER="less"
 EDITOR="nvim"
 VISUAL="nvim"
 
-# Use XDG Base Directory Specification # 
+# Use XDG Base Directory Specification #
 
 # ~/.azure/ -> $XDG_DATA_HOME/azure/
 export AZURE_CONFIG_DIR="$XDG_DATA_HOME"/azure
@@ -50,7 +50,7 @@ if command -v node > /dev/null; then
     export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
     export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 fi
-# ~/.python_history -> $XDG_DATA_HOME/python/history 
+# ~/.python_history -> $XDG_DATA_HOME/python/history
 # Works only with Python 3.13.0a3 and later
 export PYTHON_HISTORY="$XDG_DATA_HOME"/python/history
 # ~/.tldrc/ -> $XDG_CACHE_HOME/tldr

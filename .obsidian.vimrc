@@ -12,7 +12,7 @@ noremap L I
 " ne[k]st
 noremap k n
 noremap K N
-" [j]ump 
+" [j]ump
 noremap j e
 noremap J E
 
@@ -43,7 +43,7 @@ exmap vsplit obcommand workspace:split-vertical
 exmap hsplit obcommand workspace:split-horizontal
 map <Space>| :vsplit<CR>
 map <Space>- :hsplit<CR>
-" map <Space>bd 
+" map <Space>bd
 
 exmap chat obcommand obsidian-custom-frames:open-custom-frames-chatgpt
 map <Space>ai :chat<CR>

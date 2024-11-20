@@ -8,7 +8,7 @@ tabs = true
 theme = "auto"
 title-hidden = true
 vsync = false
-wsl = false
+wsl = true
 
 [font]
 normal = ["CaskaydiaCove Nerd Font"] # Will use the bundled Fira Code Nerd Font by default

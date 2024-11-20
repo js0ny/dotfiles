@@ -1,10 +1,28 @@
+# Private Files
 *private*
 .private.env.*
+
+# Test files
+test/
+test.*
+
+# Archives
+*.gz
+*.tar
+*.zip
+*.tgz
+
+# Utils
+xdg-ninja/
+
+# IPython config cache
 .config/ipython/profile_default/db
 .config/ipython/profile_default/log
 .config/ipython/profile_default/pid
 .config/ipython/profile_default/security
 .config/ipython/profile_default/history.sqlite
+
+# nvim config cache
 .config/nvim/tt.*
 .config/nvim/.tests
 .config/nvim/doc/tags
@@ -16,12 +34,17 @@
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
 .config/nvim/lua/plugins/obsidian.lua
-test/
-test.*
-*.gz
-*.tar
-*.zip
-*.tgz
-# WindowsTerminal.json
+
+# Undone
+# Windows PowerToys
 PowerToys/
-xdg-ninja/
+# Just Script
+Justfile
+# Nushell
+.config/nushell/
+# VSCode Neovim
+vscode/
+.vscode/
+
+# OS generated files
+.DS_Store

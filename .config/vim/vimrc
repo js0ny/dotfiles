@@ -8,6 +8,9 @@
 noremap n j
 noremap e k
 noremap i l
+noremap N J
+noremap E K
+noremap I L
 
 " Similar position to i
 noremap l i
@@ -15,7 +18,7 @@ noremap L I
 " ne[k]st
 noremap k n
 noremap K N
-" [j]ump 
+" [j]ump
 noremap j e
 noremap J E
 
