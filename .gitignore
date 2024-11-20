@@ -1,3 +1,4 @@
+.DS_Store
 *private*
 .private.env.*
 .config/nvim/tt.*
@@ -20,3 +21,6 @@ test.*
 # WindowsTerminal.json
 PowerToys/
 xdg-ninja/
+.DS_Store
+vscode/
+.vscode/
