@@ -1,29 +1,22 @@
-### ZSH Config ###
+# ZSH Config #
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export ZSH="$ZDOTDIR/ohmyzsh"
-ZSH_THEME="avit"
-# DISABLE_MAGIC_FUNCTIONS="true"
-# DISABLE_LS_COLORS="true"
-# DISABLE_AUTO_TITLE="true"
-# ENABLE_CORRECTION="true"
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
-plugins=(git web-search jsontools z vi-mode zsh-syntax-highlighting zsh-autosuggestions)
-source $ZSH/oh-my-zsh.sh
-source .private.env.sh
+# plugins=(git web-search jsontools z vi-mode zsh-syntax-highlighting zsh-autosuggestions)
 
-# export MANPATH="/usr/local/man:$MANPATH"
-# export LANG= "en_US.UTF-8"
+# Plugins (Manually Managed) #
+# $ZDOTDIR/plugins
 
-# Use XDG Base Directory Specification
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# Tools Related Environment Variables #
+
+PAGER="less"
+EDITOR="nvim"
+VISUAL="nvim"
+
+# Use XDG Base Directory Specification #
 
 # ~/.azure/ -> $XDG_DATA_HOME/azure/
 export AZURE_CONFIG_DIR="$XDG_DATA_HOME"/azure
@@ -57,7 +50,7 @@ if command -v node > /dev/null; then
     export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
     export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 fi
-# ~/.python_history -> $XDG_DATA_HOME/python/history 
+# ~/.python_history -> $XDG_DATA_HOME/python/history
 # Works only with Python 3.13.0a3 and later
 export PYTHON_HISTORY="$XDG_DATA_HOME"/python/history
 # ~/.tldrc/ -> $XDG_CACHE_HOME/tldr
