@@ -6,8 +6,12 @@ HIST_STAMPS="yyyy-mm-dd"
 # Plugins (Manually Managed) #
 # $ZDOTDIR/plugins
 
-source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# echo "[DEBUG] Loading plugins..."
+# echo $ZDOTDIR
+# Load zsh-syntax-highlighting before zsh-history-substring-search
+# Reference: https://github.com/zsh-users/zsh-history-substring-search?tab=readme-ov-file#usage
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Tools Related Environment Variables #
@@ -65,6 +69,10 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 # ~/.z -> $XDG_DATA_HOME/z
 export _Z_DATA="$XDG_DATA_HOME/z"
 # ~/.zcompdump* -> $XDG_CACHE_HOME/zsh/zcompdump*
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+# compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 # ~/.zsh_history -> $XDG_STATE_HOME/zsh/history
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
+
+# https://unix.stackexchange.com/questions/33994/
+# Use `set -k` to mark leading `#` as a comment character
+set -k

@@ -2,10 +2,12 @@
 # ln -s $DOTFILES/wsl/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
 ### Variables ###
 
+export IS_WSL=true
 export DOTFILES="$HOME/.dotfiles"
 for file in $DOTFILES/zsh/*.zsh; do
   source $file
 done
+source $DOTFILES/wsl/winterop.zsh
 export ARCHFLAGS="-arch x86_64"
 
 # Absolute navigation
@@ -77,4 +79,4 @@ export VCPKG_ROOT=~/vcpkg
 alias pac="sudo pacman"
 alias paci="sudo pacman -S"
 alias pacr="sudo pacman -R"
-alias pacu="sudo pacman -Ss"
+alias pacu="sudo pacman -Syu"
