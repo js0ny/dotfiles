@@ -79,24 +79,24 @@ If (Test-Path "$HOME\miniconda3\Scripts\conda.exe") {
 #endregion
 
 ## Check Start Up ##
-$SystemlogFilePath = "$env:USERPROFILE\.PowerShellStartup.log"
-# 检查日志文件是否存在
-if (-not (Test-Path $SystemlogFilePath)) {
-	New-Item -Path $SystemlogFilePath -ItemType File -Force | Out-Null
-}
-# 读取日志文件的最后一行（即上次启动日期）
-$__lastStartup = Get-Content -Path $SystemlogFilePath -Tail 1 -ErrorAction SilentlyContinue
-$_currentDate = (Get-Date).ToString("yyyy-MM-dd")
-if (-not ($__lastStartup -eq $_currentDate)) {
-	Get-Date
-	Update-ForexData &
-	Write-Host "今天是第一次启动 PowerShell。"
-	# 记录当前日期到日志文件
-	$_currentDate | Out-File -FilePath $SystemlogFilePath -Append
-}
-Remove-Variable SystemlogFilePath
-Remove-Variable __lastStartup
-Remove-Variable _currentDate
+#$SystemlogFilePath = "$env:USERPROFILE\.PowerShellStartup.log"
+## 检查日志文件是否存在
+#if (-not (Test-Path $SystemlogFilePath)) {
+#	New-Item -Path $SystemlogFilePath -ItemType File -Force | Out-Null
+#}
+## 读取日志文件的最后一行（即上次启动日期）
+#$__lastStartup = Get-Content -Path $SystemlogFilePath -Tail 1 -ErrorAction SilentlyContinue
+#$_currentDate = (Get-Date).ToString("yyyy-MM-dd")
+#if (-not ($__lastStartup -eq $_currentDate)) {
+#	Get-Date
+#	Update-ForexData &
+#	Write-Host "今天是第一次启动 PowerShell。"
+#	# 记录当前日期到日志文件
+#	$_currentDate | Out-File -FilePath $SystemlogFilePath -Append
+#}
+#Remove-Variable SystemlogFilePath
+#Remove-Variable __lastStartup
+#Remove-Variable _currentDate
 
 # Use some unix commands
 ${function:tree} = { wsl tree $args}

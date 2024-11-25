@@ -18,3 +18,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[safe]
+	directory = %(prefix)///wsl.localhost/Arch/home/js0ny/inf2c/coursework-2-mips-simulator-js0ny
