@@ -2,7 +2,7 @@
 $EDITOR = "code"
 # Shell Equivalents #
 Set-Alias "touch" "New-Item"
-${function:ll} = { Get-ChildItem -Force } 
+${function:ll} = { Get-ChildItem -Force }
 
 # Shell Configurations #
 ${function:shcfg}    = { code $PROFILE }
@@ -35,3 +35,12 @@ ${function:pydact} = { conda deactivate }
 ${function:pylsenvs} = { conda env list }
 ${function:pymkenv} = { conda create --name $args[0] }
 ${function:pyrmenv} = { conda remove --name $args[0] --all }
+
+# Winget #
+
+if ($isWindows) {
+    ${function:wini} = { winget install $args }
+    ${function:winr} = { winget uninstall $args }
+    ${function:wins} = { winget search $args }
+    ${function:winu} = { winget upgrade $args }
+}

@@ -175,6 +175,7 @@ scoop install main/dos2unix        # Convert line endings
 scoop install main/hyperfine       # Benchmark
 scoop install main/bottom          # System Monitor
 scoop install main/delta           # diff
+scoop install extras/gpg4win
 
 # File Management
 scoop install extras/everything
