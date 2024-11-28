@@ -40,6 +40,11 @@ set smartcase
 set number
 set relativenumber
 
+set laststatus=2
+set showcmd
+set statusline=%<%f\ %h%m%r\ %=\ [%l,%v]\ [%p%%]\ [\ %Y]\ [󱑉\ %{strftime('%H:%M:%S')}]
+
+
 " XDG Directory Specifications
 " Reference to https://jorenar.com/blog/vim-xdg
 

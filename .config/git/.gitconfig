@@ -20,3 +20,5 @@
 	required = true
 [safe]
 	directory = %(prefix)///wsl.localhost/Arch/home/js0ny/inf2c/coursework-2-mips-simulator-js0ny
+[url "git@github.com:"]
+	insteadOf = https://github.com/

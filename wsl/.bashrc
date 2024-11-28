@@ -1,18 +1,16 @@
 # Append to original bashrc for minimal setup
 # echo $DOTFILES/wsl/.bashrc >> ~/.bashrc
+bind 'set show-mode-in-prompt on'
 set -o vi
 
-bind '"\en": "\C-j"'  
-bind '"\ee": "\C-k"'  
-bind '"\ei": "\C-l"'  
+bind -m vi-command '"n": next-history'
+bind -m vi-command '"e": previous-history'
+bind -m vi-command '"l": vi-insertion-mode'
+bind -m vi-command '"L": vi-insert-beg'
+bind -m vi-command '"i": forward-char'
 
-bind '"\el": "\ei"'   
-bind '"\eL": "\eI"'   
+# bind -m vi-insert '"\C-r": reverse-search-history"'
+# bind -m vi-insert '"\C-l": clear-screen'
 
-bind '"\ek": "\en"'   
-bind '"\eK": "\eN"'   
-
-bind '"\ej": "\ee"'   
-bind '"\eJ": "\eE"'   
-
-bind '"\eY": "\ey$"'
+bind -m vi-command '"j": vi-end-word'
+bind -m vi-command '"J": vi-end-word'
