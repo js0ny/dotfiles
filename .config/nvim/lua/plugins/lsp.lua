@@ -11,7 +11,7 @@ return {
     },
     config = function()
       local mason_lspconfig = require("mason-lspconfig")
-      local servers = require("config.servers")
+      local servers = require("config.servers").servers
 
       mason_lspconfig.setup({
         ensure_installed = servers,

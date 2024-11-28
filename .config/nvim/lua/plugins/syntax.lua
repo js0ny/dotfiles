@@ -1,6 +1,3 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
+  { import = "plugins.mod.nvim-treesitter", },
 }

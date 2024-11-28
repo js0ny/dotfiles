@@ -2,7 +2,7 @@ local function my_on_attach(bufnr)
   -- local keymaps = require("config.keymaps")
   local api = require "nvim-tree.api"
   local default_mode = { "n" }
-  local keymaps = require("config.keymaps")
+  local keymaps = require("keymaps")
 
   local function opts(desc)
     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -16,7 +16,7 @@ local function my_on_attach(bufnr)
     end
   end
 
-  local raw_keymaps = keymaps.nvim_tree_keymaps(api, opts)
+  local raw_keymaps = require("keymaps.nvim-tree").plugin(api, opts)
   set_keymaps(raw_keymaps)
 end
 
@@ -32,10 +32,6 @@ return {
       on_attach = my_on_attach,
       sync_root_with_cwd = true,
       respect_buf_cwd = true,
-      update_focused_file = {
-        enable = true,
-        update_cwd = true,
-      },
     }
     end
 }

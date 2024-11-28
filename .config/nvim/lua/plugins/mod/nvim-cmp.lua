@@ -20,7 +20,11 @@ return {
     local cmp = require("cmp")
     local lspconfig = require("lspconfig")
     local capabitilies = require("cmp_nvim_lsp").default_capabilities()
-    local servers = require("config.servers")
+    local servers = require("config.servers").servers
+    local servers_config = require("config.servers").server_config
+    local default_server_config = {
+      capabilities = capabitilies,
+    }
 
     cmp.setup({
       snippet = {
@@ -41,7 +45,7 @@ return {
       }
       ),
     })
-    local keymaps = require("config.keymaps")
+    local keymaps = require("keymaps")
     local keymaps_cmp = keymaps.cmp_nvim_keymaps(cmp.mapping)
 
     local function set_keymaps()
@@ -63,9 +67,9 @@ return {
     })
 
     for _, server in ipairs(servers) do
-      lspconfig[server].setup({
-        capabilities = capabitilies,
-      })
+      local config = servers_config[server] or {}
+      config = vim.tbl_extend("force", default_server_config, config)
+      lspconfig[server].setup(config)
     end
   end,
 }

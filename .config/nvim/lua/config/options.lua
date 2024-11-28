@@ -48,3 +48,5 @@ opt.cmdheight = 0
 -- Scroll
 opt.scrolloff = 5
 opt.sidescrolloff = 10
+
+opt.conceallevel = 2

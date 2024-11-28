@@ -1,7 +1,8 @@
 --- Available LSP goes here
 --- Check https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 --- for available server and name
-local servers = {
+local M = {}
+M.servers = {
     "arduino_language_server", -- Arduino
     "bashls",                  -- Bash
     "clangd",                  -- C/C++
@@ -19,4 +20,15 @@ local servers = {
     "vimls",                   -- vimscript
 }
 
-return servers
+M.server_config = {
+  lua_ls = {
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    settings = {
+      Lua = {
+        diagnostics = { globals = { "vim" } },
+      },
+    },
+  },
+}
+
+return M

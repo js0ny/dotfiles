@@ -1,6 +1,6 @@
 return {
   { 'wakatime/vim-wakatime', lazy = false },
-  { 'epwalsh/obsidian.nvim', lazy = true  },
+  { import = "plugins.mod.obsidian-nvim" },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",

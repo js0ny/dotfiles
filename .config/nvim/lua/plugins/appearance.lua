@@ -8,5 +8,6 @@ return {
     end,
   },
   { import = "plugins.mod.alpha-nvim" },
+  { import = "plugins.mod.winbar-nvim"},
+  { import = "plugins.mod.bufferline" },
 }
-

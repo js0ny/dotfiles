@@ -8,6 +8,7 @@ for file in $DOTFILES/zsh/*.zsh; do
   source $file
 done
 source $DOTFILES/wsl/winterop.zsh
+source $ZDOTDIR/.zprivate.zsh
 export ARCHFLAGS="-arch x86_64"
 
 # Absolute navigation
