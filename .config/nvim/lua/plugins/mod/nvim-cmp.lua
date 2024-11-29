@@ -1,9 +1,10 @@
-
---- Available LSP goes here
---- Check https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
---- for available server and name
-
-
+local function set_keymaps(keymaps_cmp)
+  local mappings = {}
+    for _, map in ipairs(keymaps_cmp) do
+      mappings[map.keys] = map.cmd
+    end
+    return mappings
+end
 
 return {
   "hrsh7th/nvim-cmp",
@@ -19,56 +20,47 @@ return {
   config = function()
     local cmp = require("cmp")
     local lspconfig = require("lspconfig")
-    local capabitilies = require("cmp_nvim_lsp").default_capabilities()
-    local servers = require("config.servers").servers
-    local servers_config = require("config.servers").server_config
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local servers_module = require("config.servers")
+    local servers = servers_module.servers
+    local servers_config = servers_module.server_config
+    -- 默认 LSP 配置
     local default_server_config = {
-      capabilities = capabitilies,
+      capabilities = capabilities,
     }
 
+    local raw_keymaps = require("keymaps").cmp_nvim_keymaps(cmp.mapping)
+    local mapped = set_keymaps(raw_keymaps)
+    -- 配置 nvim-cmp
     cmp.setup({
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)
         end,
       },
-
-      sources = cmp.config.sources(
-      -- This order defines the priority of sources.
-      {
+      mapping = cmp.mapping.preset.insert(mapped),
+      sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-      },
-      {
+      }, {
         { name = "buffer" },
         { name = "path" },
-      }
-      ),
+      }),
     })
-    local keymaps = require("keymaps")
-    local keymaps_cmp = keymaps.cmp_nvim_keymaps(cmp.mapping)
 
-    local function set_keymaps()
-      local mappings = {}
-        for _, map in ipairs(keymaps_cmp) do
-          mappings[map.keys] = map.cmd
-        end
-        return mappings
-    end
-    cmp.setup.mapping = cmp.mapping.preset.insert(set_keymaps())
+    -- 配置 cmdline 模式
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
         { name = "cmdline" },
-        -- Use `path` is slow under WSL since WSL loads Windows paths
-        -- https://github.com/zsh-users/zsh-syntax-highlighting/issues/790
-        -- { name = "path" },
-      }
+        -- path completion is slow under WSL
+        -- Since WSL loads Windows Environment Variables
+      },
     })
 
+    -- 配置 LSP
     for _, server in ipairs(servers) do
-      local config = servers_config[server] or {}
-      config = vim.tbl_extend("force", default_server_config, config)
+      local config = vim.tbl_deep_extend("force", default_server_config, servers_config[server] or {})
       lspconfig[server].setup(config)
     end
   end,

@@ -48,3 +48,5 @@ vscode/
 
 # OS generated files
 .DS_Store
+
+.venv/

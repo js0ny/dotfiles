@@ -37,7 +37,7 @@ alias cf=cfiles
 
 # Functions #
 mkcd() {
-  mkdir -p -- "$0" && cd -P -- "$1"
+  mkdir -p $1 && cd $1
 }
 cdls(){
 	cd $1 && ls

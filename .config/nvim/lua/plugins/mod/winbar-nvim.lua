@@ -7,7 +7,7 @@ return {
         show_file_path = true,
         show_symbols = true,
         colors = {
-          path = '',
+          path = '#9c1d91',
           file_name = '',
           symbols = '',
         },

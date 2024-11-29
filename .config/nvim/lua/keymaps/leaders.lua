@@ -10,6 +10,13 @@ for _,map in ipairs(leader_general) do
   table.insert(M, map)
 end
 
+local leader_q = { -- leader q: Quit
+  { keys = "q", cmd = ":q<CR>", desc = "Quit" },
+  { keys = "Q", cmd = ":qa!<CR>", desc = "Force Quit" },
+  { keys = "w", cmd = ":wq<CR>", desc = "Write and Quit" },
+  { keys = "W", cmd = ":wall<CR>:qa!<CR>", desc = "Write all and Force Quit" },
+}
+
 local leader_w = { -- leader w: Windows Management
   { keys = "h", cmd = "<C-w>h", desc = "Left Window" },
   { keys = "n", cmd = "<C-w>j", desc = "Down Window" },
@@ -28,8 +35,44 @@ local leader_w = { -- leader w: Windows Management
   { keys = "I", cmd = ":resize -5<CR>", desc = "Decrease Window Width" },
 }
 
+local leader_f = { -- leader f: Files/Find
+  { keys = "f", cmd = ":Telescope fd<CR>", desc = "Find Files"},
+  { keys = "s", cmd = ":Telescope live_grep<CR>", desc = "Grep Files"},
+  { keys = "b", cmd = ":Telescope buffers<CR>", desc = "List Buffers"},
+  { keys = "e", cmd = ":NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
+}
+
+local leader_p = { -- leader p: Project
+}
+
+local leader_b = { -- leader b: Buffer
+  { keys = "d", cmd = ":bdelete<CR>", desc = "Delete Buffer" },
+  { keys = "h", cmd = ":bprevious<CR>", desc = "Previous Buffer" },
+  { keys = "i", cmd = ":bnext<CR>", desc = "Next Buffer" },
+  { keys = "H", cmd = ":bfirst<CR>", desc = "First Buffer" },
+  { keys = "I", cmd = ":blast<CR>", desc = "Last Buffer" },
+  { keys = "0", cmd = ":bfirst<CR>", desc = "First Buffer" },
+  { keys = "^", cmd = ":bfirst<CR>", desc = "First Buffer" },
+  { keys = "$", cmd = ":blast<CR>", desc = "Last Buffer" },
+}
+
+for _, map in ipairs(leader_q) do
+  map.keys = "<leader>q" .. map.keys
+  table.insert(M, map)
+end
+
 for _, map in ipairs(leader_w) do
   map.keys = "<leader>w" .. map.keys
+  table.insert(M, map)
+end
+
+for _, map in ipairs(leader_f) do
+  map.keys = "<leader>f" .. map.keys
+  table.insert(M, map)
+end
+
+for _, map in ipairs(leader_b) do
+  map.keys = "<leader>b" .. map.keys
   table.insert(M, map)
 end
 

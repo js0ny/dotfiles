@@ -29,6 +29,7 @@ function M.cmp_nvim_keymaps(map)
     { keys = "<C-n>",     cmd = map.select_next_item(),         desc = "Select next completion item" },
     { keys = "<C-p>",     cmd = map.select_prev_item(),         desc = "Select previous completion item" },
     { keys = "<C-y>",     cmd = map.confirm({ select = true }), desc = "Confirm completion" },
+    { keys = "<Tab>",     cmd = map.confirm({ select = true }), desc = "Confirm completion" },
     { keys = "<C-Space>", cmd = map.complete(),                 desc = "Trigger completion" },
     { keys = "<C-e>",     cmd = map.abort(),                    desc = "Abort completion" },
   }

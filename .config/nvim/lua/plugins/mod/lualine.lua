@@ -122,21 +122,22 @@ ins_left {
   padding = { right = 1 },
 }
 
-ins_left {
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
-}
+-- ins_left {
+--   -- filesize component
+--   'filesize',
+--   cond = conditions.buffer_not_empty,
+-- }
 
-ins_left {
-  'filename',
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
-}
+-- ins_left {
+--   'filename',
+--   cond = conditions.buffer_not_empty,
+--   color = { fg = colors.magenta, gui = 'bold' },
+-- }
 
-ins_left { 'location' }
 
-ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+-- ins_left { 'location' }
+
+ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
   'diagnostics',
@@ -149,13 +150,20 @@ ins_left {
   },
 }
 
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
 ins_left {
   function()
-    return '%='
+    return vim.bo.filetype
+  end,
+  color = { fg = colors.blue, gui = 'bold' },
+}
+
+ins_left {
+  function()
+    return vim.bo.shiftwidth .. " space"
   end,
 }
+
+
 
 ins_left {
   -- Lsp server name .
@@ -174,8 +182,16 @@ ins_left {
     end
     return msg
   end,
-  icon = ' LSP:',
+  icon = ' ',
   color = { fg = '#ffffff', gui = 'bold' },
+}
+
+-- Insert mid section. You can make any number of sections in neovim :)
+-- for lualine it's any number greater then 2
+ins_left {
+  function()
+    return '%='
+  end,
 }
 
 -- Add components to right sections
@@ -198,6 +214,7 @@ ins_right {
   icon = '',
   color = { fg = colors.violet, gui = 'bold' },
 }
+
 
 ins_right {
   'diff',

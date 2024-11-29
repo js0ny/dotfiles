@@ -6,7 +6,7 @@ M.servers = {
     "arduino_language_server", -- Arduino
     "bashls",                  -- Bash
     "clangd",                  -- C/C++
-    "cmake",                   -- CMake
+    -- "cmake",                   -- CMake
     "eslint",                  -- JavaScript
     "gopls",                   -- Go
     "html",                    -- HTML
