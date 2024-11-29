@@ -18,5 +18,9 @@ return {
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
+  },
+  {
+    "github/copilot.vim",
+    lazy = false,
   }
 }

@@ -35,4 +35,18 @@ function M.cmp_nvim_keymaps(map)
   }
 end
 
+local function set_markdown_keymaps(bufnr)
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set("v", "`", "c`<C-r>\"`<Esc>", opts)
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        set_markdown_keymaps(0)
+    end,
+})
+
+require("keymaps.language")
+
 return M

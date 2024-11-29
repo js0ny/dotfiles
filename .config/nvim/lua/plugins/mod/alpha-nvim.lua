@@ -40,14 +40,7 @@ return {
         dashboard.button('c', ' 转到设置', ':Telescope find_files cwd=~/.config/nvim<CR>'),
         dashboard.button('SPC q', '󱊷 退出', ':qa<CR>'),
       }
-      local handle = io.popen('fortune')
-      --- Handle the case where fortune is not installed
-      local fortune = ""
-      if handle then
-        fortune = handle:read("*a")
-        handle:close()
-      end
-      dashboard.section.footer.val = "今日 " .. os.date("%Y-%m-%d %A") .. "  " .. fortune
+      dashboard.section.footer.val = "今日 " .. os.date("%Y-%m-%d %A") .. "  "
 
       dashboard.config.opts.noautocmd = true
 
