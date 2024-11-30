@@ -82,7 +82,8 @@ New-Item -ItemType Directory -Path "$Env:AppData\less" -Force
 New-Item -ItemType Directory -Path "$Env:XDG_STATE_HOME\node" -Force
 [System.Environment]::SetEnvironmentVariable("NODE_REPL_HISTORY", "$Env:XDG_STATE_HOME\node\repl_history", "User")
 # ~\.ts_node_repl_history -> %LocalAppData%\state\node\ts_node_repl_history :: Node.js
-[System.Environment]::SetEnvironmentVariable("TS_NODE_REPL_HISTORY", "$Env:XDG_STATE_HOME\node\ts_node_repl_history", "User")
+# NOTE: ts-node doesn't support this yet
+# [System.Environment]::SetEnvironmentVariable("TS_NODE_REPL_HISTORY", "$Env:XDG_STATE_HOME\node\ts_node_repl_history", "User")
 # ~\.nuget\packages -> %LocalAppData%\cache\NuGet\packages :: NuGet
 [System.Environment]::SetEnvironmentVariable("NUGET_PACKAGES", "$Env:XDG_CACHE_HOME\NuGet\packages", "User")
 # ~\.omnisharp -> %AppData%\OmniSharp :: OmniSharp
@@ -96,6 +97,7 @@ New-Item -ItemType Directory -Path "$Env:XDG_STATE_HOME\python" -Force
 # ~\.vimrc -> %AppData%\Vim\_vimrc :: Vim
 New-Item -ItemType Directory -Path "$Env:AppData\Vim" -Force
 [System.Environment]::SetEnvironmentVariable("VIM", "$Env:AppData\Vim", "User")
+[System.Environment]::SetEnvironmentVariable("KOMOREBI_CONFIG_HOME", "$Env:AppData\komorebi", "User")
 # ~\.vuerc -> %AppData%\vue\.vuerc :: Vue CLI
 # Currently, Vue CLI doesn't support file path configuration:https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli/lib/confifile
 # [System.Environment]::SetEnvironmentVariable("VUE_CLI_CONFIG_PATH", "$Env:AppData\vue\.vuerc", "User")

@@ -23,3 +23,6 @@ Set-PSReadLineKeyHandler -Chord "N" -Function ViJoinLines -ViMode Command
 Set-PSReadLineKeyHandler -Chord "Control+Oem4" -Function ViCommandMode -ViMode Insert # ^[ to Escape
 Set-PSReadLineKeyHandler -Chord "Ctrl+a"	   -Function BeginningOfLine
 Set-PSReadLineKeyHandler -Chord "Ctrl+e"	   -Function EndOfLine
+
+## Use <Tab> to Invoke MenuComplete
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete

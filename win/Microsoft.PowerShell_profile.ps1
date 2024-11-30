@@ -7,19 +7,13 @@ Get-ChildItem -Path $DOTFILES\powershell_private -Filter *.ps1 | ForEach-Object 
 
 # Shell Equivalents #
 Set-Alias "grep" "Select-String"
-${function:which}    = { (Get-Command $args[0]).Path }
+${function:which}    = { (Get-Command $args[0]) }
 
 # Shell Configurations #
 ${function:shcfg}    = { code $PROFILE }
 ${function:reload}   = { & $PROFILE }
 ${function:pulldots} = { Set-Location -Path $DOTFILES && git pull }
 Set-Alias "pwshcfg" "shcfg"
-
-# C & C++ #
-# Set-Alias "cl"      "clang"
-# Set-Alias "clpp"    "clang++"
-# ${function:clang} = { clang -std=c99 $args[0] }
-# ${function:clang++} = { clang -std=c++2b $args[0] }
 
 # WSL #
 ${function:wsl1} = {wsl.exe --distribution Arch}
@@ -51,19 +45,7 @@ function Get-AppPackageListLocal {
 }
 
 # Toggle Theme #
-function Set-SystemTheme {
-  $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-  $currentMode = Get-ItemProperty -Path $regPath -Name "AppsUseLightTheme"
-  if ($currentMode.AppsUseLightTheme -eq 1) {
-    Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 0
-    Write-Host "已切换到深色模式"
-  }
-  else {
-    Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 1
-    Write-Host "已切换到浅色模式"
-  }
-}
-Set-Alias "dark-mode" "Set-SystemTheme" # Consistent with macOS (`dark-mode`)
+Set-Alias "dark-mode" "$DOTFILES/win/cmd/dark-mode.bat" # Consistent with macOS (`dark-mode`)
 
 # Miscs #
 

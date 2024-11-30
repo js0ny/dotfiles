@@ -5,9 +5,8 @@
 let mapleader = " " " set <leader> to <space>
 
 """ Colemak """
-" Word wrap
-noremap n gj
-noremap e gk
+noremap n j
+noremap e k
 noremap i l
 
 " Similar position to i
