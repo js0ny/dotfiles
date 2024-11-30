@@ -22,3 +22,11 @@ ln -sf $DOTFILES/common/zellij.config.kdl ~/.config/zellij/config.kdl
 # $DOTFILES/tools
 ln -sf $DOTFILES/tools/ipython $XDG_CONFIG_HOME/ipython
 ln -sf $DOTFILES/tools/nvim $XDG_CONFIG_HOME/nvim
+
+if [ $(uname) = "Darwin"]; then
+    mkdir -p ~/.config/karabiner $XDG_CONFIG_HOME/skhd $XDG_CONFIG_HOME/yabai $XDG_CONFIG_HOME/sketchybar
+    ln -sf $DOTFILES/platforms/mac/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+    ln -sf $DOTFILES/platforms/mac/skhdrc $XDG_CONFIG_HOME/skhd/skhdrc
+    ln -sf $DOTFILES/platforms/mac/sketchybarrc $XDG_CONFIG_HOME/sketchybar/sketchybarrc
+    ln -sf $DOTFILES/platforms/mac/yabairc $XDG_CONFIG_HOME/yabai/yabairc
+fi

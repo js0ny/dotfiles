@@ -13,6 +13,7 @@
     "nvim/init.lua": "vim",
     "markdownlint.json": "markdownlint",
     ".wslconfig": "settings",
+    "skhdrc": "console"
   },
   "material-icon-theme.folders.associations": {
     "bootstrap": "admin",

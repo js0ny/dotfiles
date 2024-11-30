@@ -1,4 +1,7 @@
 # $DOTFILES/tools/zsh/global.zshenv
+# Date: 2024-11-30
+# Author: contact@js0ny.net
+# $DOTFILES/tools/zsh/global.zshenv
 # system-wide zshenv file 系统级别的 zshenv 文件，用于设置全局环境变量
 
 # Location:

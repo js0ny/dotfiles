@@ -1,4 +1,6 @@
 # $DOTFILES/tools/zsh/mod/navi.zsh
+# Date: 2024-11-30
+# Author: contact@js0ny.net
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
 # Relative navigation #

@@ -1,4 +1,6 @@
 # $DOTFILES/tools/zsh/mod/alias.zsh
+# Date: 2024-11-30
+# Author: contact@js0ny.net
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
 # PowerShell Equivalent, for cross-platform compatibility
@@ -29,10 +31,10 @@ alias sn="sudo nvim"
 
 # lsd - modern ls
 if command -v lsd > /dev/null; then
-    alias ls='lsd -A'
+    alias ls='lsd -A -I .DS_Store -I .git'
     alias l='lsd -lah'
     alias ll='lsd -l'
-    alias tree='lsd --tree'
+    alias tree='lsd --tree -I .DS_Store -I .git'
 fi
 
 # Functions #

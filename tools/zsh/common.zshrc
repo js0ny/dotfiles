@@ -1,4 +1,6 @@
-# $DOTFILES/zsh/common.zshrc
+# $DOTFILES/tools/zsh/common.zshrc
+# Date: 2024-11-30
+# Author: contact@js0ny.net
 # This is the entry point for all zsh configuration files
 # 这是所有zsh配置文件的入口点
 
