@@ -1,0 +1,131 @@
+# $DOTFILES/tools/zsh/zshenv
+# User-specific environment variables for zsh 用户级别的 zsh 环境变量
+
+# Location:
+# $ZDOTDIR/.zshenv (specified by ZDOTDIR)
+# ~/.zshenv (default location)
+# Linking:
+# ln -sf $DOTFILES/tools/zsh/.zshenv $ZDOTDIR/.zshenv
+# This file is sourced by all zsh sessions upon startup.
+
+# For me (this user), define XDG Base Directory Specification variables
+# and some configs that does not obey XDG Base Directory Specification
+# but can be configured(by setting the variables) to (just like) obey it.
+# 在此定义 XDG 基础目录规范变量和一些不遵循 XDG 基础目录规范的配置，
+# 使得他们可以通过设置变量来遵循 XDG 基础目录规范。
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+# Disable shell sessions on macOS when using default terminal
+SHELL_SESSIONS_DISABLE=1
+
+# Zsh # Redefine to make sure it's in $XDG_CONFIG_HOME
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+# Tools Related Environment Variables
+export PAGER="less -R"
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# macOS Specific
+# This syntax is POSIX standard, for portability
+if [ "$(uname)" = "Darwin" ]; then
+
+fi
+
+# Linux Specific
+if [ "$(uname)" = "Linux" ]; then
+    # CUDA
+    export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+fi
+
+# Azure CLI
+if command -v az > /dev/null; then
+    export AZURE_CONFIG_DIR="$XDG_DATA_HOME"/azure
+fi
+# Cargo
+if command -v cargo > /dev/null; then
+    export CARGO_HOME="$XDG_DATA_HOME"/cargo
+fi
+# CGDB
+if command -v cgdb > /dev/null; then
+    export CGDB_DIR="$XDG_CONFIG_HOME"/cgdb
+fi
+# .NET
+if command -v dotnet > /dev/null; then
+    export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+fi
+# Docker
+if command -v docker > /dev/null; then
+    export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+fi
+# GnuPG
+if command -v gpg > /dev/null; then
+    export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+fi
+# Go
+if command -v go > /dev/null; then
+    export GOPATH="$XDG_DATA_HOME"/go
+fi
+# Julia
+if command -v julia > /dev/null; then
+    export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
+fi
+# Node.js
+if command -v node > /dev/null; then
+    export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/repl_history
+    export TS_NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/ts_node_repl_history
+    export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+    export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
+    export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
+    export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
+fi
+# Parallel
+if command -v parallel > /dev/null; then
+    export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+fi
+# Python
+# Works only with Python 3.13.0a3 and later
+if command -v python3 > /dev/null; then
+    export PYTHON_HISTORY="$XDG_DATA_HOME"/python/history
+fi
+# GNU Screen
+if command -v screen > /dev/null; then
+    export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
+    export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
+fi
+# Spacemacs
+if command -v emacs > /dev/null; then
+    export SPACEMACSDIR="$XDG_CONFIG_HOME"/spacemacs
+fi
+# tldr
+# Works only with C client (did not verify)
+if command -v tldr > /dev/null; then
+    export TLDR_CACHE_DIR="$XDG_CACHE_HOME"/tldr
+fi
+# W3M
+if command -v w3m > /dev/null; then
+    export W3M_DIR="$XDG_DATA_HOME"/w3m
+fi
+# Wakatime
+if command -v wakatime > /dev/null; then
+    export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+fi
+# Wget
+if command -v wget > /dev/null; then
+    alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+fi
+# z
+if command -v z > /dev/null; then
+    export _Z_DATA="$XDG_DATA_HOME/z"
+fi
+# zsh .zcompdump
+# compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+# Vcpkg TODO: Move vcpkg path
+if command -v vcpkg > /dev/null; then
+    export VCPKG_ROOT="$XDG_DATA_HOME"/vcpkg
+fi
