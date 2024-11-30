@@ -15,13 +15,6 @@ test.*
 # Utils
 xdg-ninja/
 
-# IPython config cache
-tools/ipython/profile_default/db
-tools/ipython/profile_default/log
-tools/ipython/profile_default/pid
-tools/ipython/profile_default/security
-tools/ipython/profile_default/history.sqlite
-
 # nvim config cache
 tools/nvim/tt.*
 tools/nvim/.tests

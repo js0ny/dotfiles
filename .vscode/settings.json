@@ -13,10 +13,14 @@
     "nvim/init.lua": "vim",
     "markdownlint.json": "markdownlint",
     ".wslconfig": "settings",
-    "*.hsnips": ""
   },
   "material-icon-theme.folders.associations": {
-    "bootstrap": "admin"
+    "bootstrap": "admin",
+    "ipython": "jupyter",
+    "zsh": "command",
+    "starship": "ui",
+    "nvim": "config",
+    "wsl": "linux"
   },
   "files.associations": {
     "ideavimrc": "Vimscript",

@@ -1,3 +1,4 @@
+#!/bin/zsh
 # $DOTFILES/scripts/update.zsh
 # call by `update` alias defined in tools/zsh/alias.zsh
 # 使用别名 `update` 引用，别名定义于 tools/zsh/alias.zsh
