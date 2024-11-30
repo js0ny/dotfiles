@@ -11,8 +11,8 @@ alias clpp='clang++ -std=c++2b'
 alias python=python3 # Set the default Python version to Python 3
 alias py=python # Alias for Python
 alias pip=pip3 # Alias for pip
-alias bashcfg="nvim ~/.bashrc"
-alias zshcfg="nvim ~/.zshrc"
+# alias bashcfg="nvim ~/.bashrc"
+alias zshcfg="nvim $ZDOTDIR/.zshrc"
 alias shcfg=zshcfg
 alias reload="source $ZDOTDIR/.zshrc"
 alias nvimrc="nvim $XDG_CONFIG_HOME/nvim/"
@@ -37,7 +37,7 @@ alias cf=cfiles
 
 # Functions #
 mkcd() {
-  mkdir -p -- "$0" && cd -P -- "$1"
+  mkdir -p $1 && cd $1
 }
 cdls(){
 	cd $1 && ls

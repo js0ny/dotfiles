@@ -1,0 +1,19 @@
+# $XDG_CONFIG_HOME/readline/inputrc
+
+# Colemak Key Remaps
+set editing-mode vi
+set keymap vi
+set show-mode-in-prompt on
+
+set mark-directories on
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set bell-style none
+
+$if mode=vi
+    "n": next-history
+    "e": previous-history
+    "l": vi-insertion-mode
+    "L": vi-insert-beg
+    "i": forward-char
+$endif

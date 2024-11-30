@@ -12,7 +12,6 @@ export ARCHFLAGS="-arch arm64"
 ### Navigation ###
 # Absolute navigation
 alias doku="cd ~/doku && ls"
-alias dotfiles="cd $DOTFILES && ls"
 alias docs="cd ~/Documents"
 alias dt="cd ~/Desktop"
 alias down="cd ~/Downloads"
@@ -42,3 +41,8 @@ path=('$HOME/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+
+# macOS #
+
+alias xclip="pbcopy"
+alias clip="pbcopy"

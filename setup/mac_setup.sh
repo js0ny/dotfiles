@@ -6,12 +6,12 @@
 
 echo "Running the setup script"
 
-# Xcode Command Line Tools 
+# Xcode Command Line Tools
 echo "[INFO] Installing Xcode Command Line Tools"
 echo "[ACTION] Request Human Takeover"
 xcode-select --install
 
-# System Preferences 
+# System Preferences
 # Installation Sources
 echo "[INFO] Setting Installation Sources"
 # sudo spctl --master-disable
@@ -29,10 +29,10 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Docu
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FinderSpawnTab -bool true
 # Don't show External Hard Drives on Desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false 
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false          
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool false    
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false   
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 # No DS_Store on Network
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Keyboard
@@ -45,7 +45,7 @@ echo "[INFO] Setting Dock Preferences"
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
 defaults write com.apple.dock autohide -bool true # Autohide Dock
-defaults write com.apple.dock autohide-time-modifier -float 0.5 
+defaults write com.apple.dock autohide-time-modifier -float 0.5
 defaults write com.apple.dock autohide-delay -float 0 # Immediately Autohide Dock
 defaults write com.apple.dock show-recents -bool false # Hide Recent Applications
 killall Dock
@@ -118,7 +118,7 @@ brew install --formula lazygit
 # Shell
 brew install --formula starship # Shell Prompt
 brew install --formula tmux
-brew install --formula zellij 
+brew install --formula zellij
 # System Info
 brew install --formula fastfetch # 這輩子有了
 # Utilities
@@ -176,6 +176,7 @@ brew install --cask iina
 
 # Security
 brew install --cask keyguard
+brew install --cask protonmail-bridge
 
 # Engineering
 brew install --cask ltspice # `sudo`
@@ -205,9 +206,9 @@ brew install --cask betterdisplay
 brew install --cask karabiner-elements # Keyboard Customization
 brew install --cask scroll-reverser # Let Trackpad and Mouse Scroll in the Same Direction like Windows
 # brew install --cask orbstack # VM
-# brew install --cask docker 
+# brew install --cask docker
 brew install --cask clash-verge-rev
-brew install --cask chatbox # LLM API Caller 
+brew install --cask chatbox # LLM API Caller
 brew install --cask follow # RSS Reader
 
 
@@ -220,7 +221,7 @@ mas install 451108668 # QQ
 curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bash
 
 # Set default apps (duti)
-# The id of the app can be found by running 
+# The id of the app can be found by running
 # `osascript -e 'id of app "AppName"'`
 brew install --formula duti
 echo "[INFO] Setting Default Apps"
