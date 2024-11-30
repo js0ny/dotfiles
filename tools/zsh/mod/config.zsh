@@ -36,8 +36,7 @@ done
 set -k
 
 # TODO: Below should be reorganized
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH  # Ruby Executables
+export PATH=$HOME/.local/bin:$PATH
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -4,9 +4,6 @@
 # Sourced by user's zshrc if is macOS 在用户的 zshrc 中被引用，macOS 特定配置
 # Entry point in $DOTFILES/tools/zsh/common.zshrc (入口点)
 
-# Homebrew Path
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
-
 # macOS #
 
 alias xclip="pbcopy"
