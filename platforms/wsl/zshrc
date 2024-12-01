@@ -1,12 +1,13 @@
-# $DOTFILES/platforms//zshrc
+# $DOTFILES/platforms/wsl/zshrc
+# Date: 2024-12-01
+# Author: contact@js0ny.net
 # Sourced by user's zshrc if is WSL 在用户的 zshrc 中被引用，WSL 特定配置
 # Entry point in $DOTFILES/tools/zsh/common.zshrc (入口点)
-# TODO: Test on WSL
 
 ### Variables ###
 export IS_WSL=true
 export ARCHFLAGS="-arch x86_64"
-source $DOTFILES/wsl/winterop.zsh
+source $DOTFILES/platforms/wsl/winterop.zsh
 
 
 ### Misc ###
