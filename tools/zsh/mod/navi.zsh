@@ -1,5 +1,5 @@
 # $DOTFILES/tools/zsh/mod/navi.zsh
-# Date: 2024-11-30
+# Date: 2024-12-01
 # Author: contact@js0ny.net
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
@@ -19,13 +19,13 @@ eval "$(zoxide init zsh)"
 
 # Absolute navigation #
 alias dotfiles="cd $DOTFILES && ls"
-# TODO: Test on WSL
 if [ "$IS_WSL" = true ]; then # IS_WSL is defined in $DOTFILES/platforms/wsl/zshrc
-    alias dt="cd /mnt/c/Users/$(whoami)/Desktop && ls"
-    alias doku="cd /mnt/c/Users/$(whoami)/Documents && ls"
-    alias down="cd /mnt/c/Users/$(whoami)/Downloads && ls"
+    winuser=$(whoami.exe | cut -d'\' -f2 | tr -d '\r')
+    alias dt="cd /mnt/c/Users/$winuser/Desktop && ls"
+    alias doku="cd /mnt/c/Users/$winuser/Documents && ls"
+    alias down="cd /mnt/c/Users/$winuser/Downloads && ls"
     alias src="cd /mnt/d/Source"
-    alias one="cd /mnt/c/Users/$(whoami)/OneDrive"
+    alias one="cd /mnt/c/Users/$winuser/OneDrive"
     alias gdrive="cd /mnt/g"
 else
     alias dt="cd $HOME/Desktop && ls"

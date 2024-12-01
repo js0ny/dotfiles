@@ -1,8 +1,8 @@
 #! /bin/bash
-# $DOTFILES/bootstrap/set_symlink_unix.bash
+# $DOTFILES/bootstrap/set_symblink_unix.bash
 # Date: 2024-12-01
 # Author: contact@js0ny.net
-# Set symlinks for Unix-like operating systems
+# Set symbolic links for Unix-like systems
 mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet $XDG_CONFIG_HOME/vim $XDG_CONFIG_HOME/tmux $XDG_CONFIG_HOME/npm $XDG_CONFIG_HOME/readline $XDG_CONFIG_HOME/ipython
 mkdir -p ~/.config/zellij # Not support XDG_CONFIG_HOME but same directory
 # mkdir -p $WAKATIME_HOME
@@ -26,6 +26,7 @@ ln -sf $DOTFILES/common/zellij.config.kdl ~/.config/zellij/config.kdl
 # $DOTFILES/tools
 ln -sf $DOTFILES/tools/ipython $XDG_CONFIG_HOME/ipython
 ln -sf $DOTFILES/tools/nvim $XDG_CONFIG_HOME/nvim
+ln -sf $DOTFILES/tools/zsh/common.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
 
 if [ $(uname) = "Darwin"]; then
     mkdir -p ~/.config/karabiner $XDG_CONFIG_HOME/skhd $XDG_CONFIG_HOME/yabai $XDG_CONFIG_HOME/sketchybar
