@@ -1,6 +1,7 @@
 {
   "material-icon-theme.files.associations": {
     "ideavimrc": "vim",
+    "vsvimrc": "vim",
     "vimrc": "vim",
     "haskeline": "haskell",
     "inputrc": "console",

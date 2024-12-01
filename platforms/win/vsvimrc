@@ -1,0 +1,41 @@
+" This is the `vimrc` config for VSVim (Visual Studio Vim Emulator)
+" Put it in %Vim%\.vsvimrc
+
+" Colemak Keys
+
+" Arrow remap
+noremap n j
+noremap e k
+noremap i l
+noremap H 0
+noremap N 5j
+noremap E 5k
+noremap I $
+
+" Similar position to i
+noremap l i
+noremap L I
+" ne[k]st
+noremap k n
+noremap K N
+" [j]ump
+noremap j e
+noremap J E
+
+" Normal minimal setup
+
+noremap Y y$
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set wrap
+set scrolloff=3
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set number
+set relativenumber

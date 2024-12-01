@@ -1,5 +1,3 @@
 # .dotfiles
 
-Moving to *Colemak*
-
-This branch is WIP.
+Moving to _Colemak_

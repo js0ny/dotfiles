@@ -40,3 +40,5 @@ tools/nushell/
 .DS_Store
 
 .venv/
+
+platforms/win/komorebi/applications.json

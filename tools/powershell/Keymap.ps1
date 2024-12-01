@@ -6,7 +6,7 @@ Set-PSReadLineOption -PredictionSource    HistoryAndPlugin
 # Set-PSReadLineOption -ContinuationPrompt  "`e[36m CR > " # Use Starship instead
 # PSReadLineKeyHandlers
 ## Colemak hnei
-Set-PSReadLineKeyHandler -Chord "n" -Function NextHistory -ViMode Command            
+Set-PSReadLineKeyHandler -Chord "n" -Function NextHistory -ViMode Command
 Set-PSReadLineKeyHandler -Chord "e" -Function PreviousHistory -ViMode Command
 Set-PSReadLineKeyHandler -Chord "i" -Function ViForwardChar -ViMode Command
 ## Similar position to [i] in QWERTY
@@ -23,3 +23,6 @@ Set-PSReadLineKeyHandler -Chord "N" -Function ViJoinLines -ViMode Command
 Set-PSReadLineKeyHandler -Chord "Control+Oem4" -Function ViCommandMode -ViMode Insert # ^[ to Escape
 Set-PSReadLineKeyHandler -Chord "Ctrl+a"	   -Function BeginningOfLine
 Set-PSReadLineKeyHandler -Chord "Ctrl+e"	   -Function EndOfLine
+
+## Use <Tab> to Invoke MenuComplete
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete

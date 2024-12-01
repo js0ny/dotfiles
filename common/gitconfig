@@ -8,6 +8,7 @@
 [core]
 	editor = nvim
 	pager = delta
+	autocrlf = input
 [interactive]
 	diffFilter = delta --color-only
 [delta]
