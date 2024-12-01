@@ -1,6 +1,7 @@
 #! /bin/bash
 mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet $XDG_CONFIG_HOME/vim $XDG_CONFIG_HOME/tmux $XDG_CONFIG_HOME/npm $XDG_CONFIG_HOME/readline $XDG_CONFIG_HOME/ipython
-mkdir -p ~/.config/zellij # Not support XDG_CONFIG_HOME but same directory
+# Not support XDG_CONFIG_HOME but same directory
+mkdir -p ~/.config/zellij ~/.config/yazi ~/.config/glow
 # mkdir -p $WAKATIME_HOME
 # mkdir -p $XDG_STATE_HOME/vim/undo $XDG_STATE_HOME/vim/backup $XDG_STATE_HOME/vim/swap  $XDG_STATE_HOME/vim/view
 mkdir -p $HOME/Obsidian
@@ -22,6 +23,9 @@ ln -sf $DOTFILES/common/zellij.config.kdl ~/.config/zellij/config.kdl
 # $DOTFILES/tools
 ln -sf $DOTFILES/tools/ipython $XDG_CONFIG_HOME/ipython
 ln -sf $DOTFILES/tools/nvim $XDG_CONFIG_HOME/nvim
+ln -sf $DOTFILES/tools/yazi/config/keymap.toml ~/.config/yazi/keymap.toml
+ln -sf $DOTFILES/tools/yazi/config/yazi.toml ~/.config/yazi/yazi.toml
+
 
 if [ $(uname) = "Darwin"]; then
     mkdir -p ~/.config/karabiner $XDG_CONFIG_HOME/skhd $XDG_CONFIG_HOME/yabai $XDG_CONFIG_HOME/sketchybar

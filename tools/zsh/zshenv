@@ -58,6 +58,14 @@ fi
 if command -v az > /dev/null; then
     export AZURE_CONFIG_DIR="$XDG_DATA_HOME"/azure
 fi
+# Bun JS
+# mv ~/.bun $XDG_DATA_HOME/bun
+# ln -sf $XDG_DATA_HOME/bun/bin/bun ~/.local/bin/bun
+if command -v bun > /dev/null; then
+    export BUN_INSTALL="$XDG_DATA_HOME"/bun
+    export PATH="$BUN_INSTALL/bin:$PATH"
+    [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+fi
 # Cargo
 if command -v cargo > /dev/null; then
     export CARGO_HOME="$XDG_DATA_HOME"/cargo

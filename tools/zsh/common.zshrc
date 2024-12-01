@@ -32,4 +32,3 @@ esac
 for file in $DOTFILES/tools/zsh/mod/*.zsh; do
   source $file
 done
-

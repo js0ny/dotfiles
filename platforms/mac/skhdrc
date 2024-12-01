@@ -33,3 +33,4 @@ shift + alt - e : \
 shift + alt - i : \
     yabai -m window --resize right:20:0 ; \
     yabai -m window --resize left:20:0
+

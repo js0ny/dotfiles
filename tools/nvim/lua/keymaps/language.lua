@@ -22,6 +22,8 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         set_markdown_keymaps(0)
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
     end,
 })
 
