@@ -12,7 +12,7 @@
     "gitconfig": "git",
     "nvim/init.lua": "vim",
     "markdownlint.json": "markdownlint",
-    ".wslconfig": "settings",
+    "wslconfig": "settings",
     "skhdrc": "console"
   },
   "material-icon-theme.folders.associations": {

@@ -1,7 +1,10 @@
+# $DOTFILES/tools\powershell\Prompt.ps1
+# Date: 2024-12-01
+# Author: contact@js0ny.net
 # Use starship to set prompt
-$ENV:STARSHIP_CONFIG = "$DOTFILES/.config/starship/starship_pwsh.toml"
+$ENV:STARSHIP_CONFIG = Join-Path $DOTFILES "tools" "starship" "starship_pwsh.toml"
 
-Invoke-Expression (&starship init powershell)
+# Invoke-Expression (&starship init powershell)
 
 # Below is the backup of original prompt function
 # $promptTime = $true
@@ -16,7 +19,7 @@ Invoke-Expression (&starship init powershell)
 #   }
 #   # UserInfo
 #   $prompt += " $Env:Username @ $Env:Userdomain"
-#   # Directory   
+#   # Directory
 #   $promptCurrentDirectory = $(PWD).Path
 #   $promptCurrentDirectory = $promptCurrentDirectory.Replace("$HOME", "~")
 #   $prompt += "`e[0m in `e[33m$promptCurrentDirectory "
@@ -81,7 +84,7 @@ Invoke-Expression (&starship init powershell)
 #   # if ( $global:promptWeather ) {
 #   #   $prompt += $(Write-WeatherCurrent -City "Edinburgh" -Country "UK" -Unit "metric" -Inline -Apikey $Env:WEATHER_API_KEY)
 #   # }
-#   # Error on last command 
+#   # Error on last command
 #   ## TODO: Seems does not work
 #   if ($?) {
 #     $prompt += "`n`e[32m PS > `e[0m"

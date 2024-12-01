@@ -1,69 +1,30 @@
+# $DOTFILES/platforms\win\Microsoft.PowerShell_profile.ps1
+# Date: 2024-12-01
+# Author: contact@js0ny.net
+# PowerShell profile for Windows
+
 ### Load Configs ###
-$DOTFILES = "$HOME\.dotfiles"
-Get-ChildItem -Path $DOTFILES\powershell -Filter *.ps1 | ForEach-Object {. $_}
-Get-ChildItem -Path $DOTFILES\powershell_private -Filter *.ps1 | ForEach-Object {. $_}
+$DOTFILES = Join-Path $HOME ".dotfiles"
+Get-ChildItem -Path $(Join-Path $DOTFILES "tools" "powershell") -Filter *.ps1 | ForEach-Object {. $_}
 
 ### Aliases ###
 
-# Shell Equivalents #
-Set-Alias "grep" "Select-String"
-${function:which}    = { (Get-Command $args[0]).Path }
-
-# Shell Configurations #
-${function:shcfg}    = { code $PROFILE }
-${function:reload}   = { & $PROFILE }
-${function:pulldots} = { Set-Location -Path $DOTFILES && git pull }
-Set-Alias "pwshcfg" "shcfg"
-
-# C & C++ #
-# Set-Alias "cl"      "clang"
-# Set-Alias "clpp"    "clang++"
-# ${function:clang} = { clang -std=c99 $args[0] }
-# ${function:clang++} = { clang -std=c++2b $args[0] }
-
-# WSL #
-${function:wsl1} = {wsl.exe --distribution Arch}
-${function:wsl2} = {wsl.exe --distribution Ubuntu-22.04}
-
-# Search Software #
-function Find-AppPackageListRemote {
-    param(
-      [string]$Name
-    )
-    if (-not $Name) {
-      Write-Host "Please provide a package name."
-      return
-    }
-    Write-Host "Searching for $Name..."
-    Write-Host "=== winget ==="
-    winget search $Name
-    Write-Host "=== choco ==="
-    choco search $Name
-#     Too slow!
-#     Write-Host "=== scoop ==="
-#     scoop search $Name
-}
-Set-Alias "pkgsearch" "Find-AppPackageListRemote"
-function Get-AppPackageListLocal {
-	winget list
-	choco list
-	scoop list
-}
 
 # Toggle Theme #
-function Set-SystemTheme {
-  $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-  $currentMode = Get-ItemProperty -Path $regPath -Name "AppsUseLightTheme"
-  if ($currentMode.AppsUseLightTheme -eq 1) {
-    Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 0
-    Write-Host "已切换到深色模式"
-  }
-  else {
-    Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 1
-    Write-Host "已切换到浅色模式"
-  }
-}
-Set-Alias "dark-mode" "Set-SystemTheme" # Consistent with macOS (`dark-mode`)
+# TODO: Change to `bat` script implementation
+# function Set-SystemTheme {
+#   $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+#   $currentMode = Get-ItemProperty -Path $regPath -Name "AppsUseLightTheme"
+#   if ($currentMode.AppsUseLightTheme -eq 1) {
+#     Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 0
+#     Write-Host "已切换到深色模式"
+#   }
+#   else {
+#     Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 1
+#     Write-Host "已切换到浅色模式"
+#   }
+# }
+# Set-Alias "dark-mode" "Set-SystemTheme" # Consistent with macOS (`dark-mode`)
 
 # Miscs #
 
@@ -98,13 +59,16 @@ If (Test-Path "$HOME\miniconda3\Scripts\conda.exe") {
 #Remove-Variable __lastStartup
 #Remove-Variable _currentDate
 
-# Use some unix commands
-${function:tree} = { wsl tree $args}
-${function:ln}   = { coreutils.exe ln $args}
-${function:la}   = { lsd.exe -la $args}
-
 # Set default applications
+
 $Env:PAGER = "less"
 $Env:EDITOR = "code --wait"
 $Env:VISUAL = "code --wait"
 $Env:FILE_MANAGER = "dopus.exe"
+
+
+${function:wsl2} = {wsl.exe --distribution Ubuntu}
+${function:wini} = { winget install $args }
+${function:winr} = { winget uninstall $args }
+${function:wins} = { winget search $args }
+${function:winu} = { winget upgrade $args }
