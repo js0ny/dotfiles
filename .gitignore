@@ -15,25 +15,18 @@ test.*
 # Utils
 xdg-ninja/
 
-# IPython config cache
-.config/ipython/profile_default/db
-.config/ipython/profile_default/log
-.config/ipython/profile_default/pid
-.config/ipython/profile_default/security
-.config/ipython/profile_default/history.sqlite
-
 # nvim config cache
-.config/nvim/tt.*
-.config/nvim/.tests
-.config/nvim/doc/tags
-.config/nvim/debug
-.config/nvim/.repro
-.config/nvim/foo.*
-.config/nvim/*.log
-.config/nvim/data
-.config/nvim/lazy-lock.json
-.config/nvim/lazyvim.json
-.config/nvim/lua/plugins/obsidian.lua
+tools/nvim/tt.*
+tools/nvim/.tests
+tools/nvim/doc/tags
+tools/nvim/debug
+tools/nvim/.repro
+tools/nvim/foo.*
+tools/nvim/*.log
+tools/nvim/data
+tools/nvim/lazy-lock.json
+tools/nvim/lazyvim.json
+tools/nvim/lua/plugins/obsidian.lua
 
 # Undone
 # Windows PowerToys
@@ -41,12 +34,11 @@ PowerToys/
 # Just Script
 Justfile
 # Nushell
-.config/nushell/
-# VSCode Neovim
-vscode/
-.vscode/
+tools/nushell/
 
 # OS generated files
 .DS_Store
 
 .venv/
+
+platforms/win/komorebi/applications.json

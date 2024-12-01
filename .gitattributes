@@ -1,0 +1,10 @@
+# $DOTFILES/.gitattributes
+# Date: 2024-11-30
+# Author: contact@js0ny.net
+skhdrc linguist-language=Shell
+yabairc linguist-language=Shell
+sketchybarrc linguist-language=Shell
+*.vimrc linguist-language=VimL
+vsvimrc linguist-language=VimL
+vimrc linguist-language=VimL
+ideavimrc linguist-language=VimL

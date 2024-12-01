@@ -1,0 +1,34 @@
+# $DOTFILES/tools/zsh/common.zshrc
+# Date: 2024-11-30
+# Author: contact@js0ny.net
+# This is the entry point for all zsh configuration files
+# 这是所有zsh配置文件的入口点
+
+# Location: $ZDOTDIR/.zshrc (default: $HOME/.zshrc)
+# Linking:
+# ln -sf $DOTFILES/tools/zsh/common.zshrc $ZDOTDIR/.zshrc
+
+export DOTFILES=$HOME/.dotfiles
+
+case "$(uname)" in
+  Linux)
+    if grep -q Microsoft /proc/version || [[ -n "$WSL_DISTRO_NAME" ]]; then
+      # WSL-specific configuration
+      source "$DOTFILES/platforms/wsl/zshrc"
+    else
+      # Native Linux configuration
+      source "$DOTFILES/platforms/linux/zshrc"
+    fi
+    ;;
+  Darwin)
+    # macOS-specific configuration
+    source "$DOTFILES/platforms/mac/zshrc"
+    ;;
+#   CYGWIN*|MINGW*|MSYS*)
+#     source "$DOTFILES/platform/wsl.zsh"
+#     ;;
+esac
+
+for file in $DOTFILES/tools/zsh/mod/*.zsh; do
+  source $file
+done

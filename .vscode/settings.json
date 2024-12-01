@@ -1,0 +1,31 @@
+{
+  "material-icon-theme.files.associations": {
+    "ideavimrc": "vim",
+    "vsvimrc": "vim",
+    "vimrc": "vim",
+    "haskeline": "haskell",
+    "inputrc": "console",
+    "npmrc": "npm",
+    "lesskey": "less",
+    "config.kdl": "json",
+    "pip.conf": "python-misc",
+    "*.kdl": "json",
+    "gitconfig": "git",
+    "nvim/init.lua": "vim",
+    "markdownlint.json": "markdownlint",
+    "wslconfig": "settings",
+    "skhdrc": "console"
+  },
+  "material-icon-theme.folders.associations": {
+    "bootstrap": "admin",
+    "ipython": "jupyter",
+    "zsh": "command",
+    "starship": "ui",
+    "nvim": "config",
+    "wsl": "linux"
+  },
+  "files.associations": {
+    "ideavimrc": "Vimscript",
+    ".wslconfig": "properties",
+  },
+}
