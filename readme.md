@@ -1,4 +1,3 @@
 # .dotfiles
 
-Moving to *Colemak*
-
+Moving to _Colemak_
