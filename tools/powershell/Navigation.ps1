@@ -1,15 +1,14 @@
 # ${function:~}        = { Set-Location -Path ~ } cd is better
-${function:...}      = { Set-Location -Path ..\.. }
-${function:....}     = { Set-Location -Path ..\..\.. }
-${function:.....}    = { Set-Location -Path ..\..\..\.. }
-${function:......}   = { Set-Location -Path ..\..\..\..\.. }
+${function:...}      = { Set-Location -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) }
+${function:....}     = { Set-Location -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) -ChildPath ..) }
+${function:.....}    = { Set-Location -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) -ChildPath ..) -ChildPath ..) }
+${function:......}   = { Set-Location -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) -ChildPath ..) -ChildPath ..) -ChildPath ..) }
 
 # Absolute navigation
-${function:docs}     = { Set-Location -Path ~/Documents }
-${function:down}     = { Set-Location -Path ~/Downloads }
-${function:dt}       = { Set-Location -Path ~/Desktop }
-${function:mytmp}    = { Set-Location -Path ~/Temp }
-${function:one}      = { Set-Location -Path ~/OneDrive }
-${function:doku}     = { Set-Location -Path ~/doku && Get-ChildItem }
+${function:docs}     = { Set-Location -Path (Join-Path -Path $HOME -ChildPath "Documents") }
+${function:down}     = { Set-Location -Path (Join-Path -Path $HOME -ChildPath "Downloads") }
+${function:dt}       = { Set-Location -Path (Join-Path -Path $HOME -ChildPath "Desktop") }
+${function:one}      = { Set-Location -Path (Join-Path -Path $HOME -ChildPath "OneDrive") }
+
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })

@@ -1,4 +1,8 @@
 #! /bin/bash
+# $DOTFILES/bootstrap/set_symblink_unix.bash
+# Date: 2024-12-01
+# Author: contact@js0ny.net
+# Set symbolic links for Unix-like systems
 mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet $XDG_CONFIG_HOME/vim $XDG_CONFIG_HOME/tmux $XDG_CONFIG_HOME/npm $XDG_CONFIG_HOME/readline $XDG_CONFIG_HOME/ipython
 # Not support XDG_CONFIG_HOME but same directory
 mkdir -p ~/.config/zellij ~/.config/yazi ~/.config/glow

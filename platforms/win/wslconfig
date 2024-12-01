@@ -1,0 +1,19 @@
+# $DOTFILES\platforms\win\wslconfig
+# Date: 2024-12-01
+# Author: contact@js0ny.net
+# Config Files (mainly for networking) for WSL2 (Windows Subsystem for Linux 2)
+# 适用于 Windows 的 Linux 子系统 2 的配置文件（主要用于网络）
+
+# Location: ~/.wslconfig
+# Linking: (PowerShell)
+# New-Item -ItemType SymbolicLink -Path ~\.wslconfig -Target ~\.dotfiles\platforms\win\wslconfig
+[wsl2]
+# networkingMode=mirrored
+# dnsTunneling=true
+# firewall=true
+# autoProxy=true
+
+[experimental]
+# requires dnsTunneling but are also OPTIONAL
+bestEffortDnsParsing=true
+hostAddressLoopback=true
