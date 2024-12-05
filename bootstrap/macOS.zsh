@@ -220,7 +220,7 @@ mas install 836500024 # WeChat
 mas install 451108668 # QQ
 
 # plum (Rime IME)
-curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bash
+curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install -o $HOME | bash
 
 # Set default apps (duti)
 # The id of the app can be found by running

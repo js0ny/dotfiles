@@ -32,6 +32,7 @@
         "command": "-code-runner.run"
     },
     // #endregion
+    // #region Comment and semicolons
     {
         "key": "ctrl+oem_1", // ctrl+;
         "command": "extension.insertSemicolon",
@@ -62,6 +63,7 @@
         "command": "-github.copilot.acceptCursorPanelSolution",
         "when": "github.copilot.activated && github.copilot.panelVisible"
     },
+    // #endregion
     {
         "key": "f9",
         "command": "csdevkit.debug.noDebugFileLaunch"
@@ -114,7 +116,52 @@
     // #region Nvim-Tree like File Explorer
     // n, e : move cursor up/down
     // h    : move cursor to parent folder
-    // l    : open file or folder
+    // i    : open file or folder
+    {
+        "key": "e",
+        "command": "list.focusUp",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "k",
+        "command": "-list.focusUp",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "e",
+        "command": "list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "k",
+        "command": "-list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "f",
+        "command": "filesExplorer.findInWorkspace",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "n",
+        "command": "list.focusDown",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "j",
+        "command": "-list.focusDown",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "i",
+        "command": "list.select",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "l",
+        "command": "-list.select",
+        "when": "listFocus && !inputFocus"
+    },
     { // z: Close all folders
         "key": "z",
         "command": "workbench.files.action.collapseExplorerFolders",
@@ -270,51 +317,6 @@
         "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
     },
     // #endregion
-    {
-        "key": "e",
-        "command": "list.focusUp",
-        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
-    },
-    {
-        "key": "k",
-        "command": "-list.focusUp",
-        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
-    },
-    {
-        "key": "e",
-        "command": "list.focusUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "k",
-        "command": "-list.focusUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "f",
-        "command": "filesExplorer.findInWorkspace",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "n",
-        "command": "list.focusDown",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "j",
-        "command": "-list.focusDown",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "i",
-        "command": "list.select",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "l",
-        "command": "-list.select",
-        "when": "listFocus && !inputFocus"
-    },
     {
         "key": "ctrl+shift+g c",
         "command": "-gitlens.showQuickCommitFileDetails",

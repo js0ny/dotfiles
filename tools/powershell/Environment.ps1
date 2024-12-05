@@ -1,6 +1,6 @@
 # $DOTFILES/tools\powershell\Environment.ps1
 # Date: 2024-12-01
-# Author: contact@js0ny.net
+# Author: js0ny
 # Sourced by Microsoft.PowerShell_profile.ps1
 
 

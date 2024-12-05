@@ -1,6 +1,6 @@
 # $DOTFILES/platforms\win\Microsoft.PowerShell_profile.ps1
 # Date: 2024-12-01
-# Author: contact@js0ny.net
+# Author: js0ny
 # PowerShell profile for Windows
 
 ### Load Configs ###

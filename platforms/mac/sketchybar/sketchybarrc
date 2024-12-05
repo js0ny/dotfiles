@@ -1,6 +1,6 @@
 # $DOTFILES/platforms/mac/sketchybarrc
 # Date: 2024-11-30
-# Author: contact@js0ny.net
+# Author: js0ny
 # TODO: Reorganize this file
 # This is a demo config to showcase some of the most important commands.
 # It is meant to be changed and configured, as it is intentionally kept sparse.
@@ -41,7 +41,7 @@ sketchybar --default "${default[@]}"
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces.
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+SPACE_ICONS=("" "" "" "󰖟" "" "" "7" "8" "9" "10")
 for i in "${!SPACE_ICONS[@]}"
 do
   sid="$(($i+1))"
@@ -89,7 +89,7 @@ sketchybar --add item clock center \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
-           --add item apple_music right 
+           --add item apple_music right
 
 sketchybar --add item music right
 sketchybar --set music \

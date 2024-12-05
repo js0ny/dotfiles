@@ -1,6 +1,6 @@
 # $DOTFILES/tools\powershell\Aliases.ps1
 # Date: 2024-12-01
-# Author: contact@js0ny.net
+# Author: js0ny
 # Aliases for PowerShell
 ### VARIABLES ###
 $EDITOR = "code"
