@@ -1,6 +1,6 @@
 # $DOTFILES\bootstrap\set_symlink_win.ps1
 # Date: 2024-12-01
-# Author: contact@js0ny.net
+# Author: js0ny
 # Set symlinks for dotfiles on Windows
 # 在 Windows 上设置 dotfiles 的符号链接
 
@@ -23,7 +23,7 @@ $linkDots = @{
     "$BASE_COMMON\NuGet.Config"    = "$env:AppData\NuGet\NuGet.Config"
     "$BASE_COMMON\obsidian.vimrc"  = "$env:UserProfile\Obsidian\.obsidian.vimrc"
     "$BASE_COMMON\pip.conf"        = "$env:AppData\pip\pip.ini"
-    "$BASE_COMMON\vim.noxdg.vimrc" = "$env:Vim\_vimrc"
+    "$BASE_COMMON\vimrc"           = "$env:Vim\_vimrc"
     "$BASE_TOOLS\ipython"          = "$env:IPYTHONDIR"
     "$BASE_TOOLS\nvim"             = "$env:XDG_CONFIG_HOME\nvim"
 }

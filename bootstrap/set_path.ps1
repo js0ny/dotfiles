@@ -1,0 +1,5 @@
+[System.Environment]::SetEnvironmentVariable("Path_EXT_0", "D:\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_0", "$Env:LocalAppData\Cargo\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_1", "$Env:LocalAppData\Go\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "$Env:LocalAppData\Cargo\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "", "User")

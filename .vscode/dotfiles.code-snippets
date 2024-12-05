@@ -15,15 +15,14 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-    "Dotfiles": {
-        "scope": "",
-        "prefix": "init",
-        "body": [
-            "$LINE_COMMENT \\$DOTFILES/$RELATIVE_FILEPATH",
-            "$LINE_COMMENT Date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-            "$LINE_COMMENT Author: contact@js0ny.net",
-            "$LINE_COMMENT $0",
-        ]
-
-    }
+	"Dotfiles": {
+		"scope": "",
+		"prefix": "init",
+		"body": [
+			"$LINE_COMMENT \\$DOTFILES/$RELATIVE_FILEPATH",
+			"$LINE_COMMENT Date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"$LINE_COMMENT Author: js0ny",
+			"$LINE_COMMENT $0",
+		]
+	}
 }

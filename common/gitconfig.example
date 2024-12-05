@@ -3,8 +3,8 @@
 # ln -sf  $DOTFILES/.config/git/.gitconfig $XDG_CONFIG_HOME/git/config
 # New-Item -ItemType SymbolicLink -Path "$Env:XDG_CONFIG_HOME\git\config" -Target "$DOTFILES\.config\git\.gitconfig"
 [user]
-	name = js0ny
-	email = json.y@outlook.com
+	name = whoami
+	email = whoami@example.com
 [core]
 	editor = nvim
 	pager = delta
