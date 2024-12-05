@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "xadillax.viml",
+    "mark-wiemer.vscode-autohotkey-plus-plus",
+    "edwinkofler.vscode-assorted-languages",
+    "tamasfe.even-better-toml",
+    "kdl-org.kdl",
+    "sumneko.lua",
+    "ms-vscode.powershell",
+    "thenuprojectcontributors.vscode-nushell-lang",
+    "redhat.vscode-yaml",
+    "redhat.vscode-xml"
+  ]
+}

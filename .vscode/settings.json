@@ -27,5 +27,6 @@
   "files.associations": {
     "ideavimrc": "Vimscript",
     ".wslconfig": "properties",
+    "WindowsTerminal.json": "jsonc",
   },
 }
