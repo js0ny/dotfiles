@@ -72,3 +72,5 @@ ${function:wini} = { winget install $args }
 ${function:winr} = { winget uninstall $args }
 ${function:wins} = { winget search $args }
 ${function:winu} = { winget upgrade $args }
+
+${function:killp} = {ps | ? ProcessName -like $args | kill -Force}

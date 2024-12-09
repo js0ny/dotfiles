@@ -1,6 +1,6 @@
 "$XDG_CONFIG_HOME/ideavim/ideavimrc
 " New-Item -ItemType SymbolicLink -Path ~\.ideavimrc -Target $DOTFILES\.config\ideavim\ideavimrc.vimrc
-" ln -sf $DOTFILES/.config/ideavim/ideavimrc.vimrc $XDG_CONFIG_HOME/ideavim/ideavimrc 
+" ln -sf $DOTFILES/.config/ideavim/ideavimrc.vimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
 """ Basic Configs """
 let mapleader = " " " set <leader> to <space>
 
@@ -15,7 +15,7 @@ noremap L I
 " ne[k]st
 noremap k n
 noremap K N
-" [j]ump 
+" [j]ump
 noremap j e
 noremap J E
 
@@ -146,6 +146,7 @@ nnoremap <leader>rG :action Generate<CR>
 
 """ Handling Ctrls """
 
+sethandler <C-C> i:ide
 sethandler <C-V> n-v:vim i:ide
 sethandler <C-.> a:ide
 sethandler <A-<CR>> a:ide

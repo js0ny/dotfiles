@@ -42,3 +42,5 @@ tools/nushell/
 .venv/
 
 platforms/win/komorebi/applications.json
+
+gitconfig
