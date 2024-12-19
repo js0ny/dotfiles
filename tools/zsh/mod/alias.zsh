@@ -34,7 +34,7 @@ if command -v lsd > /dev/null; then
     alias ls='lsd -A -I .DS_Store -I .git'
     alias l='lsd -lah'
     alias ll='lsd -l'
-    alias tree='lsd --tree -I .DS_Store -I .git'
+    alias tree='lsd --tree -I .DS_Store -I .git -A'
 fi
 
 # Functions #
@@ -89,3 +89,8 @@ if command -v brew > /dev/null; then
     alias brewc="brew cleanup"
     alias brewr="brew uninstall"
 fi
+
+alias -s {htm,html,css,scss,js,jsx,ts,tsx,json,jsonc}=code
+alias -s {md,markdown}=code
+alias -s {py,sh,rb,pl,php,java,c,cpp,h,hpp}=nvim
+alias -s {cs,csx,fs,fsx,razor}=code
