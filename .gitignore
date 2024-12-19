@@ -35,6 +35,8 @@ PowerToys/
 Justfile
 # Nushell
 tools/nushell/
+# fzf
+common/fzfrc
 
 # OS generated files
 .DS_Store

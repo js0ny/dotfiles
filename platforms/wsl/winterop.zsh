@@ -3,7 +3,7 @@
 
 # Defines the interop commands between WSL and Windows
 
-export FILE_EXPLORER="dopus.exe" # Directory Opus
+export FILE_EXPLORER="explorer.exe" # Directory Opus
 
 alias clip="clip.exe"
 alias xclip="clip.exe"

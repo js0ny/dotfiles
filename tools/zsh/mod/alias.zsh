@@ -26,8 +26,8 @@ alias pulldots="cd $DOTFILES && git pull"
 # Editors #
 alias v=nvim
 alias c=code
-alias sv="sudo vim"
-alias sn="sudo nvim"
+alias sv="sudo vim -u ~/.config/vim/vimrc"
+alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 
 # lsd - modern ls
 if command -v lsd > /dev/null; then
@@ -36,6 +36,9 @@ if command -v lsd > /dev/null; then
     alias ll='lsd -l'
     alias tree='lsd --tree -I .DS_Store -I .git'
 fi
+
+# fzf - Fuzzy Finder
+# export FZF_DEFAULT_OPTS_FILE=~/.dotfiles/common/fzfrc
 
 # Functions #
 mkcd() {
