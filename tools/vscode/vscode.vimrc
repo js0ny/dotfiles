@@ -130,7 +130,7 @@ noremap <leader>tx testing.cancelTestRun
 " <leader>h : +help
 
 " <leader>c : +code
-noremap <leader>cr coderunner.run
+noremap <leader>cr code-runner.run
 noremap <leader>cf editor.action.formatDocument
 noremap <leader>c<leader> editor.action.trimTrailingWhitespace
 noremap <leader>cs workbench.action.gotoSymbol

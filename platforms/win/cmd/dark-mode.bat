@@ -6,8 +6,6 @@ for /f "usebackq tokens=2*" %%a in (`reg query %regPath% /v AppsUseLightTheme ^|
 
 if "%currentMode%"=="0x1" (
     reg add %regPath% /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
-    echo ���л�����ɫģʽ
 ) else (
     reg add %regPath% /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
-    echo ���л���ǳɫģʽ
 )
