@@ -11,7 +11,8 @@ mkdir -p ~/.config/zellij ~/.config/yazi ~/.config/glow
 mkdir -p $HOME/Obsidian
 # $DOTFILES/common
 ln -sf $DOTFILES/common/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
-ln -sf $DOTFILES/common/gitconfig $XDG_CONFIG_HOME/git/config
+# ln -sf $DOTFILES/common/gitconfig $XDG_CONFIG_HOME/git/config
+cp $DOTFILES/common/gitconfig.example $XDG_CONFIG_HOME/git/config
 ln -sf $DOTFILES/common/glow.yaml ~/.config/glow/config.yml
 ln -sf $DOTFILES/common/haskeline ~/.haskeline
 ln -sf $DOTFILES/common/ideavimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
@@ -28,6 +29,7 @@ ln -sf $DOTFILES/tools/ipython $XDG_CONFIG_HOME/ipython
 ln -sf $DOTFILES/tools/nvim $XDG_CONFIG_HOME/nvim
 ln -sf $DOTFILES/tools/yazi/config/keymap.toml ~/.config/yazi/keymap.toml
 ln -sf $DOTFILES/tools/yazi/config/yazi.toml ~/.config/yazi/yazi.toml
+ln -sf $DOTFILES/tools/fish ~/.config
 
 
 if [ $(uname) = "Darwin"]; then
