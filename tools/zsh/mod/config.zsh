@@ -9,6 +9,9 @@ HIST_STAMPS="yyyy-mm-dd"
 HISTSIZE=10000
 SAVEHIST=10000
 
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
+
 
 # Manually manage plugins 手动管理插件
 # Load zsh-syntax-highlighting before zsh-history-substring-search

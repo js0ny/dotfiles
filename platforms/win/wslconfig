@@ -12,6 +12,7 @@
 # dnsTunneling=true
 # firewall=true
 # autoProxy=true
+guiApplications=true
 
 [experimental]
 # requires dnsTunneling but are also OPTIONAL
