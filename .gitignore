@@ -44,3 +44,5 @@ common/fzfrc
 .venv/
 
 platforms/win/komorebi/applications.json
+
+gitconfig

@@ -1,6 +1,6 @@
 # $DOTFILES/platforms\win\Microsoft.PowerShell_profile.ps1
 # Date: 2024-12-01
-# Author: contact@js0ny.net
+# Author: js0ny
 # PowerShell profile for Windows
 
 ### Load Configs ###
@@ -72,3 +72,5 @@ ${function:wini} = { winget install $args }
 ${function:winr} = { winget uninstall $args }
 ${function:wins} = { winget search $args }
 ${function:winu} = { winget upgrade $args }
+
+${function:killp} = {ps | ? ProcessName -like $args | kill -Force}

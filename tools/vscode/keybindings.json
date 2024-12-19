@@ -1,485 +1,487 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-    // #region quickOpen (Telescope)
-    { // <leader> <space> Telescope emulator
-        "key": "space space",
-        "command": "workbench.action.quickOpen",
-        "when": "!editorFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "workbench.action.quickOpenNavigatePrevious",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "workbench.action.quickOpenNavigateNext",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+[",
-        "command": "workbench.action.closeQuickOpen",
-        "when": "inQuickOpen"
-    },
-    // #endregion
-    // #region plugin: code runner
-    {
-        "key": "ctrl+alt+n",
-        "command": "-code-runner.run"
-    },
-    // #endregion
-    {
-        "key": "ctrl+oem_1", // ctrl+;
-        "command": "extension.insertSemicolon",
-        "when": "editorTextFocus"
-    },
-    { // change to toggle comment
-        "key": "ctrl+oem_2", // ctrl+/;
-        "command": "-extension.insertSemicolon",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+oem_1",
-        "command": "extension.insertSemicolonWithNewLine",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+oem_2",
-        "command": "-extension.insertSemicolonWithNewLine",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+oem_2",
-        "command": "github.copilot.acceptCursorPanelSolution",
-        "when": "github.copilot.activated && github.copilot.panelVisible"
-    },
-    {
-        "key": "ctrl+oem_2",
-        "command": "-github.copilot.acceptCursorPanelSolution",
-        "when": "github.copilot.activated && github.copilot.panelVisible"
-    },
-    {
-        "key": "f9",
-        "command": "csdevkit.debug.noDebugFileLaunch"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "-editor.action.startFindReplaceAction",
-        "when": "editorFocus || editorIsOpen"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "-extension.vim_ctrl+h",
-        "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+r",
-        "command": "-workbench.action.reloadWindow",
-        "when": "isDevelopment"
-    },
-    {
-        "key": "ctrl+alt+r",
-        "command": "-workbench.action.terminal.runRecentCommand",
-        "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled"
-    },
-    {
-        "key": "ctrl+r",
-        "command": "-workbench.action.terminal.runRecentCommand",
-        "when": "accessibilityModeEnabled && terminalFocus && terminalHasBeenCreated || accessibilityModeEnabled && terminalFocus && terminalProcessSupported || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
-    },
-    {
-        "key": "ctrl+shift+r",
-        "command": "-rerunSearchEditorSearch",
-        "when": "inSearchEditor"
-    },
-    {
-        "key": "ctrl+shift+r",
-        "command": "-editor.action.refactor",
-        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+r",
-        "command": "-workbench.action.quickOpenNavigatePreviousInRecentFilesPicker",
-        "when": "inQuickOpen && inRecentFilesPicker"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "cursorEnd",
-        "when": "textInputFocus"
-    },
-    // #region Nvim-Tree like File Explorer
-    // n, e : move cursor up/down
-    // h    : move cursor to parent folder
-    // l    : open file or folder
-    { // z: Close all folders
-        "key": "z",
-        "command": "workbench.files.action.collapseExplorerFolders",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // <leader>e: Close left sidebar if is in file explorer
-        "key": "space e",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "sideBarFocus && !inputFocus && !searchViewletVisible && filesExplorerFocus"
-    },
-    { // <leader>e: Focus on file explorer if is on sidebar and not in file explorer
-        "key": "space e",
-        "command": "workbench.files.action.focusFilesExplorer",
-        "when": "sideBarFocus && !inputFocus && !searchViewletVisible && !filesExplorerFocus"
-    },
-    { // <leader>g: Focus on file explorer if is on sidebar and not in file explorer
-        "key": "space g",
-        "command": "workbench.scm.focus",
-        "when": "sideBarFocus && !inputFocus && !searchViewletVisible && !scmViewletVisible"
-    },
-    { // a: add
-        "key": "a",
-        "command": "explorer.newFile",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // p: paste
-        "key": "p",
-        "command": "filesExplorer.paste",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // x: cut
-        "key": "x",
-        "command": "filesExplorer.cut",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // d: delete
-        "key": "d",
-        "command": "deleteFile",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // r: rename
-        "key": "r",
-        "command": "renameFile",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // s: open in vertical split / to side
-        "key": "s",
-        "command": "explorer.openToSide",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // A: add folder
-        "key": "shift+a",
-        "command": "explorer.newFolder",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // C: Copy path
-        "key": "shift+c",
-        "command": "copyFilePath",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // E: Open in File Explorer
-        "key": "shift+e",
-        "command": "revealFileInOS",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // E: Open in File Explorer (WSL)
-        "key": "shift+e",
-        "command": "remote-wsl.revealInExplorer",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus && remoteName == 'wsl'"
-    },
-    { // O: Open with System App
-        "key": "shift+o",
-        "command": "openInExternalApp.open",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // Y: Copy Relative Path
-        "key": "shift+y",
-        "command": "copyRelativeFilePath",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // R: Copy Relative Path
-        "key": "shift+r",
-        "command": "workbench.files.action.refreshFilesExplorer",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    { // T: Open in terminal
-        "key": "shift+t",
-        "command": "openInIntegratedTerminal",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    // #endregion
-    {
-        "key": "ctrl+p",
-        "command": "workbench.action.files.openFileFolder",
-        "when": "isMacNative && openFolderWorkspaceSupport"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "-workbench.action.files.openFileFolder",
-        "when": "isMacNative && openFolderWorkspaceSupport"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "-extension.vim_ctrl+p",
-        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "-workbench.action.files.openFolderViaWorkspace",
-        "when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
-    },
-    // #region Vim-like Hover Browsing
-    {
-        "key": "h",
-        "command": "editor.action.scrollLeftHover",
-        "when": "editorHoverFocused"
-    },
-    {
-        "key": "n",
-        "command": "editor.action.scrollDownHover",
-        "when": "editorHoverFocused"
-    },
-    {
-        "key": "e",
-        "command": "editor.action.scrollUpHover",
-        "when": "editorHoverFocused"
-    },
-    {
-        "key": "i",
-        "command": "editor.action.scrollRightHover",
-        "when": "editorHoverFocused"
-    },
-    // #endregion
-    // #region Vim-like Jupyter Navigation
-    {
-        "key": "n",
-        "command": "notebook.focusNextEditor",
-        "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'none' && notebookEditorCursorAtBoundary != 'top'"
-    },
-    {
-        "key": "j",
-        "command": "-notebook.focusNextEditor",
-        "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'none' && notebookEditorCursorAtBoundary != 'top'"
-    },
-    {
-        "key": "e",
-        "command": "notebook.focusPreviousEditor",
-        "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
-    },
-    {
-        "key": "k",
-        "command": "-notebook.focusPreviousEditor",
-        "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
-    },
-    // #endregion
-    {
-        "key": "e",
-        "command": "list.focusUp",
-        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
-    },
-    {
-        "key": "k",
-        "command": "-list.focusUp",
-        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
-    },
-    {
-        "key": "e",
-        "command": "list.focusUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "k",
-        "command": "-list.focusUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "f",
-        "command": "filesExplorer.findInWorkspace",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "n",
-        "command": "list.focusDown",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "j",
-        "command": "-list.focusDown",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "i",
-        "command": "list.select",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "l",
-        "command": "-list.select",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+shift+g c",
-        "command": "-gitlens.showQuickCommitFileDetails",
-        "when": "editorTextFocus && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
-    },
-    {
-        "key": "ctrl+shift+g s",
-        "command": "git.stageAll"
-    },
-    {
-        "key": "ctrl+shift+g g",
-        "command": "workbench.view.scm",
-        "when": "workbench.scm.active"
-    },
-    {
-        "key": "ctrl+shift+g",
-        "command": "-workbench.view.scm",
-        "when": "workbench.scm.active"
-    },
-    {
-        "key": "ctrl+k ctrl+shift+b",
-        "command": "editor.action.goToSelectionAnchor"
-    },
-    {
-        "key": "ctrl+k ctrl+shift+i",
-        "command": "workbench.action.selectProductIconTheme"
-    },
-    {
-        "key": "ctrl+l p",
-        "command": "-extension.openPrGitProvider"
-    },
-    {
-        "key": "ctrl+l g",
-        "command": "-extension.openInGitHub"
-    },
-    {
-        "key": "ctrl+l c",
-        "command": "-extension.copyGitHubLinkToClipboard"
-    },
-    // #region Use ^n ^e to navigate completions
-    {
-        "key": "ctrl+n",
-        "command": "workbench.action.files.newUntitledFile",
-        "when": "!suggestWidgetVisible && !inQuickOpen"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "-workbench.action.files.newUntitledFile"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "selectNextSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "selectPrevSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    },
-    // #endregion
-    // #region Terminal Control, use ^a as prefix / leader key
-    // tmux-like terminal control
-    { // prefix + x : kill terminal
-        "key": "ctrl+a x",
-        "command": "workbench.action.terminal.kill",
-        "when": "terminalFocus"
-    },
-    { // prefix + c : create new terminal
-        "key": "ctrl+a c",
-        "command": "workbench.action.terminal.new",
-        "when": "terminalFocus"
-    },
-    { // prefix + | : split terminal vertically
-        "key": "ctrl+a shift+\\",
-        "command": "workbench.action.terminal.split",
-        "when": "terminalFocus"
-    },
-    { // prefix + \ : split terminal vertically
-        "key": "ctrl+a \\",
-        "command": "workbench.action.terminal.split",
-        "when": "terminalFocus"
-    },
-    { // prefix + / : search
-        "key": "ctrl+a /",
-        "command": "workbench.action.terminal.focusFind",
-        "when": "terminalFocus"
-    },
-    { // prefix + t : toggle terminal
-        "key": "ctrl+a t",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminalFocus"
-    },
-    { // prefix + ^a: show information
-        "key": "ctrl+a ctrl+a",
-        "command": "workbench.action.terminal.focusHover",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
-    },
-    {
-        "key": "ctrl+k ctrl+i",
-        "command": "-workbench.action.terminal.focusHover",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
-    },
-    { // prefix + 1 : focus terminal 1
-        "key": "ctrl+a 1",
-        "command": "workbench.action.terminal.focusAtIndex1",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
-    },
-    { // prefix + 2 : focus terminal 2
-        "key": "ctrl+a 2",
-        "command": "workbench.action.terminal.focusAtIndex2",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
-    },
-    { // prefix + 3 : focus terminal 3
-        "key": "ctrl+a 3",
-        "command": "workbench.action.terminal.focusAtIndex3",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
-    },
-    { // prefix + g : Go to recent directory
-        "key": "ctrl+a g",
-        "command": "workbench.action.terminal.goToRecentDirectory",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+g",
-        "command": "-workbench.action.terminal.goToRecentDirectory",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    { // prefix + d : detach terminal
-        "key": "ctrl+a d",
-        "command": "workbench.action.terminal.detachSession",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    { // prefix + a : attach to session
-        "key": "ctrl+a a",
-        "command": "workbench.action.terminal.attachToSession",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "ctrl+a h",
-        "command": "workbench.action.terminal.focusPreviousPane",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+a i",
-        "command": "workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+a shift+H",
-        "command": "workbench.action.terminal.resizePaneLeft",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+a shift+N",
-        "command": "workbench.action.terminal.resizePaneDown",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+a shift+E",
-        "command": "workbench.action.terminal.resizePaneUp",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "ctrl+a shift+I",
-        "command": "workbench.action.terminal.resizePaneRight",
-        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-    }
+  // #region quickOpen (Telescope)
+  { // <leader> <space> Telescope emulator
+    "key": "space space",
+    "command": "workbench.action.quickOpen",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
+  // #endregion
+  // #region plugin: code runner
+  {
+    "key": "ctrl+alt+n",
+    "command": "-code-runner.run"
+  },
+  // #endregion
+  // #region Comment and semicolons
+  {
+    "key": "ctrl+oem_1", // ctrl+;
+    "command": "extension.insertSemicolon",
+    "when": "editorTextFocus"
+  },
+  { // change to toggle comment
+    "key": "ctrl+oem_2", // ctrl+/;
+    "command": "-extension.insertSemicolon",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+oem_1",
+    "command": "extension.insertSemicolonWithNewLine",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+oem_2",
+    "command": "-extension.insertSemicolonWithNewLine",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+oem_2",
+    "command": "github.copilot.acceptCursorPanelSolution",
+    "when": "github.copilot.activated && github.copilot.panelVisible"
+  },
+  {
+    "key": "ctrl+oem_2",
+    "command": "-github.copilot.acceptCursorPanelSolution",
+    "when": "github.copilot.activated && github.copilot.panelVisible"
+  },
+  // #endregion
+  {
+    "key": "f9",
+    "command": "csdevkit.debug.noDebugFileLaunch"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-extension.vim_ctrl+h",
+    "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.reloadWindow",
+    "when": "isDevelopment"
+  },
+  {
+    "key": "ctrl+alt+r",
+    "command": "-workbench.action.terminal.runRecentCommand",
+    "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.terminal.runRecentCommand",
+    "when": "accessibilityModeEnabled && terminalFocus && terminalHasBeenCreated || accessibilityModeEnabled && terminalFocus && terminalProcessSupported || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "-rerunSearchEditorSearch",
+    "when": "inSearchEditor"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "-editor.action.refactor",
+    "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "-workbench.action.quickOpenNavigatePreviousInRecentFilesPicker",
+    "when": "inQuickOpen && inRecentFilesPicker"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "cursorEnd",
+    "when": "textInputFocus"
+  },
+  // #region Nvim-Tree like File Explorer
+  // n, e : move cursor up/down
+  // h    : move cursor to parent folder
+  // i    : open file or folder
+  {
+    "key": "e",
+    "command": "list.focusUp",
+    "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+  },
+  {
+    "key": "k",
+    "command": "-list.focusUp",
+    "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+  },
+  {
+    "key": "e",
+    "command": "list.focusUp",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "k",
+    "command": "-list.focusUp",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "f",
+    "command": "filesExplorer.findInWorkspace",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "n",
+    "command": "list.focusDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "j",
+    "command": "-list.focusDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "i",
+    "command": "list.select",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "l",
+    "command": "-list.select",
+    "when": "listFocus && !inputFocus"
+  },
+  { // z: Close all folders
+    "key": "z",
+    "command": "workbench.files.action.collapseExplorerFolders",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // <leader>e: Close left sidebar if is in file explorer
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus && !inputFocus && !searchViewletVisible && filesExplorerFocus"
+  },
+  { // <leader>e: Focus on file explorer if is on sidebar and not in file explorer
+    "key": "space e",
+    "command": "workbench.files.action.focusFilesExplorer",
+    "when": "sideBarFocus && !inputFocus && !searchViewletVisible && !filesExplorerFocus"
+  },
+  { // <leader>g: Focus on file explorer if is on sidebar and not in file explorer
+    "key": "space g",
+    "command": "workbench.scm.focus",
+    "when": "sideBarFocus && !inputFocus && !searchViewletVisible && !scmViewletVisible"
+  },
+  { // a: add
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // p: paste
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // x: cut
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // d: delete
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // r: rename
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // s: open in vertical split / to side
+    "key": "s",
+    "command": "explorer.openToSide",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // A: add folder
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // C: Copy path
+    "key": "shift+c",
+    "command": "copyFilePath",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // E: Open in File Explorer
+    "key": "shift+e",
+    "command": "revealFileInOS",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // E: Open in File Explorer (WSL)
+    "key": "shift+e",
+    "command": "remote-wsl.revealInExplorer",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus && remoteName == 'wsl'"
+  },
+  { // O: Open with System App
+    "key": "shift+o",
+    "command": "openInExternalApp.open",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // Y: Copy Relative Path
+    "key": "shift+y",
+    "command": "copyRelativeFilePath",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // R: Copy Relative Path
+    "key": "shift+r",
+    "command": "workbench.files.action.refreshFilesExplorer",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  { // T: Open in terminal
+    "key": "shift+t",
+    "command": "openInIntegratedTerminal",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  // #endregion
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.files.openFileFolder",
+    "when": "isMacNative && openFolderWorkspaceSupport"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "-workbench.action.files.openFileFolder",
+    "when": "isMacNative && openFolderWorkspaceSupport"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-extension.vim_ctrl+p",
+    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "-workbench.action.files.openFolderViaWorkspace",
+    "when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+  },
+  // #region Vim-like Hover Browsing
+  {
+    "key": "h",
+    "command": "editor.action.scrollLeftHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "n",
+    "command": "editor.action.scrollDownHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "e",
+    "command": "editor.action.scrollUpHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "i",
+    "command": "editor.action.scrollRightHover",
+    "when": "editorHoverFocused"
+  },
+  // #endregion
+  // #region Vim-like Jupyter Navigation
+  {
+    "key": "n",
+    "command": "notebook.focusNextEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'none' && notebookEditorCursorAtBoundary != 'top'"
+  },
+  {
+    "key": "j",
+    "command": "-notebook.focusNextEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'none' && notebookEditorCursorAtBoundary != 'top'"
+  },
+  {
+    "key": "e",
+    "command": "notebook.focusPreviousEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
+  },
+  {
+    "key": "k",
+    "command": "-notebook.focusPreviousEditor",
+    "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
+  },
+  // #endregion
+  {
+    "key": "ctrl+shift+g c",
+    "command": "-gitlens.showQuickCommitFileDetails",
+    "when": "editorTextFocus && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "ctrl+shift+g s",
+    "command": "git.stageAll"
+  },
+  {
+    "key": "ctrl+shift+g g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+k ctrl+shift+b",
+    "command": "editor.action.goToSelectionAnchor"
+  },
+  {
+    "key": "ctrl+k ctrl+shift+i",
+    "command": "workbench.action.selectProductIconTheme"
+  },
+  {
+    "key": "ctrl+l p",
+    "command": "-extension.openPrGitProvider"
+  },
+  {
+    "key": "ctrl+l g",
+    "command": "-extension.openInGitHub"
+  },
+  {
+    "key": "ctrl+l c",
+    "command": "-extension.copyGitHubLinkToClipboard"
+  },
+  // #region Use ^n ^e to navigate completions
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.files.newUntitledFile",
+    "when": "!suggestWidgetVisible && !inQuickOpen"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  },
+  // #endregion
+  // #region Terminal Control, use ^a as prefix / leader key
+  // tmux-like terminal control
+  { // prefix + x : kill terminal
+    "key": "ctrl+a x",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  { // prefix + c : create new terminal
+    "key": "ctrl+a c",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  { // prefix + | : split terminal vertically
+    "key": "ctrl+a shift+\\",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  { // prefix + \ : split terminal vertically
+    "key": "ctrl+a \\",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  { // prefix + / : search
+    "key": "ctrl+a /",
+    "command": "workbench.action.terminal.focusFind",
+    "when": "terminalFocus"
+  },
+  { // prefix + t : toggle terminal
+    "key": "ctrl+a t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminalFocus"
+  },
+  { // prefix + ^a: show information
+    "key": "ctrl+a ctrl+a",
+    "command": "workbench.action.terminal.focusHover",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+i",
+    "command": "-workbench.action.terminal.focusHover",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  { // prefix + 1 : focus terminal 1
+    "key": "ctrl+a 1",
+    "command": "workbench.action.terminal.focusAtIndex1",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  { // prefix + 2 : focus terminal 2
+    "key": "ctrl+a 2",
+    "command": "workbench.action.terminal.focusAtIndex2",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  { // prefix + 3 : focus terminal 3
+    "key": "ctrl+a 3",
+    "command": "workbench.action.terminal.focusAtIndex3",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  { // prefix + g : Go to recent directory
+    "key": "ctrl+a g",
+    "command": "workbench.action.terminal.goToRecentDirectory",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "-workbench.action.terminal.goToRecentDirectory",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  { // prefix + d : detach terminal
+    "key": "ctrl+a d",
+    "command": "workbench.action.terminal.detachSession",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  { // prefix + a : attach to session
+    "key": "ctrl+a a",
+    "command": "workbench.action.terminal.attachToSession",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+a h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+a i",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+a shift+H",
+    "command": "workbench.action.terminal.resizePaneLeft",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+a shift+N",
+    "command": "workbench.action.terminal.resizePaneDown",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+a shift+E",
+    "command": "workbench.action.terminal.resizePaneUp",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+a shift+I",
+    "command": "workbench.action.terminal.resizePaneRight",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  }
 ]

@@ -28,7 +28,8 @@ truncation_length = 2
 truncate_to_repo = true
 read_only = " 󰌾"
 style ="bold cyan"
-truncation_symbol = ".../"
+truncation_symbol = ":"
+fish_style_pwd_dir_length = 1
 
 [directory.substitutions]
 "~/Documents" = "󰈙 "

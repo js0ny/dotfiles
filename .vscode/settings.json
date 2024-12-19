@@ -11,6 +11,7 @@
     "pip.conf": "python-misc",
     "*.kdl": "json",
     "gitconfig": "git",
+    "gitconfig.example": "git",
     "nvim/init.lua": "vim",
     "markdownlint.json": "markdownlint",
     "wslconfig": "settings",
@@ -27,5 +28,6 @@
   "files.associations": {
     "ideavimrc": "Vimscript",
     ".wslconfig": "properties",
+    "WindowsTerminal.json": "jsonc",
   },
 }

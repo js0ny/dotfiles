@@ -1,6 +1,6 @@
 # $DOTFILES/tools\powershell\Aliases.ps1
 # Date: 2024-12-01
-# Author: contact@js0ny.net
+# Author: js0ny
 # Aliases for PowerShell
 ### VARIABLES ###
 $EDITOR = "code"
@@ -29,3 +29,7 @@ function cdls { param( [string] $dirname) Set-Location $dirname && Get-ChildItem
 # Python & Conda #
 Set-Alias "py"      "python"
 Set-Alias "ipy"     "ipython"
+
+if ($isWindows) {
+function kex { wsl -d kali-linux kex --sl -s }
+}

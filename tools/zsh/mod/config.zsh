@@ -1,6 +1,6 @@
 # $DOTFILES/tools/zsh/mod/config.zsh
 # Date: 2024-11-30
-# Author: contact@js0ny.net
+# Author: js0ny
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
 # ZSH Config, no need to `export` these variables
@@ -38,8 +38,8 @@ done
 # Use `set -k` to mark leading `#` as a comment character
 set -k
 
-# TODO: Below should be reorganized
-export PATH=$HOME/.local/bin:$PATH
+# # TODO: Below should be reorganized
+# export PATH=$HOME/.local/bin:$PATH
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="$HOME/.config/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

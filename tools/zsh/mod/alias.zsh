@@ -1,6 +1,6 @@
 # $DOTFILES/tools/zsh/mod/alias.zsh
 # Date: 2024-11-30
-# Author: contact@js0ny.net
+# Author: js0ny
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
 # PowerShell Equivalent, for cross-platform compatibility
@@ -34,7 +34,7 @@ if command -v lsd > /dev/null; then
     alias ls='lsd -A -I .DS_Store -I .git'
     alias l='lsd -lah'
     alias ll='lsd -l'
-    alias tree='lsd --tree -I .DS_Store -I .git'
+    alias tree='lsd --tree -I .DS_Store -I .git -A'
 fi
 
 # fzf - Fuzzy Finder
@@ -92,3 +92,8 @@ if command -v brew > /dev/null; then
     alias brewc="brew cleanup"
     alias brewr="brew uninstall"
 fi
+
+alias -s {htm,html,css,scss,js,jsx,ts,tsx,json,jsonc}=code
+alias -s {md,markdown}=code
+alias -s {py,sh,rb,pl,php,java,c,cpp,h,hpp}=nvim
+alias -s {cs,csx,fs,fsx,razor}=code

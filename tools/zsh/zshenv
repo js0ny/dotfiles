@@ -1,13 +1,13 @@
 # $DOTFILES/tools/zsh/zshenv
 # Date: 2024-11-30
-# Author: contact@js0ny.net
+# Author: js0ny
 # User-specific environment variables for zsh 用户级别的 zsh 环境变量
 
 # Location:
 # $ZDOTDIR/.zshenv (specified by ZDOTDIR)
 # ~/.zshenv (default location)
 # Linking:
-# ln -sf $DOTFILES/tools/zsh/.zshenv $ZDOTDIR/.zshenv
+# ln -sf $DOTFILES/tools/zsh/zshenv $ZDOTDIR/.zshenv
 # This file is sourced by all zsh sessions upon startup.
 
 # For me (this user), define XDG Base Directory Specification variables
