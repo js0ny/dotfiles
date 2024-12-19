@@ -39,3 +39,8 @@ fi
 if command -v winget.exe > /dev/null; then
   winget.exe upgrade
 fi
+
+# macOS - Rime
+if [ $(uname) = "Darwin"]; then
+    bash ~/plum/rime-install
+fi

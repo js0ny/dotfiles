@@ -1,6 +1,6 @@
 // Paste this into surfingkeys advanced settings
 // or use:
-// Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/browser/surfingkeys.js
+// Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/tools/browser/surfingkeys.js
 // TODO: Visual Mode
 
 // #region Example
