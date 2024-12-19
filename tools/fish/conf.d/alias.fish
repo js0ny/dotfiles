@@ -53,3 +53,10 @@ if command -v brew > /dev/null
     abbr --add brewr "brew remove"
     abbr --add brewc "brew cleanup"
 end
+
+if command -v pacman > /dev/null
+    abbr --add pac "sudo pacman"
+    abbr --add paci "sudo pacman -S"
+    abbr --add pacr "sudo pacman -R"
+    abbr --add pacu "sudo pacman -Syu"
+end
