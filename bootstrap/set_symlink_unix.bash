@@ -29,6 +29,7 @@ ln -sf $DOTFILES/tools/ipython $XDG_CONFIG_HOME/ipython
 ln -sf $DOTFILES/tools/nvim $XDG_CONFIG_HOME/nvim
 ln -sf $DOTFILES/tools/yazi/config/keymap.toml ~/.config/yazi/keymap.toml
 ln -sf $DOTFILES/tools/yazi/config/yazi.toml ~/.config/yazi/yazi.toml
+ln -sf $DOTFILES/tools/fish ~/.config
 
 
 if [ $(uname) = "Darwin"]; then
