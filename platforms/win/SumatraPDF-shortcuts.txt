@@ -1,0 +1,90 @@
+Shortcuts [
+	[
+		Cmd = CmdToggleBookmark
+		Key = Ctrl + \\
+	]
+	[
+		Cmd = CmdRenameFile
+		Key = R
+	]
+	[
+		Cmd = CmdFindNext
+		Key = k
+	]
+	[
+		Cmd = CmdFindPrev
+		Key = K
+	]
+	[
+		Cmd = CmdScrollUp
+		Key = e
+	]
+	[
+		Cmd = CmdScrollDown
+		Key = n
+	]
+	[
+		Cmd = CmdScrollUpHalfPage
+		Key = E
+	]
+	[
+		Cmd = CmdScrollDownHalfPage
+		Key = N
+	]
+	[
+		Cmd = CmdScrollRight
+		Key = i
+	]
+	[
+		Cmd = CmdInvertColors
+		Key = l
+	]
+	[
+		Cmd = CmdPrevTab
+		Key = Shift+H
+	]
+	[
+		Cmd = CmdNextTab
+		Key = Shift+I
+	]
+	[
+		Cmd = CmdGoToFirstPage
+		Key = g
+	]
+	[
+		Cmd = CmdGoToLastPage
+		Key = G
+	]
+	[
+		Cmd = CmdGoToPage
+		Key = :
+	]
+	[
+		Cmd = CmdRotateLeft
+		Key = {
+	]
+	[
+		Cmd = CmdRotateRight
+		Key = }
+	]
+	[
+		Cmd = CmdNavigateBack
+		Key = [
+	]
+	[
+		Cmd = CmdNavigateForward
+		Key = ]
+	]
+	[
+		Cmd = CmdNavigateBack
+		Key = b
+	]
+	[
+		Cmd = CmdNavigateForward
+		Key = f
+	]
+	[
+		Cmd = CmdHelpOpenKeyboardShortcuts
+		Key = ?
+	]
+]

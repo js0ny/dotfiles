@@ -30,9 +30,11 @@ noremap J E
 noremap Y y$
 
 " 分词版本的w和b，支持中文，需要插件
+" 为了保证递归解析，而不是打断，使用 `nmap` 而不是 `nnoremap`
+" 由于 VSCode Vim 的限制，递归解析存在缺陷，目前这种情况，2w 符合预期，但 dw 不符合预期
 " Comment if you don't use cjk or the plugin
-noremap w cjkWordHandler.cursorWordEndRight
-noremap b cjkWordHandler.cursorWordStartLeft
+nmap w cjkWordHandler.cursorWordEndRight
+nmap b cjkWordHandler.cursorWordStartLeft
 
 " keep selection after indent (define in settings.json)
 " voremap < <gv
@@ -49,10 +51,13 @@ noremap gh editor.action.showDefinitionPreviewHover
 
 noremap <leader><leader> workbench.action.quickOpen
 noremap <leader>: workbench.action.showCommands
+noremap <leader>E workbench.view.explorer
+
 " <leader>q : +quit
 noremap <leader>qq :quit<CR>
 noremap <leader>qQ :qall<CR>
 noremap <leader>Q :quit<CR>
+
 " <leader>w : +write/window
 noremap <leader>ww :write<CR>
 noremap <leader>wa :wall<CR>
@@ -66,6 +71,7 @@ noremap <leader>we workbench.action.focusAboveGroup
 noremap <leader>wE workbench.action.splitEditorUp
 noremap <leader>wi workbench.action.focusRightGroup
 noremap <leader>wI workbench.action.splitEditorRight
+
 " <leader>f : +find/file
 noremap <leader>ff workbench.action.quickOpen
 noremap <leader>fF workbench.view.search
@@ -77,6 +83,7 @@ noremap <leader>fR workbench.action.openRecent
 noremap <leader>fs workbench.action.search.toggleQueryDetails
 noremap <leader>ft workbench.action.terminal.toggleTerminal
 noremap <leader>fx workbench.view.extensions
+
 " <leader>p : +project (requires Project Manager extension)
 noremap <leader>pp projectManager.listProjects
 noremap <leader>pP projectManager.listAnyProjects#sideBarAny
@@ -87,12 +94,16 @@ noremap <leader>pF projectManager.filterProjectsByTag
 noremap <leader>pg projectManager.listGitProjects#sideBarGit
 noremap <leader>pr workbench.action.openRecent
 noremap <leader>ps projectManager.saveProject
+
 " <leader>g : +git
 noremap <leader>gg workbench.view.scm
 noremap <leader>gS git.stageAll
+
 " <leader>j : +jump
 noremap <leader>jj workbench.action.gotoLine
+
 " <leader>l : +language (define in settings.json)
+
 " <leader>u : +ui
 noremap <leader>ui workbench.action.selectTheme
 noremap <leader>uw editor.action.toggleWordWrap
@@ -117,14 +128,18 @@ noremap <leader>tC testing.debugCurrentTest
 noremap <leader>tx testing.cancelTestRun
 " <leader>d : +debug
 " <leader>h : +help
+
 " <leader>c : +code
 noremap <leader>cr coderunner.run
 noremap <leader>cf editor.action.formatDocument
 noremap <leader>c<leader> editor.action.trimTrailingWhitespace
 noremap <leader>cs workbench.action.gotoSymbol
 noremap <leader>cS workbench.action.showAllSymbols
+
 " <leader>b : +buffer
 noremap <leader>bb workbench.action.showAllEditors
 noremap <leader>bd :bdelete<CR>
 noremap <leader>bh :bprevious<CR>
 noremap <leader>bi :bnext<CR>
+
+" 中文分词测试用例
