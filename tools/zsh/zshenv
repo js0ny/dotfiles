@@ -7,7 +7,7 @@
 # $ZDOTDIR/.zshenv (specified by ZDOTDIR)
 # ~/.zshenv (default location)
 # Linking:
-# ln -sf $DOTFILES/tools/zsh/.zshenv $ZDOTDIR/.zshenv
+# ln -sf $DOTFILES/tools/zsh/zshenv $ZDOTDIR/.zshenv
 # This file is sourced by all zsh sessions upon startup.
 
 # For me (this user), define XDG Base Directory Specification variables
