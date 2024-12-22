@@ -16,10 +16,9 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 # Set Environment Variables
 # Use %PATH_EXT% to prevent PATH from being too long
 [System.Environment]::SetEnvironmentVariable("Path_EXT_0", "D:\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_0", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_1", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_0", "C:\Users\jsony\AppData\Local\Cargo\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_1", "C:\Users\jsony\AppData\Local\Go\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "C:\Users\jsony\AppData\Local\Cargo\bin", "User")
 $currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
 if ($currentPath -notlike "*%PATH_EXT%*") {
     $currentPath += ";%PATH_EXT_0%;%PATH_EXT_1%;%PATH_EXT_2%"

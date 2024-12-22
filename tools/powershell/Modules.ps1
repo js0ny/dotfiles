@@ -1,4 +1,4 @@
-Import-Module -Name Terminal-Icons
+# Import-Module -Name Terminal-Icons
 Import-Module -Name CompletionPredictor
 if ($IsWindows) {
     # Chocolatey
