@@ -13,9 +13,9 @@ keybinds {
     }
     pane {
         bind "h" "Left" { MoveFocus "Left"; }
-        bind "i" "Right" { MoveFocus "Right"; }
         bind "n" "Down" { MoveFocus "Down"; }
         bind "e" "Up" { MoveFocus "Up"; }
+        bind "i" "Right" { MoveFocus "Right"; }
         bind "p" { SwitchFocus; }
     }
     locked {

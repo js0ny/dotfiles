@@ -26,7 +26,7 @@ alias pulldots="cd $DOTFILES && git pull"
 # Editors #
 alias v=nvim
 alias c=code
-alias sv="sudo vim -u ~/.config/vim/vimrc"
+alias sv="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc"
 alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 
 # lsd - modern ls

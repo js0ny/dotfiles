@@ -1,14 +1,19 @@
-# $XDG_CONFIG_HOME/git/config
-# %USERPROFILE%\.gitconfig # No XDG support on Windows
-# ln -sf  $DOTFILES/.config/git/.gitconfig $XDG_CONFIG_HOME/git/config
-# New-Item -ItemType SymbolicLink -Path "$Env:XDG_CONFIG_HOME\git\config" -Target "$DOTFILES\.config\git\.gitconfig"
-[user]
+# $DOTFILES/common/gitconfig.example
+# Date: 2024-12-22
+# Author: js0ny
+
+# Location:
+# Windows: %USERPROFILE%\.gitconfig
+# *nix: ~/.config/git/config
+# Linking: (Note that this file is an example, only copy this then edit)
+# cp $DOTFILES/common/gitconfig.example ~/.config/git/config
+[user] # Modify the name and email
 	name = whoami
 	email = whoami@example.com
 [core]
 	editor = nvim
 	pager = delta
-	autocrlf = input
+	autocrlf = input # Force End of Line in different platforms
 [interactive]
 	diffFilter = delta --color-only
 [delta]
@@ -19,5 +24,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+# [url "git@github.com:"] # Force ssh
+# 	insteadOf = https://github.com/

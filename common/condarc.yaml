@@ -1,7 +1,12 @@
-# $XDG_CONFIG_HOME/conda/condarc.yaml
-# ==================================================================
-# New-Item -ItemType SymbolicLink -Path $Env:XDG_CONFIG_HOME\conda\.condarc -Target $DOTFILES\.config\conda\condarc.yaml
+# $DOTFILES/common/condarc.yaml
+# Date: 2024-12-22
+# Author: js0ny
+
+# Location:
+# $XDG_CONFIG_HOME/conda/.condarc
+# Linking:
 #  ln -s $DOTFILES/.config/conda/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
-# ==================================================================
+# ================================================================================
+# Reference:
 # https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html
 auto_activate_base: false

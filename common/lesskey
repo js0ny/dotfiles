@@ -1,6 +1,16 @@
-# $XDG_CONFIG_HOME/lesskey -- less options
-# ln -sf $DOTFILES/.config/lesskey $XDG_CONFIG_HOME/lesskey
+# $DOTFILES/common/lesskey
+# Date: 2024-12-22
+# Author: js0ny
+# Less the pager.
+
+# Location:
+# $XDG_CONFIG_HOME/lesskey
+# Or specified by the environment variable $LESSKEYIN
+# Linking:
+# ln -sf $DOTFILES/common/lesskey ~/.config/lesskey
+# ===========================================================
 # work for less -V > 582, for mac, use brew install less to override the system less
+# In Windows (current version), the default pager is `more`, should be specifed to `less` by `$Env:Pager = less`
 
 # Format: key action
 

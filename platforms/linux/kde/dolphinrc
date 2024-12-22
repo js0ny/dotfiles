@@ -1,7 +1,16 @@
+# $DOTFILES/platforms/linux/kde/dolphinrc
+# Date: 2024-12-22
+# Author: js0ny
+# Dolphin - KDE File Explorer
+
+# Location:
+# $XDG_CONFIG_HOME/dolphinrc
+# Linking:
+# ln -sf $DOTFILES/platforms/linux/kde/dolphinrc $XDG_CONFIG_HOME/dolphinrc
+
 [General]
 Version=202
 ViewPropsTimestamp=2024,12,10,0,19,35.931
-
 [IconsMode]
 PreviewSize=80
 
