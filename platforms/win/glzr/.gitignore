@@ -1,0 +1,4 @@
+# New-Item -ItemType SymbolicLink -Path $Env:UserProfile\.glzr -Target $DOTFILES\platforms\win\glzr -Force
+boilerplate*
+starter/
+neobrutal/
