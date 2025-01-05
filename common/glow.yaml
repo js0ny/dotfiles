@@ -1,5 +1,10 @@
-# ~/.config/glow/glow.yaml
-# ln -sf $DOTFILES/glow/glow.yaml ~/.config/glow/glow.yaml
+# $DOTFILES/common/glow.yaml
+# Date: 2024-12-22
+# Author: js0ny
+
+# Location:
+# ~/.config/glow/config.yml
+# ln -sf $DOTFILES/glow/glow.yaml ~/.config/glow/config.yml
 # style name or JSON path (default "auto")
 style: "auto"
 # mouse support (TUI-mode only)

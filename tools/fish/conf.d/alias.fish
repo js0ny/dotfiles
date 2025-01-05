@@ -1,4 +1,11 @@
+# $DOTFILES/tools/fish/conf.d/alias.fish
+# Date: 2024-12-22
+# Author: js0ny
 
+# Location:
+# ~/.config/fish/conf.d/alias.fish
+# Linking: Link the whole directory for submodules
+# ln -sf $DOTFILES/tools/fish ~/.config/fish
 
 # Powershell equivalent
 abbr --add ni touch
@@ -8,7 +15,7 @@ abbr --add ii open
 # Editors #
 abbr --add v nvim
 abbr --add c code
-alias sv="sudo vim -u ~/.config/vim/vimrc"
+alias sv="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc"
 alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 
 # Dev #

@@ -1,9 +1,0 @@
-[General]
-FreeFloating=true
-historyBehavior=ImmediateCompletion
-
-[Plugins][Favorites]
-plugins=krunner_dictionary,krunner_services,krunner_systemsettings
-
-[Runners][krunner_dictionary]
-triggerWord=d

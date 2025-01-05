@@ -1,4 +1,13 @@
+# $DOTFILES/common/gitconfig.example
+# Date: 2024-12-22
+# Author: js0ny
+# GNU Readline config file, works for programs that use that library
+# e.g. Python REPL, Lua REPL, Bash on Linux
+
+# Location:
 # $XDG_CONFIG_HOME/readline/inputrc
+# Linking:
+# ln -sf $DOTFILES/common/inputrc $XDG_CONFIG_HOME/readline/inputrc
 
 # Colemak Key Remaps
 set editing-mode vi

@@ -8,7 +8,6 @@ mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $X
 mkdir -p ~/.config/zellij ~/.config/yazi ~/.config/glow
 # mkdir -p $WAKATIME_HOME
 # mkdir -p $XDG_STATE_HOME/vim/undo $XDG_STATE_HOME/vim/backup $XDG_STATE_HOME/vim/swap  $XDG_STATE_HOME/vim/view
-mkdir -p $HOME/Obsidian
 # $DOTFILES/common
 ln -sf $DOTFILES/common/condarc.yaml $XDG_CONFIG_HOME/conda/.condarc
 # ln -sf $DOTFILES/common/gitconfig $XDG_CONFIG_HOME/git/config
@@ -19,7 +18,6 @@ ln -sf $DOTFILES/common/ideavimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
 ln -sf $DOTFILES/common/lesskey $XDG_CONFIG_HOME/lesskey
 # ln -sf $DOTFILES/common/npmrc $NPM_CONFIG_USERCONFIG
 ln -sf $DOTFILES/common/NuGet.Config $XDG_CONFIG_HOME/NuGet/NuGet.Config
-ln -sf $DOTFILES/common/obsidian.vimrc $HOME/Obsidian/.obsidian.vimrc
 ln -sf $DOTFILES/common/pip.conf $XDG_CONFIG_HOME/pip/pip.conf
 ln -sf $DOTFILES/common/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
 ln -sf $DOTFILES/common/vimrc $XDG_CONFIG_HOME/vim/vimrc

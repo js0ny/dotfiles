@@ -6,7 +6,6 @@
 
 # macOS #
 
-alias xclip="pbcopy"
 alias clip="pbcopy"
 alias paste="pbpaste"
 
