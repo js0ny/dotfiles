@@ -16,7 +16,7 @@ ln -sf $DOTFILES/common/glow.yaml ~/.config/glow/config.yml
 ln -sf $DOTFILES/common/haskeline ~/.haskeline
 ln -sf $DOTFILES/common/ideavimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
 ln -sf $DOTFILES/common/lesskey $XDG_CONFIG_HOME/lesskey
-ln -sf $DOTFILES/common/npmrc $NPM_CONFIG_USERCONFIG
+# ln -sf $DOTFILES/common/npmrc $NPM_CONFIG_USERCONFIG
 ln -sf $DOTFILES/common/NuGet.Config $XDG_CONFIG_HOME/NuGet/NuGet.Config
 ln -sf $DOTFILES/common/pip.conf $XDG_CONFIG_HOME/pip/pip.conf
 ln -sf $DOTFILES/common/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
