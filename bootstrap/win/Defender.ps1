@@ -3,8 +3,9 @@
 Set-MpPreference -EnableControlledFolderAccess 1
 
 $protected = (Get-MpPreference).ControlledFolderAccessProtectedFolders
-$protected += "$env:USERPROFILE\.ssh"
-$protected += "$env:USERPROFILE\.config"
+$protected += "$Env:UserProfile\.ssh"
+$protected += "$Env:UserProfile\.config"
+$protected += "$Env:UserProfile\Vault"
 Set-MpPreference -ControlledFolderAccessProtectedFolders $protected
 
 $apps = (Get-MpPreference).ControlledFolderAccessAllowedApplications

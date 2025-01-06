@@ -49,5 +49,3 @@ common/fzfrc
 platforms/win/komorebi/applications.json
 
 gitconfig
-
-check_update

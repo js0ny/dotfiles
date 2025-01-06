@@ -1,0 +1,12 @@
+# $DOTFILES/tools/wezterm/
+# Date: 2025-01-06
+# Author: js0ny
+
+# Location:
+# $XDG_CONFIG_HOME/wezterm/wezterm.lua (works Windows)
+# Linking: Link the whole directory
+# ln -sf $DOTFILES/tools/wezterm $XDG_CONFIG_HOME/wezterm
+# New-Item -ItemType SymbolicLink -Target $DOTFILES\tools\wezterm -Path $Env:XDG_CONFIG_HOME\wezterm
+
+*.json
+check_update
