@@ -35,8 +35,8 @@ if ($currentPath -notlike "*%PATH_EXT%*") {
 # Simulate XDG Base Directory Specification
 $Env:XDG_CONFIG_HOME = "$Env:AppData"
 $Env:XDG_DATA_HOME = "$Env:LocalAppData"
-$Env:XDG_CACHE_HOME = "$Env:LocalAppData\cache"
-$Env:XDG_STATE_HOME = "$Env:LocalAppData\state"
+$Env:XDG_CACHE_HOME = "$Env:LocalAppData\Cache"
+$Env:XDG_STATE_HOME = "$Env:LocalAppData\State"
 [System.Environment]::SetEnvironmentVariable("XDG_CONFIG_HOME", "$Env:XDG_CONFIG_HOME", "User")
 [System.Environment]::SetEnvironmentVariable("XDG_DATA_HOME", "$Env:XDG_DATA_HOME", "User")
 New-Item -ItemType Directory -Path "$Env:LocalAppData\cache" -Force

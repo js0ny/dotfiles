@@ -53,14 +53,14 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: "20px"
+  inner_gap: "5px"
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: "60px"
-    right: "20px"
-    bottom: "20px"
-    left: "20px"
+    top: "50px"
+    right: "5px"
+    bottom: "5px"
+    left: "5px"
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -69,7 +69,7 @@ window_effects:
     # ** Exclusive to Windows 11 due to API limitations.
     border:
       enabled: true
-      color: "#8dbcff"
+      color: "#f6a7ba"
 
     # Remove the title bar from the window's frame. Note that this can
     # cause rendering issues for some applications.
@@ -86,10 +86,10 @@ window_effects:
   # Visual effects to apply to non-focused windows.
   other_windows:
     border:
-      enabled: true
+      enabled: false
       color: "#a1a1a1"
     hide_title_bar:
-      enabled: false
+      enabled: true
     corner_style:
       enabled: false
       style: "square"
@@ -134,6 +134,7 @@ window_rules:
     match:
       # Ignores any Zebar windows.
       - window_process: { equals: "zebar" }
+      - window_process: { equals: "WindowsTerminal" }
 
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
@@ -223,7 +224,9 @@ keybindings:
     bindings: ["lwin+t"]
 
   # Change the focused window to be fullscreen.
-  - commands: ["toggle-fullscreen"]
+  # - commands: ["toggle-fullscreen"]
+  #   bindings: ["lwin+f"]
+  - commands: ["shell-exec dopus.exe"]
     bindings: ["lwin+f"]
 
   # Minimize focused window.
@@ -249,7 +252,7 @@ keybindings:
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-  - commands: ["shell-exec wt"]
+  - commands: ["shell-exec wezterm-gui.exe start"]
     bindings: ["lwin+r"]
 
   # Focus the next/previous active workspace defined in `workspaces` config.

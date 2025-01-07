@@ -54,7 +54,6 @@
         "memory",
         "swap",
         "disk",
-        "localip",
         "battery",
         "poweradapter",
         "locale"

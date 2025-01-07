@@ -5,26 +5,13 @@
 
 ### Load Configs ###
 $DOTFILES = Join-Path $HOME ".dotfiles"
-Get-ChildItem -Path $(Join-Path $DOTFILES "tools" "powershell") -Filter *.ps1 | ForEach-Object {. $_}
+Get-ChildItem -Path $(Join-Path $DOTFILES "tools" "powershell") -Filter *.ps1 | ForEach-Object { . $_ }
 
 ### Aliases ###
 
 
 # Toggle Theme #
-# TODO: Change to `bat` script implementation
-# function Set-SystemTheme {
-#   $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-#   $currentMode = Get-ItemProperty -Path $regPath -Name "AppsUseLightTheme"
-#   if ($currentMode.AppsUseLightTheme -eq 1) {
-#     Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 0
-#     Write-Host "已切换到深色模式"
-#   }
-#   else {
-#     Set-ItemProperty -Path $regPath -Name "AppsUseLightTheme" -Value 1
-#     Write-Host "已切换到浅色模式"
-#   }
-# }
-# Set-Alias "dark-mode" "Set-SystemTheme" # Consistent with macOS (`dark-mode`)
+Set-Alias "dark-mode" "$DOTFILES\platforms\win\cmd\dark-mode.bat" # Consistent with macOS (`dark-mode`)
 
 # Miscs #
 
@@ -35,7 +22,7 @@ ${function:qwen} = "ollama run qwen2.5:14b"
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 If (Test-Path "$HOME\miniconda3\Scripts\conda.exe") {
-    (& "$HOME\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Where-Object{$_} | Invoke-Expression
+    (& "$HOME\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Where-Object { $_ } | Invoke-Expression
 }
 #endregion
 
@@ -67,10 +54,10 @@ $Env:VISUAL = "code --wait"
 $Env:FILE_MANAGER = "dopus.exe"
 
 
-${function:wsl2} = {wsl.exe --distribution Ubuntu}
+${function:wsl2} = { wsl.exe --distribution kali-linux $args }
 ${function:wini} = { winget install $args }
 ${function:winr} = { winget uninstall $args }
 ${function:wins} = { winget search $args }
 ${function:winu} = { winget upgrade $args }
 
-${function:killp} = {ps | ? ProcessName -like $args | kill -Force}
+${function:pkill} = { ps *$args* | kill -Force }
