@@ -4,7 +4,7 @@
 # Use starship to set prompt
 $ENV:STARSHIP_CONFIG = Join-Path $DOTFILES "tools" "starship" "starship_pwsh.toml"
 
-# Invoke-Expression (&starship init powershell)
+Invoke-Expression (&starship init powershell)
 
 # Below is the backup of original prompt function
 # $promptTime = $true

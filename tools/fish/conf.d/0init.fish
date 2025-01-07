@@ -135,3 +135,10 @@ if status is-interactive
         set IPYTHONDIR $XDG_CONFIG_HOME/ipython
     end
 end
+
+# Coursier: Scala dependency manager
+if command -v coursier > /dev/null
+    set -gx PATH "$PATH:/home/js0ny/.local/share/coursier/bin"
+end
+
+test -d /opt/miniconda3 && source /opt/miniconda3/etc/fish/conf.d/conda.fish

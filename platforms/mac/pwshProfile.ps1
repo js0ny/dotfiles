@@ -6,8 +6,7 @@ $DOTFILES = "$HOME/.dotfiles"
 
 ### Load Configs ###
 
-Get-ChildItem -Path $DOTFILES/powershell -Filter *.ps1 | ForEach-Object {. $_}
-Get-ChildItem -Path $DOTFILES/powershell_private -Filter *.ps1 | ForEach-Object {. $_}
+Get-ChildItem -Path $(Join-Path $DOTFILES "tools" "powershell") -Filter *.ps1 | ForEach-Object {. $_}
 
 ## Aliases ###
 

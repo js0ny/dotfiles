@@ -52,6 +52,34 @@ const colemak = {
   }
 }
 
+
+const vforward = {
+  add: function (key) { // 转发即将被 unmap 的键
+    return api.vmap(`vfor${key}`, key)
+  },
+  cancel: function (key) { // 删除转发生成的键
+    api.vunmap(`vfor${key}`)
+    api.vunmap(key)
+  },
+  use: function (key) {
+    return `vfor${key}`
+  }
+}
+
+const vcolemak = {
+  forward: function (key) { // 转发即将被 unmap 的键
+    api.vmap(key, `vcol${key}`)
+    api.vunmap(`vcol${key}`)
+
+  },
+  use: function (key) {
+    return `vcol${key}`
+  },
+  map: function (a, b) {
+    api.vmap(vcolemak.use(a), vforward.use(b))
+  }
+}
+
 const forwardFactory = {
   push: function (mapLists) { // forward original keys
     for (let key in mapLists) {
@@ -71,6 +99,35 @@ const forwardFactory = {
       colemak.forward(key)
     }
   }
+}
+const vforwardFactory = {
+  push: function (mapLists) { // forward original keys
+    for (let key in mapLists) {
+      vforward.add(mapLists[key])
+    }
+  },
+  map: function (mapLists) {
+    for (let key in mapLists) {
+      vcolemak.map(key, mapLists[key])
+    }
+  },
+  pull: function (mapLists) {
+    for (let key in mapLists) {
+      vforward.cancel(mapLists[key])
+    }
+    for (let key in mapLists) {
+      vcolemak.forward(key)
+    }
+  }
+}
+
+const parseSearchResponse = function (response) {
+  const res = JSON.parse(response.text);
+  return res.map(r => r.phrase);
+};
+
+const _addSearchAlias = function (alias, name, searchUrl, searchPrefix = 's', acUrl = "https://duckduckgo.com/ac/?q=", parseResponse = parseSearchResponse) {
+  api.addSearchAlias(alias, name, searchUrl, searchPrefix, acUrl, parseResponse);
 }
 // #endregion
 // #region Keymap
@@ -124,6 +181,9 @@ const vmapLists = {
 
 forwardFactory.push(mapLists)
 forwardFactory.map(mapLists)
+
+vforwardFactory.push(vmapLists)
+vforwardFactory.map(vmapLists)
 // 鼠标点击
 api.unmap('gi')
 api.unmap('[[')
@@ -138,30 +198,32 @@ forwardFactory.pull(mapLists)
 
 
 // #region Search Alias
-api.addSearchAlias('f', 'Felo', 'https://felo.ai/search?q=', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
-api.addSearchAlias('p', 'Perplexity', 'https://www.perplexity.ai/?q=', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
-api.addSearchAlias('r', 'Raindrop', 'https://app.raindrop.io/my/0/', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
-api.addSearchAlias('c', 'ChatGPT', 'https://chatgpt.com/?q=', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
+api.unmap('os') // StackOverflow
+api.vunmap('ss')
+api.unmap('ob') // Baidu
+api.vunmap('sb')
+api.unmap('og') // Google
+api.vunmap('sg')
+api.unmap('od') // DuckDuckGo
+api.vunmap('sd')
+
+/// Common
+_addSearchAlias('dd', 'DuckDuckGo', 'https://duckduckgo.com/?q=')
+_addSearchAlias('gg', 'Google', 'https://www.google.com/search?q=')
+_addSearchAlias('bd', 'Baidu', 'https://www.baidu.com/s?wd=')
+_addSearchAlias('bi', 'Bing', 'https://www.bing.com/search?q=')
+/// AI Search
+_addSearchAlias('fe', 'Felo', 'https://felo.ai/search?q=')
+_addSearchAlias('pp', 'Perplexity', 'https://www.perplexity.ai/?q=')
+_addSearchAlias('cg', 'ChatGPT', 'https://chat.openai.com/?q=')
+/// EECS Related
+_addSearchAlias('gh', 'GitHub', 'https://github.com/search?type=repositories&q=')
+_addSearchAlias('so', 'StackOverflow', 'https://stackoverflow.com/search?q=')
+_addSearchAlias('aw', 'ArchWiki', 'https://wiki.archlinux.org/index.php?search=')
+/// Software
+_addSearchAlias('sc', 'Scoop', 'https://scoop.sh/#/apps?q=')
+_addSearchAlias('br', 'Brew', 'https://duckduckgo.com/?q=!brew ')
+
 // #endregion
 
 // #region Site-specific
@@ -184,10 +246,10 @@ api.mapkey('S', 'Start/Stop Generating', function () {
   var btn = document.querySelector('button.h-8:nth-child(2)');
   btn.click();
 }, { domain: /chatgpt.com/ });
-//api.mapkey('tm', 'Toggle Model', function () {
-//  var btn = document.querySelector('#radix -\: r2i\:');
-//  btn.click();
-//}, { domain: /chatgpt.com/ });
+
+// perplexity.ai
+api.unmap('<Ctrl-i>', /perplexity.ai/);
+
 
 // #endregion
 
