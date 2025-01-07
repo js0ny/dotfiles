@@ -224,7 +224,9 @@ keybindings:
     bindings: ["lwin+t"]
 
   # Change the focused window to be fullscreen.
-  - commands: ["toggle-fullscreen"]
+  # - commands: ["toggle-fullscreen"]
+  #   bindings: ["lwin+f"]
+  - commands: ["shell-exec dopus.exe"]
     bindings: ["lwin+f"]
 
   # Minimize focused window.

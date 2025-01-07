@@ -81,11 +81,11 @@ end
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 -- Cursor
-config.animation_fps = 120
-config.cursor_blink_ease_in = 'EaseOut'
-config.cursor_blink_ease_out = 'EaseOut'
-config.default_cursor_style = 'BlinkingBlock'
-config.cursor_blink_rate = 650
+-- config.animation_fps = 120
+-- config.cursor_blink_ease_in = 'EaseOut'
+-- config.cursor_blink_ease_out = 'EaseOut'
+-- config.default_cursor_style = 'BlinkingBlock'
+-- config.cursor_blink_rate = 650
 -- Visual Bell
 config.visual_bell = {
   fade_in_function = 'EaseIn',

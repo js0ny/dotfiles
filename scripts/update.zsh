@@ -41,6 +41,6 @@ if command -v winget.exe > /dev/null; then
 fi
 
 # macOS - Rime
-if [ $(uname) = "Darwin"]; then
+if [ $(uname) = "Darwin" ]; then
     bash ~/plum/rime-install
 fi

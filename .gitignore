@@ -49,3 +49,5 @@ common/fzfrc
 platforms/win/komorebi/applications.json
 
 gitconfig
+
+*.exe
