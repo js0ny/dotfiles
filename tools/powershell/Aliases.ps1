@@ -31,5 +31,6 @@ Set-Alias "py"      "python"
 Set-Alias "ipy"     "ipython"
 
 if ($isWindows) {
-function kex { wsl -d kali-linux kex --sl -s }
+    # Debugging
+    # function kex { wsl -d kali-linux kex --sl -s }
 }

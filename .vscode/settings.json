@@ -30,4 +30,8 @@
     ".wslconfig": "properties",
     "WindowsTerminal.json": "jsonc",
   },
+  "[json]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+  }
 }

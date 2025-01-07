@@ -1,3 +1,6 @@
+# Log
+*.log
+
 # Private Files
 *private*
 .private.env.*
@@ -46,3 +49,5 @@ common/fzfrc
 platforms/win/komorebi/applications.json
 
 gitconfig
+
+check_update
