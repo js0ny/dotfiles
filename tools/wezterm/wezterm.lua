@@ -3,7 +3,7 @@
 -- Author: js0ny
 
 --#region Import & Setup
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local action = wezterm.action
 
 local config = {}
@@ -52,14 +52,12 @@ local function detect_os()
 end
 
 -- OS light/dark theme detection
-local function detect_theme()
-end
+local function detect_theme() end
 --#endregion
 
 --#region Constant
 local os_type = detect_os()
 --#endregion
-
 
 --#region Appearance
 -- Font and color scheme
@@ -88,11 +86,11 @@ config.tab_bar_at_bottom = true
 -- config.cursor_blink_rate = 650
 -- Visual Bell
 config.visual_bell = {
-  fade_in_function = 'EaseIn',
+  fade_in_function = "EaseIn",
   fade_in_duration_ms = 250,
-  fade_out_function = 'EaseOut',
+  fade_out_function = "EaseOut",
   fade_out_duration_ms = 250,
-  target = 'CursorColor',
+  target = "CursorColor",
 }
 --#endregion
 
@@ -100,111 +98,111 @@ config.visual_bell = {
 config.leader = { key = "q", mods = "CTRL" }
 config.keys = {
   {
-    key = 'q',
-    mods = 'LEADER',
-    action = action.SendKey { key = 'q', mods = 'CTRL' },
+    key = "q",
+    mods = "LEADER",
+    action = action.SendKey({ key = "q", mods = "CTRL" }),
   },
   -- Windows Management
   { -- leader keys
-    key = '|',
-    mods = 'LEADER|SHIFT',
-    action = action.SplitHorizontal { domain = "CurrentPaneDomain" }
+    key = "|",
+    mods = "LEADER|SHIFT",
+    action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
   },
   {
-    key = '-',
-    mods = 'LEADER',
-    action = action.SplitVertical { domain = "CurrentPaneDomain" }
+    key = "-",
+    mods = "LEADER",
+    action = action.SplitVertical({ domain = "CurrentPaneDomain" }),
   },
   {
-    key = 'h',
-    mods = 'LEADER',
-    action = action.ActivatePaneDirection 'Left'
+    key = "h",
+    mods = "LEADER",
+    action = action.ActivatePaneDirection("Left"),
   },
   {
-    key = 'n',
-    mods = 'LEADER',
-    action = action.ActivatePaneDirection 'Down'
+    key = "n",
+    mods = "LEADER",
+    action = action.ActivatePaneDirection("Down"),
   },
   {
-    key = 'e',
-    mods = 'LEADER',
-    action = action.ActivatePaneDirection 'Up'
+    key = "e",
+    mods = "LEADER",
+    action = action.ActivatePaneDirection("Up"),
   },
   {
-    key = 'i',
-    mods = 'LEADER',
-    action = action.ActivatePaneDirection 'Right'
+    key = "i",
+    mods = "LEADER",
+    action = action.ActivatePaneDirection("Right"),
   },
   {
-    key = 'H',
-    mods = 'LEADER',
-    action = action.AdjustPaneSize { 'Left', 5 },
+    key = "H",
+    mods = "LEADER",
+    action = action.AdjustPaneSize({ "Left", 5 }),
   },
   {
-    key = 'N',
-    mods = 'LEADER',
-    action = action.AdjustPaneSize { 'Down', 5 },
+    key = "N",
+    mods = "LEADER",
+    action = action.AdjustPaneSize({ "Down", 5 }),
   },
   {
-    key = 'E',
-    mods = 'LEADER',
-    action = action.AdjustPaneSize { 'Up', 5 },
+    key = "E",
+    mods = "LEADER",
+    action = action.AdjustPaneSize({ "Up", 5 }),
   },
   {
-    key = 'I',
-    mods = 'LEADER',
-    action = action.AdjustPaneSize { 'Right', 5 },
+    key = "I",
+    mods = "LEADER",
+    action = action.AdjustPaneSize({ "Right", 5 }),
   },
   {
     key = "/",
     mods = "LEADER",
-    action = action.Search { Regex = "" }
+    action = action.Search({ Regex = "" }),
   },
   {
     key = "?",
     mods = "LEADER|SHIFT",
-    action = action.Search { CaseSensitiveString = "" }
+    action = action.Search({ CaseSensitiveString = "" }),
   },
   {
     key = ";",
     mods = "LEADER",
-    action = action.ShowLauncher
+    action = action.ShowLauncher,
   },
   {
     key = ":",
     mods = "LEADER|SHIFT",
-    action = action.ActivateCommandPalette
+    action = action.ActivateCommandPalette,
   },
   {
     key = "W",
     mods = "CTRL",
-    action = action.CloseCurrentPane { confirm = true }
+    action = action.CloseCurrentPane({ confirm = true }),
   },
   { -- ^C to copy if selection is active, otherwise send signal
     -- https://wezfurlong.org/wezterm/config/lua/keyassignment/ClearSelection.html?h=selection
-    key = 'c',
-    mods = 'CTRL',
+    key = "c",
+    mods = "CTRL",
     action = wezterm.action_callback(function(window, pane)
-      local has_selection = window:get_selection_text_for_pane(pane) ~= ''
+      local has_selection = window:get_selection_text_for_pane(pane) ~= ""
       if has_selection then
-        window:perform_action(action.CopyTo 'ClipboardAndPrimarySelection', pane)
+        window:perform_action(action.CopyTo("ClipboardAndPrimarySelection"), pane)
 
         window:perform_action(action.ClearSelection, pane)
       else
-        window:perform_action(action.SendKey { key = 'c', mods = 'CTRL' }, pane)
+        window:perform_action(action.SendKey({ key = "c", mods = "CTRL" }), pane)
       end
     end),
   },
 }
 config.mouse_bindings = {
   {
-    event = { Up = { streak = 1, button = 'Left' } },
-    mods = 'CTRL',
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "CTRL",
     action = action.OpenLinkAtMouseCursor,
   },
   {
-    event = { Up = { streak = 1, button = 'Left' } },
-    mods = 'SUPER',
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "SUPER",
     action = action.OpenLinkAtMouseCursor,
   },
 }
@@ -222,35 +220,35 @@ if os_type == "Windows" then
   config.launch_menu = {
     {
       label = "Local - PowerShell",
-      args = { "pwsh.exe", "-NoLogo", "-NoProfileLoadTime" }
+      args = { "pwsh.exe", "-NoLogo", "-NoProfileLoadTime" },
     },
     {
       label = "Local - PowerShell Administator",
-      args = { "sudo.exe", "pwsh.exe", "-NoLogo", "-NoProfileLoadTime" }
+      args = { "sudo.exe", "pwsh.exe", "-NoLogo", "-NoProfileLoadTime" },
     },
     {
       label = "WSL1 - Arch",
-      args = { "wsl.exe", "-d", "Arch" }
+      args = { "wsl.exe", "-d", "Arch" },
     },
     {
       label = "WSL2 - kali-linux",
-      args = { "wsl.exe", "-d", "kali-linux" }
+      args = { "wsl.exe", "-d", "kali-linux" },
     },
     {
       label = "Local - NuShell",
-      args = { "nu" }
+      args = { "nu" },
     },
     {
       label = "Local - Windows PowerShell",
-      args = { "powershell.exe" }
+      args = { "powershell.exe" },
     },
     {
       label = "Local - Command Prompt",
-      args = { "cmd.exe" }
+      args = { "cmd.exe" },
     },
     {
       label = "WSL1 - Arch Zsh",
-      args = { "wsl.exe", "-d", "Arch", "zsh" }
+      args = { "wsl.exe", "-d", "Arch", "zsh" },
     },
   }
 else
@@ -258,23 +256,22 @@ else
   config.launch_menu = {
     {
       label = "Local - Fish",
-      args = { "fish", "-l" }
+      args = { "fish", "-l" },
     },
     {
       label = "Local - Zsh",
-      args = { "zsh", "-l" }
+      args = { "zsh", "-l" },
     },
     {
       label = "Local - PowerShell",
-      args = { "pwsh", "-NoLogo", "-NoProfileLoadTime", "-Login" }
+      args = { "pwsh", "-NoLogo", "-NoProfileLoadTime", "-Login" },
     },
     {
       label = "Local - NuShell",
-      args = { "nu", "-l" }
+      args = { "nu", "-l" },
     },
   }
 end
 --#endregion
-
 
 return config

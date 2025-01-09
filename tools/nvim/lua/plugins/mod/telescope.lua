@@ -1,7 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
-  config = function ()
-    require("telescope").setup {
+  config = function()
+    require("telescope").setup({
       defaults = {
         mappings = {
           n = {
@@ -11,11 +11,10 @@ return {
             ["r"] = "preview_scrolling_down",
             ["a"] = "preview_scrolling_left",
             ["s"] = "preview_scrolling_right",
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    })
   end,
   dependencies = { "nvim-lua/plenary.nvim" },
 }
-

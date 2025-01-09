@@ -2,10 +2,17 @@ local M = {}
 
 local leader_general = {
   { keys = "<space>", cmd = ":Telescope find_files<CR>", desc = "Find Files" },
-  { keys = "/",       cmd = ":Telescope live_grep<CR>",  desc = "Grep Files" },
+  { keys = "/", cmd = ":Telescope live_grep<CR>", desc = "Grep Files" },
+  { keys = "-", cmd = ":split<CR>", desc = "Split to down" },
+  { keys = "\\", cmd = ":vsplit<CR>", desc = "Split to right" },
+  { keys = "|", cmd = ":vsplit<CR>", desc = "Split to right" },
+  { keys = "h", cmd = "<C-w>h", desc = "Left Window" },
+  { keys = "n", cmd = "<C-w>j", desc = "Down Window" },
+  { keys = "e", cmd = "<C-w>k", desc = "Up Window" },
+  { keys = "i", cmd = "<C-w>l", desc = "Right Window" },
 }
 
-for _,map in ipairs(leader_general) do
+for _, map in ipairs(leader_general) do
   map.keys = "<leader>" .. map.keys
   table.insert(M, map)
 end
@@ -36,9 +43,9 @@ local leader_w = { -- leader w: Windows Management
 }
 
 local leader_f = { -- leader f: Files/Find
-  { keys = "f", cmd = ":Telescope fd<CR>", desc = "Find Files"},
-  { keys = "s", cmd = ":Telescope live_grep<CR>", desc = "Grep Files"},
-  { keys = "b", cmd = ":Telescope buffers<CR>", desc = "List Buffers"},
+  { keys = "f", cmd = ":Telescope fd<CR>", desc = "Find Files" },
+  { keys = "s", cmd = ":Telescope live_grep<CR>", desc = "Grep Files" },
+  { keys = "b", cmd = ":Telescope buffers<CR>", desc = "List Buffers" },
   { keys = "e", cmd = ":NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
 }
 
@@ -46,6 +53,7 @@ local leader_p = { -- leader p: Project
 }
 
 local leader_b = { -- leader b: Buffer
+  { keys = "a", cmd = ":Alpha", desc = "Dashboard" },
   { keys = "d", cmd = ":bdelete<CR>", desc = "Delete Buffer" },
   { keys = "h", cmd = ":bprevious<CR>", desc = "Previous Buffer" },
   { keys = "i", cmd = ":bnext<CR>", desc = "Next Buffer" },
@@ -54,6 +62,7 @@ local leader_b = { -- leader b: Buffer
   { keys = "0", cmd = ":bfirst<CR>", desc = "First Buffer" },
   { keys = "^", cmd = ":bfirst<CR>", desc = "First Buffer" },
   { keys = "$", cmd = ":blast<CR>", desc = "Last Buffer" },
+  { keys = "s", cmd = ":Telescope buffers<CR>", desc = "Search buffers" },
 }
 
 for _, map in ipairs(leader_q) do

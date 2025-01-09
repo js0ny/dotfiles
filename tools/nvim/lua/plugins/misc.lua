@@ -1,5 +1,5 @@
 return {
-  { 'wakatime/vim-wakatime', lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
   { import = "plugins.mod.obsidian-nvim" },
   {
     "folke/which-key.nvim",
@@ -22,5 +22,5 @@ return {
   {
     "github/copilot.vim",
     lazy = false,
-  }
+  },
 }

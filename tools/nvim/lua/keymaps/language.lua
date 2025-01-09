@@ -1,6 +1,5 @@
 local M = {}
 
-
 -- Markdown
 
 local function set_markdown_keymaps(bufnr)
@@ -11,20 +10,19 @@ local function set_markdown_keymaps(bufnr)
   end
 end
 
-
 M.markdown = {
-  { mode = "v", keys = "`", cmd = "c`<Esc>pi`<Esc>"                   , desc = "Wrap selection in ` for inline code" },
-  { mode = "v", keys = "*", cmd = "c**<Esc>pi**<Esc>"                   , desc = "Wrap selection in ** for bold" },
-  { mode = "v", keys = "_", cmd = "c*<Esc>pi*<Esc>"                   , desc = "Wrap selection in * for italic" },
+  { mode = "v", keys = "`", cmd = "c`<Esc>pi`<Esc>", desc = "Wrap selection in ` for inline code" },
+  { mode = "v", keys = "*", cmd = "c**<Esc>pi**<Esc>", desc = "Wrap selection in ** for bold" },
+  { mode = "v", keys = "_", cmd = "c*<Esc>pi*<Esc>", desc = "Wrap selection in * for italic" },
 }
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        set_markdown_keymaps(0)
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-    end,
+  pattern = "markdown",
+  callback = function()
+    set_markdown_keymaps(0)
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end,
 })
 
 return M
