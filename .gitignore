@@ -18,24 +18,9 @@ test.*
 # Utils
 xdg-ninja/
 
-# nvim config cache
-tools/nvim/tt.*
-tools/nvim/.tests
-tools/nvim/doc/tags
-tools/nvim/debug
-tools/nvim/.repro
-tools/nvim/foo.*
-tools/nvim/*.log
-tools/nvim/data
-tools/nvim/lazy-lock.json
-tools/nvim/lazyvim.json
-tools/nvim/lua/plugins/obsidian.lua
-
 # Undone
 # Windows PowerToys
 PowerToys/
-# Just Script
-Justfile
 # Nushell
 tools/nushell/
 # fzf

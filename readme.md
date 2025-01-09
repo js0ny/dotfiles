@@ -24,8 +24,8 @@ Works for Windows, Linux and MacOS.
 
 ```
         ^
-        n
-  < h       i >
         e
+  < h       i >
+        n
         v
 ```

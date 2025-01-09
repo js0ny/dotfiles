@@ -21,12 +21,15 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/Obsidian",
+        path = "~/winhome/Obsidian",
       },
     },
     completion = {
       nvim_cmp = true,
       min_chars = 2
+    },
+    ui = {
+      enable = false
     }
     -- see below for full list of options 👇
   },

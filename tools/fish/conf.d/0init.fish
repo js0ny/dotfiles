@@ -102,6 +102,7 @@ if command -v gem > /dev/null
             set -gx PATH $dir $PATH
         end
     end
+    set -gx PATH $HOME/.local/share/gem/ruby/3.3.0/bin $PATH
 end
 # Spacemacs
 if command -v emacs > /dev/null

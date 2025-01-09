@@ -24,14 +24,15 @@ just build
 
 Or use the minimal setup, by changing `glzr\zebar\settings.json`: `startupConfigs.path` to `minimal/bar.zebar.json`.
 
-```json
-{
-  "$schema": "https://github.com/glzr-io/zebar/raw/v2.4.0/resources/settings-schema.json",
-  "startupConfigs": [
-    {
-      "path": "minimal/bar.zebar.json",
-      "preset": "default"
-    }
-  ]
-}
+```diff
+ {
+   "$schema": "https://github.com/glzr-io/zebar/raw/v2.4.0/resources/settings-schema.json",
+   "startupConfigs": [
+     {
+-      "path": "neobrutal/bar.zebar.json",
++      "path": "minimal/bar.zebar.json",
+       "preset": "default"
+     }
+   ]
+ }
 ```

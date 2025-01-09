@@ -84,6 +84,7 @@ nmap F <Plug>(sneak-S)
 
 "" Miscs ""
 nnoremap <leader>: :action GotoAction<CR>
+nnoremap <leader><leader> :action GotoFile<CR>
 
 "" AI Related <leader>a + ""
 nnoremap <leader>ac :action copilot.chat.show<CR>

@@ -246,9 +246,6 @@ api.mapkey('S', 'Start/Stop Generating', function () {
   var btn = document.querySelector('button.h-8:nth-child(2)');
   btn.click();
 }, { domain: /chatgpt.com/ });
-<<<<<<< HEAD
-
-=======
 api.mapkey('an', 'New Chat', function () {
   var btn = document.querySelector('div.no-draggable:nth-child(3) > span:nth-child(1) > button:nth-child(1)')
   btn.click();
@@ -265,7 +262,6 @@ api.mapkey('as', 'Start/Stop Generating', function () {
 //  var btn = document.querySelector('#radix -\: r2i\:');
 //  btn.click();
 //}, { domain: /chatgpt.com/ });
->>>>>>> 9557dcb023a49b72674bff74180d1d4224b959e0
 // perplexity.ai
 api.unmap('<Ctrl-i>', /perplexity.ai/);
 
