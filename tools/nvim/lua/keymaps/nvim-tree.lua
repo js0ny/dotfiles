@@ -55,6 +55,8 @@ function M.plugin(api, opts)
     { keys = "x", cmd = api.fs.cut, opts = opts("Cut") },
     { keys = "y", cmd = api.fs.copy.relative_path, opts = opts("Copy Relative Path") },
     { keys = "Y", cmd = api.fs.copy.absolute_path, opts = opts("Copy Absolute Path") },
+    -- From Directory Opus
+    { keys = "#", cmd = "<Cmd>set relativenumber!<CR>", opts = opts("Toggle Relative Number") },
     -- Numeric 数字键
     { keys = "!", cmd = api.node.run.cmd, opts = opts("Run Command") },
     -- Non-Alphanumeric 非字母数字键

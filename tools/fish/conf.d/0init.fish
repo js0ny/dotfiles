@@ -139,7 +139,13 @@ end
 
 # Coursier: Scala dependency manager
 if command -v coursier > /dev/null
-    set -gx PATH "$PATH:/home/js0ny/.local/share/coursier/bin"
+    set -gx PATH "$PATH:$XDG_DATA_HOME/coursier/bin"
 end
+# pnpm
+set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
 
 test -d /opt/miniconda3 && source /opt/miniconda3/etc/fish/conf.d/conda.fish

@@ -1,5 +1,7 @@
 return {
   { "catppuccin/nvim", name = "catppuccin" },
+  { "olimorris/onedarkpro.nvim" },
+  { "rebelot/kanagawa.nvim" },
   { "RRethy/vim-illuminate" },
   {
     "nvim-lualine/lualine.nvim",

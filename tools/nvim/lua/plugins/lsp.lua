@@ -61,4 +61,6 @@ return {
       -- })
     end,
   },
+  { import = "plugins.mod.conform-nvim" },
+  { "nvim-treesitter/nvim-treesitter-context" },
 }
