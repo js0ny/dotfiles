@@ -2,6 +2,7 @@ local M = {}
 
 M.global = {
   { mode = "n", keys = "<leader>e", cmd = ":NvimTreeToggle<CR>" },
+  { mode = "n", keys = "<A-0>", cmd = ":NvimTreeFocus<CR>" },
 }
 
 function M.plugin(api, opts)
@@ -74,6 +75,7 @@ function M.plugin(api, opts)
     { keys = "<C-t>", cmd = api.node.open.tab, opts = opts("Open: New Tab") },
     { keys = "<C-v>", cmd = api.node.open.vertical, opts = opts("Open: Vertical Split") },
     { keys = "<C-h>", cmd = api.node.open.horizontal, opts = opts("Open: Horizontal Split") },
+    { keys = "<A-0>", cmd = ":b#<CR>", opts = opts("Focus to previous buffer") },
     -- Mouse 鼠标键
     { keys = "<2-LeftMouse>", cmd = api.node.open.edit, opts = opts("Open") },
     { keys = "<2-RightMouse>", cmd = api.tree.change_root_to_node, opts = opts("CD") },
