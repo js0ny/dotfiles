@@ -15,16 +15,16 @@ return {
           shift_width = 1,
           heading_1 = {
             style = "label",
-            hl = "MarkviewH1"
-          }
+            hl = "MarkviewH1",
+          },
         },
         code_blocks = {
           style = "language",
           language_direction = "right",
           hl = "MarkviewCode",
-          info_hl = "MarkviewCodeInfo"
-        }
+          info_hl = "MarkviewCodeInfo",
+        },
       })
-    end
-  }
+    end,
+  },
 }

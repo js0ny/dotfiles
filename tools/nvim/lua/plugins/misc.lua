@@ -1,7 +1,14 @@
 return {
-  { 'wakatime/vim-wakatime', lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
+  { "voldikss/vim-floaterm" },
+  { "CRAG666/betterTerm.nvim", opts = {
+    position = "bot",
+    size = 15,
+  } },
+  { "CRAG666/code_runner.nvim", config = true },
   { import = "plugins.mod.obsidian-nvim" },
   {
+
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
@@ -22,5 +29,5 @@ return {
   {
     "github/copilot.vim",
     lazy = false,
-  }
+  },
 }

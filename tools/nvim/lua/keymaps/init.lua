@@ -1,4 +1,5 @@
 local M = {}
+local keymaps_user_command = require("keymaps.user-command")
 local global_default_opts = { noremap = true, silent = true }
 local global_default_mode = { "n" }
 -- local mode_arrow = { "n", "v", "o", "s", "x" }
@@ -10,8 +11,6 @@ local function set_keymaps(maps, default_opts, default_mode)
     vim.keymap.set(mode, map.keys, map.cmd, opts)
   end
 end
-
-
 
 local keymaps_basic = require("keymaps.basic")
 local keymaps_nvim_tree_general = require("keymaps.nvim-tree").global
@@ -26,25 +25,25 @@ M.nvim_tree_keymaps = require("keymaps.nvim-tree").plugin
 --- `map` default for `cmp.mapping`
 function M.cmp_nvim_keymaps(map)
   return {
-    { keys = "<C-n>",     cmd = map.select_next_item(),         desc = "Select next completion item" },
-    { keys = "<C-p>",     cmd = map.select_prev_item(),         desc = "Select previous completion item" },
-    { keys = "<C-y>",     cmd = map.confirm({ select = true }), desc = "Confirm completion" },
-    { keys = "<Tab>",     cmd = map.confirm({ select = true }), desc = "Confirm completion" },
-    { keys = "<C-Space>", cmd = map.complete(),                 desc = "Trigger completion" },
-    { keys = "<C-e>",     cmd = map.abort(),                    desc = "Abort completion" },
+    { keys = "<C-n>", cmd = map.select_next_item(), desc = "Select next completion item" },
+    { keys = "<C-p>", cmd = map.select_prev_item(), desc = "Select previous completion item" },
+    { keys = "<C-y>", cmd = map.confirm({ select = true }), desc = "Confirm completion" },
+    { keys = "<Tab>", cmd = map.confirm({ select = true }), desc = "Confirm completion" },
+    { keys = "<C-Space>", cmd = map.complete(), desc = "Trigger completion" },
+    { keys = "<C-e>", cmd = map.abort(), desc = "Abort completion" },
   }
 end
 
 local function set_markdown_keymaps(bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("v", "`", "c`<C-r>\"`<Esc>", opts)
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set("v", "`", 'c`<C-r>"`<Esc>', opts)
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        set_markdown_keymaps(0)
-    end,
+  pattern = "markdown",
+  callback = function()
+    set_markdown_keymaps(0)
+  end,
 })
 
 require("keymaps.language")

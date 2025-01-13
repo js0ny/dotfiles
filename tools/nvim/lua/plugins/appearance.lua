@@ -1,9 +1,11 @@
 return {
   { "catppuccin/nvim", name = "catppuccin" },
+  { "olimorris/onedarkpro.nvim" },
+  { "rebelot/kanagawa.nvim" },
   { "RRethy/vim-illuminate" },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.mod.lualine")
     end,
@@ -18,9 +20,9 @@ return {
           timer = 500,
         },
       })
-    end
+    end,
   },
   { import = "plugins.mod.alpha-nvim" },
-  { import = "plugins.mod.winbar-nvim"},
+  { import = "plugins.mod.winbar-nvim" },
   { import = "plugins.mod.bufferline" },
 }

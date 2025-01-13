@@ -3,7 +3,7 @@
 # Date: 2024-12-01
 # Author: js0ny
 # Set symbolic links for Unix-like systems
-mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet $XDG_CONFIG_HOME/vim $XDG_CONFIG_HOME/tmux $XDG_CONFIG_HOME/npm $XDG_CONFIG_HOME/readline $XDG_CONFIG_HOME/ipython
+mkdir -p $XDG_CONFIG_HOME/conda $XDG_CONFIG_HOME/git $XDG_CONFIG_HOME/ideavim $XDG_CONFIG_HOME/markdownlint $XDG_CONFIG_HOME/pip $XDG_CONFIG_HOME/neovide $XDG_CONFIG_HOME/powershell $XDG_CONFIG_HOME/vscode $XDG_CONFIG_HOME/NuGet $XDG_CONFIG_HOME/vim $XDG_CONFIG_HOME/tmux $XDG_CONFIG_HOME/npm $XDG_CONFIG_HOME/readline $XDG_CONFIG_HOME/ipython $XDG_CONFIG_HOME/lazygit
 # Not support XDG_CONFIG_HOME but same directory
 mkdir -p ~/.config/zellij ~/.config/yazi ~/.config/glow
 # mkdir -p $WAKATIME_HOME
@@ -15,6 +15,7 @@ cp $DOTFILES/common/gitconfig.example $XDG_CONFIG_HOME/git/config
 ln -sf $DOTFILES/common/glow.yaml ~/.config/glow/config.yml
 ln -sf $DOTFILES/common/haskeline ~/.haskeline
 ln -sf $DOTFILES/common/ideavimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
+ln -sf $DOTFILES/common/lazygit.yaml $XDG_CONFIG_HOME/lazygit/config.yml
 ln -sf $DOTFILES/common/lesskey $XDG_CONFIG_HOME/lesskey
 # ln -sf $DOTFILES/common/npmrc $NPM_CONFIG_USERCONFIG
 ln -sf $DOTFILES/common/NuGet.Config $XDG_CONFIG_HOME/NuGet/NuGet.Config
@@ -37,5 +38,5 @@ if [ $(uname) = "Darwin" ]; then
     ln -sf $DOTFILES/platforms/mac/sketchybarrc $XDG_CONFIG_HOME/sketchybar/sketchybarrc
     ln -sf $DOTFILES/platforms/mac/yabairc $XDG_CONFIG_HOME/yabai/yabairc
 else
-    ln -sf $DOTFILES/common/inputrc $XDG_CONFIG_HOME/readline/inputrc
+    ln -sf $DOTFILES/common/inputrc ~/.inputrc
 fi

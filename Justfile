@@ -8,3 +8,7 @@ pull:
 push:
     git push github master
     git push codeberg master
+
+init:
+    git remote add github git@github.com:js0ny/dotfiles.git
+    git remote add codeberg git@codeberg.org:js0ny/dotfiles.git
