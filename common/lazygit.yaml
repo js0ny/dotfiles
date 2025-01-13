@@ -3,9 +3,10 @@
 # Author: js0ny
 
 # Location:
-# macOS: ~/Library/Application Support/lazygit/config.yml
-# Linux: ~/.config/lazygit/config.yml
+# *nix: ~/.config/lazygit/config.yml
 # Windows: %APPDATA%\lazygit\config.yml
+# Linking:
+# ln -sf ~/.dotfiles/common/lazygit.yaml ~/.config/lazygit/config.yml
 
 yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 

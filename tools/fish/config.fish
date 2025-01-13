@@ -15,6 +15,15 @@ if status is-interactive
         # macOS Specific
         abbr --add clip pbcopy
         abbr --add paste pbpaste
+        # Use GNU Coreutils
+        alias cp=gcp
+        alias ln=gln
+        alias mkdir=gmkdir
+        alias mv=gmv
+        alias rm=grm
+        alias rmdir=grmdir
+        alias touch=gtouch
+
     case "Linux"
         # Linux Specific
     case '*'

@@ -253,6 +253,8 @@ if os_type == "Windows" then
       args = { "wsl.exe", "-d", "Arch", "zsh" }
     },
   }
+elseif os_type == "macOS" then
+  config.default_prog = { "/opt/homebrew/bin/fish", "-l"}
 else
   config.default_prog = { "fish" }
   config.launch_menu = {

@@ -1,4 +1,5 @@
-set shell := ["pwsh", "-c"]
+set shell := ["fish", "-c"]
+set windows-shell := ["pwsh", "-c"]
 
 pull:
     git pull github master
