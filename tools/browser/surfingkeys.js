@@ -22,7 +22,6 @@ api.unmap('<ctrl-i>');
 // Settings
 settings.language = "zh-CN";
 settings.showModeStatus = false;
-// Keymap, reference https://github.com/texiwustion/colemak_config_for_surfingkeys/tree/main
 // #region Helper
 const {
   aceVimMap,
@@ -45,6 +44,7 @@ const {
   Visual,
   RUNTIME,
 } = api;
+// Keymap, reference https://github.com/texiwustion/colemak_config_for_surfingkeys/tree/main
 const forward = {
   add: function (key) {
     // 转发即将被 unmap 的键
@@ -155,8 +155,8 @@ const _addSearchAlias = function (
   alias,
   name,
   searchUrl,
-  searchPrefix = "s",
   acUrl = "https://duckduckgo.com/ac/?q=",
+  searchPrefix = "s",
   parseResponse = parseSearchResponse,
 ) {
   api.addSearchAlias(
@@ -241,26 +241,42 @@ vForwardFactory.pull(vMapLists);
 // #endregion
 
 // #region Search Alias
-api.unmap("os"); // StackOverflow
-api.vunmap("ss");
-api.unmap("ob"); // Baidu
-api.vunmap("sb");
-api.unmap("og"); // Google
-api.vunmap("sg");
-api.unmap("od"); // DuckDuckGo
-api.vunmap("sd");
-api.unmap("ow"); // Bing
-api.vunmap("sw");
+removeSearchAlias("s"); // StackOverflow
+removeSearchAlias("d"); // DuckDuckGo
+removeSearchAlias("g"); // Google
+removeSearchAlias("b"); // Baidu
+removeSearchAlias("w"); // Bing
+removeSearchAlias("y"); // YouTube
 
 /// Common
 _addSearchAlias("dd", "DuckDuckGo", "https://duckduckgo.com/?q=");
 _addSearchAlias("gg", "Google", "https://www.google.com/search?q=");
 _addSearchAlias("bd", "Baidu", "https://www.baidu.com/s?wd=");
 _addSearchAlias("bi", "Bing", "https://www.bing.com/search?q=");
+_addSearchAlias(
+  "wk",
+  "Wikipedia",
+  "https://en.wikipedia.org/w/index.php?title=Special:Search&search=",
+);
+_addSearchAlias("re", "Reddit", "https://www.reddit.com/search?q=");
+_addSearchAlias("st", "Steam", "https://store.steampowered.com/search/?term=");
+_addSearchAlias(
+  "ud",
+  "UrbanDictionary",
+  "https://www.urbandictionary.com/define.php?term=",
+);
+_addSearchAlias("tw", "X", "https://twitter.com/search?q=");
+_addSearchAlias("de", "Thesaurus", "https://www.onelook.com/?w=");
+_addSearchAlias(
+  "ww",
+  "WantWords",
+  "https://www.shenyandayi.com/wantWordsResult?lang=zh&query=",
+);
 /// AI Search
 _addSearchAlias("fe", "Felo", "https://felo.ai/search?q=");
 _addSearchAlias("pp", "Perplexity", "https://www.perplexity.ai/?q=");
 _addSearchAlias("cg", "ChatGPT", "https://chat.openai.com/?q=");
+_addSearchAlias("mc", "Metacritic", "https://www.metacritic.com/search/");
 /// EECS Related
 _addSearchAlias(
   "gh",
@@ -268,14 +284,42 @@ _addSearchAlias(
   "https://github.com/search?type=repositories&q=",
 );
 _addSearchAlias("so", "StackOverflow", "https://stackoverflow.com/search?q=");
+_addSearchAlias("se", "StackExchange", "https://stackexchange.com/search?q=");
 _addSearchAlias(
   "aw",
   "ArchWiki",
   "https://wiki.archlinux.org/index.php?search=",
 );
-/// Software
+_addSearchAlias("wa", "WolframAlpha", "https://www.wolframalpha.com/input/?i=");
+_addSearchAlias("eb", "ebay", "https://www.ebay.co.uk/sch/i.html?kw=");
+// Programming language packages
+_addSearchAlias("py", "pypi", "https://pypi.org/search/?q=");
+_addSearchAlias("ng", "NuGet", "https://www.nuget.org/packages?q=");
+_addSearchAlias("np", "npm", "https://www.npmjs.com/search?q=");
+// Package Manager Search
+_addSearchAlias("wg", "winget", "https://winget.ragerworks.com/search/all/");
 _addSearchAlias("sc", "Scoop", "https://scoop.sh/#/apps?q=");
-_addSearchAlias("br", "Brew", "https://duckduckgo.com/?q=!brew ");
+_addSearchAlias("br", "HomeBrew", "https://duckduckgo.com/?q=!brew ");
+_addSearchAlias("au", "AUR", "https://aur.archlinux.org/packages?K=");
+_addSearchAlias("pa", "Pacman", "https://archlinux.org/packages/?q=");
+_addSearchAlias("ap", "APT", "https://packages.ubuntu.com/search?keywords=");
+_addSearchAlias(
+  "a2",
+  "AlternativeTo",
+  "https://alternativeto.net/browse/search/?q=",
+);
+_addSearchAlias(
+  "cr",
+  "Chrome Web Store",
+  "https://chrome.google.com/webstore/search/",
+);
+/// Video
+_addSearchAlias(
+  "yt",
+  "YouTube",
+  "https://www.youtube.com/results?search_query=",
+);
+_addSearchAlias("bl", "Bilibili", "https://search.bilibili.com/all?keyword=");
 
 // #endregion
 
@@ -310,7 +354,11 @@ api.mapkey("as", "Start/Stop Generating", chatgptStartStop, {
 //}, { domain: /chatgpt.com/ });
 // perplexity.ai
 api.unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
-api.map();
+api.mapkey("aB", "Add Perplexity Bookmark", function () {
+  //  button.border:nth-child(2)
+  var btn = document.querySelector("button.border:nth-child(2)");
+  btn.click();
+});
 
 // #endregion
 
@@ -425,4 +473,8 @@ addVimMapKey(
   },
 );
 
+// #endregion
+
+// #region Hints
+Hints.setNumeric();
 // #endregion
