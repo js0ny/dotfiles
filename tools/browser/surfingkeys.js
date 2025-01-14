@@ -476,5 +476,4 @@ addVimMapKey(
 // #endregion
 
 // #region Hints
-Hints.setNumeric();
 // #endregion
