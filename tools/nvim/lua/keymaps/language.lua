@@ -25,4 +25,27 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+--- buffer that doesn't act as an editor or common buffer.
+--- Use `q` to close the buffer.
+local tmp_buf = {
+  "qf", -- quickfix
+  "crunner", -- code runner
+}
+
+M.tmp_buf_keymaps = {
+  { mode = "n", keys = "q", cmd = "<Cmd>q<CR>", desc = "Close buffer" },
+}
+
+for _, buf in ipairs(tmp_buf) do
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = buf,
+    callback = function()
+      for _, map in ipairs(M.tmp_buf_keymaps) do
+        local opts = vim.tbl_extend("force", { buffer = 0 }, map.opts or {})
+        vim.keymap.set(map.mode, map.keys, map.cmd, opts)
+      end
+    end,
+  })
+end
+
 return M

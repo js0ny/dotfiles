@@ -1,7 +1,7 @@
 local M = {}
 
 M.global = {
-  { mode = "n", keys = "<leader>e", cmd = ":NvimTreeToggle<CR>" },
+  { mode = "n", keys = "<leader>E", cmd = ":NvimTreeToggle<CR>" },
   { mode = "n", keys = "<A-0>", cmd = ":NvimTreeFocus<CR>" },
 }
 

@@ -17,6 +17,7 @@ noremap N 5j
 noremap E 5k
 
 " Similar position to i
+" The `noremap` implements text-object-like behavior in VSCodeVim
 noremap l i
 noremap L I
 " ne[k]st
@@ -29,9 +30,10 @@ noremap J E
 " Y to yank to end of line
 noremap Y y$
 
+noremap <esc> :nohlsearch<CR>
+
 " 分词版本的w和b，支持中文，需要插件
 " 为了保证递归解析，而不是打断，使用 `nmap` 而不是 `nnoremap`
-" 由于 VSCode Vim 的限制，递归解析存在缺陷，目前这种情况，2w 符合预期，但 dw 不符合预期
 " Comment if you don't use cjk or the plugin
 nmap w cjkWordHandler.cursorWordEndRight
 nmap b cjkWordHandler.cursorWordStartLeft
@@ -92,7 +94,8 @@ noremap <leader>fC workbench.action.openFolderSettingsFile
 noremap <leader>fe workbench.view.explorer
 noremap <leader>fo openInExternalApp.open
 noremap <leader>fr workbench.action.showAllEditorsByMostRecentlyUsed
-noremap <leader>fR git.rename " Rename file
+" Can only rename tracked files
+noremap <leader>fR git.rename
 " noremap <leader>fs workbench.action.search.toggleQueryDetails
 noremap <leader>ft workbench.action.terminal.toggleTerminal
 noremap <leader>fx workbench.view.extensions

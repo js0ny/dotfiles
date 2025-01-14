@@ -21,13 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- 加载配置
 require("config.options")
--- 加载键位映射
-require("config.keymaps")
-
 -- 加载插件
 require("config.plugins")
-
 -- 加载主题
 require("config.colorscheme")
-
--- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- 加载键位映射
+require("config.keymaps")

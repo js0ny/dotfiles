@@ -1,8 +1,7 @@
 return {
-  { import = "plugins.mod.lspconfig" },
   {
-    "NoahTheDuke/vim-just",
-    ft = { "just" },
+    "neovim/nvim-lspconfig",
+    lazy = false,
   },
   { import = "plugins.mod.render-markdown" },
   -- { import = "plugins.mod.markview" },
@@ -63,4 +62,8 @@ return {
   },
   { import = "plugins.mod.conform-nvim" },
   { "nvim-treesitter/nvim-treesitter-context" },
+  {
+    "NoahTheDuke/vim-just",
+    ft = { "just" },
+  },
 }

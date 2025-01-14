@@ -15,7 +15,7 @@ return {
           -- require('hover.providers.jira')
           -- require('hover.providers.dap')
           -- require('hover.providers.fold_preview')
-          -- require('hover.providers.diagnostic')
+          require("hover.providers.diagnostic")
           -- require('hover.providers.man')
           -- require('hover.providers.dictionary')
         end,
@@ -44,6 +44,12 @@ return {
       -- Mouse support
       vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
       vim.o.mousemoveevent = true
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
     end,
   },
 }
