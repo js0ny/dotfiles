@@ -21,7 +21,7 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/winhome/Obsidian",
+        path = "~/Obsidian",
       },
     },
     completion = {

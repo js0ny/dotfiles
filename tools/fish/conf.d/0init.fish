@@ -31,6 +31,9 @@ else if test -d /home/linuxbrew/.linuxbrew/bin # Linux
     set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
 end
 
+if command -v brew > /dev/null
+    set -gx HOMEBREW_NO_ENV_HINTS
+end
 
 # Azure CLI
 if command -v az > /dev/null
