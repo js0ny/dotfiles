@@ -380,37 +380,37 @@
   // #region Terminal Control, use ^a as prefix / leader key
   // tmux-like terminal control
   { // prefix + x : kill terminal
-    "key": "ctrl+a x",
+    "key": "ctrl+q x",
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
   },
   { // prefix + c : create new terminal
-    "key": "ctrl+a c",
+    "key": "ctrl+q c",
     "command": "workbench.action.terminal.new",
     "when": "terminalFocus"
   },
   { // prefix + | : split terminal vertically
-    "key": "ctrl+a shift+\\",
+    "key": "ctrl+q shift+\\",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus"
   },
   { // prefix + \ : split terminal vertically
-    "key": "ctrl+a \\",
+    "key": "ctrl+q \\",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus"
   },
   { // prefix + / : search
-    "key": "ctrl+a /",
+    "key": "ctrl+q /",
     "command": "workbench.action.terminal.focusFind",
     "when": "terminalFocus"
   },
   { // prefix + t : toggle terminal
-    "key": "ctrl+a t",
+    "key": "ctrl+q t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminalFocus"
   },
   { // prefix + ^a: show information
-    "key": "ctrl+a ctrl+a",
+    "key": "ctrl+q ctrl+q",
     "command": "workbench.action.terminal.focusHover",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
   },
@@ -420,22 +420,22 @@
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
   },
   { // prefix + 1 : focus terminal 1
-    "key": "ctrl+a 1",
+    "key": "ctrl+q 1",
     "command": "workbench.action.terminal.focusAtIndex1",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
   },
   { // prefix + 2 : focus terminal 2
-    "key": "ctrl+a 2",
+    "key": "ctrl+q 2",
     "command": "workbench.action.terminal.focusAtIndex2",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
   },
   { // prefix + 3 : focus terminal 3
-    "key": "ctrl+a 3",
+    "key": "ctrl+q 3",
     "command": "workbench.action.terminal.focusAtIndex3",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
   },
   { // prefix + g : Go to recent directory
-    "key": "ctrl+a g",
+    "key": "ctrl+q g",
     "command": "workbench.action.terminal.goToRecentDirectory",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
@@ -445,42 +445,42 @@
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   { // prefix + d : detach terminal
-    "key": "ctrl+a d",
+    "key": "ctrl+q d",
     "command": "workbench.action.terminal.detachSession",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   { // prefix + a : attach to session
-    "key": "ctrl+a a",
+    "key": "ctrl+q a",
     "command": "workbench.action.terminal.attachToSession",
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+a h",
+    "key": "ctrl+q h",
     "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+a i",
+    "key": "ctrl+q i",
     "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+a shift+H",
+    "key": "ctrl+q shift+H",
     "command": "workbench.action.terminal.resizePaneLeft",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+a shift+N",
+    "key": "ctrl+q shift+N",
     "command": "workbench.action.terminal.resizePaneDown",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+a shift+E",
+    "key": "ctrl+q shift+E",
     "command": "workbench.action.terminal.resizePaneUp",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+a shift+I",
+    "key": "ctrl+q shift+I",
     "command": "workbench.action.terminal.resizePaneRight",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   }

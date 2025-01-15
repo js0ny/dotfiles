@@ -1,7 +1,6 @@
 // Paste this into surfingkeys advanced settings
 // or use:
 // Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/tools/browser/surfingkeys.js
-// TODO: Visual Mode
 
 // #region Example
 /** Examples
@@ -23,406 +22,458 @@ api.unmap('<ctrl-i>');
 // Settings
 settings.language = "zh-CN";
 settings.showModeStatus = false;
-// Keymap, reference https://github.com/texiwustion/colemak_config_for_surfingkeys/tree/main
 // #region Helper
+const {
+  aceVimMap,
+  addVimMapKey,
+  mapkey,
+  imap,
+  imapkey,
+  getClickableElements,
+  vmapkey,
+  map,
+  unmap,
+  cmap,
+  addSearchAlias,
+  removeSearchAlias,
+  tabOpenLink,
+  readText,
+  Clipboard,
+  Front,
+  Hints,
+  Visual,
+  RUNTIME,
+} = api;
+// Keymap, reference https://github.com/texiwustion/colemak_config_for_surfingkeys/tree/main
 const forward = {
-  add: function (key) { // 转发即将被 unmap 的键
-    return api.map(`for${key}`, key)
+  add: function (key) {
+    // 转发即将被 unmap 的键
+    return api.map(`for${key}`, key);
   },
-  cancel: function (key) { // 删除转发生成的键
-    api.unmap(`for${key}`)
-    api.unmap(key)
+  cancel: function (key) {
+    // 删除转发生成的键
+    api.unmap(`for${key}`);
+    api.unmap(key);
   },
   use: function (key) {
-    return `for${key}`
-  }
-}
+    return `for${key}`;
+  },
+};
 
 const colemak = {
-  forward: function (key) { // 转发即将被 unmap 的键
-    api.map(key, `col${key}`)
-    api.unmap(`col${key}`)
-
+  forward: function (key) {
+    // 转发即将被 unmap 的键
+    api.map(key, `col${key}`);
+    api.unmap(`col${key}`);
   },
   use: function (key) {
-    return `col${key}`
+    return `col${key}`;
   },
   map: function (a, b) {
-    api.map(colemak.use(a), forward.use(b))
-  }
-}
+    api.map(colemak.use(a), forward.use(b));
+  },
+};
+
+const vForward = {
+  add: function (key) {
+    // 转发即将被 unmap 的键
+    return api.vmap(`vfor${key}`, key);
+  },
+  cancel: function (key) {
+    // 删除转发生成的键
+    api.vunmap(`vfor${key}`);
+    api.vunmap(key);
+  },
+  use: function (key) {
+    return `vfor${key}`;
+  },
+};
+
+const vColemak = {
+  forward: function (key) {
+    // 转发即将被 unmap 的键
+    api.vmap(key, `vcol${key}`);
+    api.vunmap(`vcol${key}`);
+  },
+  use: function (key) {
+    return `vcol${key}`;
+  },
+  map: function (a, b) {
+    api.vmap(vColemak.use(a), vForward.use(b));
+  },
+};
 
 const forwardFactory = {
-  push: function (mapLists) { // forward original keys
+  push: function (mapLists) {
+    // forward original keys
     for (let key in mapLists) {
-      forward.add(mapLists[key])
+      forward.add(mapLists[key]);
     }
   },
   map: function (mapLists) {
     for (let key in mapLists) {
-      colemak.map(key, mapLists[key])
+      colemak.map(key, mapLists[key]);
     }
   },
   pull: function (mapLists) {
     for (let key in mapLists) {
-      forward.cancel(mapLists[key])
+      forward.cancel(mapLists[key]);
     }
     for (let key in mapLists) {
-      colemak.forward(key)
+      colemak.forward(key);
     }
-  }
-}
+  },
+};
+const vForwardFactory = {
+  push: function (mapLists) {
+    // forward original keys
+    for (let key in mapLists) {
+      vForward.add(mapLists[key]);
+    }
+  },
+  map: function (mapLists) {
+    for (let key in mapLists) {
+      vColemak.map(key, mapLists[key]);
+    }
+  },
+  pull: function (mapLists) {
+    for (let key in mapLists) {
+      vForward.cancel(mapLists[key]);
+    }
+    for (let key in mapLists) {
+      vColemak.forward(key);
+    }
+  },
+};
+
+const parseSearchResponse = function (response) {
+  const res = JSON.parse(response.text);
+  return res.map((r) => r.phrase);
+};
+
+const _addSearchAlias = function (
+  alias,
+  name,
+  searchUrl,
+  acUrl = "https://duckduckgo.com/ac/?q=",
+  searchPrefix = "s",
+  parseResponse = parseSearchResponse,
+) {
+  api.addSearchAlias(
+    alias,
+    name,
+    searchUrl,
+    searchPrefix,
+    acUrl,
+    parseResponse,
+  );
+};
 // #endregion
+
 // #region Keymap
 const mapLists = {
   /// scroll page
   // Arrow
-  'n': 'j',
-  'e': 'k',
-  'i': 'l',
+  n: "j",
+  e: "k",
+  i: "l",
   // l <-> i
-  'l': 'i',
-  'L': 'I',
+  l: "i",
+  L: "I",
   // k <-> n
-  'k': 'n',
-  'K': 'N',
+  k: "n",
+  K: "N",
   // j <-> e
-  'j': 'e',
+  j: "e",
   // PrevTab < H - I > NextTab
-  'H': 'E',
-  'I': 'R',
+  H: "E",
+  I: "R",
   // E,N -> Up/Down HalfPage
-  'N': 'd',
-  'E': 'e',
+  N: "d",
+  E: "e",
   // F -> Open Link in New Tab
-  'F': 'af',
+  F: "af",
   // oH -> Tab History
-  'oH': 'H',
+  oH: "H",
   // gh/gi -> Prev/Next History
-  'gh': 'S',
-  'gi': 'D',
+  gh: "S",
+  gi: "D",
   // t -> Open Link in New Tab
-  't': 'gf',
+  t: "gf",
   // 缩放
-  'zu': 'zi',
-  'zo': 'ze',
-  'zz': 'zr',
-}
+  zu: "zi",
+  zo: "ze",
+  zz: "zr",
+};
 
-const vmapLists = {
-  'n': 'j',
-  'N': 'J',
-  'e': 'k',
-  'E': 'K',
-  'i': 'l',
-  'I': 'L',
-  'j': 'e',
-  'J': 'E',
-  'k': 'n',
-  'K': 'N',
-}
+const vMapLists = {
+  n: "j",
+  N: "J",
+  e: "k",
+  E: "K",
+  i: "l",
+  I: "L",
+  j: "e",
+  J: "E",
+  k: "n",
+  K: "N",
+};
 
-forwardFactory.push(mapLists)
-forwardFactory.map(mapLists)
+forwardFactory.push(mapLists);
+forwardFactory.map(mapLists);
+
+vForwardFactory.push(vMapLists);
+vForwardFactory.map(vMapLists);
 // 鼠标点击
-api.unmap('gi')
-api.unmap('[[')
-api.unmap(']]')
-api.unmap(';m')
-api.unmap(';fs')
-api.unmap('O')
-api.unmap('C')
-api.map('g/', 'gU') // Goto Root Domain
-forwardFactory.pull(mapLists)
+api.unmap("gi");
+api.unmap("[[");
+api.unmap("]]");
+api.unmap(";m");
+api.unmap(";fs");
+api.unmap("O");
+api.unmap("C");
+api.map("g/", "gU"); // Goto Root Domain
+// p to site-specific
+api.unmap("p");
+api.unmap("<space>"); // Leader Key
+forwardFactory.pull(mapLists);
+vForwardFactory.pull(vMapLists);
 // #endregion
 
-
 // #region Search Alias
-api.addSearchAlias('f', 'Felo', 'https://felo.ai/search?q=', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
-api.addSearchAlias('p', 'Perplexity', 'https://www.perplexity.ai/?q=', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
-api.addSearchAlias('r', 'Raindrop', 'https://app.raindrop.io/my/0/', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
-api.addSearchAlias('c', 'ChatGPT', 'https://chatgpt.com/?q=', 's', 'https://duckduckgo.com/ac/?q=', function (response) {
-  var res = JSON.parse(response.text);
-  return res.map(function (r) {
-    return r.phrase;
-  });
-});
+removeSearchAlias("s"); // StackOverflow
+removeSearchAlias("d"); // DuckDuckGo
+removeSearchAlias("g"); // Google
+removeSearchAlias("b"); // Baidu
+removeSearchAlias("w"); // Bing
+removeSearchAlias("y"); // YouTube
+
+/// Common
+_addSearchAlias("dd", "DuckDuckGo", "https://duckduckgo.com/?q=");
+_addSearchAlias("gg", "Google", "https://www.google.com/search?q=");
+_addSearchAlias("bd", "Baidu", "https://www.baidu.com/s?wd=");
+_addSearchAlias("bi", "Bing", "https://www.bing.com/search?q=");
+_addSearchAlias(
+  "wk",
+  "Wikipedia",
+  "https://en.wikipedia.org/w/index.php?title=Special:Search&search=",
+);
+_addSearchAlias("re", "Reddit", "https://www.reddit.com/search?q=");
+_addSearchAlias("st", "Steam", "https://store.steampowered.com/search/?term=");
+_addSearchAlias(
+  "ud",
+  "UrbanDictionary",
+  "https://www.urbandictionary.com/define.php?term=",
+);
+_addSearchAlias("tw", "X", "https://twitter.com/search?q=");
+_addSearchAlias("de", "Thesaurus", "https://www.onelook.com/?w=");
+_addSearchAlias(
+  "ww",
+  "WantWords",
+  "https://www.shenyandayi.com/wantWordsResult?lang=zh&query=",
+);
+/// AI Search
+_addSearchAlias("fe", "Felo", "https://felo.ai/search?q=");
+_addSearchAlias("pp", "Perplexity", "https://www.perplexity.ai/?q=");
+_addSearchAlias("cg", "ChatGPT", "https://chat.openai.com/?q=");
+_addSearchAlias("mc", "Metacritic", "https://www.metacritic.com/search/");
+/// EECS Related
+_addSearchAlias(
+  "gh",
+  "GitHub",
+  "https://github.com/search?type=repositories&q=",
+);
+_addSearchAlias("so", "StackOverflow", "https://stackoverflow.com/search?q=");
+_addSearchAlias("se", "StackExchange", "https://stackexchange.com/search?q=");
+_addSearchAlias(
+  "aw",
+  "ArchWiki",
+  "https://wiki.archlinux.org/index.php?search=",
+);
+_addSearchAlias("wa", "WolframAlpha", "https://www.wolframalpha.com/input/?i=");
+_addSearchAlias("eb", "ebay", "https://www.ebay.co.uk/sch/i.html?kw=");
+// Programming language packages
+_addSearchAlias("py", "pypi", "https://pypi.org/search/?q=");
+_addSearchAlias("ng", "NuGet", "https://www.nuget.org/packages?q=");
+_addSearchAlias("np", "npm", "https://www.npmjs.com/search?q=");
+// Package Manager Search
+_addSearchAlias("wg", "winget", "https://winget.ragerworks.com/search/all/");
+_addSearchAlias("sc", "Scoop", "https://scoop.sh/#/apps?q=");
+_addSearchAlias("br", "HomeBrew", "https://duckduckgo.com/?q=!brew ");
+_addSearchAlias("au", "AUR", "https://aur.archlinux.org/packages?K=");
+_addSearchAlias("pa", "Pacman", "https://archlinux.org/packages/?q=");
+_addSearchAlias("ap", "APT", "https://packages.ubuntu.com/search?keywords=");
+_addSearchAlias(
+  "a2",
+  "AlternativeTo",
+  "https://alternativeto.net/browse/search/?q=",
+);
+_addSearchAlias(
+  "cr",
+  "Chrome Web Store",
+  "https://chrome.google.com/webstore/search/",
+);
+/// Video
+_addSearchAlias(
+  "yt",
+  "YouTube",
+  "https://www.youtube.com/results?search_query=",
+);
+_addSearchAlias("bl", "Bilibili", "https://search.bilibili.com/all?keyword=");
+
 // #endregion
 
 // #region Site-specific
-
 // chatgpt.com
-api.unmap('t', /chatgpt.com/);
-api.mapkey('tn', 'New Chat', function () {
-  var btn = document.querySelector('div.no-draggable:nth-child(3) > span:nth-child(1) > button:nth-child(1)')
+const chatgptNewChat = function () {
+  var btn = document.querySelector(
+    "div.no-draggable:nth-child(3) > span:nth-child(1) > button:nth-child(1)",
+  );
   btn.click();
-}, { domain: /chatgpt.com/ });
-api.mapkey('ts', 'Start/Stop Generating', function () {
-  var btn = document.querySelector('button.h-8:nth-child(2)');
+};
+const chatgptStartStop = function () {
+  var btn = document.querySelector("button.h-8:nth-child(2)");
   btn.click();
-}, { domain: /chatgpt.com/ });
-api.mapkey('ts', 'Start/Stop Generating', function () {
-  var btn = document.querySelector('button.h-8:nth-child(2)');
-  btn.click();
-}, { domain: /chatgpt.com/ });
-api.mapkey('S', 'Start/Stop Generating', function () {
-  var btn = document.querySelector('button.h-8:nth-child(2)');
-  btn.click();
-}, { domain: /chatgpt.com/ });
+};
+api.unmap("t", /chatgpt.com/);
+api.mapkey("tn", "New Chat", chatgptNewChat, { domain: /chatgpt.com/ });
+api.mapkey("ts", "Start/Stop Generating", chatgptStartStop, {
+  domain: /chatgpt.com/,
+});
+api.mapkey("S", "Start/Stop Generating", chatgptStartStop, {
+  domain: /chatgpt.com/,
+});
+api.mapkey("an", "New Chat", chatgptNewChat, { domain: /chatgpt.com/ });
+api.mapkey("as", "Start/Stop Generating", chatgptStartStop, {
+  domain: /chatgpt.com/,
+});
+
 //api.mapkey('tm', 'Toggle Model', function () {
 //  var btn = document.querySelector('#radix -\: r2i\:');
 //  btn.click();
 //}, { domain: /chatgpt.com/ });
+// perplexity.ai
+api.unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
+api.mapkey("aB", "Add Perplexity Bookmark", function () {
+  //  button.border:nth-child(2)
+  var btn = document.querySelector("button.border:nth-child(2)");
+  btn.click();
+});
 
 // #endregion
 
-// #region Theme
-//  reference to https://github.com/Foldex/surfingkeys-config
-// api.Hints.style('border: solid 2px #4C566A; color:#A3BE8C; background: initial; background-color: #3B4252;');
-// api.Hints.style("border: solid 2px #4C566A !important; padding: 1px !important; color: #E5E9F0 !important; background: #3B4252 !important;", "text");
-// api.Visual.style('marks', 'background-color: #A3BE8C99;');
-// api.Visual.style('cursor', 'background-color: #88C0D0;');
-// settings.theme = `
-// fg: #E5E9F0;
-// bg: #3B4252;
-// bg-dark: #2E3440;
-// border: #4C566A;
-// main-fg: #88C0D0;
-// accent-fg: #A3BE8C;
-// info-fg: #5E81AC;
-// select: #4C566A;
-// /* ---------- Generic ---------- */
-// .sk_theme {
-// background: var(--bg);
-// color: var(--fg);
-//   background-color: var(--bg);
-//   border-color: var(--border);
-//   font-family: var(--font);
-//   font-size: var(--font-size);
-//   font-weight: var(--font-weight);
-// }
+// #region ACE Editor
+addVimMapKey(
+  // Navigation
+  {
+    keys: "k",
+    type: "motion",
+    motion: "findNext",
+    motionArgs: { forward: true, toJumplist: true },
+  },
+  {
+    keys: "K",
+    type: "motion",
+    motion: "findNext",
+    motionArgs: { forward: false, toJumplist: true },
+  },
 
-// input {
-//   font-family: var(--font);
-//   font-weight: var(--font-weight);
-// }
+  // Word movement
+  {
+    keys: "j",
+    type: "motion",
+    motion: "moveByWords",
+    motionArgs: { forward: true, wordEnd: true, inclusive: true },
+  },
+  {
+    keys: "J",
+    type: "motion",
+    motion: "moveByWords",
+    motionArgs: {
+      forward: true,
+      wordEnd: true,
+      bigWord: true,
+      inclusive: true,
+    },
+  },
 
-// .sk_theme tbody {
-//   color: var(--fg);
-// }
+  // Insert mode entries
+  {
+    keys: "l",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "inplace" },
+    context: "normal",
+  },
+  {
+    keys: "gl",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "lastEdit" },
+    context: "normal",
+  },
+  {
+    keys: "L",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "firstNonBlank" },
+    context: "normal",
+  },
+  {
+    keys: "gL",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "bol" },
+    context: "normal",
+  },
+  {
+    keys: "L",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "startOfSelectedArea" },
+    context: "visual",
+  },
+  {
+    keys: "n",
+    type: "motion",
+    motion: "moveByLines",
+    motionArgs: { forward: true, linewise: true },
+  },
+  {
+    keys: "e",
+    type: "motion",
+    motion: "moveByLines",
+    motionArgs: { forward: false, linewise: true },
+  },
+  {
+    keys: "i",
+    type: "motion",
+    motion: "moveByCharacters",
+    motionArgs: { forward: true },
+  },
+  {
+    keys: "H",
+    type: "keyToKey",
+    toKeys: "^",
+  },
+  {
+    keys: "I",
+    type: "keyToKey",
+    toKeys: "$",
+  },
+  {
+    keys: "Y",
+    type: "keyToKey",
+    toKeys: "y$",
+  },
+);
 
-// .sk_theme input {
-//   color: var(--fg);
-// }
+// #endregion
 
-// /* Hints */
-// #sk_hints .begin {
-//   color: var(--accent-fg) !important;
-// }
-
-// #sk_tabs .sk_tab {
-//   background: var(--bg-dark);
-//   border: 1px solid var(--border);
-// }
-
-// #sk_tabs .sk_tab_title {
-//   color: var(--fg);
-// }
-
-// #sk_tabs .sk_tab_url {
-//   color: var(--main-fg);
-// }
-
-// #sk_tabs .sk_tab_hint {
-//   background: var(--bg);
-//   border: 1px solid var(--border);
-//   color: var(--accent-fg);
-// }
-
-// .sk_theme #sk_frame {
-//   background: var(--bg);
-//   opacity: 0.2;
-//   color: var(--accent-fg);
-// }
-
-// /* ---------- Omnibar ---------- */
-// /* Uncomment this and use settings.omnibarPosition = 'bottom' for Pentadactyl/Tridactyl style bottom bar */
-// /* .sk_theme#sk_omnibar {
-//   width: 100%;
-//   left: 0;
-// } */
-
-// .sk_theme .title {
-//   color: var(--accent-fg);
-// }
-
-// .sk_theme .url {
-//   color: var(--main-fg);
-// }
-
-// .sk_theme .annotation {
-//   color: var(--accent-fg);
-// }
-
-// .sk_theme .omnibar_highlight {
-//   color: var(--accent-fg);
-// }
-
-// .sk_theme .omnibar_timestamp {
-//   color: var(--info-fg);
-// }
-
-// .sk_theme .omnibar_visitcount {
-//   color: var(--accent-fg);
-// }
-
-// .sk_theme #sk_omnibarSearchResult ul li:nth-child(odd) {
-//   background: var(--bg-dark);
-// }
-
-// .sk_theme #sk_omnibarSearchResult ul li.focused {
-//   background: var(--border);
-// }
-
-// .sk_theme #sk_omnibarSearchArea {
-//   border-top-color: var(--border);
-//   border-bottom-color: var(--border);
-// }
-
-// .sk_theme #sk_omnibarSearchArea input,
-// .sk_theme #sk_omnibarSearchArea span {
-//   font-size: var(--font-size);
-// }
-
-// .sk_theme .separator {
-//   color: var(--accent-fg);
-// }
-
-// /* ---------- Popup Notification Banner ---------- */
-// #sk_banner {
-//   font-family: var(--font);
-//   font-size: var(--font-size);
-//   font-weight: var(--font-weight);
-//   background: var(--bg);
-//   border-color: var(--border);
-//   color: var(--fg);
-//   opacity: 0.9;
-// }
-
-// /* ---------- Popup Keys ---------- */
-// #sk_keystroke {
-//   background-color: var(--bg);
-// }
-
-// .sk_theme kbd .candidates {
-//   color: var(--info-fg);
-// }
-
-// .sk_theme span.annotation {
-//   color: var(--accent-fg);
-// }
-
-// /* ---------- Popup Translation Bubble ---------- */
-// #sk_bubble {
-//   background-color: var(--bg) !important;
-//   color: var(--fg) !important;
-//   border-color: var(--border) !important;
-// }
-
-// #sk_bubble * {
-//   color: var(--fg) !important;
-// }
-
-// #sk_bubble div.sk_arrow div:nth-of-type(1) {
-//   border-top-color: var(--border) !important;
-//   border-bottom-color: var(--border) !important;
-// }
-
-// #sk_bubble div.sk_arrow div:nth-of-type(2) {
-//   border-top-color: var(--bg) !important;
-//   border-bottom-color: var(--bg) !important;
-// }
-
-// /* ---------- Search ---------- */
-// #sk_status,
-// #sk_find {
-//   font-size: var(--font-size);
-//   border-color: var(--border);
-// }
-
-// .sk_theme kbd {
-//   background: var(--bg-dark);
-//   border-color: var(--border);
-//   box-shadow: none;
-//   color: var(--fg);
-// }
-
-// .sk_theme .feature_name span {
-//   color: var(--main-fg);
-// }
-
-// /* ---------- ACE Editor ---------- */
-// #sk_editor {
-//   background: var(--bg-dark) !important;
-//   height: 50% !important;
-//   /* Remove this to restore the default editor size */
-// }
-
-// .ace_dialog-bottom {
-//   border-top: 1px solid var(--bg) !important;
-// }
-
-// .ace-chrome .ace_print-margin,
-// .ace_gutter,
-// .ace_gutter-cell,
-// .ace_dialog {
-//   background: var(--bg) !important;
-// }
-
-// .ace-chrome {
-//   color: var(--fg) !important;
-// }
-
-// .ace_gutter,
-// .ace_dialog {
-//   color: var(--fg) !important;
-// }
-
-// .ace_cursor {
-//   color: var(--fg) !important;
-// }
-
-// .normal-mode .ace_cursor {
-//   background-color: var(--fg) !important;
-//   border: var(--fg) !important;
-//   opacity: 0.7 !important;
-// }
-
-// .ace_marker-layer .ace_selection {
-//   background: var(--select) !important;
-// }
-
-// .ace_editor,
-// .ace_dialog span,
-// .ace_dialog input {
-//   font-family: var(--font);
-//   font-size: var(--font-size);
-//   font-weight: var(--font-weight);
-// }`;
-// click `Save` button to make above settings to take effect.</ctrl-i></ctrl-y>
+// #region Hints
 // #endregion

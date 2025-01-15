@@ -16,10 +16,9 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 # Set Environment Variables
 # Use %PATH_EXT% to prevent PATH from being too long
 [System.Environment]::SetEnvironmentVariable("Path_EXT_0", "D:\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_0", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_1", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "C:\Users\citoy\AppData\Local\Cargo\bin", "User")
-[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_0", "C:\Users\jsony\AppData\Local\Cargo\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_1", "C:\Users\jsony\AppData\Local\Go\bin", "User")
+[System.Environment]::SetEnvironmentVariable("Path_EXT_2", "C:\Users\jsony\AppData\Local\Cargo\bin", "User")
 $currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
 if ($currentPath -notlike "*%PATH_EXT%*") {
     $currentPath += ";%PATH_EXT_0%;%PATH_EXT_1%;%PATH_EXT_2%"
@@ -36,8 +35,8 @@ if ($currentPath -notlike "*%PATH_EXT%*") {
 # Simulate XDG Base Directory Specification
 $Env:XDG_CONFIG_HOME = "$Env:AppData"
 $Env:XDG_DATA_HOME = "$Env:LocalAppData"
-$Env:XDG_CACHE_HOME = "$Env:LocalAppData\cache"
-$Env:XDG_STATE_HOME = "$Env:LocalAppData\state"
+$Env:XDG_CACHE_HOME = "$Env:LocalAppData\Cache"
+$Env:XDG_STATE_HOME = "$Env:LocalAppData\State"
 [System.Environment]::SetEnvironmentVariable("XDG_CONFIG_HOME", "$Env:XDG_CONFIG_HOME", "User")
 [System.Environment]::SetEnvironmentVariable("XDG_DATA_HOME", "$Env:XDG_DATA_HOME", "User")
 New-Item -ItemType Directory -Path "$Env:LocalAppData\cache" -Force

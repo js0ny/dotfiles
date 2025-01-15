@@ -37,9 +37,7 @@ bindkey '^B' backward-char
 bindkey '^P' up-line-or-history
 bindkey '^N' down-line-or-history
 bindkey '^R' history-incremental-search-backward
-# TODO: did not test
 bindkey '^K' kill-line
-bindkey '^X^E' edit-command-line
 
 # LEADER CONVENTION
 # ^X defines as a prefix key in shell

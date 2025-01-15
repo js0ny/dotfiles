@@ -83,7 +83,7 @@ if command -v apt > /dev/null; then
     alias apt="sudo apt"
     alias apti="sudo apt install"
     alias aptu="sudo apt update && sudo apt upgrade"
-    alias aptr="sudo apt autoremove && sudo apt remove"
+    alias aptr="sudo apt remove"
 fi
 
 if command -v brew > /dev/null; then

@@ -1,6 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
-  version = "*",  -- recommended, use latest release instead of latest commit
+  version = "*", -- recommended, use latest release instead of latest commit
   lazy = false,
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
@@ -26,8 +26,11 @@ return {
     },
     completion = {
       nvim_cmp = true,
-      min_chars = 2
-    }
+      min_chars = 2,
+    },
+    ui = {
+      enable = false,
+    },
     -- see below for full list of options 👇
   },
 }

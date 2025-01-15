@@ -3,21 +3,15 @@
 --- for available server and name
 local M = {}
 M.servers = {
-    "arduino_language_server", -- Arduino
-    "bashls",                  -- Bash
-    "clangd",                  -- C/C++
-    -- "cmake",                   -- CMake
-    "eslint",                  -- JavaScript
-    "gopls",                   -- Go
-    "html",                    -- HTML
-    "julials",                 -- Julia
-    "lua_ls",                  -- Lua
-    "omnisharp",               -- C# & F#
-    "powershell_es",           -- PowerShell
-    "pyright",                 -- Python
-    "rust_analyzer",           -- Rust
-    "taplo",                   -- TOML
-    "vimls",                   -- vimscript
+  "clangd", -- C/C++
+  -- "cmake",                   -- CMake
+  "eslint", -- JavaScript
+  "html", -- HTML
+  "lua_ls", -- Lua
+  "omnisharp", -- C# & F#
+  "powershell_es", -- PowerShell
+  "pyright", -- Python
+  "vimls", -- vimscript
 }
 
 M.server_config = {

@@ -31,6 +31,9 @@ else if test -d /home/linuxbrew/.linuxbrew/bin # Linux
     set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
 end
 
+if command -v brew > /dev/null
+    set -gx HOMEBREW_NO_ENV_HINTS
+end
 
 # Azure CLI
 if command -v az > /dev/null
@@ -102,6 +105,7 @@ if command -v gem > /dev/null
             set -gx PATH $dir $PATH
         end
     end
+    set -gx PATH $HOME/.local/share/gem/ruby/3.3.0/bin $PATH
 end
 # Spacemacs
 if command -v emacs > /dev/null
@@ -135,3 +139,18 @@ if status is-interactive
         set IPYTHONDIR $XDG_CONFIG_HOME/ipython
     end
 end
+
+# Coursier: Scala dependency manager
+if command -v coursier > /dev/null
+    set -gx PATH "$PATH:$XDG_DATA_HOME/coursier/bin"
+end
+# pnpm
+set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+test -d /opt/miniconda3 && source /opt/miniconda3/etc/fish/conf.d/conda.fish
+
+test -f /opt/miniconda3/etc/fish/conf.d/conda.fish && source /opt/miniconda3/etc/fish/conf.d/conda.fish

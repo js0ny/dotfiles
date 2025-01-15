@@ -6,3 +6,4 @@
 export STARSHIP_CONFIG=$DOTFILES/tools/starship/starship_zsh.toml
 
 eval "$(starship init zsh)"
+

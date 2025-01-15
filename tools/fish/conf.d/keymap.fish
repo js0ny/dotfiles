@@ -25,4 +25,4 @@ bind -M default 'i' forward-char
 bind -M default -m insert l repaint-mode
 bind -M default -m insert L beginning-of-line repaint-mode
 
-# TODO: Add more key bindings here
+fzf --fish | source

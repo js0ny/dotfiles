@@ -1,52 +1,48 @@
 local M = {}
-local global_default_opts = { noremap = true, silent = true }
-local global_default_mode = { "n" }
--- local mode_arrow = { "n", "v", "o", "s", "x" }
+local keymaps_user_command = require("keymaps.user-command")
+local utils = require("keymaps.utils")
 
-local function set_keymaps(maps, default_opts, default_mode)
-  for _, map in ipairs(maps) do
-    local opts = vim.tbl_extend("force", default_opts, map.opts or {})
-    local mode = map.mode or default_mode
-    vim.keymap.set(mode, map.keys, map.cmd, opts)
-  end
-end
-
-
-
-local keymaps_basic = require("keymaps.basic")
 local keymaps_nvim_tree_general = require("keymaps.nvim-tree").global
-local keymaps_leader = require("keymaps.leaders")
 
-set_keymaps(keymaps_basic, global_default_opts, global_default_mode)
-set_keymaps(keymaps_nvim_tree_general, global_default_opts, global_default_mode)
-set_keymaps(keymaps_leader, global_default_opts, global_default_mode)
+local keymaps_general = vim.tbl_extend("force", {}, require("keymaps.leaders"), require("keymaps.lspkeys"))
+-- Tables cannot be merged since `mode` are set in some keymaps of `keymaps_basic`
+local keymaps_basic = require("keymaps.basic")
+local keymaps_buffer = require("keymaps.buffer")
+-- local keymaps_leader = require("keymaps.leaders")
+-- local keymaps_lsp = require("keymaps.lspkeys")
+
+utils.set_keymaps(keymaps_general)
+utils.set_keymaps(keymaps_basic)
+utils.set_keymaps(keymaps_nvim_tree_general)
+utils.set_keymaps(keymaps_buffer)
 
 M.nvim_tree_keymaps = require("keymaps.nvim-tree").plugin
 
 --- `map` default for `cmp.mapping`
 function M.cmp_nvim_keymaps(map)
   return {
-    { keys = "<C-n>",     cmd = map.select_next_item(),         desc = "Select next completion item" },
-    { keys = "<C-p>",     cmd = map.select_prev_item(),         desc = "Select previous completion item" },
-    { keys = "<C-y>",     cmd = map.confirm({ select = true }), desc = "Confirm completion" },
-    { keys = "<Tab>",     cmd = map.confirm({ select = true }), desc = "Confirm completion" },
-    { keys = "<C-Space>", cmd = map.complete(),                 desc = "Trigger completion" },
-    { keys = "<C-e>",     cmd = map.abort(),                    desc = "Abort completion" },
+    { keys = "<C-n>", cmd = map.select_next_item(), opts = { desc = "Select next completion item" } },
+    { keys = "<C-p>", cmd = map.select_prev_item(), opts = { desc = "Select previous completion item" } },
+    { keys = "<C-y>", cmd = map.confirm({ select = true }), opts = { desc = "Confirm completion" } },
+    { keys = "<Tab>", cmd = map.confirm({ select = true }), opts = { desc = "Confirm completion" } },
+    { keys = "<C-Space>", cmd = map.complete(), opts = { desc = "Trigger completion" } },
+    { keys = "<C-e>", cmd = map.abort(), opts = { desc = "Abort completion" } },
   }
 end
 
-local function set_markdown_keymaps(bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("v", "`", "c`<C-r>\"`<Esc>", opts)
-end
+-- local function set_markdown_keymaps(bufnr)
+--   local opts = { noremap = true, silent = true, buffer = bufnr }
+--   vim.keymap.set("v", "`", 'c`<C-r>"`<Esc>', opts)
+-- end
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        set_markdown_keymaps(0)
-    end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "markdown",
+--   callback = function()
+--     set_markdown_keymaps(0)
+--   end,
+-- })
 
-require("keymaps.language")
+-- which-key.nvim
+require("keymaps.which")
 
 return M

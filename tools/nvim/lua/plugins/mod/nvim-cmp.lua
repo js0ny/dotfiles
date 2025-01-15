@@ -1,9 +1,9 @@
 local function set_keymaps(keymaps_cmp)
   local mappings = {}
-    for _, map in ipairs(keymaps_cmp) do
-      mappings[map.keys] = map.cmd
-    end
-    return mappings
+  for _, map in ipairs(keymaps_cmp) do
+    mappings[map.keys] = map.cmd
+  end
+  return mappings
 end
 
 return {

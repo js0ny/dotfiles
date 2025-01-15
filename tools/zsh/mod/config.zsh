@@ -38,8 +38,4 @@ done
 # Use `set -k` to mark leading `#` as a comment character
 set -k
 
-# # TODO: Below should be reorganized
-# export PATH=$HOME/.local/bin:$PATH
-
-# export NVM_DIR="$HOME/.config/nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+source <(fzf --zsh)

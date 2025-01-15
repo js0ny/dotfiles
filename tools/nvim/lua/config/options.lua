@@ -25,6 +25,7 @@ opt.linebreak = true
 -- Indentation
 opt.expandtab = true
 opt.shiftwidth = 4
+opt.tabstop = 4
 opt.shiftround = true
 
 -- Case
@@ -36,8 +37,10 @@ opt.cursorline = true
 opt.termguicolors = true
 
 -- Fold
-opt.foldlevel = 99
 opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
+opt.foldlevelstart = 1
 
 -- Statusline
 opt.laststatus = 0
@@ -50,3 +53,5 @@ opt.scrolloff = 5
 opt.sidescrolloff = 10
 
 opt.conceallevel = 2
+
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

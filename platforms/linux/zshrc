@@ -8,6 +8,6 @@
 if [ -n "$WAYLAND_DISPLAY" ]; then
     alias clip="wl-copy"
     alias paste="wl-paste"
-else [ -n "$DISPLAY" ]; then
+elif [ -n "$DISPLAY" ]; then
     alias clip="xclip"
 fi
