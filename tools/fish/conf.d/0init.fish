@@ -152,3 +152,5 @@ end
 # pnpm end
 
 test -d /opt/miniconda3 && source /opt/miniconda3/etc/fish/conf.d/conda.fish
+
+test -f /opt/miniconda3/etc/fish/conf.d/conda.fish && source /opt/miniconda3/etc/fish/conf.d/conda.fish

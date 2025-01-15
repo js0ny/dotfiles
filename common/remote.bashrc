@@ -134,9 +134,7 @@ alias netl="netstat -tulnp"
 alias apt="sudo apt"
 alias apts="apt search"
 alias apti="sudo apt install"
-aptr() {
-    sudo apt remove $1 || sudo apt autoremove
-}
+alias aptr="sudo apt remove"
 alias aptu="sudo apt upgrade && sudo apt update"
 
 alias l="ls -lah"

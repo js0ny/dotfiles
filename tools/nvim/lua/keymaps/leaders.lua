@@ -42,7 +42,7 @@ vim.api.nvim_create_user_command("Rename", renameCurrentBuffer, {})
 
 local leader_mappings = {
   general = {
-    { keys = "<space>", cmd = ":Telescope find_files<CR>", opts = { desc = "Find Files" } },
+    { keys = "<leader>", cmd = ":Telescope find_files<CR>", opts = { desc = "Find Files" } },
     { keys = "/", cmd = ":Telescope live_grep<CR>", opts = { desc = "Grep Files" } },
     { keys = "-", cmd = ":split<CR>", opts = { desc = "Split to down" } },
     { keys = "\\", cmd = ":vsplit<CR>", opts = { desc = "Split to right" } },
@@ -51,6 +51,8 @@ local leader_mappings = {
     { keys = "n", cmd = "<C-w>j", opts = { desc = "Down Window" } },
     { keys = "e", cmd = "<C-w>k", opts = { desc = "Up Window" } },
     { keys = "i", cmd = "<C-w>l", opts = { desc = "Right Window" } },
+    { keys = "<Tab>", cmd = "<Cmd>b#<CR>", opts = { desc = "Switch to last buffer" } },
+    { keys = "!", cmd = ":FloatermToggle<CR>", opts = { desc = "" } },
   },
   b = { -- +buffer
     { keys = "a", cmd = ":Alpha<CR>", opts = { desc = "Dashboard" } },

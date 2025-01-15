@@ -158,7 +158,7 @@ if command -v z > /dev/null; then
 fi
 # zsh .zcompdump
 # compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-# Vcpkg TODO: Move vcpkg path
+# Vcpkg
 if command -v vcpkg > /dev/null; then
     export VCPKG_ROOT="$XDG_DATA_HOME"/vcpkg
 fi

@@ -210,7 +210,6 @@ config.mouse_bindings = {
 
 --#region Environment
 config.set_environment_variables = {
-  WEZTERM = "true", -- for `icat`
 }
 --#endregion
 

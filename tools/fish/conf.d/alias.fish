@@ -66,8 +66,11 @@ if command -v pacman > /dev/null
     abbr --add paci "sudo pacman -S"
     abbr --add pacr "sudo pacman -R"
     abbr --add pacu "sudo pacman -Syu"
+    abbr --add pacs "sudo pacman -Ss"
 end
 
 if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"
     abbr --add icat "kitten icat"
+else if test "$TERM_PROGRAM" = "WezTerm"
+    abbr --add icat "wezterm imgcat"
 end
