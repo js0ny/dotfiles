@@ -48,6 +48,9 @@ end
 function tv
     touch $argv[1] && nvim $argv[1]
 end
+function zls
+    z $argv[1] && ls
+end
 
 # Use neovide as gVim
 if command -v neovide > /dev/null
