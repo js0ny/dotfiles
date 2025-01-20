@@ -56,8 +56,8 @@ local keymaps_basic = { -- Modification of Original Keymap - Colemak
   { mode = mode_arrow, keys = "i", cmd = "l", opts = { desc = "Right", silent = true } },
   { keys = "H", cmd = ":bprevious<CR>", opts = { desc = "Previous Buffer" } },
   { keys = "I", cmd = ":bnext<CR>", opts = { desc = "Next Buffer" } },
-  { keys = "N", cmd = "5k", opts = { desc = "Up 5 Lines" } },
-  { keys = "E", cmd = "5j", opts = { desc = "Down 5 Lines" } },
+  { keys = "N", cmd = "5j", opts = { desc = "Up 5 Lines" } },
+  { keys = "E", cmd = "5e", opts = { desc = "Down 5 Lines" } },
   { keys = "Y", cmd = "y$", opts = { desc = "Yank to End of Line" } },
   { keys = "E", cmd = "5k" },
   -- Text object implementation
