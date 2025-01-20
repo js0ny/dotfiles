@@ -52,6 +52,10 @@ noremap gpd editor.action.peekDefinition
 noremap gt editor.action.goToTypeDefinition
 noremap gpt editor.action.peekTypeDefinition
 noremap gh editor.action.showDefinitionPreviewHover
+noremap gr editor.action.goToReferences
+noremap gpr editor.action.referenceSearch.trigger
+
+noremap zR editor.foldAll
 
 noremap <leader><leader> workbench.action.quickOpen
 noremap <leader>/ workbench.action.quickTextSearch

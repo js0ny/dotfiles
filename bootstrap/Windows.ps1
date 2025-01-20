@@ -143,7 +143,8 @@ Get-ChildItem -Force -Filter *owerShell | ForEach-Object { $_.Attributes += "Hid
 # Windows Terminal
 if (Get-Command wt -ErrorAction SilentlyContinue) {
     Write-Output "Windows Terminal (wt) installed"
-} else {
+}
+else {
     winget install -e --id Microsoft.WindowsTerminal
 }
 
@@ -185,6 +186,7 @@ scoop install extras/bandizip
 scoop install main/pandoc
 scoop install extras/sumatrapdf
 winget install -e --id Google.GoogleDrive
+sudo scoop install nonportable/winbtrfs-np
 
 # System Enhancements
 scoop install extras/fancontrol
