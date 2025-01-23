@@ -13,8 +13,11 @@ function Invoke-Completion {
         }
         'git' { Import-Module Posh-Git }
         'hugo' { hugo completion powershell | Out-String | Invoke-Expression }
+        'just' { just --completions powershell | Out-String | Invoke-Expression }
         'pip' { pip completion --powershell | Out-String | Invoke-Expression }
+        'pixi' { pixi completion --shell powershell | Out-String | Invoke-Expression }
         'rg' { rg --generate complete-powershell | Out-String | Invoke-Expression }
+        'rustup' { rustup completions powershell rustup | Out-String | Invoke-Expression }
         'uv' { uv generate-shell-completion powershell | Out-String | Invoke-Expression }
         'wezterm' { wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression }
         'winget' {
@@ -36,7 +39,12 @@ Set-Alias "icmp" "Invoke-Completion"
 Register-ArgumentCompleter -CommandName Invoke-Completion -ParameterName 'command' -ScriptBlock {
     param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
 
-    $cmds = @('docker', 'dotnet', 'git', 'hugo', 'pip', 'rg', 'uv', 'wezterm', 'winget')
+    $cmds = @('docker', 'dotnet', 'git', 'hugo', 'just', 'pip', 'pixi', 'rg', 'rustup', 'uv', 'wezterm', 'winget')
 
     $cmds | Where-Object { $_ -like "$wordToComplete*" }
+}
+
+
+if ($isWindows) {
+    Invoke-Completion winget # Enable winget tab completion by default
 }

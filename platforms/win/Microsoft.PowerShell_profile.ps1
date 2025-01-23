@@ -60,4 +60,11 @@ ${function:winr} = { winget uninstall $args }
 ${function:wins} = { winget search $args }
 ${function:winu} = { winget upgrade $args }
 
-${function:pkill} = { ps *$args* | kill -Force }
+${function:pkill} = { Get-Process *$args* | Stop-Process -Force }
+
+
+${function:tmux} = { wsl.exe tmux $args }
+
+if (Get-Command "sfsu.exe" -ErrorAction SilentlyContinue) {
+    Invoke-Expression (&sfsu.exe hook)
+}

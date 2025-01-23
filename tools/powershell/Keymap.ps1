@@ -26,6 +26,5 @@ Set-PSReadLineKeyHandler -Chord "Ctrl+e"	   -Function EndOfLine
 Set-PSReadLineKeyHandler -Chord "Ctrl+p"	   -Function PreviousHistory
 Set-PSReadLineKeyHandler -Chord "Ctrl+p"	   -Function PreviousHistory
 Set-PSReadLineKeyHandler -Chord "Ctrl+n"	   -Function NextHistory
-
 ## Use <Tab> to Invoke MenuComplete
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
