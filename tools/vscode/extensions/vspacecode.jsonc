@@ -2154,10 +2154,10 @@
                 },
                 {
                     "key": "x",
-                    "name": "Close all windows",
+                    "name": "Close current window",
                     "icon": "close-all",
                     "type": "command",
-                    "command": "workbench.action.closeAllGroups"
+                    "command": "workbench.action.closeEditorsInGroup"
                 },
                 {
                     "key": "z",
