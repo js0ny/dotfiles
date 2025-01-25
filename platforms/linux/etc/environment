@@ -1,0 +1,23 @@
+# $DOTFILES/platforms/linux/etc/environment
+# Date: 2025-01-25
+# Author: js0ny
+# Description: Environment variables that defines the applications and IME
+#
+# Location:
+#  /etc/environment
+# Linking:
+# cp $DOTFILES/platforms/linux/etc/environment /etc/environment
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+#QT_QPA_PLATFORMTHEME=qt5ct
+#QT_STYLE_OVERRIDE=kvantum
+BROWSER="com.vivaldi.Vivaldi"
+EDITOR=nvim
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+SDL_IM_MODULE=fcitx
+XMODIFIFERS="@im=fcitx"
+GLFW_IM_MODULE=fcitx
