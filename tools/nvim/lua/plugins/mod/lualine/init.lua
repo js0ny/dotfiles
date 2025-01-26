@@ -1,5 +1,3 @@
--- Author: shadmansaleh
--- Credit: glepnir
 local lualine = require("lualine")
 
 -- Color table for highlights

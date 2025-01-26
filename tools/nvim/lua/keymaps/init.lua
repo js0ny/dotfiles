@@ -44,5 +44,6 @@ end
 
 -- which-key.nvim
 require("keymaps.which")
+require("keymaps.visual-multi")
 
 return M

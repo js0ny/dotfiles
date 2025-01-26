@@ -43,6 +43,7 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "copilot" },
+        { name = "lazydev", group_index = 0 },
       }, {
         { name = "buffer" },
         { name = "path" },

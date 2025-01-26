@@ -55,6 +55,7 @@ local leader_mappings = {
     { keys = "<Tab>", cmd = "<Cmd>b#<CR>", opts = { desc = "Switch to last buffer" } },
     { keys = "!", cmd = ":FloatermToggle<CR>", opts = { desc = "Toggle Terminal" } },
     { keys = '"', cmd = ":!wezterm-gui &<CR>", pots = { desc = "Open External Terminal(wezterm)" } },
+    { keys = ";", cmd = ":Telescope<CR>", pots = { desc = "Show Telescope Commands" } },
   },
   b = { -- +buffer
     { keys = "0", cmd = "<Cmd>b#<CR>", opts = { desc = "Switch to last buffer" } },
@@ -96,7 +97,7 @@ local leader_mappings = {
   },
   f = { -- +file/find
     { keys = "f", cmd = ":Telescope fd<CR>", opts = { desc = "Find Files" } },
-    { keys = "F", cmd = ":Telescope live_grep<CR>", opts = { desc = "Grep Files" } },
+    { keys = "F", cmd = ":GrugFar<CR>", opts = { desc = "Search & Replace" } },
     { keys = "l", cmd = ":set filetype=", opts = { desc = "Set Filetype to ..." } },
     { keys = "n", cmd = ":new<CR>", opts = { desc = "New File" } },
     { keys = "s", cmd = ":write<CR>", opts = { desc = "Save File" } },
