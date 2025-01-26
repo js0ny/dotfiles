@@ -10,6 +10,8 @@
 [user] # Modify the name and email
 	name = whoami
 	email = whoami@example.com
+[include]
+    path = ~/.config/git/catppuccin-delta.gitconfig
 [core]
 	editor = nvim
 	pager = delta
@@ -19,6 +21,7 @@
 [delta]
 	navigate = true
 	dark = true
+    features = catppuccin-mocha
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

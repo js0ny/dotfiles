@@ -23,8 +23,8 @@
   "buffer_font_size": 16,
   "theme": {
     "mode": "dark",
-    "light": "One Light",
-    "dark": "One Dark"
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
   },
   "relative_line_numbers": true
 }
