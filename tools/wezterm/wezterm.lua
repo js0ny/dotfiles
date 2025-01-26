@@ -67,7 +67,7 @@ config.max_fps = 120
 config.font = wezterm.font({
   family = "CaskaydiaCove Nerd Font",
 })
-config.color_scheme = "Catppuccin Frappe"
+config.color_scheme = "Catppuccin Mocha"
 config.font_size = 12.0
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
@@ -209,8 +209,7 @@ config.mouse_bindings = {
 --#endregion
 
 --#region Environment
-config.set_environment_variables = {
-}
+config.set_environment_variables = {}
 --#endregion
 
 --#region Launching
@@ -251,7 +250,7 @@ if os_type == "Windows" then
     },
   }
 elseif os_type == "macOS" then
-  config.default_prog = { "/opt/homebrew/bin/fish", "-l"}
+  config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 else
   config.default_prog = { "fish" }
   config.launch_menu = {
