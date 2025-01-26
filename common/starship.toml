@@ -1,0 +1,391 @@
+# $DOTFILES/common/starship.toml
+# Date: 2025-01-26
+# Description: Use one starship config for all shells
+
+# Location: $XDG_CONFIG_HOME/starship.toml
+# Linking: ln -s $DOTFILES/common/starship.toml $XDG_CONFIG_HOME/starship.toml
+
+"$schema" = 'https://starship.rs/config-schema.json'
+palette = "catppuccin_mocha"
+
+# {{{ format
+format = """
+$jobs\
+$os\
+$time\
+[](bg:#DA627D fg:#9A348E)\
+$username\
+$hostname\
+[](fg:#DA627D bg:#FCA17D)\
+$directory\
+$git_branch\
+$git_status\
+[](fg:#FCA17D bg:#86BBD8)\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+[](fg:#86BBD8)
+$character\
+$shell\
+[](fg:#06969A)\
+"""
+# }}}
+
+# {{{ right
+[shell]
+style = "bg:#06969A"
+format = '[ $indicator ]($style)'
+fish_indicator = "󰈺 "
+bash_indicator = '$ '
+zsh_indicator = "% "
+powershell_indicator = "PS"
+cmd_indicator = "cm"
+nu_indicator = "nu"
+disabled = false
+
+[character]
+success_symbol = "[   ](bg:#33658A)[](fg:#33658A bg:#06969A)"
+error_symbol = "[  ](fg:bold red bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_symbol = "[  ](fg:#32ff6c bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_visual_symbol = "[  ](fg:bold yellow bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_replace_symbol = "[  ](fg:bold purple bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_replace_one_symbol = "[  ](fg:bold purple bg:#33658A)[](fg:#33658A bg:#06969A)"
+# success_symbol = "[ ](bg:#33658A)[](fg:#33658A bg:#06969A)"
+# success_symbol = "[](fg:#86BBD8 bg:#33658A)"
+format = "$symbol"
+disabled = false
+# }}}
+
+# {{{ TODO
+#
+#  $buf\
+#  $nix_shell\
+#  $conda\
+#  $meson\
+#  $spack\
+#  $memory_usage\
+#  $aws\
+#  $gcloud\
+#  $openstack\
+#  $azure\
+#  $nats\
+#  $direnv\
+#  $env_var\
+#  $crystal\
+#  $custom\
+#  $sudo\
+#  $cmd_duration\
+#  $line_break\
+#  $battery\
+#  $container\
+# }}}
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+
+# {{{ Part 1
+[jobs]
+style = "bg:#9A348E"
+format = '[$symbol $number]($style)'
+
+[os]
+style = "bg:#9A348E"
+format = '[ $symbol ]($style)'
+disabled = false               # Disabled by default
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = "  "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+# style = "bg:#33658A"
+style = "bg:#9A348E"
+format = '[ $time ]($style)'
+# }}}
+
+# {{{ Part 2
+[username]
+show_always = true
+style_user = "bg:#DA627D"
+style_root = "bg:#DA627D"
+# style_user = "bg:#9A348E"
+# style_root = "bg:#9A348E"
+format = '[ $user ]($style)'
+disabled = false
+
+
+[hostname]
+ssh_only = false
+# format = '[$ssh_symbol](bold blue) [$hostname](bold red) '
+style = "bg:#DA627D"
+format = '[@ $hostname ]($style)'
+trim_at = '.companyname.com'
+disabled = false
+
+
+# }}}
+
+# {{{ Part 3
+[directory]
+style = "bg:#FCA17D fg:#035E82"
+format = "[ $path ]($style)"
+fish_style_pwd_dir_length = 1
+# truncation_length = 100
+truncation_length = 2
+truncation_symbol = ":"
+truncate_to_repo = true
+
+# Here is how you can shorten some long paths by text replacementtruncation_symbol = ":"
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
+# "Source" = " "
+# ".dotfiles" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " 󰈙 "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important 󰈙 " = " 󰈙 "
+
+[git_branch]
+symbol = ""
+style = "bg:#FCA17D fg:#035E82"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#FCA17D fg:#035E82"
+renamed = " "
+modified = " "
+staged = " "
+deleted = " "
+format = '[$all_status$ahead_behind ]($style)'
+# }}}
+
+# {{{ Part 4
+[c]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[cmake]
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[dart]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[deno]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[dotnet]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+detect_extensions = [
+  "sln",
+  "csproj",
+  "fsproj",
+  "xproj",
+  "vbproj",
+  "cs",
+  "csx",
+  "fs",
+  "fsx",
+]
+
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[lua]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+
+# }}}
+
+# {{{ Part 5
+# }}}
+
+# {{{ Misc
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+# }}}
