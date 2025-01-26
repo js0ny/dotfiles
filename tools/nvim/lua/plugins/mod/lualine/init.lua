@@ -2,7 +2,7 @@ local lualine = require("lualine")
 
 -- Color table for highlights
 
-local colors = require("plugins.mod.lualine.colors")
+local colors = require("config.colors")
 local components = require("plugins.mod.lualine.components")
 
 -- Config
