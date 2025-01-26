@@ -1,3 +1,4 @@
+mkdir -p ~/.tmp
 # Bat
 mkdir -p "$(bat --config-dir)/themes"
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
@@ -35,3 +36,8 @@ pwsh -C 'git clone https://github.com/catppuccin/powershell.git (Join-Path $Env:
 mkdir -p ~/.config/fish/themes
 curl https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Mocha.theme -o ~/.config/fish/themes/Catppuccin\ Mocha.theme
 curl https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Latte.theme -o ~/.config/fish/themes/Catppuccin\ Latte.theme
+# fcitx5
+git clone https://github.com/catppuccin/fcitx5.git ~/.tmp/fcitx5
+cd ~/.tmp/fcitx5
+mkdir -p ~/.local/share/fcitx5/themes
+cp -r ./src/* ~/.local/share/fcitx5/themes
