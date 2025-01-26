@@ -1,9 +1,4 @@
-local signs = {
-  Error = "",
-  Warning = "",
-  Hint = "",
-  Information = "",
-}
+local signs = require("config.icons").diagnostics
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type

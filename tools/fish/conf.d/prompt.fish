@@ -8,6 +8,6 @@
 # ln -sf $DOTFILES/tools/fish ~/.config/fish
 
 if command -v starship > /dev/null
-    set -gx STARSHIP_CONFIG "~/.dotfiles/tools/starship/starship_fish.toml"
+    #set -gx STARSHIP_CONFIG "~/.dotfiles/tools/starship/starship_fish.toml"
     starship init fish | source
 end

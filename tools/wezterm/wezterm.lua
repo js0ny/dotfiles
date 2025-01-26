@@ -65,7 +65,7 @@ local os_type = detect_os()
 
 config.max_fps = 120
 config.font = wezterm.font({
-  family = "CaskaydiaCove Nerd Font",
+  family = "JetBrainsMono Nerd Font",
 })
 config.color_scheme = "Catppuccin Mocha"
 config.font_size = 12.0

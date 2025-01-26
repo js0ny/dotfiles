@@ -2,7 +2,7 @@ local M = {}
 
 M.global = {
   { mode = "n", keys = "<leader>E", cmd = ":NvimTreeToggle<CR>" },
-  { mode = "n", keys = "<A-0>", cmd = ":NvimTreeFocus<CR>" },
+  { mode = "n", keys = "<A-0>", cmd = ":NvimTreeFindFileToggle<CR>" },
 }
 
 function M.plugin(api, opts)

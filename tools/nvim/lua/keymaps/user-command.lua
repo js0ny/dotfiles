@@ -28,3 +28,9 @@ end, {
   desc = "Toggle autoformat-on-save (use ! for buffer-local)",
   bang = true,
 })
+
+vim.api.nvim_create_user_command("Reload", function()
+  vim.cmd("luafile ~/.config/nvim/init.lua")
+end, {
+  desc = "Reload Neovim configuration",
+})
