@@ -1,0 +1,18 @@
+# $DOTFILES/platforms/linux/kde/elisarc
+# Date: 2024-12-22
+# Author: js0ny
+# Dolphin - KDE Music Player
+
+# Location:
+# $XDG_CONFIG_HOME/elisarc
+# Linking:
+# ln -sf $DOTFILES/platforms/linux/kde/elisarc $XDG_CONFIG_HOME/elisarc
+
+[ElisaFileIndexer]
+RootPath[$e]=$HOME/Music
+
+[UiSettings]
+ColorScheme=
+
+[Views]
+InitialFilesViewPath=/mnt/d/Media/Music

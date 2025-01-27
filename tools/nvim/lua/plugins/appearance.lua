@@ -25,4 +25,17 @@ return {
   { import = "plugins.mod.alpha-nvim" },
   { import = "plugins.mod.winbar-nvim" },
   { import = "plugins.mod.bufferline" },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup({
+        current_line_blame = true,
+      })
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
 }

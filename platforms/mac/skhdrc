@@ -32,44 +32,44 @@
 # # minimize window
 # alt - m : yabai -m window --minimize
 
-# # float / unfloat window and center on screen
-# alt - f : yabai -m window --toggle float
+# float / unfloat window and center on screen
+ctrl - f : yabai -m window --toggle float
 
-# # toggle window native fullscreen
-# shift + alt - f : yabai -m window --toggle native-fullscreen
+# toggle window native fullscreen
+shift + ctrl - f : yabai -m window --toggle native-fullscreen
 
-# # send window to a space
-# shift + ctrl - 1 : yabai -m window --space 1
-# shift + ctrl - 2 : yabai -m window --space 2
-# shift + ctrl - 3 : yabai -m window --space 3
-# shift + ctrl - 4 : yabai -m window --space 4
-# shift + ctrl - 5 : yabai -m window --space 5
-# shift + ctrl - 6 : yabai -m window --space 6
-# shift + ctrl - 7 : yabai -m window --space 7
-# shift + ctrl - 8 : yabai -m window --space 8
-# shift + ctrl - 9 : yabai -m window --space 9
-# shift + ctrl - 0 : yabai -m window --space 10
+# send window to a space
+shift + ctrl - 1 : yabai -m window --space 1
+shift + ctrl - 2 : yabai -m window --space 2
+shift + ctrl - 3 : yabai -m window --space 3
+shift + ctrl - 4 : yabai -m window --space 4
+shift + ctrl - 5 : yabai -m window --space 5
+shift + ctrl - 6 : yabai -m window --space 6
+shift + ctrl - 7 : yabai -m window --space 7
+shift + ctrl - 8 : yabai -m window --space 8
+shift + ctrl - 9 : yabai -m window --space 9
+shift + ctrl - 0 : yabai -m window --space 10
 
 # open terminal
 ctrl - r : open -n -a "Kitty"
 
 # moves focus between windows in the current focused display
-alt - h : yabai -m window --focus west
-alt - n : yabai -m window --focus south
-alt - e : yabai -m window --focus north
-alt - i : yabai -m window --focus east
+ctrl - h : yabai -m window --focus west
+ctrl - n : yabai -m window --focus south
+ctrl - e : yabai -m window --focus north
+ctrl - i : yabai -m window --focus east
 
 # moves focus between spaces
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
-alt - 7 : yabai -m space --focus 7
-alt - 8 : yabai -m space --focus 8
-alt - 9 : yabai -m space --focus 9
-alt - 0  : yabai -m space --focus 10
+ctrl - 1 : yabai -m space --focus 1
+ctrl - 2 : yabai -m space --focus 2
+ctrl - 3 : yabai -m space --focus 3
+ctrl - 4 : yabai -m space --focus 4
+ctrl - 5 : yabai -m space --focus 5
+ctrl - 6 : yabai -m space --focus 6
+ctrl - 7 : yabai -m space --focus 7
+ctrl - 8 : yabai -m space --focus 8
+ctrl - 9 : yabai -m space --focus 9
+ctrl - 0  : yabai -m space --focus 10
 
 # delete focused space
 alt - q : yabai -m space --destroy

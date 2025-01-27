@@ -29,7 +29,7 @@ require("lazy").setup({
     { import = "plugins.completion" },
     { import = "plugins.fileutils" },
     { import = "plugins.lsp" },
-    { import = "plugins.syntax" },
+    { import = "plugins.edit" },
     { import = "plugins.misc" },
   },
   -- Configure any other settings here. See the documentation for more details.

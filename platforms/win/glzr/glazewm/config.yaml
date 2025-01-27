@@ -21,7 +21,7 @@ general:
   config_reload_commands: []
 
   # Whether to automatically focus windows underneath the cursor.
-  focus_follows_cursor: true
+  focus_follows_cursor: false
 
   # Whether to switch back and forth between the previously focused
   # workspace when focusing the current workspace.
@@ -89,7 +89,7 @@ window_effects:
       enabled: false
       color: "#a1a1a1"
     hide_title_bar:
-      enabled: true
+      enabled: false
     corner_style:
       enabled: false
       style: "square"

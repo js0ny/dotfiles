@@ -4,6 +4,9 @@
 " And go to vscode vim setting:
 "vim.vimrc.path": "$HOME/.config/vscode/vscode.vimrc",
 
+" For all available options see
+" https://github.com/VSCodeVim/Vim/blob/d41e286e9238b004f02b425d082d3b4181d83368/src/configuration/vimrc.ts#L120-L407
+
 
 " Use VSpaceCode instead of <leader>
 noremap <space> vspacecode.space
@@ -34,18 +37,8 @@ noremap J E
 " Y to yank to end of line
 noremap Y y$
 
-" Define in settings.json, since this will remap <esc> under visual mode
-" noremap <esc> :nohlsearch<CR>
+nnoremap <esc> :nohlsearch<CR>
 
-" 分词版本的w和b，支持中文，需要插件
-" 为了保证递归解析，而不是打断，使用 `nmap` 而不是 `nnoremap`
-" Comment if you don't use cjk or the plugin
-nmap w cjkWordHandler.cursorWordEndRight
-nmap b cjkWordHandler.cursorWordStartLeft
-
-" keep selection after indent (define in settings.json)
-" voremap < <gv
-" voremap > >gv
 
 " lsp
 noremap gi editor.action.goToImplementation
@@ -55,3 +48,17 @@ noremap gpd editor.action.peekDefinition
 noremap gt editor.action.goToTypeDefinition
 noremap gpt editor.action.peekTypeDefinition
 noremap gh editor.action.showDefinitionPreviewHover
+noremap gr editor.action.goToReferences
+noremap gpr editor.action.referenceSearch.trigger
+
+noremap zR editor.foldAll
+
+" keep selection after indent (define in settings.json)
+vnoremap < editor.action.outdentLines
+vnoremap > editor.action.indentLines
+
+" 分词版本的w和b，支持中文，需要插件
+" 为了保证递归解析，而不是打断，使用 `nmap` 而不是 `nnoremap`
+" Comment if you don't use cjk or the plugin
+nmap w cjkWordHandler.cursorWordEndRight
+nmap b cjkWordHandler.cursorWordStartLeft

@@ -7,7 +7,7 @@ return {
         show_file_path = true,
         show_symbols = true,
         colors = {
-          path = "#9c1d91",
+          path = "",
           file_name = "",
           symbols = "",
         },
@@ -31,6 +31,7 @@ return {
           "spectre_panel",
           "toggleterm",
           "qf",
+          "floaterm",
         },
       })
     end,

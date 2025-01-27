@@ -19,9 +19,12 @@ api.unmap('<ctrl-i>');
 
 */
 // #endregion
-// Settings
+
+// #region Settings
 settings.language = "zh-CN";
 settings.showModeStatus = false;
+// #endregion
+
 // #region Helper
 const {
   aceVimMap,
@@ -168,6 +171,17 @@ const _addSearchAlias = function (
     parseResponse,
   );
 };
+
+var q = (selector) => document.querySelector(selector);
+var qs = (selector) => document.querySelectorAll(selector);
+
+var mapkeyFeed = function (key, desc, target, options) {
+  mapkey(key, desc, function () {
+    api.Normal.feedkeys(target)
+  });
+}
+
+
 // #endregion
 
 // #region Keymap
@@ -238,6 +252,17 @@ api.unmap("p");
 api.unmap("<space>"); // Leader Key
 forwardFactory.pull(mapLists);
 vForwardFactory.pull(vMapLists);
+// #endregion
+
+// #region Omnibar
+// api.cmap("<Ctrl-a>", "<Ctrl-ArrowUp>");
+// api.cmap("<Ctrl-e>", "<Ctrl-ArrowDown>");
+// api.cmap("<Ctrl-f>", "<ArrowRight>");
+// api.cmap("<Ctrl-b>", "<ArrowLeft>");
+// api.cmap("<Alt-f>", "<Ctrl-ArrowRight>");
+// api.cmap("<Alt-b>", "<Ctrl-ArrowLeft>");
+// api.cmap("<Ctrl-h>", "<Backspace>");
+// api.cmap("<Ctrl-d>", "<Delete>");
 // #endregion
 
 // #region Search Alias
@@ -324,41 +349,182 @@ _addSearchAlias("bl", "Bilibili", "https://search.bilibili.com/all?keyword=");
 // #endregion
 
 // #region Site-specific
-// chatgpt.com
+
+// #region chatgpt.com
 const chatgptNewChat = function () {
-  var btn = document.querySelector(
+  var btn = q(
     "div.no-draggable:nth-child(3) > span:nth-child(1) > button:nth-child(1)",
   );
   btn.click();
 };
 const chatgptStartStop = function () {
-  var btn = document.querySelector("button.h-8:nth-child(2)");
+  var btn = q("button.h-8:nth-child(2)");
   btn.click();
 };
-api.unmap("t", /chatgpt.com/);
-api.mapkey("tn", "New Chat", chatgptNewChat, { domain: /chatgpt.com/ });
-api.mapkey("ts", "Start/Stop Generating", chatgptStartStop, {
+mapkey(",n", "New Chat", chatgptNewChat, { domain: /chatgpt.com/ });
+mapkey(",s", "Start/Stop Generating", chatgptStartStop, {
   domain: /chatgpt.com/,
 });
-api.mapkey("S", "Start/Stop Generating", chatgptStartStop, {
-  domain: /chatgpt.com/,
-});
-api.mapkey("an", "New Chat", chatgptNewChat, { domain: /chatgpt.com/ });
-api.mapkey("as", "Start/Stop Generating", chatgptStartStop, {
-  domain: /chatgpt.com/,
-});
+// #endregion
 
-//api.mapkey('tm', 'Toggle Model', function () {
-//  var btn = document.querySelector('#radix -\: r2i\:');
-//  btn.click();
-//}, { domain: /chatgpt.com/ });
-// perplexity.ai
-api.unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
-api.mapkey("aB", "Add Perplexity Bookmark", function () {
+// #region chat.deepseek.com
+mapkey(",s", "Toggle Sidebar", function () {
+  var btn = qs("div.ds-icon-button");
+  btn[0].click();
+}, { domain: /chat.deepseek.com/ });
+mapkey(",e", "Edit last input", function () {
+  var btn = qs("div.ds-icon-button");
+  btn[btn.length - 5].click();
+}, { domain: /chat.deepseek.com/ });
+mapkey(",y", "Yank last oupput", function () {
+  var btn = qs("div.ds-icon-button");
+  btn[btn.length - 4].click();
+}, { domain: /chat.deepseek.com/ });
+mapkey(",r", "Regenerate last output", function () {
+  var btn = qs("div.ds-icon-button");
+  btn[btn.length - 3].click();
+}, { domain: /chat.deepseek.com/ });
+mapkey(",n", "New Chat", function () {
+  window.location.href = 'https://chat.deepseek.com/';
+}, { domain: /chat.deepseek.com/ });
+mapkey(",t", "Toggle Thinking (R1)", function () {
+  var btns = qs("div.ds-button");
+  btns[0].click();
+}, { domain: /chat.deepseek.com/ });
+mapkey(",w", "Toggle Web Search", function () {
+  var btns = qs("div.ds-button");
+  btns[1].click();
+}, { domain: /chat.deepseek.com/ });
+// #endregion
+
+// #region app.follow.is
+mapkey(",t", "Toggle ", function () {
+  var btn = qs("button.no-drag-region")
+  btn[btn.length - 4].click();
+}, { domain: /app.follow.is/ });
+
+mapkey(",a", "Toggle AI Summary", function () {
+  var btn = qs("button.no-drag-region")
+  btn[btn.length - 3].click();
+}, { domain: /app.follow.is/ });
+
+mapkey(",o", "Toggle Original Website", function () {
+  var btn = qs("button.no-drag-region")
+  btn[btn.length - 4].click();
+}, { domain: /app.follow.is/ });
+// #endregion
+
+// #region GitHub
+// utils
+const gh = {}
+gh.repoLink = (owner, repo) => `https://github.com/${owner}/${repo}`;
+gh.pageLink = (owner, repo) => `https://${owner}.github.io/${repo}/`;
+gh.sourceLink = (owner, repo, path) => `${gh.repoLink(owner, repo)}/tree/${path}`;
+gh.rawToSource = (url) => {
+  const ps = url.split('/').slice(3)
+  return gh.sourceLink(ps[0], ps[1], ps.slice(4).join('/'));
+}
+// github.com
+mapkey(",e", "Use Web Editor", function () {
+  const url = new URL(window.location.href);
+  url.hostname = "github.dev";
+  window.location.href = url.href;
+}, { domain: /github.com/ });
+mapkey(",E", "Use Web Editor (New Page)", function () {
+  const url = new URL(window.location.href);
+  url.hostname = "github.dev";
+  tabOpenLink(url.href);
+}, { domain: /github.com/ });
+mapkey(",p", "Switch to GitHub Page", function () {
+  href = window.location.href;
+  owner = href.split("/")[3];
+  repo = href.split("/")[4];
+  window.location.href = gh.pageLink(owner, repo);
+}, { domain: /github.com/ });
+// github.dev
+mapkey(",r", "Switch to GitHub Repo", function () {
+  const url = new URL(window.location.href);
+  url.hostname = "github.com";
+  window.location.href = url.href;
+}, { domain: /github.dev/ });
+// github.io
+mapkey(",r", "Switch to GitHub Repo", function () {
+  const href = window.location.href;
+  owner = href.split("/")[2].split(".")[0];
+  repo = href.split("/")[3];
+  tabOpenLink(gh.repoLink(owner, repo));
+}, { domain: /github.io/ });
+mapkey(",R", "Go to GitHub Repo (New tab)", function () {
+  const href = window.location.href;
+  owner = href.split("/")[2].split(".")[0];
+  repo = href.split("/")[3];
+  tabOpenLink(gh.repoLink(owner, repo));
+}, { domain: /github.io/ });
+// raw.githubusercontent.com
+mapkey(",r", "Switch to GitHub Repo", function () {
+  const url = new URL(window.location.href);
+  var owner, repo;
+  owner, repo = url.pathname.split('/').slice(1, 3)
+  window.location.href = gh.repoLink(owner, repo);
+}, { domain: /raw.githubusercontent.com/ });
+mapkey(",R", "Switch to GitHub Repo", function () {
+  const url = new URL(window.location.href);
+  var owner, repo;
+  owner, repo = url.pathname.split('/').slice(1, 3)
+  tabOpenLink(gh.repoLink(owner, repo));
+}, { domain: /raw.githubusercontent.com/ });
+mapkey(",s", "Open Source in GitHub", function () {
+  window.location.href = gh.rawToSource(window.location.href);
+}, { domain: /raw.githubusercontent.com/ });
+mapkey(",S", "Open Source in GitHub (New Page)", function () {
+  tabOpenLink(gh.rawToSource(window.location.href));
+}, { domain: /raw.githubusercontent.com/ });
+
+
+
+// #endregion GitHub
+
+// #region perplexity.ai
+/**
+ * 0 - 网络
+ * 1 - 学术
+ * 2 - 数学
+ * 3 - 写作
+ * 4 - 视频
+ * 5 - 社交
+*/
+const perplexityFocusOn = function (n) {
+  qs("span.grow button")[0].click()
+  setTimeout(() => { // Wait for the DOM to update
+    qs("div.shadow-subtle div.group\\/item")[n].click();
+  }, 100);
+}
+unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
+mapkey(",b", "Add Perplexity Bookmark", function () {
   //  button.border:nth-child(2)
-  var btn = document.querySelector("button.border:nth-child(2)");
+  var btn = q("button.border:nth-child(2)");
   btn.click();
-});
+}, { domain: /perplexity.ai/ });
+mapkey(",w", "Toggle Writing/Web Search", function () {
+  perplexityFocusOn(3);
+}, { domain: /perplexity.ai/ });
+mapkey(",s", "Start Generating", function () {
+  var btns = qs("span.grow button")
+  btns[btns.length - 1].click();
+}, { domain: /perplexity.ai/ });
+mapkey(",y", "Yank Last Output", function () {
+  var toolbars = qs("div.mt-sm")
+  var last = toolbars[toolbars.length - 1]
+  var btns = last.querySelectorAll("button")
+  btns[4].click();
+}, { domain: /perplexity.ai/ });
+mapkey(",r", "Change model to regenerate last output", function () {
+  var toolbars = qs("div.mt-sm")
+  var last = toolbars[toolbars.length - 1]
+  var btns = last.querySelectorAll("button")
+  btns[1].click();
+}, { domain: /perplexity.ai/ });
+// #endregion
 
 // #endregion
 
@@ -476,4 +642,5 @@ addVimMapKey(
 // #endregion
 
 // #region Hints
+api.Hints.setCharacters('qwfpgarstdcv')
 // #endregion

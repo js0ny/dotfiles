@@ -1,0 +1,28 @@
+{
+  "main": {
+    "prefix": "main",
+    "body": [
+      "int main() {",
+      "    $1",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Main function with no arguments"
+  },
+  "mainn": {
+    "prefix": "mainn",
+    "body": [
+      "",
+      "int main(int argc, char *argv[]) {",
+      "    $1",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Main function with arguments"
+  },
+  "once": {
+    "prefix": "#once",
+    "body": ["#ifndef $1", "#define $1", "", "$2", "", "#endif"],
+    "description": "Include guard"
+  }
+}

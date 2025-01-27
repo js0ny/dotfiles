@@ -1,0 +1,30 @@
+// $DOTFILES/tools/zed/settings.json
+// Date: 2025-01-25
+// Author: js0ny
+// Description: Zed settings (jsonc)
+
+// Location:
+// GNU/Linux: ~/.config/zed/settings.json
+// Windows: %APPDATA%\Zed\settings.json
+// Linking: (link the whole directory)
+// ln -sf $DOTFILES/tools/zed ~/.config/zed
+//
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
+  },
+  "relative_line_numbers": true
+}

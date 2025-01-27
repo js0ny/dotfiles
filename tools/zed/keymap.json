@@ -1,0 +1,62 @@
+// $DOTFILES/tools/zed/keymaps.json
+// Date: 2025-01-25
+// Author: js0ny
+// Description: Zed keymaps
+
+// Location:
+// GNU/Linux: ~/.config/zed/keymaps.json
+// Windows: %APPDATA%\Zed\keymaps.json
+// Linking: (link the whole directory)
+// ln -sf $DOTFILES/tools/zed ~/.config/zed
+
+// Zed keymap
+
+//
+
+// For information on binding keys, see the Zed
+
+// documentation: https://zed.dev/docs/key-bindings
+
+//
+
+// To see the default key bindings run `zed: open default keymap`
+
+// from the command palette.
+
+[
+  {
+    "context": "Workspace",
+
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+
+  {
+    "context": "Editor",
+
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+
+    "bindings": {
+      "N": "vim::JoinLines",
+      "l": "vim::InsertBefore",
+      "L": "vim::InsertFirstNonWhitespace"
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+
+    "bindings": {
+      "n": "vim::Down",
+      "e": "vim::Up",
+      "i": "vim::Right",
+      "k": "search::SelectNextMatch",
+      "K": "search::SelectPrevMatch"
+    }
+  }
+]

@@ -4,6 +4,13 @@ return {
   config = function()
     require("bufferline").setup({
       options = {
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+          local icon = level:match("error") and " " or " "
+          return " " .. icon .. count
+        end,
+
+        show_buffer_icons = true,
         numbers = "ordinal", -- 显示 buffer 序号
         close_command = "bdelete! %d", -- 关闭 buffer 的命令
         right_mouse_command = "bdelete! %d", -- 右键关闭

@@ -10,6 +10,7 @@
 [user] # Modify the name and email
 	name = whoami
 	email = whoami@example.com
+<<<<<<< HEAD
 [alias]
 	cl = clone
 	clnh = clone --depth 1
@@ -25,11 +26,20 @@
 	excludesfile = $XDG_CONFIG_HOME/git/ignore
 	quotePath = false # zh-CN: 解决中文路径问题
 	eol = lf
+=======
+[include]
+    path = ~/.config/git/catppuccin-delta.gitconfig
+[core]
+	editor = nvim
+	pager = delta
+	autocrlf = input # Force End of Line in different platforms
+>>>>>>> github/master
 [interactive]
 	diffFilter = delta --color-only
 [delta]
 	navigate = true
 	dark = true
+<<<<<<< HEAD
 [diff]
     tool = nvimdiff
 [difftool]
@@ -48,13 +58,24 @@
 	ff = only
 [init]
 	defaultBranch = master
+=======
+    features = catppuccin-mocha
+>>>>>>> github/master
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+<<<<<<< HEAD
 # Force ssh
 # [url "git@github.com:"]
 # 	insteadOf = https://github.com/
 [url "git@codeberg.org:"]
 	insteadOf = https://codeberg.org/
+=======
+[init]
+    defaultBranch = master
+
+# [url "git@github.com:"] # Force ssh
+# 	insteadOf = https://github.com/
+>>>>>>> github/master
