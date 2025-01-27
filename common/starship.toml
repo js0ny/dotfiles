@@ -21,6 +21,7 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:#FCA17D bg:#86BBD8)\
+$custom\
 $c\
 $cmake\
 $cobol\
@@ -71,31 +72,6 @@ $character\
 $shell\
 [](fg:#06969A)\
 """
-# }}}
-
-# {{{ right
-[shell]
-style = "bg:#06969A"
-format = '[ $indicator ]($style)'
-fish_indicator = "󰈺 "
-bash_indicator = '$ '
-zsh_indicator = "% "
-powershell_indicator = "PS"
-cmd_indicator = "cm"
-nu_indicator = "nu"
-disabled = false
-
-[character]
-success_symbol = "[   ](bg:#33658A)[](fg:#33658A bg:#06969A)"
-error_symbol = "[  ](fg:bold red bg:#33658A)[](fg:#33658A bg:#06969A)"
-vimcmd_symbol = "[  ](fg:#32ff6c bg:#33658A)[](fg:#33658A bg:#06969A)"
-vimcmd_visual_symbol = "[  ](fg:bold yellow bg:#33658A)[](fg:#33658A bg:#06969A)"
-vimcmd_replace_symbol = "[  ](fg:bold purple bg:#33658A)[](fg:#33658A bg:#06969A)"
-vimcmd_replace_one_symbol = "[  ](fg:bold purple bg:#33658A)[](fg:#33658A bg:#06969A)"
-# success_symbol = "[ ](bg:#33658A)[](fg:#33658A bg:#06969A)"
-# success_symbol = "[](fg:#86BBD8 bg:#33658A)"
-format = "$symbol"
-disabled = false
 # }}}
 
 # {{{ TODO
@@ -188,7 +164,7 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 # style = "bg:#33658A"
 style = "bg:#9A348E"
-format = '[ $time ]($style)'
+format = '[$time ]($style)'
 # }}}
 
 # {{{ Part 2
@@ -356,6 +332,28 @@ format = '[ $symbol ($version) ]($style)'
 # }}}
 
 # {{{ Part 5
+[shell]
+style = "bg:#06969A"
+format = '[ $indicator ]($style)'
+fish_indicator = "󰈺 "
+bash_indicator = '$ '
+zsh_indicator = "% "
+powershell_indicator = "PS"
+cmd_indicator = "cm"
+nu_indicator = "nu"
+disabled = false
+
+[character]
+success_symbol = "[   ](bg:#33658A)[](fg:#33658A bg:#06969A)"
+error_symbol = "[  ](fg:bold red bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_symbol = "[  ](fg:#32ff6c bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_visual_symbol = "[  ](fg:bold yellow bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_replace_symbol = "[  ](fg:bold purple bg:#33658A)[](fg:#33658A bg:#06969A)"
+vimcmd_replace_one_symbol = "[  ](fg:bold purple bg:#33658A)[](fg:#33658A bg:#06969A)"
+# success_symbol = "[ ](bg:#33658A)[](fg:#33658A bg:#06969A)"
+# success_symbol = "[](fg:#86BBD8 bg:#33658A)"
+format = "$symbol"
+disabled = false
 # }}}
 
 # {{{ Misc
@@ -389,3 +387,8 @@ mantle = "#181825"
 crust = "#11111b"
 
 # }}}
+
+[custom.just]
+detect_files = ["Justfile", "justfile", ".Justfile", ".justfile"]
+style = "bg:#86BBD8 fg:#794427"
+format = "[Just]($style)"
