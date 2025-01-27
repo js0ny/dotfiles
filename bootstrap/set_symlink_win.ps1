@@ -8,11 +8,13 @@ $DOTFILES = Join-Path $Env:UserProfile ".dotfiles"
 $BASE_COMMON = Join-Path $DOTFILES "common"
 $BASE_TOOLS = Join-Path $DOTFILES "tools"
 $BASE_WIN = Join-Path $DOTFILES "platforms" "win"
+$STARTUP = [System.Environment]::GetFolderPath("Startup")
+
 $linkDots = @{
     "$BASE_WIN\wslconfig"            = "$Env:UserProfile\.wslconfig"
+    "$BASE_WIN\glzr"                 = "$Env:UserProfile\.glzr"
     "$BASE_WIN\neovide.toml"         = "$Env:AppData\neovide\config.toml"
-    "$BASE_WIN\vsvimrc"              = "$Env:Vim\.vsvimrc"
-    "$BASE_WIN\komorebi"             = "$Env:KOMOREBI_CONFIG_HOME"
+    "$BASE_WIN\vsvimrc"              = "$Env:UserProfile\.vsvimrc"
     "$BASE_COMMON\condarc.yaml"      = "$Env:XDG_CONFIG_HOME\conda\.condarc"
     "$BASE_COMMON\gitconfig"         = "$Env:UserProfile\.gitconfig"
     "$BASE_COMMON\glow.yaml"         = "$Env:AppData\glow\glow.yml"
@@ -21,9 +23,10 @@ $linkDots = @{
     "$BASE_COMMON\lesskey"           = "$Env:LessKeyIn"
     "$BASE_COMMON\npmrc"             = "$Env:NPM_CONFIG_USERCONFIG"
     "$BASE_COMMON\NuGet.Config"      = "$Env:AppData\NuGet\NuGet.Config"
-    "$BASE_COMMON\obsidian.vimrc"    = "$Env:UserProfile\Obsidian\.obsidian.vimrc"
+    "$BASE_COMMON\starship.toml"     = "$Env:UserProfile\.config\starship.toml"
     "$BASE_COMMON\pip.conf"          = "$Env:AppData\pip\pip.ini"
-    "$BASE_COMMON\vimrc.noxdg.vimrc" = "$Env:Vim\_vimrc"
+    "$BASE_COMMON\vimrc.noxdg.vimrc" = "$Env:UserProfile\_vimrc"
+    "$BASE_TOOLS\ipython"            = "$Env:IPYTHONDIR"
     "$BASE_TOOLS\ipython"            = "$Env:IPYTHONDIR"
     "$BASE_TOOLS\nvim"               = "$Env:XDG_CONFIG_HOME\nvim"
 }
@@ -41,3 +44,5 @@ foreach ($target in $linkDots.Keys) {
 }
 
 New-Item -ItemType SymbolicLink -Target "$BASE_WIN\Microsoft.PowerShell_profile.ps1" -Path "$Env:UserProfile\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -Force
+
+Copy-Item (Join-Path $BASE_WIN "ahk" "bin" "Caps.exe") $STARTUP

@@ -328,6 +328,11 @@ symbol = " "
 style = "bg:#86BBD8 fg:#794427"
 format = '[ $symbol ($version) ]($style)'
 
+[python]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
 
 # }}}
 
