@@ -16,7 +16,13 @@ set -gx XDG_CONFIG_HOME (set -q XDG_CONFIG_HOME; and echo $XDG_CONFIG_HOME; or e
 set -gx XDG_DATA_HOME (set -q XDG_DATA_HOME; and echo $XDG_DATA_HOME; or echo $HOME/.local/share)
 set -gx XDG_STATE_HOME (set -q XDG_STATE_HOME; and echo $XDG_STATE_HOME; or echo $HOME/.local/state)
 set -gx XDG_CACHE_HOME (set -q XDG_CACHE_HOME; and echo $XDG_CACHE_HOME; or echo $HOME/.cache)
-set -gx XDG_RUNTIME_DIR /run/user/(id -u)
+
+if test (uname) = "Darwin"
+    set -gx XDG_RUNTIME_DIR $HOME/.tmp/run/
+else
+    set -gx XDG_RUNTIME_DIR /run/user/(id -u)
+end
+
 
 set -gx PAGER "less -R"
 set -gx EDITOR nvim

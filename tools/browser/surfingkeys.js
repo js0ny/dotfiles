@@ -278,7 +278,7 @@ const searchAliases = [
   ["aw", "ArchWiki", "https://wiki.archlinux.org/index.php?search="],
   ["bd", "Baidu", "https://www.baidu.com/s?wd="],
   ["bi", "Bing", "https://www.bing.com/search?q="],
-  ["bl", "Bilibili", "https://search.bilibili.com/all?keyword="]
+  ["bl", "Bilibili", "https://search.bilibili.com/all?keyword="],
   ["br", "HomeBrew", "https://duckduckgo.com/?q=!brew "],
   ["cg", "ChatGPT", "https://chat.openai.com/?q="],
   ["cr", "Chrome Web Store", "https://chrome.google.com/webstore/search/"],

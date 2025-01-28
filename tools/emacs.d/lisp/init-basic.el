@@ -1,4 +1,4 @@
-;;; init-basic.el 
+;;; init-basic.el
 
 ;; Disable startup message
 (setq inhibit-startup-message t)
@@ -11,5 +11,5 @@
 ;; https://book.emacs-china.org/#orgcfd105e Open with Emacs
 (server-mode 1)
 
-;; Export module 
+;; Export module
 (provide 'init-basic)

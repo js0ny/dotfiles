@@ -1,22 +1,24 @@
 ;;; init-package.el
 
-;; Manual Install Packages (plugins): Options > Manage Emacs Packages (Don't use this)
-
-(global-company-mode 1) ; Enable company
-
-;; Ensure use-package is installed (use-package: lazy load plugin manager)
-(unless (package-install 'use-package)
+;; Ensure use-package is installed
+(unless (package-installed-p 'use-package) ; 修正条件检查
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Plugins Here
+;; Use `use-package` for plugin management
+(eval-when-compile
+  (require 'use-package))
+
 ;; Company - Complete Anything
 (use-package company
   :ensure t
+  :hook (after-init . global-company-mode) ; 在启动后自动启用 global-company-mode
+  :bind (:map company-active-map           ; 自定义快捷键
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous))
   :config
-  (global-company-mode 1)
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous))
-
+  (setq company-minimum-prefix-length 1   ; 设置最短补全前缀
+        company-idle-delay 0.2))          ; 设置补全延迟（秒）
 
 (provide 'init-package)
+;;; init-package.el ends here
