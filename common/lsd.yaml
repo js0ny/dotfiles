@@ -1,4 +1,6 @@
-# Location: $XDG_CONFIG_HOME/lsd/config.yaml
+# Location:
+# *nix: $XDG_CONFIG_HOME/lsd/config.yaml
+# Windows: %APPDATA%\lsd\config.yaml
 # Linking:
 # ln -sf $DOTFILES/common/lsd.yaml $XDG_CONFIG_HOME/lsd/config.yaml
 # == Classic ==
@@ -68,6 +70,8 @@ icons:
 # A list of globs to ignore when listing.
 ignore-globs:
   - .git
+  - .gitkeep # .gitkeep is for keeping empty directories in git
+  - .DS_Store
 
 # == Indicators ==
 # Whether to add indicator characters to certain listed files.

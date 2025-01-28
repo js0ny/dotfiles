@@ -68,3 +68,7 @@ ${function:tmux} = { wsl.exe tmux $args }
 if (Get-Command "sfsu.exe" -ErrorAction SilentlyContinue) {
     Invoke-Expression (&sfsu.exe hook)
 }
+
+# Elevate in current shell
+# Set Windows Sudo to `inlined` sudo
+${function:su} = { sudo.exe pwsh }

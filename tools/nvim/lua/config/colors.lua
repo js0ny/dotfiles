@@ -1,3 +1,4 @@
+-- This file *currently* contains the colorscheme for lualine (status line)
 local colors = {
   bg = "#202328",
   fg = "#bbc2cf",

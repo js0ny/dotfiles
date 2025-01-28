@@ -1,16 +1,18 @@
 return {
-  { "catppuccin/nvim", name = "catppuccin" },
+  -- Colorschemes
+  { "catppuccin/nvim",          name = "catppuccin" },
   { "olimorris/onedarkpro.nvim" },
   { "rebelot/kanagawa.nvim" },
+  -- Highlight objects under the cursor
   { "RRethy/vim-illuminate" },
-  {
+  { -- Modern Status Line
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.mod.lualine")
     end,
   },
-  {
+  { -- Highlight yanked text
     "gbprod/yanky.nvim",
     config = function()
       require("yanky").setup({
@@ -22,10 +24,10 @@ return {
       })
     end,
   },
-  { import = "plugins.mod.alpha-nvim" },
-  { import = "plugins.mod.winbar-nvim" },
-  { import = "plugins.mod.bufferline" },
-  {
+  { import = "plugins.mod.alpha-nvim" },  -- Dashboard
+  { import = "plugins.mod.winbar-nvim" }, -- Breadcrumb
+  { import = "plugins.mod.bufferline" },  -- Buffer Top Bar
+  {                                       -- Git Blames, Changes
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({
@@ -33,7 +35,7 @@ return {
       })
     end,
   },
-  {
+  { -- Highlight and navigate between TODOs
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},

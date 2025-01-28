@@ -9,4 +9,6 @@
 # ================================================================================
 # Reference:
 # https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html
+
+# Use system python by default for better script compatibility
 auto_activate_base: false

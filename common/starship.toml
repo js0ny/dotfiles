@@ -5,6 +5,8 @@
 # Location: $XDG_CONFIG_HOME/starship.toml
 # Linking: ln -s $DOTFILES/common/starship.toml $XDG_CONFIG_HOME/starship.toml
 
+# Modified from the Powerline Preset
+
 "$schema" = 'https://starship.rs/config-schema.json'
 palette = "catppuccin_mocha"
 

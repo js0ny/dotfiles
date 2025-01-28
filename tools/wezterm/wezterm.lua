@@ -209,7 +209,10 @@ config.mouse_bindings = {
 --#endregion
 
 --#region Environment
-config.set_environment_variables = {}
+config.set_environment_variables = {
+  TERM = "xterm-256color",
+  TERM_PROGRAM = "wezterm"
+}
 --#endregion
 
 --#region Launching

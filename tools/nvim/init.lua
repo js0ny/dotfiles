@@ -6,6 +6,7 @@
 @Description neovim 配置文件
 ]]
 
+-- Entry point of neovim configuration
 require("config.options")
 require("config.plugins")
 require("config.colorscheme")
