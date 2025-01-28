@@ -21,12 +21,10 @@ alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 # Dev #
 abbr --add py python3
 abbr --add ipy ipython
-abbr --add reload "source $__fish_config_dir/config.fish"
-abbr --add pulldots "cd $DOTFILES && git pull"
 
 # lsd - modern ls
 if command -v lsd > /dev/null
-    alias ls='lsd -A -I .DS_Store -I .git -I .gitkeep'
+    alias ls='lsd -A'
     abbr --add l 'lsd -lah'
     abbr --add ll 'lsd -l'
     abbr --add tree 'ls --tree'
@@ -48,14 +46,9 @@ end
 function tv
     touch $argv[1] && nvim $argv[1]
 end
-function zls
-    z $argv[1] && ls
-end
 
 # Use neovide as gVim
-if command -v neovide > /dev/null
-    abbr --add gvi "neovide"
-end
+abbr --add gvi "neovide"
 
 if command -v brew > /dev/null
     abbr --add brewi "brew install"
@@ -69,11 +62,28 @@ if command -v pacman > /dev/null
     abbr --add paci "sudo pacman -S"
     abbr --add pacr "sudo pacman -R"
     abbr --add pacu "sudo pacman -Syu"
-    abbr --add pacs "sudo pacman -Ss"
+    if command -v paru > /dev/null
+        abbr --add pacs "paru -Ss"
+    elif command -v yay > /dev/null
+        abbr --add pacs "yay -Ss"
+    else
+        abbr --add pacs "pacman -Ss"
+    end
 end
 
 if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"
     abbr --add icat "kitten icat"
 else if test "$TERM_PROGRAM" = "WezTerm"
-    abbr --add icat "wezterm imgcat"
+    if test "$WSL_DISTRO_NAME"
+        abbr --add icat "wezterm.exe imgcat"
+    else
+        abbr --add icat "wezterm imgcat"
+    end
 end
+
+# Bash Style Command Substitution
+# https://github.com/fish-shell/fish-shell/wiki/Bash-Style-Command-Substitution-and-Chaining-(!!-!$)
+
+function __last_history_item; echo $history[1]; end
+
+abbr -a !! --position anywhere --function __last_history_item

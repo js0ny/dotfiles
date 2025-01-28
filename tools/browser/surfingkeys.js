@@ -26,6 +26,7 @@ settings.showModeStatus = false;
 // #endregion
 
 // #region Helper
+// import the API so that no need to use `api` prefix
 const {
   aceVimMap,
   addVimMapKey,
@@ -109,20 +110,20 @@ const vColemak = {
 const forwardFactory = {
   push: function (mapLists) {
     // forward original keys
-    for (let key in mapLists) {
+    for (const key in mapLists) { // `const` better than `let`
       forward.add(mapLists[key]);
     }
   },
   map: function (mapLists) {
-    for (let key in mapLists) {
+    for (const key in mapLists) {
       colemak.map(key, mapLists[key]);
     }
   },
   pull: function (mapLists) {
-    for (let key in mapLists) {
+    for (const key in mapLists) {
       forward.cancel(mapLists[key]);
     }
-    for (let key in mapLists) {
+    for (const key in mapLists) {
       colemak.forward(key);
     }
   },
@@ -130,25 +131,25 @@ const forwardFactory = {
 const vForwardFactory = {
   push: function (mapLists) {
     // forward original keys
-    for (let key in mapLists) {
+    for (const key in mapLists) {
       vForward.add(mapLists[key]);
     }
   },
   map: function (mapLists) {
-    for (let key in mapLists) {
+    for (const key in mapLists) {
       vColemak.map(key, mapLists[key]);
     }
   },
   pull: function (mapLists) {
-    for (let key in mapLists) {
+    for (const key in mapLists) {
       vForward.cancel(mapLists[key]);
     }
-    for (let key in mapLists) {
+    for (const key in mapLists) {
       vColemak.forward(key);
     }
   },
 };
-
+// TODO: Add more search completion source (with json)
 const parseSearchResponse = function (response) {
   const res = JSON.parse(response.text);
   return res.map((r) => r.phrase);
@@ -171,20 +172,13 @@ const _addSearchAlias = function (
     parseResponse,
   );
 };
-
-var q = (selector) => document.querySelector(selector);
-var qs = (selector) => document.querySelectorAll(selector);
-
-var mapkeyFeed = function (key, desc, target, options) {
-  mapkey(key, desc, function () {
-    api.Normal.feedkeys(target)
-  });
-}
-
-
+// Shortcut for querySelector
+const q = (selector) => document.querySelector(selector);
+const qs = (selector) => document.querySelectorAll(selector);
 // #endregion
 
 // #region Keymap
+// Normal Mode Keymap
 const mapLists = {
   /// scroll page
   // Arrow
@@ -212,6 +206,7 @@ const mapLists = {
   // gh/gi -> Prev/Next History
   gh: "S",
   gi: "D",
+  gl: "gi", // Focus on first input box
   // t -> Open Link in New Tab
   t: "gf",
   // 缩放
@@ -219,7 +214,7 @@ const mapLists = {
   zo: "ze",
   zz: "zr",
 };
-
+// Visual Mode Keymap
 const vMapLists = {
   n: "j",
   N: "J",
@@ -238,23 +233,20 @@ forwardFactory.map(mapLists);
 
 vForwardFactory.push(vMapLists);
 vForwardFactory.map(vMapLists);
-// 鼠标点击
-api.unmap("gi");
-api.unmap("[[");
-api.unmap("]]");
-api.unmap(";m");
-api.unmap(";fs");
-api.unmap("O");
-api.unmap("C");
+
+// All other unmapped keys should be defined here
+// TODO: Add more mouse click keymap
+api.unmap("gi"); // conflict with `gi` in `mapLists`
+api.unmap("C"); // Use `F` instead (Open Link in New Tab)
 api.map("g/", "gU"); // Goto Root Domain
-// p to site-specific
-api.unmap("p");
+// TODO: Add SPC keymap as leader (maybe change `,` to `SPC`)
 api.unmap("<space>"); // Leader Key
+
 forwardFactory.pull(mapLists);
 vForwardFactory.pull(vMapLists);
 // #endregion
 
-// #region Omnibar
+// #region Omnibar NOTE: Dosn't work
 // api.cmap("<Ctrl-a>", "<Ctrl-ArrowUp>");
 // api.cmap("<Ctrl-e>", "<Ctrl-ArrowDown>");
 // api.cmap("<Ctrl-f>", "<ArrowRight>");
@@ -266,86 +258,60 @@ vForwardFactory.pull(vMapLists);
 // #endregion
 
 // #region Search Alias
-removeSearchAlias("s"); // StackOverflow
-removeSearchAlias("d"); // DuckDuckGo
-removeSearchAlias("g"); // Google
-removeSearchAlias("b"); // Baidu
-removeSearchAlias("w"); // Bing
-removeSearchAlias("y"); // YouTube
 
-/// Common
-_addSearchAlias("dd", "DuckDuckGo", "https://duckduckgo.com/?q=");
-_addSearchAlias("gg", "Google", "https://www.google.com/search?q=");
-_addSearchAlias("bd", "Baidu", "https://www.baidu.com/s?wd=");
-_addSearchAlias("bi", "Bing", "https://www.bing.com/search?q=");
-_addSearchAlias(
-  "wk",
-  "Wikipedia",
-  "https://en.wikipedia.org/w/index.php?title=Special:Search&search=",
-);
-_addSearchAlias("re", "Reddit", "https://www.reddit.com/search?q=");
-_addSearchAlias("st", "Steam", "https://store.steampowered.com/search/?term=");
-_addSearchAlias(
-  "ud",
-  "UrbanDictionary",
-  "https://www.urbandictionary.com/define.php?term=",
-);
-_addSearchAlias("tw", "X", "https://twitter.com/search?q=");
-_addSearchAlias("de", "Thesaurus", "https://www.onelook.com/?w=");
-_addSearchAlias(
-  "ww",
-  "WantWords",
-  "https://www.shenyandayi.com/wantWordsResult?lang=zh&query=",
-);
-/// AI Search
-_addSearchAlias("fe", "Felo", "https://felo.ai/search?q=");
-_addSearchAlias("pp", "Perplexity", "https://www.perplexity.ai/?q=");
-_addSearchAlias("cg", "ChatGPT", "https://chat.openai.com/?q=");
-_addSearchAlias("mc", "Metacritic", "https://www.metacritic.com/search/");
-/// EECS Related
-_addSearchAlias(
-  "gh",
-  "GitHub",
-  "https://github.com/search?type=repositories&q=",
-);
-_addSearchAlias("so", "StackOverflow", "https://stackoverflow.com/search?q=");
-_addSearchAlias("se", "StackExchange", "https://stackexchange.com/search?q=");
-_addSearchAlias(
-  "aw",
-  "ArchWiki",
-  "https://wiki.archlinux.org/index.php?search=",
-);
-_addSearchAlias("wa", "WolframAlpha", "https://www.wolframalpha.com/input/?i=");
-_addSearchAlias("eb", "ebay", "https://www.ebay.co.uk/sch/i.html?kw=");
-// Programming language packages
-_addSearchAlias("py", "pypi", "https://pypi.org/search/?q=");
-_addSearchAlias("ng", "NuGet", "https://www.nuget.org/packages?q=");
-_addSearchAlias("np", "npm", "https://www.npmjs.com/search?q=");
-// Package Manager Search
-_addSearchAlias("wg", "winget", "https://winget.ragerworks.com/search/all/");
-_addSearchAlias("sc", "Scoop", "https://scoop.sh/#/apps?q=");
-_addSearchAlias("br", "HomeBrew", "https://duckduckgo.com/?q=!brew ");
-_addSearchAlias("au", "AUR", "https://aur.archlinux.org/packages?K=");
-_addSearchAlias("pa", "Pacman", "https://archlinux.org/packages/?q=");
-_addSearchAlias("ap", "APT", "https://packages.ubuntu.com/search?keywords=");
-_addSearchAlias(
-  "a2",
-  "AlternativeTo",
-  "https://alternativeto.net/browse/search/?q=",
-);
-_addSearchAlias(
-  "cr",
-  "Chrome Web Store",
-  "https://chrome.google.com/webstore/search/",
-);
-/// Video
-_addSearchAlias(
-  "yt",
-  "YouTube",
-  "https://www.youtube.com/results?search_query=",
-);
-_addSearchAlias("bl", "Bilibili", "https://search.bilibili.com/all?keyword=");
+const removedSearchAlias = [
+  "b", // Baidu
+  "d", // DuckDuckGo
+  "e", // Wikipedia
+  "g", // Google
+  "s", // StackOverflow
+  "w", // Bing
+  "y", // YouTube
+];
 
+removedSearchAlias.forEach((alias) => removeSearchAlias(alias));
+
+const searchAliases = [
+  ["a2", "AlternativeTo", "https://alternativeto.net/browse/search/?q="],
+  ["ap", "APT", "https://packages.ubuntu.com/search?keywords="],
+  ["au", "AUR", "https://aur.archlinux.org/packages?K="],
+  ["aw", "ArchWiki", "https://wiki.archlinux.org/index.php?search="],
+  ["bd", "Baidu", "https://www.baidu.com/s?wd="],
+  ["bi", "Bing", "https://www.bing.com/search?q="],
+  ["bl", "Bilibili", "https://search.bilibili.com/all?keyword="]
+  ["br", "HomeBrew", "https://duckduckgo.com/?q=!brew "],
+  ["cg", "ChatGPT", "https://chat.openai.com/?q="],
+  ["cr", "Chrome Web Store", "https://chrome.google.com/webstore/search/"],
+  ["dd", "DuckDuckGo", "https://duckduckgo.com/?q="],
+  ["de", "Thesaurus", "https://www.onelook.com/?w="],
+  ["eb", "ebay", "https://www.ebay.co.uk/sch/i.html?kw="],
+  ["fe", "Felo", "https://felo.ai/search?q="],
+  ["gh", "GitHub", "https://github.com/search?type=repositories&q="],
+  ["gg", "Google", "https://www.google.com/search?q="],
+  ["mc", "Metacritic", "https://www.metacritic.com/search/"],
+  ["ng", "NuGet", "https://www.nuget.org/packages?q="],
+  ["np", "npm", "https://www.npmjs.com/search?q="],
+  ["pa", "Pacman", "https://archlinux.org/packages/?q="],
+  ["pp", "Perplexity", "https://www.perplexity.ai/?q="],
+  ["py", "pypi", "https://pypi.org/search/?q="],
+  ["re", "Reddit", "https://www.reddit.com/search?q="],
+  ["sc", "Scoop", "https://scoop.sh/#/apps?q="],
+  ["se", "StackExchange", "https://stackexchange.com/search?q="],
+  ["so", "StackOverflow", "https://stackoverflow.com/search?q="],
+  ["st", "Steam", "https://store.steampowered.com/search/?term="],
+  ["tw", "X", "https://twitter.com/search?q="],
+  ["ud", "UrbanDictionary", "https://www.urbandictionary.com/define.php?term="],
+  ["wa", "WolframAlpha", "https://www.wolframalpha.com/input/?i="],
+  ["wg", "winget", "https://winget.ragerworks.com/search/all/"],
+  ["wk", "Wikipedia", "https://en.wikipedia.org/w/index.php?title=Special:Search&search="],
+  ["ww", "WantWords", "https://www.shenyandayi.com/wantWordsResult?lang=zh&query="],
+  ["yt", "YouTube", "https://www.youtube.com/results?search_query="],
+];
+
+// Add all search aliases
+searchAliases.forEach(([alias, name, url]) => {
+  _addSearchAlias(alias, name, url);
+});
 // #endregion
 
 // #region Site-specific
@@ -385,7 +351,7 @@ mapkey(",r", "Regenerate last output", function () {
   btn[btn.length - 3].click();
 }, { domain: /chat.deepseek.com/ });
 mapkey(",n", "New Chat", function () {
-  window.location.href = 'https://chat.deepseek.com/';
+  window.location.href = "https://chat.deepseek.com/";
 }, { domain: /chat.deepseek.com/ });
 mapkey(",t", "Toggle Thinking (R1)", function () {
   var btns = qs("div.ds-button");
@@ -399,31 +365,32 @@ mapkey(",w", "Toggle Web Search", function () {
 
 // #region app.follow.is
 mapkey(",t", "Toggle ", function () {
-  var btn = qs("button.no-drag-region")
+  var btn = qs("button.no-drag-region");
   btn[btn.length - 4].click();
 }, { domain: /app.follow.is/ });
 
 mapkey(",a", "Toggle AI Summary", function () {
-  var btn = qs("button.no-drag-region")
+  var btn = qs("button.no-drag-region");
   btn[btn.length - 3].click();
 }, { domain: /app.follow.is/ });
 
 mapkey(",o", "Toggle Original Website", function () {
-  var btn = qs("button.no-drag-region")
+  var btn = qs("button.no-drag-region");
   btn[btn.length - 4].click();
 }, { domain: /app.follow.is/ });
 // #endregion
 
 // #region GitHub
 // utils
-const gh = {}
+const gh = {};
 gh.repoLink = (owner, repo) => `https://github.com/${owner}/${repo}`;
 gh.pageLink = (owner, repo) => `https://${owner}.github.io/${repo}/`;
-gh.sourceLink = (owner, repo, path) => `${gh.repoLink(owner, repo)}/tree/${path}`;
+gh.sourceLink = (owner, repo, path) =>
+  `${gh.repoLink(owner, repo)}/tree/${path}`;
 gh.rawToSource = (url) => {
-  const ps = url.split('/').slice(3)
-  return gh.sourceLink(ps[0], ps[1], ps.slice(4).join('/'));
-}
+  const ps = url.split("/").slice(3);
+  return gh.sourceLink(ps[0], ps[1], ps.slice(4).join("/"));
+};
 // github.com
 mapkey(",e", "Use Web Editor", function () {
   const url = new URL(window.location.href);
@@ -464,13 +431,13 @@ mapkey(",R", "Go to GitHub Repo (New tab)", function () {
 mapkey(",r", "Switch to GitHub Repo", function () {
   const url = new URL(window.location.href);
   var owner, repo;
-  owner, repo = url.pathname.split('/').slice(1, 3)
+  owner, repo = url.pathname.split("/").slice(1, 3);
   window.location.href = gh.repoLink(owner, repo);
 }, { domain: /raw.githubusercontent.com/ });
 mapkey(",R", "Switch to GitHub Repo", function () {
   const url = new URL(window.location.href);
   var owner, repo;
-  owner, repo = url.pathname.split('/').slice(1, 3)
+  owner, repo = url.pathname.split("/").slice(1, 3);
   tabOpenLink(gh.repoLink(owner, repo));
 }, { domain: /raw.githubusercontent.com/ });
 mapkey(",s", "Open Source in GitHub", function () {
@@ -479,9 +446,6 @@ mapkey(",s", "Open Source in GitHub", function () {
 mapkey(",S", "Open Source in GitHub (New Page)", function () {
   tabOpenLink(gh.rawToSource(window.location.href));
 }, { domain: /raw.githubusercontent.com/ });
-
-
-
 // #endregion GitHub
 
 // #region perplexity.ai
@@ -492,13 +456,13 @@ mapkey(",S", "Open Source in GitHub (New Page)", function () {
  * 3 - 写作
  * 4 - 视频
  * 5 - 社交
-*/
+ */
 const perplexityFocusOn = function (n) {
-  qs("span.grow button")[0].click()
+  qs("span.grow button")[0].click();
   setTimeout(() => { // Wait for the DOM to update
     qs("div.shadow-subtle div.group\\/item")[n].click();
   }, 100);
-}
+};
 unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
 mapkey(",b", "Add Perplexity Bookmark", function () {
   //  button.border:nth-child(2)
@@ -509,19 +473,19 @@ mapkey(",w", "Toggle Writing/Web Search", function () {
   perplexityFocusOn(3);
 }, { domain: /perplexity.ai/ });
 mapkey(",s", "Start Generating", function () {
-  var btns = qs("span.grow button")
+  var btns = qs("span.grow button");
   btns[btns.length - 1].click();
 }, { domain: /perplexity.ai/ });
 mapkey(",y", "Yank Last Output", function () {
-  var toolbars = qs("div.mt-sm")
-  var last = toolbars[toolbars.length - 1]
-  var btns = last.querySelectorAll("button")
+  var toolbars = qs("div.mt-sm");
+  var last = toolbars[toolbars.length - 1];
+  var btns = last.querySelectorAll("button");
   btns[4].click();
 }, { domain: /perplexity.ai/ });
 mapkey(",r", "Change model to regenerate last output", function () {
-  var toolbars = qs("div.mt-sm")
-  var last = toolbars[toolbars.length - 1]
-  var btns = last.querySelectorAll("button")
+  var toolbars = qs("div.mt-sm");
+  var last = toolbars[toolbars.length - 1];
+  var btns = last.querySelectorAll("button");
   btns[1].click();
 }, { domain: /perplexity.ai/ });
 // #endregion
@@ -543,7 +507,6 @@ addVimMapKey(
     motion: "findNext",
     motionArgs: { forward: false, toJumplist: true },
   },
-
   // Word movement
   {
     keys: "j",
@@ -562,7 +525,6 @@ addVimMapKey(
       inclusive: true,
     },
   },
-
   // Insert mode entries
   {
     keys: "l",
@@ -642,5 +604,5 @@ addVimMapKey(
 // #endregion
 
 // #region Hints
-api.Hints.setCharacters('qwfpgarstdcv')
+api.Hints.setCharacters("qwfpgarstdcv"); // Left-hand keys
 // #endregion

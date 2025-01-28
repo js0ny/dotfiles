@@ -8,3 +8,6 @@
 # interactive session.
 
 $env:IPYTHONDIR = "$env:AppData\ipython"
+$env:EDITOR = "code --wait"
+$env:VISUAL = "code --wait"
+$env:PAGER = "less"

@@ -8,37 +8,37 @@ alias ni=touch
 alias cls=clear
 alias ii=open
 
+# Editors #
+alias v=nvim
+alias c=code
+# Use neovide as gVim
+alias gvi="neovide"
+alias sv="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc"
+alias sn="sudo nvim -u ~/.config/nvim/init.lua"
+
 # Dev #
 alias gpp='g++ -std=c++2b' # Set the default C++ standard to C++20
 alias gcc='gcc -std=c99' # Set the default C standard to C99
 alias cl='clang -std=c99'
 alias clpp='clang++ -std=c++2b'
 alias python=python3 # Set the default Python version to Python 3
-alias py=python # Alias for Python
-alias pip=pip3 # Alias for pip
-# alias bashcfg="nvim ~/.bashrc"
-alias zshcfg="nvim $ZDOTDIR/.zshrc"
-alias shcfg=zshcfg
-alias reload="source $ZDOTDIR/.zshrc"
-alias nvimrc="nvim $XDG_CONFIG_HOME/nvim/"
-alias pulldots="cd $DOTFILES && git pull"
+alias py=python
+alias ipy=ipython
 
-# Editors #
-alias v=nvim
-alias c=code
-alias sv="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc"
-alias sn="sudo nvim -u ~/.config/nvim/init.lua"
+alias reload="source $ZDOTDIR/.zshrc"
+
 
 # lsd - modern ls
 if command -v lsd > /dev/null; then
-    alias ls='lsd -A -I .DS_Store -I .git'
+    alias ls='lsd -A'
     alias l='lsd -lah'
     alias ll='lsd -l'
-    alias tree='lsd --tree -I .DS_Store -I .git -A'
+    alias tree='lsd --tree -A'
+else
+    alias l='ls -lah'
+    alias ll='ls -l'
 fi
 
-# fzf - Fuzzy Finder
-# export FZF_DEFAULT_OPTS_FILE=~/.dotfiles/common/fzfrc
 
 # Functions #
 mkcd() {
@@ -52,21 +52,6 @@ tc(){
 }
 tv(){
 	touch $1 && nvim $1
-}
-
-# Use neovide as gVim
-gvi() {
-  local target=$1
-
-  if command -v neovide.exe > /dev/null; then
-    neovide.exe "$target"
-  else
-    if command -v neovide > /dev/null; then
-      neovide "$target"
-    else
-      echo "neovide is not installed"
-    fi
-  fi
 }
 
 
@@ -93,7 +78,21 @@ if command -v brew > /dev/null; then
     alias brewr="brew uninstall"
 fi
 
+
+# `-s` suffix alias
+# % readme.md -> glow readme.md
+alias -s {md,markdown}=glow
 alias -s {htm,html,css,scss,js,jsx,ts,tsx,json,jsonc}=code
-alias -s {md,markdown}=code
-alias -s {py,sh,rb,pl,php,java,c,cpp,h,hpp}=nvim
+alias -s {py,rb,pl,php,java,c,cpp,h,hpp}=nvim
 alias -s {cs,csx,fs,fsx,razor}=code
+
+# TODO: Does not work
+if [ "$TERM" = "xterm-ghostty" ] || [ "$TERM" = "xterm-kitty" ]; then
+    alias icat="kitten icat"
+elif [ "$TERM_PROGRAM" = "WezTerm" ]; then
+    if [ -n "$WSL_DISTRO_NAME" ]; then
+        alias icat="wezterm.exe imgcat"
+    else
+        alias icat="wezterm imgcat"
+    fi
+fi

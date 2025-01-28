@@ -3,19 +3,7 @@
 # Author: js0ny
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
-# Relative navigation #
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
 
-# Use `-` to jump to the previous directory
-# Oh-My-Zsh defines a similar one
-function - { cd - }
-
-# Use `z` to jump to a directory
-eval "$(zoxide init zsh)"
 
 # Absolute navigation #
 alias dotfiles="cd $DOTFILES && ls"
@@ -37,5 +25,29 @@ fi
 # macOS specific, no OneDrive & Google Drive on Linux
 if [ "$(uname)" = "Darwin" ]; then
     alias one="cd $HOME/OneDrive"
-    alias gdrive="cd $HOME/Google\ Drive"
+    alias gdrive="cd $HOME/Google Drive"
+fi
+
+
+if command -v zoxide > /dev/null ; then
+    eval "$(zoxide init zsh)"
+# Relative navigation #
+    alias ..="z .."
+    alias ...="z ../.."
+    alias ....="z ../../.."
+    alias .....="z ../../../.."
+    alias ......="z ../../../../.."
+# Use `-` to jump to the previous directory
+# Oh-My-Zsh defines a similar one
+    alias - "z -"
+    zls(){
+        cd $1 && ls
+    }
+else
+    alias ..="cd .."
+    alias ...="cd ../.."
+    alias ....="cd ../../.."
+    alias .....="cd ../../../.."
+    alias ......="cd ../../../../.."
+    alias - "cd -"
 fi

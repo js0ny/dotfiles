@@ -23,13 +23,15 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 # Minimal PATH for early commands
-set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin ~/.local/bin $PATH
-
-if test -d /opt/homebrew/bin # macOS
-    set -gx PATH /opt/homebrew/bin $PATH
-else if test -d /home/linuxbrew/.linuxbrew/bin # Linux
-    set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
+for dir in /usr/local/bin /usr/bin /bin /usr/sbin /sbin "$HOME/.local/bin"
+    if test -d "$dir" -a ! -L "$dir"
+        fish_add_path "$dir"
+    end
 end
+
+# Homebrew/Linuxbrew
+test -d /opt/homebrew/bin && fish_add_path /opt/homebrew/bin
+test -d /home/linuxbrew/.linuxbrew/bin && fish_add_path /home/linuxbrew/.linuxbrew/bin
 
 if command -v brew > /dev/null
     set -gx HOMEBREW_NO_ENV_HINTS

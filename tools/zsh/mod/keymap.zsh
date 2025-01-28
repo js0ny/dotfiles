@@ -4,6 +4,9 @@
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
 
+# read key: `fish_key_reader`
+# get current bindings: `bindkey`
+
 bindkey -v # Vi Keybindings
 
 # Colemak hnei
@@ -38,6 +41,8 @@ bindkey '^P' up-line-or-history
 bindkey '^N' down-line-or-history
 bindkey '^R' history-incremental-search-backward
 bindkey '^K' kill-line
+# Zsh will parse <C-Backspace> to C-h
+bindkey '^H' backward-kill-word
 
 # LEADER CONVENTION
 # ^X defines as a prefix key in shell
