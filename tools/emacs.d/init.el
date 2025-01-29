@@ -19,8 +19,10 @@
 ;; Load each modules
 (require 'init-package) ; package manager should be loaded first
 (require 'init-basic)
+(require 'init-appearance) ; package manager should be loaded first
 (require 'init-keymaps)
 (require 'init-evil)
+(require 'init-file)
 ;; (require 'init-lsp) ; FIXME: See .emacs.d/lisp/init-lsp.el
 
 ;; Load `custom` file

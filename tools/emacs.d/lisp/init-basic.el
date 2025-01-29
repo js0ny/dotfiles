@@ -14,13 +14,6 @@
 ;; https://book.emacs-china.org/#orgcfd105e Open with Emacs
 (server-mode 1)
 
-(when (display-graphic-p)
-  (add-to-list 'default-frame-alist '(font . "JetBrainsMono NF")))
-
-(use-package catppuccin-theme
-  :config
-  (setq catppuccin-flavor 'mocha) ; This looks like shit in terminal mode
-  (load-theme 'catppuccin t))
 
 (require 'recentf)
 (recentf-mode 1)

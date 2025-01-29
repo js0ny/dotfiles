@@ -22,6 +22,12 @@
     "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
     ))
 
+;; Text Objects Keymap - Use `l` for inner (swap i and l)
+;; https://github.com/emacs-evil/evil/blob/master/evil-maps.el#L398-L421
+(define-key evil-visual-state-map "l" evil-inner-text-objects-map)
+(define-key evil-operator-state-map "l" evil-inner-text-objects-map)
+
+
 ;; Provides Vim-like Leader key <SPC>
 (use-package evil-leader
   :after evil
@@ -36,6 +42,12 @@
   :after evil
   :config
   (evil-commentary-mode))
+
+;; Evil Surround: Vim-surround Evil fork
+(use-package evil-surround
+  :after evil
+  :config
+  (global-evil-surround-mode 1))
 
 
 (provide 'init-evil)
