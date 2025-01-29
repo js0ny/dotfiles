@@ -9,6 +9,7 @@
   (evil-mode 1)
   ; Colemak Vim Arrow
   (evil-define-key '(normal visual operator) 'global
+    ;; To see the keybindings, use <C-h> k then type the key
     "n" 'evil-next-line
     "e" 'evil-previous-line
     "i" 'evil-forward-char
@@ -20,6 +21,8 @@
     "J" 'evil-forward-WORD-end
     "N" '(lambda () (interactive) (evil-next-line 5))       ; 5n
     "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
+    "H" 'switch-to-prev-buffer
+    "I" 'switch-to-next-buffer
     ))
 
 ;; Text Objects Keymap - Use `l` for inner (swap i and l)

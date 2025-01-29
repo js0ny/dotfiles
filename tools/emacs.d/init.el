@@ -23,6 +23,8 @@
 (require 'init-keymaps)
 (require 'init-evil)
 (require 'init-file)
+(require 'init-edit)
+(require 'init-org)
 ;; (require 'init-lsp) ; FIXME: See .emacs.d/lisp/init-lsp.el
 
 ;; Load `custom` file
