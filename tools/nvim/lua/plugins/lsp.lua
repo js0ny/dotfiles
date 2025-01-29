@@ -24,7 +24,7 @@ return {
       require("luasnip").config.setup({ enable_autosnippets = true })
     end,
   },
-  { "williamboman/mason.nvim", config = true },
+  { "williamboman/mason.nvim",             config = true },
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
@@ -47,8 +47,26 @@ return {
     "NoahTheDuke/vim-just",
     ft = { "just" },
   },
-  { import = "plugins.mod.trouble-nvim" },
+  {
+    "nvim-orgmode/orgmode",
+    event = "VeryLazy",
+    ft = { "org" },
+    config = function()
+      -- Setup orgmode
+      require("orgmode").setup({
+        org_agenda_files = "~/orgfiles/**/*",
+        org_default_notes_file = "~/orgfiles/refile.org",
+      })
 
+      -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
+      -- add ~org~ to ignore_install
+      -- require('nvim-treesitter.configs').setup({
+      --   ensure_installed = 'all',
+      --   ignore_install = { 'org' },
+      -- })
+    end,
+  },
+  { import = "plugins.mod.trouble-nvim" },
   { import = "plugins.mod.nvim-treesitter" },
   {
     "folke/lazydev.nvim",
