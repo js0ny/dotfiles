@@ -1,7 +1,12 @@
 ;;; init-appearance.el
 
+;; Set Font - JetBrains Mono Nerd Font
 (when (display-graphic-p)
   (add-to-list 'default-frame-alist '(font . "JetBrainsMono NF")))
+
+;; Set CJK Display Font - LXGW Wenkai Mono
+(dolist (charset '(kana han cjk-misc bopomofo)) 
+  (set-fontset-font t charset (font-spec :family "霞鹜文楷等宽"))) 
 
 ;; Icon Support
 ;; Once installed, Manually install the fonts required:

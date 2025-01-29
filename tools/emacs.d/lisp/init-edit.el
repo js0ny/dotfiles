@@ -1,5 +1,8 @@
 ;;; init-edit.el
 
+;; Use UTF-8 & LF
+(setq-default buffer-file-coding-system 'utf-8-unix)
+
 ;; Company - Complete Anything
 (use-package company
   :ensure t
