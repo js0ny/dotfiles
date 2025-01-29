@@ -17,10 +17,11 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 ;; Load each modules
+(require 'init-package) ; package manager should be loaded first
 (require 'init-basic)
 (require 'init-keymaps)
-(require 'init-package)
 (require 'init-evil)
+;; (require 'init-lsp) ; FIXME: See .emacs.d/lisp/init-lsp.el
 
 ;; Load `custom` file
 (when (file-exists-p custom-file)
