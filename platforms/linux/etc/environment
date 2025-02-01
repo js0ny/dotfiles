@@ -23,8 +23,8 @@ QT_IM_MODULE=fcitx
 SDL_IM_MODULE=fcitx
 XMODIFIFERS="@im=fcitx"
 GLFW_IM_MODULE=fcitx
-# Scaling
-QT_SCALE_FACTOR=1.75
-# 2 * 0.875 = 1.75
-GDK_SCALE=2
-GDK_DPI_SCALE=0.875
+# Scaling - Buggy on Plasma
+# QT_SCALE_FACTOR=1.75
+# # 2 * 0.875 = 1.75
+# GDK_SCALE=2
+# GDK_DPI_SCALE=0.875

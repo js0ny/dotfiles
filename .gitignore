@@ -34,3 +34,5 @@ common/fzfrc
 gitconfig
 
 spacemacs/
+
+lazy-lock.json
