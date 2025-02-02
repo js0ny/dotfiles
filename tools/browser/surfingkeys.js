@@ -499,6 +499,9 @@ mapkey(",r", "Change model to regenerate last output", function () {
 // Use site-specific paging method
 unmap("[[", /pixiv.net/);
 unmap("]]", /pixiv.net/);
+unmap(",", /pixiv.net/);
+const isArtwork = (url) => /pixiv.net\/artworks/.test(url.href)
+
 mapkey("[[", "Previous Page", function () {
   const url = new URL(window.location.href);
   if (url.href === url.origin) {
@@ -519,6 +522,32 @@ mapkey("]]", "Next Page", function () {
   const newPage = page ? parseInt(page) + 1 : 2;
   url.searchParams.set("p", newPage);
   window.location.href = url.href;
+}, { domain: /pixiv.net/ });
+mapkey(",b", "Add to [b]ookmark", function () {
+  const url = new URL(window.location.href);
+  if (!isArtwork(url)) { return; }
+  const toolbar = q('section [class$="Toolbar"]')
+  toolbar.querySelectorAll("div")[2].querySelector("button").click()
+}, { domain: /pixiv.net/ });
+mapkey(",B", "Add to private [B]ookmark", function () {
+  const url = new URL(window.location.href);
+  if (!isArtwork(url)) { return; }
+  const toolbar = q('section [class$="Toolbar"]')
+  toolbar.querySelectorAll("div")[0].querySelector("button").click()
+  setTimeout(() => { // Wait for the DOM to update
+    q("div[role=menu]").querySelector("li").click()
+  }, 100);
+}, { domain: /pixiv.net/ });
+mapkey(",v", "Up[v]ote Artwork", function () {
+  const url = new URL(window.location.href);
+  if (!isArtwork(url)) { return; }
+  const toolbar = q('section [class$="Toolbar"]')
+  toolbar.querySelectorAll("div")[3].querySelector("button").click()
+}, { domain: /pixiv.net/ });
+mapkey(",f", "Toggle [f]ollow the author", function () {
+  const url = new URL(window.location.href)
+  if (!isArtwork(url)) { return; }
+  q("aside").querySelector("section").querySelector("button").click()
 }, { domain: /pixiv.net/ });
 // #endregion
 

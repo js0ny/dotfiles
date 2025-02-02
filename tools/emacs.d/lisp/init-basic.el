@@ -31,7 +31,7 @@
 (use-package alert
   :commands (alert)
   :config
-  (setq alert-default-style 'toast))
+  (setq alert-default-style 'libnotify))
 
 ;; Export module
 (provide 'init-basic)
