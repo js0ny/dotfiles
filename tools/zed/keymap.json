@@ -58,5 +58,17 @@
       "k": "search::SelectNextMatch",
       "K": "search::SelectPrevMatch"
     }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+
+    "bindings": {
+      "n": "menu::SelectNext",
+      "e": "menu::SelectPrev",
+      "i": "project_panel::ExpandSelectedEntry",
+      "A": "project_panel::NewDirectory",
+      "a": "project_panel::NewFile",
+      "d": "project_panel::Delete"
+    }
   }
 ]
