@@ -1,14 +1,1 @@
-# $DOTFILES/common/npmrc
-# Date: 2024-12-22
-# Author: js0ny
-
-# Location:
-# $NPM_CONFIG_USERCONFIG
-# ~/.npmrc (Default location)
-# Linking:
-# export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
-# ln -s $DOTFILES/.config/npm/npmrc $NPM_CONFIG_USERCONFIG
-# New-Item -ItemType SymbolicLink -Path $env:NPM_CONFIG_USERCONFIG -Value $env:DOTFILES/.config/npm/npmrc
-
-
-# registry=https://registry.npmmirror.com
+strict-ssl=false

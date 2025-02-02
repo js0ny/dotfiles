@@ -1,11 +1,29 @@
 // ~/Library/Keybindings/DefaultKeyBinding.dict
 {
-    // Colemak Vim Style Arrows
-    "^h" = "moveBackward:";
-    "^n" = "moveDown:";
-    "^e" = "moveUp:";
-    "^i" = "moveForward:";
-    // Colemak Vim Style Home/End, Insert & Append
-    "^l" = "moveToBeginningOfLine:";
-    "^a" = "moveToEndOfLine:";
+    "~a" = ();
+    "~b" = ();
+    "~c" = ();
+    "~d" = ();
+    "~e" = ();
+    "~f" = ();
+    "~g" = ();
+    "~h" = ();
+    "~i" = ();
+    "~j" = ();
+    "~k" = ();
+    "~l" = ();
+    "~m" = ();
+    "~n" = ();
+    "~o" = ();
+    "~p" = ();
+    "~q" = ();
+    "~r" = ();
+    "~s" = ();
+    "~t" = ();
+    "~u" = ();
+    "~v" = ();
+    "~w" = ();
+    "~x" = ();
+    "~y" = ();
+    "~z" = ();
 }
