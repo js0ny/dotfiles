@@ -1,6 +1,9 @@
 // Paste this into surfingkeys advanced settings
 // or use:
 // Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/tools/browser/surfingkeys.js
+// Browse to Extension > Surfingkeys > Allow access to file URLs to enable local file access
+// Windows: file:///C:/Users/username/.dotfiles/tools/browser/surfingkeys.js
+// *nix: file:///home/username/.dotfiles/tools/browser/surfingkeys.js
 
 // #region Example
 /** Examples
@@ -244,6 +247,8 @@ api.unmap("<space>"); // Leader Key
 
 forwardFactory.pull(mapLists);
 vForwardFactory.pull(vMapLists);
+
+api.map("gH", "g/");
 // #endregion
 
 // #region Omnibar NOTE: Dosn't work
@@ -489,6 +494,34 @@ mapkey(",r", "Change model to regenerate last output", function () {
   btns[1].click();
 }, { domain: /perplexity.ai/ });
 // #endregion
+
+// #region pixiv.net
+// Use site-specific paging method
+unmap("[[", /pixiv.net/);
+unmap("]]", /pixiv.net/);
+mapkey("[[", "Previous Page", function () {
+  const url = new URL(window.location.href);
+  if (url.href === url.origin) {
+    return;
+  }
+  const page = url.searchParams.get("p");
+  const newPage = page ? parseInt(page) - 1 : 1;
+  url.searchParams.set("p", newPage);
+  window.location.href = url.href;
+}, { domain: /pixiv.net/ });
+
+mapkey("]]", "Next Page", function () {
+  const url = new URL(window.location.href);
+  if (url.href === url.origin) {
+    return;
+  }
+  const page = url.searchParams.get("p");
+  const newPage = page ? parseInt(page) + 1 : 2;
+  url.searchParams.set("p", newPage);
+  window.location.href = url.href;
+}, { domain: /pixiv.net/ });
+// #endregion
+
 
 // #endregion
 

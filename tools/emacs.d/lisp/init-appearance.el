@@ -20,15 +20,38 @@
 (use-package catppuccin-theme
   :config
   (setq catppuccin-flavor 'mocha) ; This looks like shit in terminal mode
-  (load-theme 'catppuccin t))
+  ;; (load-theme 'catppuccin t)
+  )
+
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-nord-aurora t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+
+  ;; Enable custom neotree theme (nerd-icons must be installed!)
+  ;; (doom-themes-neotree-config)
+
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-nord-aurora") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 
-;; Better mode line, see (L7) Icon install
+;; Better mode line, see (L11) for Icon install
 ;; M-x nerd-icons-install-fonts
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
 
 (global-tab-line-mode) ; bufferline
+
+
 
 (provide 'init-appearance)

@@ -15,8 +15,6 @@
   (prog-mode . display-line-numbers-mode))
 
 
-;; Auto input pairred brackets
-(electric-pair-mode 1)
 
 ;; https://book.emacs-china.org/#orgcfd105e Open with Emacs
 (server-mode 1)
@@ -25,10 +23,15 @@
 (require 'recentf)
 (recentf-mode 1)
 
-;; Disable toobar and scrollbar
+;; Disable topbars
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(menu-bar-mode -1)
 
+(use-package alert
+  :commands (alert)
+  :config
+  (setq alert-default-style 'toast))
 
 ;; Export module
 (provide 'init-basic)

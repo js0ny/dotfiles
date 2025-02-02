@@ -39,10 +39,8 @@
     ("~" (org-code verbatim :background "deep sky blue" :foreground "MidnightBlue"))
     ("+" (:strike-through t))))
 
-(use-package org-bullets
-  :after org
-  :hook (org-mode . org-bullets-mode))
 
+;; Better LaTeX preview
 (use-package org-fragtog
   :after org
   :hook (org-mode . org-fragtog-mode))
@@ -104,5 +102,66 @@
 (global-set-key (kbd "C-c b") (lambda () (interactive) (my/insert-emphasis-with-zws ?*)))
 (global-set-key (kbd "C-c i") (lambda () (interactive) (my/insert-emphasis-with-zws ?/)))
 
+;; Pomodoro for org clock
+(use-package org-pomodoro)
+
+;; Org Styles Integration
+(use-package org-modern
+  :ensure t
+  :after (org)
+  :config
+  (with-eval-after-load 'org (global-org-modern-mode))
+;; https://github.com/minad/org-modern/issues/232
+  (setq org-modern-fold-stars
+      '(("▶" . "▼")
+        ("▷" . "▽")
+        ;; ("⯈" . "⯆")
+        ("▷" . "▽")
+        ("▹" . "▿")
+        ("▸" . "▾"))
+)
+)
+
+(use-package mixed-pitch
+  :hook
+  (text-mode . org-mode))
+
+;; Integrate Emacs Timer with System Notifications
+;; 定义通知函数
+(defun my/org-clock-notification (title message &optional icon)
+  "发送一个系统通知"
+  (alert message
+         :title title
+         :icon icon
+         :category 'org-clock))
+
+;; 添加定时器检查函数
+(defun my/org-clock-check-timer ()
+  "检查当前正在运行的 clock 是否到期"
+  (when (org-clocking-p)
+    (let* ((clocked-time (org-clock-get-clocked-time))
+           (effort (org-duration-to-minutes 
+                    (or (org-entry-get (org-clock-is-active) "Effort")
+                        "0")))
+           (remaining (- effort clocked-time)))
+      (when (and (> effort 0) (<= remaining 0))
+        (my/org-clock-notification 
+         "Org Clock 提醒"
+         (format "任务 '%s' 的预计时间已到！"
+                (org-clock-get-clock-string)))))))
+
+;; 设置定时器，每分钟检查一次
+(run-with-timer 0 60 #'my/org-clock-check-timer)
+
+;; 在 org-clock-in-hook 中添加检查
+(add-hook 'org-clock-in-hook
+          (lambda ()
+            (let ((effort (org-entry-get (point) "Effort")))
+              (when effort
+                (my/org-clock-notification 
+                 "开始计时"
+                 (format "开始计时任务: %s\n预计用时: %s" 
+                        (org-get-heading t t t t)
+                        effort))))))
 
 (provide 'init-org)

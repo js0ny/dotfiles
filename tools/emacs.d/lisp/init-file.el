@@ -53,5 +53,13 @@
   ;; Treemacs mode specific binding
   (evil-define-key 'treemacs treemacs-mode-map (kbd "i") #'treemacs-RET-action))
 
+;; magit - Git Client
+(use-package magit
+  :ensure t
+  :after (evil-leader)
+  :config
+  (evil-leader/set-key
+    "g" 'magit-status)
+  )
 
 (provide 'init-file)
