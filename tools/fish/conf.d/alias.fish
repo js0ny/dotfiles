@@ -64,7 +64,7 @@ if command -v pacman > /dev/null
     abbr --add pacu "sudo pacman -Syu"
     if command -v paru > /dev/null
         abbr --add pacs "paru -Ss"
-    elif command -v yay > /dev/null
+    else if command -v yay > /dev/null
         abbr --add pacs "yay -Ss"
     else
         abbr --add pacs "pacman -Ss"

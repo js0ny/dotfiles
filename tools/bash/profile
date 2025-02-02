@@ -23,9 +23,6 @@ pathadd() {
     fi
 }
 
-pathadd "$HOME/.local/bin"
-pathadd "$HOME/.local/sbin"
-
 
 # Dynamically Add Path
 minimal_path=(

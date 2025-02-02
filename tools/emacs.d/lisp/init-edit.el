@@ -3,6 +3,9 @@
 ;; Use UTF-8 & LF
 (setq-default buffer-file-coding-system 'utf-8-unix)
 
+;; Auto input pairred brackets
+(electric-pair-mode 1)
+
 ;; Company - Complete Anything
 (use-package company
   :ensure t
@@ -25,12 +28,13 @@
   (marginalia-mode))
 
 
+;; (set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+;; (prefer-coding-system 'utf-8)
+
 ;;; 设置语言环境为 UTF-8
-;(set-language-environment "UTF-8")
 ;
 ;;; 强制使用 UTF-8
-;(prefer-coding-system 'utf-8)
-;(set-default-coding-systems 'utf-8)
 ;(set-terminal-coding-system 'utf-8)
 ;(set-keyboard-coding-system 'utf-8)
 ;
@@ -53,5 +57,12 @@
 ;    (set-buffer-modified-p nil)))
 
 (setq-default buffer-file-coding-system 'utf-8-unix)
+
+;; Avy - act like Vim Easymotion
+(use-package avy
+  :config
+  (evil-define-key '(normal) 'global (kbd "T") 'avy-goto-char)
+  (evil-define-key '(normal) 'global (kbd "s") 'avy-goto-char-2)
+  (evil-define-key '(normal) 'global (kbd "s") 'avy-goto-char-2-above))
 
 (provide 'init-edit)

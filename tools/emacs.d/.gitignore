@@ -4,6 +4,7 @@
 /eshell/
 /server/
 /url/
+transient/
 
 # 临时文件
 tutorial
@@ -22,3 +23,5 @@ custom.el
 .org-id-locations
 bookmarks
 .cache
+eln-cache
+org-persist

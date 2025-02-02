@@ -55,10 +55,22 @@ opt.laststatus = 0
 opt.cmdheight = 0
 
 -- Scroll
-opt.scrolloff = 5      -- Always show 5 lines above/below cursor
+opt.scrolloff = 5 -- Always show 5 lines above/below cursor
 opt.sidescrolloff = 10 -- Always show 10 columns left/right of cursor
 
 -- Conceal: Hide some characters, might be useful for markdown and LaTeX
 opt.conceallevel = 2
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+-- Hide zero-width space
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.conceallevel = 2
+    vim.cmd([[
+      syntax match ZeroWidthSpace /\%u200b/ conceal
+      highlight link ZeroWidthSpace Conceal
+    ]])
+  end,
+})
