@@ -321,6 +321,18 @@ searchAliases.forEach(([alias, name, url]) => {
 
 // #region Site-specific
 
+// This is a global keymap
+mapkey(",s", "[s]hare without parameter", function () {
+  const url = new URL(window.location.href);
+  Clipboard.write(url.origin + url.pathname);
+});
+
+// #region bilibili.com
+mapkey(",n", "[n]ext Video", function () {
+  window.location.href = q("div.next-play").querySelector("a").href
+}, { domain: /bilibili.com/ });
+// #endregion
+
 // #region chatgpt.com
 const chatgptNewChat = function () {
   var btn = q(
@@ -551,6 +563,23 @@ mapkey(",f", "Toggle [f]ollow the author", function () {
 }, { domain: /pixiv.net/ });
 // #endregion
 
+// #region youtube.com
+mapkey(",n", "[n]ext Video", function () {
+  window.location.href = q("ytd-compact-video-renderer").querySelector("a").href
+}, { domain: /youtube.com/ });
+
+mapkey(",v", "Up[v]ote Video", function () {
+  qs("like-button-view-model")[0].querySelector("button").click()
+}, { domain: /youtube.com/ });
+
+mapkey(",V", "Down[v]ote Video", function () {
+  qs("dislike-button-view-model")[0].querySelector("button").click()
+}, { domain: /youtube.com/ });
+// class="ytp-subtitles-button ytp-button"
+mapkey(",c", "toggle [c]aptions", function () {
+  q("button.ytp-subtitles-button").click()
+}, { domain: /youtube.com/ });
+// #endregion
 
 // #endregion
 

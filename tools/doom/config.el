@@ -130,10 +130,10 @@
         :nv "i" #'evil-forward-char))
 
 
-(after! evil-org-agenda
-  (evil-define-key '(normal visual) evil-org-agenda-mode-map
-    "n" #'org-agenda-next-line
-    "e" #'org-agenda-previous-line
-    "i" #'evil-forward-char
-    "gn" #'org-agenda-next-item
-    "ge" #'org-agenda-previous-item))
+(map! :map evil-org-agenda-mode-map
+      :after org-agenda
+      :m "n" #'org-agenda-next-line
+      :m "e" #'org-agenda-previous-line
+      :m "gn" #'org-agenda-next-item
+      :m "i" #'evil-forward-char
+      :m "ge" #'org-agenda-previous-item)
