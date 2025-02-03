@@ -47,6 +47,12 @@ function tv
     touch $argv[1] && nvim $argv[1]
 end
 
+# Create a new file, if the directory does not exist, create it
+# Arg: a file name
+function mt
+    mkdir -p (dirname $argv[1]) && touch $argv[1]
+end
+
 # Use neovide as gVim
 abbr --add gvi "neovide"
 

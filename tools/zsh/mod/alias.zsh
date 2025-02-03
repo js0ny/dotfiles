@@ -53,6 +53,9 @@ tc(){
 tv(){
 	touch $1 && nvim $1
 }
+mt(){
+    mkdir -p $(dirname $1) && touch $1
+}
 
 
 alias update="source $DOTFILES/scripts/update.zsh"

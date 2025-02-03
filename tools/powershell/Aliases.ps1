@@ -23,6 +23,7 @@ function tv { param ( [string] $filename) New-Item $filename && nvim $filename }
 function cdls { param( [string] $dirname) Set-Location $dirname && Get-ChildItem }
 function zls { param( [string] $dirname) z $dirname && Get-ChildItem }
 function zl { param( [string] $dirname) z $dirname && lsd }
+function mt { param( [string] $dirname) New-Item -ItemType File -Name $dirname -Force }
 
 
 ### Dev ###
