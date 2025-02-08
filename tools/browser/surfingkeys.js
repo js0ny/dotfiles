@@ -514,6 +514,19 @@ mapkey(",R", "Toggle [R]easoning with [R]1", function () {
 }, { domain: /perplexity.ai/ });
 // #endregion
 
+// #region sspai.com
+unmap("[[", /sspai.com/);
+unmap("]]", /sspai.com/);
+unmap(",", /sspai.com/);
+mapkey("[[", "Previous Page", function () {
+  q("button.btn-prev").click();
+}, { domain: /sspai.com/ });
+mapkey("]]", "Next Page", function () {
+  q("button.btn-next").click();
+}, { domain: /sspai.com/ });
+
+// #endregion
+
 // #region pixiv.net
 // Use site-specific paging method
 unmap("[[", /pixiv.net/);

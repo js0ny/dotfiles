@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'semi-light)
+(setq doom-font (font-spec :family "Iosevka Nerd Font Propo" :size 14 :weight 'semi-light)
      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -105,36 +105,8 @@
 
 
 (after! wakatime-mode
-  (global-wakatime-mode))
-
-;; For CJK users
-;; Insert zero width space around the emphasis symbols, this might be useful for
-;; languages that does not rely on space
-(after! org
-  (defun my/insert-emphasis-with-zws (char)
-    (interactive "c")
-    (insert ?\u200B char)
-    (save-excursion (insert char ?\u200B)))
-
-  (map! :map org-mode-map
-        "C-c b" (lambda () (interactive) (my/insert-emphasis-with-zws ?*))
-        "C-c i" (lambda () (interactive) (my/insert-emphasis-with-zws ?/))
-        "C-c u" (lambda () (interactive) (my/insert-emphasis-with-zws ?_))))
+  (global-wakatime-mode)
+    (setq wakatime-cli-path "~/.local/bin/wakatime"))
 
 
-(after! org-agenda
-  (map! :map evil-org-agenda-mode-map
-        :nv "n" #'org-agenda-next-line
-        :nv "e" #'org-agenda-previous-line
-        "gn" 'org-agenda-next-item
-        "ge" 'org-agenda-previous-item
-        :nv "i" #'evil-forward-char))
-
-
-(map! :map evil-org-agenda-mode-map
-      :after org-agenda
-      :m "n" #'org-agenda-next-line
-      :m "e" #'org-agenda-previous-line
-      :m "gn" #'org-agenda-next-item
-      :m "i" #'evil-forward-char
-      :m "ge" #'org-agenda-previous-item)
+(load! "org.el")

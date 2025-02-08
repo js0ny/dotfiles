@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: display-math
+# key: dm
+# expand-env: ((yas-indent-line 'fixed))
+# trigger-key: ""
+# --
+$$
+$1
+$$
