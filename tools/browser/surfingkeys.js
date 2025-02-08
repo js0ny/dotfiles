@@ -475,35 +475,42 @@ mapkey(",S", "Open Source in GitHub (New Page)", function () {
  * 5 - 社交
  */
 const perplexityFocusOn = function (n) {
-  qs("span.grow button")[0].click();
+  q("div.rounded-md").querySelectorAll("span")[1].click()
   setTimeout(() => { // Wait for the DOM to update
     qs("div.shadow-subtle div.group\\/item")[n].click();
   }, 100);
 };
 unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
-mapkey(",b", "Add Perplexity Bookmark", function () {
+mapkey(",b", "Add Perplexity [b]ookmark", function () {
   //  button.border:nth-child(2)
-  var btn = q("button.border:nth-child(2)");
-  btn.click();
+  q("div.sticky.left-0").querySelectorAll("button")[2].click()
 }, { domain: /perplexity.ai/ });
-mapkey(",w", "Toggle Writing/Web Search", function () {
+mapkey(",w", "Toggle [w]riting/[w]eb Search", function () {
   perplexityFocusOn(3);
 }, { domain: /perplexity.ai/ });
-mapkey(",s", "Start Generating", function () {
+mapkey(",s", "[s]tart Generating", function () {
   var btns = qs("span.grow button");
   btns[btns.length - 1].click();
 }, { domain: /perplexity.ai/ });
-mapkey(",y", "Yank Last Output", function () {
+mapkey(",y", "[y]ank Last Output", function () {
   var toolbars = qs("div.mt-sm");
   var last = toolbars[toolbars.length - 1];
   var btns = last.querySelectorAll("button");
   btns[4].click();
 }, { domain: /perplexity.ai/ });
-mapkey(",r", "Change model to regenerate last output", function () {
+mapkey(",r", "Change model to [r]egenerate last output", function () {
   var toolbars = qs("div.mt-sm");
   var last = toolbars[toolbars.length - 1];
   var btns = last.querySelectorAll("button");
   btns[1].click();
+}, { domain: /perplexity.ai/ });
+mapkey(",R", "Toggle [R]easoning with [R]1", function () {
+  var btns = qs("span.grow button");
+  btns[0].click();
+  setTimeout(() => { // Wait for the DOM to update
+    qs("div.shadow-subtle div.group\\/item")[2].click();
+    qs("div.group\\/item")[2].click() // Mobile view
+  }, 100);
 }, { domain: /perplexity.ai/ });
 // #endregion
 
