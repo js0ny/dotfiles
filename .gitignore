@@ -36,3 +36,4 @@ gitconfig
 spacemacs/
 
 lazy-lock.json
+tools/doom/custom.el

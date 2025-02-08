@@ -507,6 +507,19 @@ mapkey(",r", "Change model to regenerate last output", function () {
 }, { domain: /perplexity.ai/ });
 // #endregion
 
+// #region sspai.com
+unmap("[[", /sspai.com/);
+unmap("]]", /sspai.com/);
+unmap(",", /sspai.com/);
+mapkey("[[", "Previous Page", function () {
+  q("button.btn-prev").click();
+}, { domain: /sspai.com/ });
+mapkey("]]", "Next Page", function () {
+  q("button.btn-next").click();
+}, { domain: /sspai.com/ });
+
+// #endregion
+
 // #region pixiv.net
 // Use site-specific paging method
 unmap("[[", /pixiv.net/);
