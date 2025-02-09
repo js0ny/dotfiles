@@ -32,6 +32,7 @@ return {
           "toggleterm",
           "qf",
           "floaterm",
+          "orgagenda",
         },
       })
     end,

@@ -51,6 +51,9 @@ noremap gh editor.action.showDefinitionPreviewHover
 noremap gr editor.action.goToReferences
 noremap gpr editor.action.referenceSearch.trigger
 
+
+map % extension.matchitJumpItems
+
 noremap zR editor.foldAll
 
 " keep selection after indent (define in settings.json)
