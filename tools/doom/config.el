@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "Iosevka Nerd Font Propo" :size 14 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -40,10 +40,6 @@
 (setq display-line-numbers-type 'relative)
 
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/OrgFiles/")
-(setq org-roam-directory  "~/OrgFiles/roam/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -78,35 +74,12 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(load! "keymaps.el")
-
-
-
-(after! treemacs
-  (map! :map evil-treemacs-state-map
-        ;; 导航
-        "n"    #'treemacs-next-line
-        "e"    #'treemacs-previous-line
-        "N"    #'treemacs-next-neighbour
-        "E"    #'treemacs-previous-neighbour
-        "H"    #'treemacs-toggle-show-dotfiles
-        "I"    #'treemacs-hide-gitignored-files-mode
-        "i"    #'treemacs-RET-action
-        "a"    #'treemacs-create-file
-        "A"    #'treemacs-create-dir
-        "c"    #'treemacs-copy-file
-        "d"    #'treemacs-delete-file
-        "r"    #'treemacs-rename-file
-        "q"    #'treemacs-quit
-        "y"    #'treemacs-copy-relative-path-at-point
-        "Y"    #'treemacs-copy-absolute-path-at-point
-        "m"    #'treemacs-mark-or-unmark-path-at-point
-        ))
-
-
 (after! wakatime-mode
   (global-wakatime-mode)
-    (setq wakatime-cli-path "~/.local/bin/wakatime"))
+  (setq wakatime-cli-path "~/.local/bin/wakatime"))
 
+(load! "evil.el")
+
+(load! "treemacs.el")
 
 (load! "org.el")
