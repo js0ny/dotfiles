@@ -24,7 +24,7 @@ return {
       require("luasnip").config.setup({ enable_autosnippets = true })
     end,
   },
-  { "williamboman/mason.nvim",             config = true },
+  { "williamboman/mason.nvim", config = true },
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
@@ -38,6 +38,7 @@ return {
 
       mason_lspconfig.setup({
         ensure_installed = servers,
+        automatic_installation = false,
       })
     end,
   },
@@ -48,14 +49,28 @@ return {
     ft = { "just" },
   },
   {
+    "akinsho/org-bullets.nvim",
+    config = function()
+      require("org-bullets").setup()
+    end,
+  },
+  {
     "nvim-orgmode/orgmode",
     event = "VeryLazy",
     ft = { "org" },
     config = function()
       -- Setup orgmode
       require("orgmode").setup({
-        org_agenda_files = "~/orgfiles/**/*",
-        org_default_notes_file = "~/orgfiles/refile.org",
+        org_agenda_files = "~/OrgFiles/tasks/*",
+        org_default_notes_file = "~/OrgFiles/tasks/inbox.org",
+        org_archive_location = "~/OrgFiles/archive/%s_archive::",
+        org_todo_keywords = { "TODO(t)", "NEXT(n)", "WAIT(w)", "|", "DONE(d)", "CANCELLED(c)" },
+        org_hide_leading_stars = true,
+        org_hide_emphasis_markers = true,
+        org_log_into_drawer = "LOGBOOK",
+        org_highlight_latex_and_related = "native",
+        org_startup_indented = true,
+        org_deadline_warning_days = 10,
       })
 
       -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option

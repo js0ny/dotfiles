@@ -31,8 +31,15 @@ return {
 
     local raw_keymaps = require("keymaps").cmp_nvim_keymaps(cmp.mapping)
     local mapped = set_keymaps(raw_keymaps)
+    local kind_icons = require("config.icons").lsp_kind
     -- 配置 nvim-cmp
     cmp.setup({
+      formatting = {
+        format = function(entry, vim_item)
+          vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind] or "", vim_item.kind)
+          return vim_item
+        end,
+      },
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)

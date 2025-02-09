@@ -19,6 +19,13 @@
   ;; Initial Visibility
   (setq org-startup-folded "show2levels")
 
+  ;; Log into drawer
+  (setq org-log-into-drawer "LOGBOOK")
+
+  ;;
+
+  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")
+                            (sequence "[ ](T)" "[-](P)" "[?](Q)" "|" "[X](D)")))
 
   ;; Keymaps
   (map! :map org-mode-map

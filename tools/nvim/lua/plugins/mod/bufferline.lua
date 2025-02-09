@@ -1,9 +1,14 @@
 return {
   "akinsho/bufferline.nvim",
   dependencies = "nvim-tree/nvim-web-devicons", -- 图标支持
+  after = "catppuccin",
   config = function()
     require("bufferline").setup({
       options = {
+        indicator = {
+          icon = "▎", -- this should be omitted if indicator style is not 'icon'
+          style = "icon",
+        },
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local icon = level:match("error") and " " or " "
@@ -19,6 +24,7 @@ return {
         },
         separator_style = "thin",
       },
+      highlights = require("catppuccin.groups.integrations.bufferline").get(),
     })
   end,
 }

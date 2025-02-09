@@ -45,7 +45,10 @@ opt.termguicolors = true
 opt.foldmethod = "expr"
 -- Folding provided by treesitter
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- Disable fold at start
+opt.foldlevelstart = 99
 opt.foldlevel = 99
+opt.foldenable = false
 opt.foldlevelstart = 1
 
 -- Disable status line: Use `lualine` instead
