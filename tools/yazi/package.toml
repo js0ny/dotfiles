@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "dawsers/dual-pane", rev = "c2fed12" }, { use = "Rolv-Apneseth/starship", rev = "d1cd0a3" }, { use = "llanosrocas/yaziline", rev = "864572c" }]
+
+[flavor]
+deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "fd85060" }, { use = "yazi-rs/flavors:catppuccin-latte", rev = "fd85060" }, { use = "dangooddd/kanagawa", rev = "d98f0c3" }]

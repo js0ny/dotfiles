@@ -1,2 +1,6 @@
 [manager]
 show_hidden = true
+linemode = "size_and_mtime"
+
+[preview]
+wrap = "yes"
