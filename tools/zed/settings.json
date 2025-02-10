@@ -27,5 +27,7 @@
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha"
   },
-  "relative_line_numbers": true
+  "relative_line_numbers": true,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "remove_trailing_whitespace_on_save": true
 }

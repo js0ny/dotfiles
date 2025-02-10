@@ -425,6 +425,12 @@ mapkey(",p", "Switch to GitHub Page", function () {
   repo = href.split("/")[4];
   window.location.href = gh.pageLink(owner, repo);
 }, { domain: /github.com/ });
+mapkey(",r", "Copy short [r]efeference owner/repo", function () {
+  const href = window.location.href;
+  owner = href.split("/")[3];
+  repo = href.split("/")[4];
+  Clipboard.write(`${owner}/${repo}`);
+}, { domain: /github.com/ });
 // github.dev
 mapkey(",r", "Switch to GitHub Repo", function () {
   const url = new URL(window.location.href);

@@ -1,0 +1,27 @@
+{
+  "src": {
+    "prefix": "src",
+    "body": ["#+begin_src $1", "$0", "#+end_src"],
+    "description": "Source code block"
+  },
+  "ex": {
+    "prefix": "ex",
+    "body": ["#+begin_example", "$0", "#+end_example"],
+    "description": "Example block"
+  },
+  "begin": {
+    "prefix": "begin",
+    "body": ["#+begin_$1", "$0", "#+end_$1"],
+    "description": "Begin block"
+  },
+  "【【": {
+    "prefix": "[[",
+    "body": ["[[$0]]"],
+    "description": "Chinese link"
+  },
+  "elisp": {
+    "prefix": "elisp",
+    "body": ["#+begin_src emacs-lisp :tangle yes", "$0", "#+end_src"],
+    "description": "Emacs Lisp code block"
+  }
+}

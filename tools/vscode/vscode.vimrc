@@ -37,7 +37,7 @@ noremap J E
 " Y to yank to end of line
 noremap Y y$
 
-nnoremap <esc> :nohlsearch<CR>
+nnoremap <esc> removeSecondaryCursors
 
 
 " lsp
@@ -52,11 +52,12 @@ noremap gr editor.action.goToReferences
 noremap gpr editor.action.referenceSearch.trigger
 
 
-map % extension.matchitJumpItems
+" Requires matchit by redguardtoo
+" nnoremap % extension.matchitJumpItems
 
 noremap zR editor.foldAll
 
-" keep selection after indent (define in settings.json)
+" keep selection after indent
 vnoremap < editor.action.outdentLines
 vnoremap > editor.action.indentLines
 
@@ -65,3 +66,11 @@ vnoremap > editor.action.indentLines
 " Comment if you don't use cjk or the plugin
 nmap w cjkWordHandler.cursorWordEndRight
 nmap b cjkWordHandler.cursorWordStartLeft
+
+noremap <C-w>n <C-w>j
+noremap <C-w>e <C-w>k
+noremap <C-w>i <C-w>l
+noremap <C-w>x workbench.action.toggleEditorGroupLayout
+" Use C-w C-w as original C-w
+noremap <C-w><C-w> workbench.action.closeActiveEditor
+noremap <C-w><A-n> workbench.action.togglePanel
