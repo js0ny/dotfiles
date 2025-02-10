@@ -93,6 +93,6 @@
 
 (load! "org.el")
 
-(!after evil-matchit
+(after! evil-matchit
         (global-evil-matchit-mode 1)
         )
