@@ -33,7 +33,9 @@
         "C-c i" (lambda () (interactive) (my/insert-emphasis-with-zws ?/))
         "C-c u" (lambda () (interactive) (my/insert-emphasis-with-zws ?_))
         :nvom "N" 'org-next-visible-heading
-        :nvom "E" 'org-previous-visible-heading)
+        :nvom "E" 'org-previous-visible-heading
+        :nvom "M-n" 'org-metadown
+        :nvom "M-e" 'org-metaup)
 
   (setq org-capture-templates
         '(("t" "Task" entry (file+headline "~/OrgFiles/tasks/inbox.org" "Tasks")

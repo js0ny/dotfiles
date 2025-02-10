@@ -16,3 +16,8 @@
  :nvom "C-w e" 'evil-window-up
  :nvom "C-w i" 'evil-window-right
  )
+
+;; Swap ; and :
+(map! :leader
+      ";" #'execute-extended-command
+      ":" #'pp-eval-expression)
