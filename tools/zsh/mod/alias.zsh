@@ -25,14 +25,16 @@ alias python=python3 # Set the default Python version to Python 3
 alias py=python
 alias ipy=ipython
 
-alias reload="source $ZDOTDIR/.zshrc"
+alias g=lazygit
 
 
 # lsd - modern ls
 if command -v lsd > /dev/null; then
-    alias ls='lsd -A'
+    alias ls='lsd'
     alias l='lsd -lah'
     alias ll='lsd -l'
+    alias la='lsd -A'
+    alias l.='lsd -d .*'
     alias tree='lsd --tree -A'
 else
     alias l='ls -lah'
@@ -56,6 +58,9 @@ tv(){
 mt(){
     mkdir -p $(dirname $1) && touch $1
 }
+mtv(){
+    mkdir -p $(dirname $1) && touch $1 && nvim $1
+}
 
 
 alias update="source $DOTFILES/scripts/update.zsh"
@@ -65,20 +70,31 @@ if command -v pacman > /dev/null; then
     alias paci="sudo pacman -S"
     alias pacr="sudo pacman -R"
     alias pacu="sudo pacman -Syu"
+    alias pacl="pacman -Q"
+    if command -v paru > /dev/null; then
+        alias pacs="paru -Ss"
+    elif command -v yay > /dev/null; then
+        alias pacs="yay -Ss"
+    else
+        alias pacs="pacman -Ss"
+    fi
 fi
 
 if command -v apt > /dev/null; then
     alias apt="sudo apt"
     alias apti="sudo apt install"
-    alias aptu="sudo apt update && sudo apt upgrade"
     alias aptr="sudo apt remove"
+    alias aptu="sudo apt update && sudo apt upgrade"
+    alias apts="apt search"
+    alias aptl="apt list --installed"
 fi
 
 if command -v brew > /dev/null; then
     alias brewi="brew install"
-    alias brewu="brew update && brew upgrade"
-    alias brewc="brew cleanup"
     alias brewr="brew uninstall"
+    alias brewu="brew update && brew upgrade"
+    alias brews="brew search"
+    alias brewl="brew list"
 fi
 
 

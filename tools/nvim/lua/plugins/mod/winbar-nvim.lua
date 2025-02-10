@@ -33,6 +33,7 @@ return {
           "qf",
           "floaterm",
           "orgagenda",
+          "grug-far"
         },
       })
     end,

@@ -14,7 +14,7 @@ Remote | Git Branch | Diagnostics | Command | | MID | | Line:Column | Indent | E
 local config = {
   options = {
     disabled_filetypes = {
-      statusline = { "NvimTree", "alpha" },
+      statusline = { "NvimTree", "alpha", "grug-far" },
     },
     -- Disable sections and component separators
     component_separators = { left = "", right = "" },

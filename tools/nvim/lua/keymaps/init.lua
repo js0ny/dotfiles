@@ -20,17 +20,7 @@ utils.set_keymaps(keymaps_modifier)
 
 M.nvim_tree_keymaps = require("keymaps.nvim-tree").plugin
 
---- `map` default for `cmp.mapping`
-function M.cmp_nvim_keymaps(map)
-  return {
-    { keys = "<C-n>", cmd = map.select_next_item(), opts = { desc = "Select next completion item" } },
-    { keys = "<C-p>", cmd = map.select_prev_item(), opts = { desc = "Select previous completion item" } },
-    { keys = "<C-y>", cmd = map.confirm({ select = true }), opts = { desc = "Confirm completion" } },
-    { keys = "<Tab>", cmd = map.confirm({ select = true }), opts = { desc = "Confirm completion" } },
-    { keys = "<C-Space>", cmd = map.complete(), opts = { desc = "Trigger completion" } },
-    { keys = "<C-e>", cmd = map.abort(), opts = { desc = "Abort completion" } },
-  }
-end
+M.cmp_nvim_keymaps = require("keymaps.cmp_map")
 
 -- local function set_markdown_keymaps(bufnr)
 --   local opts = { noremap = true, silent = true, buffer = bufnr }

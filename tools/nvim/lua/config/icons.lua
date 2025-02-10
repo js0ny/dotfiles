@@ -43,6 +43,7 @@ local M = {
     Event = "",
     Operator = "󰆕",
     TypeParameter = "󰅲",
+    Copilot = "",
   },
 }
 

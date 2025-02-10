@@ -22,11 +22,15 @@ alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 abbr --add py python3
 abbr --add ipy ipython
 
+abbr --add g lazygit
+
 # lsd - modern ls
 if command -v lsd > /dev/null
-    alias ls='lsd -A'
+    alias ls='lsd'
     abbr --add l 'lsd -lah'
     abbr --add ll 'lsd -l'
+    abbr --add la 'lsd -A'
+    abbr --add l. 'lsd -d .*'
     abbr --add tree 'ls --tree'
 else
     abbr --add l 'ls -lah'
@@ -53,6 +57,10 @@ function mt
     mkdir -p (dirname $argv[1]) && touch $argv[1]
 end
 
+function mtv
+    mkdir -p (dirname $argv[1]) && touch $argv[1] && nvim $argv[1]
+end
+
 # Use neovide as gVim
 abbr --add gvi "neovide"
 
@@ -61,6 +69,7 @@ if command -v brew > /dev/null
     abbr --add brewu "brew upgrade && brew update"
     abbr --add brewr "brew remove"
     abbr --add brewc "brew cleanup"
+    abbr --add brewl "brew list"
 end
 
 if command -v pacman > /dev/null
@@ -68,6 +77,7 @@ if command -v pacman > /dev/null
     abbr --add paci "sudo pacman -S"
     abbr --add pacr "sudo pacman -R"
     abbr --add pacu "sudo pacman -Syu"
+    abbr --add pacl "pacman -Q"
     if command -v paru > /dev/null
         abbr --add pacs "paru -Ss"
     else if command -v yay > /dev/null
@@ -75,6 +85,15 @@ if command -v pacman > /dev/null
     else
         abbr --add pacs "pacman -Ss"
     end
+end
+
+if command -v apt > /dev/null
+    abbr --add apt "sudo apt"
+    abbr --add apti "sudo apt install"
+    abbr --add aptr "sudo apt remove"
+    abbr --add aptu "sudo apt update && sudo apt upgrade"
+    abbr --add apts "apt search"
+    abbr --add aptl "apt list --installed"
 end
 
 if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"

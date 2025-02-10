@@ -34,4 +34,8 @@ common/fzfrc
 gitconfig
 
 
+# Lock files
 lazy-lock.json
+
+# Emacs
+*.elc
