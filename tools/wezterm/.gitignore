@@ -8,5 +8,8 @@
 # ln -sf $DOTFILES/tools/wezterm $XDG_CONFIG_HOME/wezterm
 # New-Item -ItemType SymbolicLink -Target $DOTFILES\tools\wezterm -Path $Env:XDG_CONFIG_HOME\wezterm
 
+# In windows, many cache & logs are stored in %APPDATA%\wezterm
+
 *.json
 check_update
+plugins

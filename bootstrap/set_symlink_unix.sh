@@ -36,39 +36,50 @@ linkDots=(
     ["$DOTFILES/common/tmux.conf"]="$XDG_CONFIG_HOME/tmux/tmux.conf"
     ["$DOTFILES/common/vimrc"]="$XDG_CONFIG_HOME/vim/vimrc"
     ["$DOTFILES/common/zellij.config.kdl"]="$HOME/.config/zellij/config.kdl"
-    ["$DOTFILES/tools/emacs.d"]="$HOME/.emacs.d"
+    # ["$DOTFILES/tools/emacs.d"]="$HOME/.emacs.d"
+    ["$DOTFILES/tools/doom"]="$HOME/.config/doom"
     ["$DOTFILES/tools/fish"]="$HOME/.config/fish"
     ["$DOTFILES/tools/ipython"]="$XDG_CONFIG_HOME/ipython"
     ["$DOTFILES/tools/nvim"]="$XDG_CONFIG_HOME/nvim"
-    ["$DOTFILES/tools/wezterm"]="$HOME/.config/wezterm"
     ["$DOTFILES/tools/yazi"]="$HOME/.config/yazi"
-    ["$DOTFILES/tools/zed"]="$HOME/.config/zed"
     ["$DOTFILES/tools/zsh/common.zshrc"]="$ZDOTDIR/.zshrc"
-    ["$DOTFILES/tools/zsh/.zshenv"]="$ZDOTDIR/.zshenv"
+    ["$DOTFILES/tools/zsh/zshenv"]="$ZDOTDIR/.zshenv"
+    ["$DOTFILES/platforms/mac/pwshProfile.ps1"]="$HOME/.config/powershell/Microsoft.PowerShell_profile.ps1"
 )
 
 if [ $(uname) = "Darwin" ]; then
+    echo "[INFO] Running on macOS"
     linkDots+=(
         ["$DOTFILES/platforms/mac/karabiner"]="$HOME/.config/karabiner"
         ["$DOTFILES/platforms/mac/skhdrc"]="$XDG_CONFIG_HOME/skhd/skhdrc"
         ["$DOTFILES/platforms/mac/sketchybarrc"]="$XDG_CONFIG_HOME/sketchybar/sketchybarrc"
         ["$DOTFILES/platforms/mac/yabairc"]="$XDG_CONFIG_HOME/yabai/yabairc"
+        ["$DOTFILES/tools/wezterm"]="$HOME/.config/wezterm"
+        ["$DOTFILES/tools/zed"]="$HOME/.config/zed"
+        ["$DOTFILES/tools/sioyek"]="$HOME/.config/sioyek"
     )
 else
+    echo "[INFO] Running on Linux"
     linkDots+=(
             ["$DOTFILES/common/inputrc"]="$HOME/.inputrc"
         )
-    if [ -n "$WSL_DISTRO_NAME" ]; then
+    if [ "$(uname -r)" = *Microsoft* ]; then
+        echo "[INFO] Running on WSL1"
+	    : # NOP
     else
+        echo "[INFO] Running on Native Linux"
         linkDots+=(
             ["$DOTFILES/platforms/linux/awesome"]="$HOME/.config/awesome"
             ["$DOTFILES/platforms/linux/hypr"]="$HOME/.config/hypr"
             ["$DOTFILES/platforms/linux/waybar"]="$HOME/.config/waybar"
             ["$DOTFILES/platforms/linux/wlogout"]="$HOME/.config/wlogout"
             ["$DOTFILES/platforms/linux/mako-config"]="$HOME/.config/mako/config"
+            ["$DOTFILES/tools/wezterm"]="$HOME/.config/wezterm"
+            ["$DOTFILES/tools/zed"]="$HOME/.config/zed"
+            ["$DOTFILES/tools/sioyek"]="$HOME/.config/sioyek"
         )
         for kde in "$DOTFILES/platforms/linux/kde/"*; do
-            linkDots=["$kde"]="$HOME/.config/kde/$(basename $kde)"
+            linkDots+=["$kde"]="$HOME/.config/kde/$(basename $kde)"
             # echo "Linking $kde to $HOME/.config/kde/$(basename $kde)"
         done
         echo "[INFO] Setting up system environment variables"
@@ -79,14 +90,15 @@ fi
 
 echo "[INFO] Setting up symbolic links"
 for src in "${!linkDots[@]}"; do
+    echo "Linking $src to ${linkDots[$src]}"
     dest="${linkDots[$src]}"
     if [ -d "$src" ]; then
-        mv $dest $dest.bak
+        test -d $dest && mv $dest $dest.bak
         mkdir -p $dest
         ln -sf $src $dest
     elif [ -f "$src" ]; then
         dest_parent=$(dirname $dest)
-        mkdir -p $dest_parent
+        test -d $dest_parent || mkdir -p $dest_parent
         ln -sf $src $dest
     else
         echo "[ERROR] $src does not exist"
@@ -94,12 +106,36 @@ for src in "${!linkDots[@]}"; do
 done
 
 echo "[INFO] Installing zsh plugins"
-git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $ZDOTDIR/plugins/zsh-autosuggestions
-git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting
-git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git $ZDOTDIR/plugins/zsh-history-substring-search
+test -d $ZDOTDIR/plugins/zsh-autosuggestions || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $ZDOTDIR/plugins/zsh-autosuggestions
+test -d $ZDOTDIR/plugins/zsh-syntax-highlighting || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting
+test -d $ZDOTDIR/plugins/zsh-history-substring-search || git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git $ZDOTDIR/plugins/zsh-history-substring-search
+test -d $ZDOTDIR/plugins/zsh-completions || git clone --depth 1 https://github.com/zsh-users/zsh-completions.git $ZDOTDIR/plugins/zsh-completions
+
+echo "[INFO] Setting up some local directories"
+test -d $XDG_CACHE_HOME || mkdir -p $XDG_CACHE_HOME
+test -d $XDG_DATA_HOME || mkdir -p $XDG_DATA_HOME
+test -d $XDG_STATE_HOME || mkdir -p $XDG_STATE_HOME
+test -d ~/.local/state/zsh || mkdir -p ~/.local/state/zsh
+
+
 
 echo "[INFO] Copying example files"
+test -d $XDG_CONFIG_HOME/git || mkdir -p $XDG_CONFIG_HOME/git
 cp $DOTFILES/common/gitconfig.example $XDG_CONFIG_HOME/git/config
+echo "[INFO] Don't forget to update your gitconfig!"
+
+echo "[INFO] Installing DOOM Emacs"
+echo "[ACTION] Request Human Takeover"
+test -d ~/.config/emacs && mv ~/.config/emacs ~/.config/emacs.bak
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+~/.config/emacs/bin/doom sync
+
+echo "[INFO] Installing Emacs-Rime"
+git clnh https://github.com/js0ny/Rime.git ~/.config/emacs/.local/cache/rime
+
+
+echo "[INFO] Done!"
 
 export ZDOTDIR
 export DOTFILES

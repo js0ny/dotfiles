@@ -23,10 +23,12 @@ return function(config)
   }
   -- Cursor
   config.animation_fps = 120
-  config.cursor_blink_ease_in = "EaseOut"
-  config.cursor_blink_ease_out = "EaseOut"
-  config.default_cursor_style = "BlinkingBlock"
-  config.cursor_blink_rate = 650
+  if not os_type.is_win then -- This is sooooooo slow on Windows
+    config.cursor_blink_ease_in = "EaseOut"
+    config.cursor_blink_ease_out = "EaseOut"
+    config.default_cursor_style = "BlinkingBlock"
+    config.cursor_blink_rate = 650
+  end
   -- Visual Bell
   config.visual_bell = {
     fade_in_function = "EaseIn",

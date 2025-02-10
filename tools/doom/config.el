@@ -21,8 +21,24 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Iosevka Nerd Font Propo" :size 14 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
+;; https://emacs-china.org/t/doom-emacs/23513/13
+(setq doom-font (font-spec :family "Iosevka Nerd Font Propo" :size 14)
+      doom-serif-font doom-font
+      doom-symbol-font (font-spec :family "LXGW WenKai Mono")
+      doom-variable-pitch-font (font-spec :family "LXGW WenKai Mono" :weight 'extra-bold))
+
+;; 如果不把这玩意设置为 nil, 会默认去用 fontset-default 来展示, 配置无效
+(setq use-default-font-for-symbols nil)
+
+;; Doom 的字体加载顺序问题, 如果不设定这个 hook, 配置会被覆盖失效
+(add-hook! 'after-setting-font-hook
+  (set-fontset-font t 'latin (font-spec :family "Iosevka Nerd Font Propo"))
+  (set-fontset-font t 'symbol (font-spec :family "Symbola"))
+  (set-fontset-font t 'mathematical (font-spec :family "Symbola"))
+  (set-fontset-font t 'emoji (font-spec :family "Symbola")))
+
+;; (dolist (charset '(kana han cjk-misc bopomofo))
+;;   (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono" :size 16)))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -94,5 +110,12 @@
 (load! "org.el")
 
 (after! evil-matchit
-        (global-evil-matchit-mode 1)
-        )
+  (global-evil-matchit-mode 1)
+  )
+
+
+(use-package! rime
+  :config
+  (setq default-input-method "rime")
+  (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
+  )

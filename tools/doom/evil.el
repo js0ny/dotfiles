@@ -12,4 +12,7 @@
  :nv "I" 'evil-next-buffer
  :nvom "N" '(lambda () (interactive) (evil-next-line 5))       ; 5n
  :nvom "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
+ :nvom "C-w n" 'evil-window-down
+ :nvom "C-w e" 'evil-window-up
+ :nvom "C-w i" 'evil-window-right
  )
