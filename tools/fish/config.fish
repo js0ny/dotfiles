@@ -11,25 +11,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting
-    switch (uname)
-    case "Darwin"
-        # macOS Specific
-        abbr --add clip pbcopy
-        abbr --add paste pbpaste
-        # Use GNU Coreutils
-        alias cp=gcp
-        alias ln=gln
-        alias mkdir=gmkdir
-        alias mv=gmv
-        alias rm=grm
-        alias rmdir=grmdir
-        alias touch=gtouch
-
-    case "Linux"
-        # Linux Specific
-    case '*'
-        # Default / Fallback case
-    end
 end
 
 # bun
