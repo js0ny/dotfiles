@@ -1,0 +1,30 @@
+# If no admin rights, just
+# ln -sf $DOTFILES/tools/bash/bashrc ~/.bashrc
+
+export DOTFILES=$HOME/.dotfiles
+
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    alias clip="wl-copy"
+    alias paste="wl-paste"
+elif [ -n "$DISPLAY" ]; then
+    alias clip="xclip"
+elif [ -n "$WSL_DISTRO_NAME" ]; then
+    alias clip="clip.exe"
+    alias paste="pwsh.exe -NoProfile -Command 'Get-Clipboard'"
+fi
+
+
+
+source $DOTFILES/tools/bash/bash_aliases  # For compatibility
+
+export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
+
+if command -v fzf > /dev/null; then
+    eval "$(fzf --bash)"
+fi
+
+if command -v starship > /dev/null; then
+    eval "$(starship init bash)"
+fi
+#
+    # bind 'set show-mode-in-prompt off'

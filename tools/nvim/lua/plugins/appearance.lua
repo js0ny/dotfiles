@@ -13,6 +13,9 @@ return {
         styles = {
           -- keywords = { "underline" },
         },
+        integrations = {
+          "lualine",
+        },
       })
     end,
   },

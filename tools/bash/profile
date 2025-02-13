@@ -1,3 +1,10 @@
+# Put this file in $XDG_CONFIG_HOME/bash/profile
+# This file is sourced by /etc/profile.d/xdg-compat.sh
+# and will source user's XDG-compliant Bash Run Commands
+
+# If no admin rights, just
+# ln -sf $DOTFILES/tools/bash/profile ~/.bash_profile
+
 # Before antidots
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bash_profile" ]; then
     . "$HOME/.bash_profile"
@@ -49,7 +56,7 @@ fi
 # macOS Specific
 # This syntax is POSIX standard, for portability
 if [ "$(uname)" = "Darwin" ]; then
-
+    :   # Do nothing
 fi
 
 # Linux Specific
@@ -125,13 +132,11 @@ fi
 # Ruby Gem
 # Ruby Gem
 if command -v gem > /dev/null; then
-    setopt nullglob
     for dir in "$HOME/.local/share/gem/ruby/"*/bin; do
         if [ -d "$dir" ]; then
             export PATH="$dir:$PATH"
         fi
     done
-    unsetopt nullglob
 fi
 # Spacemacs
 if command -v emacs > /dev/null; then
