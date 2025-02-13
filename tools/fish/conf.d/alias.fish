@@ -7,6 +7,27 @@
 # Linking: Link the whole directory for submodules
 # ln -sf $DOTFILES/tools/fish ~/.config/fish
 
+
+switch (uname)
+case "Darwin"
+    # macOS Specific
+    abbr --add clip pbcopy
+    abbr --add paste pbpaste
+    # Use GNU Coreutils
+    alias cp=gcp
+    alias ln=gln
+    alias mkdir=gmkdir
+    alias mv=gmv
+    alias rm=grm
+    alias rmdir=grmdir
+    alias touch=gtouch
+    abbr --add reboot "sudo reboot"
+case "Linux"
+    # Linux Specific
+case '*'
+    # Default / Fallback case
+end
+
 # Powershell equivalent
 abbr --add ni touch
 abbr --add cls clear

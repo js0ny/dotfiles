@@ -1,10 +1,3 @@
-#! /usr/bin/env bash
-# $DOTFILES/bootstrap/set_symlink_unix.sh
-# Date: 2025-01-28
-# Author: js0ny
-# Set symbolic links for Unix-like systems
-# IMPORTANT: The default `bash` in macOS is outdated, run with zsh or install the latest `bash` via Homebrew
-
 set -e # Exit immediately if a command exits with a non-zero status
 
 DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
@@ -12,12 +5,20 @@ ZDOTDIR="${ZDOTDIR:-$HOME/.config/zsh}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 NPM_CONFIG_USERCONFIG="${NPM_CONFIG_USERCONFIG:-$XDG_CONFIG_HOME/npm/npmrc}"
 
-mkdir -p $ZDOTDIR/plugins
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
-echo "[INFO] Setting up system-wide zsh configuration"
-echo "[ACTION] Elevation required!"
-test -f "/etc/zsh/zshenv" && sudo cp "$DOTFILES/tools/zsh/zshenv" "/etc/zsh/zshenv"
-test -f "/etc/zshenv" && sudo cp "$DOTFILES/tools/zsh/zshenv" "/etc/zshenv"
+echo "[INFO] Setting up some local directories"
+test -d $XDG_CACHE_HOME || mkdir -p $XDG_CACHE_HOME
+test -d $XDG_DATA_HOME || mkdir -p $XDG_DATA_HOME
+test -d $XDG_STATE_HOME || mkdir -p $XDG_STATE_HOME
+test -d ~/.local/state/zsh || mkdir -p ~/.local/state/zsh
+
+# echo "[INFO] Setting up system-wide zsh configuration"
+# echo "[ACTION] Elevation required!"
+# test -f "/etc/zsh/zshenv" && sudo cp "$DOTFILES/tools/zsh/zshenv" "/etc/zsh/zshenv"
+# test -f "/etc/zshenv" && sudo cp "$DOTFILES/tools/zsh/zshenv" "/etc/zshenv"
 
 declare -A linkDots
 
@@ -88,55 +89,14 @@ else
     fi
 fi
 
-echo "[INFO] Setting up symbolic links"
-for src in "${!linkDots[@]}"; do
-    echo "Linking $src to ${linkDots[$src]}"
-    dest="${linkDots[$src]}"
-    if [ -d "$src" ]; then
-        test -d $dest && mv $dest $dest.bak
-        mkdir -p $dest
-        ln -sf $src $dest
-    elif [ -f "$src" ]; then
-        dest_parent=$(dirname $dest)
-        test -d $dest_parent || mkdir -p $dest_parent
-        ln -sf $src $dest
-    else
-        echo "[ERROR] $src does not exist"
-    fi
-done
-
-echo "[INFO] Installing zsh plugins"
-test -d $ZDOTDIR/plugins/zsh-autosuggestions || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $ZDOTDIR/plugins/zsh-autosuggestions
-test -d $ZDOTDIR/plugins/zsh-syntax-highlighting || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $ZDOTDIR/plugins/zsh-syntax-highlighting
-test -d $ZDOTDIR/plugins/zsh-history-substring-search || git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git $ZDOTDIR/plugins/zsh-history-substring-search
-test -d $ZDOTDIR/plugins/zsh-completions || git clone --depth 1 https://github.com/zsh-users/zsh-completions.git $ZDOTDIR/plugins/zsh-completions
-
-echo "[INFO] Setting up some local directories"
-test -d $XDG_CACHE_HOME || mkdir -p $XDG_CACHE_HOME
-test -d $XDG_DATA_HOME || mkdir -p $XDG_DATA_HOME
-test -d $XDG_STATE_HOME || mkdir -p $XDG_STATE_HOME
-test -d ~/.local/state/zsh || mkdir -p ~/.local/state/zsh
-
 
 
 echo "[INFO] Copying example files"
 test -d $XDG_CONFIG_HOME/git || mkdir -p $XDG_CONFIG_HOME/git
+test -f $XDG_CONFIG_HOME/git/config && mv $XDG_CONFIG_HOME/git/config $XDG_CONFIG_HOME/git/config.bak
 cp $DOTFILES/common/gitconfig.example $XDG_CONFIG_HOME/git/config
 echo "[INFO] Don't forget to update your gitconfig!"
 
-echo "[INFO] Installing DOOM Emacs"
-echo "[ACTION] Request Human Takeover"
-test -d ~/.config/emacs && mv ~/.config/emacs ~/.config/emacs.bak
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
-~/.config/emacs/bin/doom sync
-
-echo "[INFO] Installing Emacs-Rime"
-git clnh https://github.com/js0ny/Rime.git ~/.config/emacs/.local/cache/rime
-
-
-echo "[INFO] Done!"
-
-export ZDOTDIR
-export DOTFILES
-export NPM_CONFIG_USERCONFIG
+test -f ~/.wakatime.cfg && mv ~/.wakatime.cfg ~/.wakatime.cfg.bak
+cp $DOTFILES/common/wakatime.example.cfg ~/.wakatime.cfg
+echo "[INFO] Don't forget to update your wakatime config!"
