@@ -1,4 +1,4 @@
-local mode_arrow = { "n", "v", "s", "x" }
+local mode_arrow = { "n", "v", "s", "x", "o" }
 
 local keymaps_basic = { -- Modification of Original Keymap - Colemak
   -- https://github.com/LazyVim/LazyVim/blob/d1529f650fdd89cb620258bdeca5ed7b558420c7/lua/lazyvim/config/keymaps.lua#L8
@@ -56,17 +56,16 @@ local keymaps_basic = { -- Modification of Original Keymap - Colemak
   { mode = mode_arrow, keys = "i", cmd = "l", opts = { desc = "Right", silent = true } },
   { keys = "H", cmd = ":bprevious<CR>", opts = { desc = "Previous Buffer" } },
   { keys = "I", cmd = ":bnext<CR>", opts = { desc = "Next Buffer" } },
-  { keys = "N", cmd = "5j", opts = { desc = "Up 5 Lines" } },
-  { keys = "E", cmd = "5e", opts = { desc = "Down 5 Lines" } },
+  { mode = mode_arrow, keys = "N", cmd = "5j", opts = { desc = "Up 5 Lines" } },
+  { mode = mode_arrow, keys = "E", cmd = "5e", opts = { desc = "Down 5 Lines" } },
   { keys = "Y", cmd = "y$", opts = { desc = "Yank to End of Line" } },
   { keys = "E", cmd = "5k" },
-  -- Text object implementation
   { mode = { "n", "o", "x" }, keys = "l", cmd = "i", opts = { desc = "Insert" } },
   { keys = "L", cmd = "I", opts = { desc = "Insert at Start of Line" } },
-  { keys = "k", cmd = "n", opts = { desc = "Next Search" } },
-  { keys = "K", cmd = "N", opts = { desc = "Previous Search" } },
-  { keys = "j", cmd = "e", opts = { desc = "jump to end of word" } },
-  { keys = "J", cmd = "E", opts = { desc = "jump to end of WORD" } },
+  { mode = mode_arrow, keys = "k", cmd = "n", opts = { desc = "Next Search" } },
+  { mode = mode_arrow, keys = "K", cmd = "N", opts = { desc = "Previous Search" } },
+  { mode = mode_arrow, keys = "j", cmd = "e", opts = { desc = "jump to end of word" } },
+  { mode = mode_arrow, keys = "J", cmd = "E", opts = { desc = "jump to end of WORD" } },
   -- https://github.com/LazyVim/LazyVim/blob/d1529f650fdd89cb620258bdeca5ed7b558420c7/lua/lazyvim/config/keymaps.lua#L60
   { keys = "<Esc>", cmd = "<Cmd>nohlsearch<Bar>diffupdate<CR>", opts = { desc = "Clear Search Highlight" } },
 }

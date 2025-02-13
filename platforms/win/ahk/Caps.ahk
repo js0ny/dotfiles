@@ -108,7 +108,8 @@ global g_ControlRepeatDetected := false
 ~*^F9::
 ~*^F10::
 ~*^F11::
-~*^F12:: {
+~*^F12::
+{
     global g_AbortSendEsc
     g_AbortSendEsc := true
 }

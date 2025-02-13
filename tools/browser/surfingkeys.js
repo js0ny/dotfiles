@@ -189,7 +189,7 @@ const mapLists = {
   e: "k",
   i: "l",
   // l <-> i
-  l: "i",
+  l: "gi", // Focus on first input box by default
   L: "I",
   // k <-> n
   k: "n",
@@ -209,7 +209,7 @@ const mapLists = {
   // gh/gi -> Prev/Next History
   gh: "S",
   gi: "D",
-  gl: "gi", // Focus on first input box
+  gl: "i", // Use `gl` to search and focus on input box
   // t -> Open Link in New Tab
   t: "gf",
   // 缩放
@@ -322,7 +322,7 @@ searchAliases.forEach(([alias, name, url]) => {
 // #region Site-specific
 
 // This is a global keymap
-mapkey(",s", "[s]hare without parameter", function () {
+mapkey("yY", "yank link without parameter", function () {
   const url = new URL(window.location.href);
   Clipboard.write(url.origin + url.pathname);
 });
@@ -359,11 +359,11 @@ mapkey(",e", "Edit last input", function () {
   var btn = qs("div.ds-icon-button");
   btn[btn.length - 5].click();
 }, { domain: /chat.deepseek.com/ });
-mapkey(",y", "Yank last oupput", function () {
+mapkey(",y", "[y]ank last oupput", function () {
   var btn = qs("div.ds-icon-button");
   btn[btn.length - 4].click();
 }, { domain: /chat.deepseek.com/ });
-mapkey(",r", "Regenerate last output", function () {
+mapkey(",r", "[r]egenerate last output", function () {
   var btn = qs("div.ds-icon-button");
   btn[btn.length - 3].click();
 }, { domain: /chat.deepseek.com/ });
@@ -425,7 +425,8 @@ mapkey(",p", "Switch to GitHub Page", function () {
   repo = href.split("/")[4];
   window.location.href = gh.pageLink(owner, repo);
 }, { domain: /github.com/ });
-mapkey(",r", "Copy short [r]efeference owner/repo", function () {
+/// This might be useful for Vim plugins
+mapkey(",y", "[y]ank short refeference owner/repo", function () {
   const href = window.location.href;
   owner = href.split("/")[3];
   repo = href.split("/")[4];
@@ -475,10 +476,7 @@ mapkey(",S", "Open Source in GitHub (New Page)", function () {
 /**
  * 0 - 网络
  * 1 - 学术
- * 2 - 数学
- * 3 - 写作
- * 4 - 视频
- * 5 - 社交
+ * 2 - 社交
  */
 const perplexityFocusOn = function (n) {
   q("div.rounded-md").querySelectorAll("span")[1].click()
@@ -492,7 +490,7 @@ mapkey(",b", "Add Perplexity [b]ookmark", function () {
   q("div.sticky.left-0").querySelectorAll("button")[2].click()
 }, { domain: /perplexity.ai/ });
 mapkey(",w", "Toggle [w]riting/[w]eb Search", function () {
-  perplexityFocusOn(3);
+  perplexityFocusOn(0);
 }, { domain: /perplexity.ai/ });
 mapkey(",s", "[s]tart Generating", function () {
   var btns = qs("span.grow button");
@@ -502,7 +500,7 @@ mapkey(",y", "[y]ank Last Output", function () {
   var toolbars = qs("div.mt-sm");
   var last = toolbars[toolbars.length - 1];
   var btns = last.querySelectorAll("button");
-  btns[4].click();
+  btns[5].click();
 }, { domain: /perplexity.ai/ });
 mapkey(",r", "Change model to [r]egenerate last output", function () {
   var toolbars = qs("div.mt-sm");

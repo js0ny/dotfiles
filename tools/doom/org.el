@@ -24,7 +24,7 @@
 
   ;;
 
-  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")
+  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d@/!)" "CANCELLED(c@)")
                             (sequence "[ ](T)" "[-](P)" "[?](Q)" "|" "[X](D)")))
 
   ;; Keymaps
@@ -40,7 +40,9 @@
   (setq org-capture-templates
         '(("t" "Task" entry (file+headline "~/OrgFiles/tasks/inbox.org" "Tasks")
            "* TODO %?\n  %U\n  %a\n  %i"
-           :empty-lines 1)))
+           :empty-lines 1)
+          ("n" "Note" entry (file+headline "~/OrgFiles/tasks/inbox.org" "Notes"))
+          ))
 
   )
 
@@ -64,3 +66,12 @@
       :m "N" #'org-agenda-priority-up
       :m "E" #'org-agenda-priority-down
       :m "i" #'evil-forward-char)
+
+
+
+;; (use-package! org-download
+;;   :after org
+;;   :custom
+;;   (setq org-download-screenshot-method
+;;         "pwsh.exe -File 'D:\\script.ps1'")
+;;   )

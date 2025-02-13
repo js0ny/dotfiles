@@ -20,4 +20,5 @@
 ;; Swap ; and :
 (map! :leader
       ";" #'execute-extended-command
-      ":" #'pp-eval-expression)
+      ":" #'pp-eval-expression
+      "f h" #'consult-recent-file)
