@@ -49,3 +49,22 @@ $Colors = @{
 
 # Set the colours
 Set-PSReadLineOption -Colors $Colors
+
+# Smarter cd
+# Init zoxide apter starship to avoid conflicts
+# https://github.com/ajeetdsouza/zoxide/issues/723
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    Invoke-Expression (& { (zoxide init powershell | Out-String) })
+    ${function:...} = { z -Path (Join-Path -Path .. -ChildPath ..) }
+    ${function:....} = { z -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) }
+    ${function:.....} = { z -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) -ChildPath ..) }
+    ${function:......} = { z -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) -ChildPath ..) -ChildPath ..) }
+    ${function:z-} = { z - }
+}
+else {
+    ${function:...} = { Set-Location -Path (Join-Path -Path .. -ChildPath ..) }
+    ${function:....} = { Set-Location -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) }
+    ${function:.....} = { Set-Location -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) -ChildPath ..) }
+    ${function:......} = { Set-Location -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path (Join-Path -Path .. -ChildPath ..) -ChildPath ..) -ChildPath ..) -ChildPath ..) }
+    ${function:z-} = { Set-Location - }
+}
