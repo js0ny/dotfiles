@@ -1,13 +1,13 @@
 {
     "vspacecode.bindings": [
-        {
+        { // SPC
             "key": " ",
             "name": "Find Files",
             "icon": "search",
             "type": "command",
             "command": "workbench.action.quickOpen"
         },
-        {
+        { // TAB
             "key": "\t",
             "name": "Last buffer",
             "icon": "go-to-file",
@@ -17,21 +17,21 @@
                 "list.select"
             ]
         },
-        {
+        { // !
             "key": "!",
             "name": "Show terminal",
             "icon": "terminal",
             "type": "command",
             "command": "workbench.action.terminal.focus"
         },
-        {
+        { // "
             "key": "\"",
             "name": "Open new external terminal",
             "icon": "chevron-right",
             "type": "command",
             "command": "workbench.action.terminal.openNativeConsole"
         },
-        {
+        { // $
             "key": "$",
             "name": "Run Recent Command in Terminal",
             "icon": "terminal",
@@ -284,11 +284,25 @@
             "type": "bindings",
             "bindings": [
                 {
+                    "key": "D",
+                    "name": "Close window",
+                    "icon": "close",
+                    "type": "command",
+                    "command": "workbench.action.closeOtherEditors"
+                },
+                {
                     "key": "0",
                     "name": "Last buffer in window",
                     "icon": "arrow-both",
                     "type": "command",
                     "command": "workbench.action.lastEditorInGroup"
+                },
+                {
+                    "key": "f",
+                    "name": "Built-in Find in buffer",
+                    "icon": "search",
+                    "type": "command",
+                    "command": "actions.find"
                 },
                 {
                     "key": "1",
@@ -909,6 +923,13 @@
                     ]
                 },
                 {
+                    "key": "E",
+                    "name": "Focus on error",
+                    "icon": "error",
+                    "type": "command",
+                    "command": "workbench.actions.view.problems"
+                },
+                {
                     "key": "e",
                     "name": "Show error",
                     "icon": "error",
@@ -1080,7 +1101,7 @@
                     "name": "Open extension view",
                     "icon": "extensions",
                     "type": "command",
-                    "command": "workbench.files.action.showActiveFileInExplorer"
+                    "command": "workbench.view.extensions"
                 },
                 {
                     "key": "T",
@@ -1280,7 +1301,7 @@
                     "name": "Blame file",
                     "icon": "file",
                     "type": "command",
-                    "command": "magit.blame-file"
+                    "command": "gitlens.toggleFileBlame"
                 },
                 {
                     "key": "c",
@@ -1393,7 +1414,7 @@
         },
         {
             "key": "a",
-            "name": "+Append/Insert",
+            "name": "+Append/Insert/AI",
             "icon": "add",
             "type": "bindings",
             "bindings": [
@@ -1419,32 +1440,24 @@
                     "command": "insertDateString.insertOwnFormatDateTime"
                 },
                 {
-                    "key": "c",
-                    "name": "+Cursor",
-                    "icon": "cursor",
-                    "type": "transient",
-                    "bindings": [
-                        {
-                            "key": "c",
-                            "name": "Insert cursor below",
-                            "icon": "triangle-down",
-                            "type": "command",
-                            "command": "editor.action.insertCursorBelow"
-                        },
-                        {
-                            "key": "C",
-                            "name": "Insert cursor above",
-                            "icon": "triangle-up",
-                            "type": "command",
-                            "command": "editor.action.insertCursorAbove"
-                        }
-                    ]
-                },
-                {
                     "key": "A",
                     "name": "Insert cursor at end of each line selected",
                     "icon": "triangle-right",
                     "command": "editor.action.insertCursorAtEndOfEachLineSelected"
+                },
+                {
+                    "key": "c",
+                    "name": "Copilot Chat",
+                    "icon": "ai",
+                    "type": "command",
+                    "command": "workbench.panel.chat"
+                },
+                {
+                    "key": "e",
+                    "name": "Copilot Edit",
+                    "icon": "ai",
+                    "type": "command",
+                    "command": "workbench.panel.chatEditing"
                 }
             ]
         },
@@ -2154,10 +2167,10 @@
                 },
                 {
                     "key": "x",
-                    "name": "Close current window",
+                    "name": "Close all windows",
                     "icon": "close-all",
                     "type": "command",
-                    "command": "workbench.action.closeEditorsInGroup"
+                    "command": "workbench.action.closeAllGroups"
                 },
                 {
                     "key": "z",
