@@ -15,8 +15,10 @@ export DOTFILES
 case "$(uname)" in
   Linux)
   :
+  ;;
   Darwin)
   curl https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/bootstrap/macOS/main.zsh -o ~/.local/.tmp/main.zsh
   zsh ~/.local/.tmp/main.zsh
   rm -rf ~/.local/.tmp/main.zsh
+  ;;
 esac

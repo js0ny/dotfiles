@@ -14,7 +14,8 @@ echo "[ACTION] Request Human Takeover"
 xcode-select --install
 
 # Press any key to continue (if Xcode Command Line Tools are installed)
-read -n 1 -s -r -p "Press any key to continue when xcode CLI tools are installed"
+echo "[ACTION] Press any key to continue when xcode CLI tools are installed"
+read -n 1
 
 # System Preferences
 # Installation Sources
@@ -29,7 +30,9 @@ echo "[INFO] Installing Homebrew"
 echo "[ACTION] Request Human Input"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-read -n 1 -s -r -p "Press any key to continue when xcode CLI tools are installed"
+
+echo "[ACTION] Press any key to continue when xcode CLI tools are installed"
+read -n 1 
 
 echo "[INFO] Cloning Dotfiles"
 
@@ -44,6 +47,10 @@ echo "[INFO] Installing Homebrew Packages"
 # Load Brewfile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 brew bundle --file=$DOTFILES/bootstrap/macOS/Brewfile
+
+# Setting up emacs
+ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+
 
 # Setting Default Apps
 
@@ -62,10 +69,12 @@ source $DOTFILES/tools/zsh/zshrc
 
 echo "[INFO] Installing Rime"
 
-git clone --depth 1 https://github.com/js0ny/Rime.git ~/Library/Rime
+git clone --depth 1 https://github.com/js0ny/rime_wanxiang_pro.git ~/Library/Rime
 cd ~/Library/Rime
 
-just set_remote
+just init
+# just install_rime 
+## Rime is installed via Brewfile
 just clone_plum
 
 echo "[INFO] Installing Doom Emacs"
