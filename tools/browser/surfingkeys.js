@@ -3,7 +3,8 @@
 // Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/tools/browser/surfingkeys.js
 // Browse to Extension > Surfingkeys > Allow access to file URLs to enable local file access
 // Windows: file:///C:/Users/username/.dotfiles/tools/browser/surfingkeys.js
-// *nix: file:///home/username/.dotfiles/tools/browser/surfingkeys.js
+// Linux: file:///home/username/.dotfiles/tools/browser/surfingkeys.js
+// macOS: file:///Users/username/.dotfiles/tools/browser/surfingkeys.js
 
 // #region Example
 /** Examples
