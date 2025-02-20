@@ -1,5 +1,6 @@
 local M = {}
-local keymaps_user_command = require("keymaps.user-command")
+-- local keymaps_user_command = require("keymaps.user-command")
+require("keymaps.user-command")
 local utils = require("keymaps.utils")
 
 local keymaps_nvim_tree_general = require("keymaps.nvim-tree").global
