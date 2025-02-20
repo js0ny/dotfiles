@@ -10,8 +10,8 @@ tabline.setup({
     tabs_enabled = true,
     theme_overrides = {
       tab = {
-        inactive = { bg = color.base, fg = color.text },
-        active = { fg = color.lavender, bg = color.surface0 },
+        inactive = { bg = color.crust , fg = color.text },
+        active = { fg = color.lavender, bg = color.base },
         inactive_hover = { fg = color.pink, bg = color.surface0 },
       },
       normal_mode = {

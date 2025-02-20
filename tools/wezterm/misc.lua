@@ -4,4 +4,5 @@ return function(config)
     TERM = "xterm-256color",
     TERM_PROGRAM = "wezterm",
   }
+  config.enable_wayland = false
 end
