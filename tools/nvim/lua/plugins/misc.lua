@@ -9,7 +9,7 @@ return {
     }
   },
   { "CRAG666/code_runner.nvim",            config = true },
-  -- { import = "plugins.mod.obsidian-nvim" },
+  { import = "plugins.mod.obsidian-nvim" },
   { import = "plugins.mod.which-keys-nvim" },
   {
     "zbirenbaum/copilot.lua",

@@ -473,6 +473,16 @@ mapkey(",S", "Open Source in GitHub (New Page)", function () {
 }, { domain: /raw.githubusercontent.com/ });
 // #endregion GitHub
 
+//#region app.microsoft.com
+// https://apps.microsoft.com/detail/9nl6kd1h33v3?hl=en-GB&gl=GB
+// This is useful in `winget` (Windows Package Manager)
+mapkey(",y", "[y]ank app id", function () {
+  const url = new URL(window.location.href);
+  const id = url.pathname.split("/")[2];
+  Clipboard.write(id);
+}, { domain: /apps.microsoft.com/ });
+
+
 // #region perplexity.ai
 /**
  * 0 - 网络
