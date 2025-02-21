@@ -10,6 +10,7 @@
         "a"    #'treemacs-create-file
         "A"    #'treemacs-create-dir
         "c"    #'treemacs-copy-file
+        "x"    #'treemacs-move-file
         "d"    #'treemacs-delete-file
         "r"    #'treemacs-rename-file
         "q"    #'treemacs-quit

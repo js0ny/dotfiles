@@ -21,4 +21,7 @@
 (map! :leader
       ";" #'execute-extended-command
       ":" #'pp-eval-expression
-      "f h" #'consult-recent-file)
+      "f h" #'consult-recent-file
+      "b D" #'kill-some-buffers
+      "f c" #'doom/open-private-config
+      "f C" #'editorconfig-find-current-editorconfig)

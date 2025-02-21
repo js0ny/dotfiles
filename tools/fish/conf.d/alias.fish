@@ -11,8 +11,10 @@
 switch (uname)
 case "Darwin"
     # macOS Specific
-    abbr --add clip pbcopy
-    abbr --add paste pbpaste
+    #abbr --add clip pbcopy
+    #abbr --add paste pbpaste
+    alias clip="pbcopy"
+    alias paste="pbpaste"
     # Use GNU Coreutils
     alias cp=gcp
     alias ln=gln
@@ -21,11 +23,24 @@ case "Darwin"
     alias rm=grm
     alias rmdir=grmdir
     alias touch=gtouch
+    alias clip=pbcopy
+    alias paste=pbpaste
     abbr --add reboot "sudo reboot"
 case "Linux"
     # Linux Specific
+    #switch($XDG_SESSION_TYPE)
+    #case "wayland"
+        # Wayland Specific
+        alias clip="wl-copy"
+        alias paste="wl-paste"
+    #case "x11"
+    #    # X11 Specific
+    #    alias clip="xclip -selection clipboard"
+    #    alias paste="xclip -selection clipboard -o"
 case '*'
     # Default / Fallback case
+    alias clip="xclip -selection clipboard"
+    alias paste="xclip -selection clipboard -o"
 end
 
 # Powershell equivalent
@@ -81,6 +96,12 @@ end
 function mtv
     mkdir -p (dirname $argv[1]) && touch $argv[1] && nvim $argv[1]
 end
+
+function catclip
+    cat $argv | clip
+end
+
+abbr --add bcat "bat --style=plain"
 
 # Use neovide as gVim
 abbr --add gvi "neovide"

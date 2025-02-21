@@ -90,6 +90,7 @@ local leader_mappings = {
   },
   c = { -- +code/compile
     { keys = "r", cmd = ":RunCode<CR>", opts = { desc = "Run code" } },
+    { keys = "R", cmd = vim.lsp.buf.rename, opts = { desc = "Rename symbol under cursor" } },
     { keys = "e", cmd = ":Telescope diagnostics<CR>", opts = { desc = "Navigate errors/warnings" } },
     { keys = "f", cmd = formatFx, opts = { desc = "Format buffer" } },
     { keys = "s", cmd = ":Telescope treesitter<CR>", opts = { desc = "Search symbols" } },
@@ -135,6 +136,9 @@ local leader_mappings = {
     { keys = "B", cmd = ":Gitsigns toggle_current_line_blame<CR>", opts = { desc = "Toggle line blame" } },
     { keys = "s", cmd = ":Telescope git_status<CR>", opts = { desc = "Git Status" } },
     { keys = "t", cmd = ":Telescope git_branches<CR>", opts = { desc = "Git Branches" } },
+  },
+  j = { -- +lsp
+    { keys = "r", cmd = vim.lsp.buf.references, opts = { desc = "Show current reference" } },
   },
   p = { -- +project
     { keys = "p", cmd = ":Telescope projects<CR>", opts = { desc = "List all Projects" } },

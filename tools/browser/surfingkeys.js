@@ -3,7 +3,8 @@
 // Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/tools/browser/surfingkeys.js
 // Browse to Extension > Surfingkeys > Allow access to file URLs to enable local file access
 // Windows: file:///C:/Users/username/.dotfiles/tools/browser/surfingkeys.js
-// *nix: file:///home/username/.dotfiles/tools/browser/surfingkeys.js
+// Linux: file:///home/username/.dotfiles/tools/browser/surfingkeys.js
+// macOS: file:///Users/username/.dotfiles/tools/browser/surfingkeys.js
 
 // #region Example
 /** Examples
@@ -488,19 +489,16 @@ mapkey(",y", "[y]ank app id", function () {
  * 1 - 学术
  * 2 - 社交
  */
-const perplexityFocusOn = function (n) {
-  q("div.rounded-md").querySelectorAll("span")[1].click()
-  setTimeout(() => { // Wait for the DOM to update
-    qs("div.shadow-subtle div.group\\/item")[n].click();
-  }, 100);
-};
 unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
 mapkey(",b", "Add Perplexity [b]ookmark", function () {
   //  button.border:nth-child(2)
   q("div.sticky.left-0").querySelectorAll("button")[2].click()
 }, { domain: /perplexity.ai/ });
 mapkey(",w", "Toggle [w]riting/[w]eb Search", function () {
-  perplexityFocusOn(0);
+  q("div.rounded-md").querySelectorAll("span")[1].click()
+  setTimeout(() => { // Wait for the DOM to update
+    qs("div.shadow-subtle div.group\\/item")[0].click();
+  }, 100);
 }, { domain: /perplexity.ai/ });
 mapkey(",s", "[s]tart Generating", function () {
   var btns = qs("span.grow button");
@@ -615,6 +613,17 @@ mapkey(",c", "toggle [c]aptions", function () {
 }, { domain: /youtube.com/ });
 // #endregion
 
+//#region zhihu.com
+mapkey(",d", "Toggle [d]ark mode", function () {
+  const url = new URL(window.location.href);
+  if (url.searchParams.get("theme") === "dark") {
+    url.searchParams.set("theme", "light");
+  } else {
+    url.searchParams.set("theme", "dark");
+  }
+  window.location.href = url.href;
+}, { domain: /zhihu.com/ });
+//#endregion
 // #endregion
 
 // #region ACE Editor
