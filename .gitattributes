@@ -1,6 +1,12 @@
 # $DOTFILES/.gitattributes
 # Date: 2024-11-30
 # Author: js0ny
+
+* text=auto eol=lf
+
+# Windows Batch Script, keep CRLF
+*.bat text eol=crlf
+
 skhdrc linguist-language=Shell
 yabairc linguist-language=Shell
 sketchybarrc linguist-language=Shell
@@ -8,3 +14,8 @@ sketchybarrc linguist-language=Shell
 vsvimrc linguist-language=VimL
 vimrc linguist-language=VimL
 ideavimrc linguist-language=VimL
+
+*.png binar binary
+*.ico binary
+*.zip binary
+*.pdf binary
