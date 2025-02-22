@@ -28,6 +28,7 @@ require("lazy").setup({
     { import = "plugins.appearance" },
     { import = "plugins.completion" },
     { import = "plugins.fileutils" },
+    { import = "plugins.dap" },
     { import = "plugins.lsp" },
     { import = "plugins.edit" },
     { import = "plugins.misc" },
