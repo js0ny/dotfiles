@@ -6,6 +6,14 @@ No rice, no Unixporn/NTporn, just a simple setup that works for me.
 
 Works for Windows, Linux and MacOS.
 
+** Setup
+
+*** GNU/Linux and macOS
+
+#+begin_src shell
+curl https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/bootstrap/setup.sh -o setup.sh && chmod u+x setup.sh && ./setup.sh
+#+end_src
+
 ** Structure
 
 #+begin_src shell
