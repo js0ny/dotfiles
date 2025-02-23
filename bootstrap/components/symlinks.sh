@@ -5,6 +5,8 @@ DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 ZDOTDIR="${ZDOTDIR:-$HOME/.config/zsh}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 NPM_CONFIG_USERCONFIG="${NPM_CONFIG_USERCONFIG:-$XDG_CONFIG_HOME/npm/npmrc}"
+GUI_SETUP="${GUI_SETUP:-1}"
+WHEEL="${WHEEL:-0}"
 
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
@@ -67,11 +69,11 @@ else
         )
     # WSL1 : Microsoft
     # WSL2 : microsoft
-    if [ "$(uname -r)" = *icrosoft* ]; then
-        echo "[INFO] Running on WSL"
-	    : # NOP
-    else
-        echo "[INFO] Running on Native Linux"
+    # if [ "$(uname -r)" = *icrosoft* ]; then
+    #     echo "[INFO] Running on WSL"
+	#     : # NOP
+    if [ "$GUI_SETUP" -eq 1 ]; then
+        echo "[INFO] Setting up Linux GUI Applications"
         linkDots+=(
             ["$DOTFILES/platforms/linux/awesome"]="$HOME/.config/awesome"
             ["$DOTFILES/platforms/linux/hypr"]="$HOME/.config/hypr"
@@ -86,9 +88,11 @@ else
             linkDots+=["$kde"]="$HOME/.config/kde/$(basename $kde)"
             # echo "Linking $kde to $HOME/.config/kde/$(basename $kde)"
         done
-        echo "[INFO] Setting up system environment variables"
-        echo "[ACTION] Elevation required!"
-        sudo cp "$DOTFILES/platforms/linux/etc/environment" "/etc/environment"
+        if [ "$WHEEL" -eq 1 ]; then
+            echo "[INFO] Setting up system environment variables"
+            echo "[ACTION] Elevation required!"
+            sudo cp "$DOTFILES/platforms/linux/etc/environment" "/etc/environment"
+        fi
     fi
 fi
 
