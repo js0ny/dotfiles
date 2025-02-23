@@ -44,10 +44,10 @@ export GUI_SETUP
 
 if [ "$WHEEL" -eq 1 ]; then
   echo "[INFO] Installing basic build tools"
-  if [ command -v apt ]; then
+  if command -v apt >/dev/null 2>&1; then
     sudo apt update
     sudo apt install -y build-essential
-  elif [ command -v pacman ]; then
+  elif command -v pacman >/dev/null 2>&1; then
     sudo pacman -Syu --noconfirm
     sudo pacman -S --noconfirm base-devel
   else
@@ -60,7 +60,7 @@ echo "[INFO] Cloning Dotfiles"
 
 if [ -d "$DOTFILES" ]; then
   echo "[INFO] Dotfiles already cloned"
-elif [ command -v git ]; then
+elif command -v git >/dev/null 2>&1; then
   git clone https://github.com/js0ny/dotfiles.git "$DOTFILES" --depth 1
 else
   echo "[ERROR] Git is not installed"
@@ -92,7 +92,8 @@ source $DOTFILES/tools/bash/profile
 source $DOTFILES/tools/bash/bashrc
 source $DOTFILES/tools/bash/bash_aliases
 
-if [ command -v zsh ]; then
+if command -v zsh >/dev/null 2>&1; then
+
   read -p "[ACTION] Do you want to setup zsh? (Y/n) " choice
   case "$choice" in
     n|N)

@@ -29,7 +29,7 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 
-if command -v zoxide > /dev/null ; then
+if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init zsh)"
 # Relative navigation #
     alias ..="z .."

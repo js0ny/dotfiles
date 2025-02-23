@@ -25,7 +25,7 @@ alias ollama="ollama.exe"
 open() {
   local target=$1
 
-  if command -v "$FILE_EXPLORER" > /dev/null; then
+  if command -v "$FILE_EXPLORER" >/dev/null 2>&1; then
     "$FILE_EXPLORER" "$target"
   else
     command open "$target"

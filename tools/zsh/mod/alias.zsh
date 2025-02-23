@@ -29,7 +29,7 @@ alias g=lazygit
 
 
 # lsd - modern ls
-if command -v lsd > /dev/null; then
+if command -v lsd >/dev/null 2>&1; then
     alias ls='lsd'
     alias l='lsd -lah'
     alias ll='lsd -l'
@@ -65,22 +65,22 @@ mtv(){
 
 alias update="source $DOTFILES/scripts/update.zsh"
 
-if command -v pacman > /dev/null; then
+if command -v pacman >/dev/null 2>&1; then
     alias pac="sudo pacman"
     alias paci="sudo pacman -S"
     alias pacr="sudo pacman -R"
     alias pacu="sudo pacman -Syu"
     alias pacl="pacman -Q"
-    if command -v paru > /dev/null; then
+    if command -v paru >/dev/null 2>&1; then
         alias pacs="paru -Ss"
-    elif command -v yay > /dev/null; then
+    elif command -v yay >/dev/null 2>&1; then
         alias pacs="yay -Ss"
     else
         alias pacs="pacman -Ss"
     fi
 fi
 
-if command -v apt > /dev/null; then
+if command -v apt >/dev/null 2>&1; then
     alias apt="sudo apt"
     alias apti="sudo apt install"
     alias aptr="sudo apt remove"
@@ -89,7 +89,7 @@ if command -v apt > /dev/null; then
     alias aptl="apt list --installed"
 fi
 
-if command -v brew > /dev/null; then
+if command -v brew >/dev/null 2>&1; then
     alias brewi="brew install"
     alias brewr="brew uninstall"
     alias brewu="brew update && brew upgrade"
