@@ -1,4 +1,7 @@
-# If no admin rights, just
+# vim:ft=bash
+# If wheel and antidots:
+# ln -sf $DOTFILES/tools/bash/profile ~/.config/bash/bashrc
+# If not wheel or antidots:
 # ln -sf $DOTFILES/tools/bash/bashrc ~/.bashrc
 
 export DOTFILES=$HOME/.dotfiles

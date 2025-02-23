@@ -1,7 +1,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/OrgFiles/")
-(setq org-roam-directory  "~/OrgFiles/roam/")
+;; (setq org-roam-directory  "~/OrgFiles/roam/")
 
 (after! org
   ;; For CJK users
@@ -29,9 +29,10 @@
 
   ;; Keymaps
   (map! :map org-mode-map
-        "C-c b" (lambda () (interactive) (my/insert-emphasis-with-zws ?*))
-        "C-c i" (lambda () (interactive) (my/insert-emphasis-with-zws ?/))
-        "C-c u" (lambda () (interactive) (my/insert-emphasis-with-zws ?_))
+        :desc "Bold with ZWS" "C-c b" (lambda () (interactive) (my/insert-emphasis-with-zws ?*))
+        :desc "Italic with ZWS" "C-c i" (lambda () (interactive) (my/insert-emphasis-with-zws ?/))
+        :desc "Underline with ZWS" "C-c u" (lambda () (interactive) (my/insert-emphasis-with-zws ?_))
+        :desc "Code with ZWS" "C-c c" (lambda () (interactive) (my/insert-emphasis-with-zws ?~))
         :nvom "N" 'org-next-visible-heading
         :nvom "E" 'org-previous-visible-heading
         :nvom "M-n" 'org-metadown
@@ -54,8 +55,11 @@
   )
 
 (after! org-agenda
-  (setq org-agenda-files (directory-files-recursively "~/OrgFiles/tasks/" "\\.org$"))
+  ;; (setq org-agenda-files (directory-files-recursively "~/OrgFiles/tasks/" "\\.org$"))
+  (setq org-agenda-files (list (concat org-directory "tasks/")))
   )
+
+(map! :leader :desc "Org Agenda" "A" #'org-agenda)
 
 (map! :after org-agenda
       :map evil-org-agenda-mode-map
@@ -67,11 +71,3 @@
       :m "E" #'org-agenda-priority-down
       :m "i" #'evil-forward-char)
 
-
-
-;; (use-package! org-download
-;;   :after org
-;;   :custom
-;;   (setq org-download-screenshot-method
-;;         "pwsh.exe -File 'D:\\script.ps1'")
-;;   )

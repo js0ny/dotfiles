@@ -3,7 +3,7 @@ return {
   config = function()
     require("telescope").setup({
       defaults = {
-        prompt_prefix = "   ",
+        prompt_prefix = require("config.icons").telescope,
         selection_caret = " ",
         entry_prefix = " ",
         layout_config = { -- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvchad/configs/telescope.lua

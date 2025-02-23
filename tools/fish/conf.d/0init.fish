@@ -162,3 +162,7 @@ end
 test -d /opt/miniconda3 && source /opt/miniconda3/etc/fish/conf.d/conda.fish
 
 test -f /opt/miniconda3/etc/fish/conf.d/conda.fish && source /opt/miniconda3/etc/fish/conf.d/conda.fish
+
+# User-specific PATH
+test -d $HOME/.local/scripts && fish_add_path $HOME/.local/scripts
+test -d $HOME/.local/build && fish_add_path $HOME/.local/build

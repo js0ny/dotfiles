@@ -356,7 +356,7 @@ mapkey(",s", "Toggle Sidebar", function () {
   var btn = qs("div.ds-icon-button");
   btn[0].click();
 }, { domain: /chat.deepseek.com/ });
-mapkey(",e", "Edit last input", function () {
+mapkey(",e", "[e]dit last input", function () {
   var btn = qs("div.ds-icon-button");
   btn[btn.length - 5].click();
 }, { domain: /chat.deepseek.com/ });
@@ -368,14 +368,14 @@ mapkey(",r", "[r]egenerate last output", function () {
   var btn = qs("div.ds-icon-button");
   btn[btn.length - 3].click();
 }, { domain: /chat.deepseek.com/ });
-mapkey(",n", "New Chat", function () {
+mapkey(",n", "[n]ew Chat", function () {
   window.location.href = "https://chat.deepseek.com/";
 }, { domain: /chat.deepseek.com/ });
-mapkey(",t", "Toggle Thinking (R1)", function () {
+mapkey(",t", "Toggle co[t](R1)", function () {
   var btns = qs("div.ds-button");
   btns[0].click();
 }, { domain: /chat.deepseek.com/ });
-mapkey(",w", "Toggle Web Search", function () {
+mapkey(",w", "Toggle [w]eb Search", function () {
   var btns = qs("div.ds-button");
   btns[1].click();
 }, { domain: /chat.deepseek.com/ });
@@ -481,7 +481,7 @@ mapkey(",y", "[y]ank app id", function () {
   const id = url.pathname.split("/")[2];
   Clipboard.write(id);
 }, { domain: /apps.microsoft.com/ });
-
+//#endregion
 
 // #region perplexity.ai
 /**

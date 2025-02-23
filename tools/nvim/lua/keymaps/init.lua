@@ -36,7 +36,9 @@ M.cmp_nvim_keymaps = require("keymaps.cmp_map")
 -- })
 
 -- which-key.nvim
-require("keymaps.which")
+if vim.g.loaded_which_key then
+  require("keymaps.which")
+end
 require("keymaps.visual-multi")
 
 return M

@@ -1,4 +1,8 @@
-
+# vim:ft=bash
+# This should be in
+# ~/.bash_aliases
+# or in if antidots and wheel
+# ~/.config/bash/bash_aliases
 if command -v zoxide > /dev/null ; then
     eval "$(zoxide init bash)"
 # Relative navigation #

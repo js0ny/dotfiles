@@ -52,7 +52,6 @@ abbr --add ii open
 abbr --add v nvim
 abbr --add c code
 alias sv="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc"
-alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 
 # Dev #
 abbr --add py python3

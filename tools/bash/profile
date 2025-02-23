@@ -1,3 +1,4 @@
+# vim:ft=bash
 # Put this file in $XDG_CONFIG_HOME/bash/profile
 # This file is sourced by /etc/profile.d/xdg-compat.sh
 # and will source user's XDG-compliant Bash Run Commands
