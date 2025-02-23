@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env false
+# TODO: This script is not ready for use yet
 # -*- coding: utf-8 -*-
 # Append Electron argument (for wayland) to *.desktop files
 

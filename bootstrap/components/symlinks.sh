@@ -1,3 +1,4 @@
+# This should be run with bash > 4.0 or zsh
 set -e # Exit immediately if a command exits with a non-zero status
 
 DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
@@ -64,8 +65,10 @@ else
     linkDots+=(
             ["$DOTFILES/common/inputrc"]="$HOME/.inputrc"
         )
-    if [ "$(uname -r)" = *Microsoft* ]; then
-        echo "[INFO] Running on WSL1"
+    # WSL1 : Microsoft
+    # WSL2 : microsoft
+    if [ "$(uname -r)" = *icrosoft* ]; then
+        echo "[INFO] Running on WSL"
 	    : # NOP
     else
         echo "[INFO] Running on Native Linux"

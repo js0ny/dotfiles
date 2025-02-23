@@ -6,6 +6,10 @@ echo "Running the setup script"
 
 export DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 
+# In macOS, consider the user as sudoer by default
+export WHEEL=1
+export GUI_SETUP=1
+
 
 # Xcode Command Line Tools
 echo "[INFO] Installing Xcode Command Line Tools"
@@ -32,7 +36,7 @@ echo "[ACTION] Request Human Input"
 
 
 echo "[ACTION] Press any key to continue when xcode CLI tools are installed"
-read -n 1 
+read -n 1
 
 echo "[INFO] Cloning Dotfiles"
 
@@ -67,15 +71,7 @@ source $DOTFILES/tools/zsh/zshrc
 
 # Rime
 
-echo "[INFO] Installing Rime"
-
-git clone --depth 1 https://github.com/js0ny/rime_wanxiang_pro.git ~/Library/Rime
-cd ~/Library/Rime
-
-just init
-# just install_rime 
-## Rime is installed via Brewfile
-just clone_plum
+source $DOTFILES/bootstrap/components/rime.sh
 
 echo "[INFO] Installing Doom Emacs"
 

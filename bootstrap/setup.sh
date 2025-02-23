@@ -14,7 +14,9 @@ export DOTFILES
 
 case "$(uname)" in
   Linux)
-  :
+  curl https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/bootstrap/linux/main.bash -o ~/.local/.tmp/main.bash
+  source ~/.local/.tmp/main.bash
+  rm -rf ~/.local/.tmp/main.bash
   ;;
   Darwin)
   curl https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/bootstrap/macOS/main.zsh -o ~/.local/.tmp/main.zsh
