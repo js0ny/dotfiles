@@ -45,6 +45,7 @@ local M = {
     TypeParameter = "󰅲",
     Copilot = "",
   },
+  telescope = " ",
 }
 
 return M

@@ -1,6 +1,4 @@
 -- Debugger setups
 return {
-  {
-    "mfussenegger/nvim-dap",
-  }
+  { import = "plugins.mod.dap-setup" },
 }
