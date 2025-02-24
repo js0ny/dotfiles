@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # vim:ft=bash
 
 set -e
@@ -21,15 +21,15 @@ fi
 
 export WHEEL
 
-
 GUI_SETUP=0
 
-if [ "$(uname -r)" = *Microsoft* ]; then
+# NOTE: This is NOT a POSIX-compliant way, for POSIX-compliant way, use case/esac
+if [[ "$(uname -r)" = *Microsoft* ]]; then
   echo "[INFO] Running on WSL1 Skipping GUI setup"
 else
   read -p "[ACTION] Do you want to setup Linux GUI? (y/N) " choice
   case "$choice" in
-    y|Y)
+    y | Y)
       GUI_SETUP=1
       ;;
     *)
@@ -70,8 +70,8 @@ fi
 if [ "$WHEEL" -eq 0 ]; then
   read -p "[ACTION] Do you want to install some AppImages (by AppMan)? (y/N) " choice
   case "$choice" in
-    y|Y)
-        source "$DOTFILES/bootstrap/linux/appman.bash"
+    y | Y)
+      source "$DOTFILES/bootstrap/linux/appman.bash"
       ;;
     *)
       echo "[INFO] Skipping AppMan installation"
@@ -96,7 +96,7 @@ if command -v zsh >/dev/null 2>&1; then
 
   read -p "[ACTION] Do you want to setup zsh? (Y/n) " choice
   case "$choice" in
-    n|N)
+    n | N)
       :
       ;;
     *)
@@ -105,7 +105,6 @@ if command -v zsh >/dev/null 2>&1; then
   esac
 fi
 
-
 if [ "$WHEEL" -eq 0 ]; then
   echo "Done!"
   exit 0
@@ -113,7 +112,7 @@ fi
 
 read -p "[ACTION] Do you want to use other package managers? (y/N) " choice
 case "$choice" in
-  y|Y)
+  y | Y)
     :
     ;;
   *)
@@ -142,6 +141,5 @@ source $DOTFILES/bootstrap/components/rime.sh
 echo "[INFO] Installing Color Scheme (Catppuccin Mocha)"
 
 fish $DOTFILES/bootstrap/temp/mocha_port.fish
-
 
 echo "Done!"

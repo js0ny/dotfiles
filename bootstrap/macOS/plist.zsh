@@ -1,10 +1,10 @@
 ## Finder
 echo "[INFO] Setting Finder Preferences"
-defaults write com.apple.finder QuitMenuItem -bool true # Quit with CMD+Q
-defaults write com.apple.finder ShowPathbar -bool true  # Show Path Bar
-defaults write com.apple.finder ShowStatusBar -bool true # Show Status Bar
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true  # Show All File Extensions
-defaults write com.apple.finder AppleShowAllFiles -bool true # Show Hidden Files
+defaults write com.apple.finder QuitMenuItem -bool true         # Quit with CMD+Q
+defaults write com.apple.finder ShowPathbar -bool true          # Show Path Bar
+defaults write com.apple.finder ShowStatusBar -bool true        # Show Status Bar
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true # Show All File Extensions
+defaults write com.apple.finder AppleShowAllFiles -bool true    # Show Hidden Files
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FinderSpawnTab -bool true
 # Don't show External Hard Drives on Desktop
@@ -25,7 +25,7 @@ defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
 defaults write com.apple.dock autohide -bool true # Autohide Dock
 defaults write com.apple.dock autohide-time-modifier -float 0.5
-defaults write com.apple.dock autohide-delay -float 0 # Immediately Autohide Dock
+defaults write com.apple.dock autohide-delay -float 0  # Immediately Autohide Dock
 defaults write com.apple.dock show-recents -bool false # Hide Recent Applications
 killall Dock
 ## Trackpad

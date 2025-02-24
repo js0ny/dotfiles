@@ -1,0 +1,68 @@
+name: Shell Script Check & Format
+
+on:
+  push:
+    paths:
+      - '**.sh'
+      - '**.bash'
+      - '**.zsh'
+      - '**.bashrc'
+      - 'justfile'
+  pull_request:
+    paths:
+      - '**.sh'
+      - '**.bash'
+      - '**.zsh'
+      - '**.bashrc'
+      - 'justfile'
+
+jobs:
+  shell-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install just
+        uses: extractions/setup-just@v2
+
+      - name: Install shellcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Install go
+        uses:  actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
+      - run: go version
+        # run: |
+        #   sudo apt-get update
+        #   sudo apt-get install -y go
+
+      - name: Install shfmt
+        run: |
+          go install mvdan.cc/sh/v3/cmd/shfmt@latest
+          echo "$HOME/go/bin" >> $GITHUB_PATH
+
+      - name: fish-actions/install-fish
+        uses: fish-actions/install-fish@v1.1.0
+
+      - name: Run shell script check
+        run: just check
+
+      - name: Run shell script format
+        run: just format
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code || echo "format_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit changes
+        if: steps.git-check.outputs.format_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "style: format shell scripts"
+          git push

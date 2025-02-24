@@ -1,6 +1,8 @@
 #! /bin/zsh
 
 echo "Running the setup script"
+set -e
+set -x
 
 # VARIABLES
 
@@ -9,7 +11,6 @@ export DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 # In macOS, consider the user as sudoer by default
 export WHEEL=1
 export GUI_SETUP=1
-
 
 # Xcode Command Line Tools
 echo "[INFO] Installing Xcode Command Line Tools"
@@ -34,7 +35,6 @@ echo "[INFO] Installing Homebrew"
 echo "[ACTION] Request Human Input"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-
 echo "[ACTION] Press any key to continue when xcode CLI tools are installed"
 read -n 1
 
@@ -54,7 +54,6 @@ brew bundle --file=$DOTFILES/bootstrap/macOS/Brewfile
 
 # Setting up emacs
 ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
-
 
 # Setting Default Apps
 
@@ -77,13 +76,11 @@ echo "[INFO] Installing Doom Emacs"
 
 source $DOTFILES/bootstrap/components/emacs.sh
 
-
 echo "[INFO] Installing Color Scheme (Catppuccin Mocha)"
 
 fish $DOTFILES/bootstrap/temp/mocha_port.fish
 
 # Misc
-
 
 dotnet tool install --global dotnet-repl
 

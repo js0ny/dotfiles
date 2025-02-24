@@ -4,7 +4,7 @@ set -e # Exit immediately if a command exits with a non-zero status
 typeset -A linkDots
 
 # 从通用配置文件加载
-source "$DOTFILES/bootstrap/components/symlinks.sh"
+source "$DOTFILES/bootstrap/components/symlinks.bash"
 
 echo "[INFO] DOTFILES = $DOTFILES"
 
