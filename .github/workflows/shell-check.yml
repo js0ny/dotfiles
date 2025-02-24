@@ -8,6 +8,7 @@ on:
       - '**.zsh'
       - '**.bashrc'
       - 'justfile'
+      - 'Justfile'
   pull_request:
     paths:
       - '**.sh'
@@ -15,6 +16,7 @@ on:
       - '**.zsh'
       - '**.bashrc'
       - 'justfile'
+      - 'Justfile'
 
 jobs:
   shell-check:
