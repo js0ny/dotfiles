@@ -14,16 +14,16 @@ read -n 1
 echo "[INFO] Setting up symbolic links"
 # 使用 zsh 的关联数组语法
 for src in ${(k)linkDots}; do
-    dest="${linkDots[$src]}"
-    echo "Linking $src to $dest"
-    if [ -d "$src" ]; then
-        test -d $dest && mv $dest $dest.bak
-        ln -sf $src $dest
-    elif [ -f "$src" ]; then
-        dest_parent=$(dirname $dest)
-        test -d $dest_parent || mkdir -p $dest_parent
-        ln -sf $src $dest
-    else
-        echo "[ERROR] $src does not exist"
-    fi
+  dest="${linkDots[$src]}"
+  echo "Linking $src to $dest"
+  if [ -d "$src" ]; then
+    test -d $dest && mv $dest $dest.bak
+    ln -sf $src $dest
+  elif [ -f "$src" ]; then
+    dest_parent=$(dirname $dest)
+    test -d $dest_parent || mkdir -p $dest_parent
+    ln -sf $src $dest
+  else
+    echo "[ERROR] $src does not exist"
+  fi
 done
