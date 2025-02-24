@@ -2,15 +2,16 @@ set shell := ["fish", "-c"]
 set windows-shell := ["pwsh", "-c"]
 
 check_info:
-    shellcheck -x -s sh  ./bootstrap/**/*.sh
+    shellcheck -x -s sh  **/*.sh platforms/mac/yabairc
     shellcheck -x -s bash  **/*.bash tools/bash/* scripts/*.{sh,zsh,bash} **/*.bashrc
 check:
-    shellcheck -x -s sh --severity=error ./bootstrap/**/*.sh
+    shellcheck -x -s sh --severity=error **/*.sh platforms/mac/yabairc
     shellcheck -x -s bash --severity=error **/*.bash tools/bash/* **/*.bashrc
 format:
-    # shfmt -w -d -i 2 -ci -bn **/*.sh tools/bash/* scripts/*.{sh,bash,zsh} **/*.bashrc
-    shfmt -w -d -i 2 -ci -bn -p ./bootstrap/**/*.sh
-    shfmt -w -d -i 2 -ci -bn -ln bash ./bootstrap/**/*.bash
+    shfmt -w -i 2 -ci -bn -p **/*.sh
+    shfmt -w -i 2 -ci -bn -ln bash **/*.bash platforms/mac/sketchybar/sketchybarrc
+    # Ignore syntax errors in zsh files
+    shfmt -w -i 2 -ci -bn -ln bash **/*.zsh tools/zsh/**/* **/zshrc  || true
 pull:
     git pull github master
     git pull codeberg master
