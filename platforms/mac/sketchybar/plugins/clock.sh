@@ -5,4 +5,3 @@
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
 sketchybar --set "$NAME" label="$(date '+%d日周%u %H:%M')"
-

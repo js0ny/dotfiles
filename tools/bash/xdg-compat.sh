@@ -15,5 +15,5 @@ export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
 # Source user's XDG-compliant Bash configs
 if [ -f "$XDG_CONFIG_HOME/bash/profile" ]; then
-    . "$XDG_CONFIG_HOME/bash/profile"
+  . "$XDG_CONFIG_HOME/bash/profile"
 fi

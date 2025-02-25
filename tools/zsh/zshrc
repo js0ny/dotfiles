@@ -24,9 +24,9 @@ case "$(uname)" in
     # macOS-specific configuration
     source "$DOTFILES/platforms/mac/zshrc"
     ;;
-#   CYGWIN*|MINGW*|MSYS*)
-#     source "$DOTFILES/platform/wsl.zsh"
-#     ;;
+    #   CYGWIN*|MINGW*|MSYS*)
+    #     source "$DOTFILES/platform/wsl.zsh"
+    #     ;;
 esac
 
 for file in $DOTFILES/tools/zsh/mod/*.zsh; do

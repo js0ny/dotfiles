@@ -42,5 +42,5 @@ fi
 
 # macOS - Rime
 if [ $(uname) = "Darwin" ]; then
-    bash ~/plum/rime-install
+  bash ~/plum/rime-install
 fi
