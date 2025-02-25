@@ -51,7 +51,7 @@ abbr --add ii open
 # Editors #
 abbr --add v nvim
 abbr --add c code
-alias sv="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc"
+alias svi="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc" # Prevent conflicts with svelte-cli
 
 # Dev #
 abbr --add py python3

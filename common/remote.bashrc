@@ -123,7 +123,7 @@ source ~/.nvm/nvm.sh
 bind 'set show-mode-in-prompt on'
 set -o vi
 
-alias sv="sudo vim"
+alias svi="sudo vim" # Prevent conflicts with svelte-cli
 alias v="vim"
 
 alias sdocker="sudo docker"

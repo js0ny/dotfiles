@@ -13,7 +13,7 @@ alias v=nvim
 alias c=code
 # Use neovide as gVim
 alias gvi="neovide"
-alias sv="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc"
+alias svi="sudo vim -u ~/.dotfiles/common/vim.noxdg.vimrc" # Prevent conflicts with svelte-cli
 alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 
 # Dev #
