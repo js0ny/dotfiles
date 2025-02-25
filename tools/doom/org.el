@@ -45,6 +45,26 @@
           ("n" "Note" entry (file+headline "~/OrgFiles/tasks/inbox.org" "Notes"))
           ))
 
+  ;; 处理 Zotero 链接
+  (org-link-set-parameters
+   "zotero"
+   :follow (lambda (path) (browse-url (concat "zotero://" path)))
+   :export (lambda (path desc format)
+             (cond
+              ((eq format 'html) (format "<a href=\"zotero://%s\">%s</a>" path (or desc path)))
+              ((eq format 'latex) (format "\\href{zotero://%s}{%s}" path (or desc path)))
+              (t path))))
+
+  ;; 处理 Obsidian 链接
+  (org-link-set-parameters
+   "obsidian"
+   :follow (lambda (path) (browse-url (concat "obsidian://" path)))
+   :export (lambda (path desc format)
+             (cond
+              ((eq format 'html) (format "<a href=\"obsidian://%s\">%s</a>" path (or desc path)))
+              ((eq format 'latex) (format "\\href{obsidian://%s}{%s}" path (or desc path)))
+              (t path))))
+
   )
 
 (after! evil-org
@@ -71,3 +91,9 @@
       :m "E" #'org-agenda-priority-down
       :m "i" #'evil-forward-char)
 
+
+(after! org-pomodoro
+  (setq org-pomodoro-format "🍅~%s")
+  (setq org-pomodoro-short-break-format "摸~%s")
+  (setq org-pomodoro-long-break-format "猛摸~%s")
+  )

@@ -119,3 +119,5 @@
   (setq default-input-method "rime")
   (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
   )
+
+(load! "calendar.el")

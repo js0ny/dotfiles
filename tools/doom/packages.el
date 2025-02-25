@@ -54,3 +54,4 @@
 (package! evil-matchit)
 (package! rime)
 (package! ox-typst)
+(package! cal-china-x)
