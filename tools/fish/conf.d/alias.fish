@@ -25,6 +25,7 @@ case "Darwin"
     alias touch=gtouch
     alias clip=pbcopy
     alias paste=pbpaste
+    alias sed=gsed
     abbr --add reboot "sudo reboot"
 case "Linux"
     # Linux Specific

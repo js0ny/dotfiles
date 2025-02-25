@@ -33,8 +33,6 @@
         :desc "Italic with ZWS" "C-c i" (lambda () (interactive) (my/insert-emphasis-with-zws ?/))
         :desc "Underline with ZWS" "C-c u" (lambda () (interactive) (my/insert-emphasis-with-zws ?_))
         :desc "Code with ZWS" "C-c c" (lambda () (interactive) (my/insert-emphasis-with-zws ?~))
-        :nvom "N" 'org-next-visible-heading
-        :nvom "E" 'org-previous-visible-heading
         :nvom "M-n" 'org-metadown
         :nvom "M-e" 'org-metaup)
 
@@ -97,3 +95,8 @@
   (setq org-pomodoro-short-break-format "摸~%s")
   (setq org-pomodoro-long-break-format "猛摸~%s")
   )
+
+;; Org-Babel
+
+(if (bound-and-true-p ISMAC)
+    (setq org-babel-C-compiler "clang"))

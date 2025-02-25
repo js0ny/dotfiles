@@ -3,22 +3,21 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    config = function()
-      require("catppuccin").setup({
-        floavor = "auto",
-        background = {
-          light = "latte",
-          dark = "mocha",
-        },
-        styles = {
-          -- keywords = { "underline" },
-        },
-        integrations = {
-          "lualine",
-        },
-      })
-    end,
+    opts = {
+      floavor = "auto",
+      background = {
+        light = "latte",
+        dark = "mocha",
+      },
+      styles = {
+        -- keywords = { "underline" },
+      },
+      integrations = {
+        "lualine",
+      },
+    }
   },
+
   { "olimorris/onedarkpro.nvim" },
   { "rebelot/kanagawa.nvim" },
   -- Highlight objects under the cursor
@@ -42,10 +41,10 @@ return {
       })
     end,
   },
-  { import = "plugins.mod.alpha-nvim" }, -- Dashboard
+  { import = "plugins.mod.alpha-nvim" },  -- Dashboard
   { import = "plugins.mod.winbar-nvim" }, -- Breadcrumb
-  { import = "plugins.mod.bufferline" }, -- Buffer Top Bar
-  { -- Git Blames, Changes
+  { import = "plugins.mod.bufferline" },  -- Buffer Top Bar
+  {                                       -- Git Blames, Changes
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({
