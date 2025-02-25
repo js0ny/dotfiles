@@ -2,7 +2,12 @@
 
 local M = {}
 -- TODO: Change the palatte when the colorscheme changes
-M.scheme = require("catppuccin.palettes.mocha")
+
+if vim.g.colors_name == "catppuccin-latte" then
+  M.scheme = require("catppuccin.palettes.latte")
+else
+  M.scheme = require("catppuccin.palettes.mocha")
+end
 
 M.accent = M.scheme.lavender
 

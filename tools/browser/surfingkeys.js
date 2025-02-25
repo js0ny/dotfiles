@@ -1,3 +1,4 @@
+// vim:foldmethod=marker:foldmarker=#region,#endregion:foldlevel=0
 // Paste this into surfingkeys advanced settings
 // or use:
 // Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/tools/browser/surfingkeys.js
@@ -114,7 +115,8 @@ const vColemak = {
 const forwardFactory = {
   push: function (mapLists) {
     // forward original keys
-    for (const key in mapLists) { // `const` better than `let`
+    for (const key in mapLists) {
+      // `const` better than `let`
       forward.add(mapLists[key]);
     }
   },
@@ -309,8 +311,16 @@ const searchAliases = [
   ["ud", "UrbanDictionary", "https://www.urbandictionary.com/define.php?term="],
   ["wa", "WolframAlpha", "https://www.wolframalpha.com/input/?i="],
   ["wg", "winget", "https://winget.ragerworks.com/search/all/"],
-  ["wk", "Wikipedia", "https://en.wikipedia.org/w/index.php?title=Special:Search&search="],
-  ["ww", "WantWords", "https://www.shenyandayi.com/wantWordsResult?lang=zh&query="],
+  [
+    "wk",
+    "Wikipedia",
+    "https://en.wikipedia.org/w/index.php?title=Special:Search&search=",
+  ],
+  [
+    "ww",
+    "WantWords",
+    "https://www.shenyandayi.com/wantWordsResult?lang=zh&query=",
+  ],
   ["yt", "YouTube", "https://www.youtube.com/results?search_query="],
 ];
 
@@ -329,9 +339,14 @@ mapkey("yY", "yank link without parameter", function () {
 });
 
 // #region bilibili.com
-mapkey(",n", "[n]ext Video", function () {
-  window.location.href = q("div.next-play").querySelector("a").href
-}, { domain: /bilibili.com/ });
+mapkey(
+  ",n",
+  "[n]ext Video",
+  function () {
+    window.location.href = q("div.next-play").querySelector("a").href;
+  },
+  { domain: /bilibili.com/ },
+);
 // #endregion
 
 // #region chatgpt.com
@@ -352,50 +367,130 @@ mapkey(",s", "Start/Stop Generating", chatgptStartStop, {
 // #endregion
 
 // #region chat.deepseek.com
-mapkey(",s", "Toggle Sidebar", function () {
-  var btn = qs("div.ds-icon-button");
-  btn[0].click();
-}, { domain: /chat.deepseek.com/ });
-mapkey(",e", "[e]dit last input", function () {
-  var btn = qs("div.ds-icon-button");
-  btn[btn.length - 5].click();
-}, { domain: /chat.deepseek.com/ });
-mapkey(",y", "[y]ank last oupput", function () {
-  var btn = qs("div.ds-icon-button");
-  btn[btn.length - 4].click();
-}, { domain: /chat.deepseek.com/ });
-mapkey(",r", "[r]egenerate last output", function () {
-  var btn = qs("div.ds-icon-button");
-  btn[btn.length - 3].click();
-}, { domain: /chat.deepseek.com/ });
-mapkey(",n", "[n]ew Chat", function () {
-  window.location.href = "https://chat.deepseek.com/";
-}, { domain: /chat.deepseek.com/ });
-mapkey(",t", "Toggle co[t](R1)", function () {
-  var btns = qs("div.ds-button");
-  btns[0].click();
-}, { domain: /chat.deepseek.com/ });
-mapkey(",w", "Toggle [w]eb Search", function () {
-  var btns = qs("div.ds-button");
-  btns[1].click();
-}, { domain: /chat.deepseek.com/ });
+mapkey(
+  ",s",
+  "Toggle Sidebar",
+  function () {
+    var btn = qs("div.ds-icon-button");
+    btn[0].click();
+  },
+  { domain: /chat.deepseek.com/ },
+);
+mapkey(
+  ",e",
+  "[e]dit last input",
+  function () {
+    var btn = qs("div.ds-icon-button");
+    btn[btn.length - 5].click();
+  },
+  { domain: /chat.deepseek.com/ },
+);
+mapkey(
+  ",y",
+  "[y]ank last oupput",
+  function () {
+    var btn = qs("div.ds-icon-button");
+    btn[btn.length - 4].click();
+  },
+  { domain: /chat.deepseek.com/ },
+);
+mapkey(
+  ",r",
+  "[r]egenerate last output",
+  function () {
+    var btn = qs("div.ds-icon-button");
+    btn[btn.length - 3].click();
+  },
+  { domain: /chat.deepseek.com/ },
+);
+mapkey(
+  ",n",
+  "[n]ew Chat",
+  function () {
+    window.location.href = "https://chat.deepseek.com/";
+  },
+  { domain: /chat.deepseek.com/ },
+);
+mapkey(
+  ",t",
+  "Toggle co[t](R1)",
+  function () {
+    var btns = qs("div.ds-button");
+    btns[0].click();
+  },
+  { domain: /chat.deepseek.com/ },
+);
+mapkey(
+  ",w",
+  "Toggle [w]eb Search",
+  function () {
+    var btns = qs("div.ds-button");
+    btns[1].click();
+  },
+  { domain: /chat.deepseek.com/ },
+);
 // #endregion
 
+//#region dropbox.com
+//https://www.dropbox.com/scl/fi/u58c2qmqbwq672y3hwmfn/setup.sh?rlkey=d3figouv5eqk1xfwdtyzfr7ua&e=1&st=ehttmy2r&dl=0
+//https://dl.dropboxusercontent.com/scl/fi/u58c2qmqbwq672y3hwmfn/setup.sh?rlkey=d3figouv5eqk1xfwdtyzfr7ua&e=1&st=ehttmy2r
+mapkey(
+  ",r",
+  "Extract [r]aw link",
+  function () {
+    const url = new URL(window.location.href);
+    if (url.href.endsWith("&dl=0")) {
+      url.searchParams.delete("dl");
+      url.hostname = "dl.dropboxusercontent.com";
+      Clipboard.write(url.href);
+    }
+  },
+  { domain: /dropbox.com/ },
+);
+mapkey(
+  ",d",
+  "Extract [d]aw link",
+  function () {
+    const url = new URL(window.location.href);
+    if (url.href.endsWith("&dl=0")) {
+      url.searchParams.set("dl", "1");
+      Clipboard.write(url.href);
+    }
+  },
+  { domain: /dropbox.com/ },
+);
+//#endregion
+
 // #region app.follow.is
-mapkey(",t", "Toggle ", function () {
-  var btn = qs("button.no-drag-region");
-  btn[btn.length - 4].click();
-}, { domain: /app.follow.is/ });
+mapkey(
+  ",t",
+  "Toggle ",
+  function () {
+    var btn = qs("button.no-drag-region");
+    btn[btn.length - 4].click();
+  },
+  { domain: /app.follow.is/ },
+);
 
-mapkey(",a", "Toggle AI Summary", function () {
-  var btn = qs("button.no-drag-region");
-  btn[btn.length - 3].click();
-}, { domain: /app.follow.is/ });
+mapkey(
+  ",a",
+  "Toggle AI Summary",
+  function () {
+    var btn = qs("button.no-drag-region");
+    btn[btn.length - 3].click();
+  },
+  { domain: /app.follow.is/ },
+);
 
-mapkey(",o", "Toggle Original Website", function () {
-  var btn = qs("button.no-drag-region");
-  btn[btn.length - 4].click();
-}, { domain: /app.follow.is/ });
+mapkey(
+  ",o",
+  "Toggle Original Website",
+  function () {
+    var btn = qs("button.no-drag-region");
+    btn[btn.length - 4].click();
+  },
+  { domain: /app.follow.is/ },
+);
 // #endregion
 
 // #region GitHub
@@ -410,77 +505,137 @@ gh.rawToSource = (url) => {
   return gh.sourceLink(ps[0], ps[1], ps.slice(4).join("/"));
 };
 // github.com
-mapkey(",e", "Use Web Editor", function () {
-  const url = new URL(window.location.href);
-  url.hostname = "github.dev";
-  window.location.href = url.href;
-}, { domain: /github.com/ });
-mapkey(",E", "Use Web Editor (New Page)", function () {
-  const url = new URL(window.location.href);
-  url.hostname = "github.dev";
-  tabOpenLink(url.href);
-}, { domain: /github.com/ });
-mapkey(",p", "Switch to GitHub Page", function () {
-  href = window.location.href;
-  owner = href.split("/")[3];
-  repo = href.split("/")[4];
-  window.location.href = gh.pageLink(owner, repo);
-}, { domain: /github.com/ });
+mapkey(
+  ",e",
+  "Use Web Editor",
+  function () {
+    const url = new URL(window.location.href);
+    url.hostname = "github.dev";
+    window.location.href = url.href;
+  },
+  { domain: /github.com/ },
+);
+mapkey(
+  ",E",
+  "Use Web Editor (New Page)",
+  function () {
+    const url = new URL(window.location.href);
+    url.hostname = "github.dev";
+    tabOpenLink(url.href);
+  },
+  { domain: /github.com/ },
+);
+mapkey(
+  ",p",
+  "Switch to GitHub Page",
+  function () {
+    href = window.location.href;
+    owner = href.split("/")[3];
+    repo = href.split("/")[4];
+    window.location.href = gh.pageLink(owner, repo);
+  },
+  { domain: /github.com/ },
+);
 /// This might be useful for Vim plugins
-mapkey(",y", "[y]ank short refeference owner/repo", function () {
-  const href = window.location.href;
-  owner = href.split("/")[3];
-  repo = href.split("/")[4];
-  Clipboard.write(`${owner}/${repo}`);
-}, { domain: /github.com/ });
+mapkey(
+  ",y",
+  "[y]ank short refeference owner/repo",
+  function () {
+    const href = window.location.href;
+    owner = href.split("/")[3];
+    repo = href.split("/")[4];
+    Clipboard.write(`${owner}/${repo}`);
+  },
+  { domain: /github.com/ },
+);
 // github.dev
-mapkey(",r", "Switch to GitHub Repo", function () {
-  const url = new URL(window.location.href);
-  url.hostname = "github.com";
-  window.location.href = url.href;
-}, { domain: /github.dev/ });
+mapkey(
+  ",r",
+  "Switch to GitHub Repo",
+  function () {
+    const url = new URL(window.location.href);
+    url.hostname = "github.com";
+    window.location.href = url.href;
+  },
+  { domain: /github.dev/ },
+);
 // github.io
-mapkey(",r", "Switch to GitHub Repo", function () {
-  const href = window.location.href;
-  owner = href.split("/")[2].split(".")[0];
-  repo = href.split("/")[3];
-  tabOpenLink(gh.repoLink(owner, repo));
-}, { domain: /github.io/ });
-mapkey(",R", "Go to GitHub Repo (New tab)", function () {
-  const href = window.location.href;
-  owner = href.split("/")[2].split(".")[0];
-  repo = href.split("/")[3];
-  tabOpenLink(gh.repoLink(owner, repo));
-}, { domain: /github.io/ });
+mapkey(
+  ",r",
+  "Switch to GitHub Repo",
+  function () {
+    const href = window.location.href;
+    owner = href.split("/")[2].split(".")[0];
+    repo = href.split("/")[3];
+    tabOpenLink(gh.repoLink(owner, repo));
+  },
+  { domain: /github.io/ },
+);
+mapkey(
+  ",R",
+  "Go to GitHub Repo (New tab)",
+  function () {
+    const href = window.location.href;
+    owner = href.split("/")[2].split(".")[0];
+    repo = href.split("/")[3];
+    tabOpenLink(gh.repoLink(owner, repo));
+  },
+  { domain: /github.io/ },
+);
 // raw.githubusercontent.com
-mapkey(",r", "Switch to GitHub Repo", function () {
-  const url = new URL(window.location.href);
-  var owner, repo;
-  owner, repo = url.pathname.split("/").slice(1, 3);
-  window.location.href = gh.repoLink(owner, repo);
-}, { domain: /raw.githubusercontent.com/ });
-mapkey(",R", "Switch to GitHub Repo", function () {
-  const url = new URL(window.location.href);
-  var owner, repo;
-  owner, repo = url.pathname.split("/").slice(1, 3);
-  tabOpenLink(gh.repoLink(owner, repo));
-}, { domain: /raw.githubusercontent.com/ });
-mapkey(",s", "Open Source in GitHub", function () {
-  window.location.href = gh.rawToSource(window.location.href);
-}, { domain: /raw.githubusercontent.com/ });
-mapkey(",S", "Open Source in GitHub (New Page)", function () {
-  tabOpenLink(gh.rawToSource(window.location.href));
-}, { domain: /raw.githubusercontent.com/ });
+mapkey(
+  ",r",
+  "Switch to GitHub Repo",
+  function () {
+    const url = new URL(window.location.href);
+    var owner, repo;
+    owner, (repo = url.pathname.split("/").slice(1, 3));
+    window.location.href = gh.repoLink(owner, repo);
+  },
+  { domain: /raw.githubusercontent.com/ },
+);
+mapkey(
+  ",R",
+  "Switch to GitHub Repo",
+  function () {
+    const url = new URL(window.location.href);
+    var owner, repo;
+    owner, (repo = url.pathname.split("/").slice(1, 3));
+    tabOpenLink(gh.repoLink(owner, repo));
+  },
+  { domain: /raw.githubusercontent.com/ },
+);
+mapkey(
+  ",s",
+  "Open Source in GitHub",
+  function () {
+    window.location.href = gh.rawToSource(window.location.href);
+  },
+  { domain: /raw.githubusercontent.com/ },
+);
+mapkey(
+  ",S",
+  "Open Source in GitHub (New Page)",
+  function () {
+    tabOpenLink(gh.rawToSource(window.location.href));
+  },
+  { domain: /raw.githubusercontent.com/ },
+);
 // #endregion GitHub
 
 //#region app.microsoft.com
 // https://apps.microsoft.com/detail/9nl6kd1h33v3?hl=en-GB&gl=GB
 // This is useful in `winget` (Windows Package Manager)
-mapkey(",y", "[y]ank app id", function () {
-  const url = new URL(window.location.href);
-  const id = url.pathname.split("/")[2];
-  Clipboard.write(id);
-}, { domain: /apps.microsoft.com/ });
+mapkey(
+  ",y",
+  "[y]ank app id",
+  function () {
+    const url = new URL(window.location.href);
+    const id = url.pathname.split("/")[2];
+    Clipboard.write(id);
+  },
+  { domain: /apps.microsoft.com/ },
+);
 //#endregion
 
 // #region perplexity.ai
@@ -490,52 +645,94 @@ mapkey(",y", "[y]ank app id", function () {
  * 2 - 社交
  */
 unmap("<Ctrl-i>", /perplexity.ai/); // allows to use perplexity web keybindings
-mapkey(",b", "Add Perplexity [b]ookmark", function () {
-  //  button.border:nth-child(2)
-  q("div.sticky.left-0").querySelectorAll("button")[2].click()
-}, { domain: /perplexity.ai/ });
-mapkey(",w", "Toggle [w]riting/[w]eb Search", function () {
-  q("div.rounded-md").querySelectorAll("span")[1].click()
-  setTimeout(() => { // Wait for the DOM to update
-    qs("div.shadow-subtle div.group\\/item")[0].click();
-  }, 100);
-}, { domain: /perplexity.ai/ });
-mapkey(",s", "[s]tart Generating", function () {
-  var btns = qs("span.grow button");
-  btns[btns.length - 1].click();
-}, { domain: /perplexity.ai/ });
-mapkey(",y", "[y]ank Last Output", function () {
-  var toolbars = qs("div.mt-sm");
-  var last = toolbars[toolbars.length - 1];
-  var btns = last.querySelectorAll("button");
-  btns[5].click();
-}, { domain: /perplexity.ai/ });
-mapkey(",r", "Change model to [r]egenerate last output", function () {
-  var toolbars = qs("div.mt-sm");
-  var last = toolbars[toolbars.length - 1];
-  var btns = last.querySelectorAll("button");
-  btns[1].click();
-}, { domain: /perplexity.ai/ });
-mapkey(",R", "Toggle [R]easoning with [R]1", function () {
-  var btns = qs("span.grow button");
-  btns[0].click();
-  setTimeout(() => { // Wait for the DOM to update
-    qs("div.shadow-subtle div.group\\/item")[2].click();
-    qs("div.group\\/item")[2].click() // Mobile view
-  }, 100);
-}, { domain: /perplexity.ai/ });
+mapkey(
+  ",b",
+  "Add Perplexity [b]ookmark",
+  function () {
+    //  button.border:nth-child(2)
+    q("div.sticky.left-0").querySelectorAll("button")[2].click();
+  },
+  { domain: /perplexity.ai/ },
+);
+mapkey(
+  ",w",
+  "Toggle [w]riting/[w]eb Search",
+  function () {
+    q("div.rounded-md").querySelectorAll("span")[1].click();
+    setTimeout(() => {
+      // Wait for the DOM to update
+      qs("div.shadow-subtle div.group\\/item")[0].click();
+    }, 100);
+  },
+  { domain: /perplexity.ai/ },
+);
+mapkey(
+  ",s",
+  "[s]tart Generating",
+  function () {
+    var btns = qs("span.grow button");
+    btns[btns.length - 1].click();
+  },
+  { domain: /perplexity.ai/ },
+);
+mapkey(
+  ",y",
+  "[y]ank Last Output",
+  function () {
+    var toolbars = qs("div.mt-sm");
+    var last = toolbars[toolbars.length - 1];
+    var btns = last.querySelectorAll("button");
+    btns[5].click();
+  },
+  { domain: /perplexity.ai/ },
+);
+mapkey(
+  ",r",
+  "Change model to [r]egenerate last output",
+  function () {
+    var toolbars = qs("div.mt-sm");
+    var last = toolbars[toolbars.length - 1];
+    var btns = last.querySelectorAll("button");
+    btns[1].click();
+  },
+  { domain: /perplexity.ai/ },
+);
+mapkey(
+  ",R",
+  "Toggle [R]easoning with [R]1",
+  function () {
+    var btns = qs("span.grow button");
+    btns[0].click();
+    setTimeout(() => {
+      // Wait for the DOM to update
+      qs("div.shadow-subtle div.group\\/item")[2].click();
+      qs("div.group\\/item")[2].click(); // Mobile view
+    }, 100);
+  },
+  { domain: /perplexity.ai/ },
+);
 // #endregion
 
 // #region sspai.com
 unmap("[[", /sspai.com/);
 unmap("]]", /sspai.com/);
 unmap(",", /sspai.com/);
-mapkey("[[", "Previous Page", function () {
-  q("button.btn-prev").click();
-}, { domain: /sspai.com/ });
-mapkey("]]", "Next Page", function () {
-  q("button.btn-next").click();
-}, { domain: /sspai.com/ });
+mapkey(
+  "[[",
+  "Previous Page",
+  function () {
+    q("button.btn-prev").click();
+  },
+  { domain: /sspai.com/ },
+);
+mapkey(
+  "]]",
+  "Next Page",
+  function () {
+    q("button.btn-next").click();
+  },
+  { domain: /sspai.com/ },
+);
 
 // #endregion
 
@@ -544,85 +741,151 @@ mapkey("]]", "Next Page", function () {
 unmap("[[", /pixiv.net/);
 unmap("]]", /pixiv.net/);
 unmap(",", /pixiv.net/);
-const isArtwork = (url) => /pixiv.net\/artworks/.test(url.href)
+const isArtwork = (url) => /pixiv.net\/artworks/.test(url.href);
 
-mapkey("[[", "Previous Page", function () {
-  const url = new URL(window.location.href);
-  if (url.href === url.origin) {
-    return;
-  }
-  const page = url.searchParams.get("p");
-  const newPage = page ? parseInt(page) - 1 : 1;
-  url.searchParams.set("p", newPage);
-  window.location.href = url.href;
-}, { domain: /pixiv.net/ });
+mapkey(
+  "[[",
+  "Previous Page",
+  function () {
+    const url = new URL(window.location.href);
+    if (url.href === url.origin) {
+      return;
+    }
+    const page = url.searchParams.get("p");
+    const newPage = page ? parseInt(page) - 1 : 1;
+    url.searchParams.set("p", newPage);
+    window.location.href = url.href;
+  },
+  { domain: /pixiv.net/ },
+);
 
-mapkey("]]", "Next Page", function () {
-  const url = new URL(window.location.href);
-  if (url.href === url.origin) {
-    return;
-  }
-  const page = url.searchParams.get("p");
-  const newPage = page ? parseInt(page) + 1 : 2;
-  url.searchParams.set("p", newPage);
-  window.location.href = url.href;
-}, { domain: /pixiv.net/ });
-mapkey(",b", "Add to [b]ookmark", function () {
-  const url = new URL(window.location.href);
-  if (!isArtwork(url)) { return; }
-  const toolbar = q('section [class$="Toolbar"]')
-  toolbar.querySelectorAll("div")[2].querySelector("button").click()
-}, { domain: /pixiv.net/ });
-mapkey(",B", "Add to private [B]ookmark", function () {
-  const url = new URL(window.location.href);
-  if (!isArtwork(url)) { return; }
-  const toolbar = q('section [class$="Toolbar"]')
-  toolbar.querySelectorAll("div")[0].querySelector("button").click()
-  setTimeout(() => { // Wait for the DOM to update
-    q("div[role=menu]").querySelector("li").click()
-  }, 100);
-}, { domain: /pixiv.net/ });
-mapkey(",v", "Up[v]ote Artwork", function () {
-  const url = new URL(window.location.href);
-  if (!isArtwork(url)) { return; }
-  const toolbar = q('section [class$="Toolbar"]')
-  toolbar.querySelectorAll("div")[3].querySelector("button").click()
-}, { domain: /pixiv.net/ });
-mapkey(",f", "Toggle [f]ollow the author", function () {
-  const url = new URL(window.location.href)
-  if (!isArtwork(url)) { return; }
-  q("aside").querySelector("section").querySelector("button").click()
-}, { domain: /pixiv.net/ });
+mapkey(
+  "]]",
+  "Next Page",
+  function () {
+    const url = new URL(window.location.href);
+    if (url.href === url.origin) {
+      return;
+    }
+    const page = url.searchParams.get("p");
+    const newPage = page ? parseInt(page) + 1 : 2;
+    url.searchParams.set("p", newPage);
+    window.location.href = url.href;
+  },
+  { domain: /pixiv.net/ },
+);
+mapkey(
+  ",b",
+  "Add to [b]ookmark",
+  function () {
+    const url = new URL(window.location.href);
+    if (!isArtwork(url)) {
+      return;
+    }
+    const toolbar = q('section [class$="Toolbar"]');
+    toolbar.querySelectorAll("div")[2].querySelector("button").click();
+  },
+  { domain: /pixiv.net/ },
+);
+mapkey(
+  ",B",
+  "Add to private [B]ookmark",
+  function () {
+    const url = new URL(window.location.href);
+    if (!isArtwork(url)) {
+      return;
+    }
+    const toolbar = q('section [class$="Toolbar"]');
+    toolbar.querySelectorAll("div")[0].querySelector("button").click();
+    setTimeout(() => {
+      // Wait for the DOM to update
+      q("div[role=menu]").querySelector("li").click();
+    }, 100);
+  },
+  { domain: /pixiv.net/ },
+);
+mapkey(
+  ",v",
+  "Up[v]ote Artwork",
+  function () {
+    const url = new URL(window.location.href);
+    if (!isArtwork(url)) {
+      return;
+    }
+    const toolbar = q('section [class$="Toolbar"]');
+    toolbar.querySelectorAll("div")[3].querySelector("button").click();
+  },
+  { domain: /pixiv.net/ },
+);
+mapkey(
+  ",f",
+  "Toggle [f]ollow the author",
+  function () {
+    const url = new URL(window.location.href);
+    if (!isArtwork(url)) {
+      return;
+    }
+    q("aside").querySelector("section").querySelector("button").click();
+  },
+  { domain: /pixiv.net/ },
+);
 // #endregion
 
 // #region youtube.com
-mapkey(",n", "[n]ext Video", function () {
-  window.location.href = q("ytd-compact-video-renderer").querySelector("a").href
-}, { domain: /youtube.com/ });
+mapkey(
+  ",n",
+  "[n]ext Video",
+  function () {
+    window.location.href = q("ytd-compact-video-renderer").querySelector(
+      "a",
+    ).href;
+  },
+  { domain: /youtube.com/ },
+);
 
-mapkey(",v", "Up[v]ote Video", function () {
-  qs("like-button-view-model")[0].querySelector("button").click()
-}, { domain: /youtube.com/ });
+mapkey(
+  ",v",
+  "Up[v]ote Video",
+  function () {
+    qs("like-button-view-model")[0].querySelector("button").click();
+  },
+  { domain: /youtube.com/ },
+);
 
-mapkey(",V", "Down[v]ote Video", function () {
-  qs("dislike-button-view-model")[0].querySelector("button").click()
-}, { domain: /youtube.com/ });
+mapkey(
+  ",V",
+  "Down[v]ote Video",
+  function () {
+    qs("dislike-button-view-model")[0].querySelector("button").click();
+  },
+  { domain: /youtube.com/ },
+);
 // class="ytp-subtitles-button ytp-button"
-mapkey(",c", "toggle [c]aptions", function () {
-  q("button.ytp-subtitles-button").click()
-}, { domain: /youtube.com/ });
+mapkey(
+  ",c",
+  "toggle [c]aptions",
+  function () {
+    q("button.ytp-subtitles-button").click();
+  },
+  { domain: /youtube.com/ },
+);
 // #endregion
 
 //#region zhihu.com
-mapkey(",d", "Toggle [d]ark mode", function () {
-  const url = new URL(window.location.href);
-  if (url.searchParams.get("theme") === "dark") {
-    url.searchParams.set("theme", "light");
-  } else {
-    url.searchParams.set("theme", "dark");
-  }
-  window.location.href = url.href;
-}, { domain: /zhihu.com/ });
+mapkey(
+  ",d",
+  "Toggle [d]ark mode",
+  function () {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("theme") === "dark") {
+      url.searchParams.set("theme", "light");
+    } else {
+      url.searchParams.set("theme", "dark");
+    }
+    window.location.href = url.href;
+  },
+  { domain: /zhihu.com/ },
+);
 //#endregion
 // #endregion
 

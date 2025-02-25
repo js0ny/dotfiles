@@ -2,12 +2,32 @@ local wezterm = require("wezterm")
 local os_type = require("utils").detected_os
 local color = require("color")
 
+-- https://wezterm.org/config/lua/wezterm.gui/get_appearance.html
+-- wezterm.gui is not available to the mux server, so take care to
+-- do something reasonable when this config is evaluated by the mux
+local function get_appearance()
+  if wezterm.gui then
+    return wezterm.gui.get_appearance()
+  end
+  return "Dark"
+end
+
+local function scheme_for_appearance(appearance)
+  if appearance:find("Dark") then
+    print("Dark")
+    return "Catppuccin Mocha"
+  else
+    print("Light")
+    return "Catppuccin Latte"
+  end
+end
+
 return function(config)
   config.max_fps = 120
   config.font = wezterm.font({
     family = "JetBrainsMono Nerd Font",
   })
-  config.color_scheme = "Catppuccin Mocha"
+  config.color_scheme = scheme_for_appearance(get_appearance())
   config.font_size = 12.0
   config.front_end = "WebGpu"
   config.webgpu_power_preference = "HighPerformance"

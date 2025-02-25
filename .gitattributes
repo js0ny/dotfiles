@@ -15,6 +15,9 @@ vsvimrc linguist-language=VimL
 vimrc linguist-language=VimL
 ideavimrc linguist-language=VimL
 
+*.kbd linguist-language=Lisp
+
+
 *.png binar binary
 *.ico binary
 *.zip binary
