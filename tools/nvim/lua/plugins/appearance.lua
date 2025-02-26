@@ -75,9 +75,9 @@ return {
       current_line_blame = true,
     },
     keys = {
-      { "b", ":Gitsigns blame<CR>", desc = "Blame file" },
-      { "d", ":Gitsigns diffthis<CR>", desc = "Diff file" },
-      { "B", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
+      { "<leader>gb", ":Gitsigns blame<CR>", desc = "Blame file" },
+      { "<leader>gd", ":Gitsigns diffthis<CR>", desc = "Diff file" },
+      { "<leader>gB", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
     },
   },
   { -- Highlight and navigate between TODOs

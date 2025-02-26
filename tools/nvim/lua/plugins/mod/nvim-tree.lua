@@ -24,7 +24,7 @@ return {
   version = "*",
   lazy = false,
   keys = {
-    { "<leader>ft", ":NvimTreeToggle", desc = "Toggle File Explorer" },
+    { "<leader>ft", ":NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
   },
   dependencies = {
     "nvim-tree/nvim-web-devicons",
