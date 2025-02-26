@@ -2,9 +2,12 @@
 return {
   {
     "goolord/alpha-nvim",
-    dependencies = {
-      -- 'echasnovski/mini.icons',
-      -- 'nvim-lua/plenary.nvim'
+    dependencies = {},
+    keys = {
+      { "<leader>ba", ":Alpha<CR>", desc = "Toggle Alpha Dashboard" },
+    },
+    cmd = {
+      "Alpha",
     },
     config = function()
       local alpha = require("alpha")

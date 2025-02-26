@@ -32,15 +32,10 @@ return {
       { "williamboman/mason.nvim" },
       { "neovim/nvim-lspconfig" },
     },
-    config = function()
-      local mason_lspconfig = require("mason-lspconfig")
-      local servers = require("config.servers").servers
-
-      mason_lspconfig.setup({
-        ensure_installed = servers,
-        automatic_installation = false,
-      })
-    end,
+    opts = {
+      ensure_installed = require("config.servers").servers,
+      automatic_installation = false,
+    },
   },
   { import = "plugins.mod.conform-nvim" },
   { "nvim-treesitter/nvim-treesitter-context" },
@@ -82,7 +77,15 @@ return {
     end,
   },
   { import = "plugins.mod.trouble-nvim" },
-  { import = "plugins.mod.nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    opts = {
+      ensure_installed = { "markdown", "markdown_inline", "latex", "python" },
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
+  },
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files

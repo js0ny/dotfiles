@@ -23,30 +23,31 @@ return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
   lazy = false,
+  keys = {
+    { "<leader>ft", ":NvimTreeToggle", desc = "Toggle File Explorer" },
+  },
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  config = function()
-    require("nvim-tree").setup({
-      on_attach = my_on_attach,
-      sync_root_with_cwd = true,
-      respect_buf_cwd = true,
-      disable_netrw = true,
-      renderer = {
-        icons = {
-          glyphs = {
-            git = { -- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/main/doc/neo-tree.txt#L1077C1-L1077C29
-              unmerged = "",
-              renamed = "➜",
-              deleted = "",
-              untracked = "",
-              ignored = "",
-              unstaged = "󰄱",
-              staged = "",
-            },
+  opts = {
+    on_attach = my_on_attach,
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
+    disable_netrw = true,
+    renderer = {
+      icons = {
+        glyphs = {
+          git = { -- https://github.com/nvim-neo-tree/neo-tree.nvim/blob/main/doc/neo-tree.txt#L1077C1-L1077C29
+            unmerged = "",
+            renamed = "➜",
+            deleted = "",
+            untracked = "",
+            ignored = "",
+            unstaged = "󰄱",
+            staged = "",
           },
         },
       },
-    })
-  end,
+    },
+  },
 }

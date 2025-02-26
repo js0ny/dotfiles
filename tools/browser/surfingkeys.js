@@ -449,7 +449,7 @@ mapkey(
 );
 mapkey(
   ",d",
-  "Extract [d]aw link",
+  "Extract [d]ownload link",
   function () {
     const url = new URL(window.location.href);
     if (url.href.endsWith("&dl=0")) {
@@ -1003,3 +1003,4 @@ addVimMapKey(
 // #region Hints
 api.Hints.setCharacters("qwfpgarstdcv"); // Left-hand keys
 // #endregion
+//

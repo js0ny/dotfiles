@@ -20,39 +20,8 @@ local config = {
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     theme = "catppuccin",
-    -- theme = {
-    --   -- We are going to use lualine_c an lualine_x as left and
-    --   -- right section. Both are highlighted by c theme .  So we
-    --   -- are just setting default looks o statusline
-    --   -- normal = { c = { fg = colors.mantle, bg = colors.mantle } },
-    --   -- visual = { c = { fg = colors.mantle, bg = colors.mauve } },
-    --   -- normal = { c = { fg = colors.mantle, bg = colors.sapphire } },
-    --   inactive = { c = { fg = colors.mantle, bg = colors.mantle } },
-    --   normal = {
-    --     a = {
-    --       fg = colors.scheme.mantle,
-    --       bg = colors.mode.n,
-    --     },
-    --     b = {
-    --       bg = colors.scheme.surface2,
-    --     },
-    --     c = {
-    --       bg = colors.scheme.crust,
-    --     },
-    --   },
-    --   visual = {
-    --     a = {
-    --       fg = colors.scheme.mantle,
-    --       bg = colors.mode.v,
-    --     },
-    --   },
-    --   insert = {
-    --     a = {
-    --       fg = colors.scheme.mantle,
-    --       bg = colors.mode.i,
-    --     },
-    --   },
-    -- },
+    -- IDE-like Global Status
+    globalstaus = true,
   },
   sections = {
     -- these are to remove the defaults

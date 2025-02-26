@@ -15,8 +15,9 @@ return {
   },
   {
     "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
+    opts = {},
+    -- config = function()
+    --   require("copilot_cmp").setup()
+    -- end,
   },
 }

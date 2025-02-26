@@ -51,9 +51,6 @@ opt.foldlevel = 99
 opt.foldenable = false
 opt.foldlevelstart = 1
 
--- Disable status line: Use `lualine` instead
-opt.laststatus = 0
-
 -- Hide Command Line if empty
 opt.cmdheight = 0
 
@@ -64,7 +61,15 @@ opt.sidescrolloff = 10 -- Always show 10 columns left/right of cursor
 -- Conceal: Hide some characters, might be useful for markdown and LaTeX
 opt.conceallevel = 2
 
+-- `laststatus`
+-- Disable status line: Use `lualine` instead
+-- opt.laststatus = 0
+-- 3: Global status line (always at the bottom)
+opt.laststatus = 3
+
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- hover.nvim
+vim.o.mousemoveevent = true
 
 -- Hide zero-width space
 vim.api.nvim_create_autocmd("FileType", {

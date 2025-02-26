@@ -9,13 +9,10 @@ return {
         light = "latte",
         dark = "mocha",
       },
-      styles = {
-        -- keywords = { "underline" },
-      },
       integrations = {
         "lualine",
       },
-    }
+    },
   },
 
   { "olimorris/onedarkpro.nvim" },
@@ -31,30 +28,61 @@ return {
   },
   { -- Highlight yanked text
     "gbprod/yanky.nvim",
-    config = function()
-      require("yanky").setup({
-        highlight = {
-          on_put = true,
-          on_yank = true,
-          timer = 500,
-        },
-      })
-    end,
+    opts = {
+      highlight = {
+        on_put = true,
+        on_yank = true,
+        timer = 500,
+      },
+    },
   },
-  { import = "plugins.mod.alpha-nvim" },  -- Dashboard
-  { import = "plugins.mod.winbar-nvim" }, -- Breadcrumb
-  { import = "plugins.mod.bufferline" },  -- Buffer Top Bar
-  {                                       -- Git Blames, Changes
+  { import = "plugins.mod.alpha-nvim" }, -- Dashboard
+  { -- Breadcrumb
+    "Bekaboo/dropbar.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    },
+    opts = {},
+    keys = {
+      {
+        "<Leader>+",
+        function()
+          require("dropbar.api").pick()
+        end,
+        desc = "Pick symbols in winbar",
+      },
+      {
+        "[;",
+        function()
+          require("dropbar.api").goto_context_start()
+        end,
+        desc = "Go to start of current context",
+      },
+      {
+        "];",
+        function()
+          require("dropbar.api").select_next_context()
+        end,
+        desc = "Select next context",
+      },
+    },
+  },
+  { import = "plugins.mod.bufferline" }, -- Buffer Top Bar
+  { -- Git Blames, Changes
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup({
-        current_line_blame = true,
-      })
-    end,
+    opts = {
+      current_line_blame = true,
+    },
+    keys = {
+      { "b", ":Gitsigns blame<CR>", desc = "Blame file" },
+      { "d", ":Gitsigns diffthis<CR>", desc = "Diff file" },
+      { "B", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
+    },
   },
   { -- Highlight and navigate between TODOs
     "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
 }

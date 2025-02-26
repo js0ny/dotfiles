@@ -42,6 +42,8 @@ vim.api.nvim_create_user_command("Rename", renameCurrentBuffer, {})
 
 local leader_mappings = {
   general = {
+    { keys = "<leader>", cmd = ":Telescope find_files<CR>", opts = { desc = "Find Files" } },
+    { keys = "/", cmd = ":Telescope live_grep<CR>", opts = { desc = "Grep Files" } },
     { keys = "-", cmd = ":split<CR>", opts = { desc = "Split to down" } },
     { keys = "\\", cmd = ":vsplit<CR>", opts = { desc = "Split to right" } },
     { keys = "|", cmd = ":vsplit<CR>", opts = { desc = "Split to right" } },
@@ -49,8 +51,11 @@ local leader_mappings = {
     { keys = "n", cmd = "<C-w>j", opts = { desc = "Down Window" } },
     { keys = "e", cmd = "<C-w>k", opts = { desc = "Up Window" } },
     { keys = "i", cmd = "<C-w>l", opts = { desc = "Right Window" } },
+    { keys = "F", cmd = ":NvimTreeFindFileToggle<CR>", opts = { desc = "Toggle File Explorer" } },
     { keys = "<Tab>", cmd = "<Cmd>b#<CR>", opts = { desc = "Switch to last buffer" } },
+    { keys = "!", cmd = ":FloatermToggle<CR>", opts = { desc = "Toggle Terminal" } },
     { keys = '"', cmd = ":!wezterm-gui &<CR>", pots = { desc = "Open External Terminal(wezterm)" } },
+    { keys = ";", cmd = ":Telescope<CR>", pots = { desc = "Show Telescope Commands" } },
   },
   b = { -- +buffer
     { keys = "0", cmd = "<Cmd>b#<CR>", opts = { desc = "Switch to last buffer" } },
@@ -63,7 +68,9 @@ local leader_mappings = {
     { keys = "7", cmd = ":BufferLineGotoBuffer 7<CR>", opts = { desc = "Switch to Buffer #7" } },
     { keys = "8", cmd = ":BufferLineGotoBuffer 8<CR>", opts = { desc = "Switch to Buffer #8" } },
     { keys = "9", cmd = ":BufferLineGotoBuffer 9<CR>", opts = { desc = "Switch to Buffer #9" } },
+    { keys = "a", cmd = ":Alpha<CR>", opts = { desc = "Dashboard" } },
     { keys = "b", cmd = ":BufferLinePick<CR>", opts = { desc = "Quick Switch Buffers" } },
+    { keys = "B", cmd = ":Telescope buffers<CR>", opts = { desc = "List Buffers" } },
     { keys = "d", cmd = ":bdelete<CR>", opts = { desc = "Delete Buffer" } },
     { keys = "D", cmd = ":BufferLineCloseOthers<CR>", opts = { desc = "Delete Other Buffers" } },
     { keys = "xx", cmd = ":BufferLineCloseOthers<CR>", opts = { desc = "Delete Other Buffers" } },
@@ -82,15 +89,26 @@ local leader_mappings = {
     { keys = "y", cmd = ":%y+<CR>", opts = { desc = "Copy Buffer to Clipboard" } },
   },
   c = { -- +code/compile
+    { keys = "r", cmd = ":RunCode<CR>", opts = { desc = "Run code" } },
     { keys = "R", cmd = vim.lsp.buf.rename, opts = { desc = "Rename symbol under cursor" } },
+    { keys = "e", cmd = ":Telescope diagnostics<CR>", opts = { desc = "Navigate errors/warnings" } },
     { keys = "f", cmd = formatFx, opts = { desc = "Format buffer" } },
+    { keys = "s", cmd = ":Telescope treesitter<CR>", opts = { desc = "Search symbols" } },
+    { keys = "S", cmd = ":Telescope grep_string<CR>", opts = { desc = "Search current symbol" } },
   },
   f = { -- +file/find
+    { keys = "f", cmd = ":Telescope fd<CR>", opts = { desc = "Find Files" } },
+    { keys = "F", cmd = ":GrugFar<CR>", opts = { desc = "Search & Replace" } },
+    { keys = "l", cmd = ":set filetype=", opts = { desc = "Set Filetype to ..." } },
     { keys = "n", cmd = ":new<CR>", opts = { desc = "New File" } },
     { keys = "s", cmd = ":write<CR>", opts = { desc = "Save File" } },
     { keys = "S", cmd = ":wall<CR>", opts = { desc = "Save All Files" } },
+    { keys = "b", cmd = ":Telescope buffers<CR>", opts = { desc = "List Buffers" } },
     { keys = "D", cmd = "!trash-rm %<CR>", opts = { desc = "Delete current file" } },
     { keys = "t", cmd = ":NvimTreeFindFileToggle<CR>", opts = { desc = "Toggle File Tree" } },
+    { keys = "T", cmd = ":FloatermNew<CR>", opts = { desc = "Spawn a float terminal" } },
+    { keys = "h", cmd = ":Telescope oldfiles<CR>", opts = { desc = "Search history files" } },
+    { keys = "c", cmd = ":Telescope find_files cwd=~/.config/nvim<CR>", opts = { desc = "Search Config" } },
     { keys = "o", cmd = ":!open %<CR>", opts = { desc = "Open file in default program" } },
     { keys = "R", cmd = renameCurrentBuffer, opts = { desc = "Rename current file" } },
     { keys = "x", cmd = ":Lazy<CR>", opts = { desc = "Open extension view" } },
@@ -111,11 +129,21 @@ local leader_mappings = {
     },
   },
   g = { -- +git/version control
+    { keys = "g", cmd = ":LazyGit<CR>", opts = { desc = "Toggle LazyGit" } },
+    { keys = "c", cmd = ":Telescope git_commits<CR>", opts = { desc = "Show commits" } },
+    { keys = "b", cmd = ":Gitsigns blame<CR>", opts = { desc = "Blame file" } },
+    { keys = "d", cmd = ":Gitsigns diffthis<CR>", opts = { desc = "Diff file" } },
+    { keys = "B", cmd = ":Gitsigns toggle_current_line_blame<CR>", opts = { desc = "Toggle line blame" } },
+    { keys = "s", cmd = ":Telescope git_status<CR>", opts = { desc = "Git Status" } },
+    { keys = "t", cmd = ":Telescope git_branches<CR>", opts = { desc = "Git Branches" } },
   },
   j = { -- +lsp
     { keys = "r", cmd = vim.lsp.buf.references, opts = { desc = "Show current reference" } },
   },
   p = { -- +project
+    { keys = "p", cmd = ":Telescope projects<CR>", opts = { desc = "List all Projects" } },
+    { keys = "g", cmd = ":Telescope projects<CR>", opts = { desc = "List all Git Projects" } },
+    { keys = "s", cmd = ":Telescope session-lens<CR>", opts = { desc = "List all sessions" } },
   },
   q = { -- +quit
     { keys = "q", cmd = ":q<CR>", opts = { desc = "Quit" } },
@@ -126,8 +154,10 @@ local leader_mappings = {
   t = { -- +toggle/test
     { keys = "f", cmd = ":NvimTreeToggle", opts = { desc = "Toggle File Explorer" } },
     { keys = "F", cmd = ":FormatToggle<CR>", opts = { desc = "Toggle autoformat-on-save" } },
+    { keys = "t", cmd = ":FloatermToggle<CR>", opts = { desc = "toggle visibility of the float terminal" } },
   },
   u = { -- +ui
+    { keys = "i", cmd = ":Telescope colorscheme<CR>", opts = { desc = "Change colorscheme" } },
     { keys = " ", cmd = ":set list!", opts = { desc = "Toggle show all symbols" } },
   },
   w = { -- +window
