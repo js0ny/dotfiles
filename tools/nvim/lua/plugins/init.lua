@@ -8,6 +8,7 @@ require("lazy").setup({
     { import = "plugins.completion" },
     { import = "plugins.fileutils" },
     { import = "plugins.lsp" },
+    { import = "plugins.dap" },
     { import = "plugins.edit" },
     { import = "plugins.misc" },
   },
