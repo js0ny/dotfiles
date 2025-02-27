@@ -148,7 +148,7 @@
        (latex +latexmk +cdlatex +lsp)             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
-       ;lua               ; one-based indices? one-based indices
+                                        ;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -197,7 +197,10 @@
 
        :config
        ;;literate
-       (default +bindings +smartparens))
+       (default +bindings +smartparens)
+       :personal
+       telega
+       )
 
 (setq custom-file (expand-file-name ".custom.el" doom-user-dir))
 (load custom-file t)

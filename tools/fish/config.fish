@@ -19,3 +19,5 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # moonbit
 fish_add_path "$HOME/.moon/bin"
+
+

@@ -19,8 +19,8 @@
   :group 'org-pomodoro)
 
 (defun org-pomodoro-send-telegram-message (message)
-  (interactive)
   "使用 Telegram bot 发送消息。"
+  (interactive)
   (when (and (not (string-empty-p org-pomodoro-telegram-bot-token))
              (not (string-empty-p org-pomodoro-telegram-chat-id)))
     (request

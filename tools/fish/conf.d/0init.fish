@@ -148,6 +148,11 @@ if status is-interactive
     end
 end
 
+if command -v opam > /dev/null
+    set OPAMROOT $XDG_DATA_HOME/opam
+    test -r $OPAMROOT/opam-init/init.fish && source $OPAMROOT/opam-init/init.fish > /dev/null 2> /dev/null; or true
+end
+
 # Coursier: Scala dependency manager
 if command -v coursier > /dev/null
     set -gx PATH "$PATH:$XDG_DATA_HOME/coursier/bin"
