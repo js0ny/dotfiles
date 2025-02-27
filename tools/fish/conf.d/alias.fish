@@ -154,3 +154,4 @@ end
 function __last_history_item; echo $history[1]; end
 
 abbr -a !! --position anywhere --function __last_history_item
+
