@@ -1,1 +1,4 @@
 editMode: Vi
+bind: n down
+bind: e up
+bind: l vi-insert

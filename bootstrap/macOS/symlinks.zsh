@@ -9,7 +9,7 @@ source "$DOTFILES/bootstrap/components/symlinks.bash"
 echo "[INFO] DOTFILES = $DOTFILES"
 
 echo "[ACTION] Press any key to proceed"
-read -n 1
+read -r -n1
 
 echo "[INFO] Setting up symbolic links"
 # 使用 zsh 的关联数组语法
