@@ -29,6 +29,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = {
     { "<leader><leader>", ":Telescope find_files<CR>", desc = "Find Files" },
+    { "<leader>fc", ":Telescope find_files cwd=~/.config/nvim<CR>", desc = "Edit configs" },
     { "<leader>/", ":Telescope live_grep<CR>", desc = "Grep Files" },
     { "<leader>;", ":Telescope<CR>", desc = "Show Telescope Commands" },
     { "<leader>ui", ":Telescope colorscheme<CR>", desc = "Change colorscheme" },
@@ -40,6 +41,7 @@ return {
     { "<leader>gc", ":Telescope git_commits<CR>", desc = "Show commits" },
     { "<leader>fb", ":Telescope buffers<CR>", desc = "List Buffers" },
     { "<leader>ff", ":Telescope fd<CR>", desc = "Find Files" },
+    { "<leader>fh", ":Telescope oldfiles<CR>", desc = "Recent Files" },
     { "<leader>ce", ":Telescope diagnostics<CR>", desc = "Navigate errors/warnings" },
     { "<leader>cs", ":Telescope treesitter<CR>", desc = "Search symbols" },
     { "<leader>cS", ":Telescope grep_string<CR>", desc = "Search current symbol" },
