@@ -100,3 +100,5 @@
 
 (if (bound-and-true-p ISMAC)
     (setq org-babel-C-compiler "clang"))
+
+(load! "+pomodoro-telegram.el")
