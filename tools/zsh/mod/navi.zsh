@@ -3,14 +3,13 @@
 # Author: js0ny
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
-
 # Define __CD_CMD as "cd" by default
 __CD_CMD="cd"
 
 # If zoxide is available, use it
 if command -v zoxide >/dev/null; then
-    __CD_CMD="z"
-    eval "$(zoxide init zsh)"
+  __CD_CMD="z"
+  eval "$(zoxide init zsh)"
 fi
 
 # Define aliases for quick navigation
@@ -25,7 +24,7 @@ alias - "$__CD_CMD -"
 
 # Define zls function for cd + ls
 zls() {
-    "$__CD_CMD" "$1" && ls
+  "$__CD_CMD" "$1" && ls
 }
 alias cdls=zls
 
