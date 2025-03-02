@@ -121,3 +121,6 @@
   )
 
 (load! "calendar.el")
+
+
+(load! "telega.el")
