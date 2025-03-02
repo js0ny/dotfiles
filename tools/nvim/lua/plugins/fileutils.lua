@@ -9,6 +9,7 @@ return {
   },
   { import = "plugins.mod.nvim-tree" },
   { import = "plugins.mod.telescope" },
+  -- { import = "plugins.mod.fzf" },
   {
     "ahmedkhalf/project.nvim",
     opts = {

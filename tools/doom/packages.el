@@ -55,3 +55,7 @@
 (package! rime)
 (package! ox-typst)
 (package! cal-china-x)
+
+(package! telega :recipe (:files (:defaults "contrib/*.el" "etc" "server" "Makefile")))
+
+(package! org-super-agenda)

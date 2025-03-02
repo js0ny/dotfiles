@@ -61,3 +61,8 @@ set directory=$XDG_STATE_HOME/vim/swap
 set undodir=$XDG_STATE_HOME/vim/undo
 set viewdir=$XDG_STATE_HOME/vim/view
 " set shada+=n$XDG_STATE_HOME/vim/shada
+" Leader
+let mapleader = "\<Space>"
+nnoremap <leader><leader> :FZF<CR>
+" Misc
+syntax on

@@ -1,4 +1,3 @@
-;; vim:ft=kmonad
 ;; Linux kmonad.kbd
 
 (defcfg
