@@ -3,20 +3,20 @@
 # ~/.bash_aliases
 # or in if antidots and wheel
 # ~/.config/bash/bash_aliases
-if command -v zoxide > /dev/null ; then
+if command -v zoxide >/dev/null; then
     eval "$(zoxide init bash)"
-# Relative navigation #
+    # Relative navigation #
     alias ..="z .."
     alias ...="z ../.."
     alias ....="z ../../.."
     alias .....="z ../../../.."
     alias ......="z ../../../../.."
-# Use `-` to jump to the previous directory
-# Oh-My-Zsh defines a similar one
-    -(){
+    # Use `-` to jump to the previous directory
+    # Oh-My-Zsh defines a similar one
+    -() {
         z -
     }
-    zls(){
+    zls() {
         cd $1 && ls
     }
 else
@@ -29,7 +29,6 @@ else
         cd -
     }
 fi
-
 
 alias ni=touch
 alias cls=clear
@@ -45,7 +44,7 @@ alias sn="sudo nvim -u ~/.config/nvim/init.lua"
 
 # Dev #
 alias gpp='g++ -std=c++2b' # Set the default C++ standard to C++20
-alias gcc='gcc -std=c99' # Set the default C standard to C99
+alias gcc='gcc -std=c99'   # Set the default C standard to C99
 alias cl='clang -std=c99'
 alias clpp='clang++ -std=c++2b'
 alias python=python3 # Set the default Python version to Python 3
@@ -54,9 +53,10 @@ alias ipy=ipython
 
 alias g=lazygit
 
+alias doomd="emacsclient -t ~/.config/doom/"
 
 # lsd - modern ls
-if command -v lsd > /dev/null; then
+if command -v lsd >/dev/null; then
     alias ls='lsd'
     alias l='lsd -lah'
     alias ll='lsd -l'
@@ -68,46 +68,44 @@ else
     alias ll='ls -l'
 fi
 
-
 # Functions #
 mkcd() {
-  mkdir -p $1 && cd $1
+    mkdir -p $1 && cd $1
 }
-cdls(){
-	cd $1 && ls
+cdls() {
+    cd $1 && ls
 }
-tc(){
-	touch $1 && code $1
+tc() {
+    touch $1 && code $1
 }
-tv(){
-	touch $1 && nvim $1
+tv() {
+    touch $1 && nvim $1
 }
-mt(){
+mt() {
     mkdir -p $(dirname $1) && touch $1
 }
-mtv(){
+mtv() {
     mkdir -p $(dirname $1) && touch $1 && nvim $1
 }
 
-
 alias update="source $DOTFILES/scripts/update.zsh"
 
-if command -v pacman > /dev/null; then
+if command -v pacman >/dev/null; then
     alias pac="sudo pacman"
     alias paci="sudo pacman -S"
     alias pacr="sudo pacman -R"
     alias pacu="sudo pacman -Syu"
     alias pacl="pacman -Q"
-    if command -v paru > /dev/null; then
+    if command -v paru >/dev/null; then
         alias pacs="paru -Ss"
-    elif command -v yay > /dev/null; then
+    elif command -v yay >/dev/null; then
         alias pacs="yay -Ss"
     else
         alias pacs="pacman -Ss"
     fi
 fi
 
-if command -v apt > /dev/null; then
+if command -v apt >/dev/null; then
     alias apt="sudo apt"
     alias apti="sudo apt install"
     alias aptr="sudo apt remove"
@@ -116,15 +114,13 @@ if command -v apt > /dev/null; then
     alias aptl="apt list --installed"
 fi
 
-if command -v brew > /dev/null; then
+if command -v brew >/dev/null; then
     alias brewi="brew install"
     alias brewr="brew uninstall"
     alias brewu="brew update && brew upgrade"
     alias brews="brew search"
     alias brewl="brew list"
 fi
-
-
 
 # TODO: Does not work
 if [ "$TERM" = "xterm-ghostty" ] || [ "$TERM" = "xterm-kitty" ]; then
