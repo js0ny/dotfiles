@@ -116,6 +116,8 @@ echo "[INFO] Setting up symbolic links"
 
 source "$DOTFILES"/bootstrap/linux/symlinks.bash
 
+set +x
+
 if [ "$WHEEL" -eq 1 ]; then
   source "$DOTFILES"/tools/bash/xdg-compact.sh
   source "$DOTFILES"/tools/bash/global.bashrc
@@ -123,6 +125,8 @@ fi
 source "$DOTFILES"/tools/bash/profile
 source "$DOTFILES"/tools/bash/bashrc
 source "$DOTFILES"/tools/bash/bash_aliases
+
+set -x
 
 if command -v zsh >/dev/null 2>&1; then
 

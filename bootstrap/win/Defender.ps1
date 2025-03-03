@@ -1,4 +1,4 @@
-# Run as Administrator
+#Requires -RunAsAdministrator
 
 Set-MpPreference -EnableControlledFolderAccess 1
 

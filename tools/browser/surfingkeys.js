@@ -297,6 +297,7 @@ const searchAliases = [
   ["gh", "GitHub", "https://github.com/search?type=repositories&q="],
   ["gg", "Google", "https://www.google.com/search?q="],
   ["mc", "Metacritic", "https://www.metacritic.com/search/"],
+  ["nx", "NixPackages", "https://search.nixos.org/packages?query="],
   ["ng", "NuGet", "https://www.nuget.org/packages?q="],
   ["np", "npm", "https://www.npmjs.com/search?q="],
   ["pa", "Pacman", "https://archlinux.org/packages/?q="],
@@ -323,6 +324,8 @@ const searchAliases = [
   ],
   ["yt", "YouTube", "https://www.youtube.com/results?search_query="],
 ];
+
+api.unmap("on")
 
 // Add all search aliases
 searchAliases.forEach(([alias, name, url]) => {
@@ -1003,4 +1006,3 @@ addVimMapKey(
 // #region Hints
 api.Hints.setCharacters("qwfpgarstdcv"); // Left-hand keys
 // #endregion
-//
