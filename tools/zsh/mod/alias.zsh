@@ -27,6 +27,8 @@ alias ipy=ipython
 
 alias g=lazygit
 
+alias doomrc="emacsclient -t ~/.config/doom/"
+
 # lsd - modern ls
 if command -v lsd >/dev/null 2>&1; then
   alias ls='lsd'

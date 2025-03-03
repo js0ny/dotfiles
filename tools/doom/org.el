@@ -72,12 +72,13 @@
         )
   )
 
+;;; org-agenda
+
 (after! org-agenda
   ;; (setq org-agenda-files (directory-files-recursively "~/OrgFiles/tasks/" "\\.org$"))
   (setq org-agenda-files (list (concat org-directory "tasks/")))
   )
 
-(map! :leader :desc "Org Agenda" "A" #'org-agenda)
 
 (map! :after org-agenda
       :map evil-org-agenda-mode-map
@@ -87,8 +88,16 @@
       :m "ge" #'org-agenda-previous-item
       :m "N" #'org-agenda-priority-up
       :m "E" #'org-agenda-priority-down
-      :m "i" #'evil-forward-char)
+      :m "i" #'evil-forward-char
+      :leader :desc "Org Agenda" "A" #'org-agenda)
 
+;; org-agenda-clockreport
+
+(setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3 :fileskip0 t :compact t :narrow 80))
+
+;;; org-clock
+
+;; org-pomodoro
 
 (after! org-pomodoro
   (setq org-pomodoro-format "🍅~%s")
@@ -96,9 +105,18 @@
   (setq org-pomodoro-long-break-format "猛摸~%s")
   )
 
-;; Org-Babel
+
+;;; org-babel
 
 (if (bound-and-true-p ISMAC)
     (setq org-babel-C-compiler "clang"))
 
 (load! "+pomodoro-telegram.el")
+
+;;; org-export
+
+;; icalendar
+
+(setq org-icalendar-use-scheduled '(event-if-todo event-if-not-todo))
+(setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo))
+(setq org-icalendar-combined-agenda-file "~/Dropbox/org.ics")

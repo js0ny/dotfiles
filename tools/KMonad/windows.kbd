@@ -1,0 +1,77 @@
+;; Windows kmonad.kbd
+;; Detailed comments can be found at ./linux.kbd
+
+(defcfg
+    input (low-level-hook)
+    output (send-event-sink)
+    fallthrough true
+    allow-cmd true
+    cmp-seq ralt
+    cmp-seq-delay 0
+    implicit-around around
+    )
+
+;; Razer BlackWidow V3 Mini - 65% ANSI layout
+;; (defsrc
+;;   esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc del
+;;   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup
+;;   caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn
+;;   lsft z    x    c    v    b    n    m    ,    .    /    rsft   up      ins
+;;   lctl lmet lalt           spc            ralt     rctl     left down  right
+;; )
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    \   del
+  tab  q    w    f    p    g    j    l    u    y    ;    [    ]    bspc pgup
+  caps a    r    s    t    d    h    n    e    i    o    '    ret       pgdn
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft   up      ins
+  lctl lmet lalt         spc            ralt     rctl     left down  right
+)
+
+;; (deflayer name
+;;   _  _    _    _    _    _    _    _    _    _    _    _    _    _ _
+;;   _  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+;;   _ _    _    _    _    _    _    _    _    _    _    _    _       _
+;;   _ _    _    _    _    _    _    _    _    _    _    _   _      _
+;;   _ _ _           _            _     _     _ _  _
+;; )
+
+;; CapsLock -> Esc when tapped, Ctrl when held
+(defalias mo1 (tap-next-release esc lctl))
+(defalias spctl (tap-next-release spc (layer-toggle spcl)))
+
+
+;; Colemak
+(deflayer colemak
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    \   del
+  tab  q    w    f    p    g    j    l    u    y    ;    [    ]    bspc pgup
+  @mo1 a    r    s    t    d    h    n    e    i    o    '    ret       pgdn
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft   up      ins
+  lctl lmet lalt         @spctl            ralt     rctl     left down  right
+)
+
+(deflayer qwerty
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc del
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup
+  @mo1 a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft   up      ins
+  lctl lmet lalt         @spctl            ralt     rctl     left down  right
+)
+
+
+;; SPACE Layer
+(deflayer spcl
+  grv f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11  f12    \    del
+  tab  q    w    f    p    g    j    l    u    y    ;   pgup  pgdn    bspc pgup
+  @mo1 a    r    s    t    d    left down up right    end    '    ret       pgdn
+  lsft z    x    c    v    b    home    m    ,    .    /    rsft   up      ins
+  lctl lmet lalt           spc            ralt     rctl     left down  right
+)
+
+;; (deflayer spcl
+;;   esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc del
+;;   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup
+;;   @mo1 a    s    d    f    g    left down up right    ;    '    ret       pgdn
+;;   lsft z    x    c    v    b    n    m    ,    .    /    rsft   up      ins
+;;   lctl lmet lalt         spc            ralt     rctl     left down  right
+;; )

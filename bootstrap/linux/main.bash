@@ -27,11 +27,24 @@ IS_WSL=0
 WINDOWS_USER=""
 PACKAGE_MANAGER=""
 
+# WSL detection
 # NOTE: This is NOT a POSIX-compliant way, for POSIX-compliant way, use case/esac
-if [[ "$(uname -r)" = *Microsoft* ]]; then
-  echo "[INFO] Running on WSL1 Skipping GUI setup"
-  IS_WSL=1
+if [[ "$(uname -r)" = *icrosoft* ]]; then
+  echo "[INFO] Running on WSL"
   WINDOWS_USER="$(cmd.exe /c "echo %USERNAME%" | tr -d '\r')"
+  IS_WSL=1
+fi
+
+if [ "$IS_WSL" -eq 1 ]; then
+  if [[ "$(uname -r)" = *Microsoft* ]]; then
+    IS_WSL=1
+  elif [[ "$(uname -r)" = *microsoft* ]]; then
+    IS_WSL=2
+  fi
+fi
+
+if [ "$IS_WSL" -eq 1 ]; then
+  echo "[INFO] Running on WSL1 Skipping GUI setup"
 else
   read -p "[ACTION] Do you want to setup Linux GUI? (y/N) " -r choice
   case "$choice" in
@@ -60,7 +73,16 @@ if [ "$WHEEL" -eq 1 ]; then
     PACKAGE_MANAGER="pacman"
   else
     echo "[ERROR] Unsupported package manager"
-    exit 1
+    read -p "[ACTION] Do you still want to continue? (y/N) " -r choice
+    case "$choice" in
+      y | Y)
+        :
+        ;;
+      *)
+        echo "[ERROR] Exiting"
+        exit 1
+        ;;
+    esac
   fi
 fi
 
@@ -94,6 +116,8 @@ echo "[INFO] Setting up symbolic links"
 
 source "$DOTFILES"/bootstrap/linux/symlinks.bash
 
+set +x
+
 if [ "$WHEEL" -eq 1 ]; then
   source "$DOTFILES"/tools/bash/xdg-compact.sh
   source "$DOTFILES"/tools/bash/global.bashrc
@@ -101,6 +125,8 @@ fi
 source "$DOTFILES"/tools/bash/profile
 source "$DOTFILES"/tools/bash/bashrc
 source "$DOTFILES"/tools/bash/bash_aliases
+
+set -x
 
 if command -v zsh >/dev/null 2>&1; then
 
@@ -135,7 +161,6 @@ echo "[INFO] Installing Doom Emacs"
 
 source "$DOTFILES"/bootstrap/components/emacs.sh
 
-# TODO: Untestest
 if [ "$IS_WSL" -eq 1 ]; then
   ln -sf "/mnt/c/Users/$WINDOWS_USER" "$HOME/winhome"
   ln -sf "/mnt/c/Users/$WINDOWS_USER/Downloads" "$HOME/Downloads"
@@ -159,7 +184,6 @@ source "$DOTFILES"/bootstrap/linux/chromium-flags.bash
 
 source "$DOTFILES"/bootstrap/components/rime.sh
 
-# TODO: Rewrite the script(mocha_port.fish) in bash/zsh or POSIX-compliant shell
 echo "[INFO] Installing Color Scheme (Catppuccin Mocha)"
 
 # fish $DOTFILES/bootstrap/temp/mocha_port.fish

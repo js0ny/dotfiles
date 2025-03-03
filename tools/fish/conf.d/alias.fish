@@ -60,6 +60,9 @@ abbr --add ipy ipython
 
 abbr --add g lazygit
 
+
+abbr --add doomrc "emacsclient -t ~/.config/doom/"
+
 # lsd - modern ls
 if command -v lsd > /dev/null
     alias ls='lsd'

@@ -1,9 +1,17 @@
 echo "[INFO] Installing Rime"
 
-git clone --depth 1 https://github.com/js0ny/rime_wanxiang_pro.git ~/Library/Rime
+case "$(uname)" in
+  Linux)
+    RIMEDIR="${RIMEDIR:-$HOME/.local/share/fcitx5/rime}"
+    ;;
+  Darwin)
+    RIMEDIR="${RIMEDIR:-$HOME/Library/Rime}"
+    ;;
+esac
+
+git clone --depth 1 https://github.com/js0ny/rime_wanxiang_pro.git "$RIMEDIR"
 cd ~/Library/Rime || exit
 
 just init
 # just install_rime
-## Rime is installed via Brewfile
 just clone_plum

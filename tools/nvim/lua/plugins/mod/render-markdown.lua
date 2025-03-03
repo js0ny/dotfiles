@@ -7,7 +7,8 @@ return {
       file_types = { "markdown", "Avante" },
       render_modes = { "n", "c", "t" },
       latex = {
-        enabled = true,
+        -- enabled = true,
+        enabled = false,
         converter = "latex2text",
         highlight = "RenderMarkdownMath",
         top_pad = 0,
