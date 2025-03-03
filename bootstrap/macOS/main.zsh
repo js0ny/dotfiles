@@ -46,6 +46,18 @@ echo "[INFO] Setting up system properties"
 
 source $DOTFILES/bootstrap/macOS/plist.zsh
 
+read -p "[ACTION] Do you want to use sudo with touch ID? (Y/n) " -r choice
+case "$choice" in
+  n | N)
+    :
+    ;;
+  *)
+    # Use `sudo cp` to prevent losing sudo access
+    sudo cp /etc/pam.d/sudo /etc/pam.d/sudo.bak
+    sudo cp $DOTFILES/platforms/mac/etc/pam.d/sudo /etc/pam.d/sudo
+    ;;
+esac
+
 echo "[INFO] Installing Homebrew Packages"
 
 # Load Brewfile
