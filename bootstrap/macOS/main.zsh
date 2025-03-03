@@ -88,9 +88,10 @@ echo "[INFO] Installing Doom Emacs"
 
 source $DOTFILES/bootstrap/components/emacs.sh
 
+
 echo "[INFO] Installing Color Scheme (Catppuccin Mocha)"
 
-fish $DOTFILES/bootstrap/temp/mocha_port.fish
+bash $DOTFILES/bootstrap/components/mocha-port.bash
 
 # Misc
 
@@ -99,4 +100,7 @@ dotnet tool install --global dotnet-repl
 pnpm install -g typescript
 pnpm install -g tsx
 
-echo "Done!"
+echo "Done! For additional setup, boot to recovery mode and run the following command:"
+echo "csrutil enable --without fs --without debug --without nvram"
+echo "Then, reboot the system"
+echo "Run the post-install script to finish the setup"

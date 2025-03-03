@@ -1,11 +1,11 @@
 return {
-  { "wakatime/vim-wakatime", lazy = false },
+  { "wakatime/vim-wakatime",               lazy = false },
   {
     "voldikss/vim-floaterm",
     keys = {
-      { "!", ":FloatermToggle<CR>", desc = "Toggle Terminal" },
+      { "<leader>!",  ":FloatermToggle<CR>", desc = "Toggle Terminal" },
       { "<leader>tt", ":FloatermToggle<CR>", desc = "Toggle Terminal" },
-      { "<leader>fT", ":FloatermNew<CR>", desc = "Spawn a float terminal" },
+      { "<leader>fT", ":FloatermNew<CR>",    desc = "Spawn a float terminal" },
     },
     cmd = {
       "FloatermToggle",
@@ -46,8 +46,8 @@ return {
       -- configuration goes here
     },
   },
-  {
-    "3rd/image.nvim",
-    opts = {},
-  },
+  { import = "plugins.mod.image-nvim" },
+  --   "3rd/image.nvim",
+  --   opts = {},
+  -- },
 }

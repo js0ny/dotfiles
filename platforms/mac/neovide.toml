@@ -2,11 +2,13 @@
 # ln -sf $DOTFILES/mac/neovide.toml $XDG_CONFIG_HOME/neovide/config.toml
 # New-Item -ItemType SymbolicLink -Path $Env:XDG_CONFIG_HOME/neovide/config.toml -Value $DOTFILES\mac\neovide.toml (Mac)
 # https://neovide.dev/config-file.html?highlight=toml#config-file
-fork = false
-frame = "full"
+# 设置为 fork 默认后台运行，不会占用终端
+fork = true
+# frame = "full"
 idle = true
 maximized = false
-neovim-bin = "/opt/homebrew/bin/nvim"
+# neovim-bin = "/opt/homebrew/bin/nvim"
+frame = "transparent"
 no-multigrid = false
 srgb = false
 tabs = true
@@ -16,6 +18,8 @@ vsync = true
 wsl = false
 
 [font]
-normal = ["CaskaydiaCove Nerd Font", "霞鹜文楷等宽"] # Will use the bundled Fira Code Nerd Font by default
+normal = [
+    "Iosevka Nerd Font",
+    "霞鹜文楷等宽",
+] # Will use the bundled Fira Code Nerd Font by default
 size = 14.0
-

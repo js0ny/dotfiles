@@ -11,5 +11,8 @@ vsync = false
 wsl = true
 
 [font]
-normal = ["CaskaydiaCove Nerd Font", "霞鹜文楷等宽"] # Will use the bundled Fira Code Nerd Font by default
+normal = [
+  "Iosevka Nerd Font",
+  "霞鹜文楷等宽",
+] # Will use the bundled Fira Code Nerd Font by default
 size = 14.0
