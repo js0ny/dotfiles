@@ -1,6 +1,6 @@
+;;; ~/.doom.d/+calendar.el -*- lexical-binding: t; -*-
 ;;; https://github.com/cnsunyour/.doom.d/blob/master/modules/cnsunyour/calendar/config.el
 
-;;; ~/.doom.d/+calendar.el -*- lexical-binding: t; -*-
 
 ;; 日历及纪念日相关设置
 
@@ -15,6 +15,13 @@
 ;;              (y (+ (* 100 cycle) yy)))
 ;;         (diary-chinese-anniversary lunar-month lunar-day y mark))
 ;;     (diary-chinese-anniversary lunar-month lunar-day year mark)))
+
+(setq calendar-date-style 'iso)
+(setq diary-date-forms '((year "年" month "月" day "日" " 星期[" "日一二三四五六" "]") ;; Chinese
+                         (year "-" month "-" day) ;; ISO
+                         (month "[-/]" day "[^-/0-9]") (year "[-/]" month "[-/]" day "[^0-9]")
+                         (monthname " *" day "[^-0-9]") (year " *" monthname " *" day "[^0-9]")
+                         (dayname "\\W")))
 
 (setq calendar-mark-holidays-flag t
       calendar-week-start-day 1)
@@ -66,3 +73,7 @@
   :config
   (setq calendar-holidays (append cal-china-x-important-holidays
                                   cal-china-x-general-holidays)))
+
+;; diary
+
+(setq diary-file "~/.local/js0ny/diary")

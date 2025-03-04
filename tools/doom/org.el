@@ -3,6 +3,8 @@
 (setq org-directory "~/OrgFiles/")
 ;; (setq org-roam-directory  "~/OrgFiles/roam/")
 
+;;; org general
+
 (after! org
   ;; For CJK users
   ;; Insert zero width space around the emphasis symbols, this might be useful for
@@ -25,7 +27,7 @@
   ;;
 
   (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d@/!)" "CANCELLED(c@)")
-                            (sequence "[ ](T)" "[-](P)" "[?](Q)" "|" "[X](D)")))
+                            ))
 
   ;; Keymaps
   (map! :map org-mode-map
@@ -89,7 +91,93 @@
       :m "N" #'org-agenda-priority-up
       :m "E" #'org-agenda-priority-down
       :m "i" #'evil-forward-char
+      :m "," #'org-agenda-priority
+      :m "x" #'org-agenda-todo
+      :m "t" #'org-agenda-set-tags
+      :m "w" #'org-save-all-org-buffers
+      ;; d: date reschedule
+      :m "ds" #'org-agenda-schedule
+      :m "dd" #'org-agenda-deadline
+      :m "$" #'org-agenda-archive
+      :m "!" #'org-agenda-toggle-deadlines
+      ;; c: clock
+      :m "cp" #'org-pomodoro
+      :m "vd" #'org-agenda-day-view
+      :m "vw" #'org-agenda-week-view
+      :m "vm" #'org-agenda-month-view
+      :m "vy" #'org-agenda-year-view
+      :m "v." #'org-agenda-reset-view
       :leader :desc "Org Agenda" "A" #'org-agenda)
+
+(setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
+                                 (todo . " %i %-12:c %e")
+                                 (tags . " %i %-12:c %e ")
+                                 (search . " %i %-12:c %e ")))
+
+
+;; https://github.com/AbstProcDo/Master-Emacs-From-Scratch-with-Solid-Procedures/blob/master/06.Emacs-as-Agenda-by-Org.org
+;;Sunrise and Sunset
+;;日出而作, 日落而息
+(defun js0ny/diary-sunrise ()
+  (let ((dss (diary-sunrise-sunset)))
+    (with-temp-buffer
+      (insert dss)
+      (goto-char (point-min))
+      (while (re-search-forward " ([^)]*)" nil t)
+        (replace-match "" nil nil))
+      (goto-char (point-min))
+      (search-forward ",")
+      (buffer-substring (point-min) (match-beginning 0)))))
+
+(defun js0ny/diary-sunset ()
+  (let ((dss (diary-sunrise-sunset))
+        start end)
+    (with-temp-buffer
+      (insert dss)
+      (goto-char (point-min))
+      (while (re-search-forward " ([^)]*)" nil t)
+        (replace-match "" nil nil))
+      (goto-char (point-min))
+      (search-forward ", ")
+      (setq start (match-end 0))
+      (search-forward " at")
+      (setq end (match-beginning 0))
+      (goto-char start)
+      (capitalize-word 1)
+      (buffer-substring start end))))
+
+(after! (org-agenda cal-china-x)
+  (setq org-agenda-format-date 'org-agenda-format-date-aligned)
+
+
+  (defun org-agenda-format-date-aligned (date)
+    "Format a DATE string for display in the daily/weekly agenda, or timeline.
+      This function makes sure that dates are aligned for easy reading."
+    (require 'cal-iso)
+    (let* ((dayname (aref cal-china-x-days
+                          (calendar-day-of-week date)))
+           (day (cadr date))
+           (month (car date))
+           (year (nth 2 date))
+           (cn-date (calendar-chinese-from-absolute (calendar-absolute-from-gregorian date)))
+           (cn-month (cl-caddr cn-date))
+           (cn-day (cl-cadddr cn-date))
+           (cn-month-string (concat (aref cal-china-x-month-name
+                                          (1- (floor cn-month)))
+                                    (if (integerp cn-month)
+                                        ""
+                                      "(闰月)")))
+           (cn-day-string (aref cal-china-x-day-name
+                                (1- cn-day))))
+      (format "%04d-%02d-%02d 周%s %s%s" year month
+              day dayname cn-month-string cn-day-string))))
+
+
+(setq org-agenda-time-grid (quote ((daily today require-timed)
+                                   (300 600 900 1200 1500 1800 2100 2400)
+                                   "......"
+                                   "-----------------------------------------------------"
+                                   )))
 
 ;; org-agenda-clockreport
 
@@ -100,7 +188,7 @@
 ;; org-pomodoro
 
 (after! org-pomodoro
-  (setq org-pomodoro-format "🍅~%s")
+  (setq org-pomodoro-format "Pomo~%s")
   (setq org-pomodoro-short-break-format "摸~%s")
   (setq org-pomodoro-long-break-format "猛摸~%s")
   )
