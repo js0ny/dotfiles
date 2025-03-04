@@ -1,17 +1,6 @@
 return {
-  { "wakatime/vim-wakatime",               lazy = false },
-  {
-    "voldikss/vim-floaterm",
-    keys = {
-      { "<leader>!",  ":FloatermToggle<CR>", desc = "Toggle Terminal" },
-      { "<leader>tt", ":FloatermToggle<CR>", desc = "Toggle Terminal" },
-      { "<leader>fT", ":FloatermNew<CR>",    desc = "Spawn a float terminal" },
-    },
-    cmd = {
-      "FloatermToggle",
-      "FloatermNew",
-    },
-  },
+  { "wakatime/vim-wakatime", lazy = false },
+  { import = "plugins.mod.toggleterm" },
   {
     "CRAG666/code_runner.nvim",
     config = true,

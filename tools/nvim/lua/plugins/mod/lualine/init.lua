@@ -19,7 +19,8 @@ local config = {
     -- Disable sections and component separators
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    theme = "catppuccin",
+    -- theme = "catppuccin",
+    theme = vim.g.colors_name,
     -- IDE-like Global Status
     globalstaus = true,
   },

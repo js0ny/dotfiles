@@ -1,3 +1,11 @@
+local function get_highlight()
+  if vim.g.colors_name == "catppuccin" then
+    return require("catppuccin.groups.integrations.bufferline").get()
+  elseif vim.g.colors_name == "rose-pine" then
+    return require("rose-pine.plugins.bufferline")
+  end
+end
+
 return {
   "akinsho/bufferline.nvim",
   dependencies = "nvim-tree/nvim-web-devicons", -- 图标支持
@@ -42,6 +50,6 @@ return {
       },
       separator_style = "thin",
     },
-    highlights = require("catppuccin.groups.integrations.bufferline").get(),
+    highlights = get_highlight(),
   },
 }
