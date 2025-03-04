@@ -6,7 +6,7 @@
   (setq telega-directory (expand-file-name "~/.local/share/telega"))
 
 
-  (prefix-key global-map (kbd "C-c t") telega-prefix-map)
+  ;; (prefix-key global-map (kbd "C-c t") telega-prefix-map)
   (unless (display-graphic-p) (setq telega-use-images nil))
   (when (modulep! :editor evil)
     (cl-pushnew 'telega +evil-collection-disabled-list :test #'equal)
