@@ -5,7 +5,7 @@ return {
     "CRAG666/code_runner.nvim",
     config = true,
     keys = {
-      { "<leader>cr", ":RunCode<CR>", desc = "Run code" },
+      { "<leader>cr", "<cmd>RunCode<CR>", desc = "Run code" },
     },
     dependencies = {
 

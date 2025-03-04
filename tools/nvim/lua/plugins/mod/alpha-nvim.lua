@@ -4,7 +4,7 @@ return {
     "goolord/alpha-nvim",
     dependencies = {},
     keys = {
-      { "<leader>ba", ":Alpha<CR>", desc = "Toggle Alpha Dashboard" },
+      { "<leader>ba", "<cmd>Alpha<CR>", desc = "Toggle Alpha Dashboard" },
     },
     cmd = {
       "Alpha",
@@ -37,12 +37,12 @@ return {
       dashboard.section.buttons.val.leader = "SPC"
       dashboard.section.buttons.val = {
         -- leader = "SPC",
-        dashboard.button("p", "󰈞 查找项目", ":Telescope projects<CR>"),
-        dashboard.button("h", " 历史文件", ":Telescope oldfiles<CR>"),
-        dashboard.button("l", " 加载会话", ":SessionSearch<CR>"),
+        dashboard.button("p", "󰈞 查找项目", "<cmd>Telescope projects<CR>"),
+        dashboard.button("h", " 历史文件", "<cmd>Telescope oldfiles<CR>"),
+        dashboard.button("l", " 加载会话", "<cmd>SessionSearch<CR>"),
         -- FIXME: This does not work on Windows - Make it more portable
-        dashboard.button("c", " 转到设置", ":Telescope find_files cwd=~/.config/nvim<CR>"),
-        dashboard.button("SPC q", "󱊷 退出", ":qa<CR>"),
+        dashboard.button("c", " 转到设置", "<cmd>Telescope find_files cwd=~/.config/nvim<CR>"),
+        dashboard.button("SPC q", "󱊷 退出", "<cmd>qa<CR>"),
       }
       dashboard.section.footer.val = "今日 " .. os.date("%Y-%m-%d %A") .. "  "
 
