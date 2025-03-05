@@ -50,6 +50,7 @@ noremap gpt editor.action.peekTypeDefinition
 noremap gh editor.action.showDefinitionPreviewHover
 noremap gr editor.action.goToReferences
 noremap gpr editor.action.referenceSearch.trigger
+noremap ga editor.action.quickFix
 
 
 " Requires matchit by redguardtoo
