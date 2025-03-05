@@ -30,10 +30,10 @@ fn - 9 : yabai -m space --focus 9
 fn - 0  : yabai -m space --focus 10
 
 # minimize window
-alt - m : yabai -m window --minimize
+fn - m : yabai -m window --minimize
 
 # float / unfloat window and center on screen
-ctrl - f : yabai -m window --toggle float
+fn - f : yabai -m window --toggle float
 
 # toggle window native fullscreen
 shift + ctrl - f : yabai -m window --toggle native-fullscreen

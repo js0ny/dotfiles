@@ -61,7 +61,7 @@ return function(config)
   config.window_frame = {
     font = wezterm.font("PingFang SC"),
   }
-
+  config.window_decorations = "RESIZE"
   config.command_palette_fg_color = color.lavender
   config.command_palette_bg_color = color.base
   -- UnixLong / Emacs / AppleSymbols / WindowsLong / WindowsSymbols

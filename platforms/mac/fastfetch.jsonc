@@ -2,8 +2,8 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        // "type": "auto",
-        "source": "Windows 7",
+        "type": "auto",
+        // "source": "Windows 7",
         "padding": {
             "top": 2,
             "left": 1,
@@ -40,13 +40,10 @@
         },
         "shell",
         "display",
-        "icons",
-        "font",
         "cursor",
         "terminal",
         "terminalfont",
         "cpu",
-        "gpu",
         "memory",
         "swap",
         "disk",
