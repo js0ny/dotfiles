@@ -1,8 +1,35 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = false,
+  -- lazy = false,
   ft = "markdown",
+
+  cmd = {
+    "ObsidianNewFromTemplate",
+    "ObsidianToggleCheckbox",
+    "ObsidianQuickSwitch",
+    "ObsidianExtractNote",
+    "ObsidianFollowLink",
+    "ObsidianBacklinks",
+    "ObsidianWorkspace",
+    "ObsidianYesterday",
+    "ObsidianPasteImg",
+    "ObsidianTomorrow",
+    "ObsidianTemplate",
+    "ObsidianDailies",
+    "ObsidianLinkNew",
+    "ObsidianRename",
+    "ObsidianSearch",
+    "ObsidianCheck",
+    "ObsidianLinks",
+    "ObsidianToday",
+    "ObsidianDebug",
+    "ObsidianOpen",
+    "ObsidianTags",
+    "ObsidianLink",
+    "ObsidianNew",
+    "ObsidianTOC",
+  },
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
   --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
@@ -32,5 +59,11 @@ return {
       enable = false,
     },
     -- see below for full list of options 👇
+    attachments = {
+      img_folder = "_Global/Assets",
+      img_name_func = function()
+        return string.format("%s-", os.time())
+      end,
+    },
   },
 }

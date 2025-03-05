@@ -7,7 +7,8 @@ return {
   -- { import = "plugins.mod.markview" },
   {
     "lervag/vimtex",
-    lazy = false, -- we don't want to lazy load VimTeX
+    ft = { "tex", "bib" },
+    -- lazy = false, -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
@@ -45,13 +46,13 @@ return {
   },
   {
     "akinsho/org-bullets.nvim",
+    ft = { "org" },
     config = function()
       require("org-bullets").setup()
     end,
   },
   {
     "nvim-orgmode/orgmode",
-    event = "VeryLazy",
     ft = { "org" },
     config = function()
       -- Setup orgmode
@@ -80,6 +81,14 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
+    cmd = {
+      "TSInstall",
+      "TSUpdate",
+      "TSUpdateSync",
+    },
+    event = {
+      "VeryLazy",
+    },
     opts = {
       ensure_installed = { "markdown", "markdown_inline", "latex", "python" },
       highlight = { enable = true },

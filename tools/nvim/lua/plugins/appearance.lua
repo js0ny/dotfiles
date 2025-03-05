@@ -21,8 +21,8 @@ return {
       variant = "dawn",
     },
   },
-  { "olimorris/onedarkpro.nvim" },
-  { "rebelot/kanagawa.nvim" },
+  { "olimorris/onedarkpro.nvim", cmd = "Telescope colorscheme" },
+  { "rebelot/kanagawa.nvim", cmd = "Telescope colorscheme" },
   -- Highlight objects under the cursor
   { "RRethy/vim-illuminate" },
   { -- Modern Status Line

@@ -9,6 +9,7 @@ elseif vim.env.TERM_PROGRAM == "alacritty" then
 else
   return {
     "3rd/image.nvim",
-    opts = {}
+    opts = {},
+    event = "BufReadPre",
   }
 end

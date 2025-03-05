@@ -8,7 +8,8 @@ end
 
 return {
   "hrsh7th/nvim-cmp",
-  lazy = false,
+  -- lazy = false,
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
@@ -58,13 +59,30 @@ return {
     })
 
     -- 配置 cmdline 模式
-    cmp.setup.cmdline(":", {
+    -- cmp.setup.cmdline(":", {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = {
+    --     { name = "cmdline" },
+    --   },
+    -- })
+
+    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
-        { name = "cmdline" },
-        -- path completion is slow under WSL
-        -- Since WSL loads Windows Environment Variables
+        { name = "buffer" },
       },
+    })
+
+    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline(":", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = "path" },
+      }, {
+        { name = "cmdline" },
+      }),
+      matching = { disallow_symbol_nonprefix_matching = false },
     })
 
     -- 配置 LSP
