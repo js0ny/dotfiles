@@ -16,11 +16,7 @@ return {
     "js0ny/vim-visual-multi-colemak-hnei",
     -- "mg979/vim-visual-multi",
   },
-  {
-    "echasnovski/mini.pairs",
-    version = false,
-    opts = {},
-  },
+  { import = "plugins.mod.autopairs" },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
