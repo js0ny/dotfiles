@@ -21,8 +21,6 @@ utils.set_keymaps(keymaps_modifier)
 
 M.nvim_tree_keymaps = require("keymaps.nvim-tree").plugin
 
-M.cmp_nvim_keymaps = require("keymaps.cmp_map")
-
 -- local function set_markdown_keymaps(bufnr)
 --   local opts = { noremap = true, silent = true, buffer = bufnr }
 --   vim.keymap.set("v", "`", 'c`<C-r>"`<Esc>', opts)
