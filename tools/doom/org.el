@@ -199,7 +199,6 @@
 (if (bound-and-true-p ISMAC)
     (setq org-babel-C-compiler "clang"))
 
-(load! "+pomodoro-telegram.el")
 
 ;;; org-export
 
@@ -208,3 +207,14 @@
 (setq org-icalendar-use-scheduled '(event-if-todo event-if-not-todo))
 (setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo))
 (setq org-icalendar-combined-agenda-file "~/Dropbox/org.ics")
+
+
+(use-package! org-pomodoro-music-controller
+  :after org-pomodoro
+  :config
+  (customize-set-variable 'org-pomodoro-music-player-args '("--player=cider"))
+  )
+
+(use-package! org-pomodoro-telegram-notifier
+  :after org-pomodoro
+  )

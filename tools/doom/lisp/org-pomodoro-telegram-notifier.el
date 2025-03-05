@@ -1,25 +1,31 @@
-;;; org-pomodoro-telegram-notifier.el --- 发送 Telegram 通知当 org-pomodoro 休息结束
+;;; org-pomodoro-telegram-notifier.el --- 为 org-pomodoro 添加发送 Telegram 通知的功能。 -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;;; Provide a way to send Telegram notifications when org-pomodoro breaks end.
+
+;;; Code:
 
 (require 'org-pomodoro)
 (require 'request)
 
 (defcustom org-pomodoro-telegram-bot-token ""
-  "你的 Telegram Bot Token。"
+  "Your Telegram bot token."
   :type 'string
   :group 'org-pomodoro)
 
 (defcustom org-pomodoro-telegram-chat-id ""
-  "接收通知的 Telegram Chat ID。"
+  "Your Telegram chat ID."
   :type 'string
   :group 'org-pomodoro)
 
 (defcustom org-pomodoro-telegram-break-end-message "休息时间结束"
-  "休息结束时发送的消息。"
+  "The message to send when a break ends."
   :type 'string
   :group 'org-pomodoro)
 
 (defun org-pomodoro-send-telegram-message (message)
-  "使用 Telegram bot 发送消息。"
+  "Send a message to the Telegram chat.
+MESSAGE is the message to send."
   (interactive)
   (when (and (not (string-empty-p org-pomodoro-telegram-bot-token))
              (not (string-empty-p org-pomodoro-telegram-chat-id)))
@@ -40,7 +46,7 @@
   )
 
 (defun org-pomodoro-telegram-break-finished-hook ()
-  "当休息时间结束时发送 Telegram 通知。"
+  "Send a Telegram message when a break ends."
   (org-pomodoro-send-telegram-message org-pomodoro-telegram-break-end-message))
 
 (add-hook 'org-pomodoro-break-finished-hook #'org-pomodoro-telegram-break-finished-hook)

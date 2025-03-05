@@ -50,7 +50,7 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'catppuccin)
 (setq catppuccin-flavor 'mocha)
-;(catppuccin-reload)
+                                        ;(catppuccin-reload)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -91,6 +91,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(add-to-list 'load-path (expand-file-name "lisp" doom-user-dir))
+
 
 (after! wakatime-mode
   (global-wakatime-mode)
