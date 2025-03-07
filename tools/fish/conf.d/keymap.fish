@@ -38,32 +38,32 @@ bind -M default J forward-bigword
 bind -M default N end-of-line delete-char
 
 # Emacs Hybrid
-bind -M default \cp up-or-search
-bind -M default \cn down-or-search
-bind -M default \cf forward-char
-bind -M default \cb backward-char
-bind -M default \ca beginning-of-line
-bind -M default \ce end-of-line
-bind -M default \ck kill-line
+bind -M default ctrl-p up-or-search
+bind -M default ctrl-n down-or-search
+bind -M default ctrl-f forward-char
+bind -M default ctrl-b backward-char
+bind -M default ctrl-a beginning-of-line
+bind -M default ctrl-e end-of-line
+bind -M default ctrl-k kill-line
 
-bind -M insert \cp up-or-search
-bind -M insert \cn down-or-search
-bind -M insert \cf forward-char
-bind -M insert \cb backward-char
-bind -M insert \ca beginning-of-line
-bind -M insert \ce end-of-line
-bind -M insert \ck kill-line
-bind -M insert \cw backward-kill-path-component
+bind -M insert ctrl-p up-or-search
+bind -M insert ctrl-n down-or-search
+bind -M insert ctrl-f forward-char
+bind -M insert ctrl-b backward-char
+bind -M insert ctrl-a beginning-of-line
+bind -M insert ctrl-e end-of-line
+bind -M insert ctrl-k kill-line
+bind -M insert ctrl-w backward-kill-path-component
 
 
 # ctrl + backspace
-bind -M insert \b backward-kill-path-component
+bind -M insert ctrl-backspace backward-kill-path-component
 # alt + backspace
-bind -M insert \e\x7F backward-kill-line
+bind -M insert alt-backspace backward-kill-line
 # ctrl + delete
-bind -M insert \e\[3\;5~ kill-word
+bind -M insert ctrl-delete kill-word
 # alt + delete (d$)
-bind -M insert \e\[3\;3~ kill-line
+bind -M insert alt-delete kill-line
 
 fzf --fish | source
 # C-r : fzf history search
