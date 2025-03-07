@@ -21,3 +21,17 @@ set --export PATH $BUN_INSTALL/bin $PATH
 fish_add_path "$HOME/.moon/bin"
 
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/js0ny/.local/anaconda3/bin/conda
+    eval /home/js0ny/.local/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/js0ny/.local/anaconda3/etc/fish/conf.d/conda.fish"
+        . "/home/js0ny/.local/anaconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/js0ny/.local/anaconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+

@@ -55,7 +55,7 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers t)
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 
 
@@ -93,6 +93,18 @@
 ;; they are implemented.
 
 (add-to-list 'load-path (expand-file-name "lisp" doom-user-dir))
+(setq doom-local-dir (expand-file-name "emacs" (getenv "XDG_DATA_HOME")))
+(setq doom-data-dir (expand-file-name "etc" doom-local-dir))
+
+(after! recentf
+  (setq recentf-max-saved-items 200)
+  (add-to-list 'recentf-exclude "\\.revive$")
+  (add-to-list 'recentf-exclude "\\.windows$")
+  (add-to-list 'recentf-exclude "\\.#.+$")
+  (add-to-list 'recentf-exclude "^/tmp/")
+  (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
+)[1][2]
+
 
 
 (after! wakatime-mode
@@ -119,11 +131,13 @@
   )
 
 
-(use-package! rime
-  :config
-  (setq default-input-method "rime")
-  (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
-  )
+(if (not (eq system-type 'windows-nt))
+    (use-package! rime
+    :config
+    (setq default-input-method "rime")
+    (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
+        (setq rime-user-data-dir (expand-file-name "emacs-rime" (getenv "XDG_CONFIG_HOME")))
+    ))
 
 (load! "calendar.el")
 

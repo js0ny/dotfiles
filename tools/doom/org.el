@@ -1,4 +1,4 @@
-;; If you use `org' and don't want your org files in the default location below,
+;; If use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/OrgFiles/")
 ;; (setq org-roam-directory  "~/OrgFiles/roam/")
@@ -28,6 +28,14 @@
 
   (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d@/!)" "CANCELLED(c@)")
                             ))
+
+  (setq org-todo-keyword-faces
+        '(("TODO" . (:foreground "red" :weight bold :background "yellow"))
+          ("NEXT" . (:foreground "blue" :weight bold :background "lightgray"))
+          ("WAIT" . (:foreground "orange" :weight bold))
+          ("DONE" . (:foreground "grey" :weight bold :italic t))
+          ("CANCELLED" . (:foreground "grey" :weight bold))
+          ))
 
   ;; Keymaps
   (map! :map org-mode-map
@@ -196,7 +204,7 @@
 
 ;;; org-babel
 
-(if (bound-and-true-p ISMAC)
+(if (not (eq system-type 'gnu/linux))
     (setq org-babel-C-compiler "clang"))
 
 

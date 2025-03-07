@@ -8,10 +8,17 @@
 (require 'org-pomodoro)
 
 ;; Variables
-(defcustom org-pomodoro-music-player-command "playerctl"
+
+(defcustom org-pomodoro-music-player-command
+  (cond
+   ((eq system-type 'windows-nt) "clmcontrol")
+   ((eq system-type 'darwin) "nowplaying-cli")
+   ((eq system-type 'gnu/linux) "playerctl")
+   (t "playerctl"))
   "Command to control the music player."
   :type 'string
   :group 'org-pomodoro)
+
 
 (defcustom org-pomodoro-music-player-args nil
   "Arguments to pass to the music player command."
