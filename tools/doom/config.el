@@ -103,7 +103,7 @@
   (add-to-list 'recentf-exclude "\\.#.+$")
   (add-to-list 'recentf-exclude "^/tmp/")
   (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
-)[1][2]
+  )[1][2]
 
 
 
@@ -131,13 +131,13 @@
   )
 
 
-(if (not (eq system-type 'windows-nt))
+(if (eq system-type 'gnu/linux)
     (use-package! rime
-    :config
-    (setq default-input-method "rime")
-    (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
-        (setq rime-user-data-dir (expand-file-name "emacs-rime" (getenv "XDG_CONFIG_HOME")))
-    ))
+      :config
+      (setq default-input-method "rime")
+      (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
+      (setq rime-user-data-dir (expand-file-name "emacs-rime" (getenv "XDG_CONFIG_HOME")))
+      ))
 
 (load! "calendar.el")
 
