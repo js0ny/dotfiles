@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 ;; https://emacs-china.org/t/doom-emacs/23513/13
-(setq doom-font (font-spec :family "LXGW WenKai Mono" :size 14)
+(setq doom-font (font-spec :family "Iosevka Nerd Font Propo" :size 14)
       doom-serif-font doom-font
       doom-symbol-font (font-spec :family "LXGW WenKai Mono")
       doom-variable-pitch-font (font-spec :family "LXGW WenKai Mono" :weight 'extra-bold))
@@ -103,7 +103,7 @@
   (add-to-list 'recentf-exclude "\\.#.+$")
   (add-to-list 'recentf-exclude "^/tmp/")
   (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
-)[1][2]
+  )[1][2]
 
 
 
@@ -133,11 +133,11 @@
 
 (if (not (eq system-type 'windows-nt))
     (use-package! rime
-    :config
-    (setq default-input-method "rime")
-    (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
-        (setq rime-user-data-dir (expand-file-name "emacs-rime" (getenv "XDG_CONFIG_HOME")))
-    ))
+      :config
+      (setq default-input-method "rime")
+      (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
+      (setq rime-user-data-dir (expand-file-name "emacs-rime" (getenv "XDG_CONFIG_HOME")))
+      ))
 
 (load! "calendar.el")
 
