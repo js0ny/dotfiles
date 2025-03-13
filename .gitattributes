@@ -7,7 +7,6 @@
 # Windows Batch Script, keep CRLF
 *.bat text eol=crlf
 
-skhdrc linguist-language=Shell
 yabairc linguist-language=Shell
 sketchybarrc linguist-language=Shell
 *.vimrc linguist-language=VimL
