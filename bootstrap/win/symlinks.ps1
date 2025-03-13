@@ -17,6 +17,17 @@ if ((Get-Command bat).Source -ccontains "scoop") {
     $BAT_CONF = Join-Path (scoop prefix bat) "config"
 }
 
+
+$SIOYEKDIR = scoop prefix sioyek
+
+$SIOYEKCFG = Get-ChildItem "$BASE_TOOLS\sioyek" -Filter "*.config"
+
+foreach ($cfg in $SIOYEKCFG) {
+    $cfgName = $cfg.Name
+    $cfgPath = Join-Path $SIOYEKDIR $cfgName
+    New-Item -ItemType SymbolicLink -Target $cfg -Path $cfgPath -Force
+}
+
 $linkDots = @{
     "$BASE_WIN\wslconfig"            = "$Env:UserProfile\.wslconfig"
     "$BASE_WIN\glzr"                 = "$Env:UserProfile\.glzr"

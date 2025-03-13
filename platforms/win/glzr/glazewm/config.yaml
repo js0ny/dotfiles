@@ -105,7 +105,7 @@ window_behavior:
   state_defaults:
     floating:
       # Whether to center floating windows by default.
-      centered: true
+      centered: false
 
       # Whether to show floating windows as always on top.
       shown_on_top: false
@@ -232,8 +232,8 @@ keybindings:
     bindings: ["lwin+t"]
 
   # Change the focused window to be fullscreen.
-  # - commands: ["toggle-fullscreen"]
-  #   bindings: ["lwin+f"]
+  - commands: ["toggle-fullscreen"]
+    bindings: ["lwin+shift+f"]
   - commands: ["shell-exec dopus.exe"]
     bindings: ["lwin+f"]
 
