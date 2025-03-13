@@ -131,7 +131,7 @@
   )
 
 
-(if (not (eq system-type 'windows-nt))
+(if (eq system-type 'gnu/linux)
     (use-package! rime
       :config
       (setq default-input-method "rime")

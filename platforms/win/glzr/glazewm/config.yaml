@@ -134,7 +134,6 @@ window_rules:
     match:
       # Ignores any Zebar windows.
       - window_process: { equals: "zebar" }
-      - window_process: { equals: "WindowsTerminal" }
 
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
@@ -147,6 +146,15 @@ window_rules:
         window_title: { regex: ".*? - Peek" }
       - window_process: { equals: "Lively" }
         window_class: { regex: "HwndWrapper" }
+      - window_process: { equals: "WindowsTerminal" }
+  - commands: ["set-floating"]
+    match:
+      # Razer Synapse
+      - window_process: { equals: "RazerAppEngine" }
+      # AutoHotKey Window Spy
+      - window_process: { equals: "AutoHotkeyUX" }
+      - window_process: { equals: "ApplicationFrameHost" }
+        window_title: { regex: "Settings|设置" }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
@@ -186,14 +194,14 @@ keybindings:
     bindings: ["lwin+shift+n", "lwin+shift+down"]
 
   # Resize focused window by a percentage or pixel amount.
-  - commands: ["resize --width -2%"]
-    bindings: ["alt+u"]
-  - commands: ["resize --width +2%"]
-    bindings: ["alt+p"]
-  - commands: ["resize --height +2%"]
-    bindings: ["alt+o"]
-  - commands: ["resize --height -2%"]
-    bindings: ["alt+i"]
+  # - commands: ["resize --width -2%"]
+  #   bindings: ["alt+u"]
+  # - commands: ["resize --width +2%"]
+  #   bindings: ["alt+p"]
+  # - commands: ["resize --height +2%"]
+  #   bindings: ["alt+o"]
+  # - commands: ["resize --height -2%"]
+  #   bindings: ["alt+i"]
 
   # As an alternative to the resize keybindings above, resize mode enables
   # resizing via arrow keys or HJKL. The binding mode is defined above with
@@ -217,7 +225,7 @@ keybindings:
 
   # Change the focused window to be floating.
   - commands: ["toggle-floating --centered"]
-    bindings: ["alt+shift+space"]
+    bindings: ["lwin+shift+space"]
 
   # Change the focused window to be tiling.
   - commands: ["toggle-tiling"]
@@ -287,14 +295,14 @@ keybindings:
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
-  - commands: ["move-workspace --direction left"]
-    bindings: ["alt+shift+a"]
-  - commands: ["move-workspace --direction right"]
-    bindings: ["alt+shift+f"]
-  - commands: ["move-workspace --direction up"]
-    bindings: ["alt+shift+d"]
-  - commands: ["move-workspace --direction down"]
-    bindings: ["alt+shift+s"]
+  # - commands: ["move-workspace --direction left"]
+  #   bindings: ["alt+shift+a"]
+  # - commands: ["move-workspace --direction right"]
+  #   bindings: ["alt+shift+f"]
+  # - commands: ["move-workspace --direction up"]
+  #   bindings: ["alt+shift+d"]
+  # - commands: ["move-workspace --direction down"]
+  #   bindings: ["alt+shift+s"]
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move --workspace 1", "focus --workspace 1"]
