@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: display-math
-# key: dm
+# name: align-math
+# key: BAL
 # expand-env: ((yas-indent-line 'fixed))
 # --
-\\[
+\\begin{align*}
 $1
-\\]
+\\end{align*}
