@@ -6,7 +6,7 @@
 ;; Org General
 
 (use-package org
-  :ensure nil ;; Use Emacs built-in Org Mode
+  :straight (:type built-in) ;; Tell straight to not install org
   :config
   (setq org-log-done 'time)
   (setq org-startup-indented nil)
@@ -161,11 +161,11 @@
 ;; Run source block with C-c C-c
 ;; Add supports for non-elisp langs
 (use-package ob-python
-  :ensure nil  ; Part of Org Mode
+  :straight (:type built-in)  ; Part of Org Mode
   :after org)
 
 (use-package ob-C ;; C++ support is integrated in ob-C
-  :ensure nil  ; Part of Org Mode
+  :straight (:type built-in)  ; Part of Org Mode
   :after org)
 
 (org-babel-do-load-languages

@@ -14,16 +14,6 @@
   :hook
   (prog-mode . display-line-numbers-mode))
 
-(defvar xdg-data-home
-  (or (getenv "XDG_DATA_HOME")
-      (expand-file-name "~/.local/share")))
-
-(defvar xdg-cache-home
-  (or (getenv "XDG_CACHE_HOME")
-      (expand-file-name "~/.local/cache")))
-
-(defvar user-emacs-data (expand-file-name "emacs" xdg-data-home))
-(defvar user-emacs-cache (expand-file-name "emacs" xdg-cache-home))
 
 
 ;; https://book.emacs-china.org/#orgcfd105e Open with Emacs
