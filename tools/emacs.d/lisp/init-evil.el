@@ -38,7 +38,8 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-   "b" 'buffer-menu))
+   "b" 'buffer-menu
+   "ft" 'treemacs))
 
 ;; Evil Commentary: Use gc<action> to toggle comments
 (use-package evil-commentary
@@ -64,5 +65,8 @@
   ;; some red color (as defined by the color theme)
   ;; other faces such as `diff-added` will be used for other actions
   (evil-goggles-use-diff-faces))
+
+(with-eval-after-load 'evil
+  (evil-set-initial-state 'org-agenda-mode 'motion))
 
 (provide 'init-evil)

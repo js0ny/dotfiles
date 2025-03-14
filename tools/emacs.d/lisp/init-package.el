@@ -66,17 +66,6 @@
   ;; Use Emacs mode to use number to navigate dashboard
   )
 
-;(use-package dashboard
-;  :ensure t
-;  :init
-;  (dashboard-setup-startup-hook)
-;  :config
-;  (setq dashboard-banner-logo-title "EMACS")
-;  (setq dashboard-startup-banner 'official)
-;  (setq dashboard-items '((recents . 5)
-;			  (bookmark . 5))))
-;
-
 
 (use-package wakatime-mode
   :ensure t

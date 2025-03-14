@@ -8,8 +8,8 @@
  :nvom "n" 'evil-next-line
  :nvom "e" 'evil-previous-line
  :nvom "i" 'evil-forward-char
- :nv "H" 'evil-prev-buffer
- :nv "I" 'evil-next-buffer
+ :nvm "H" 'evil-prev-buffer
+ :nvm "I" 'evil-next-buffer
  :nvom "N" '(lambda () (interactive) (evil-next-line 5))       ; 5n
  :nvom "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
  :nvom "C-w n" 'evil-window-down

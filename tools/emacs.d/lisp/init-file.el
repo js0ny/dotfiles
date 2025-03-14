@@ -37,9 +37,6 @@
             ("C-x t C-t" . treemacs-find-file)
             ("C-x t M-t" . treemacs-find-tag)
             )
-    :config
-    (evil-leader/set-key
-      "ft" 'treemacs)
     )
 
 (use-package treemacs-evil
@@ -47,12 +44,25 @@
   :ensure t
   :config
   ;; Evil treemacs state bindings
-  (define-key evil-treemacs-state-map (kbd "n") #'treemacs-next-line)
-  (define-key evil-treemacs-state-map (kbd "e") #'treemacs-previous-line)
-  (define-key evil-treemacs-state-map (kbd "N") #'treemacs-next-neighbour)
-  (define-key evil-treemacs-state-map (kbd "E") #'treemacs-previous-neighbour)
-  (define-key evil-treemacs-state-map (kbd "H") #'treemacs-toggle-show-dotfiles)
-  (define-key evil-treemacs-state-map (kbd "I") #'treemacs-hide-gitignored-files-mode)
+  (evil-define-key evil-treemacs-state-map
+        "n"    #'treemacs-next-line
+        "e"    #'treemacs-previous-line
+        "N"    #'treemacs-next-neighbour
+        "E"    #'treemacs-previous-neighbour
+        "H"    #'treemacs-toggle-show-dotfiles
+        "I"    #'treemacs-hide-gitignored-files-mode
+        "i"    #'treemacs-RET-action
+        "a"    #'treemacs-create-file
+        "A"    #'treemacs-create-dir
+        "c"    #'treemacs-copy-file
+        "x"    #'treemacs-move-file
+        "d"    #'treemacs-delete-file
+        "r"    #'treemacs-rename-file
+        "q"    #'treemacs-quit
+        "y"    #'treemacs-copy-relative-path-at-point
+        "Y"    #'treemacs-copy-absolute-path-at-point
+        "m"    #'treemacs-mark-or-unmark-path-at-point)
+
   ;; Treemacs mode specific binding
   (evil-define-key 'treemacs treemacs-mode-map (kbd "i") #'treemacs-RET-action))
 

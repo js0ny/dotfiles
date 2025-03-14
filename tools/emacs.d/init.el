@@ -14,7 +14,7 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Store the auto-generated custom config to `custom.el`
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
 
 ;; Load each modules
 (require 'init-package) ; package manager should be loaded first
