@@ -1,44 +1,30 @@
-;;; init-package.el
+;;; init-package.el --- Package management setup using straight.el -*- lexical-binding: t -*-
 
-;; Initialise the package sources
-(require 'package)
-; Add sources
-;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("gnu" . "https://elpa.gnu.org/packages/")))
-;; Initialise the package management system
-(package-initialize)
+(setq straight-base-dir (expand-file-name "straight" user-emacs-data))
 
-;; Ensure the package list is up-to-date
-(unless package-archive-contents
-  (package-refresh-contents))
+;; Bootstrap straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Ensure use-package is installed
-(unless (package-installed-p 'use-package)
-; (package-refresh-contents) Move to above
-  (package-install 'use-package))
+;; Use straight.el with use-package
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)  ;; Automatically use straight for all packages
 
-;; Use `use-package` for plugin management
-(eval-when-compile
-  (require 'use-package))
-(setq use-package-always-ensure t)
-
-;; use-package offers many syntax sugar.
-;; :bind -> bindkeys
-;; :config -> `(progn do sth)
-;; :init -> (progn do sth)
-;; :after -> (when (featurep 'package)do sth)
-;; :hook -> (add-hook 'some-hook #'some-mode)
-
-;; This part initialse the GPG Keyring
-; Disable signature first
-(setq package-check-signature nil)
-
+;; Ensure gnu-elpa-keyring-update (equivalent to your previous keyring update logic)
 (use-package gnu-elpa-keyring-update)
-
-; Re-enable signature
-(setq package-check-signature 'allow-unsigned)
 
 
 ;; Which Key - Prompt available commands
@@ -65,17 +51,6 @@
   (setq dashboard-center-content t)
   ;; Use Emacs mode to use number to navigate dashboard
   )
-
-;(use-package dashboard
-;  :ensure t
-;  :init
-;  (dashboard-setup-startup-hook)
-;  :config
-;  (setq dashboard-banner-logo-title "EMACS")
-;  (setq dashboard-startup-banner 'official)
-;  (setq dashboard-items '((recents . 5)
-;			  (bookmark . 5))))
-;
 
 
 (use-package wakatime-mode

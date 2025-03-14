@@ -24,7 +24,6 @@ return {
     end,
     dependencies = { "nvim-telescope/telescope.nvim" },
   },
-  { import = "plugins.mod.hover-nvim" },
   -- {
   --   "kdheepak/lazygit.nvim",
   --   lazy = true,
@@ -46,6 +45,6 @@ return {
   --   },
   -- },
   {
-    "NeogitOrg/neogit"
-  }
+    "NeogitOrg/neogit",
+  },
 }

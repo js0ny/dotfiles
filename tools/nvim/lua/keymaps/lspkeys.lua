@@ -6,6 +6,7 @@ local M = {
   { keys = "gi", cmd = vim.lsp.buf.implementation, opts = { desc = "Goto Implementation" } },
   { keys = "<leader>,", cmd = vim.lsp.buf.code_action, opts = { desc = "Code Action" } },
   { keys = "ga", cmd = vim.lsp.buf.code_action, opts = { desc = "Code Action" } },
+  { keys = "gh", cmd = vim.lsp.buf.hover, opts = { desc = "Show hover" } },
 }
 
 return M

@@ -14,7 +14,19 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Store the auto-generated custom config to `custom.el`
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
+
+
+(defvar xdg-data-home
+  (or (getenv "XDG_DATA_HOME")
+      (expand-file-name "~/.local/share")))
+
+(defvar xdg-cache-home
+  (or (getenv "XDG_CACHE_HOME")
+      (expand-file-name "~/.local/cache")))
+
+(defvar user-emacs-data (expand-file-name "emacs" xdg-data-home))
+(defvar user-emacs-cache (expand-file-name "emacs" xdg-cache-home))
 
 ;; Load each modules
 (require 'init-package) ; package manager should be loaded first

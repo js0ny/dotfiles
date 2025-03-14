@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 ;; https://emacs-china.org/t/doom-emacs/23513/13
-(setq doom-font (font-spec :family "LXGW WenKai Mono" :size 14)
+(setq doom-font (font-spec :family "Iosevka Nerd Font Propo" :size 14)
       doom-serif-font doom-font
       doom-symbol-font (font-spec :family "LXGW WenKai Mono")
       doom-variable-pitch-font (font-spec :family "LXGW WenKai Mono" :weight 'extra-bold))

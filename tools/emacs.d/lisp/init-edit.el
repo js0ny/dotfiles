@@ -60,9 +60,25 @@
 
 ;; Avy - act like Vim Easymotion
 (use-package avy
+  :ensure t
   :config
   (evil-define-key '(normal) 'global (kbd "T") 'avy-goto-char)
   (evil-define-key '(normal) 'global (kbd "s") 'avy-goto-char-2)
   (evil-define-key '(normal) 'global (kbd "s") 'avy-goto-char-2-above))
+
+(use-package yasnippet
+  :ensure t
+  :defer t
+  :commands yas-minor-mode
+  :hook ((prog-mode . yas-minor-mode)
+	 (org-mode . yas-minor-mode))
+  :config
+  (setq yas-indent-line 'fixed)  ;; 让 snippet 展开时不影响缩进
+  (setq yas-wrap-around-region nil)  ;; 关闭自动包裹选中区域
+  (advice-add 'yas-expand-snippet :around
+              (lambda (orig-fn &rest args)
+                (let ((inhibit-field-text-motion t))  ;; 禁止字段自动换行
+                  (apply orig-fn args))))
+  (yas-reload-all))
 
 (provide 'init-edit)

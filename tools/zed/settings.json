@@ -18,6 +18,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "disabled_globs": ["*.bean"],
+    "mode": "eager_preview",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    }
+  },
   "base_keymap": "VSCode",
   "vim_mode": true,
   "ui_font_size": 16,

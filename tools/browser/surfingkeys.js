@@ -325,7 +325,7 @@ const searchAliases = [
   ["yt", "YouTube", "https://www.youtube.com/results?search_query="],
 ];
 
-api.unmap("on")
+api.unmap("on");
 
 // Add all search aliases
 searchAliases.forEach(([alias, name, url]) => {
@@ -658,10 +658,34 @@ mapkey(
   { domain: /perplexity.ai/ },
 );
 mapkey(
+  ",M",
+  "Toggle [M]odel switching",
+  function () {
+    q("div.rounded-md").querySelectorAll("span")[2].click();
+    //setTimeout(() => {
+    //  // Wait for the DOM to update
+    //  qs("div.shadow-subtle div.group\\/item")[0].click();
+    //}, 100);
+  },
+  { domain: /perplexity.ai/ },
+);
+mapkey(
+  ",m",
+  "Toggle default [m]odel (Claude 3.7 Sonnet)",
+  function () {
+    q("div.rounded-md").querySelectorAll("span")[1].click();
+    setTimeout(() => {
+      // Wait for the DOM to update
+      qs("div.shadow-subtle div.group\\/item")[3].click();
+    }, 100);
+  },
+  { domain: /perplexity.ai/ },
+);
+mapkey(
   ",w",
   "Toggle [w]riting/[w]eb Search",
   function () {
-    q("div.rounded-md").querySelectorAll("span")[1].click();
+    q("div.rounded-md").querySelectorAll("span")[2].click();
     setTimeout(() => {
       // Wait for the DOM to update
       qs("div.shadow-subtle div.group\\/item")[0].click();
@@ -690,8 +714,8 @@ mapkey(
   { domain: /perplexity.ai/ },
 );
 mapkey(
-  ",r",
-  "Change model to [r]egenerate last output",
+  ",R",
+  "Change model to [R]egenerate last output",
   function () {
     var toolbars = qs("div.mt-sm");
     var last = toolbars[toolbars.length - 1];
@@ -701,15 +725,13 @@ mapkey(
   { domain: /perplexity.ai/ },
 );
 mapkey(
-  ",R",
-  "Toggle [R]easoning with [R]1",
+  ",r",
+  "Toggle [r]easoning",
   function () {
-    var btns = qs("span.grow button");
-    btns[0].click();
+    q("div.rounded-md").querySelectorAll("span")[0].click();
     setTimeout(() => {
       // Wait for the DOM to update
       qs("div.shadow-subtle div.group\\/item")[2].click();
-      qs("div.group\\/item")[2].click(); // Mobile view
     }, 100);
   },
   { domain: /perplexity.ai/ },
