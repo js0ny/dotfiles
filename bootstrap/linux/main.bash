@@ -119,7 +119,7 @@ source "$DOTFILES"/bootstrap/linux/symlinks.bash
 set +x
 
 if [ "$WHEEL" -eq 1 ]; then
-  source "$DOTFILES"/tools/bash/xdg-compact.sh
+  source "$DOTFILES"/tools/bash/xdg-compat.sh
   source "$DOTFILES"/tools/bash/global.bashrc
 fi
 source "$DOTFILES"/tools/bash/profile
