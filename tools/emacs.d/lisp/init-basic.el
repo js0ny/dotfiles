@@ -19,6 +19,7 @@
 ;; https://book.emacs-china.org/#orgcfd105e Open with Emacs
 ;; (server-mode 1)
 
+(setq use-short-answers t)
 
 (require 'recentf)
 (recentf-mode 1)
@@ -46,8 +47,7 @@
 ;; 配置备份文件目录
 (setq backup-directory-alist `(("." . ,user-backup-directory)))
 
-(when (boundp 'project-list-file)
-  (setq project-list-file (expand-file-name "projects-list" user-emacs-data)))
+(setq project-list-file (expand-file-name "projects-list" user-emacs-data))
 
 ;; 配置自动保存文件目录
 (setq auto-save-file-name-transforms

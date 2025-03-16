@@ -145,3 +145,9 @@
   (load! "local.el"))
 
 ;; (load! "telega.el")
+
+(use-package! eee
+  :config
+  (if (eq system-type 'gnu/linux)
+      (setq ee-terminal-command "kitty"))
+  )

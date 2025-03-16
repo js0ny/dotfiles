@@ -8,13 +8,13 @@
   :config
   (evil-mode 1)
   ; Colemak Vim Arrow
-  (evil-define-key '(normal visual operator) 'global
+  (evil-define-key '(normal visual operator motion) 'global
     ;; To see the keybindings, use <C-h> k then type the key
     "n" 'evil-next-line
     "e" 'evil-previous-line
     "i" 'evil-forward-char
-    "l" 'evil-insert
-    "L" 'evil-insert-0-line
+    ;"l" 'evil-insert
+    ;"L" 'evil-insert-0-line
     "k" 'evil-search-next
     "K" 'evil-search-previous
     "j" 'evil-forward-word-end
@@ -23,7 +23,13 @@
     "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
     "H" 'switch-to-prev-buffer
     "I" 'switch-to-next-buffer
-    ))
+    (kbd "C-w n") 'evil-window-down
+    (kbd "C-w e") 'evil-window-up
+    (kbd "C-w i") 'evil-window-right
+    )
+  (evil-define-key '(normal visual) 'global
+                   "l" 'evil-insert
+                   "L" 'evil-insert-0-line))
 
 ;; Text Objects Keymap - Use `l` for inner (swap i and l)
 ;; https://github.com/emacs-evil/evil/blob/master/evil-maps.el#L398-L421

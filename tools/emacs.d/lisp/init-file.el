@@ -22,7 +22,7 @@
 
 ;; Treemacs - Sidebar File Tree
 (use-package treemacs
-    :ensure t
+    :straight t
     :defer t
     :init
     (with-eval-after-load 'winum
@@ -44,27 +44,28 @@
   :ensure t
   :config
   ;; Evil treemacs state bindings
-  (evil-define-key evil-treemacs-state-map
-        "n"    #'treemacs-next-line
-        "e"    #'treemacs-previous-line
-        "N"    #'treemacs-next-neighbour
-        "E"    #'treemacs-previous-neighbour
-        "H"    #'treemacs-toggle-show-dotfiles
-        "I"    #'treemacs-hide-gitignored-files-mode
-        "i"    #'treemacs-RET-action
-        "a"    #'treemacs-create-file
-        "A"    #'treemacs-create-dir
-        "c"    #'treemacs-copy-file
-        "x"    #'treemacs-move-file
-        "d"    #'treemacs-delete-file
-        "r"    #'treemacs-rename-file
-        "q"    #'treemacs-quit
-        "y"    #'treemacs-copy-relative-path-at-point
-        "Y"    #'treemacs-copy-absolute-path-at-point
-        "m"    #'treemacs-mark-or-unmark-path-at-point)
+  (evil-define-key 'treemacs evil-treemacs-state-map
+        (kbd "n")    #'treemacs-next-line
+        (kbd "e")    #'treemacs-previous-line
+        (kbd "N")    #'treemacs-next-neighbour
+        (kbd "E")    #'treemacs-previous-neighbour
+        (kbd "H")    #'treemacs-toggle-show-dotfiles
+        (kbd "I")    #'treemacs-hide-gitignored-files-mode
+        (kbd "i")    #'treemacs-RET-action
+        (kbd "a")    #'treemacs-create-file
+        (kbd "A")    #'treemacs-create-dir
+        (kbd "c")    #'treemacs-copy-file
+        (kbd "x")    #'treemacs-move-file
+        (kbd "d")    #'treemacs-delete-file
+        (kbd "r")    #'treemacs-rename-file
+        (kbd "q")    #'treemacs-quit
+        (kbd "y")    #'treemacs-copy-relative-path-at-point
+        (kbd "Y")    #'treemacs-copy-absolute-path-at-point
+        (kbd "m")    #'treemacs-mark-or-unmark-path-at-point)
 
   ;; Treemacs mode specific binding
   (evil-define-key 'treemacs treemacs-mode-map (kbd "i") #'treemacs-RET-action))
+
 
 ;; magit - Git Client
 (use-package magit

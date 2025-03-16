@@ -58,6 +58,11 @@
 
 (package! telega :recipe (:files (:defaults "contrib/*.el" "etc" "server" "Makefile")))
 
+
 (package! org-super-agenda)
 
 (package! catppuccin-theme)
+
+(package! eee
+  :recipe (:host github :repo "eval-exec/eee.el"
+           :files (:defaults "*.el" "*.sh")))
