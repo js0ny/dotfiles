@@ -32,8 +32,8 @@
   :ensure t
   :init
   (which-key-mode)
-  :config
-  (setq which-key-idle-delay 0.3))
+  :custom
+  (which-key-idle-delay 0.1))
 
 ;; Dashboard
 (use-package dashboard
@@ -46,17 +46,22 @@
          ;; Buffer switching
          ("H" . previous-buffer)
          ("I" . next-buffer))
+  :custom
+  (dashboard-center-content t)
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-center-content t)
   ;; Use Emacs mode to use number to navigate dashboard
   )
 
 
 (use-package wakatime-mode
   :ensure t
+  :custom
+  ;; Use expand-file-name to prevent from error parsing on windows-nt
+  (wakatime-cli-path (expand-file-name "~/.local/bin/wakatime"))
   :config
-  (global-wakatime-mode))
+  (global-wakatime-mode)
+  )
 
 
 (provide 'init-package)

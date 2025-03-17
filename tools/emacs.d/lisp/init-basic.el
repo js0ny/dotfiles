@@ -8,9 +8,9 @@
 ;; Vim-like relativenumber
 ;; fix: work for folded region (visual relative line instead of physical)
 (use-package display-line-numbers
-  :config
-  (setq display-line-numbers-type 'visual)
-  (setq display-line-numbers-current-absolute t)
+  :custom
+  (display-line-numbers-type 'visual)
+  (display-line-numbers-current-absolute t)
   :hook
   (prog-mode . display-line-numbers-mode))
 
