@@ -19,6 +19,7 @@ tramp
 
 recentf
 custom.el
+.custom.el
 
 .org-id-locations
 bookmarks

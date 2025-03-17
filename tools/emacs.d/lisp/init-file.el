@@ -37,6 +37,8 @@
             ("C-x t C-t" . treemacs-find-file)
             ("C-x t M-t" . treemacs-find-tag)
             )
+    :config
+    (setq treemacs-persist-file (expand-file-name "treemacs-persist" user-emacs-data))
     )
 
 (use-package treemacs-evil

@@ -21,6 +21,7 @@
   (setq org-hide-emphasis-markers t)
   (setq org-directory "~/OrgFiles/")
   (setq org-agenda-files (list (concat org-directory "tasks/")))
+  (setq org-persist-directory (expand-file-name "org-persist" user-emacs-data))
   (setq org-pretty-entities t)
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t) ; Use TAB to indent inside source block

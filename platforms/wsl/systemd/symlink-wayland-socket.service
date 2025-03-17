@@ -1,4 +1,7 @@
 # https://github.com/microsoft/WSL/issues/11261
+# ~/.config/systemd/user/symlink-wayland-socket.service
+# Usage:
+#
 # Cannot use GUI apps/tools as Wayland socket doesn't exist in `XDG_RUNTIME_DIR`
 
 [Unit]

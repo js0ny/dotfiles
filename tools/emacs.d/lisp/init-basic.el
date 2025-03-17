@@ -22,6 +22,7 @@
 (setq use-short-answers t)
 
 (require 'recentf)
+(setq recentf-save-file (expand-file-name "recentf" user-emacs-data))
 (recentf-mode 1)
 
 ;; Disable topbars
@@ -68,6 +69,9 @@
       kept-old-versions 2      ; 保留的旧版本数量
       version-control t)       ; 使用版本号
 
+(setq transient-history-file (expand-file-name "transient/history.el" user-emacs-data))
+(setq transient-values-file (expand-file-name "transient/values.el" user-emacs-data))
+(setq transient-levels-file (expand-file-name "transient/levels.el" user-emacs-data))
 
 ;; Export module
 (provide 'init-basic)

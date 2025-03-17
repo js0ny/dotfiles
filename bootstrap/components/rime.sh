@@ -10,7 +10,7 @@ case "$(uname)" in
 esac
 
 git clone --depth 1 https://github.com/js0ny/rime_wanxiang_pro.git "$RIMEDIR"
-cd ~/Library/Rime || exit
+cd "$RIMEDIR" || exit
 
 just init
 # just install_rime
