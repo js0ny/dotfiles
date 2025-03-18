@@ -7,25 +7,27 @@
 
 (use-package org
   :straight (:type built-in) ;; Tell straight to not install org
-  :config
-  (setq org-log-done 'time)
-  (setq org-startup-indented nil)
+  :custom
+  (org-log-done 'time)
+  (org-startup-indented nil)
   ;; Use inline image
-  (setq org-startup-with-inline-images t)
-  (setq org-display-remote-inline-images 'cache) ; 预览网络图片
+  (org-startup-with-inline-images t)
+  (org-display-remote-inline-images 'cache) ; 预览网络图片
 
   ;; Use LaTeX rendering
-  (setq org-startup-with-latex-preview nil)
-  (setq org-image-actual-width 600)
+  (org-startup-with-latex-preview nil)
+  (org-image-actual-width 600)
   ;; Conceal on markup markers
-  (setq org-hide-emphasis-markers t)
-  (setq org-directory "~/OrgFiles/")
-  (setq org-agenda-files (list (concat org-directory "tasks/")))
-  (setq org-persist-directory (expand-file-name "org-persist" user-emacs-data))
-  (setq org-pretty-entities t)
-  (setq org-src-fontify-natively t)
-  (setq org-src-tab-acts-natively t) ; Use TAB to indent inside source block
-  (setq org-src-preserve-indentation t) ; Prevent from auto-indent
+  (org-hide-emphasis-markers t)
+  (org-directory "~/OrgFiles/")
+  (org-agenda-files (list (concat org-directory "tasks/")))
+  (org-persist-directory (expand-file-name "org-persist" user-emacs-data))
+  (org-pretty-entities t)
+  (org-src-fontify-natively t)
+  (org-src-tab-acts-natively t) ; Use TAB to indent inside source block
+  (org-src-preserve-indentation t) ; Prevent from auto-indent
+  (org-startup-folded 'showall)
+  :config
   (with-eval-after-load 'org
     (define-key org-mode-map (kbd "C-j") 'org-return-indent)
     (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle))
@@ -75,7 +77,7 @@
   :after org
   :config
   ;; Hardcoding the image dir
-  (setq-default org-download-image-dir "~/OrgFiles/Attachments")
+  (setq-default org-download-image-dir (expand-file-name ".attach" org-directory))
 
   (setq org-download-heading-lvl nil ; don't use heading when creating files
         org-download-timestamp "%Y%m%d-%H%M%S"
@@ -265,3 +267,4 @@
 
 
 (provide 'init-org)
+

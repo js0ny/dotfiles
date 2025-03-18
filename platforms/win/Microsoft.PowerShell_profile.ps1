@@ -54,7 +54,6 @@ $Env:VISUAL = "code --wait"
 $Env:FILE_MANAGER = "dopus.exe"
 
 
-${function:wsl2} = { wsl.exe --distribution kali-linux $args }
 ${function:wini} = { winget install $args }
 ${function:winr} = { winget uninstall $args }
 ${function:wins} = { winget search $args }
@@ -72,3 +71,17 @@ if (Get-Command "sfsu.exe" -ErrorAction SilentlyContinue) {
 # Elevate in current shell
 # Set Windows Sudo to `inlined` sudo
 ${function:su} = { sudo.exe pwsh }
+
+function Show-WindowsNotification {
+    param (
+        [string]$Title,
+        [Parameter(ValueFromPipeline=$true)]
+        [string]$Message
+    )
+
+    Add-Type -AssemblyName System.Windows.Forms
+    $notifyIcon = New-Object System.Windows.Forms.NotifyIcon
+    $notifyIcon.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon((Get-Command pwsh).Source)
+    $notifyIcon.Visible = $true
+    $notifyIcon.ShowBalloonTip(0,$Title,$Message,[System.Windows.Forms.ToolTipIcon]::Info)
+}
