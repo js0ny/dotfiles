@@ -17,8 +17,15 @@ noremap e k
 noremap i l
 
 " Switch between tabs
-noremap H :bprevious<CR>
-noremap I :bnext<CR>
+nnoremap H :bprevious<CR>
+nnoremap I :bnext<CR>
+vnoremap H ^
+xnoremap H ^
+onoremap H ^
+vnoremap I $
+xnoremap I $
+onoremap I $
+
 
 noremap N 5j
 noremap E 5k
@@ -68,10 +75,11 @@ vnoremap > editor.action.indentLines
 nmap w cjkWordHandler.cursorWordEndRight
 nmap b cjkWordHandler.cursorWordStartLeft
 
-noremap <C-w>n <C-w>j
-noremap <C-w>e <C-w>k
-noremap <C-w>i <C-w>l
-noremap <C-w>x workbench.action.toggleEditorGroupLayout
-" Use C-w C-w as original C-w
-noremap <C-w><C-w> workbench.action.closeActiveEditor
-noremap <C-w><A-n> workbench.action.togglePanel
+" <C-w> will be parsed by VSCode itself.
+" noremap <C-w>n <C-w>j
+" noremap <C-w>e <C-w>k
+" noremap <C-w>i <C-w>l
+" noremap <C-w>x workbench.action.toggleEditorGroupLayout
+" " Use C-w C-w as original C-w
+" noremap <C-w><C-w> workbench.action.closeActiveEditor
+" noremap <C-w><A-n> workbench.action.togglePanel
