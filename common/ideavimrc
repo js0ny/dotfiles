@@ -34,10 +34,16 @@ noremap K N
 noremap j e
 noremap J E
 
-noremap H :bp<CR>
-noremap I :bn<CR>
+nnoremap H :bp<CR>
+nnoremap I :bn<CR>
 noremap N 5j
 noremap E 5k
+vnoremap H ^
+xnoremap H ^
+onoremap H ^
+vnoremap I $
+xnoremap I $
+onoremap I $
 
 
 

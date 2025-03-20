@@ -85,3 +85,5 @@ function Show-WindowsNotification {
     $notifyIcon.Visible = $true
     $notifyIcon.ShowBalloonTip(0,$Title,$Message,[System.Windows.Forms.ToolTipIcon]::Info)
 }
+
+Import-Module "$($(Get-Item $(Get-Command scoop.ps1).Path).Directory.Parent.FullName)\modules\scoop-completion"
