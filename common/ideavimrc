@@ -7,7 +7,16 @@
 " Linking:
 " ln -sf $DOTFILES/common/ideavimrc $XDG_CONFIG_HOME/ideavim/ideavimrc
 
-""" Basic Configs """
+source ~/.local/share/intellimacs/spacemacs.vim
+
+source ~/.local/share/intellimacs/extra.vim
+source ~/.local/share/intellimacs/major.vim
+source ~/.local/share/intellimacs/hybrid.vim
+
+source ~/.local/share/intellimacs/which-key.vim
+
+
+" """ Basic Configs """
 let mapleader = " " " set <leader> to <space>
 
 """ Colemak """
@@ -24,6 +33,19 @@ noremap K N
 " [j]ump
 noremap j e
 noremap J E
+
+nnoremap H :bp<CR>
+nnoremap I :bn<CR>
+noremap N 5j
+noremap E 5k
+vnoremap H ^
+xnoremap H ^
+onoremap H ^
+vnoremap I $
+xnoremap I $
+onoremap I $
+
+
 
 " Y to yank to end of line
 noremap Y y$
@@ -95,7 +117,7 @@ nnoremap gr :action ShowUsages<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gpi :action QuickImplementations<CR>
 nnoremap gs :action GotoSuperMethod<CR>
-nnoremap ga :action
+nnoremap ga :action ShowIntentionActions<CR>
 nnoremap gq :action ShowIntentionActions<CR>
 nnoremap ge :action GotoNextError<CR>
 

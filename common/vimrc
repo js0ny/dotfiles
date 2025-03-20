@@ -8,8 +8,14 @@
 noremap n j
 noremap e k
 noremap i l
-noremap N J
-noremap E K
+nnoremap N 5j
+nnoremap E 5k
+vnoremap H ^
+xnoremap H ^
+onoremap H ^
+vnoremap I $
+xnoremap I $
+onoremap I $
 noremap I L
 
 " Similar position to i

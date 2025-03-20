@@ -1,4 +1,5 @@
 # $DOTFILES/common/starship.toml
+# vim:foldmethod=marker
 # Date: 2025-01-26
 # Description: Use one starship config for all shells
 
@@ -8,10 +9,11 @@
 # Modified from the Powerline Preset
 
 "$schema" = 'https://starship.rs/config-schema.json'
-palette = "catppuccin_mocha"
+
 
 # {{{ format
 format = """
+$sudo\
 $jobs\
 $os\
 $time\
@@ -24,6 +26,7 @@ $git_branch\
 $git_status\
 [](fg:#FCA17D bg:#86BBD8)\
 $custom\
+$bun\
 $c\
 $cmake\
 $cobol\
@@ -76,7 +79,7 @@ $shell\
 """
 # }}}
 
-# {{{ TODO
+# {{{ TODO:
 #
 #  $buf\
 #  $nix_shell\
@@ -92,7 +95,6 @@ $shell\
 #  $direnv\
 #  $env_var\
 #  $crystal\
-#  $custom\
 #  $sudo\
 #  $cmd_duration\
 #  $line_break\
@@ -231,6 +233,39 @@ format = '[$all_status$ahead_behind ]($style)'
 # }}}
 
 # {{{ Part 4
+
+
+[custom.just]
+detect_files = ["Justfile", "justfile", ".Justfile", ".justfile"]
+style = "bg:#86BBD8 fg:#794427"
+format = "[ Just ]($style)"
+
+[custom.dotenv]
+detect_files = [
+  ".env",
+  ".env.local",
+  ".env.development",
+  ".env.test",
+  ".env.production",
+  ".env.staging",
+]
+style = "bg:#86BBD8 fg:#794427"
+format = "[   ]($style)"
+[custom.tex]
+detect_extensions = ["tex", "bib"]
+style = "bg:#86BBD8 fg:#794427"
+format = "[   ]($style)"
+[custom.readme]
+detect_files = [
+  "README.md",
+  "readme.md",
+  "README",
+  "readme",
+  "README.org",
+  "readme.org",
+]
+style = "bg:#86BBD8 fg:#794427"
+format = "[ 󰂺  ]($style)"
 [c]
 symbol = " "
 style = "bg:#86BBD8 fg:#794427"
@@ -335,6 +370,30 @@ symbol = " "
 style = "bg:#86BBD8 fg:#794427"
 format = '[ $symbol ($version) ]($style)'
 
+[ruby]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[bun]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[typst]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[zig]
+symbol = "↯ "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
+
+[kotlin]
+symbol = " "
+style = "bg:#86BBD8 fg:#794427"
+format = '[ $symbol ($version) ]($style)'
 
 # }}}
 
@@ -394,8 +453,3 @@ mantle = "#181825"
 crust = "#11111b"
 
 # }}}
-
-[custom.just]
-detect_files = ["Justfile", "justfile", ".Justfile", ".justfile"]
-style = "bg:#86BBD8 fg:#794427"
-format = "[Just]($style)"

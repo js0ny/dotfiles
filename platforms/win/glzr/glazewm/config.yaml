@@ -146,7 +146,9 @@ window_rules:
         window_title: { regex: ".*? - Peek" }
       - window_process: { equals: "Lively" }
         window_class: { regex: "HwndWrapper" }
+      # Ignore Quake-style consoles.
       - window_process: { equals: "WindowsTerminal" }
+        window_class: { equals: "CASCADIA_HOSTING_WINDOW_CLASS" }
   - commands: ["set-floating"]
     match:
       # Razer Synapse
@@ -155,7 +157,25 @@ window_rules:
       - window_process: { equals: "AutoHotkeyUX" }
       - window_process: { equals: "ApplicationFrameHost" }
         window_title: { regex: "Settings|设置" }
-
+      - window_process: { equals: "QQ" }
+        window_title: { equals: "图片查看器" }
+      # 微信图片视图
+      - window_process: { equals: "WeChat" }
+        window_class: { equals: "ImagePreviewWnd" }
+      # 微信朋友圈视图
+      - window_process: { equals: "WeChat" }
+        window_class: { equals: "SnsWnd" }
+      - window_process: { equals: "setup" }
+        window_title: { equals: "Visual Studio Installer" }
+      # JetBrains IDEs Floating Dialogs
+      - window_class: { equals: "SunAwtDialog" }
+        window_process:
+          { regex: "rider64|idea64|goland64|rustrover64|clion64|pycharm64" }
+      ## Browser
+      - window_process: { equals: "vivaldi" }
+        window_title: { regex: "^Vivaldi 设置.*$" }
+      - window_process: { equals: "vivaldi" }
+        window_title: { regex: "^Bitwarden - Vivaldi$" }
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
   - name: "resize"

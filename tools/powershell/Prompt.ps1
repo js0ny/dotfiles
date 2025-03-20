@@ -3,7 +3,81 @@
 # Author: js0ny
 # Use starship to set prompt
 
-Invoke-Expression (&starship init powershell)
+# Invoke-Expression (&starship init powershell)
+
+
+function formatFG {
+    param(
+        [string]$RGB
+    )
+    if ($RGB -eq "-1") {
+        return "`e[39m"
+    }
+    $R = $RGB.Substring(0, 2)
+    $G = $RGB.Substring(2, 2)
+    $B = $RGB.Substring(4, 2)
+    # Convert hex to RGB
+    $R = [int]::Parse($R, [System.Globalization.NumberStyles]::HexNumber)
+    $G = [int]::Parse($G, [System.Globalization.NumberStyles]::HexNumber)
+    $B = [int]::Parse($B, [System.Globalization.NumberStyles]::HexNumber)
+    return "`e[38;2;$R;$G;${B}m"
+}
+
+function formatBG {
+    param(
+        [string]$RGB
+    )
+    if ($RGB -eq "-1") {
+        return "`e[49m"
+    }
+    $R = $RGB.Substring(0, 2)
+    $G = $RGB.Substring(2, 2)
+    $B = $RGB.Substring(4, 2)
+    # Convert hex to RGB
+    $R = [int]::Parse($R, [System.Globalization.NumberStyles]::HexNumber)
+    $G = [int]::Parse($G, [System.Globalization.NumberStyles]::HexNumber)
+    $B = [int]::Parse($B, [System.Globalization.NumberStyles]::HexNumber)
+    return "`e[48;2;$R;$G;${B}m"
+}
+function formatPowerlineText {
+    param(
+        [string]$FG,
+        [string]$BG,
+        [string]$PLBG,
+        [string]$Text
+    )
+    $ResumeSequece = "`e[0m"
+    $TextFG = formatFG -RGB $FG
+    $TextBG = formatBG -RGB $BG
+    $PLFG = formatFG -RGB $BG
+    $PLBG = formatBG -RGB $PLBG
+    return "$TextFG$TextBG $Text $PLFG$PLBG$ResumeSequece"
+}
+
+function prompt {
+    if ($pwd.Path -eq $HOME) {
+        $cwd = "~"
+    } else {
+        $cwd = $pwd.ProviderPath
+    }
+    $time = Get-Date -Format "HH:mm"
+    $ResumeSequece = "`e[0m"
+    $FG0 = "FFFFFF"
+    $BG0 = "9A348E"
+    $BG1 = "DA627D"
+    $BG2 = "FCA17D"
+    $FG1 = "035E82"
+    $time = formatPowerlineText $FG0 $BG0 $BG1 $time
+    $cwd = formatPowerlineText $FG0 $BG1 $BG2 $cwd
+    $ps = formatPowerlineText $FG1 $BG2 "-1" "PS"
+
+   "$time$cwd$ps$ResumeSequece "
+
+}
+
+function Invoke-Starship {
+    Invoke-Expression (&starship init powershell)
+}
 
 Import-Module Catppuccin
 

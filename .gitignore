@@ -39,3 +39,5 @@ lazy-lock.json
 
 # Emacs
 *.elc
+
+common/**/*current*
