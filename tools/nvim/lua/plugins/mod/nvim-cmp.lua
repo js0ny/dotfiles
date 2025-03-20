@@ -1,3 +1,4 @@
+-- FIXME: Completion not working on GNU/Linux
 local function set_keymaps(keymaps_cmp)
   local mappings = {}
   for _, map in ipairs(keymaps_cmp) do

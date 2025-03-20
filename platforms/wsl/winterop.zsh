@@ -5,11 +5,6 @@
 
 export FILE_EXPLORER="explorer.exe" # Directory Opus
 
-alias clip="clip.exe"
-alias clip="clip.exe"
-alias paste='pwsh.exe -NoProfile -Command "Get-Clipboard"'
-alias dark-mode='pwsh.exe -Command "dark-mode" 2>&1 /dev/null'
-alias winfetch='pwsh.exe -NoProfile -Command "winfetch"'
 alias psw="tasklist.exe"
 alias killw="taskkill.exe"
 alias shutdownw="shutdown.exe /s /t 0"
