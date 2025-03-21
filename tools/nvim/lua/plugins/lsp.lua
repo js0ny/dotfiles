@@ -1,8 +1,5 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    lazy = false,
-  },
+  { import = "plugins.mod.nvim-lspconfig" },
   { import = "plugins.mod.render-markdown" },
   -- { import = "plugins.mod.markview" },
   {
