@@ -23,8 +23,8 @@ return {
   },
   { "olimorris/onedarkpro.nvim", cmd = "Telescope colorscheme" },
   { "rebelot/kanagawa.nvim", cmd = "Telescope colorscheme" },
-  -- Highlight objects under the cursor
-  { "RRethy/vim-illuminate" },
+  -- -- Highlight objects under the cursor
+  -- { "RRethy/vim-illuminate" },
   { -- Modern Status Line
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -91,19 +91,19 @@ return {
     opts = {},
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     -- add any options here
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     "rcarriga/nvim-notify",
+  --   },
+  -- },
 }
