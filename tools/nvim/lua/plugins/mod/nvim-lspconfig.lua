@@ -16,6 +16,7 @@ return {
       powershell_es = {}, -- PowerShell
       pyright = {}, -- Python
       taplo = {}, -- TOML
+      rust_analyzer = {}, -- Rust
       ts_ls = {}, -- TypeScript
       vimls = {}, -- vimscript
       yamlls = {}, -- YAML

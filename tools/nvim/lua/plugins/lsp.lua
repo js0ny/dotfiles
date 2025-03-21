@@ -41,39 +41,7 @@ return {
     "NoahTheDuke/vim-just",
     ft = { "just" },
   },
-  {
-    "akinsho/org-bullets.nvim",
-    ft = { "org" },
-    config = function()
-      require("org-bullets").setup()
-    end,
-  },
-  {
-    "nvim-orgmode/orgmode",
-    ft = { "org" },
-    config = function()
-      -- Setup orgmode
-      require("orgmode").setup({
-        org_agenda_files = "~/OrgFiles/tasks/*",
-        org_default_notes_file = "~/OrgFiles/tasks/inbox.org",
-        org_archive_location = "~/OrgFiles/archive/%s_archive::",
-        org_todo_keywords = { "TODO(t)", "NEXT(n)", "WAIT(w)", "|", "DONE(d)", "CANCELLED(c)" },
-        org_hide_leading_stars = true,
-        org_hide_emphasis_markers = true,
-        org_log_into_drawer = "LOGBOOK",
-        org_highlight_latex_and_related = "native",
-        org_startup_indented = true,
-        org_deadline_warning_days = 10,
-      })
-
-      -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
-      -- add ~org~ to ignore_install
-      -- require('nvim-treesitter.configs').setup({
-      --   ensure_installed = 'all',
-      --   ignore_install = { 'org' },
-      -- })
-    end,
-  },
+  { import = "plugins.mod.lang-org" },
   { import = "plugins.mod.trouble-nvim" },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -87,10 +55,13 @@ return {
       "VeryLazy",
     },
     opts = {
-      ensure_installed = { "markdown", "markdown_inline", "latex", "python" },
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline" },
       highlight = { enable = true },
       indent = { enable = true },
     },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
   {
     "folke/lazydev.nvim",
