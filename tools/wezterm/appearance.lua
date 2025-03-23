@@ -25,7 +25,7 @@ end
 return function(config)
   config.max_fps = 120
   config.font = wezterm.font({
-    family = "JetBrainsMono Nerd Font",
+    family = "Sarasa Term SC Nerd Font",
   })
   config.color_scheme = scheme_for_appearance(get_appearance())
   config.font_size = 12.0

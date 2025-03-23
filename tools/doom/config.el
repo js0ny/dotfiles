@@ -22,20 +22,20 @@
 ;; accept. For example:
 ;;
 ;; https://emacs-china.org/t/doom-emacs/23513/13
-(setq doom-font (font-spec :family "Iosevka Nerd Font Propo" :size 14)
+(setq doom-font (font-spec :family "Sarasa Mono SC Nerd Font" :size 14)
       doom-serif-font doom-font
-      doom-symbol-font (font-spec :family "LXGW WenKai Mono")
-      doom-variable-pitch-font (font-spec :family "LXGW WenKai Mono" :weight 'extra-bold))
+      doom-symbol-font (font-spec :family "Sarasa Mono SC Nerd Font")
+      doom-variable-pitch-font (font-spec :family "Sarasa Mono SC Nerd Font" :weight 'extra-bold))
 
 ;; 如果不把这玩意设置为 nil, 会默认去用 fontset-default 来展示, 配置无效
 (setq use-default-font-for-symbols nil)
 
 ;; Doom 的字体加载顺序问题, 如果不设定这个 hook, 配置会被覆盖失效
-(add-hook! 'after-setting-font-hook
-  (set-fontset-font t 'latin (font-spec :family "Iosevka Nerd Font Propo"))
-  (set-fontset-font t 'symbol (font-spec :family "Symbola"))
-  (set-fontset-font t 'mathematical (font-spec :family "Symbola"))
-  (set-fontset-font t 'emoji (font-spec :family "Symbola")))
+;;(add-hook! 'after-setting-font-hook
+;;  (set-fontset-font t 'latin (font-spec :family "Iosevka Nerd Font Propo"))
+;;  (set-fontset-font t 'symbol (font-spec :family "Symbola"))
+;;  (set-fontset-font t 'mathematical (font-spec :family "Symbola"))
+;;  (set-fontset-font t 'emoji (font-spec :family "Symbola")))
 
 ;; (dolist (charset '(kana han cjk-misc bopomofo))
 ;;   (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono" :size 16)))
