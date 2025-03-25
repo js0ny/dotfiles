@@ -22,6 +22,10 @@
   (org-directory "~/OrgFiles/")
   (org-agenda-files (list (concat org-directory "tasks/")))
   (org-persist-directory (expand-file-name "org-persist" user-emacs-data))
+  (org-archive-location "~/OrgFiles/.archive/%s_archive::")
+  (org-default-notes-file "~/OrgFiles/tasks/inbox.org")
+  (org-startup-folded "show2levels")
+  (org-log-into-drawer "LOGBOOK")
   (org-pretty-entities t)
   (org-src-fontify-natively t)
   (org-src-tab-acts-natively t) ; Use TAB to indent inside source block

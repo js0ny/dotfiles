@@ -21,7 +21,7 @@ return {
       variant = "dawn",
     },
   },
-  { "olimorris/onedarkpro.nvim", cmd = "Telescope colorscheme" },
+  -- { "olimorris/onedarkpro.nvim", cmd = "Telescope colorscheme" },
   { "rebelot/kanagawa.nvim", cmd = "Telescope colorscheme" },
   -- -- Highlight objects under the cursor
   -- { "RRethy/vim-illuminate" },
@@ -42,7 +42,7 @@ return {
       },
     },
   },
-  { import = "plugins.mod.alpha-nvim" }, -- Dashboard
+  -- { import = "plugins.mod.alpha-nvim" }, -- Dashboard
   { -- Breadcrumb
     "Bekaboo/dropbar.nvim",
     dependencies = {

@@ -45,12 +45,19 @@ XDG_STATE_HOME := \
         }
     }
 
+# Sudo and coreutils are required
 LN := \
-    if os_family() == "windows" { # Sudo and coreutils are required
+    if os_family() == "windows" {
         "sudo ln -sf"
     } else {
         "ln -sf"
     }
+CLIP := \
+    if os() == "windows" { "clip.exe" } \
+    else if os() == "linux" { "wl-copy" } \
+    else if os() == "macos" { "pbcopy" } \
+    else { "" }
+
 
 test:
     echo {{DOTFILES}}
@@ -78,9 +85,11 @@ ideavim:
     ln -sf {{DOTFILES}}/common/ideavimrc {{XDG_CONFIG_HOME}}/ideavim/ideavimrc
     git clone https://github.com/MarcoIeni/intellimacs {{join(home_directory(), ".local/share/intellimacs")}} --depth 1
 
+[unix]
 vivaldi:
-    curl https://github.com/SocietasEvanescentes/Vivaldi/files/12446831/Rose.Pine.Dawn.zip > $HOME/Downloads/vivaldi-light.zip # Rose Pine Dawn
-    curl https://github.com/catppuccin/vivaldi/releases/download/1.0.0-ctpv2/Catppuccin.Mocha.Lavender.zip > $HOME/Downloads/vivaldi-dark.zip # Catppuccino Mocha Lavender
+    curl -L https://github.com/SocietasEvanescentes/Vivaldi/files/12446831/Rose.Pine.Dawn.zip -o "$HOME/Downloads/vivaldi-light.zip" # Rose Pine Dawn
+    curl -L https://github.com/catppuccin/vivaldi/releases/download/1.0.0-ctpv2/Catppuccin.Mocha.Lavender.zip -o "$HOME/Downloads/vivaldi-dark.zip" # Catppuccino Mocha Lavender
+
 
 [linux]
 systemd:
@@ -120,11 +129,35 @@ neovim:
     {{LN}} {{DOTFILES}}/tools/nvim {{XDG_CONFIG_HOME}}/nvim
     nvim --headless +checkhealth +"w nvim-healthcheck.txt" +qall
 
+[unix]
+thunderbird:
+    curl -L https://github.com/wshanks/tbkeys/releases/download/v2.4.0/tbkeys.xpi -o "$HOME/Downloads/tbkeys.xpi"
+    curl -L https://github.com/htyxyt/htyxyt-immersive-translate-Thunderbird/releases/download/thunderbird-v1.14.8/immersive-translate-Thunderbird.v1.14.8.xpi -o "$HOME/Downloads/immersive-translate-Thunderbird.xpi"
+    cat {{DOTFILES}}/tools/thunderbird/tbkeys.json | {{CLIP}}
+
+[linux]
+readline:
+    mkdir -p {{XDG_CONFIG_HOME}}/readline
+    {{LN}} {{DOTFILES}}/common/inputrc {{XDG_CONFIG_HOME}}/readline/inputrc
 
 [linux]
 bash:
     {{LN}} {{DOTFILES}}/tools/bash {{XDG_CONFIG_HOME}}/bash
     sudo cp $DOTFILES/tools/bash/xdg-compat.sh /etc/profile.d/xdg-compat.sh
+
+[linux]
+keyd:
+    -which keyd || sudo pacman -S keyd --noconfirm || sudo apt install keyd --yes || @just build_keyd
+    sudo cp {{DOTFILES}}/platforms/linux/keyd/keyd.conf /etc/keyd/default.conf
+    mkdir -p {{XDG_CONFIG_HOME}}/keyd
+    {{LN}} {{DOTFILES}}/platforms/linux/keyd/app.conf {{XDG_CONFIG_HOME}}/keyd/app.conf
+    sudo systemctl enable keyd
+
+[linux]
+[private]
+build_keyd:
+    git clone https://github.com/rvaiya/keyd $HOME/.local/build/keyd
+    cd $HOME/.local/build/keyd && make && sudo make install
 
 [linux]
 flatpak:

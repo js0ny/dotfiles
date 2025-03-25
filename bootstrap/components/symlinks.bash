@@ -68,7 +68,7 @@ if [ $(uname) = "Darwin" ]; then
 else
   echo "[INFO] Running on Linux"
   linkDots+=(
-    ["$DOTFILES/common/inputrc"]="$HOME/.inputrc"
+    ["$DOTFILES/common/inputrc"]="$XDG_CONFIG_HOME/readline/inputrc"
   )
   # WSL1 : Microsoft
   # WSL2 : microsoft
