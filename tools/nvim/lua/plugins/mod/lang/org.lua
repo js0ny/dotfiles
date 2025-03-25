@@ -1,18 +1,22 @@
 return {
   {
-    "nvim-orgmode/orgmode",
+    -- "js0ny/nvim-orgmode",
+    name = "orgmode",
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-orgmode/telescope-orgmode.nvim",
       "nvim-orgmode/org-bullets.nvim",
       "Saghen/blink.cmp",
     },
+    branch = "feat-image-match-latex",
     cmd = {
       "Org",
     },
     keys = {
       { "<leader>A", "<cmd>Org agenda<CR>", desc = "Org Agenda" },
     },
+    dir = "~/Source/Forks/nvim-orgmode",
+    dev = true,
     event = "VeryLazy",
     config = function()
       require("orgmode").setup({

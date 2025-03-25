@@ -141,6 +141,16 @@ if command -v apt > /dev/null
     abbr --add aptl "apt list --installed"
 end
 
+
+if command -v dnf > /dev/null
+    abbr --add dnf "sudo dnf"
+    abbr --add dnfi "sudo dnf install"
+    abbr --add dnfr "sudo dnf remove"
+    abbr --add dnfu "sudo dnf update"
+    abbr --add dnfs "dnf search"
+    abbr --add dnfl "dnf list --installed"
+end
+
 if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"
     abbr --add icat "kitten icat"
 else if test "$TERM_PROGRAM" = "WezTerm"

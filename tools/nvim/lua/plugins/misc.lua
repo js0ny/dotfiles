@@ -1,5 +1,5 @@
 return {
-  { "wakatime/vim-wakatime",          lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
   { import = "plugins.mod.toggleterm" },
   {
     "CRAG666/code_runner.nvim",
@@ -42,4 +42,5 @@ return {
   --   "3rd/image.nvim",
   --   opts = {},
   -- },
+  { import = "plugins.mod.snacks-nvim" },
 }
