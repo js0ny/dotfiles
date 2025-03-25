@@ -1,7 +1,5 @@
 return {
   { import = "plugins.mod.nvim-lspconfig" },
-  { import = "plugins.mod.render-markdown" },
-  -- { import = "plugins.mod.markview" },
   {
     "lervag/vimtex",
     ft = { "tex", "bib" },
@@ -41,7 +39,8 @@ return {
     "NoahTheDuke/vim-just",
     ft = { "just" },
   },
-  { import = "plugins.mod.lang-org" },
+  { import = "plugins.mod.lang.org" },
+  { import = "plugins.mod.lang.markdown" },
   { import = "plugins.mod.trouble-nvim" },
   {
     "nvim-treesitter/nvim-treesitter",

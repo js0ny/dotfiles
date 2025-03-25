@@ -36,6 +36,7 @@ local config = {
       components.diagnostics,
     },
     lualine_x = {
+      components.orgmode,
       components.indent,
       components.encoding,
       components.eol,

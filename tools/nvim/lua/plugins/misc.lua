@@ -1,5 +1,5 @@
 return {
-  { "wakatime/vim-wakatime", lazy = false },
+  { "wakatime/vim-wakatime",          lazy = false },
   { import = "plugins.mod.toggleterm" },
   {
     "CRAG666/code_runner.nvim",
@@ -18,7 +18,6 @@ return {
       },
     },
   },
-  { import = "plugins.mod.obsidian-nvim" },
   { import = "plugins.mod.which-keys-nvim" },
   { import = "plugins.mod.copilot-lua" },
   { import = "plugins.mod.avante-nvim" },

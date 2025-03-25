@@ -112,6 +112,13 @@ M.progress = {
   "progress",
 }
 
+-- TODO: Implement orgmode
+M.orgmode = {
+  function()
+    return _G.orgmode.statusline()
+  end,
+}
+
 -- local conditions = {
 --   buffer_not_empty = function()
 --     return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
