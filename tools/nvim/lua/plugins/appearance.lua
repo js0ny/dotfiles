@@ -1,8 +1,19 @@
+-- https://stackoverflow.com/a/73365602
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", {}),
+  desc = "Hightlight selection on yank",
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 500 })
+  end,
+})
+
 return {
   -- Colorschemes
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = true,
     opts = {
       flavor = "auto",
       background = {
@@ -10,6 +21,7 @@ return {
         dark = "mocha",
       },
       integrations = {
+        -- lualine = true,
         "lualine",
       },
     },
@@ -20,6 +32,7 @@ return {
     opts = {
       variant = "dawn",
     },
+    cmd = "Telescope colorscheme",
   },
   -- { "olimorris/onedarkpro.nvim", cmd = "Telescope colorscheme" },
   { "rebelot/kanagawa.nvim", cmd = "Telescope colorscheme" },
@@ -28,20 +41,22 @@ return {
   { -- Modern Status Line
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VeryLazy",
     config = function()
       require("plugins.mod.lualine")
     end,
   },
-  { -- Highlight yanked text
-    "gbprod/yanky.nvim",
-    opts = {
-      highlight = {
-        on_put = true,
-        on_yank = true,
-        timer = 500,
-      },
-    },
-  },
+  -- { -- Highlight yanked text
+  --   "gbprod/yanky.nvim",
+  --   event = "LazyFile",
+  --   opts = {
+  --     highlight = {
+  --       on_put = true,
+  --       on_yank = true,
+  --       timer = 500,
+  --     },
+  --   },
+  -- },
   -- { import = "plugins.mod.alpha-nvim" }, -- Dashboard
   { -- Breadcrumb
     "Bekaboo/dropbar.nvim",
@@ -88,6 +103,8 @@ return {
   },
   { -- Highlight and navigate between TODOs
     "folke/todo-comments.nvim",
+    cmd = { "TodoTelescope" },
+    event = "BufRead",
     opts = {},
     dependencies = { "nvim-lua/plenary.nvim" },
   },

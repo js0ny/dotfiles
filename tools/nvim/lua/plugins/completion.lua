@@ -10,14 +10,10 @@ return {
     event = "InsertEnter",
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/lsp-snippets" })
-      -- require("luasnip.loaders.from_vscode").lazy_load()
     end,
   },
-  {
-    "zbirenbaum/copilot-cmp",
-    opts = {},
-    -- config = function()
-    --   require("copilot_cmp").setup()
-    -- end,
-  },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   opts = {},
+  -- },
 }

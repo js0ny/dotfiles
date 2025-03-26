@@ -1,23 +1,23 @@
 return {
   {
-    -- "js0ny/nvim-orgmode",
-    name = "orgmode",
+    "nvim-orgmode/orgmode",
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-orgmode/telescope-orgmode.nvim",
       "nvim-orgmode/org-bullets.nvim",
       "Saghen/blink.cmp",
     },
-    branch = "feat-image-match-latex",
     cmd = {
       "Org",
+    },
+    ft = {
+      "org",
+      "orgagenda",
     },
     keys = {
       { "<leader>A", "<cmd>Org agenda<CR>", desc = "Org Agenda" },
     },
-    dir = "~/Source/Forks/nvim-orgmode",
-    dev = true,
-    event = "VeryLazy",
+    event = "BufEnter *.org",
     config = function()
       require("orgmode").setup({
         org_agenda_files = "~/OrgFiles/tasks/*",

@@ -1,6 +1,11 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = { "saghen/blink.cmp" },
+  event = {
+    "BufReadPost",
+    "BufWritePost",
+    "BufNewFile",
+  },
 
   -- example using `opts` for defining servers
   opts = {

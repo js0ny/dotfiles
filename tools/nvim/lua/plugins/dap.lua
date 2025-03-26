@@ -2,6 +2,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
+    event = "BufReadPre",
     config = function()
       local dap = require("dap")
       dap.adapters.codelldb = {
@@ -28,10 +29,13 @@ return {
     "rcarriga/nvim-dap-ui",
     opts = {},
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    cmd = "DapNew",
   },
-  { "theHamsta/nvim-dap-virtual-text", opts = {} },
+  { "theHamsta/nvim-dap-virtual-text", opts = {}, cmd = "DapNew" },
   {
     "mfussenegger/nvim-dap-python",
+    event = "BufReadPost",
+    ft = "python",
     config = function()
       require("dap-python").setup("uv")
     end,

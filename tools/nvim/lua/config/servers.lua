@@ -5,29 +5,21 @@ local M = {}
 -- Ensure that the following servers are installed and set
 -- Use :Mason to list all available servers
 M.servers = {
-  "ast_grep",
-  "bashls",         -- Bash
-  "clangd",         -- C/C++
-  "cssls",          -- CSS
-  "denols",         -- Deno
-  "eslint",         -- JavaScript
-  "gopls",          -- Go
-  "html",           -- HTML
-  "jsonls",         -- JSON
-  "lua_ls",         -- Lua
-  "markdown_oxide", -- Markdown
-  "omnisharp",      -- C# & F#
-  "powershell_es",  -- PowerShell
-  "pyright",        -- Python
-  "rust_analyzer",  -- Rust
-  "svelte",         -- Svelte
-  "svlangserver",   -- SystemVerilog
-  "tailwindcss",    -- TailwindCSS
-  "taplo",          -- TOML
-  "ts_ls",          -- TypeScript
-  "vimls",          -- vimscript
-  "yamlls",         -- YAML
-  "beancount",      -- Beancount
+  "bashls", -- Bash
+  "clangd", -- C/C++
+  "eslint", -- JavaScript
+  "gopls", -- Go
+  "html", -- HTML
+  "jsonls", -- JSON
+  "lua_ls", -- Lua
+  -- "markdown_oxide", -- Markdown
+  "pyright", -- Python
+  "rust_analyzer", -- Rust
+  "taplo", -- TOML
+  "ts_ls", -- TypeScript
+  "vimls", -- vimscript
+  "yamlls", -- YAML
+  "beancount", -- Beancount
 }
 
 -- Configuration for each server defines here

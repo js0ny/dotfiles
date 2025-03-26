@@ -10,7 +10,7 @@ return {
   "akinsho/bufferline.nvim",
   dependencies = "nvim-tree/nvim-web-devicons", -- 图标支持
   after = "catppuccin",
-  lazy = false,
+  event = "VeryLazy",
   keys = {
     { "<leader>b1", "<cmd>BufferLineGotoBuffer 1<CR>", desc = "Switch to Buffer #1" },
     { "<leader>b2", "<cmd>BufferLineGotoBuffer 2<CR>", desc = "Switch to Buffer #2" },

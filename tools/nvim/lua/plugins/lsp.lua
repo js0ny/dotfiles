@@ -12,6 +12,7 @@ return {
   },
   {
     "js0ny/luasnip-latex-snippets.nvim",
+    ft = { "tex", "markdown" },
     -- vimtex isn't required if using treesitter
     requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
     config = function()
@@ -20,10 +21,18 @@ return {
       require("luasnip").config.setup({ enable_autosnippets = true })
     end,
   },
-  { "williamboman/mason.nvim", config = true },
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    build = ":MasonUpdate",
+    opts_extend = { "ensure_installed" },
+    opts = {
+      ensure_installed = require("config.servers").servers,
+    },
+  },
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = false,
+    event = "BufReadPre",
     dependencies = {
       { "williamboman/mason.nvim" },
       { "neovim/nvim-lspconfig" },
@@ -34,7 +43,7 @@ return {
     },
   },
   { import = "plugins.mod.conform-nvim" },
-  { "nvim-treesitter/nvim-treesitter-context" },
+  { "nvim-treesitter/nvim-treesitter-context", lazy = true },
   {
     "NoahTheDuke/vim-just",
     ft = { "just" },
@@ -58,9 +67,9 @@ return {
       highlight = { enable = true },
       indent = { enable = true },
     },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
+    -- config = function(_, opts)
+    --   require("nvim-treesitter.configs").setup(opts)
+    -- end,
   },
   {
     "folke/lazydev.nvim",

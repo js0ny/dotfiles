@@ -143,7 +143,7 @@ readline:
 [linux]
 bash:
     {{LN}} {{DOTFILES}}/tools/bash {{XDG_CONFIG_HOME}}/bash
-    sudo cp $DOTFILES/tools/bash/xdg-compat.sh /etc/profile.d/xdg-compat.sh
+    sudo cp {{DOTFILES}}/tools/bash/xdg-compat.sh /etc/profile.d/xdg-compat.sh
 
 [linux]
 keyd:
@@ -158,6 +158,16 @@ keyd:
 build_keyd:
     git clone https://github.com/rvaiya/keyd $HOME/.local/build/keyd
     cd $HOME/.local/build/keyd && make && sudo make install
+
+[unix]
+kitty:
+    which kitty
+    {{LN}} {{DOTFILES}}/tools/kitty {{XDG_CONFIG_HOME}}/kitty
+
+[unix]
+zotero:
+    curl -L https://github.com/syt2/zotero-addons/releases/download/V1.8.1/zotero-addons.xpi -o "$HOME/Downloads/zotero-addons.xpi"
+
 
 [linux]
 flatpak:

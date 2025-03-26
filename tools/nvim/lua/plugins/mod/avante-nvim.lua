@@ -33,6 +33,8 @@ return {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",
+      ft = { "avante", "markdown", "typst", "org", "tex" },
+      cmd = "PasteImage",
       opts = {
         -- recommended settings
         default = {

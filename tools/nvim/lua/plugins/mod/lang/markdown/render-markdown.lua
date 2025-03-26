@@ -1,7 +1,7 @@
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    lazy = false,
+    event = "BufRead",
     ft = { "markdown", "Avante" },
     opts = {
       file_types = { "markdown", "Avante" },

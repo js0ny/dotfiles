@@ -1,17 +1,18 @@
 return {
   {
     "rmagatti/auto-session",
-    lazy = false,
+    event = "BufReadPre",
 
     opts = {
       suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
     },
   },
-  { import = "plugins.mod.nvim-tree" },
+  -- { import = "plugins.mod.nvim-tree" },
   { import = "plugins.mod.telescope" },
   -- { import = "plugins.mod.fzf" },
   {
     "ahmedkhalf/project.nvim",
+    event = "VeryLazy",
     opts = {
       detection_methods = { "lsp", "pattern" },
       patterns = { ".git", "Makefile", "package.json" },
@@ -46,5 +47,14 @@ return {
   -- },
   {
     "NeogitOrg/neogit",
+    -- dependencies = {
+    --   "nvim-lua/plenary.nvim", -- required
+    --   "nvim-telescope/telescope.nvim", -- optional
+    -- },
+    config = true,
+    -- event = "VeryLazy",
+    cmd = {
+      "Neogit",
+    },
   },
 }
