@@ -27,7 +27,7 @@ return {
     build = ":MasonUpdate",
     opts_extend = { "ensure_installed" },
     opts = {
-      ensure_installed = require("config.servers").servers,
+      -- ensure_installed = require("config.servers").servers,
     },
   },
   {
@@ -38,8 +38,8 @@ return {
       { "neovim/nvim-lspconfig" },
     },
     opts = {
-      ensure_installed = require("config.servers").servers,
-      automatic_installation = false,
+      -- ensure_installed = require("config.servers").servers,
+      -- automatic_installation = false,
     },
   },
   { import = "plugins.mod.conform-nvim" },

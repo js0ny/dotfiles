@@ -2,7 +2,10 @@ return {
   {
     "rmagatti/auto-session",
     event = "BufReadPre",
-
+    cmd = {
+      "SessionSearch",
+      "SessionSave",
+    },
     opts = {
       suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
     },
