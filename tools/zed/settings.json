@@ -18,6 +18,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "outline_panel": {
+    "dock": "right"
+  },
   "edit_predictions": {
     "disabled_globs": ["*.bean"],
     "mode": "eager_preview",

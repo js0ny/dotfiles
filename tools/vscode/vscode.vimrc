@@ -59,6 +59,8 @@ noremap gr editor.action.goToReferences
 noremap gpr editor.action.referenceSearch.trigger
 noremap ga editor.action.quickFix
 
+" Rename, or [c]hange [d]efinition
+noremap cd editor.action.rename
 
 " Requires matchit by redguardtoo
 " nnoremap % extension.matchitJumpItems

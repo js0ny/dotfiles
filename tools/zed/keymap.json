@@ -47,7 +47,21 @@
     "bindings": {
       "N": "vim::JoinLines",
       "l": "vim::InsertBefore",
-      "L": "vim::InsertFirstNonWhitespace",
+      "L": "vim::InsertFirstNonWhitespace"
+    }
+  },
+  {
+    "context": "vim_mode == visual || vim_mode == operator",
+
+    "bindings": {
+      "H": "vim::StartOfLine",
+      "I": "vim::EndOfLine"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+
+    "bindings": {
       "H": "pane::ActivatePrevItem",
       "I": "pane::ActivateNextItem"
     }
