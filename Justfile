@@ -1,8 +1,9 @@
-set shell := ["fish", "-c"]
+# set shell := ["fish", "-c"]
+set shell := ["bash", "-c"]
 set windows-shell := ["pwsh", "-c"]
 
 
-PLATFORM := \
+OS := \
     if os() == "linux" {
         if env("WSL_DISTRO_NAME","") != "" {
             "wsl"
@@ -93,7 +94,7 @@ vivaldi:
 
 [linux]
 systemd:
-    ln -sf {{DOTFILES}}/platforms/{{PLATFORM}}/systemd {{XDG_CONFIG_HOME}}/systemd/
+    ln -sf {{DOTFILES}}/platforms/{{OS}}/systemd {{XDG_CONFIG_HOME}}/systemd/
 
 
 uv:
@@ -128,6 +129,12 @@ neovim:
     which nvim
     {{LN}} {{DOTFILES}}/tools/nvim {{XDG_CONFIG_HOME}}/nvim
     nvim --headless +checkhealth +"w nvim-healthcheck.txt" +qall
+
+[unix]
+neovide:
+    which neovide
+    -mkdir -p {{XDG_CONFIG_HOME}}/neovide
+    {{LN}} {{DOTFILES}}/platforms/{{OS}}/neovide.toml {{XDG_CONFIG_HOME}}/neovide/config.toml
 
 [unix]
 thunderbird:
@@ -168,6 +175,24 @@ kitty:
 zotero:
     curl -L https://github.com/syt2/zotero-addons/releases/download/V1.8.1/zotero-addons.xpi -o "$HOME/Downloads/zotero-addons.xpi"
 
+[unix]
+fish:
+    {{LN}} {{DOTFILES}}/tools/fish {{XDG_CONFIG_HOME}}/fish
+    curl -L https://raw.githubusercontent.com/SpaceAceMonkey/dotenv-for-fish/refs/heads/main/dotenv.fish -o "{{DOTFILES}}/tools/fish/functions/dotenv.fish"
+
+
+[unix]
+zsh:
+    -[[ -f /etc/zshenv ]] && sudo cp {{DOTFILES}}/tools/zsh/global.zshenv /etc/zshenv # or /etc/zsh/zshenv
+    -[[ -f /etc/zsh/zshenv ]] && sudo cp {{DOTFILES}}/tools/zsh/global.zshenv /etc/zsh/zshenv
+    mkdir -p {{XDG_CONFIG_HOME}}/zsh
+    {{LN}} {{DOTFILES}}/tools/zsh/zshenv {{XDG_CONFIG_HOME}}/zsh/.zshenv
+    {{LN}} {{DOTFILES}}/tools/zsh/zshrc {{XDG_CONFIG_HOME}}/zsh/.zshrc
+    {{LN}} {{DOTFILES}}/tools/zsh/zprofile {{XDG_CONFIG_HOME}}/zsh/.zprofile
+    test -d {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-autosuggestions || git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-autosuggestions
+    test -d {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-syntax-highlighting || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-syntax-highlighting
+    test -d {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-history-substring-search || git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-history-substring-search
+    test -d {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-completions || git clone --depth 1 https://github.com/zsh-users/zsh-completions.git {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-completions
 
 [linux]
 flatpak:

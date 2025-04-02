@@ -1,5 +1,5 @@
 return {
-  { import = "plugins.mod.nvim-lspconfig" },
+  -- { import = "plugins.mod.nvim-lspconfig" },
   {
     "lervag/vimtex",
     ft = { "tex", "bib" },
@@ -27,18 +27,18 @@ return {
       -- ensure_installed = require("config.servers").servers,
     },
   },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "BufReadPre",
-    dependencies = {
-      { "williamboman/mason.nvim" },
-      { "neovim/nvim-lspconfig" },
-    },
-    opts = {
-      -- ensure_installed = require("config.servers").servers,
-      -- automatic_installation = false,
-    },
-  },
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   event = "BufReadPre",
+  --   dependencies = {
+  --     { "williamboman/mason.nvim" },
+  --     { "neovim/nvim-lspconfig" },
+  --   },
+  --   opts = {
+  --     -- ensure_installed = require("config.servers").servers,
+  --     -- automatic_installation = false,
+  --   },
+  -- },
   { import = "plugins.mod.conform-nvim" },
   { "nvim-treesitter/nvim-treesitter-context", lazy = true },
   {
