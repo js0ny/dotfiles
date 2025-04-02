@@ -41,7 +41,7 @@ mute=Volume Mute,Volume Mute,静音
 
 [krusader]
 _k_friendly_name=Krusader
-bring_main_window_to_top=Meta+K,Meta+K,Bring Main Window to Top
+bring_main_window_to_top=none,Meta+K,Bring Main Window to Top
 
 [ksmserver]
 Halt Without Confirmation=none,,关机 (无需确认)
@@ -172,14 +172,14 @@ Window Custom Quick Tile Bottom=none,,自定义快速铺放窗口到下方
 Window Custom Quick Tile Left=none,,自定义快速铺放窗口到左侧
 Window Custom Quick Tile Right=none,,自定义快速铺放窗口到右侧
 Window Custom Quick Tile Top=none,,自定义快速铺放窗口到上方
-Window Fullscreen=none,,全屏显示窗口
+Window Fullscreen=Meta+F11,,全屏显示窗口
 Window Grow Horizontal=none,,水平扩展窗口
 Window Grow Vertical=none,,垂直扩展窗口
 Window Lower=none,,降低窗口
 Window Maximize=Meta+PgUp,Meta+PgUp,最大化窗口
 Window Maximize Horizontal=none,,水平最大化窗口
 Window Maximize Vertical=none,,垂直最大化窗口
-Window Minimize=Meta+PgDown,Meta+PgDown,最小化窗口
+Window Minimize=Meta+PgDown\tMeta+M,Meta+PgDown,最小化窗口
 Window Move=none,,移动窗口
 Window Move Center=none,,移动窗口到中央
 Window No Border=none,,显示/隐藏窗口标题栏和框架
@@ -229,7 +229,7 @@ Window to Desktop 5=Meta+%,,窗口移动到桌面 5
 Window to Desktop 6=Meta+^,,窗口移动到桌面 6
 Window to Desktop 7=Meta+&,,窗口移动到桌面 7
 Window to Desktop 8=Meta+*,,窗口移动到桌面 8
-Window to Desktop 9=none,,窗口移动到桌面 9
+Window to Desktop 9=Meta+(,,窗口移动到桌面 9
 Window to Next Desktop=none,,窗口移动到下一桌面
 Window to Next Screen=Meta+Shift+Right,Meta+Shift+Right,移动窗口到下一屏幕
 Window to Previous Desktop=none,,窗口移动到上一桌面
@@ -288,6 +288,8 @@ activate task manager entry 6=none,Meta+6,激活任务管理器条目 6
 activate task manager entry 7=none,Meta+7,激活任务管理器条目 7
 activate task manager entry 8=none,Meta+8,激活任务管理器条目 8
 activate task manager entry 9=none,Meta+9,激活任务管理器条目 9
+activate widget 115=none,none,激活 应用程序启动器 挂件
+activate widget 120=none,none,激活 数字时钟 挂件
 activate widget 3=none,none,Activate Application Launcher Widget
 clear-history=none,,清除剪贴板历史(L)
 clipboard_action=Meta+Ctrl+X,Meta+Ctrl+X,自动弹出操作菜单
@@ -316,7 +318,7 @@ _launch=Meta+F
 _launch=none
 
 [services][org.kde.krunner.desktop]
-_launch=Alt+F2\tSearch\tAlt+Space
+_launch=Alt+F2\tMeta+K\tSearch\tAlt+Space
 
 [services][org.kde.kscreen.desktop]
 ShowOSD=Display
