@@ -3,10 +3,7 @@ return {
   {
     "lervag/vimtex",
     ft = { "tex", "bib" },
-    -- lazy = false, -- we don't want to lazy load VimTeX
-    -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
-      -- VimTeX configuration goes here, e.g.
       vim.g.vimtex_view_method = "okular"
     end,
   },
@@ -25,7 +22,7 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     build = ":MasonUpdate",
-    opts_extend = { "ensure_installed" },
+    -- opts_extend = { "ensure_installed" },
     opts = {
       -- ensure_installed = require("config.servers").servers,
     },
@@ -67,17 +64,12 @@ return {
       highlight = { enable = true },
       indent = { enable = true },
     },
-    -- config = function(_, opts)
-    --   require("nvim-treesitter.configs").setup(opts)
-    -- end,
   },
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
     opts = {
       library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },

@@ -10,6 +10,12 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    enabled = function()
+      if vim.fn.getcmdtype() ~= "" then
+        return true
+      end
+      return not vim.tbl_contains({ "TelescopePrompt", "dap-repl", "snacks_picker_list" }, vim.bo.filetype)
+    end,
     keymap = {
       preset = "default",
       ["<Tab>"] = {

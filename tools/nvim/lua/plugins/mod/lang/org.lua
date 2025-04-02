@@ -22,7 +22,7 @@ return {
       require("orgmode").setup({
         org_agenda_files = "~/OrgFiles/tasks/*",
         org_default_notes_file = "~/OrgFiles/tasks/inbox.org",
-        org_archive_location = "~/OrgFiles/archive/%s_archive::",
+        org_archive_location = "~/OrgFiles/.archive/%s_archive::",
         org_todo_keywords = { "TODO(t)", "NEXT(n)", "WAIT(w)", "|", "DONE(d)", "CANCELLED(c)" },
         org_hide_leading_stars = true,
         org_hide_emphasis_markers = true,
@@ -38,12 +38,14 @@ return {
             org_agenda_set_tags = "<C-c><C-c>",
             org_agenda_earlier = { "[[", "<" },
             org_agenda_later = { "]]", ">" },
+            org_agenda_archive = "$",
           },
           org = {
             org_deadline = "<C-c><C-d>",
             org_schedule = "<C-c><C-s>",
             org_todo = "<C-c><C-t>",
             org_set_tags_command = "<C-c><C-c>",
+            org_archive_subtree = "<C-c>$",
           },
         },
       })

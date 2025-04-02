@@ -7,7 +7,6 @@ local M = {}
 M.servers = {
   "bashls", -- Bash
   "clangd", -- C/C++
-  "eslint", -- JavaScript
   "gopls", -- Go
   "html", -- HTML
   "jsonls", -- JSON

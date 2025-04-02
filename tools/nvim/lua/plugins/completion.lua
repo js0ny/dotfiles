@@ -1,8 +1,4 @@
 return {
-  -- { import = "plugins.mod.nvim-cmp" },
-  -- {
-  --   "saadparwaiz1/cmp_luasnip",
-  -- },
   { import = "plugins.mod.blink-cmp" },
   {
     "L3MON4D3/LuaSnip",
@@ -12,8 +8,4 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/lsp-snippets" })
     end,
   },
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   opts = {},
-  -- },
 }
