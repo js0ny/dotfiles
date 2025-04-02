@@ -133,10 +133,12 @@
 
 (if (eq system-type 'gnu/linux)
     (use-package! rime
-      :config
-      (setq default-input-method "rime")
-      (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
-      (setq rime-user-data-dir (expand-file-name "emacs-rime" (getenv "XDG_CONFIG_HOME")))
+      :custom
+      (rime-user-data-dir (expand-file-name "emacs-rime" (getenv "XDG_CONFIG_HOME")))
+                                        ; (rime-share-data-dir "~/.local/share/fcitx5/rime")
+      (default-input-method "rime")
+      ;; :config
+      ;; (add-hook! (org-mode markdown-mode) (activate-input-method default-input-method))
       ))
 
 (load! "calendar.el")

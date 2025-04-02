@@ -98,13 +98,13 @@
 ;; For CJK users
 ;; Insert zero width space around the emphasis symbols, this might be useful for
 ;; languages that does not rely on space
-(defun my/insert-emphasis-with-zws (char)
+(defun js0ny/insert-emphasis-with-zws (char)
   (interactive "c")
   (insert ?\u200B char)
   (save-excursion (insert char ?\u200B)))
 
-(global-set-key (kbd "C-c b") (lambda () (interactive) (my/insert-emphasis-with-zws ?*)))
-(global-set-key (kbd "C-c i") (lambda () (interactive) (my/insert-emphasis-with-zws ?/)))
+(global-set-key (kbd "C-c b") (lambda () (interactive) (js0ny/insert-emphasis-with-zws ?*)))
+(global-set-key (kbd "C-c i") (lambda () (interactive) (js0ny/insert-emphasis-with-zws ?/)))
 
 ;; Pomodoro for org clock
 (use-package org-pomodoro)
@@ -213,7 +213,7 @@
 
 ;; Integrate Emacs Timer with System Notifications
 ;; 定义通知函数
-(defun my/org-clock-notification (title message &optional icon)
+(defun js0ny/org-clock-notification (title message &optional icon)
   "发送一个系统通知"
   (alert message
          :title title
@@ -221,7 +221,7 @@
          :category 'org-clock))
 
 ;; 添加定时器检查函数
-(defun my/org-clock-check-timer ()
+(defun js0ny/org-clock-check-timer ()
   "检查当前正在运行的 clock 是否到期"
   (when (org-clocking-p)
     (let* ((clocked-time (org-clock-get-clocked-time))
@@ -230,45 +230,24 @@
                         "0")))
            (remaining (- effort clocked-time)))
       (when (and (> effort 0) (<= remaining 0))
-        (my/org-clock-notification
+        (js0ny/org-clock-notification
          "Org Clock 提醒"
          (format "任务 '%s' 的预计时间已到！"
                 (org-clock-get-clock-string)))))))
 
 ;; 设置定时器，每分钟检查一次
-(run-with-timer 0 60 #'my/org-clock-check-timer)
+(run-with-timer 0 60 #'js0ny/org-clock-check-timer)
 
 ;; 在 org-clock-in-hook 中添加检查
 (add-hook 'org-clock-in-hook
           (lambda ()
             (let ((effort (org-entry-get (point) "Effort")))
               (when effort
-                (my/org-clock-notification
+                (js0ny/org-clock-notification
                  "开始计时"
                  (format "开始计时任务: %s\n预计用时: %s"
                         (org-get-heading t t t t)
                         effort))))))
 
-(use-package org-roam
-  :ensure t
-  :custom
-  (org-roam-directory (file-truename (concat org-directory "roam")))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
-         ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
-  :config
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  (setq org-roam-db-location (expand-file-name "org-roam.db" user-emacs-data))
-  (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
-
-
 
 (provide 'init-org)
-

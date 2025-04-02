@@ -26,3 +26,5 @@ bookmarks
 .cache
 eln-cache
 org-persist
+
+local.el

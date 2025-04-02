@@ -44,8 +44,10 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-   "b" 'buffer-menu
-   "ft" 'treemacs))
+    "ft" 'treemacs
+    "fc" '(dired user-emacs-directory)
+    "b" 'buffer-menu
+   ))
 
 ;; Evil Commentary: Use gc<action> to toggle comments
 (use-package evil-commentary
