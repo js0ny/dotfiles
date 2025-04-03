@@ -28,11 +28,12 @@ return {
     end,
     dependencies = { "nvim-telescope/telescope.nvim" },
   },
-  {
-    "NeogitOrg/neogit",
-    config = true,
-    cmd = {
-      "Neogit",
-    },
-  },
+  -- {
+  --   "NeogitOrg/neogit",
+  --   config = true,
+  --   cmd = {
+  --     "Neogit",
+  --   },
+  -- },
+  { import = "plugins.mod.neo-tree" }
 }

@@ -31,18 +31,18 @@ return {
         { section = "startup" },
       },
     },
-    explorer = {
-      -- TODO: Remap some keys in explorer
-      -- win = {
-      --   list = {
-      --     keys = {
-      --       ["l"] = "focus_input",
-      --       ["i"] = "confirm",
-      --       ["O"] = "explorer_open", -- Open with system default
-      --     },
-      --   },
-      -- },
-    },
+    -- explorer = {
+    --   -- TODO: Remap some keys in explorer
+    --   -- win = {
+    --   --   list = {
+    --   --     keys = {
+    --   --       ["l"] = "focus_input",
+    --   --       ["i"] = "confirm",
+    --   --       ["O"] = "explorer_open", -- Open with system default
+    --   --     },
+    --   --   },
+    --   -- },
+    -- },
     indent = { enabled = true },
     -- input = { enabled = true },
     -- notifier = { enabled = true },
@@ -54,12 +54,12 @@ return {
     image = { enabled = true },
   },
   keys = {
-    {
-      "<leader>ft",
-      function()
-        require("snacks").explorer()
-      end,
-      desc = "Toggle File Explorer",
-    },
+    -- {
+    --   "<leader>ft",
+    --   function()
+    --     require("snacks").explorer()
+    --   end,
+    --   desc = "Toggle File Explorer",
+    -- },
   },
 }
