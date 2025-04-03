@@ -1,23 +1,12 @@
 return {
-  -- { import = "plugins.mod.nvim-lspconfig" },
-  {
-    "lervag/vimtex",
-    ft = { "tex", "bib" },
-    init = function()
-      vim.g.vimtex_view_method = "okular"
-    end,
-  },
-  {
-    "js0ny/luasnip-latex-snippets.nvim",
-    ft = { "tex", "markdown" },
-    -- vimtex isn't required if using treesitter
-    requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
-    config = function()
-      require("luasnip-latex-snippets").setup()
-      -- or setup({ use_treesitter = true })
-      require("luasnip").config.setup({ enable_autosnippets = true })
-    end,
-  },
+  { import = "plugins.lang.org" },
+  { import = "plugins.lang.markdown" },
+  { import = "plugins.lang.just" },
+  { import = "plugins.lang.typst" },
+  { import = "plugins.lang.beancount" },
+  { import = "plugins.lang.tex" },
+  { import = "plugins.lang.lua" },
+  { import = "plugins.mod.trouble-nvim" },
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
@@ -42,13 +31,6 @@ return {
   { import = "plugins.mod.conform-nvim" },
   { "nvim-treesitter/nvim-treesitter-context", lazy = true },
   {
-    "NoahTheDuke/vim-just",
-    ft = { "just" },
-  },
-  { import = "plugins.mod.lang.org" },
-  { import = "plugins.mod.lang.markdown" },
-  { import = "plugins.mod.trouble-nvim" },
-  {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     cmd = {
@@ -63,15 +45,6 @@ return {
       ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline" },
       highlight = { enable = true },
       indent = { enable = true },
-    },
-  },
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
     },
   },
 }
