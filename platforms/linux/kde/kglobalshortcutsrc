@@ -3,6 +3,14 @@ _k_friendly_name=活动管理器
 switch-to-activity-32e1f2d2-08d1-4a8b-886a-0a062f999068=none,none,Switch to activity "Default"
 switch-to-activity-e1ebfdac-0f52-47a5-9e7a-d9eb5cc26845=none,none,切换到活动“默认”
 
+[Clementine]
+_k_friendly_name=Clementine
+next_album=Shift+Media Next,none,Next album
+next_track=none,none,下一个曲目
+play_pause=none,none,播放/暂停
+prev_track=none,none,上一个曲目
+stop=none,none,停止
+
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (Colemak)=none,none,Switch keyboard layout to English (Colemak)
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
@@ -53,6 +61,11 @@ Reboot=none,,重启
 Reboot Without Confirmation=none,,重启 (无需确认)
 Shut Down=none,,关机
 _k_friendly_name=会话管理
+
+[ktorrent]
+_k_friendly_name=KTorrent
+queue_suspend=Alt+Shift+P,Alt+Shift+P,暂停种子
+show_kt=Alt+Shift+T,Alt+Shift+T,显示/隐藏 KTorrent
 
 [kwin]
 Activate Window Demanding Attention=Meta+Ctrl+A,Meta+Ctrl+A,激活请求注意的窗口

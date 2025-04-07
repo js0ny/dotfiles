@@ -7,8 +7,8 @@ echo "[INFO] Set Chromium & Electron Flags"
 
 DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-BROWSER_FLAG=$DOTFILES/platforms/linux/chromium-flags.conf
-ELECTRON_FLAG=$DOTFILES/platforms/linux/electron-flags.conf
+BROWSER_FLAG=$DOTFILES/platforms/linux/chromium-flags.hypr.conf
+ELECTRON_FLAG=$DOTFILES/platforms/linux/electron-flags.hypr.conf
 
 
 parse_args() {
