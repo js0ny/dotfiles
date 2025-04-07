@@ -33,8 +33,11 @@ export PAGER="less -R"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+export GHCUP_USE_XDG_DIRS=1
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+
 # Minimal PATH for early commands
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/.local/bin:/opt/share/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 if [ -d "/opt/homebrew/bin" ]; then # macOS
   export PATH="/opt/homebrew/bin:$PATH"
@@ -135,6 +138,10 @@ fi
 if command -v emacs >/dev/null; then
   export SPACEMACSDIR="$XDG_CONFIG_HOME"/spacemacs
 fi
+# Fzf
+if command -v fzf > /dev/null; then
+  export FZF_DEFAULT_OPTS_FILE="$HOME/.dotfiles/common/fzfrc"
+fi
 # tldr
 # Works only with C client (did not verify)
 if command -v tldr >/dev/null; then
@@ -162,3 +169,4 @@ fi
 if command -v vcpkg >/dev/null; then
   export VCPKG_ROOT="$XDG_DATA_HOME"/vcpkg
 fi
+

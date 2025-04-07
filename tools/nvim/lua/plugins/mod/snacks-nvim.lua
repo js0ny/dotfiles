@@ -6,7 +6,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    -- bigfile = { enabled = true },
+    bigfile = { enabled = true },
     dashboard = {
       enabled = true,
       preset = {
@@ -32,22 +32,12 @@ return {
       },
     },
     -- explorer = {
-    --   -- TODO: Remap some keys in explorer
-    --   -- win = {
-    --   --   list = {
-    --   --     keys = {
-    --   --       ["l"] = "focus_input",
-    --   --       ["i"] = "confirm",
-    --   --       ["O"] = "explorer_open", -- Open with system default
-    --   --     },
-    --   --   },
-    --   -- },
     -- },
     indent = { enabled = true },
     -- input = { enabled = true },
-    -- notifier = { enabled = true },
+    notifier = { enabled = true },
     -- quickfile = { enabled = true },
-    -- scope = { enabled = true },
+    scope = { enabled = true },
     -- scroll = { enabled = true },
     statuscolumn = { enabled = true },
     -- words = { enabled = true },

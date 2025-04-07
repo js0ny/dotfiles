@@ -80,6 +80,7 @@ return {
     opts = {
       current_line_blame = true,
     },
+    event = "BufReadPre",
     keys = {
       { "<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Blame file" },
       { "<leader>gd", "<cmd>Gitsigns diffthis<CR>", desc = "Diff file" },

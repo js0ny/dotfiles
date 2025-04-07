@@ -23,13 +23,14 @@ else
     set -gx XDG_RUNTIME_DIR /run/user/(id -u)
 end
 
+set -gx GHCUP_USE_XDG_DIRS 1
 
 set -gx PAGER "less -R"
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 # Minimal PATH for early commands
-for dir in /usr/local/bin /usr/bin /bin /usr/sbin /sbin "$HOME/.local/bin"
+for dir in /usr/local/bin /usr/bin /bin /usr/sbin /sbin "$HOME/.local/bin" /opt/share/bin
     if test -d "$dir" -a ! -L "$dir"
         fish_add_path "$dir"
     end
