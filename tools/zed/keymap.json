@@ -62,7 +62,7 @@
     "context": "vim_mode == normal",
 
     "bindings": {
-      "H": "pane::ActivatePrevItem",
+      "H": "pane::ActivatePreviousItem",
       "I": "pane::ActivateNextItem"
     }
   },
@@ -89,7 +89,7 @@
       "e": "vim::Up",
       "i": "vim::Right",
       "k": "search::SelectNextMatch",
-      "K": "search::SelectPrevMatch",
+      "K": "search::SelectPreviousMatch",
       "N": ["workspace::SendKeystrokes", "n n n n n"],
       "E": ["workspace::SendKeystrokes", "e e e e e"]
     }
@@ -99,7 +99,7 @@
 
     "bindings": {
       "n": "menu::SelectNext",
-      "e": "menu::SelectPrev",
+      "e": "menu::SelectPrevious",
       "i": "project_panel::ExpandSelectedEntry",
       "A": "project_panel::NewDirectory",
       "a": "project_panel::NewFile",
