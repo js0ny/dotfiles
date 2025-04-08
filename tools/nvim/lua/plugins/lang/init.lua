@@ -6,6 +6,7 @@ return {
   { import = "plugins.lang.beancount" },
   { import = "plugins.lang.tex" },
   { import = "plugins.lang.lua" },
+  { import = "plugins.lang.treesitter" },
   { import = "plugins.mod.trouble-nvim" },
   {
     "williamboman/mason.nvim",
@@ -29,22 +30,4 @@ return {
   --   },
   -- },
   { import = "plugins.mod.conform-nvim" },
-  { "nvim-treesitter/nvim-treesitter-context", lazy = true },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    cmd = {
-      "TSInstall",
-      "TSUpdate",
-      "TSUpdateSync",
-    },
-    event = {
-      "VeryLazy",
-    },
-    opts = {
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline" },
-      highlight = { enable = true },
-      indent = { enable = true },
-    },
-  },
 }
