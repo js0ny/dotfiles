@@ -1,6 +1,6 @@
 return {
-  { "nvim-lua/plenary.nvim", lazy = true },
-  { "wakatime/vim-wakatime", lazy = false },
+  { "nvim-lua/plenary.nvim",               lazy = true },
+  { "wakatime/vim-wakatime",               lazy = false },
   { import = "plugins.mod.toggleterm" },
   { import = "plugins.mod.which-keys-nvim" },
   { import = "plugins.mod.copilot-lua" },
@@ -14,7 +14,8 @@ return {
     lazy = true,
     -- event = "VeryLazy",
     dependencies = {
-      "nvim-telescope/telescope.nvim",
+      -- "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },

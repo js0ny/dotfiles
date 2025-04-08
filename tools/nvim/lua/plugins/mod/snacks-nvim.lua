@@ -11,14 +11,14 @@ return {
       enabled = true,
       preset = {
         keys = {
-          { key = "p", icon = "󰈞 ", desc = "查找项目", action = "<cmd>Telescope projects<CR>" },
-          { key = "h", icon = " ", desc = "历史文件", action = "<cmd>Telescope oldfiles<CR>" },
+          -- { key = "p", icon = "󰈞 ", desc = "查找项目", action = "<cmd>Telescope projects<CR>" },
+          { key = "h", icon = " ", desc = "历史文件", action = "<cmd>FzfLua oldfiles<CR>" },
           { key = "l", icon = " ", desc = "加载会话", action = "<cmd>SessionSearch<CR>" },
           {
             key = "c",
             icon = " ",
             desc = "转到设置",
-            action = "<cmd>Telescope find_files cwd=~/.config/nvim<CR>",
+            action = "<cmd>FzfLua files cwd=~/.config/nvim<CR>",
           },
           { key = "q", icon = "󱊷 ", desc = "退出", action = "<cmd>qa<CR>" },
         },

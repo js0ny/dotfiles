@@ -33,7 +33,7 @@ return {
     { "<leader>fc",       "<cmd>Telescope find_files cwd=~/.config/nvim<CR>", desc = "Edit configs" },
     { "<leader>/",        "<cmd>Telescope live_grep<CR>",                     desc = "Grep Files" },
     { "<leader>;",        "<cmd>Telescope<CR>",                               desc = "Show Telescope Commands" },
-    { "<leader>ui",       "<cmd>Telescope colorscheme<CR>",                   desc = "Change colorscheme" },
+    { "<leader>ui",       "<cmd>FzfLua colorscheme<CR>",                   desc = "Change colorscheme" },
     { "<leader>pp",       "<cmd>Telescope projects<CR>",                      desc = "List all Projects" },
     { "<leader>pg",       "<cmd>Telescope projects<CR>",                      desc = "List all Git Projects" },
     { "<leader>ps",       "<cmd>Telescope session-lens<CR>",                  desc = "List all sessions" },

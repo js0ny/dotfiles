@@ -32,9 +32,9 @@ return {
     opts = {
       variant = "dawn",
     },
-    cmd = "Telescope colorscheme",
+    cmd = "FzfLua colorschemes",
   },
-  { "rebelot/kanagawa.nvim", cmd = "Telescope colorscheme" },
+  { "rebelot/kanagawa.nvim",          cmd = "FzfLua colorschemes" },
   { -- Modern Status Line
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -43,55 +43,55 @@ return {
       require("plugins.mod.lualine")
     end,
   },
-  { -- Breadcrumb
-    "Bekaboo/dropbar.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-    },
-    opts = {},
-    keys = {
-      {
-        "<Leader>+",
-        function()
-          require("dropbar.api").pick()
-        end,
-        desc = "Pick symbols in winbar",
-      },
-      {
-        "[;",
-        function()
-          require("dropbar.api").goto_context_start()
-        end,
-        desc = "Go to start of current context",
-      },
-      {
-        "];",
-        function()
-          require("dropbar.api").select_next_context()
-        end,
-        desc = "Select next context",
-      },
-    },
-  },
+  -- { -- Breadcrumb
+  --   "Bekaboo/dropbar.nvim",
+  --   dependencies = {
+  --     "nvim-telescope/telescope-fzf-native.nvim",
+  --     build = "make",
+  --   },
+  --   opts = {},
+  --   keys = {
+  --     {
+  --       "<Leader>+",
+  --       function()
+  --         require("dropbar.api").pick()
+  --       end,
+  --       desc = "Pick symbols in winbar",
+  --     },
+  --     {
+  --       "[;",
+  --       function()
+  --         require("dropbar.api").goto_context_start()
+  --       end,
+  --       desc = "Go to start of current context",
+  --     },
+  --     {
+  --       "];",
+  --       function()
+  --         require("dropbar.api").select_next_context()
+  --       end,
+  --       desc = "Select next context",
+  --     },
+  --   },
+  -- },
   { import = "plugins.mod.bufferline" }, -- Buffer Top Bar
-  { -- Git Blames, Changes
+  {                                      -- Git Blames, Changes
     "lewis6991/gitsigns.nvim",
     opts = {
       current_line_blame = true,
     },
     event = "BufReadPre",
     keys = {
-      { "<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Blame file" },
-      { "<leader>gd", "<cmd>Gitsigns diffthis<CR>", desc = "Diff file" },
+      { "<leader>gb", "<cmd>Gitsigns blame<CR>",                     desc = "Blame file" },
+      { "<leader>gd", "<cmd>Gitsigns diffthis<CR>",                  desc = "Diff file" },
       { "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
     },
   },
-  { -- Highlight and navigate between TODOs
-    "folke/todo-comments.nvim",
-    cmd = { "TodoTelescope" },
-    event = "BufRead",
-    opts = {},
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
+  -- { -- Highlight and navigate between TODOs
+  --   "folke/todo-comments.nvim",
+  --   cmd = { "TodoTelescope" },
+  --   event = "BufRead",
+  --   opts = {},
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  -- },
 }

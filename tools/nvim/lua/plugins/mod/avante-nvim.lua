@@ -8,10 +8,10 @@ return {
     -- for example
     provider = "openai",
     openai = {
-      endpoint = "https://yunwu.ai/v1",
+      endpoint = "https://aihubmix.com/v1",
       model = "claude-3-7-sonnet-20250219", -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- timeout in milliseconds
-      temperature = 0, -- adjust if needed
+      timeout = 30000,                      -- timeout in milliseconds
+      temperature = 0,                      -- adjust if needed
       max_tokens = 4096,
       -- reasoning_effort = "high"    -- only supported for "o" models
     },
@@ -25,10 +25,11 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    "ibhagwan/fzf-lua",
+    "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua", -- for providers='copilot'
+    "zbirenbaum/copilot.lua",      -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",

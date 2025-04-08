@@ -2,8 +2,8 @@ return {
   {
     "nvim-orgmode/orgmode",
     dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-orgmode/telescope-orgmode.nvim",
+      -- "nvim-telescope/telescope.nvim",
+      -- "nvim-orgmode/telescope-orgmode.nvim",
       "nvim-orgmode/org-bullets.nvim",
       "Saghen/blink.cmp",
     },
@@ -65,11 +65,11 @@ return {
         },
       })
 
-      require("telescope").setup()
-      require("telescope").load_extension("orgmode")
+      -- require("telescope").setup()
+      -- require("telescope").load_extension("orgmode")
       -- vim.keymap.set("n", "<leader>r", require("telescope").extensions.orgmode.refile_heading)
-      vim.keymap.set("n", "<leader>oP", require("telescope").extensions.orgmode.search_headings)
-      vim.keymap.set("n", "<leader>op", "<cmd>Telescope find_files cwd=~/OrgFiles<CR>")
+      -- vim.keymap.set("n", "<leader>oP", require("telescope").extensions.orgmode.search_headings)
+      vim.keymap.set("n", "<leader>op", "<cmd>FzfLua files cwd=~/OrgFiles<CR>")
       -- vim.keymap.set("n", "<leader>li", require("telescope").extensions.orgmode.insert_link)
     end,
   },
