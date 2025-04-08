@@ -1,0 +1,56 @@
+# export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
+# export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
+# $XDG_CONFIG_HOME/screen/screenrc
+
+# Set prefix key to Ctrl-a
+escape ^Aa
+# Allow sending Ctrl+a to applications by pressing Ctrl+a twice
+bind a command -c screen
+
+# Enable mouse scrolling and click
+termcapinfo xterm* ti@:te@
+
+# 256 colors support
+term screen-256color
+attrcolor b ".I"
+defbce "on"
+
+# Set window titles
+autodetach on
+shelltitle "$ |bash"
+startup_message off
+altscreen on
+defscrollback 4096  # History limit
+
+# Status line (similar to tmux status bar)
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{G}%H%{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c%{g}]'
+
+# Start window numbering at 1
+bind c screen 1
+bind 0 select 10
+bind ^c screen 1
+screen 1
+
+# Visual bell instead of audible bell
+vbell on
+vbell_msg "   Bell  "
+
+# Window splitting with | and -
+# Note: Screen doesn't support true splitting like tmux
+# These commands just create regions, not true panes
+bind | split
+bind - split -v
+
+# Default to vi keybindings
+defutf8 on
+defescape ^Aa
+markkeys h=^B:l=^F:$=^E:^U=^Z:^D=^V
+
+bind x kill
+
+source ~/.config/screen/+colemak.screenrc
+
+
+# Reload config (not directly supported in screen, but added for reference)
+# To reload config in screen, you typically do Ctrl+a : source ~/.screenrc

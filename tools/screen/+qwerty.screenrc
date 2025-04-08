@@ -1,0 +1,16 @@
+# vim: ft=screen
+
+bind h focus left
+bind j focus down
+bind k focus up
+bind l focus right
+
+bind H resize -h -5
+bind J resize -v +5
+bind K resize -v -5
+bind L resize -h +5
+
+# Window navigation (prev/next)
+bind ^h prev
+bind ^l next
+
