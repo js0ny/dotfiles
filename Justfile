@@ -180,6 +180,10 @@ fish:
     {{LN}} {{DOTFILES}}/tools/fish {{XDG_CONFIG_HOME}}/fish
     curl -L https://raw.githubusercontent.com/SpaceAceMonkey/dotenv-for-fish/refs/heads/main/dotenv.fish -o "{{DOTFILES}}/tools/fish/functions/dotenv.fish"
 
+[unix]
+screen:
+    {{LN}} {{DOTFILES}}/tools/screen {{XDG_CONFIG_HOME}}/screen
+
 
 [unix]
 zsh:
