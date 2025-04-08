@@ -91,7 +91,7 @@ local leader_mappings = {
     { keys = "S",  cmd = ":wall<CR>",                     opts = { desc = "Save All Files" } },
     { keys = "D",  cmd = "!trash-rm %<CR>",               opts = { desc = "Delete current file" } },
     -- { keys = "t", cmd = ":NvimTreeFindFileToggle<CR>", opts = { desc = "Toggle File Tree" } },
-    { keys = "o",  cmd = ":!open %<CR>",                  opts = { desc = "Open file in default program" } },
+    -- { keys = "o",  cmd = ":!open %<CR>",                  opts = { desc = "Open file in default program" } },
     { keys = "R",  cmd = renameCurrentBuffer,             opts = { desc = "Rename current file" } },
     { keys = "x",  cmd = ":Lazy<CR>",                     opts = { desc = "Open extension view" } },
     { keys = "yy", cmd = ":let @+ = expand('%:p')<CR>",   opts = { desc = "Copy file path" } },
