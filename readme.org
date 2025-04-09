@@ -8,11 +8,30 @@ Works for Windows, Linux and MacOS.
 
 ** Setup
 
-*** GNU/Linux and macOS
+
+*** From Scratch (Linux/MacOS)
 
 #+begin_src shell
 curl https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/bootstrap/setup.sh -o setup.sh && chmod u+x setup.sh && ./setup.sh
 #+end_src
+
+*** Via =just= script
+
+Make sure you have =just= installed
+
+#+begin_src shell
+which just
+#+end_src
+
+Then run
+
+#+begin_src shell
+just
+#+end_src
+
+This will list all available tasks.
+
+All the just scripts are in =Justfile= and under =.just.d/= directory.
 
 ** Structure
 
