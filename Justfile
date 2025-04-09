@@ -184,7 +184,6 @@ fish:
 screen:
     {{LN}} {{DOTFILES}}/tools/screen {{XDG_CONFIG_HOME}}/screen
 
-
 [unix]
 zsh:
     -[[ -f /etc/zshenv ]] && sudo cp {{DOTFILES}}/tools/zsh/global.zshenv /etc/zshenv # or /etc/zsh/zshenv
@@ -202,10 +201,25 @@ zsh:
 flatpak:
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
+[linux]
+swaylock:
+    mkdir -p {{XDG_CONFIG_HOME}}/swaylock
+    {{LN}} {{DOTFILES}}/platforms/linux/swaylock {{XDG_CONFIG_HOME}}/swaylock/config
+
+[linux]
+dunst:
+    mkdir -p {{XDG_CONFIG_HOME}}/dunst
+    {{LN}} {{DOTFILES}}/platforms/linux/dunst {{XDG_CONFIG_HOME}}/dunst/dunstrc
+
+[linux]
+hyprland:
+    {{LN}} {{DOTFILES}}/platforms/linux/hypr {{XDG_CONFIG_HOME}}/hypr
+    @just dunst
+    @just swaylock
+
 [private]
 pull:
     git pull github master
-    git pull codeberg master
 
 
 [private]

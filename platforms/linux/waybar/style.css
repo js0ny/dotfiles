@@ -34,7 +34,7 @@ window#waybar {
     /* background-color: rgba(43, 48, 59, 0.5); */
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     background-color: @base;
-    color: #ffffff;
+    color: @text;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -196,7 +196,7 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: @green;
     color: #000000;
 }
 
@@ -213,7 +213,7 @@ label:focus {
 }
 
 #network {
-    background-color: #2980b9;
+    background-color: @blue;
 }
 
 #network.disconnected {
