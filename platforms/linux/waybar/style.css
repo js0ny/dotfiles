@@ -77,7 +77,7 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-    background-color: #a37800;
+    background-color: @lavender;
 }
 
 #workspaces button {
@@ -201,7 +201,7 @@ label:focus {
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: @mauve;
 }
 
 #disk {
@@ -221,7 +221,7 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
+    background-color: @yellow;
     color: #000000;
 }
 
@@ -254,7 +254,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: @peach;
 }
 
 #temperature.critical {
@@ -262,7 +262,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: @blue;
 }
 
 #tray > .passive {
