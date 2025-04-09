@@ -209,13 +209,22 @@ swaylock:
 [linux]
 dunst:
     mkdir -p {{XDG_CONFIG_HOME}}/dunst
-    {{LN}} {{DOTFILES}}/platforms/linux/dunst {{XDG_CONFIG_HOME}}/dunst/dunstrc
+    {{LN}} {{DOTFILES}}/platforms/linux/dunstrc {{XDG_CONFIG_HOME}}/dunst/dunstrc
+
+[linux]
+hypr:
+    {{LN}} {{DOTFILES}}/platforms/linux/hypr {{XDG_CONFIG_HOME}}/hypr
+
+[linux]
+rofi:
+    {{LN}} {{DOTFILES}}/platforms/linux/rofi {{XDG_CONFIG_HOME}}/rofi
 
 [linux]
 hyprland:
-    {{LN}} {{DOTFILES}}/platforms/linux/hypr {{XDG_CONFIG_HOME}}/hypr
+    @just hypr
     @just dunst
     @just swaylock
+    @just rofi
 
 [private]
 pull:
