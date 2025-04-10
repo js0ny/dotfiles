@@ -139,9 +139,10 @@ if command -v emacs >/dev/null; then
   export SPACEMACSDIR="$XDG_CONFIG_HOME"/spacemacs
 fi
 # Fzf
-if command -v fzf > /dev/null; then
-  export FZF_DEFAULT_OPTS_FILE="$HOME/.dotfiles/common/fzfrc"
-fi
+# This will make shell integration buggy
+# if command -v fzf > /dev/null; then
+#   export FZF_DEFAULT_OPTS_FILE="$HOME/.dotfiles/common/fzfrc"
+# fi
 # tldr
 # Works only with C client (did not verify)
 if command -v tldr >/dev/null; then
