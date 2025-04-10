@@ -42,7 +42,10 @@ minimal_path=(
     "/usr/local/sbin"
     "$HOME/.local/bin"
     "$HOME/.local/sbin"
+    "$HOME/.local/scripts"
 )
+
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 for p in "${minimal_path[@]}"; do
     pathadd "$p"

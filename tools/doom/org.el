@@ -15,7 +15,7 @@
     (save-excursion (insert char ?\u200B)))
 
   ;; Directory
-  (setq org-archive-location "~/OrgFiles/archive/%s_archive::")
+  (setq org-archive-location "~/OrgFiles/.archive/%s_archive::")
   (setq org-default-notes-file "~/OrgFiles/tasks/inbox.org")
 
   ;; Initial Visibility

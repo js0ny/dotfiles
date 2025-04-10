@@ -59,6 +59,8 @@ noremap gr editor.action.goToReferences
 noremap gpr editor.action.referenceSearch.trigger
 noremap ga editor.action.quickFix
 
+" Rename, or [c]hange [d]efinition
+nnoremap cd editor.action.rename
 
 " Requires matchit by redguardtoo
 " nnoremap % extension.matchitJumpItems
@@ -72,8 +74,9 @@ vnoremap > editor.action.indentLines
 " 分词版本的w和b，支持中文，需要插件
 " 为了保证递归解析，而不是打断，使用 `nmap` 而不是 `nnoremap`
 " Comment if you don't use cjk or the plugin
-nmap w cjkWordHandler.cursorWordEndRight
-nmap b cjkWordHandler.cursorWordStartLeft
+" This is buggy
+"nmap w cjkWordHandler.cursorWordEndRight
+"nmap b cjkWordHandler.cursorWordStartLeft
 
 " <C-w> will be parsed by VSCode itself.
 " noremap <C-w>n <C-w>j

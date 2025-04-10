@@ -1,0 +1,13 @@
+[Unit]
+Description=Keyd Application Specific Mapping
+Documentation=man:keyd-application-mapper(1) https://github.com/rvaiya/keyd
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/keyd-application-mapper -d
+ExecStop=pkill keyd-applicatio
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

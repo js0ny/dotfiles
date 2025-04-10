@@ -14,13 +14,6 @@ return {
     { "<leader>!", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" },
     { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" },
     { "<leader>tt", "<cmd>ToggleTerm<CR>", desc = "Spawn a float terminal" },
-    -- TODO: Implement lazygit
-    -- {
-    --   "<leader>gg",
-    --   "<cmd>lua _lazygit_toggle()<CR>",
-    --   -- require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", hidden = true }),
-    --   desc = "Toggle LazyGit",
-    -- },
   },
   event = "ColorScheme",
   opts = {

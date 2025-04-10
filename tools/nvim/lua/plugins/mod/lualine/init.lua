@@ -14,7 +14,7 @@ Remote | Git Branch | Diagnostics | Command | | MID | | Line:Column | Indent | E
 local config = {
   options = {
     disabled_filetypes = {
-      statusline = { "NvimTree", "alpha", "grug-far" },
+      statusline = { "NvimTree", "alpha", "grug-far", "snacks_dashboard" },
     },
     -- Disable sections and component separators
     component_separators = { left = "", right = "" },
@@ -36,6 +36,7 @@ local config = {
       components.diagnostics,
     },
     lualine_x = {
+      components.orgmode,
       components.indent,
       components.encoding,
       components.eol,

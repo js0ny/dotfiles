@@ -23,8 +23,6 @@ xdg-ninja/
 PowerToys/
 # Nushell
 tools/nushell/
-# fzf
-common/fzfrc
 
 # OS generated files
 .DS_Store
@@ -41,3 +39,5 @@ lazy-lock.json
 *.elc
 
 common/**/*current*
+
+default.target.wants

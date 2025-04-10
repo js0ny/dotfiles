@@ -341,6 +341,16 @@ mapkey("yY", "yank link without parameter", function () {
   Clipboard.write(url.origin + url.pathname);
 });
 
+unmap("yma")
+unmap("ymc")
+unmap("ymv")
+
+map("ym", "yank link as markdown", function () {
+  const url = new URL(window.location.href);
+  const title = document.title;
+  Clipboard.write(`[${title}](${url.origin + url.pathname})`);
+});
+
 // #region bilibili.com
 mapkey(
   ",n",

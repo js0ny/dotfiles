@@ -1,7 +1,7 @@
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    lazy = false,
+    event = "BufRead",
     ft = { "markdown", "Avante" },
     opts = {
       file_types = { "markdown", "Avante" },
@@ -14,14 +14,13 @@ return {
         top_pad = 0,
         bottom_pad = 0,
       },
-      heading = {
-        sign = false,
-        position = "inline",
-        width = "block",
-        left_margin = 0.5,
-        left_pad = 0.2,
-        right_pad = 0.2,
-      },
+      -- heading = {
+      --   position = "overlay",
+      --   width = "block",
+      --   left_margin = 0.5,
+      --   left_pad = 0.2,
+      --   right_pad = 0.2,
+      -- },
       link = {
         custom = {
           python = { pattern = "%.py", icon = " " },

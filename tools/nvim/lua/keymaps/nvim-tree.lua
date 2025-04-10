@@ -1,5 +1,7 @@
 local M = {}
 
+M.event = "BufEnter"
+
 M.global = {
   { mode = "n", keys = "<leader>E", cmd = ":NvimTreeToggle<CR>" },
   { mode = "n", keys = "<A-0>", cmd = ":NvimTreeFindFileToggle<CR>" },

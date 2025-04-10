@@ -16,6 +16,7 @@ else -- Vanilla neovim
 end
 require("config.keymaps")
 require("config.diagnostics")
+require("config.migration")
 
 -- If current session is spawn by neovide, do:
 if vim.g.neovide then

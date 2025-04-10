@@ -18,6 +18,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "outline_panel": {
+    "dock": "right"
+  },
   "edit_predictions": {
     "disabled_globs": ["*.bean"],
     "mode": "eager_preview",
@@ -36,6 +39,6 @@
     "dark": "Catppuccin Mocha"
   },
   "relative_line_numbers": true,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "Maple Mono NF CN",
   "remove_trailing_whitespace_on_save": true
 }

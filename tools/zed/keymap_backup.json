@@ -47,20 +47,38 @@
     "bindings": {
       "N": "vim::JoinLines",
       "l": "vim::InsertBefore",
-      "L": "vim::InsertFirstNonWhitespace",
+      "L": "vim::InsertFirstNonWhitespace"
+    }
+  },
+  {
+    "context": "vim_mode == visual || vim_mode == operator",
+
+    "bindings": {
+      "H": "vim::StartOfLine",
+      "I": "vim::EndOfLine"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+
+    "bindings": {
       "H": "pane::ActivatePrevItem",
       "I": "pane::ActivateNextItem"
     }
   },
   {
-    "context": "vim_mode == normal || not_editing || EmptyPane",
+    "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
 
     "bindings": {
       "space space": "file_finder::Toggle",
       "space ;": "command_palette::Toggle",
       "space f c": "zed::OpenSettings",
       "space f e c": "zed::OpenSettings",
-      "space f t": "project_panel::ToggleFocus"
+      "space f t": "project_panel::ToggleFocus",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w i": "workspace::ActivatePaneRight",
+      "ctrl-w e": "workspace::ActivatePaneUp",
+      "ctrl-w n": "workspace::ActivatePaneDown"
     }
   },
   {

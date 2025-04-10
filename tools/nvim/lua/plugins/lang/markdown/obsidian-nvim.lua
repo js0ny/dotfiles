@@ -1,5 +1,5 @@
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   -- lazy = false,
   ft = "markdown",
@@ -38,11 +38,15 @@ return {
   --   "BufReadPre path/to/my-vault/*.md",
   --   "BufNewFile path/to/my-vault/*.md",
   -- },
+  keys = {
+    { "<leader>fo", "<cmd>ObsidianQuickSwitch<CR>", desc = "Obsidian: Quick Switch" },
+  },
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
 
     -- see below for full list of optional dependencies 👇
+    "ibhagwan/fzf-lua",
   },
   opts = {
     workspaces = {
@@ -52,11 +56,18 @@ return {
       },
     },
     completion = {
-      nvim_cmp = true,
+      nvim_cmp = false,
+      blink = true,
       min_chars = 2,
     },
     ui = {
       enable = false,
+    },
+    daily_notes = {
+      folder = "_Global/Periodic",
+      date_format = "%Y-%m-%d",
+      default_tags = { "daily" },
+      template = nil,
     },
     -- see below for full list of options 👇
     attachments = {
@@ -65,5 +76,14 @@ return {
         return string.format("%s-", os.time())
       end,
     },
+    mappings = {
+      ["<cr>"] = {
+        action = function()
+          require("obsidian").util.smart_action()
+        end,
+        opts = { buffer = true, expr = true },
+      },
+    },
+    new_notes_location = "current_dir",
   },
 }
