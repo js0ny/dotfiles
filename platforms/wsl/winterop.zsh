@@ -15,6 +15,8 @@ alias diskpart="diskpart.exe"
 alias winget="winget.exe"
 alias pastew='pwsh.exe -NoProfile -Command "Get-Clipboard"'
 alias ollama="ollama.exe"
+#  https://github.com/stuartleeks/wsl-notify-send
+alias notify-send="wsl-notify-send.exe"
 
 # WSL open
 open() {
