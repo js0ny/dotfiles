@@ -53,3 +53,12 @@ zsh:
     test -d {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-syntax-highlighting || git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-syntax-highlighting
     test -d {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-history-substring-search || git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-history-substring-search
     test -d {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-completions || git clone --depth 1 https://github.com/zsh-users/zsh-completions.git {{XDG_CONFIG_HOME}}/zsh/plugins/zsh-completions
+
+[linux]
+install_emacs:
+    git clone --depth 1 https://github.com/emacs-mirror/emacs.git --branch feature/igc $HOME/.local/build/emacs-igc-build
+    cd $HOME/.local/build/emacs-igc-build
+    ./autogen.sh
+    ./configure --with-mailutils --with-native-compilation --with-pgtk --with-tree-sitter --with-imagemagick
+    make -j$(nproc)
+    sudo make install

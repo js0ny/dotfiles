@@ -249,5 +249,6 @@
                         (org-get-heading t t t t)
                         effort))))))
 
+(setq diary-file "~/.local/js0ny/diary")
 
 (provide 'init-org)

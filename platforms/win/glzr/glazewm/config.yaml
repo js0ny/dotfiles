@@ -139,16 +139,24 @@ window_rules:
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
         window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
 
-      # Ignore rules for various 3rd-party apps.
+      # Notion Desktop Popup
+      - window_process: { equals: "Notion" }
+        window_class: { regex: "Chrome_WidgetWin_1" }
+
+      # PowerToys Tools
       - window_process: { equals: "PowerToys" }
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
       - window_process: { equals: "PowerToys" }
         window_title: { regex: ".*? - Peek" }
-      - window_process: { equals: "Lively" }
-        window_class: { regex: "HwndWrapper" }
-      # Ignore Quake-style consoles.
+      # PowerToys Command Palette
+      - window_title: { equals: "Command Palette" }
+        window_class: { equals: "WinUIDesktopWin32WindowClass" }
+      # Quake-style consoles.
       - window_process: { equals: "WindowsTerminal" }
         window_class: { equals: "CASCADIA_HOSTING_WINDOW_CLASS" }
+      # Misc
+      - window_process: { equals: "Lively" }
+        window_class: { regex: "HwndWrapper" }
   - commands: ["set-floating"]
     match:
       # Razer Synapse
@@ -157,6 +165,8 @@ window_rules:
       - window_process: { equals: "AutoHotkeyUX" }
       - window_process: { equals: "ApplicationFrameHost" }
         window_title: { regex: "Settings|设置" }
+      ## Messenger Picture Preview
+      # QQ 图片预览
       - window_process: { equals: "QQ" }
         window_title: { equals: "图片查看器" }
       # 微信图片视图
@@ -175,7 +185,14 @@ window_rules:
       - window_process: { equals: "vivaldi" }
         window_title: { regex: "^Vivaldi 设置.*$" }
       - window_process: { equals: "vivaldi" }
-        window_title: { regex: "^Bitwarden - Vivaldi$" }
+        window_title: { regex: "^Bitwarden.*$" }
+      ## KDE Apps on Windows, Configure & Keymap Popup
+      - window_class: { regex: "^Qt681QWindow(Icon)?$" }
+        window_title: { regex: "^Configure.*$" }
+      - window_process: { equals: "haruna" }
+        window_title: { regex: "^Settings.*$" }
+      - window_process: { equals: "steamwebhelper" }
+        window_title: { equals: "好友列表" }
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
   - name: "resize"
@@ -245,7 +262,7 @@ keybindings:
 
   # Change the focused window to be floating.
   - commands: ["toggle-floating --centered"]
-    bindings: ["lwin+shift+space"]
+    bindings: ["lwin+shift+f"]
 
   # Change the focused window to be tiling.
   - commands: ["toggle-tiling"]
@@ -253,7 +270,7 @@ keybindings:
 
   # Change the focused window to be fullscreen.
   - commands: ["toggle-fullscreen"]
-    bindings: ["lwin+shift+f"]
+    bindings: ["lwin+ctrl+f"]
   - commands: ["shell-exec dopus.exe"]
     bindings: ["lwin+f"]
 
@@ -275,13 +292,15 @@ keybindings:
 
   # Redraw all windows.
   - commands: ["wm-redraw"]
-    bindings: ["alt+shift+w"]
+    bindings: ["lwin+shift+w"]
 
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
   - commands: ["shell-exec wezterm-gui.exe start"]
     bindings: ["lwin+r"]
+  - commands: ["shell-exec sharex -RectangleRegion"]
+    bindings: ["lwin+c"]
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   # - commands: ["focus --next-active-workspace"]

@@ -11,8 +11,8 @@ e::Up
 i::Right
 k::Home
 o::End
-[::PgUp
-]::PgDn
+u::PgUp
+m::PgDn
 1::F1
 2::F2
 3::F3
