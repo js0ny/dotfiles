@@ -28,6 +28,7 @@ screen:
 thunderbird:
     {{CURL}} https://github.com/wshanks/tbkeys/releases/download/v2.4.0/tbkeys.xpi {{CURL_OUT}} "$HOME/Downloads/tbkeys.xpi"
     {{CURL}} https://github.com/htyxyt/htyxyt-immersive-translate-Thunderbird/releases/download/thunderbird-v1.14.8/immersive-translate-Thunderbird.v1.14.8.xpi {{CURL_OUT}} "$HOME/Downloads/immersive-translate-Thunderbird.xpi"
+    {{CURL}} https://raw.githubusercontent.com/catppuccin/thunderbird/refs/heads/main/themes/mocha/mocha-lavender.xpi {{CURL_OUT}} "$HOME/Downloads/thunderbird-dark.xpi"
     cat {{DOTFILES}}/tools/thunderbird/tbkeys.json | {{CLIP}}
 
 wezterm:

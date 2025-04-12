@@ -1,7 +1,7 @@
 
 [linux]
 systemd:
-    ln -sf {{DOTFILES}}/platforms/{{OS}}/systemd {{XDG_CONFIG_HOME}}/systemd/
+    {{LN}} {{DOTFILES}}/platforms/{{OS}}/systemd {{XDG_CONFIG_HOME}}/systemd/
 
 [linux]
 keyd:
@@ -9,7 +9,7 @@ keyd:
     sudo cp {{DOTFILES}}/platforms/linux/keyd/keyd.conf /etc/keyd/default.conf
     mkdir -p {{XDG_CONFIG_HOME}}/keyd
     {{LN}} {{DOTFILES}}/platforms/linux/keyd/app.conf {{XDG_CONFIG_HOME}}/keyd/app.conf
-    sudo systemctl enable keyd
+    sudo systemctl enable --now keyd.service
 
 [linux]
 [private]
@@ -47,3 +47,7 @@ hyprland:
     @just rofi
 
 
+[linux]
+fcitx:
+    [ -d {{XDG_CONFIG_HOME}}/fcitx5 ] && mv {{XDG_CONFIG_HOME}}/fcitx {{XDG_CONFIG_HOME}}/fcitx5.bak
+    {{LN}} {{DOTFILES}}/platforms/linux/fcitx5 {{XDG_CONFIG_HOME}}/fcitx5

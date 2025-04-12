@@ -15,8 +15,8 @@ CLIP := \
 
 CURL := \
     if os() == "windows" { "Invoke-WebRequest" } \
-    else if os() == "linux" { "curl" } \
-    else if os() == "macos" { "curl" } \
+    else if os() == "linux" { "curl -L" } \
+    else if os() == "macos" { "curl -L" } \
     else { "" }
 
 CURL_OUT := \

@@ -1,11 +1,11 @@
 ;;; init-appearance.el
 
 (when (display-graphic-p)
-  (add-to-list 'default-frame-alist '(font . "Sarasa Mono SC Nerd Font")))
+  (add-to-list 'default-frame-alist '(font . "Maple Mono NF CN")))
 
 ;; Set CJK Display Font
 (dolist (charset '(kana han cjk-misc bopomofo))
-  (set-fontset-font t charset (font-spec :family "Sarasa Mono SC")))
+  (set-fontset-font t charset (font-spec :family "Maple Mono NF CN")))
 
 ;; Icon Support
 ;; Once installed, Manually install the fonts required:
