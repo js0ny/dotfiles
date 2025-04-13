@@ -1,13 +1,14 @@
 ;;; init-evil.el
 
 ;; Evil - Extensible VI Layer
-(defvar evil-colemak-state-map (make-sparse-keymap))
+;; (defvar evil-colemak-state-map (make-sparse-keymap))
 
 (use-package evil
   :ensure t
   :config
   (evil-mode 1)
   ; Colemak Vim Arrow
+  ; Motion - Emacs built-in read-only mode
   (evil-define-key '(normal visual operator motion) 'global
     ;; To see the keybindings, use <C-h> k then type the key
     "n" 'evil-next-line
@@ -21,15 +22,20 @@
     "J" 'evil-forward-WORD-end
     "N" '(lambda () (interactive) (evil-next-line 5))       ; 5n
     "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
-    "H" 'switch-to-prev-buffer
-    "I" 'switch-to-next-buffer
     (kbd "C-w n") 'evil-window-down
     (kbd "C-w e") 'evil-window-up
-    (kbd "C-w i") 'evil-window-right
-    )
+    (kbd "C-w i") 'evil-window-right)
   (evil-define-key '(normal visual) 'global
                    "l" 'evil-insert
-                   "L" 'evil-insert-0-line))
+                   "L" 'evil-insert-0-line)
+  (evil-define-key '(normal motion) 'global
+    "H" #'tab-line-switch-to-prev-tab
+    "I" #'tab-line-switch-to-next-tab)
+  (evil-define-key '(visual operator) 'global
+    "H" #'evil-beginning-of-visual-line
+    "I" #'evil-end-of-visual-line)
+  (evil-ex-define-cmd "bn" #'tab-line-switch-to-next-tab)
+  (evil-ex-define-cmd "bp" #'tab-line-switch-to-prev-tab))
 
 ;; Text Objects Keymap - Use `l` for inner (swap i and l)
 ;; https://github.com/emacs-evil/evil/blob/master/evil-maps.el#L398-L421
@@ -44,8 +50,8 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-    "ft" 'treemacs
-    "fc" '(dired user-emacs-directory)
+    "ft" #'treemacs
+    "fc" #'(counsel-find-file user-emacs-directory)
     "b" 'buffer-menu
    ))
 

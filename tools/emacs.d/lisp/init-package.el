@@ -1,6 +1,6 @@
 ;;; init-package.el --- Package management setup using straight.el -*- lexical-binding: t -*-
 
-(setq straight-base-dir (expand-file-name "straight" user-emacs-data))
+(setq straight-base-dir user-emacs-data)
 
 ;; Bootstrap straight.el
 (defvar bootstrap-version)
