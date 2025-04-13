@@ -23,6 +23,7 @@ return {
       integrations = {
         -- lualine = true,
         "lualine",
+        "blink_cmp"
       },
     },
   },

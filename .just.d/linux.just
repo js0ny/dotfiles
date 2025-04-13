@@ -1,12 +1,12 @@
 
 [linux]
 systemd:
-    {{LN}} {{DOTFILES}}/platforms/{{OS}}/systemd {{XDG_CONFIG_HOME}}/systemd/
+    {{LN}} {{DOTFILES}}/platforms/{{OS}}/systemd {{XDG_CONFIG_HOME}}/systemd
 
 [linux]
 keyd:
     -which keyd || sudo pacman -S keyd --noconfirm || sudo apt install keyd --yes || @just build_keyd
-    sudo cp {{DOTFILES}}/platforms/linux/keyd/keyd.conf /etc/keyd/default.conf
+    sudo cp {{DOTFILES}}/platforms/linux/keyd/default.conf /etc/keyd/default.conf
     mkdir -p {{XDG_CONFIG_HOME}}/keyd
     {{LN}} {{DOTFILES}}/platforms/linux/keyd/app.conf {{XDG_CONFIG_HOME}}/keyd/app.conf
     sudo systemctl enable --now keyd.service

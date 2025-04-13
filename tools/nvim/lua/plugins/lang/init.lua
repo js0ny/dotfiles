@@ -8,25 +8,14 @@ return {
   { import = "plugins.lang.lua" },
   { import = "plugins.lang.treesitter" },
   { import = "plugins.mod.trouble-nvim" },
-  {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    build = ":MasonUpdate",
-    -- opts_extend = { "ensure_installed" },
-    opts = {
-      -- ensure_installed = require("config.servers").servers,
-    },
-  },
+  -- Remove mason and use system package manager
   -- {
-  --   "williamboman/mason-lspconfig.nvim",
-  --   event = "BufReadPre",
-  --   dependencies = {
-  --     { "williamboman/mason.nvim" },
-  --     { "neovim/nvim-lspconfig" },
-  --   },
+  --   "williamboman/mason.nvim",
+  --   cmd = "Mason",
+  --   build = ":MasonUpdate",
+  --   -- opts_extend = { "ensure_installed" },
   --   opts = {
   --     -- ensure_installed = require("config.servers").servers,
-  --     -- automatic_installation = false,
   --   },
   -- },
   { import = "plugins.mod.conform-nvim" },

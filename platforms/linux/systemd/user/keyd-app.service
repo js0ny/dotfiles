@@ -4,7 +4,7 @@ Documentation=man:keyd-application-mapper(1) https://github.com/rvaiya/keyd
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/keyd-application-mapper -d
+ExecStart=/usr/local/bin/keyd-application-mapper -d
 ExecStop=pkill keyd-applicatio
 Restart=on-failure
 

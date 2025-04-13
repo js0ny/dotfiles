@@ -12,7 +12,7 @@ return {
       "BufReadPre",
     },
     opts = {
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline" },
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "latex" },
       highlight = { enable = true },
       indent = { enable = true },
     },

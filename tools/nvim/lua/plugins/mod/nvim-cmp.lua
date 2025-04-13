@@ -12,7 +12,6 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-    local lspconfig = require("lspconfig")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local servers_module = require("config.servers")
     local luasnip = require("luasnip")
@@ -108,10 +107,5 @@ return {
       matching = { disallow_symbol_nonprefix_matching = false },
     })
 
-    -- 配置 LSP
-    for _, server in ipairs(servers) do
-      local config = vim.tbl_deep_extend("force", default_server_config, servers_config[server] or {})
-      lspconfig[server].setup(config)
-    end
-  end,
+    end,
 }

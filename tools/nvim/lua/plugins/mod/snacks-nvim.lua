@@ -41,7 +41,9 @@ return {
     -- scroll = { enabled = true },
     statuscolumn = { enabled = true },
     -- words = { enabled = true },
-    image = { enabled = true },
+    image = { enabled = true,
+      img_dirs = { "_Global/Assets" }
+  },
   },
   keys = {
     -- {
