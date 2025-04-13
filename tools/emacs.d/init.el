@@ -37,6 +37,7 @@
 (require 'init-counsel)
 (require 'init-file)
 (require 'init-edit)
+(require 'init-calendar)
 (require 'init-org)
 (require 'init-lang) 
 (require 'init-treesitter)
