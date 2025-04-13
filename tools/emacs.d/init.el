@@ -34,6 +34,7 @@
 (require 'init-appearance) 
 (require 'init-keymaps)
 (require 'init-evil)
+(require 'init-counsel)
 (require 'init-file)
 (require 'init-edit)
 (require 'init-org)
