@@ -1,3 +1,12 @@
+local uuid = function()
+  local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+  return string.gsub(template, '[xy]', function(c)
+    local v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
+    return string.format('%x', v)
+  end)
+end
+
+
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
@@ -63,6 +72,53 @@ return {
     ui = {
       enable = false,
     },
+    templates = {
+      folder = "_Global/LuaTemplates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+      substitutions = {
+        yesterday = function()
+          return os.date("%Y-%m-%d", os.time() - 86400)
+        end,
+        uuid = uuid()
+      },
+    },
+    ---@return table
+    note_frontmatter_func = function(note)
+      -- Add the title of the note as an alias.
+      if note.title then
+        note:add_alias(note.title)
+      end
+
+      -- Force to use UUID as the note id.
+      local note_id
+      if note.metadata then
+        note_id = note.id
+      else
+        note_id = uuid()
+      end
+
+      local out = {
+        id = note_id,
+        aliases = note.aliases,
+        tags = note.tags,
+        title = note.id,
+        date = os.date(
+          "%Y-%m-%dT00:00:00"),
+      }
+
+      -- `note.metadata` contains any manually added fields in the frontmatter.
+      -- So here we just make sure those fields are kept in the frontmatter.
+      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+        for k, v in pairs(note.metadata) do
+          out[k] = v
+        end
+      end
+
+      -- Force to update mtime.
+      out.mtime = os.date("%Y-%m-%dT%H:%M:%S")
+      return out
+    end,
     daily_notes = {
       folder = "_Global/Periodic",
       date_format = "%Y-%m-%d",

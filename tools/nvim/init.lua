@@ -10,7 +10,7 @@
 require("config.options")
 if vim.g.vscode then -- TODO: VSCode Neovim Integration
   require("config.vscode")
-else -- Vanilla neovim
+else
   require("config.plugins")
   require("config.colorscheme")
 end

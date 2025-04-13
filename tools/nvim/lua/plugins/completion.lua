@@ -17,6 +17,8 @@ return {
     "js0ny/luasnip-latex-snippets.nvim",
     dependencies = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
     ft = { "tex", "latex", "markdown", "org" },
-    opts = {}
+    opts = {},
+    dev = true,
+    dir = "~/Source/Forks/luasnip-latex-snippets.nvim/"
   }
 }

@@ -12,6 +12,7 @@ return {
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
+  { import = "plugins.mod.img-clip" },
   { import = "plugins.mod.mc" }, -- Multiple-cursors
   { import = "plugins.mod.autopairs" },
   {
