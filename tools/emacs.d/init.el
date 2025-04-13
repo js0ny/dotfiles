@@ -31,17 +31,23 @@
 ;; Load each modules
 (require 'init-package) ; package manager should be loaded first
 (require 'init-basic)
-(require 'init-appearance) ; package manager should be loaded first
+(require 'init-appearance) 
 (require 'init-keymaps)
 (require 'init-evil)
 (require 'init-file)
 (require 'init-edit)
 (require 'init-org)
-;; (require 'init-lsp) ; FIXME: See .emacs.d/lisp/init-lsp.el
+(require 'init-lang) 
+(require 'init-treesitter)
 
 ;; Load `custom` file
 (when (file-exists-p custom-file)
   (load custom-file))
+
+
+(when (file-exists-p (expand-file-name "local.el" user-emacs-directory))
+  (load (expand-file-name "local.el" user-emacs-directory)))
+
 
 
 ;;; init.el end
