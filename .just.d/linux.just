@@ -33,11 +33,18 @@ dunst:
 
 [linux]
 hypr:
+    {{LN}} {{DOTFILES}}/platforms/linux/hypr/hyprland/dark.conf {{DOTFILES}}/platforms/linux/hypr/hyprland/current.conf
     {{LN}} {{DOTFILES}}/platforms/linux/hypr {{XDG_CONFIG_HOME}}/hypr
 
 [linux]
 rofi:
+    {{LN}} {{DOTFILES}}/platforms/linux/rofi/dark.rasi {{DOTFILES}}/platforms/linux/rofi/current.rasi
     {{LN}} {{DOTFILES}}/platforms/linux/rofi {{XDG_CONFIG_HOME}}/rofi
+
+[linux]
+waybar:
+    {{LN}} {{DOTFILES}}/platforms/linux/waybar {{XDG_CONFIG_HOME}}/waybar
+    {{LN}} {{DOTFILES}}/platforms/linux/waybar/dark.css {{DOTFILES}}/platforms/linux/waybar/current.css
 
 [linux]
 hyprland:

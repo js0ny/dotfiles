@@ -18,7 +18,8 @@ local function scheme_for_appearance(appearance)
     return "Catppuccin Mocha"
   else
     print("Light")
-    return "rose-pine-dawn"
+    return "Catppuccin Latte"
+    -- return "rose-pine-dawn"
   end
 end
 

@@ -6,6 +6,14 @@ lsd:
     -mkdir {{XDG_CONFIG_HOME}}/lsd
     {{LN}} {{DOTFILES}}/common/lsd.yaml {{XDG_CONFIG_HOME}}/lsd/config.yaml
 
+bat:
+    mkdir -p "$(bat --config-dir)/themes"
+    wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
+    wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+    wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+    wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+    {{LN}} {{DOTFILES}}/common/bat.config.dark {{DOTFILES}}/common/bat.config
+    {{LN}} {{DOTFILES}}/common/bat.config {{XDG_CONFIG_HOME}}/bat/config
 
 [unix]
 neovide:

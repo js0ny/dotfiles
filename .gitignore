@@ -40,4 +40,6 @@ lazy-lock.json
 
 common/**/*current*
 
+**/current.*
+
 default.target.wants

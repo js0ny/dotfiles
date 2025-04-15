@@ -1,4 +1,4 @@
-@import "catppuccin-mocha"
+@import "current"
 
 * {
   selected-active-foreground:  @background;

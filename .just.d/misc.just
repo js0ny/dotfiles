@@ -5,8 +5,8 @@ uv:
     uv add -r {{DOTFILES}}/bootstrap/components/requirements.txt
 
 vivaldi:
-    {{CURL}} https://github.com/SocietasEvanescentes/Vivaldi/files/12446831/Rose.Pine.Dawn.zip {{CURL_OUT}} "$HOME/Downloads/vivaldi-light.zip" # Rose Pine Dawn
-    {{CURL}} https://github.com/catppuccin/vivaldi/releases/download/1.0.0-ctpv2/Catppuccin.Mocha.Lavender.zip {{CURL_OUT}} "$HOME/Downloads/vivaldi-dark.zip" # Catppuccino Mocha Lavender
+    {{CURL}} https://github.com/catppuccin/vivaldi/releases/download/1.0.0-ctpv2/Catppuccin.Latte.Lavender.zip {{CURL_OUT}} "$HOME/Downloads/vivaldi-light.zip" # Catppuccin Latte Lavender
+    {{CURL}} https://github.com/catppuccin/vivaldi/releases/download/1.0.0-ctpv2/Catppuccin.Mocha.Lavender.zip {{CURL_OUT}} "$HOME/Downloads/vivaldi-dark.zip" # Catppuccin Mocha Lavender
 
 
 zotero:
