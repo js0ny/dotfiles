@@ -18,12 +18,15 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "outline_panel": {
     "dock": "right"
   },
   "edit_predictions": {
-    "disabled_globs": ["*.bean"],
-    "mode": "eager_preview",
+    "disabled_globs": ["*.bean", "*.env"],
+    // "mode": "eager_preview",
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null
@@ -36,9 +39,25 @@
   "theme": {
     "mode": "system",
     "light": "Rosé Pine Dawn",
-    "dark": "Catppuccin Mocha"
+    "dark": "Kanagawa Dragon"
   },
   "relative_line_numbers": true,
   "buffer_font_family": "Maple Mono NF CN",
-  "remove_trailing_whitespace_on_save": true
+  "remove_trailing_whitespace_on_save": true,
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-3-7-sonnet"
+    },
+    "version": "2"
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true
+  },
+  "terminal": {
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  }
 }

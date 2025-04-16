@@ -91,7 +91,8 @@
       "k": "search::SelectNextMatch",
       "K": "search::SelectPreviousMatch",
       "N": ["workspace::SendKeystrokes", "n n n n n"],
-      "E": ["workspace::SendKeystrokes", "e e e e e"]
+      "E": ["workspace::SendKeystrokes", "e e e e e"],
+      "Y": ["workspace::SendKeystrokes", "y $"]
     }
   },
   {
