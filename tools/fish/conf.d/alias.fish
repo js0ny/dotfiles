@@ -60,8 +60,7 @@ abbr --add ipy ipython
 
 abbr --add g lazygit
 
-
-abbr --add doomrc "emacsclient -t ~/.config/doom/"
+abbr --add aic "aichat -s"
 
 # lsd - modern ls
 if command -v lsd > /dev/null

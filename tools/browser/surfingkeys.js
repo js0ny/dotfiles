@@ -345,7 +345,7 @@ unmap("yma")
 unmap("ymc")
 unmap("ymv")
 
-map("ym", "yank link as markdown", function () {
+mapkey("ym", "yank link as markdown", function () {
   const url = new URL(window.location.href);
   const title = document.title;
   Clipboard.write(`[${title}](${url.origin + url.pathname})`);

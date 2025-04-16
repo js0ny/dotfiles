@@ -23,7 +23,7 @@ return {
     { "<leader>cs",       "<cmd>FzfLua treesitter<CR>",               desc = "Search symbols" },
     { "<leader>cS",       "<cmd>FzfLua grep_string<CR>",              desc = "Search current symbol" },
     { "<leader>bB",       "<cmd>FzfLua buffers<CR>",                  desc = "List Buffers" },
-    { "<leader>fl",       ":FzfLua filetypes",                        desc = "Set Filetype/Lang to ..." },
+    { "<leader>fl",       "<cmd>FzfLua filetypes<CR>",                desc = "Set Filetype/Lang to ..." },
     { "<leader>R",        "<cmd>FzfLua resume<CR>",                   desc = "Resume FzfLua" },
   },
   opts = {},
