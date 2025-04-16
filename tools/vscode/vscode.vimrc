@@ -71,6 +71,9 @@ noremap zR editor.foldAll
 vnoremap < editor.action.outdentLines
 vnoremap > editor.action.indentLines
 
+nnoremap [g editor.action.editor.previousChange
+nnoremap ]g editor.action.editor.nextChange
+
 " 分词版本的w和b，支持中文，需要插件
 " 为了保证递归解析，而不是打断，使用 `nmap` 而不是 `nnoremap`
 " Comment if you don't use cjk or the plugin

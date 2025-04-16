@@ -86,6 +86,8 @@ return {
       { "<leader>gb", "<cmd>Gitsigns blame<CR>",                     desc = "Blame file" },
       { "<leader>gd", "<cmd>Gitsigns diffthis<CR>",                  desc = "Diff file" },
       { "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
+      { "[g",         "<cmd>Gitsigns prev_hunk<CR>",                 desc = "Prev hunk" },
+      { "]g",         "<cmd>Gitsigns next_hunk<CR>",                 desc = "Next hunk" },
     },
   },
   -- { -- Highlight and navigate between TODOs
