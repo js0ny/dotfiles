@@ -16,11 +16,45 @@
   :if (display-graphic-p))
 
 
+(defun js0ny/get-system-theme ()
+  " Get the current system theme. Returns 'light' or 'dark'."
+  ;; Default
+  (let ((background 'dark))
+    (if (string= system-type "darwin")
+        (progn
+          ;; Check if 'defaults' command is available
+          (when (executable-find "defaults")
+            ;; Check if the system is in dark mode
+            (let ((apple-interface-style
+                   (shell-command-to-string "defaults read -g AppleInterfaceStyle")))
+              (when (string-match-p "Light" apple-interface-style)
+                (setq background 'light)))))
+      ;; Using systemd to check the current theme
+      (when (executable-find "busctl")
+        (let ((result
+               (shell-command-to-string
+                (concat "busctl --user call org.freedesktop.portal.Desktop "
+                        "/org/freedesktop/portal/desktop "
+                        "org.freedesktop.portal.Settings ReadOne ss "
+                        "org.freedesktop.appearance color-scheme"))))
+          ;; 结果格式为浅色模式是 "v u 0"，暗色模式是 "v u 1"
+          ;; v u 0 -> light, v u 1 -> dark
+          (when (string-match "u\\s+\\([0-9]\\)" result)
+            (let ((color-scheme (match-string 1 result)))
+              (when (string= color-scheme "0")
+                (setq background 'light)))))))
+    background))
+
 (use-package catppuccin-theme
+  :custom
+  (catppuccin-flavor 'mocha)
   :config
-  (setq catppuccin-flavor 'mocha) ; This looks like shit in terminal mode
-  (load-theme 'catppuccin t)
-  )
+  (if (string-equal (js0ny/get-system-theme) "light")
+    (setq catppuccin-flavor 'latte)
+    (setq catppuccin-flavor 'mocha))
+  (load-theme 'catppuccin t))
+
+
 
 ;; (use-package doom-themes
 ;;   :ensure t
@@ -29,12 +63,12 @@
 ;;   :custom
 ;;   (doom-themes-enable-bold t)    ; if nil, bold is universally disabled
 ;;   (doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;;   (doom-themes-treemacs-theme "doom-nord-aurora") ; use "doom-colors" for less minimal icon theme
+;;   ; (doom-themes-treemacs-theme "doom-nord-aurora") ; use "doom-colors" for less minimal icon theme
 ;;   :config
-;; ;;  (load-theme 'doom-nord-aurora t)
+;;   (load-theme 'doom-nord-aurora t)
 
 ;;   ;; Enable flashing mode-line on errors
-;; ;;  (doom-themes-visual-bell-config)
+;;   (doom-themes-visual-bell-config)
 
 ;;   ;; Enable custom neotree theme (nerd-icons must be installed!)
 ;;   ;; (doom-themes-neotree-config)

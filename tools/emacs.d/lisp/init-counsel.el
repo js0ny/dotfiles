@@ -3,7 +3,7 @@
   "Open `user-emacs-directory` using `counsel-find-file`."
   (interactive)
   (let ((default-directory user-emacs-directory))
-    (counsel-find-file)))
+    (counsel-file-jump)))
 
 
 (use-package counsel
@@ -18,8 +18,7 @@
     "/" #'counsel-rg
     ";" #'counsel-M-x
     "fc" #'js0ny/open-config-directory
-    )
-  )
+    "fh" #'counsel-recentf))
 
 (provide 'init-counsel)
 

@@ -24,6 +24,7 @@
   (org-persist-directory (expand-file-name "org-persist" user-emacs-data))
   (org-archive-location "~/OrgFiles/.archive/%s_archive::")
   (org-default-notes-file "~/OrgFiles/tasks/inbox.org")
+  (org-id-locations-file (expand-file-name ".org-id-locations" org-directory))
   (org-startup-folded "show2levels")
   (org-log-into-drawer "LOGBOOK")
   (org-pretty-entities t)
@@ -35,19 +36,31 @@
   (with-eval-after-load 'org
     (define-key org-mode-map (kbd "C-j") 'org-return-indent)
     (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle))
-    (evil-define-key 'normal org-mode-map (kbd "SPC a") 'org-agenda-list) ; TODO: Here Simulates the leader
+  (evil-define-key 'normal org-mode-map (kbd "SPC a") 'org-agenda-list) ; TODO: Here Simulates the leader
+  (setq org-emphasis-alist
+	'(("*" (bold :foreground "cyan" ))
+	  ("/" (italic :foreground "green"))
+	  ("_" underline)
+	  ("=" (org-verbatim verbatim :background "maroon" :foreground "white"))
+	  ("~" (org-code verbatim :background "deep sky blue" :foreground "MidnightBlue"))
+	  ("+" (:strike-through t))))
+
+  (dolist (face '((org-level-1 . 1.6)
+                  (org-level-2 . 1.4)
+                  (org-level-3 . 1.2)
+                  (org-level-4 . 1.1)
+                  (org-level-5 . 1.0)
+                  (org-level-6 . 1.0)
+                  (org-level-7 . 1.0)
+                  (org-level-8 . 1.0)))
+    (set-face-attribute (car face) nil :height (cdr face)))
   )
+
+
 
 ;; Org Styling
 
 ;; Set Org Styles
-(setq org-emphasis-alist
-  '(("*" (bold :foreground "cyan" ))
-    ("/" (italic :foreground "green"))
-    ("_" underline)
-    ("=" (org-verbatim verbatim :background "maroon" :foreground "white"))
-    ("~" (org-code verbatim :background "deep sky blue" :foreground "MidnightBlue"))
-    ("+" (:strike-through t))))
 
 
 ;; Org Preview
@@ -248,6 +261,10 @@
                  (format "开始计时任务: %s\n预计用时: %s"
                         (org-get-heading t t t t)
                         effort))))))
+(use-package org-node
+  :after org
+  :config (org-node-cache-mode))
+
 
 
 (provide 'init-org)

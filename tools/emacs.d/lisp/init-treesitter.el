@@ -16,5 +16,13 @@
         (python-mode . python-ts-mode)
         (js-json-mode . json-ts-mode)))
 
+(add-to-list 'treesit-language-source-alist
+        '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
+
+(use-package hyprlang-ts-mode
+  :ensure t
+  :custom
+  (hyprlang-ts-mode-indent-offset 4))
+    
 
 (provide 'init-treesitter)

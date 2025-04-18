@@ -3,6 +3,8 @@
 ;; Evil - Extensible VI Layer
 ;; (defvar evil-colemak-state-map (make-sparse-keymap))
 
+
+
 (use-package evil
   :ensure t
   :config
@@ -24,7 +26,10 @@
     "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
     (kbd "C-w n") 'evil-window-down
     (kbd "C-w e") 'evil-window-up
-    (kbd "C-w i") 'evil-window-right)
+    (kbd "C-w i") 'evil-window-right
+    (kbd "C-w C-n") 'evil-window-down
+    (kbd "C-w C-e") 'evil-window-up
+    (kbd "C-w C-i") 'evil-window-right)
   (evil-define-key '(normal visual) 'global
                    "l" 'evil-insert
                    "L" 'evil-insert-0-line)
@@ -32,8 +37,8 @@
     "H" #'tab-line-switch-to-prev-tab
     "I" #'tab-line-switch-to-next-tab)
   (evil-define-key '(visual operator) 'global
-    "H" #'evil-beginning-of-visual-line
-    "I" #'evil-end-of-visual-line)
+    "H" #'evil-beginning-of-line
+    "I" #'evil-end-of-line)
   (evil-ex-define-cmd "bn" #'tab-line-switch-to-next-tab)
   (evil-ex-define-cmd "bp" #'tab-line-switch-to-prev-tab))
 
@@ -51,9 +56,7 @@
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "ft" #'treemacs
-    "fc" #'(counsel-find-file user-emacs-directory)
-    "b" 'buffer-menu
-   ))
+    "bb" #'buffer-menu))
 
 ;; Evil Commentary: Use gc<action> to toggle comments
 (use-package evil-commentary
@@ -66,6 +69,10 @@
   :after evil
   :config
   (global-evil-surround-mode 1))
+
+(use-package evil-mc
+  :config
+  (global-evil-mc-mode 1))
 
 
 ;; Evil-goggles: Highlight-yank (and more)

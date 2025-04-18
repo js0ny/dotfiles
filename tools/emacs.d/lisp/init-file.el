@@ -38,15 +38,14 @@
             ("C-x t M-t" . treemacs-find-tag)
             )
     :config
-    (setq treemacs-persist-file (expand-file-name "treemacs-persist" user-emacs-data))
-    )
+    (setq treemacs-persist-file (expand-file-name "treemacs-persist" user-emacs-data)))
 
 (use-package treemacs-evil
   :after (treemacs evil)
   :ensure t
   :config
   ;; Evil treemacs state bindings
-  (evil-define-key 'treemacs evil-treemacs-state-map
+  (evil-define-key '(normal motion) evil-treemacs-state-map
         (kbd "n")    #'treemacs-next-line
         (kbd "e")    #'treemacs-previous-line
         (kbd "N")    #'treemacs-next-neighbour
@@ -67,6 +66,8 @@
 
   ;; Treemacs mode specific binding
   (evil-define-key 'treemacs treemacs-mode-map (kbd "i") #'treemacs-RET-action))
+
+(use-package dirvish)
 
 
 ;; magit - Git Client

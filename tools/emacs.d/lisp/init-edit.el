@@ -6,6 +6,9 @@
 ;; Auto input pairred brackets
 (electric-pair-mode 1)
 
+;; Enable Folding 
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+
 ;; Company - Complete Anything
 (use-package company
   :ensure t
@@ -79,8 +82,17 @@
               (lambda (orig-fn &rest args)
                 (let ((inhibit-field-text-motion t))  ;; 禁止字段自动换行
                   (apply orig-fn args))))
-      (setq yas-snippet-dirs '("~/.dotfiles/tools/doom/snippets/"))
+  (setq yas-snippet-dirs '("~/.dotfiles/tools/doom/snippets/"))
   (yas-reload-all)
   )
+
+(use-package diff-hl
+  :straight t
+  :hook ((prog-mode . diff-hl-mode)
+         (vc-dir-mode . diff-hl-dir-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh))
+  :config
+  (setq diff-hl-margin-mode nil) 
+  (diff-hl-flydiff-mode))        
 
 (provide 'init-edit)

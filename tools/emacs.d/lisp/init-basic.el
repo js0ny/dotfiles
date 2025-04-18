@@ -14,6 +14,9 @@
   :hook
   (prog-mode . display-line-numbers-mode))
 
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'super))
 
 
 ;; https://book.emacs-china.org/#orgcfd105e Open with Emacs
@@ -60,6 +63,7 @@
 
 ;; TRAMP 远程文件的备份设置
 (setq tramp-backup-directory-alist (copy-tree backup-directory-alist))
+(setq tramp-persistency-file-name (expand-file-name "tramp" user-emacs-state))
 
 
 ;; 备份设置（可选）
