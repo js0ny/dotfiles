@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: align-math
-# key: BAL
+# key: ali
 # expand-env: ((yas-indent-line 'fixed))
 # --
 \\begin{align*}

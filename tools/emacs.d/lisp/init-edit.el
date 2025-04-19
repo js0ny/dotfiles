@@ -82,7 +82,9 @@
               (lambda (orig-fn &rest args)
                 (let ((inhibit-field-text-motion t))  ;; 禁止字段自动换行
                   (apply orig-fn args))))
-  (setq yas-snippet-dirs '("~/.dotfiles/tools/doom/snippets/"))
+  ;; (setq yas-snippet-dirs '("~/.dotfiles/tools/doom/snippets/"))
+  (add-to-list 'yas-snippet-dirs "~/.dotfiles/tools/doom/snippets/" t)
+
   (yas-reload-all)
   )
 

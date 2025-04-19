@@ -15,7 +15,7 @@
   (org-display-remote-inline-images 'cache) ; 预览网络图片
 
   ;; Use LaTeX rendering
-  (org-startup-with-latex-preview nil)
+  ;; (org-startup-with-latex-preview nil)
   (org-image-actual-width 600)
   ;; Conceal on markup markers
   (org-hide-emphasis-markers t)
@@ -42,7 +42,7 @@
 	  ("/" (italic :foreground "green"))
 	  ("_" underline)
 	  ("=" (org-verbatim verbatim :background "maroon" :foreground "white"))
-	  ("~" (org-code verbatim :background "deep sky blue" :foreground "MidnightBlue"))
+	  ("~" (org-code verbatim :background "maroon" :foreground "white"))
 	  ("+" (:strike-through t))))
 
   (dolist (face '((org-level-1 . 1.6)
@@ -53,8 +53,7 @@
                   (org-level-6 . 1.0)
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :height (cdr face)))
-  )
+    (set-face-attribute (car face) nil :height (cdr face))))
 
 
 
@@ -70,6 +69,12 @@
 (setq org-latex-preview-ltxpng-directory (expand-file-name "emacs/org/latex" xdg-cache-home))
 (setq org-preview-latex-default-process 'dvisvgm)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 0.8))
+
+;; org-appear: Show hidden emphasis markers
+;; Just like Obsidian
+(use-package org-appear
+  :hook
+  (org-mode . org-appear-mode))
 
 
 (use-package org-latex-impatient
@@ -125,9 +130,9 @@
 (use-package org-modern
   :ensure t
   :config
-  (setopt org-modern-star 'replace
-          org-modern-replace-stars '("§")
-          org-modern-hide-stars "§")
+  ;; (setopt org-modern-star 'replace
+  ;;         org-modern-replace-stars '("§")
+  ;;         org-modern-hide-stars "§")
   (setopt org-modern-list '((?- . "•")))
   (setopt org-modern-timestamp '(" %Y-%m-%d " . " %H:%M "))
   (setopt org-modern-block-fringe nil)
@@ -264,7 +269,5 @@
 (use-package org-node
   :after org
   :config (org-node-cache-mode))
-
-
 
 (provide 'init-org)

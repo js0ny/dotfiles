@@ -42,6 +42,7 @@
 (require 'init-file)
 (require 'init-edit)
 (require 'init-calendar)
+(require 'init-writer)
 (require 'init-org)
 (require 'init-markdown)
 (require 'init-latex)
