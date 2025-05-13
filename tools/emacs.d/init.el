@@ -46,7 +46,11 @@
 (require 'init-org)
 (require 'init-markdown)
 (require 'init-latex)
+(require 'init-beancount)
 (require 'init-treesitter)
+(require 'init-scratch)
+(require 'init-ai)
+
 
 ;; Load `custom` file
 (when (file-exists-p custom-file)
