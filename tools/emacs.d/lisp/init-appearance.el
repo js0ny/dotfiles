@@ -1,11 +1,22 @@
 ;;; init-appearance.el
 
-(when (display-graphic-p)
-  (add-to-list 'default-frame-alist '(font . "Maple Mono NF CN")))
+;; Always set frame font
+;; If don't set this, `emacs --daemon' will not set the font
+;; for new graphical frames.
+(add-to-list 'default-frame-alist '(font . "Maple Mono NF CN"))
 
 ;; Set CJK Display Font
 (dolist (charset '(kana han cjk-misc bopomofo))
   (set-fontset-font t charset (font-spec :family "Maple Mono NF CN")))
+
+
+;; Variable Pitch Font
+;; Used in `variable-pitch-mode'
+(set-face-attribute 'variable-pitch nil
+                    :family "LXGW WenKai Screen"
+                    :height 140            
+                    :weight 'regular)
+
 
 ;; Icon Support
 ;; Once installed, Manually install the fonts required:
@@ -86,6 +97,13 @@
   :init (doom-modeline-mode 1))
 
 (global-tab-line-mode) ; bufferline
+
+(use-package highlight-indent-guides
+  :hook ((prog-mode yaml-mode org-mode) . highlight-indent-guides-mode)
+  :init
+  (setq highlight-indent-guides-method 'column)
+  (setq highlight-indent-guides-responsive 'top)
+  (setq highlight-indent-guides-auto-character-face-perc 5))
 
 
 

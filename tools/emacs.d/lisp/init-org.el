@@ -33,17 +33,26 @@
   (org-src-preserve-indentation t) ; Prevent from auto-indent
   (org-startup-folded 'showall)
   :config
+  (require 'org-habit)
   (with-eval-after-load 'org
     (define-key org-mode-map (kbd "C-j") 'org-return-indent)
     (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle))
   (evil-define-key 'normal org-mode-map (kbd "SPC a") 'org-agenda-list) ; TODO: Here Simulates the leader
-  (setq org-emphasis-alist
-	'(("*" (bold :foreground "cyan" ))
-	  ("/" (italic :foreground "green"))
-	  ("_" underline)
-	  ("=" (org-verbatim verbatim :background "maroon" :foreground "white"))
-	  ("~" (org-code verbatim :background "maroon" :foreground "white"))
-	  ("+" (:strike-through t))))
+  ;; (setq org-emphasis-alist
+  ;; 	'(("*" (bold :foreground "cyan" ))
+  ;; 	  ("/" (italic :foreground "green"))
+  ;; 	  ("_" underline)
+  ;; 	  ("=" (org-verbatim verbatim :background "maroon" :foreground "white"))
+  ;; 	  ("~" (org-code verbatim :background "maroon" :foreground "white"))
+  ;; 	  ("+" (:strike-through t))))
+  (custom-set-faces
+    '(org-bold ((t (:weight bold :foreground unspecified))))
+    '(org-italic ((t (:slant italic :foreground unspecified))))
+    '(org-underline ((t (:underline t :foreground unspecified))))
+    '(org-code ((t (:inherit fixed-pitch :background unspecified :foreground unspecified))))
+    '(org-verbatim ((t (:inherit fixed-pitch :background unspecified :foreground unspecified))))
+    '(org-strike-through ((t (:strike-through t :foreground unspecified)))))
+
 
   (dolist (face '((org-level-1 . 1.6)
                   (org-level-2 . 1.4)
@@ -54,7 +63,6 @@
                   (org-level-7 . 1.0)
                   (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil :height (cdr face))))
-
 
 
 ;; Org Styling
@@ -125,7 +133,22 @@
 (global-set-key (kbd "C-c i") (lambda () (interactive) (js0ny/insert-emphasis-with-zws ?/)))
 
 ;; Pomodoro for org clock
-(use-package org-pomodoro)
+(use-package org-pomodoro
+  :straight t
+  :bind (:map org-mode-map
+              ("C-c p" . org-pomodoro)))
+
+
+(defun js0ny/org-pomodoro-resume-last-task ()
+  "Clock in to the last task and start Pomodoro on it."
+  (interactive)
+  (let ((marker (car org-clock-history)))
+    (if marker
+        (progn
+          (org-with-point-at marker
+            (org-clock-in))
+          (org-pomodoro))
+      (message "No previous clock task found."))))
 
 (use-package org-modern
   :ensure t
@@ -207,6 +230,8 @@
  '(
    (python . t) ; No need to declare C/C++/emacs-lisp since is integrated
    (shell . t)
+   (dot . t)
+   (ditaa . t)
    ))
 ;; Don't ask me again when running source block
 ;; Use clang as default C/C++ Compiler on macOS and Windows
@@ -224,50 +249,67 @@
 
 ;; icalendar
 
+(defun my/org-icalendar-filter-out-habits (entry backend info)
+  "Filter out Org entries that are marked as habits when exporting to iCalendar."
+  (when (and (eq backend 'icalendar)
+             (string-match ":STYLE:.*habit" (or entry "")))
+    nil))
+
+(add-hook 'org-export-filter-entry-functions #'my/org-icalendar-filter-out-habits)
+
+
 (setq org-icalendar-use-scheduled '(event-if-todo event-if-not-todo))
 (setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo))
 (setq org-icalendar-combined-agenda-file "~/Dropbox/org.ics")
 
 
-;; Integrate Emacs Timer with System Notifications
-;; 定义通知函数
-(defun js0ny/org-clock-notification (title message &optional icon)
-  "发送一个系统通知"
-  (alert message
-         :title title
-         :icon icon
-         :category 'org-clock))
+;; ;; Integrate Emacs Timer with System Notifications
+;; ;; 定义通知函数
+;; (defun js0ny/org-clock-notification (title message &optional icon)
+;;   "发送一个系统通知"
+;;   (alert message
+;;          :title title
+;;          :icon icon
+;;          :category 'org-clock))
 
-;; 添加定时器检查函数
-(defun js0ny/org-clock-check-timer ()
-  "检查当前正在运行的 clock 是否到期"
-  (when (org-clocking-p)
-    (let* ((clocked-time (org-clock-get-clocked-time))
-           (effort (org-duration-to-minutes
-                    (or (org-entry-get (org-clock-is-active) "Effort")
-                        "0")))
-           (remaining (- effort clocked-time)))
-      (when (and (> effort 0) (<= remaining 0))
-        (js0ny/org-clock-notification
-         "Org Clock 提醒"
-         (format "任务 '%s' 的预计时间已到！"
-                (org-clock-get-clock-string)))))))
+;; ;; 添加定时器检查函数
+;; (defun js0ny/org-clock-check-timer ()
+;;   "检查当前正在运行的 clock 是否到期"
+;;   (when (org-clocking-p)
+;;     (let* ((clocked-time (org-clock-get-clocked-time))
+;;            (effort (org-duration-to-minutes
+;;                     (or (org-entry-get (org-clock-is-active) "Effort")
+;;                         "0")))
+;;            (remaining (- effort clocked-time)))
+;;       (when (and (> effort 0) (<= remaining 0))
+;;         (js0ny/org-clock-notification
+;;          "Org Clock 提醒"
+;;          (format "任务 '%s' 的预计时间已到！"
+;;                 (org-clock-get-clock-string)))))))
 
-;; 设置定时器，每分钟检查一次
-(run-with-timer 0 60 #'js0ny/org-clock-check-timer)
+;; ;; 设置定时器，每分钟检查一次
+;; (run-with-timer 0 60 #'js0ny/org-clock-check-timer)
 
 ;; 在 org-clock-in-hook 中添加检查
-(add-hook 'org-clock-in-hook
-          (lambda ()
-            (let ((effort (org-entry-get (point) "Effort")))
-              (when effort
-                (js0ny/org-clock-notification
-                 "开始计时"
-                 (format "开始计时任务: %s\n预计用时: %s"
-                        (org-get-heading t t t t)
-                        effort))))))
+;; (add-hook 'org-clock-in-hook
+;;           (lambda ()
+;;             (let ((effort (org-entry-get (point) "Effort")))
+;;               (when effort
+;;                 (js0ny/org-clock-notification
+;;                  "开始计时"
+;;                  (format "开始计时任务: %s\n预计用时: %s"
+;;                         (org-get-heading t t t t)
+;;                         effort))))))
 (use-package org-node
   :after org
   :config (org-node-cache-mode))
+
+
+;; ;; 执行最后一行，重新生成解析表达式
+;; (with-eval-after-load 'org
+;;   ;; 添加常见全角标点
+;;   (setf (nth 1 org-emphasis-regexp-components)
+;;         " \t\r\n,.:!?：；。，！？、」』）〉》」』〕〗】｝）]")
+;;   (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components))
 
 (provide 'init-org)

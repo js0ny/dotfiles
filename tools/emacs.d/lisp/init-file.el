@@ -40,6 +40,11 @@
     :config
     (setq treemacs-persist-file (expand-file-name "treemacs-persist" user-emacs-data)))
 
+
+(use-package treemacs-nerd-icons
+  :config
+  (treemacs-load-theme "nerd-icons"))
+
 (use-package treemacs-evil
   :after (treemacs evil)
   :ensure t
