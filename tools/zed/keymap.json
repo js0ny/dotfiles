@@ -39,6 +39,8 @@
 
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
+      "alt-e": "editor::AddSelectionAbove", // Insert Cursor Above
+      "alt-n": "editor::AddSelectionBelow" // Insert Cursor Below
     }
   },
   {

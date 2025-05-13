@@ -34,3 +34,4 @@ for file in $DOTFILES/tools/zsh/mod/*.zsh; do
 done
 
 [ -f "/home/js0ny/.local/share/ghcup/env" ] && . "/home/js0ny/.local/share/ghcup/env" # ghcup-env
+. "/home/js0ny/.deno/env"
