@@ -7,6 +7,8 @@ EnumerateForwardKeys=
 EnumerateBackwardKeys=
 # 轮换输入法时跳过第一个输入法
 EnumerateSkipFirst=False
+# 切换是否使用嵌入预编辑
+TogglePreedit=
 # 触发修饰键快捷键的时限 (毫秒)
 ModifierOnlyKeyTimeout=250
 
@@ -41,9 +43,6 @@ ModifierOnlyKeyTimeout=250
 
 [Hotkey/NextCandidate]
 0=Tab
-
-[Hotkey/TogglePreedit]
-# 0=Control+Alt+P
 
 [Behavior]
 # 默认状态为激活
