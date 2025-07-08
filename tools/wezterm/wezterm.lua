@@ -8,11 +8,6 @@ local color = require("color")
 
 local config = wezterm.config_builder()
 
--- TODO: OS light/dark theme detection
--- local function detect_theme() end
-
--- config.font = 'FiraCode Nerd Font'
-
 require("tab")(config)
 require("appearance")(config)
 require("keymaps")(config)

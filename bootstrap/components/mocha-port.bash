@@ -2,7 +2,6 @@
 # Adds better error handling and safety features
 # shellcheck disable=SC2016
 
-# TODO: UNTESTED
 set -e # Exit immediately if a command exits with a non-zero status
 set -u # Treat unset variables as an error
 

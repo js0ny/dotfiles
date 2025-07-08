@@ -103,7 +103,7 @@
   :init
   (setq highlight-indent-guides-method 'column)
   (setq highlight-indent-guides-responsive 'top)
-  (setq highlight-indent-guides-auto-character-face-perc 5))
+  (setq highlight-indent-guides-auto-character-face-perc 1))
 
 
 

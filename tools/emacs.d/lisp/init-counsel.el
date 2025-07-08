@@ -20,6 +20,12 @@
     "fc" #'js0ny/open-config-directory
     "fh" #'counsel-recentf))
 
+;; Replace `cd' with `counsel-cd'
+(defun cd ()
+  "Change currend default directory"
+  (interactive)
+  (counsel-cd))
+
 (provide 'init-counsel)
 
 ;;; init-counsel.el ends

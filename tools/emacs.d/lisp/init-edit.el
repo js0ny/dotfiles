@@ -13,7 +13,7 @@
 (use-package company
   :ensure t
   :hook (after-init . global-company-mode) ; 在启动后自动启用 global-company-mode
-  :bind (:map company-active-map           ; TODO: Seems does not work
+  :bind (:map company-active-map
 	      ("C-n" . company-select-next)
 	      ("C-p" . company-select-previous))
   :custom
