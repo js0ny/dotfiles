@@ -13,7 +13,7 @@
 
 fish_vi_key_bindings
 
-source $DOTFILES/tools/fish/conf.d/keymap/+colemak.fish
+# source $DOTFILES/tools/fish/conf.d/keymap/+colemak.fish
 
 # Emacs Hybrid
 bind -M default ctrl-p up-or-search

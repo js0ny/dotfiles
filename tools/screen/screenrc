@@ -49,7 +49,7 @@ markkeys h=^B:l=^F:$=^E:^U=^Z:^D=^V
 
 bind x kill
 
-source ~/.config/screen/+colemak.screenrc
+source ~/.config/screen/+qwerty.screenrc
 
 
 # Reload config (not directly supported in screen, but added for reference)
