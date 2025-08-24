@@ -27,6 +27,9 @@ readline:
     mkdir -p {{XDG_CONFIG_HOME}}/readline
     {{LN}} {{DOTFILES}}/common/inputrc {{XDG_CONFIG_HOME}}/readline/inputrc
 
+starship:
+    {{LN}} {{DOTFILES}}/common/starship.toml {{XDG_CONFIG_HOME}}/starship.toml
+
 
 [unix]
 vim:
