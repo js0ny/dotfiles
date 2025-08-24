@@ -25,6 +25,10 @@ fish:
 screen:
     {{LN}} {{DOTFILES}}/tools/screen {{XDG_CONFIG_HOME}}/screen
 
+[unix]
+tmux:
+    {{LN}} {{DOTFILES}}/tools/tmux {{XDG_CONFIG_HOME}}/tmux
+
 thunderbird:
     {{CURL}} https://github.com/wshanks/tbkeys/releases/download/v2.4.0/tbkeys.xpi {{CURL_OUT}} "$HOME/Downloads/tbkeys.xpi"
     {{CURL}} https://github.com/htyxyt/htyxyt-immersive-translate-Thunderbird/releases/download/thunderbird-v1.14.8/immersive-translate-Thunderbird.v1.14.8.xpi {{CURL_OUT}} "$HOME/Downloads/immersive-translate-Thunderbird.xpi"

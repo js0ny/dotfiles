@@ -1,0 +1,36 @@
+# ~/.config/rtorrent/rtorrent.rc
+
+# --- 基础设置 ---
+# 默认的下载文件存放目录
+directory.default.set = ~/Downloads/rtorrent
+
+# 会话文件存放目录 (非常重要! 用于保存任务状态)
+session.path.set = ~/.local/share/rtorrent/session
+
+# 监控目录，自动加载放入此目录的 .torrent 文件
+schedule2 = watch_directory, 5, 5, "load.start=~/.local/share/rtorrent/watch/*.torrent"
+
+# --- 网络设置 ---
+# 监听端口范围
+network.port_range.set = 50000-50000
+
+# 开启 DHT
+dht.mode.set = auto
+dht.port.set = 6881
+protocol.pex.set = yes
+
+# --- SCGI 设置 (用于 Web UI, 例如 Flood / ruTorrent) ---
+network.scgi.open_local = ~/.local/share/rtorrent/session/rpc.socket
+execute2 = chmod,0777,~/.local/share/rtorrent/session/rpc.socket
+
+# 如果 Web UI 在不同机器上，请使用 IP 和端口
+# network.scgi.open_port = 127.0.0.1:5000
+
+# --- 性能调优 ---
+# 单个任务的最大/最小 peer 数
+throttle.min_peers.normal.set = 40
+throttle.max_peers.normal.set = 100
+
+# 最大上传/下载任务数
+throttle.max_downloads.global.set = 15
+throttle.max_uploads.global.set = 10

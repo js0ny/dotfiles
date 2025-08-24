@@ -27,6 +27,13 @@ readline:
     mkdir -p {{XDG_CONFIG_HOME}}/readline
     {{LN}} {{DOTFILES}}/common/inputrc {{XDG_CONFIG_HOME}}/readline/inputrc
 
+[unix]
+rtorrent:
+    mkdir -p {{XDG_CONFIG_HOME}}/rtorrent
+    {{LN}} {{DOTFILES}}/common/rtorrent.rc {{XDG_CONFIG_HOME}}/rtorrent/rtorrent.rc
+    mkdir -p {{XDG_DATA_HOME}}/rtorrent/session
+    mkdir -p {{XDG_DATA_HOME}}/rtorrent/watch
+
 starship:
     {{LN}} {{DOTFILES}}/common/starship.toml {{XDG_CONFIG_HOME}}/starship.toml
 
