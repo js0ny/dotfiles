@@ -6,6 +6,7 @@ systemd:
 [linux]
 keyd:
     -which keyd || sudo pacman -S keyd --noconfirm || sudo apt install keyd --yes || @just build_keyd
+    sudo mkdir /etc/keyd/
     sudo cp {{DOTFILES}}/platforms/linux/keyd/default.conf /etc/keyd/default.conf
     mkdir -p {{XDG_CONFIG_HOME}}/keyd
     {{LN}} {{DOTFILES}}/platforms/linux/keyd/app.conf {{XDG_CONFIG_HOME}}/keyd/app.conf
