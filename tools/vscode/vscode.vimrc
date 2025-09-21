@@ -11,35 +11,23 @@
 " Use VSpaceCode instead of <leader>
 noremap <space> vspacecode.space
 
-" Arrow remap
-noremap n j
-noremap e k
-noremap i l
 
 " Switch between tabs
 nnoremap H :bprevious<CR>
-nnoremap I :bnext<CR>
+nnoremap L :bnext<CR>
 vnoremap H ^
 xnoremap H ^
 onoremap H ^
-vnoremap I $
-xnoremap I $
-onoremap I $
+vnoremap L $
+xnoremap L $
+onoremap L $
 
 
-noremap N 5j
-noremap E 5k
+noremap J 5j
+noremap K 5k
 
 " Similar position to i
 " The `noremap` implements text-object-like behavior in VSCodeVim
-noremap l i
-noremap L I
-" ne[k]st
-noremap k n
-noremap K N
-" [j]ump
-noremap j e
-noremap J E
 
 " Y to yank to end of line
 noremap Y y$

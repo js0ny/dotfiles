@@ -1,6 +1,7 @@
 [ActivityManager]
 _k_friendly_name=活动管理器
 switch-to-activity-32e1f2d2-08d1-4a8b-886a-0a062f999068=none,none,Switch to activity "Default"
+switch-to-activity-aaa04f56-3c39-49fa-9501-5c8259703f5d=none,none,切换到活动“Default”
 switch-to-activity-e1ebfdac-0f52-47a5-9e7a-d9eb5cc26845=none,none,切换到活动“默认”
 
 [Clementine]
@@ -15,8 +16,8 @@ stop=none,none,停止
 Switch keyboard layout to English (Colemak)=none,none,Switch keyboard layout to English (Colemak)
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
 Switch keyboard layout to 英语（美国）=none,none,切换键盘布局为 英语（美国）
-Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,切换到上次使用过的键盘布局
-Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,切换到下一个键盘布局
+Switch to Last-Used Keyboard Layout=none,Meta+Alt+L,切换到上次使用过的键盘布局
+Switch to Next Keyboard Layout=none,Meta+Alt+K,切换到下一个键盘布局
 _k_friendly_name=键盘布局切换器
 
 [Strawberry]
@@ -26,15 +27,21 @@ play_pause=none,none,Play/Pause
 prev_track=none,none,Previous track
 stop=none,none,Stop
 
+[com.cherry_ai.CherryStudio]
+250B4E85839469FB2F043223FDE723A6-=none,none,Electron shortcut\s
+34632A7E4E36B0F89F4896EF7E497371-Ctrl+0=none,none,Electron shortcut Ctrl+0
+F463CBEE0FC54C087663DA86F622941A-Alt+Shift+J=none,none,Electron shortcut Alt+Shift+J
+_k_friendly_name=Cherry Studio
+
+[com.google.Chrome]
+0EA0B820623139BF0D767EA8C956347E-addSite=none,none,切换当前网站
+0EA0B820623139BF0D767EA8C956347E-switchEngine=none,none,主题生成模式
+0EA0B820623139BF0D767EA8C956347E-toggle=none,none,切换扩展
+_k_friendly_name=Google Chrome
+
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,切换屏幕阅读器开关
 _k_friendly_name=无障碍辅助
-
-[kcm_touchpad]
-Disable Touchpad=Touchpad Off,Touchpad Off,
-Enable Touchpad=Touchpad On,Touchpad On,
-Toggle Touchpad=Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,Touchpad Toggle\tTouchpad Toggle\tMeta+Ctrl+Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,
-_k_friendly_name=触摸板
 
 [kmix]
 _k_friendly_name=音量
@@ -53,7 +60,7 @@ bring_main_window_to_top=none,Meta+K,Bring Main Window to Top
 
 [ksmserver]
 Halt Without Confirmation=none,,关机 (无需确认)
-Lock Session=Meta+L\tScreensaver,Meta+L\tScreensaver,锁定会话
+Lock Session=Screensaver,Meta+L\tScreensaver,锁定会话
 Log Out=Ctrl+Alt+Del,Ctrl+Alt+Del,显示注销屏幕
 Log Out Without Confirmation=none,,注销 (无需确认)
 LogOut=none,,注销
@@ -85,13 +92,13 @@ KrohnkiteColumnsLayout=none,none,Krohnkite: Columns Layout
 KrohnkiteDecrease=none,none,Krohnkite: Decrease
 KrohnkiteFloatAll=none,none,Krohnkite: Toggle Float All
 KrohnkiteFloatingLayout=none,none,Krohnkite: Floating Layout
-KrohnkiteFocusDown=Meta+N,none,Krohnkite: Focus Down
+KrohnkiteFocusDown=Meta+J,none,Krohnkite: Focus Down
 KrohnkiteFocusLeft=Meta+H,none,Krohnkite: Focus Left
 KrohnkiteFocusNext=none,none,Krohnkite: Focus Next
 KrohnkiteFocusPrev=Meta+\\,,none,Krohnkite: Focus Previous
-KrohnkiteFocusRight=Meta+I,none,Krohnkite: Focus Right
-KrohnkiteFocusUp=Meta+E,none,Krohnkite: Focus Up
-KrohnkiteGrowHeight=Meta+Ctrl+N,none,Krohnkite: Grow Height
+KrohnkiteFocusRight=none,none,Krohnkite: Focus Right
+KrohnkiteFocusUp=none,none,Krohnkite: Focus Up
+KrohnkiteGrowHeight=none,none,Krohnkite: Grow Height
 KrohnkiteIncrease=none,none,Krohnkite: Increase
 KrohnkiteMonocleLayout=none,none,Krohnkite: Monocle Layout
 KrohnkiteNextLayout=Meta+\\\\,none,Krohnkite: Next Layout
@@ -102,7 +109,7 @@ KrohnkiteRotatePart=none,none,Krohnkite: Rotate Part
 KrohnkiteSetMaster=Meta+Return,none,Krohnkite: Set master
 KrohnkiteShiftDown=none,none,Krohnkite: Move Down/Next
 KrohnkiteShiftLeft=Meta+Shift+H,none,Krohnkite: Move Left
-KrohnkiteShiftRight=Meta+Shift+I,none,Krohnkite: Move Right
+KrohnkiteShiftRight=Meta+Shift+L,none,Krohnkite: Move Right
 KrohnkiteShiftUp=none,none,Krohnkite: Move Up/Prev
 KrohnkiteShrinkHeight=Meta+Ctrl+K,none,Krohnkite: Shrink Height
 KrohnkiteShrinkWidth=Meta+Ctrl+H,none,Krohnkite: Shrink Width
@@ -112,8 +119,9 @@ KrohnkiteStackedLayout=none,none,Krohnkite: Stacked Layout
 KrohnkiteStairLayout=none,none,Krohnkite: Stair Layout
 KrohnkiteTileLayout=none,none,Krohnkite: Tile Layout
 KrohnkiteToggleFloat=Meta+Shift+F,none,Krohnkite: Toggle Float
-KrohnkiteTreeColumnLayout=none,none,Krohnkite: Tree Column Layout
-KrohnkitegrowWidth=Meta+Ctrl+I,none,Krohnkite: Grow Width
+KrohnkiteTreeColumnLayout=none,none,Krohnkite: Three Column Layout
+KrohnkitegrowWidth=Meta+Ctrl+J,none,Krohnkite: Grow Width
+KrohnkitetoggleDock=none,none,Krohnkite: Toggle Dock
 Move Tablet to Next Output=none,none,移动数位板到下一个输出设备
 MoveMouseToCenter=Meta+F6,Meta+F6,移动鼠标到中央
 MoveMouseToFocus=Meta+F5,Meta+F5,移动鼠标到焦点
@@ -121,7 +129,7 @@ MoveZoomDown=none,none,将缩放区域向下移动
 MoveZoomLeft=none,none,将缩放区域向左移动
 MoveZoomRight=none,none,将缩放区域向右移动
 MoveZoomUp=none,none,将缩放区域向上移动
-Overview=Meta+W\tMeta+Tab,Meta+W,显示/隐藏桌面总览
+Overview=Meta+Tab\tMeta+W,Meta+W,显示/隐藏桌面总览
 Setup Window Shortcut=none,,设置窗口快捷键
 Show Desktop=Meta+D,Meta+D,暂时显示桌面
 Switch One Desktop Down=Meta+Ctrl+Down,Meta+Ctrl+Down,切换到下方桌面
@@ -170,14 +178,14 @@ Switch to Screen to the Left=none,,切换到左侧屏幕
 Switch to Screen to the Right=none,,切换到右侧屏幕
 Toggle Night Color=none,none,暂停/继续夜间色温
 Toggle Window Raise/Lower=none,,提升/降低窗口
-Walk Through Windows=Alt+Tab,Alt+Tab,遍历窗口
-Walk Through Windows (Reverse)=Alt+Shift+Tab,Alt+Shift+Tab,遍历窗口 (反向)
-Walk Through Windows Alternative=none,,遍历窗口交替
-Walk Through Windows Alternative (Reverse)=none,,遍历窗口交替 (反向)
-Walk Through Windows of Current Application=Alt+`,Alt+`,遍历当前应用程序窗口
-Walk Through Windows of Current Application (Reverse)=Alt+~,Alt+~,遍历当前应用程序窗口 (反向)
-Walk Through Windows of Current Application Alternative=none,,遍历当前应用程序窗口交替
-Walk Through Windows of Current Application Alternative (Reverse)=none,,遍历当前应用程序窗口交替 (反向)
+Walk Through Windows=Alt+Tab,Meta+Tab\tAlt+Tab,遍历窗口
+Walk Through Windows (Reverse)=Alt+Shift+Tab,Meta+Shift+Tab\tAlt+Shift+Tab,遍历窗口 (反向)
+Walk Through Windows Alternative=none,none,遍历窗口交替
+Walk Through Windows Alternative (Reverse)=none,none,遍历窗口交替 (反向)
+Walk Through Windows of Current Application=Alt+`,Meta+`\tAlt+`,遍历当前应用程序窗口
+Walk Through Windows of Current Application (Reverse)=Alt+~,Meta+~\tAlt+~,遍历当前应用程序窗口 (反向)
+Walk Through Windows of Current Application Alternative=none,none,遍历当前应用程序窗口交替
+Walk Through Windows of Current Application Alternative (Reverse)=none,none,遍历当前应用程序窗口交替 (反向)
 Window Above Other Windows=none,,窗口置顶
 Window Below Other Windows=none,,窗口置底
 Window Close=Alt+F4\tMeta+Q,Alt+F4,关闭窗口
@@ -185,14 +193,14 @@ Window Custom Quick Tile Bottom=none,,自定义快速铺放窗口到下方
 Window Custom Quick Tile Left=none,,自定义快速铺放窗口到左侧
 Window Custom Quick Tile Right=none,,自定义快速铺放窗口到右侧
 Window Custom Quick Tile Top=none,,自定义快速铺放窗口到上方
-Window Fullscreen=Meta+F11,,全屏显示窗口
+Window Fullscreen=none,,全屏显示窗口
 Window Grow Horizontal=none,,水平扩展窗口
 Window Grow Vertical=none,,垂直扩展窗口
 Window Lower=none,,降低窗口
 Window Maximize=Meta+PgUp,Meta+PgUp,最大化窗口
 Window Maximize Horizontal=none,,水平最大化窗口
 Window Maximize Vertical=none,,垂直最大化窗口
-Window Minimize=Meta+PgDown\tMeta+M,Meta+PgDown,最小化窗口
+Window Minimize=Meta+PgDown,Meta+PgDown,最小化窗口
 Window Move=none,,移动窗口
 Window Move Center=none,,移动窗口到中央
 Window No Border=none,,显示/隐藏窗口标题栏和框架
@@ -223,8 +231,8 @@ Window Resize=none,,调整窗口大小
 Window Shade=none,,折叠窗口
 Window Shrink Horizontal=none,,水平缩小窗口
 Window Shrink Vertical=none,,垂直缩小窗口
-Window to Desktop 1=Meta+!,,窗口移动到桌面 1
-Window to Desktop 10=none,,窗口移动到桌面 10
+Window to Desktop 1=none,,窗口移动到桌面 1
+Window to Desktop 10=Meta+),,窗口移动到桌面 10
 Window to Desktop 11=none,,窗口移动到桌面 11
 Window to Desktop 12=none,,窗口移动到桌面 12
 Window to Desktop 13=none,,窗口移动到桌面 13
@@ -234,10 +242,10 @@ Window to Desktop 16=none,,窗口移动到桌面 16
 Window to Desktop 17=none,,窗口移动到桌面 17
 Window to Desktop 18=none,,窗口移动到桌面 18
 Window to Desktop 19=none,,窗口移动到桌面 19
-Window to Desktop 2=Meta+@,,窗口移动到桌面 2
+Window to Desktop 2=none,,窗口移动到桌面 2
 Window to Desktop 20=none,,窗口移动到桌面 20
-Window to Desktop 3=Meta+#,,窗口移动到桌面 3
-Window to Desktop 4=Meta+$,,窗口移动到桌面 4
+Window to Desktop 3=none,,窗口移动到桌面 3
+Window to Desktop 4=none,,窗口移动到桌面 4
 Window to Desktop 5=Meta+%,,窗口移动到桌面 5
 Window to Desktop 6=Meta+^,,窗口移动到桌面 6
 Window to Desktop 7=Meta+&,,窗口移动到桌面 7
@@ -257,7 +265,7 @@ Window to Screen 6=none,,移动窗口到屏幕 6
 Window to Screen 7=none,,移动窗口到屏幕 7
 _k_friendly_name=KWin
 disableInputCapture=Meta+Shift+Esc,Meta+Shift+Esc,禁用活动输入捕获
-view_actual_size=Meta+0,Meta+0,缩放为实际大小(A)
+view_actual_size=none,Meta+0,缩放为实际大小(A)
 view_zoom_in=Meta++\tMeta+=,Meta++\tMeta+=,放大(I)
 view_zoom_out=Meta+-,Meta+-,缩小(O)
 
@@ -304,11 +312,14 @@ activate task manager entry 9=none,Meta+9,激活任务管理器条目 9
 activate widget 115=none,none,激活 应用程序启动器 挂件
 activate widget 120=none,none,激活 数字时钟 挂件
 activate widget 3=none,none,Activate Application Launcher Widget
+activate widget 31=none,none,激活 应用程序启动器 挂件
+activate widget 42=none,none,激活 图标任务管理器 挂件
 clear-history=none,,清除剪贴板历史(L)
 clipboard_action=Meta+Ctrl+X,Meta+Ctrl+X,自动弹出操作菜单
 cycle-panels=Meta+Alt+P,Meta+Alt+P,在面板之间移动键盘焦点
 cycleNextAction=none,,下一条历史记录
 cyclePrevAction=none,,上一条历史记录
+edit_clipboard=none,,编辑内容(E)…
 manage activities=none,Meta+Q,显示活动切换器
 next activity=Meta+A,none,遍历活动
 previous activity=Meta+Shift+A,none,遍历活动 (反向)
@@ -324,21 +335,24 @@ toggle do not disturb=none,,切换勿扰模式
 [services][kitty.desktop]
 _launch=Meta+R
 
-[services][org.kde.dolphin.desktop]
-_launch=Meta+F
-
 [services][org.kde.konsole.desktop]
 _launch=none
 
 [services][org.kde.krunner.desktop]
-_launch=Alt+F2\tMeta+K\tSearch\tAlt+Space
+_launch=Alt+F2\tSearch\tAlt+Space
 
 [services][org.kde.kscreen.desktop]
 ShowOSD=Display
 
+[services][org.kde.plasma.emojier.desktop]
+_launch=Meta+.
+
 [services][org.kde.spectacle.desktop]
 RecordRegion=Meta+Shift+R
 RectangularRegionScreenShot=Meta+C
+
+[services][org.kde.touchpadshortcuts.desktop]
+ToggleTouchpad=Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku
 
 [wacomtablet]
 Map to fullscreen=Meta+Ctrl+F,Meta+Ctrl+F,Map to fullscreen
