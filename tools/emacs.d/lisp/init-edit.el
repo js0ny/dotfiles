@@ -97,4 +97,6 @@
   (setq diff-hl-margin-mode nil) 
   (diff-hl-flydiff-mode))        
 
+(global-font-lock-mode t)
+
 (provide 'init-edit)

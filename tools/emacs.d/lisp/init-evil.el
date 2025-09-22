@@ -13,34 +13,34 @@
   ; Motion - Emacs built-in read-only mode
   (evil-define-key '(normal visual operator motion) 'global
     ;; To see the keybindings, use <C-h> k then type the key
-    "n" 'evil-next-line
-    "e" 'evil-previous-line
-    "i" 'evil-forward-char
-    ;"l" 'evil-insert
-    ;"L" 'evil-insert-0-line
-    "k" 'evil-search-next
-    "K" 'evil-search-previous
-    "j" 'evil-forward-word-end
-    "J" 'evil-forward-WORD-end
-    "N" '(lambda () (interactive) (evil-next-line 5))       ; 5n
-    "E" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
-    (kbd "C-w n") 'evil-window-down
-    (kbd "C-w e") 'evil-window-up
-    (kbd "C-w i") 'evil-window-right
-    (kbd "C-w C-n") 'evil-window-down
-    (kbd "C-w C-e") 'evil-window-up
-    (kbd "C-w C-i") 'evil-window-right)
-  (evil-define-key '(normal visual) 'global
-                   "l" 'evil-insert
-                   "L" 'evil-insert-0-line)
+    ; "n" 'evil-next-line
+    ; "e" 'evil-previous-line
+    ; "i" 'evil-forward-char
+    ; ;"l" 'evil-insert
+    ; ;"L" 'evil-insert-0-line
+    ; "k" 'evil-search-next
+    ; "K" 'evil-search-previous
+    ; "j" 'evil-forward-word-end
+    ; "J" 'evil-forward-WORD-end
+    "J" '(lambda () (interactive) (evil-next-line 5))       ; 5n
+    "K" '(lambda () (interactive) (evil-previous-line 5))   ; 5e
+    ; (kbd "C-w n") 'evil-window-down
+    ; (kbd "C-w e") 'evil-window-up
+    ; (kbd "C-w i") 'evil-window-right
+    ; (kbd "C-w C-n") 'evil-window-down
+    ; (kbd "C-w C-e") 'evil-window-up
+    ; (kbd "C-w C-i") 'evil-window-right)
+  ; (evil-define-key '(normal visual) 'global
+  ;                  "l" 'evil-insert
+  ;                  "L" 'evil-insert-0-line)
   (evil-define-key '(normal motion) 'global
     "H" #'tab-line-switch-to-prev-tab
-    "I" #'tab-line-switch-to-next-tab)
+    "L" #'tab-line-switch-to-next-tab)
   (evil-define-key '(visual operator) 'global
     "H" #'evil-beginning-of-line
-    "I" #'evil-end-of-line)
+    "L" #'evil-end-of-line)
   (evil-ex-define-cmd "bn" #'tab-line-switch-to-next-tab)
-  (evil-ex-define-cmd "bp" #'tab-line-switch-to-prev-tab))
+  (evil-ex-define-cmd "bp" #'tab-line-switch-to-prev-tab)))
 
 ;; Text Objects Keymap - Use `l` for inner (swap i and l)
 ;; https://github.com/emacs-evil/evil/blob/master/evil-maps.el#L398-L421

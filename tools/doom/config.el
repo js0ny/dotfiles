@@ -22,10 +22,10 @@
 ;; accept. For example:
 ;;
 ;; https://emacs-china.org/t/doom-emacs/23513/13
-(setq doom-font (font-spec :family "Sarasa Mono SC Nerd Font" :size 14)
+(setq doom-font (font-spec :family "Maple Mono NF CN" :size 14)
       doom-serif-font doom-font
-      doom-symbol-font (font-spec :family "Sarasa Mono SC Nerd Font")
-      doom-variable-pitch-font (font-spec :family "Sarasa Mono SC Nerd Font" :weight 'extra-bold))
+      doom-symbol-font (font-spec :family "Maple Mono NF CN")
+      doom-variable-pitch-font (font-spec :family "Maple Mono NF CN" :weight 'extra-bold))
 
 ;; 如果不把这玩意设置为 nil, 会默认去用 fontset-default 来展示, 配置无效
 (setq use-default-font-for-symbols nil)
@@ -153,3 +153,6 @@
   (if (eq system-type 'gnu/linux)
       (setq ee-terminal-command "kitty"))
   )
+
+
+(load! "beancount.el")
