@@ -19,6 +19,7 @@ set -gx XDG_CACHE_HOME (set -q XDG_CACHE_HOME; and echo $XDG_CACHE_HOME; or echo
 
 if test (uname) = "Darwin"
     set -gx XDG_RUNTIME_DIR $HOME/.tmp/run/
+    fish_add_path /run/current-system/sw/bin
 else
     set -gx XDG_RUNTIME_DIR /run/user/(id -u)
 end

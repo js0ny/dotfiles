@@ -171,3 +171,6 @@ if command -v vcpkg >/dev/null; then
   export VCPKG_ROOT="$XDG_DATA_HOME"/vcpkg
 fi
 
+if [ -d "/nix" ]; then
+  export PATH="/run/current-system/sw/bin:$PATH"
+fi

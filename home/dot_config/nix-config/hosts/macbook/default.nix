@@ -46,6 +46,7 @@
     tlrc
     tmux
     uv
+    yazi
     zoxide
   ];
 

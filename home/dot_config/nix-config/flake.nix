@@ -16,6 +16,6 @@
         ./hosts/macbook/system.nix
       ];
     };
-    
+
   };
 }
