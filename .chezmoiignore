@@ -8,10 +8,25 @@
 # Linux only
 {{ if ne .chezmoi.os "linux" -}}
 dot_config/awesome
+dot_config/dunst
+dot_config/fcitx5
+dot_config/hypr
+dot_config/keyd
+dot_config/mako
+dot_config/readline
+dot_config/rofi
+dot_config/swaylock
+dot_config/waybar
+dot_config/wlogout
+dot_config/krunnerrc
 dot_config/user-dirs.dirs
 dot_config/user-dirs.locale
 {{ end -}}
 
 # Windows only
 {{ if ne .chezmoi.os "windows" -}}
+{{ end -}}
+
+# ArchLinux only
+{{ if ne .chezmoi.osRelease.id "arch" -}}
 {{ end -}}
