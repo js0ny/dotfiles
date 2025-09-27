@@ -29,4 +29,6 @@ dot_config/user-dirs.locale
 
 # ArchLinux only
 {{ if ne .chezmoi.osRelease.id "arch" -}}
+chromium-flags.conf
+electron-flags.conf
 {{ end -}}
