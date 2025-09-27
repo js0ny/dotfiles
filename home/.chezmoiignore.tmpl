@@ -1,0 +1,27 @@
+
+scripts
+
+
+{{ if ne .chezmoi.os "linux" }}
+.config/awesome
+.config/dunst
+.config/fcitx5
+.config/hypr
+.config/keyd
+.config/mako
+.config/readline
+.config/rofi
+.config/swaylock
+.config/waybar
+.config/wlogout
+.config/krunnerrc
+.config/user-dirs.dirs
+.config/user-dirs.locale
+{{ end }}
+
+
+{{ if ne .chezmoi.osRelease.id "arch" }}
+.config/*-flags.conf
+{{ end }}
+
+
