@@ -1,11 +1,13 @@
 # .chezmoiignore
 
+
 # macOS only
 {{ if ne .chezmoi.os "darwin" -}}
 {{ end -}}
 
 # Linux only
 {{ if ne .chezmoi.os "linux" -}}
+dot_config/awesome
 {{ end -}}
 
 # Windows only
