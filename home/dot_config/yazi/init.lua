@@ -15,4 +15,4 @@ end
 
 -- require("dual-pane"):setup({ enabled = true })
 require("starship"):setup()
-require("yaziline"):setup()
+-- require("yaziline"):setup()
