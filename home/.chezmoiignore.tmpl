@@ -15,13 +15,21 @@ scripts
 .config/waybar
 .config/wlogout
 .config/krunnerrc
+.config/systemd
 .config/user-dirs.dirs
 .config/user-dirs.locale
 {{ end }}
 
-
+{{ if eq .chezmoi.os "linux" }}
 {{ if ne .chezmoi.osRelease.id "arch" }}
 .config/*-flags.conf
 {{ end }}
+{{ end }}
 
-
+{{ if ne .chezmoi.os "darwin" }}
+Library
+.config/karabiner
+.config/sketchybar
+.config/skhd
+.config/yabai
+{{ end}}

@@ -7,9 +7,6 @@ dot_config/fish/completions
 dot_config/fish/functions/br.fish
 dot_config/fish/functions/dotenv.fish
 
-# Private Files
-*private*
-.private.env.*
 
 # Test files
 test/
