@@ -1,16 +1,9 @@
-# $DOTFILES/platforms/linux/kde/krunnerrc
-# Date: 2024-12-22
-# Author: js0ny
-# Krunner Config
-
-# Location:
-# $XDG_CONFIG_HOME/krunnerrc
-# Linking:
-# ln -sf $DOTFILES/platforms/linux/kde/krunnerrc $XDG_CONFIG_HOME/krunnerrc
-
 [General]
 FreeFloating=true
 historyBehavior=ImmediateCompletion
+
+[Plugins]
+baloosearchEnabled=true
 
 [Plugins][Favorites]
 plugins=krunner_dictionary,krunner_services,krunner_systemsettings

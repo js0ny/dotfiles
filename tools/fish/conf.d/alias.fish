@@ -99,10 +99,6 @@ function mtv
     mkdir -p (dirname $argv[1]) && touch $argv[1] && nvim $argv[1]
 end
 
-function catclip
-    cat $argv | clip
-end
-
 abbr --add bcat "bat --style=plain"
 
 # Use neovide as gVim
@@ -174,4 +170,10 @@ function y
         builtin cd -- "$cwd"
     end
     rm -f -- "$tmp"
+end
+
+abbr --add bcnt "emacs -nw $HOME/Documents/Finance/Beancount/"
+
+if command -v chezmoi > /dev/null
+    alias pmoi="chezmoi --source ~/.local/share/pmoi --config ~/.config/chezmoi/pmoi.toml"
 end
