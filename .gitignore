@@ -48,3 +48,7 @@ common/**/*current*
 default.target.wants
 
 nvim-healthcheck.txt
+
+private_pid
+private_security
+private_fish_variables
