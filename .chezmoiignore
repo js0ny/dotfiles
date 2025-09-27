@@ -8,6 +8,8 @@
 # Linux only
 {{ if ne .chezmoi.os "linux" -}}
 dot_config/awesome
+dot_config/user-dirs.dirs
+dot_config/user-dirs.locale
 {{ end -}}
 
 # Windows only
