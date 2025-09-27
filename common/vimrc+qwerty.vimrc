@@ -37,22 +37,22 @@ set showcmd
 set statusline=%<%f\ %h%m%r\ %=\ [%l,%v]\ [%p%%]\ [\ %Y]\ [󱑉\ %{strftime('%H:%M:%S')}]
 
 
-" XDG Directory Specifications
-" Reference to https://jorenar.com/blog/vim-xdg
-
-if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
-if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
-if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
-if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
-
-set viminfo+=n$XDG_STATE_HOME/vim/viminfo
-set packpath^=$XDG_DATA_HOME/vim
-set packpath+=$XDG_DATA_HOME/vim/after
-set backupdir=$XDG_STATE_HOME/vim/backup
-set directory=$XDG_STATE_HOME/vim/swap
-set undodir=$XDG_STATE_HOME/vim/undo
-set viewdir=$XDG_STATE_HOME/vim/view
-" set shada+=n$XDG_STATE_HOME/vim/shada
+"" XDG Directory Specifications
+"" Reference to https://jorenar.com/blog/vim-xdg
+"
+"if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
+"if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
+"if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
+"if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
+"
+"set viminfo+=n$XDG_STATE_HOME/vim/viminfo
+"set packpath^=$XDG_DATA_HOME/vim
+"set packpath+=$XDG_DATA_HOME/vim/after
+"set backupdir=$XDG_STATE_HOME/vim/backup
+"set directory=$XDG_STATE_HOME/vim/swap
+"set undodir=$XDG_STATE_HOME/vim/undo
+"set viewdir=$XDG_STATE_HOME/vim/view
+"" set shada+=n$XDG_STATE_HOME/vim/shada
 " Leader
 let mapleader = "\<Space>"
 nnoremap <leader><leader> :FZF<CR>

@@ -1,9 +1,10 @@
-// Place your key bindings in this file to override the defaultsauto[]
+// Place your key bindings in this file to override the defaults
 [
-    // #region quickOpen (Telescope)
+    // #region Panel
     {
         "key": "ctrl+p",
-        "command": "workbench.action.quickOpen"
+        "command": "workbench.action.quickOpen",
+        "when": "!terminalFocus"
     },
     {
         "key": "ctrl+p",
@@ -116,6 +117,11 @@
         "key": "l",
         "command": "-list.select",
         "when": "listFocus && !inputFocus"
+    },
+    { // ctrl-w enter: open in vertical split / to side
+        "key": "ctrl+w enter",
+        "command": "explorer.openToSide",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     { // z: Close all folders
         "key": "z",
@@ -382,7 +388,7 @@
         "when": "terminalFocus"
     },
     { // prefix + ^a: show information
-        "key": "ctrl+a ctrl+a",
+        "key": "ctrl+a a",
         "command": "workbench.action.terminal.focusHover",
         "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalIsOpen || terminalFocus && terminalProcessSupported || terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
     },
@@ -458,6 +464,21 @@
     },
     // #endregion
     // #region Misc
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.files.openFileFolder",
+        "when": "isMacNative && openFolderWorkspaceSupport"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "-workbench.action.files.openFileFolder",
+        "when": "isMacNative && openFolderWorkspaceSupport"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
     {
         "key": "ctrl+o",
         "command": "-workbench.action.files.openFolderViaWorkspace",
@@ -660,7 +681,6 @@
         "command": "whichkey.undoKey",
         "when": "whichkeyVisible"
     },
-    // #region multicursor
     {
         "key": "alt+e",
         "command": "editor.action.insertCursorAbove",
@@ -682,7 +702,6 @@
         "when": "editorTextFocus"
     },
     // #endregion
-    // #endregion
     // #region Ctrl+W Remaps (Vim-like)
     {
         "key": "ctrl+w h",
@@ -693,23 +712,23 @@
         "command": "workbench.action.toggleSidebarVisibility"
     },
     {
-        "key": "ctrl+w i",
+        "key": "ctrl+w l",
         "command": "workbench.action.navigateRight"
     },
     {
-        "key": "ctrl+w ctrl+i",
+        "key": "ctrl+w ctrl+l",
         "command": "workbench.action.toggleAuxiliaryBar"
     },
     {
-        "key": "ctrl+w n",
+        "key": "ctrl+w j",
         "command": "workbench.action.navigateDown"
     },
     {
-        "key": "ctrl+w ctrl+n",
+        "key": "ctrl+w ctrl+j",
         "command": "workbench.action.togglePanel"
     },
     {
-        "key": "ctrl+w e",
+        "key": "ctrl+w k",
         "command": "workbench.action.navigateUp"
     },
     { // original ^w
@@ -727,6 +746,16 @@
             ]
         }
     },
+    { // :only
+        "key": "ctrl+w ctrl+o",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.joinAllGroups",
+                "workbench.action.maximizeEditorHideSidebar"
+            ]
+        }
+    },
     {
         "key": "ctrl+w ctrl+w",
         "command": "workbench.action.closeGroup",
@@ -736,6 +765,10 @@
         "key": "ctrl+w",
         "command": "-workbench.action.closeGroup",
         "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "ctrl+w d",
+        "command": "editor.action.revealDefinitionAside"
     },
     // #endregion
     // #region Emacs like Cursor Movement
@@ -789,6 +822,10 @@
         "when": "textInputFocus && !inlineEditIsVisible && !suggestWidgetVisible && !inlineSuggestionVisible"
     },
     // #endregion
+    {
+        "key": "alt+q",
+        "command": "vspacecode.space"
+    },
     // #region Search View
     { // Focus on search list, therefore can use n/e to move up/down
         "key": "escape",
@@ -830,5 +867,54 @@
         "command": "search.action.focusFilesToExclude",
         "when": "searchViewletFocus && !inputBoxFocus"
     },
+    {
+        "key": "shift+alt+3",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "-editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
     // #endregion
+    //#region Debugger
+    {
+        "key": "c",
+        "command": "workbench.action.debug.continue",
+        "when": "inDebugMode && debugState == 'stopped' && vim.mode == 'Normal' && editorFocus"
+    },
+    {
+        "key": "t",
+        "command": "workbench.action.debug.stepInto",
+        "when": "inDebugMode && debugState == 'stopped' && vim.mode == 'Normal' && editorFocus"
+    },
+    {
+        "key": "s",
+        "command": "workbench.action.debug.stepOver",
+        "when": "inDebugMode && debugState == 'stopped' && vim.mode == 'Normal' && editorFocus"
+    },
+    {
+        "key": "r",
+        "command": "workbench.action.debug.restart",
+        "when": "inDebugMode && debugState == 'stopped' && vim.mode == 'Normal' && editorFocus"
+    },
+    {
+        "key": "g c",
+        "command": "editor.debug.action.runToCursor",
+        "when": "inDebugMode && debugState == 'stopped' && vim.mode == 'Normal' && editorFocus"
+    },
+    {
+        "key": "g h",
+        "command": "editor.debug.action.showDebugHover",
+        "when": "inDebugMode && debugState == 'stopped' && vim.mode == 'Normal' && editorFocus"
+    },
+    {
+        "key": "ctrl+w f",
+        "command": "search.action.openNewEditorToSide"
+    },
+    {
+        "key": "ctrl+k ctrl+shift+c",
+        "command": "vspacecode.copyFilenameBase"
+    }
 ]
