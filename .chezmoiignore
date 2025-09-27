@@ -1,0 +1,13 @@
+# .chezmoiignore
+
+# macOS only
+{{ if ne .chezmoi.os "darwin" -}}
+{{ end -}}
+
+# Linux only
+{{ if ne .chezmoi.os "linux" -}}
+{{ end -}}
+
+# Windows only
+{{ if ne .chezmoi.os "windows" -}}
+{{ end -}}
