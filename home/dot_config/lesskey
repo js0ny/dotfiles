@@ -17,11 +17,11 @@
 # Format: key action
 
 # Arrow Remap (hnei -> hjkl)
-n forw-line
-e back-line
-N forw-line-force
-E back-line-force
-
-# search with k : ne[k]st
-k repeat-search
-K reverse-search
+# n forw-line
+# e back-line
+# N forw-line-force
+# E back-line-force
+#
+# # search with k : ne[k]st
+# k repeat-search
+# K reverse-search

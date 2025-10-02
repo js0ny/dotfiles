@@ -6,65 +6,13 @@
 
 prepend_keymap = [
 
-	# Hopping
-	{ on = "e", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "n", run = "arrow 1",  desc = "Move cursor down" },
-	{ on = "i", run = "enter", desc = "Enter the child directory" },
-	{ on = "I", run = "forward", desc = "Go forward to the next directory" },
 
 	# Seeking
 	{ on = "E", run = "seek -5", desc = "Seek up 5 units in the preview" },
 	{ on = "N", run = "seek 5",  desc = "Seek down 5 units in the preview" },
 
 	# Find
-	{ on = "k", run = "find_arrow",              desc = "Go to the next found" },
-	{ on = "K", run = "find_arrow --previous",   desc = "Go to the previous found" },
   { on = ["g", "p"], run = "cd ~/Pictures",    desc = "Go ~/Pictures/"}
 
 
-]
-
-[tasks]
-
-prepend_keymap = [
-	{ on = "e", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "n", run = "arrow 1",  desc = "Move cursor down" },
-]
-
-[select]
-
-prepend_keymap = [
-	{ on = "e", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "n", run = "arrow 1",  desc = "Move cursor down" },
-]
-
-[input]
-
-prepend_keymap = [
-	# Mode
-	{ on = "l", run = "insert",                              desc = "Enter insert mode" },
-	{ on = "L", run = [ "move -999", "insert" ],             desc = "Move to the BOL, and enter insert mode" },
-	{ on = "i",       run = "move 1",  desc = "Move forward a character" },
-	{ on = "j",     run = "forward --end-of-word", desc = "Move forward to the end of the current or next word" },
-]
-
-[confirm]
-prepend_keymap = [
-	{ on = "N", run = "close",          desc = "Cancel the confirm" },
-
-	{ on = "e", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "n", run = "arrow 1",  desc = "Move cursor down" },
-]
-
-[completion]
-
-prepend_keymap = [
-]
-
-[help]
-
-prepend_keymap = [
-	# Navigation
-	{ on = "e", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "n", run = "arrow 1",  desc = "Move cursor down" },
 ]
