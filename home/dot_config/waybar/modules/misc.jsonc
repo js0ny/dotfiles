@@ -183,5 +183,9 @@
             "suspend": "systemctl suspend",
             "hibernate": "systemctl hibernate"
         }
+    },
+    "custom/osicon": {
+        "format": "<span size='x-large'></span>",
+        "on-click-right": "rofi -show drun"
     }
 }
