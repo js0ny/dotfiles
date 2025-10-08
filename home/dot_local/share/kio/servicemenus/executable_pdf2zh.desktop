@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+MimeType=application/pdf;
+Actions=translateToZh
+Icon=translate
+X-KDE-Priority=TopLevel
+X-KDE-StartupNotify=false
+
+[Desktop Action translateToZh]
+Name=翻译为中文
+Icon=translate
+Exec=pdf2zh "%f"
+

@@ -55,10 +55,9 @@ if command -v bun > /dev/null
     set -gx PATH $BUN_INSTALL/bin $PATH
 end
 # Rust Cargo
-if command -v cargo > /dev/null
-    set -gx CARGO_HOME $XDG_DATA_HOME/cargo
-    set -gx PATH $CARGO_HOME/bin $PATH
-end
+set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
+set -gx CARGO_HOME $XDG_DATA_HOME/cargo
+set -gx PATH $CARGO_HOME/bin $PATH
 # CGDB
 if command -v cgdb > /dev/null
     set -gx CGDB_DIR $XDG_CONFIG_HOME/cgdb
@@ -174,4 +173,3 @@ test -f /opt/miniconda3/etc/fish/conf.d/conda.fish && source /opt/miniconda3/etc
 test -d $HOME/.local/scripts && fish_add_path $HOME/.local/scripts
 test -d $HOME/.local/build && fish_add_path $HOME/.local/build
 
-source "/home/js0ny/.deno/env.fish"
