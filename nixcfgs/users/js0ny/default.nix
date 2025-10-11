@@ -28,6 +28,7 @@
     ../../modules/home/programs/zoxide.nix
     # ./flatpak.nix
   ];
+  nixpkgs.config.allowUnfree = true;
   home.username = "js0ny";
   home.homeDirectory = "/home/js0ny";
 

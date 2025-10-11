@@ -22,6 +22,7 @@
     ./packages.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
   networking.hostName = "zephyrus";
   system.stateVersion = "25.05";
 }

@@ -1,9 +1,11 @@
+# ~/.dotfiles/nixcfgs/flake.nix
 {
   description = "A simple NixOS flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    flake-utils.url = "github:numtide/flake-utils";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,38 +30,39 @@
     plasma-manager,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    specialArgs = {inherit inputs;};
   in {
     nixosConfigurations.zp = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      inherit specialArgs;
       modules = [
         nix-flatpak.nixosModules.nix-flatpak
-        ./hosts/zp.nix
-        ./hardware-configuration.nix
+        ./hosts/zp
       ];
     };
 
     nixosConfigurations.zephyrus = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      inherit specialArgs;
       modules = [
         ./hosts/zephyrus
-        home-manager.nixosModules.home-manager
-        {
-          # nix-flatpak.homeManagerModules.nix-flatpak
-          home-manager.sharedModules = [plasma-manager.homeModules.plasma-manager nix-flatpak.homeManagerModules.nix-flatpak];
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.js0ny = import ./users/js0ny;
-          nixpkgs.config.allowUnfree = true;
-        }
       ];
     };
 
     darwinConfigurations."zen" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
+      inherit specialArgs;
       modules = [
         ./hosts/zen
+      ];
+    };
+    homeConfigurations.js0ny = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      extraSpecialArgs = specialArgs;
+      modules = [
+        ./users/js0ny
+        plasma-manager.homeModules.plasma-manager
+        nix-flatpak.homeManagerModules.nix-flatpak
       ];
     };
   };

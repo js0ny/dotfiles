@@ -5,7 +5,7 @@
     ni = "touch";
     cls = "clear";
     ii = "open";
-    c = "codium";
+    c = "code";
     aic = "aichat -s";
   };
 in {
