@@ -3,6 +3,7 @@
     gnome-tweaks
     sushi
     orchis-theme
+    adwaita-qt
     gnomeExtensions.dash-to-dock
     gnomeExtensions.caffeine
     gnomeExtensions.logo-menu
@@ -44,5 +45,16 @@
       symbolic-icon = true;
       use-custom-icon = false;
     };
+    "org/gnome/shell" = {
+favorite-apps = [
+      "org.kde.dolphin.desktop"
+      "com.mitchellh.ghostty.desktop"
+      "chromium-browser.desktop"
+      "code.desktop"
+    ];
+    };
+
   };
+
+  qt.style.name = "adwaita";
 }

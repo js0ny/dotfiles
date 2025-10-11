@@ -8,6 +8,8 @@
 }: {
   imports = [
     ../../modules/nixos
+    # ../../modules/nixos/users/js0ny.nix
+    # ../../modules/nixos/guest.nix
     ../../modules/nixos/laptop.nix
     ../../modules/nixos/disable-nvidia.nix
     ../../modules/nixos/additional-packages.nix
@@ -15,8 +17,8 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/desktop/gnome.nix
-    ../../modules/nixos/desktop/kde.nix
-    ../../modules/nixos/display-manager/ly.nix
+    # ../../modules/nixos/desktop/kde.nix
+    ../../modules/nixos/display-manager/gdm.nix
     ./hardware-configuration.nix
     ./keyd.nix
     ./packages.nix
