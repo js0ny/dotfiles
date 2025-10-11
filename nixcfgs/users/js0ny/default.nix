@@ -13,7 +13,7 @@
     ./programs/gnome.nix
     ./programs/plasma.nix
     ./programs/shell.nix
-    ./programs/vscodium.nix
+    ./programs/vscode.nix
     ./programs/git.nix
     ../../modules/home/dev/java.nix
     ../../modules/home/dev/nix.nix

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.vscode = {
-    package = pkgs.vscodium;
+    package = pkgs.vscode;
     enable = true;
   };
 
