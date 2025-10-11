@@ -25,7 +25,6 @@
       "neovide"
       "clash-verge-rev"
       "obsidian"
-      "mullvad-vpn"
       "alacritty"
       "alt-tab"
       "apparency"
@@ -40,7 +39,7 @@
       "ltspice"
       "orbstack"
       "qlcolorcode"
-      # "qlimagesize" discontinued. 
+      # "qlimagesize" discontinued.
       "qlmarkdown"
       "qlstephen"
       "qlvideo"
@@ -60,7 +59,7 @@
       "TickTick"
       "cherry-studio"
       "firefox"
-      "Wireshark"
+      "wireshark-app"
       "LibreWolf"
       "brave-browser"
       "font-maple-mono-nf-cn"
