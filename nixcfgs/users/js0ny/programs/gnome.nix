@@ -2,8 +2,6 @@
   home.packages = with pkgs; [
     gnome-tweaks
     sushi
-    orchis-theme
-    adwaita-qt
     gnomeExtensions.dash-to-dock
     gnomeExtensions.caffeine
     gnomeExtensions.logo-menu
@@ -32,6 +30,7 @@
       icon-theme = "Papirus";
       accent-color = "pink";
       show-battery-percentage = true;
+      cursor-theme = "Adwaita";
     };
     "org/gnome/epiphany" = {
       ask-for-default = false;
@@ -46,15 +45,14 @@
       use-custom-icon = false;
     };
     "org/gnome/shell" = {
-favorite-apps = [
-      "org.kde.dolphin.desktop"
-      "com.mitchellh.ghostty.desktop"
-      "chromium-browser.desktop"
-      "code.desktop"
-    ];
+      favorite-apps = [
+        "org.kde.dolphin.desktop"
+        "com.mitchellh.ghostty.desktop"
+        "chromium-browser.desktop"
+        "code.desktop"
+      ];
     };
-
   };
 
-  qt.style.name = "adwaita";
+  # qt.style.name = "adwaita";
 }

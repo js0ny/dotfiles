@@ -15,6 +15,7 @@
     ./programs/shell.nix
     ./programs/vscode.nix
     ./programs/git.nix
+    ../../modules/home/dev/c.nix
     ../../modules/home/dev/java.nix
     ../../modules/home/dev/nix.nix
     ../../modules/home/dev/python.nix

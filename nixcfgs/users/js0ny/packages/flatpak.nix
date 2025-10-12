@@ -1,5 +1,5 @@
 # https://github.com/gmodena/nix-flatpak
-{nix-flatpak, ...}: {
+{...}: {
   services.flatpak.remotes = [
     {
       name = "flathub";
@@ -23,4 +23,11 @@
     # "com.vivaldi.Vivaldi"
     "com.getpostman.Postman"
   ];
+  services.flatpak.overrides = {
+    "com.tencent.WeChat" = {
+      Environment = {
+        QT_IM_MODULE = "fcitx";
+      };
+    };
+  };
 }

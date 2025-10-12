@@ -17,8 +17,9 @@
     ../../modules/nixos/docker.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/desktop/gnome.nix
-    # ../../modules/nixos/desktop/kde.nix
-    ../../modules/nixos/display-manager/gdm.nix
+    # ../../modules/nixos/desktop/niri.nix
+    ../../modules/nixos/desktop/kde.nix
+    ../../modules/nixos/display-manager/sddm.nix
     ./hardware-configuration.nix
     ./keyd.nix
     ./packages.nix
@@ -26,5 +27,6 @@
 
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "zephyrus";
+  hardware.enableRedistributableFirmware = true;
   system.stateVersion = "25.05";
 }

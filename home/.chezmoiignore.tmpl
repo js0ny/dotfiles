@@ -24,6 +24,17 @@ scripts
 {{ if ne .chezmoi.osRelease.id "arch" }}
 .config/*-flags.conf
 {{ end }}
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+.config/bash
+.config/fcitx5
+.config/bat
+.config/doom
+.config/fish
+.config/zsh
+.config/lsd
+.config/keyd
+.config/readline
+{{ end }}
 {{ end }}
 
 {{ if ne .chezmoi.os "darwin" }}

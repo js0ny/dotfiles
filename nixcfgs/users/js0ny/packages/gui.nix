@@ -24,5 +24,6 @@
     cherry-studio
     vivaldi
     kdePackages.kdeconnect-kde
+    picard
   ];
 }
