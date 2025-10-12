@@ -1,5 +1,6 @@
 # ~/.config/nix-config/common/packages-headless.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   #  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     vim
@@ -14,5 +15,6 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    v4l-utils
   ];
 }
