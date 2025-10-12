@@ -4,7 +4,8 @@
   nix-flatpak,
   plasma-manager,
   ...
-}: {
+}:
+{
   imports = [
     ./packages/cli.nix
     ./packages/gui.nix
@@ -15,6 +16,9 @@
     ./programs/shell.nix
     ./programs/vscode.nix
     ./programs/git.nix
+    ./programs/firefox.nix
+    ./programs/distrobox.nix
+    # ./programs/floorp.nix
     ../../modules/home/dev/c.nix
     ../../modules/home/dev/java.nix
     ../../modules/home/dev/nix.nix
@@ -23,7 +27,7 @@
     ../../modules/home/programs/fzf.nix
     ../../modules/home/programs/lsd.nix
     ../../modules/home/programs/nvim.nix
-    ../../modules/home/programs/rime.nix
+    # ../../modules/home/programs/rime.nix
     ../../modules/home/programs/starship.nix
     ../../modules/home/programs/zed-editor.nix
     ../../modules/home/programs/zoxide.nix

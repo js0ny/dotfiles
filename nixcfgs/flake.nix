@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = {
@@ -28,8 +29,14 @@
     nix-darwin,
     home-manager,
     plasma-manager,
+    nur,
     ...
   } @ inputs: let
+  overlays = [ nur.overlays.default ];
+  forSystem = system: import nixpkgs {
+    inherit system overlays;
+    config.allowUnfree = true;
+  };
     specialArgs = {inherit inputs;};
   in {
     nixosConfigurations.zp = nixpkgs.lib.nixosSystem {
@@ -57,7 +64,7 @@
       ];
     };
     homeConfigurations.js0ny = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      pkgs = forSystem "x86_64-linux";
       extraSpecialArgs = specialArgs;
       modules = [
         ./users/js0ny

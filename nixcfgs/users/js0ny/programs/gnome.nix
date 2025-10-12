@@ -48,7 +48,7 @@
       favorite-apps = [
         "org.kde.dolphin.desktop"
         "com.mitchellh.ghostty.desktop"
-        "chromium-browser.desktop"
+        "firefox.desktop"
         "code.desktop"
       ];
     };

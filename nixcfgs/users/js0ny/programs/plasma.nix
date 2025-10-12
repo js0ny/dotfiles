@@ -66,7 +66,7 @@
               General = {
                 launchers = [
                   "applications:org.kde.dolphin.desktop"
-                  "applications:chromium-browser.desktop"
+                  "applications:firefox.desktop"
                   "applications:com.mitchellh.ghostty.desktop"
                 ];
               };
@@ -88,7 +88,6 @@
               };
             };
           }
-          "org.kde.plasma.digitalclock"
           "org.kde.plasma.showdesktop"
         ];
       }

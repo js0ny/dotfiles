@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     kitty
     ghostty
@@ -25,5 +26,8 @@
     vivaldi
     kdePackages.kdeconnect-kde
     picard
+    qutebrowser
+    ryubing
+    qbittorrent
   ];
 }
