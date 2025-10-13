@@ -8,13 +8,6 @@
     curl
     git
     tmux
-    pciutils
-    usbutils
-    smartmontools
     wl-clipboard
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    v4l-utils
   ];
 }
