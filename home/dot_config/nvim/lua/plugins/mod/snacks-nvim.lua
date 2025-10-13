@@ -81,7 +81,7 @@ return {
     -- words = { enabled = true },
     image = {
       enabled = true,
-      img_dirs = { "_Global/Assets" }
+      img_dirs = { "90 - System/Assets" }
     },
   },
   keys = {

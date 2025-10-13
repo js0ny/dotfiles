@@ -50,5 +50,6 @@
     ta-lib
     ddgr
     protonvpn-cli
+    markdown-oxide
   ];
 }

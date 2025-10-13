@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     gnome-tweaks
     sushi
+    dconf-editor
     gnomeExtensions.dash-to-dock
     gnomeExtensions.caffeine
     gnomeExtensions.logo-menu
@@ -27,6 +28,8 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
+      clock-show-seconds = true;
+      clock-show-weekday = true;
       icon-theme = "Papirus";
       accent-color = "pink";
       show-battery-percentage = true;
@@ -46,10 +49,31 @@
     };
     "org/gnome/shell" = {
       favorite-apps = [
-        "org.kde.dolphin.desktop"
         "com.mitchellh.ghostty.desktop"
         "firefox.desktop"
         "code.desktop"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0" = {
+      name = "Open File Explorer";
+      command = "dolphin";
+      binding = "<Super>e";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1" = {
+      name = "Open Terminal via Win-R";
+      command = "ghostty";
+      binding = "<Super>r";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2" = {
+      name = "Open Terminal via Ctrl-Alt-T";
+      command = "ghostty";
+      binding = "<Ctrl><Alt>t";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2/"
       ];
     };
   };

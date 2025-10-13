@@ -58,6 +58,9 @@ return {
     "ibhagwan/fzf-lua",
   },
   opts = {
+    footer = {
+      enabled = false,
+    },
     workspaces = {
       {
         name = "personal",
@@ -132,14 +135,14 @@ return {
         return string.format("%s-", os.time())
       end,
     },
-    mappings = {
-      ["<cr>"] = {
-        action = function()
-          require("obsidian").util.smart_action()
-        end,
-        opts = { buffer = true, expr = true },
-      },
-    },
+    -- mappings = {
+    --   ["<cr>"] = {
+    --     action = function()
+    --       require("obsidian").util.smart_action()
+    --     end,
+    --     opts = { buffer = true, expr = true },
+    --   },
+    -- },
     new_notes_location = "current_dir",
   },
 }
