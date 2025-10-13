@@ -8,4 +8,6 @@
     kamadorueda.alejandra
     jnoortheen.nix-ide
   ];
+
+  programs.zed-editor.extensions = [ "nix" ];
 }

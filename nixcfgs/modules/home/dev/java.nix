@@ -8,4 +8,5 @@
     vscjava.vscode-spring-initializr
     vscjava.vscode-java-pack
   ];
+  programs.zed-editor.extensions = [ "java" ];
 }

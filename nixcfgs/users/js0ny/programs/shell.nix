@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   commonAliases = {
     v = "nvim";
     g = "lazygit";
@@ -8,7 +9,8 @@
     c = "code";
     aic = "aichat -s";
   };
-in {
+in
+{
   programs.fish = {
     enable = true;
     interactiveShellInit = "set fish_greeting";
@@ -27,4 +29,5 @@ in {
     enable = true;
     shellAliases = commonAliases;
   };
+  programs.zed-editor.extensions = [ "fish" ];
 }

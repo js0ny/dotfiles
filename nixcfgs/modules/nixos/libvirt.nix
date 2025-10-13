@@ -26,4 +26,5 @@
     extraGroups = ["libvirtd"];
   };
   networking.firewall.trustedInterfaces = ["virbr0"];
+  virtualisation.spiceUSBRedirection.enable = true;
 }

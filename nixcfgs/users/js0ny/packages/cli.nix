@@ -1,5 +1,6 @@
 # ~/.config/nix-config/common/packages-headless.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     age
     aichat
@@ -48,5 +49,6 @@
     # Misc
     ta-lib
     ddgr
+    protonvpn-cli
   ];
 }

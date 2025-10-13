@@ -29,5 +29,8 @@
     qutebrowser
     ryubing
     qbittorrent
+    protonvpn-gui
+    proton-pass
+    protonmail-bridge
   ];
 }

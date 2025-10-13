@@ -20,10 +20,12 @@
     ./programs/firefox.nix
     ./programs/distrobox.nix
     ./programs/mime.nix
+    ./programs/zed-editor.nix
     # ./programs/floorp.nix
     ../../modules/home/gnome-keyrings.nix
     ../../modules/home/dev/c.nix
     ../../modules/home/dev/java.nix
+    ../../modules/home/dev/lua.nix
     ../../modules/home/dev/nix.nix
     ../../modules/home/dev/python.nix
     ../../modules/home/programs/eza.nix
@@ -32,7 +34,6 @@
     ../../modules/home/programs/nvim.nix
     ../../modules/home/programs/starship.nix
     ../../modules/home/programs/zoxide.nix
-    ../../modules/home/programs/zed-editor.nix
     # ./flatpak.nix
   ];
 

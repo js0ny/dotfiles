@@ -37,8 +37,5 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 video_nr=2 card_label="OBS Virtual Camera" exclusive_caps=1
-  '';
   system.stateVersion = "25.05";
 }

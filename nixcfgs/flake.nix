@@ -59,6 +59,8 @@
     in
     {
 
+      # This will automatically generate nixOS config for `nixosHosts'
+      # Include the module ./hosts/${hostname} by default.
       nixosConfigurations = nixpkgs.lib.genAttrs nixosHosts mkNixosSystem;
 
       darwinConfigurations."zen" = nix-darwin.lib.darwinSystem {
