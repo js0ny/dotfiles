@@ -8,8 +8,12 @@
 
 -- Entry point of neovim configuration
 require("config.options")
+local term = os.getenv("TERM") or ""
 if vim.g.vscode then -- TODO: VSCode Neovim Integration
   require("config.vscode")
+elseif term == "linux" then -- Under tty
+  require("config.tty")
+  vim.cmd("colorscheme vim") -- Use minimal colorscheme
 else
   require("config.plugins")
   require("config.colorscheme")
