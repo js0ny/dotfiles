@@ -37,5 +37,8 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
+  services.udev.extraRules = ''
+    ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="0666", GROUP="wheel"
+  '';
   system.stateVersion = "25.05";
 }
