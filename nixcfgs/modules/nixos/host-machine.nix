@@ -9,5 +9,5 @@
     usbutils
     smartmontools
     v4l-utils
-  ]
+  ];
 }

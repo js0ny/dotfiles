@@ -9,6 +9,7 @@
 {
   imports = [
     ../../modules/nixos
+    ../../modules/nixos/host-machine.nix
     # ../../modules/nixos/users/js0ny.nix
     # ../../modules/nixos/guest.nix
     ../../modules/nixos/laptop.nix

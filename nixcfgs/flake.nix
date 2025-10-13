@@ -42,32 +42,24 @@
           config.allowUnfree = true;
         };
       specialArgs = { inherit inputs; };
+      nixosHosts = [
+        "zp"
+        "zephyrus"
+        "nixvirt"
+      ];
+
+      mkNixosSystem =
+        hostname:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          inherit specialArgs;
+          modules = [ ./hosts/${hostname} ];
+        };
+
     in
     {
-      nixosConfigurations.zp = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        inherit specialArgs;
-        modules = [
-          nix-flatpak.nixosModules.nix-flatpak
-          ./hosts/zp
-        ];
-      };
 
-      nixosConfigurations.zephyrus = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        inherit specialArgs;
-        modules = [
-          ./hosts/zephyrus
-        ];
-      };
-
-      nixosConfigurations.nixvirt = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        inherit specialArgs;
-        modules = [
-          ./hosts/nixvirt
-        ];
-      };
+      nixosConfigurations = nixpkgs.lib.genAttrs nixosHosts mkNixosSystem;
 
       darwinConfigurations."zen" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -76,28 +68,31 @@
           ./hosts/zen
         ];
       };
-      homeConfigurations.js0ny = home-manager.lib.homeManagerConfiguration {
-        pkgs = forSystem "x86_64-linux";
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./users/js0ny
-        ];
-      };
-      homeConfigurations."js0ny@zephyrus" = home-manager.lib.homeManagerConfiguration {
-        pkgs = forSystem "x86_64-linux";
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./users/js0ny/zephyrus.nix
-          plasma-manager.homeModules.plasma-manager
-          nix-flatpak.homeManagerModules.nix-flatpak
-        ];
-      };
-      homeConfigurations."js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {
-        pkgs = forSystem "x86_64-linux";
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./users/js0ny/nixvirt.nix
-        ];
+
+      homeConfigurations = {
+        js0ny = home-manager.lib.homeManagerConfiguration {
+          pkgs = forSystem "x86_64-linux";
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./users/js0ny
+          ];
+        };
+        "js0ny@zephyrus" = home-manager.lib.homeManagerConfiguration {
+          pkgs = forSystem "x86_64-linux";
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./users/js0ny/zephyrus.nix
+            plasma-manager.homeModules.plasma-manager
+            nix-flatpak.homeManagerModules.nix-flatpak
+          ];
+        };
+        "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {
+          pkgs = forSystem "x86_64-linux";
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./users/js0ny/nixvirt.nix
+          ];
+        };
       };
     };
 }
