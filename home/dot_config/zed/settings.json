@@ -18,6 +18,25 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  // Theming
+  "icon_theme": "Material Icon Theme",
+  "theme": {
+    "mode": "system",
+    "light": "Rosé Pine Dawn",
+    "dark": "Catppuccin Macchiato"
+  },
+  "tabs": {
+    "show_diagnostics": "errors",
+    "show_close_button": "hover",
+    "file_icons": true
+  },
+  // Base keymaps
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "on_yank",
+    "use_smartcase_find": true
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -32,32 +51,32 @@
       "proxy_no_verify": null
     }
   },
-  "base_keymap": "VSCode",
-  "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": null,
-  "theme": {
-    "mode": "system",
-    "light": "Rosé Pine Dawn",
-    "dark": "Kanagawa Dragon"
-  },
   "relative_line_numbers": true,
-  "buffer_font_family": "Maple Mono NF CN",
+  "buffer_font_family": "Zed Plex Mono",
   "remove_trailing_whitespace_on_save": true,
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-3-7-sonnet"
-    },
-    "version": "2"
+    }
   },
   "inlay_hints": {
     "enabled": true,
-    "show_type_hints": true
+    "show_type_hints": true,
+    "show_parameter_hints": true
   },
   "terminal": {
     "env": {
       "EDITOR": "zed --wait"
     }
+  },
+  "file_types": {
+    "JSON": ["*.code-snippets"]
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
   }
 }

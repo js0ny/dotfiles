@@ -8,21 +8,11 @@
 // Windows: %APPDATA%\Zed\keymaps.json
 // Linking: (link the whole directory)
 // ln -sf $DOTFILES/tools/zed ~/.config/zed
-
 // Zed keymap
-
-//
-
 // For information on binding keys, see the Zed
-
 // documentation: https://zed.dev/docs/key-bindings
-
-//
-
 // To see the default key bindings run `zed: open default keymap`
-
 // from the command palette.
-
 // https://github.com/zed-industries/zed/tree/main/assets/keymaps
 // Sequence: https://zed.dev/docs/key-bindings#remapping-keys
 [
@@ -39,17 +29,17 @@
 
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
-      "alt-e": "editor::AddSelectionAbove", // Insert Cursor Above
-      "alt-n": "editor::AddSelectionBelow" // Insert Cursor Below
+      "alt-k": "editor::AddSelectionAbove", // Insert Cursor Above
+      "alt-j": "editor::AddSelectionBelow" // Insert Cursor Below
     }
   },
   {
     "context": "vim_mode == normal || vim_mode == visual",
 
     "bindings": {
-      "N": "vim::JoinLines",
-      "l": "vim::InsertBefore",
-      "L": "vim::InsertFirstNonWhitespace"
+      "J": "vim::JoinLines",
+      "i": "vim::InsertBefore",
+      "I": "vim::InsertFirstNonWhitespace"
     }
   },
   {
@@ -57,7 +47,7 @@
 
     "bindings": {
       "H": "vim::StartOfLine",
-      "I": "vim::EndOfLine"
+      "L": "vim::EndOfLine"
     }
   },
   {
@@ -65,35 +55,42 @@
 
     "bindings": {
       "H": "pane::ActivatePreviousItem",
-      "I": "pane::ActivateNextItem"
+      "L": "pane::ActivateNextItem"
     }
   },
   {
-    "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+    // "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
 
     "bindings": {
       "space space": "file_finder::Toggle",
       "space ;": "command_palette::Toggle",
+      "space /": "pane::DeploySearch",
       "space f c": "zed::OpenSettings",
       "space f e c": "zed::OpenSettings",
       "space f t": "project_panel::ToggleFocus",
+      "space c f": "editor::Format",
       "ctrl-w h": "workspace::ActivatePaneLeft",
-      "ctrl-w i": "workspace::ActivatePaneRight",
-      "ctrl-w e": "workspace::ActivatePaneUp",
-      "ctrl-w n": "workspace::ActivatePaneDown"
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] d": "editor::GoToDiagnostic",
+      "[ g": "editor::GoToPreviousHunk",
+      "] g": "editor::GoToHunk"
     }
   },
   {
     "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
 
     "bindings": {
-      "n": "vim::Down",
-      "e": "vim::Up",
-      "i": "vim::Right",
-      "k": "search::SelectNextMatch",
-      "K": "search::SelectPreviousMatch",
-      "N": ["workspace::SendKeystrokes", "n n n n n"],
-      "E": ["workspace::SendKeystrokes", "e e e e e"],
+      "j": "vim::Down",
+      "k": "vim::Up",
+      "l": "vim::Right",
+      "n": "search::SelectNextMatch",
+      "N": "search::SelectPreviousMatch",
+      "J": ["workspace::SendKeystrokes", "j j j j j"],
+      "K": ["workspace::SendKeystrokes", "k k k k k"],
       "Y": ["workspace::SendKeystrokes", "y $"]
     }
   },
@@ -101,12 +98,27 @@
     "context": "ProjectPanel && not_editing",
 
     "bindings": {
-      "n": "menu::SelectNext",
-      "e": "menu::SelectPrevious",
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
       "i": "project_panel::ExpandSelectedEntry",
       "A": "project_panel::NewDirectory",
       "a": "project_panel::NewFile",
       "d": "project_panel::Delete"
+    }
+  },
+  {
+    "context": "Terminal",
+
+    "bindings": {
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
+      "ctrl-T": "workspace::NewTerminal",
+      "ctrl-w": null,
+      "ctrl-w ctrl-w": ["terminal::SendKeystroke", "ctrl-w"],
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w j": "workspace::ActivatePaneDown"
     }
   }
 ]
