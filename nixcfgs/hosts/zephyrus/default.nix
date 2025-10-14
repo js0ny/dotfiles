@@ -10,10 +10,9 @@
   imports = [
     ../../modules/nixos
     ../../modules/nixos/host-machine.nix
-    # ../../modules/nixos/users/js0ny.nix
-    # ../../modules/nixos/guest.nix
+    ../../modules/nixos/waydroid.nix
     ../../modules/nixos/laptop.nix
-    ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/disable-nvidia.nix
     ../../modules/nixos/additional-packages.nix
     ../../modules/nixos/libvirt.nix
     ../../modules/nixos/docker.nix

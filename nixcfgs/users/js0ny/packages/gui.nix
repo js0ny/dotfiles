@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     kitty
     ghostty
@@ -31,5 +32,6 @@
     protonvpn-gui
     proton-pass
     protonmail-bridge-gui
+    mpv
   ];
 }

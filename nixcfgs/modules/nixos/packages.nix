@@ -1,6 +1,5 @@
 # ~/.config/nix-config/common/packages-headless.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   #  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     vim
@@ -9,5 +8,6 @@
     git
     tmux
     wl-clipboard
+    nix-index
   ];
 }

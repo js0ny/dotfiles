@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     gnome-tweaks
     sushi
@@ -16,14 +17,15 @@
   ];
   programs.gnome-shell.enable = true;
   programs.gnome-shell.extensions = [
-    {package = pkgs.gnomeExtensions.dash-to-dock;}
-    {package = pkgs.gnomeExtensions.caffeine;}
-    {package = pkgs.gnomeExtensions.logo-menu;}
-    {package = pkgs.gnomeExtensions.kimpanel;}
-    {package = pkgs.gnomeExtensions.appindicator;}
-    {package = pkgs.gnomeExtensions.gsconnect;}
-    {package = pkgs.gnomeExtensions.clipboard-indicator;}
-    {package = pkgs.gnomeExtensions.advanced-alttab-window-switcher;}
+    { package = pkgs.gnomeExtensions.dash-to-dock; }
+    { package = pkgs.gnomeExtensions.caffeine; }
+    { package = pkgs.gnomeExtensions.logo-menu; }
+    { package = pkgs.gnomeExtensions.kimpanel; }
+    { package = pkgs.gnomeExtensions.appindicator; }
+    { package = pkgs.gnomeExtensions.gsconnect; }
+    { package = pkgs.gnomeExtensions.clipboard-indicator; }
+    { package = pkgs.gnomeExtensions.advanced-alttab-window-switcher; }
+    { package = pkgs.gnomeExtensions.blur-my-shell; }
   ];
 
   dconf.settings = {
@@ -74,6 +76,16 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2/"
+      ];
+    };
+    "org/freedesktop/tracker/miner/files" = {
+      "index-recursive-directories" = [
+        "&DESKTOP"
+        "&DOCUMENTS"
+        "&MUSIC"
+        "&PICTURES"
+        "&VIDEOS"
+        "/home/js0ny/Obsidian"
       ];
     };
   };

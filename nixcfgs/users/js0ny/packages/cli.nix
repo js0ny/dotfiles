@@ -2,6 +2,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    rclone
     age
     aichat
     beancount
@@ -40,16 +41,15 @@
     zoxide
     wakatime-cli
     # Langs
-    # lua
-    luajit
+    # lua luajit
     lua51Packages.luarocks
     ghostscript
     mermaid-cli
     tectonic
-    # Misc
-    ta-lib
-    ddgr
-    protonvpn-cli
+    # Misc ta-lib ddgr protonvpn-cli
     markdown-oxide
+    nushell
+    powershell
+    powershell-editor-services
   ];
 }
