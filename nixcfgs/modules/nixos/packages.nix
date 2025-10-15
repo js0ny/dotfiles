@@ -9,5 +9,8 @@
     tmux
     wl-clipboard
     nix-index
+    file
+    unzip
+    zip
   ];
 }

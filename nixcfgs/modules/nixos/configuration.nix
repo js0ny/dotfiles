@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-
   security.pam.services.login.enableGnomeKeyring = true;
 
   # Use latest kernel.
