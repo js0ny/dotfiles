@@ -4,13 +4,26 @@
   nix-flatpak,
   plasma-manager,
   ...
-}:
-{
+}: let
+  my-catppuccin-kde = pkgs.catppuccin-kde.override {
+    flavour = [
+      "mocha"
+      "latte"
+    ];
+    accents = ["pink"];
+    winDecStyles = ["classic"];
+  };
+  my-catppuccin-gtk = pkgs.catppuccin-gtk.override {
+    accents = ["pink"];
+    variant = "mocha";
+  };
+in {
   imports = [
     ./default.nix
     ./packages/cli.nix
     ./packages/gui.nix
     ./packages/flatpak.nix
+    ./packages/fonts.nix
     ./programs/chromium.nix
     ./programs/gnome.nix
     ./programs/plasma.nix
@@ -35,6 +48,13 @@
     ../../modules/home/programs/starship.nix
     ../../modules/home/programs/zoxide.nix
     # ./flatpak.nix
+  ];
+
+  home.packages = with pkgs; [
+    catppuccin
+    my-catppuccin-gtk
+    my-catppuccin-kde
+    catppuccin-fcitx5
   ];
 
   home.stateVersion = "25.05";

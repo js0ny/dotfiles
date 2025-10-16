@@ -8,7 +8,7 @@ fork = true
 idle = true
 maximized = false
 # neovim-bin = "/opt/homebrew/bin/nvim"
-frame = "transparent"
+frame = "full"
 no-multigrid = false
 srgb = false
 tabs = true
@@ -19,8 +19,7 @@ wsl = false
 
 [font]
 normal = [
-    "Maple Mono NF CN",
+    "Maple Mono NF",
     "Iosevka Nerd Font",
-    "霞鹜文楷等宽",
 ] # Will use the bundled Fira Code Nerd Font by default
 size = 14.0

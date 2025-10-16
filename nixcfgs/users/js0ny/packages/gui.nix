@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     kitty
     ghostty
@@ -33,5 +32,6 @@
     proton-pass
     protonmail-bridge-gui
     mpv
+    neovim-qt
   ];
 }

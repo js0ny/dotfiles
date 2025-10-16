@@ -1,6 +1,8 @@
 {pkgs, ...}: {
-  home.packages = with pkgs.kdePackages; [
-    yakuake
+  home.packages = with pkgs; [
+    kdePackages.yakuake
+    krunner-vscodeprojects
+    jetbrains-runner
   ];
   programs.plasma = {
     enable = true;
@@ -26,6 +28,11 @@
           "on-all-desktops"
           "keep-above-windows"
         ];
+      };
+    };
+    shortcuts = {
+      yakuake = {
+        "toggle-window-state" = "Meta+`";
       };
     };
     input.touchpads = [
@@ -101,7 +108,7 @@
           "org.kde.plasma.marginsseparator"
         ];
         opacity = "translucent";
-        hiding = "dodgewindows";
+        hiding = "none";
       }
     ];
   };

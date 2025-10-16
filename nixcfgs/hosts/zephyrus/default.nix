@@ -1,12 +1,5 @@
 # ~/.config/nixcfgs/hosts/zephyrus/default.nix
-{
-  config,
-  lib,
-  pkgs,
-  nix-flatpak,
-  ...
-}:
-{
+{config, ...}: {
   imports = [
     ../../modules/nixos
     ../../modules/nixos/host-machine.nix
@@ -22,7 +15,7 @@
     ../../modules/nixos/obs-studio.nix
     ../../modules/nixos/wine.nix
     ../../modules/nixos/desktop/gnome.nix
-    # ../../modules/nixos/desktop/niri.nix
+    ../../modules/nixos/desktop/niri.nix
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/display-manager/sddm.nix
     ./hardware-configuration.nix
@@ -36,8 +29,10 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
+  networking.modemmanager.enable = false;
+  # Xilinx Artix-7 Basys 3
   services.udev.extraRules = ''
-    ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="0666", GROUP="wheel"
+    ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="0660", GROUP="dialout", SYMLINK+="basys3"
   '';
   system.stateVersion = "25.05";
 }

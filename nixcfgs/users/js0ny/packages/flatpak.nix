@@ -1,5 +1,5 @@
 # https://github.com/gmodena/nix-flatpak
-{nix-flatpak, ...}: {
+{home, ...}: {
   services.flatpak.enable = true;
   services.flatpak.remotes = [
     {
@@ -28,11 +28,14 @@
     global = {
       Context = {
         # Force wayland by default
-        sockets = ["wayland" "!x11" "!fallback-x11"];
         filesystems = [
           "/run/current-system/sw/share/fonts:ro"
           "xdg-config/fontconfig:ro"
-          # "xdg-data/fonts:ro"
+          # If user font is set, it is required to access /nix/store
+          # since flatpak apps cannot read ~/.config/fontconfig/conf.d/*
+          # TODO: This is a bad practice, trying to look for a better solution
+          "/nix/store:ro"
+          "xdg-data/fonts:ro"
         ];
       };
     };
@@ -44,5 +47,6 @@
         QT_IM_MODULE = "fcitx";
       };
     };
+    "md.obsidian.Obsidian".Context.sockets = ["wayland"];
   };
 }
