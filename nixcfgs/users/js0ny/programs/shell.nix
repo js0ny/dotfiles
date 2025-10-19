@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{...}: let
   commonAliases = {
     v = "nvim";
     g = "lazygit";
@@ -8,9 +7,10 @@ let
     ii = "open";
     c = "code";
     aic = "aichat -s";
+    aicc = "aichat -c";
+    nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/nixcfgs";
   };
-in
-{
+in {
   programs.fish = {
     enable = true;
     interactiveShellInit = "set fish_greeting";
@@ -29,5 +29,5 @@ in
     enable = true;
     shellAliases = commonAliases;
   };
-  programs.zed-editor.extensions = [ "fish" ];
+  programs.zed-editor.extensions = ["fish"];
 }

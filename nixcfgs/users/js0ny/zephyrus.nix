@@ -4,20 +4,22 @@
   nix-flatpak,
   plasma-manager,
   ...
-}: let
+}:
+let
   my-catppuccin-kde = pkgs.catppuccin-kde.override {
     flavour = [
       "mocha"
       "latte"
     ];
-    accents = ["pink"];
-    winDecStyles = ["classic"];
+    accents = [ "pink" ];
+    winDecStyles = [ "classic" ];
   };
   my-catppuccin-gtk = pkgs.catppuccin-gtk.override {
-    accents = ["pink"];
+    accents = [ "pink" ];
     variant = "mocha";
   };
-in {
+in
+{
   imports = [
     ./default.nix
     ./packages/cli.nix
@@ -33,6 +35,7 @@ in {
     ./programs/firefox.nix
     ./programs/distrobox.nix
     ./programs/mime.nix
+    ./programs/sdcv.nix
     ./programs/zed-editor.nix
     # ./programs/floorp.nix
     ../../modules/home/gnome-keyrings.nix
@@ -55,6 +58,8 @@ in {
     my-catppuccin-gtk
     my-catppuccin-kde
     catppuccin-fcitx5
+    freerdp
+    winboat
   ];
 
   home.stateVersion = "25.05";

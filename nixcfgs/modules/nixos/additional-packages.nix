@@ -3,5 +3,7 @@
     chromium
     nil
     nixd
+    libnotify
+    imagemagick
   ];
 }

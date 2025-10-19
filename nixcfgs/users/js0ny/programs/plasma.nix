@@ -72,7 +72,7 @@
             config = {
               General = {
                 launchers = [
-                  "applications:org.kde.dolphin.desktop"
+                  # "applications:org.kde.dolphin.desktop"
                   "applications:firefox.desktop"
                   "applications:com.mitchellh.ghostty.desktop"
                 ];
@@ -131,7 +131,7 @@
     profiles = {
       Default = {
         command = "${pkgs.fish}/bin/fish";
-        colorScheme = "Breeze";
+        colorScheme = "catppuccin-mocha";
         font = {
           name = "Maple Mono NF";
           size = 12;

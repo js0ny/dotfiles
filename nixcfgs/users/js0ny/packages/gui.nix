@@ -1,5 +1,6 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
+  home.packages = with pkgs;
+  [
     kitty
     ghostty
     alacritty
@@ -11,8 +12,10 @@
     pcloud
     telegram-desktop
     steam
-    jetbrains.idea-ultimate
-    jetbrains.rider
+    (jetbrains.idea-ultimate.override {
+        vmopts = ''-Dawt.toolkit.name=WLToolkit'';})
+    (jetbrains.rider.override {
+        vmopts = ''-Dawt.toolkit.name=WLToolkit'';})
     warp-terminal
     # clash-verge-rev
     haruna

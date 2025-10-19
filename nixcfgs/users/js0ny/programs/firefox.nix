@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.firefox = {
     enable = true;
     profiles.default = {
@@ -11,7 +12,7 @@
             }
           ];
           icon = "https://archlinux.org/favicon.ico";
-          definedAliases = ["@aw"];
+          definedAliases = [ "@aw" ];
         };
         aur = {
           name = "Arch User Repository";
@@ -21,43 +22,43 @@
             }
           ];
           icon = "https://archlinux.org/favicon.ico";
-          definedAliases = ["@aur"];
+          definedAliases = [ "@aur" ];
         };
         arch-packages = {
           name = "ArchLinux Packages";
-          urls = [{template = "https://archlinux.org/?q={searchTerms}";}];
+          urls = [ { template = "https://archlinux.org/?q={searchTerms}"; } ];
           icon = "https://archlinux.org/favicon.ico";
-          definedAliases = ["@pac"];
+          definedAliases = [ "@pac" ];
         };
         chatgpt = {
           name = "ChatGPT";
-          urls = [{template = "https://chatgpt.com/?q={searchTerms}";}];
+          urls = [ { template = "https://chatgpt.com/?q={searchTerms}"; } ];
           icon = "https://chatgpt.com/favicon.ico";
-          definedAliases = ["@gpt"];
+          definedAliases = [ "@gpt" ];
         };
         scoop = {
           name = "scoop";
-          urls = [{template = "https://scoop.sh/#/apps?q={searchTerms}";}];
+          urls = [ { template = "https://scoop.sh/#/apps?q={searchTerms}"; } ];
           icon = "https://scoop.sh/favicon.ico";
-          definedAliases = ["@sc"];
+          definedAliases = [ "@sc" ];
         };
         perplexity = {
           name = "Perplexity";
-          urls = [{template = "https://www.perplexity.ai/?q={searchTerms}";}];
+          urls = [ { template = "https://www.perplexity.ai/?q={searchTerms}"; } ];
           icon = "https://perplexity.ai/favicon.ico";
-          definedAliases = ["@pplx"];
+          definedAliases = [ "@pplx" ];
         };
         winget = {
           name = "Windows Package Manager";
-          urls = [{template = "https://winget.ragerworks.com/search/all/{searchTerms}";}];
+          urls = [ { template = "https://winget.ragerworks.com/search/all/{searchTerms}"; } ];
           icon = "https://microsoft.com/favicon.ico";
-          definedAliases = ["@win"];
+          definedAliases = [ "@win" ];
         };
         github = {
           name = "GitHub Repository";
-          urls = [{template = "https://github.com/search?type=repositories&q={searchTerms}";}];
+          urls = [ { template = "https://github.com/search?type=repositories&q={searchTerms}"; } ];
           icon = "https://github.com/favicon.ico";
-          definedAliases = ["@gh"];
+          definedAliases = [ "@gh" ];
         };
       };
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [

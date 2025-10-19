@@ -12,5 +12,6 @@
     file
     unzip
     zip
+    pkg-config
   ];
 }
