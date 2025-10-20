@@ -1,0 +1,18 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/prepend_keymap.json"
+
+[mgr]
+
+prepend_keymap = [
+
+
+	# Seeking
+	{ on = "E", run = "seek -5", desc = "Seek up 5 units in the preview" },
+	{ on = "N", run = "seek 5",  desc = "Seek down 5 units in the preview" },
+
+	# Find
+  { on = ["g", "p"], run = "cd ~/Pictures",    desc = "Go ~/Pictures/"}
+
+
+]

@@ -1,9 +1,12 @@
 # Log
 *.log
 
-# Private Files
-*private*
-.private.env.*
+# fish
+dot_config/fish/fish_variables
+dot_config/fish/completions
+dot_config/fish/functions/br.fish
+dot_config/fish/functions/dotenv.fish
+
 
 # Test files
 test/
@@ -29,8 +32,6 @@ tools/nushell/
 
 .venv/
 
-gitconfig
-
 
 # Lock files
 lazy-lock.json
@@ -38,10 +39,11 @@ lazy-lock.json
 # Emacs
 *.elc
 
-common/**/*current*
-
-**/current.*
 
 default.target.wants
 
 nvim-healthcheck.txt
+
+private_pid
+private_security
+private_fish_variables

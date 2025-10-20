@@ -1,0 +1,27 @@
+# $DOTFILES/common/lesskey
+# Date: 2024-12-22
+# Author: js0ny
+# Less the pager.
+
+# Location:
+# *nix: $XDG_CONFIG_HOME/lesskey (Or specified by the environment variable $LESSKEYIN)
+# Windows: %LESSKEYIN% (environment variable, default: %UserProfile%/_lesskey)
+#   $Env:LESSKEYIN = $Env:AppData\less\lesskey
+# Linking:
+# ln -sf $DOTFILES/common/lesskey ~/.config/lesskey
+# New-Item -ItemType SymbolicLink -Target $DOTFILES\common\lesskey -Path $Env:LESSKEYIN
+# ===========================================================
+# work for less -V > 582, for mac, use brew install less to override the system less
+# In Windows (current version), the default pager is `more`, should be specifed to `less` by `$Env:Pager = less`
+
+# Format: key action
+
+# Arrow Remap (hnei -> hjkl)
+# n forw-line
+# e back-line
+# N forw-line-force
+# E back-line-force
+#
+# # search with k : ne[k]st
+# k repeat-search
+# K reverse-search

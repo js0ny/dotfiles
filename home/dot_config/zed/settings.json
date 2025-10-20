@@ -1,0 +1,82 @@
+// $DOTFILES/tools/zed/settings.json
+// Date: 2025-01-25
+// Author: js0ny
+// Description: Zed settings (jsonc)
+
+// Location:
+// GNU/Linux: ~/.config/zed/settings.json
+// Windows: %APPDATA%\Zed\settings.json
+// Linking: (link the whole directory)
+// ln -sf $DOTFILES/tools/zed ~/.config/zed
+//
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // Theming
+  "icon_theme": "Material Icon Theme",
+  "theme": {
+    "mode": "system",
+    "light": "Rosé Pine Dawn",
+    "dark": "Catppuccin Macchiato"
+  },
+  "tabs": {
+    "show_diagnostics": "errors",
+    "show_close_button": "hover",
+    "file_icons": true
+  },
+  // Base keymaps
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "on_yank",
+    "use_smartcase_find": true
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "edit_predictions": {
+    "disabled_globs": ["*.bean", "*.env"],
+    // "mode": "eager_preview",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    }
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": null,
+  "relative_line_numbers": true,
+  "buffer_font_family": "Zed Plex Mono",
+  "remove_trailing_whitespace_on_save": true,
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-3-7-sonnet"
+    }
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true
+  },
+  "terminal": {
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  },
+  "file_types": {
+    "JSON": ["*.code-snippets"]
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+}

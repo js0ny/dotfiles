@@ -1,0 +1,17 @@
+{{/* https://github.com/twpayne/dotfiles/blob/master/home/.chezmoi.toml.tmpl  */}}
+{{- $headless := false  -}}
+
+{{/* darwin hostname hack */}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $hostname := output "scutil" "--get" "LocalHostName" | trim -}}
+{{- end -}}
+
+sourceDir = "~/.dotfiles"
+
+{{ $email := promptStringOnce . "email" "What is your email address" -}}
+{{ $username := promptStringOnce . "username" "What is your username" -}}
+
+[data]
+    email = {{ $email | quote }}
+    username = {{ $username | quote }}

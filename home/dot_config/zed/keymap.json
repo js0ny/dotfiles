@@ -1,0 +1,127 @@
+// $DOTFILES/tools/zed/keymaps.json
+// Date: 2025-01-25
+// Author: js0ny
+// Description: Zed keymaps
+
+// Location:
+// GNU/Linux: ~/.config/zed/keymaps.json
+// Windows: %APPDATA%\Zed\keymaps.json
+// Linking: (link the whole directory)
+// ln -sf $DOTFILES/tools/zed ~/.config/zed
+// Zed keymap
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+// https://github.com/zed-industries/zed/tree/main/assets/keymaps
+// Sequence: https://zed.dev/docs/key-bindings#remapping-keys
+[
+  {
+    "context": "Workspace",
+
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+
+  {
+    "context": "Editor",
+
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "alt-k": "editor::AddSelectionAbove", // Insert Cursor Above
+      "alt-j": "editor::AddSelectionBelow" // Insert Cursor Below
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+
+    "bindings": {
+      "J": "vim::JoinLines",
+      "i": "vim::InsertBefore",
+      "I": "vim::InsertFirstNonWhitespace"
+    }
+  },
+  {
+    "context": "vim_mode == visual || vim_mode == operator",
+
+    "bindings": {
+      "H": "vim::StartOfLine",
+      "L": "vim::EndOfLine"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+
+    "bindings": {
+      "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem"
+    }
+  },
+  {
+    // "context": "GitPanel || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space ;": "command_palette::Toggle",
+      "space /": "pane::DeploySearch",
+      "space f c": "zed::OpenSettings",
+      "space f e c": "zed::OpenSettings",
+      "space f t": "project_panel::ToggleFocus",
+      "space c f": "editor::Format",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "ctrl-w alt-h": "workspace::ToggleLeftDock",
+      "ctrl-w alt-l": "workspace::ToggleRightDock",
+      "ctrl-w alt-j": "workspace::ToggleBottomDock",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] d": "editor::GoToDiagnostic",
+      "[ g": "editor::GoToPreviousHunk",
+      "] g": "editor::GoToHunk"
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+
+    "bindings": {
+      "j": "vim::Down",
+      "k": "vim::Up",
+      "l": "vim::Right",
+      "n": "search::SelectNextMatch",
+      "N": "search::SelectPreviousMatch",
+      "J": ["workspace::SendKeystrokes", "j j j j j"],
+      "K": ["workspace::SendKeystrokes", "k k k k k"],
+      "Y": ["workspace::SendKeystrokes", "y $"]
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+
+    "bindings": {
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "i": "project_panel::ExpandSelectedEntry",
+      "A": "project_panel::NewDirectory",
+      "a": "project_panel::NewFile",
+      "d": "project_panel::Delete"
+    }
+  },
+  {
+    "context": "Terminal",
+
+    "bindings": {
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
+      "ctrl-T": "workspace::NewTerminal",
+      "ctrl-w": null,
+      "ctrl-w ctrl-w": ["terminal::SendKeystroke", "ctrl-w"],
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w j": "workspace::ActivatePaneDown"
+    }
+  }
+]

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+MimeType=image/jpeg;image/png;
+Actions=setWallpaper
+Icon=preferences-desktop-wallpaper
+X-KDE-Priority=TopLevel
+X-KDE-StartupNotify=false
+
+[Desktop Action setWallpaper]
+Name=设置为壁纸
+Icon=preferences-desktop-wallpaper
+Exec=swww img "%f"

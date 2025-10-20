@@ -1,0 +1,27 @@
+# ~/.config/systemd/user/mihomo.service
+
+[Unit]
+Description=mihomo Service
+# This ensures the service only starts after your network is online.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# The main process to run.
+# The WorkingDirectory is set to your user's home directory.
+# This assumes your mihomo configuration is located at ~/.config/mihomo/
+WorkingDirectory=%h/.config/mihomo
+# It's common for user-level applications to be in a directory like ~/.local/bin
+# or simply in your PATH.
+ExecStart=mihomo
+
+# This tells systemd to restart the service if it stops unexpectedly.
+Restart=on-failure
+# This sets the restart interval to 5 seconds.
+RestartSec=5s
+
+[Install]
+# This unit should be active when the user's session is active,
+# ensuring it starts when you log in.
+WantedBy=default.target
+

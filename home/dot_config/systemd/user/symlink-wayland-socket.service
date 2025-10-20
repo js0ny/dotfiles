@@ -1,0 +1,17 @@
+# NOTE: FOR WSL ONLY
+# https://github.com/microsoft/WSL/issues/11261
+# ~/.config/systemd/user/symlink-wayland-socket.service
+# Usage:
+# systemctl --user enable symlink-wayland-socket.service
+# Cannot use GUI apps/tools as Wayland socket doesn't exist in `XDG_RUNTIME_DIR`
+
+[Unit]
+Description=Symlink Wayland socket to XDG_RUNTIME_DIR
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ln -s /mnt/wslg/runtime-dir/wayland-0      $XDG_RUNTIME_DIR
+ExecStart=/usr/bin/ln -s /mnt/wslg/runtime-dir/wayland-0.lock $XDG_RUNTIME_DIR
+
+[Install]
+WantedBy=default.target
