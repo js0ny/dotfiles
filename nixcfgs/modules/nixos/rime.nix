@@ -13,7 +13,7 @@
     type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
-      plasma6Support = true;
+      # plasma6Support = true;
       addons = with pkgs; [
         fcitx5-rime
         kdePackages.fcitx5-configtool

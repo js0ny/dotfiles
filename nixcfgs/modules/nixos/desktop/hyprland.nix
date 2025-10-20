@@ -1,22 +1,18 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.hyprland = {
     enable = true;
     withUWSM = false;
     xwayland.enable = true;
   };
 
-  environment.systemPackages = [
-    inputs.caelestia-shell.packages.x86_64-linux.default
-    pkgs.mako
-    pkgs.rofi-wayland
-    pkgs.xdg-desktop-portal-wlr
-    pkgs.xdg-desktop-portal-hyprland
-    pkgs.hyprpolkitagent
-    pkgs.cliphist
-    pkgs.grimblast
+  environment.systemPackages = with pkgs; [
+    caelestia-shell
+    mako
+    rofi
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
+    hyprpolkitagent
+    cliphist
+    grimblast
   ];
 }

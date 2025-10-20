@@ -14,6 +14,7 @@
     ../../modules/nixos/chromium.nix
     ../../modules/nixos/obs-studio.nix
     ../../modules/nixos/wine.nix
+    ../../modules/nixos/gnome-keyring.nix
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/display-manager/sddm.nix

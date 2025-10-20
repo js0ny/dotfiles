@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{pkgs, ...}: let
   fontPkgs = [
     pkgs.maple-mono.NF
     pkgs.sarasa-gothic
@@ -51,7 +47,7 @@ in {
         fontPkgs
         ++ [
           # Add cursor supports
-          pkgs.libsForQt5.breeze-qt5
+          pkgs.kdePackages.breeze
         ]; # with pkgs; [
       #   libsForQt5.breeze-qt5
 
