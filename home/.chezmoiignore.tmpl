@@ -19,6 +19,7 @@ scripts
 .config/systemd
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.local/share/kio/
 {{ end }}
 
 {{ if eq .chezmoi.os "linux" }}
@@ -53,4 +54,8 @@ Library
 
 {{ if ne .chezmoi.os "windows" }}
 .gitconfig
+.glzr
+.wslconfig
+.wslgconfig
+Appdata/
 {{ end }}

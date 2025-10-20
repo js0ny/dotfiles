@@ -1,3 +1,4 @@
+# NOTE: FOR WSL ONLY
 # https://github.com/microsoft/WSL/issues/11261
 # ~/.config/systemd/user/symlink-wayland-socket.service
 # Usage:

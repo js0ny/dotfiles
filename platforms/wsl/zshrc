@@ -1,9 +1,0 @@
-# $DOTFILES/platforms/wsl/zshrc
-# Date: 2024-12-01
-# Author: js0ny
-# Sourced by user's zshrc if is WSL 在用户的 zshrc 中被引用，WSL 特定配置
-# Entry point in $DOTFILES/tools/zsh/common.zshrc (入口点)
-
-### Variables ###
-export IS_WSL=true
-source $DOTFILES/platforms/wsl/winterop.zsh

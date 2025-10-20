@@ -16,7 +16,7 @@ case "$(uname)" in
     if grep -q Microsoft /proc/version || [[ -n "$WSL_DISTRO_NAME" ]]; then
       # WSL-specific configuration
         export IS_WSL=true
-        source $DOTFILES/platforms/wsl/winterop.zsh
+        source $DOTFILES/home/dot_config/zsh/winterop.zsh
     else
       # Native Linux configuration
         if [ -n "$WAYLAND_DISPLAY" ]; then
