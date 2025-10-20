@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     gcc
-    llvmPackages_21.clang-tools
+    llvmPackages_21.clang-tools # clangd
   ];
 }

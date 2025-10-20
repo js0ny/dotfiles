@@ -4,13 +4,11 @@
   nix-flatpak,
   plasma-manager,
   ...
-}:
-{
+}: {
   imports = [
     ./default.nix
     ./programs/gnome.nix
     ./programs/shell.nix
-    ./programs/git.nix
     ./programs/firefox.nix
     # ./programs/floorp.nix
     ../../modules/home/gnome-keyrings.nix

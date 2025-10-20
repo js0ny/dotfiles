@@ -27,14 +27,17 @@ scripts
 {{ end }}
 {{ if eq .chezmoi.osRelease.id "nixos" }}
 .config/bash
-.config/fcitx5
 .config/bat
 .config/doom
+.config/dunst
+.config/fastfetch
+.config/fcitx5
 .config/fish
 .config/zsh
 .config/lsd
 .config/keyd
 .config/readline
+.config/krunnerrc
 .bashrc
 {{ end }}
 {{ end }}
@@ -46,4 +49,8 @@ Library
 .config/skhd
 .config/yabai
 .config/powershell
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+.gitconfig
 {{ end }}

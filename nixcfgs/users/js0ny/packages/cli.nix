@@ -45,8 +45,6 @@
     # lua luajit
     lua51Packages.luarocks
     ghostscript
-    mermaid-cli
-    tectonic
     # Misc ta-lib ddgr protonvpn-cli
     markdown-oxide
     nushell

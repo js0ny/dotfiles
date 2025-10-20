@@ -7,7 +7,6 @@
 }:
 {
   imports = [
-    ./programs/git.nix
     ../../modules/home/programs/fzf.nix
     ../../modules/home/programs/lsd.nix
     ../../modules/home/programs/zoxide.nix

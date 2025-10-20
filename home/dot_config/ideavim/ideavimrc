@@ -20,30 +20,17 @@ source ~/.local/share/intellimacs/which-key.vim
 let mapleader = " " " set <leader> to <space>
 
 """ Colemak """
-noremap n j
-noremap e k
-noremap i l
-
-" Similar position to i
-noremap l i
-noremap L I
-" ne[k]st
-noremap k n
-noremap K N
-" [j]ump
-noremap j e
-noremap J E
 
 nnoremap H :bp<CR>
-nnoremap I :bn<CR>
-noremap N 5j
-noremap E 5k
+nnoremap L :bn<CR>
+noremap J 5j
+noremap K 5k
 vnoremap H ^
 xnoremap H ^
 onoremap H ^
-vnoremap I $
-xnoremap I $
-onoremap I $
+vnoremap L $
+xnoremap L $
+onoremap L $
 
 
 
@@ -221,9 +208,9 @@ nnoremap <leader>W :write<CR>
 nnoremap <leader>wh :action PrevSplitter<CR>
 nnoremap <leader>wi :action NextSplitter<CR>
 nnoremap <leader>wH :action SplitHorizontally<CR>
-nnoremap <leader>wI :action SplitHorizontally<CR>
-nnoremap <leader>wN :action SplitVertically<CR>
-nnoremap <leader>wE :action SplitVertically<CR>
+nnoremap <leader>wL :action SplitHorizontally<CR>
+nnoremap <leader>wJ :action SplitVertically<CR>
+nnoremap <leader>wK :action SplitVertically<CR>
 nnoremap <leader>w- :action SplitHorizontally<CR>
 nnoremap <leader>w| :action SplitVertically<CR>
 nnoremap <leader>w\ :action SplitVertically<CR>

@@ -32,8 +32,6 @@ tools/nushell/
 
 .venv/
 
-gitconfig
-
 
 # Lock files
 lazy-lock.json

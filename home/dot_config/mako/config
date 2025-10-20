@@ -1,9 +1,11 @@
 # Colors
 
+default-timeout=5000
 background-color=#1e1e2e
 text-color=#cdd6f4
 border-color=#b4befe
 progress-color=over #313244
+max-visible=10
 
 [urgency=high]
 border-color=#fab387
