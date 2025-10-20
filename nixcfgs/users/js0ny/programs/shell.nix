@@ -1,4 +1,4 @@
-{...}: let
+{config, ...}: let
   commonAliases = {
     v = "nvim";
     g = "lazygit";
@@ -22,7 +22,7 @@ in {
     autocd = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    dotDir = "/home/js0ny/.config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     shellAliases = commonAliases;
   };
   programs.bash = {

@@ -1,5 +1,5 @@
 # https://github.com/gmodena/nix-flatpak
-{home, ...}: {
+{...}: {
   services.flatpak.enable = true;
   services.flatpak.remotes = [
     {

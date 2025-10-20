@@ -1,19 +1,18 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{
-  pkgs,
-  nix-flatpak,
-  plasma-manager,
-  ...
-}:
-{
+{pkgs, ...}: let
+  username = "js0ny";
+in {
   imports = [
     ../../modules/home/programs/fzf.nix
     ../../modules/home/programs/lsd.nix
     ../../modules/home/programs/zoxide.nix
   ];
   nixpkgs.config.allowUnfree = true;
-  home.username = "js0ny";
-  home.homeDirectory = "/home/js0ny";
+  home.username = username;
+  home.homeDirectory =
+    if pkgs.stdenv.isDarwin
+    then "/Users/${username}"
+    else "/home/${username}";
 
   home.packages = with pkgs; [
     home-manager

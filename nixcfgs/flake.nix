@@ -105,6 +105,13 @@
             ./users/js0ny/nixvirt.nix
           ];
         };
+        "js0ny@zen" = home-manager.lib.homeManagerConfiguration {
+          pkgs = forSystem "aarch64-darwin";
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./users/js0ny/zen.nix
+          ];
+        };
       };
     };
 }
