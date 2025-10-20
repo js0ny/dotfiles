@@ -40,6 +40,7 @@
     fish
     zoxide
     wakatime-cli
+    sdcv
     # Langs
     # lua luajit
     lua51Packages.luarocks
@@ -51,5 +52,6 @@
     nushell
     powershell
     powershell-editor-services
+    package-version-server
   ];
 }

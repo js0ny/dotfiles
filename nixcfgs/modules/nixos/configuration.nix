@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   security.pam.services.login.enableGnomeKeyring = true;
 
   # Use latest kernel.
@@ -83,7 +84,10 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
@@ -91,7 +95,12 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.js0ny = {
     isNormalUser = true;
-    extraGroups = ["wheel" "docker" "libvirtd" "dialout"]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "docker"
+      "libvirtd"
+      "dialout"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];

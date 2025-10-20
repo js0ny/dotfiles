@@ -35,7 +35,6 @@ in
     ./programs/firefox.nix
     ./programs/distrobox.nix
     ./programs/mime.nix
-    ./programs/sdcv.nix
     ./programs/zed-editor.nix
     # ./programs/floorp.nix
     ../../modules/home/gnome-keyrings.nix
