@@ -36,6 +36,7 @@ in
     ./programs/distrobox.nix
     ./programs/mime.nix
     ./programs/zed-editor.nix
+    ./programs/rime.nix
     # ./programs/floorp.nix
     ../../modules/home/gnome-keyrings.nix
     ../../modules/home/dev/c.nix
