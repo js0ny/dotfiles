@@ -1,8 +1,7 @@
-{...}: {
-
+{pkgs, ...}: {
   imports = [
-    ../rime.nix
-    ../fonts.nix
+    ./fonts.nix
+    ./gnome-keyring.nix
   ];
   services.pipewire = {
     enable = true;
@@ -47,5 +46,6 @@
   };
   environment.systemPackages = with pkgs; [
     wl-clipboard
+    libnotify
   ];
 }

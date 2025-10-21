@@ -1,33 +1,54 @@
 # ~/.config/nixcfgs/hosts/zephyrus/default.nix
-{...}: {
+{pkgs, ...}: {
   imports = [
-    ../../modules/nixos
-    ../../modules/nixos/libvirt.nix
-    ../../modules/nixos/docker.nix
-    ../../modules/nixos/exp.nix
-    ../../modules/nixos/desktop/host-machine.nix
-    ../../modules/nixos/desktop/laptop.nix
-    ../../modules/nixos/desktop/disable-nvidia.nix
-    ../../modules/nixos/additional-packages.nix
-    ../../modules/nixos/desktop
-    ../../modules/nixos/desktop/firefox.nix
-    ../../modules/nixos/desktop/steam.nix
-    ../../modules/nixos/desktop/chromium.nix
-    ../../modules/nixos/desktop/obs-studio.nix
-    ../../modules/nixos/desktop/wine.nix
-    ../../modules/nixos/desktop/gnome-keyring.nix
-    ../../modules/nixos/udev/basys3.nix
-    ../../modules/nixos/desktop-environment/kde.nix
-    ../../modules/nixos/desktop-environment/hyprland.nix
-    ../../modules/nixos/display-manager/sddm.nix
+    # Host-specific configs
+    ./asus.nix
     ./hardware-configuration.nix
     ./keyd.nix
-    ./packages.nix
+
+    # core config and packages
+    ../../modules/nixos
+
+    # this is a laptop
+    ../../modules/nixos/desktop
+    ../../modules/nixos/desktop/laptop.nix
+
+    # hardware drivers
+    ../../modules/nixos/hardware/nvidia-disable.nix
+
+    # udev rules
+    ../../modules/nixos/hardware/udev/basys3.nix
+
+    # desktop environment and display manager
+    ../../modules/nixos/desktop/de/kde.nix
+    ../../modules/nixos/desktop/de/hyprland.nix
+    ../../modules/nixos/desktop/dm/sddm.nix
+
+    # desktop programs
+    ../../modules/nixos/programs/chromium.nix
+    ../../modules/nixos/programs/firefox.nix
+    ../../modules/nixos/programs/libvirt.nix
+    ../../modules/nixos/programs/obs-studio.nix
+    ../../modules/nixos/programs/steam.nix
+    ../../modules/nixos/programs/waydroid.nix
+    ../../modules/nixos/programs/winboat.nix
+    ../../modules/nixos/programs/wine.nix
+
+    # services
+    ../../modules/nixos/services/docker.nix
+    ../../modules/nixos/services/exp.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  nixpkgs.config.allowUnfree = true;
+  # Hostname
   networking.hostName = "zephyrus";
+
+  # Use latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Use unfree software
+  # nixpkgs.config.allowUnfree = true;
+
+  # Disable modem
   networking.modemmanager.enable = false;
   system.stateVersion = "25.05";
 }
