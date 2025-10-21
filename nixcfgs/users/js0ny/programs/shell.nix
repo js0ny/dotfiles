@@ -1,11 +1,9 @@
 {config, ...}: let
   commonAliases = {
-    v = "nvim";
     g = "lazygit";
     ni = "touch";
     cls = "clear";
     ii = "open";
-    c = "code";
     aic = "aichat -s";
     aicc = "aichat -c";
     nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/nixcfgs";

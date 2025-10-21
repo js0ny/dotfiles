@@ -10,15 +10,16 @@ return {
     dashboard = {
       enabled = true,
       preset = {
+          -- stylua: ignore start
         keys = {
           -- { key = "p", icon = "󰈞 ", desc = "查找项目", action = "<cmd>Telescope projects<CR>" },
-          { key = "h", icon = " ", desc = "历史文件", action = "<cmd>FzfLua oldfiles<CR>" },
-          { key = "l", icon = " ", desc = "加载会话", action = "<cmd>SessionSearch<CR>" },
+          { key = "h", icon = " ", desc = "历史文件", action = function () require("fzf-lua").oldfiles() end },
+          { key = "l", icon = " ", desc = "加载会话", action = "<cmd>AutoSession search<CR>" },
           {
             key = "c",
             icon = " ",
             desc = "转到设置",
-            action = "<cmd>FzfLua files cwd=~/.config/nvim<CR>",
+            action = function() require("fzf-lua").files({ cwd = "~/.dotfiles/home/dot_config/nvim" }) end,
           },
           { key = "q", icon = "󱊷 ", desc = "退出", action = "<cmd>qa<CR>" },
         },
@@ -69,19 +70,21 @@ return {
         { section = "startup" },
       },
     },
+    -- stylua: ignore end
     -- explorer = {
     -- },
     indent = { enabled = true },
-    -- input = { enabled = true },
+    input = { enabled = true },
     notifier = { enabled = true },
-    -- quickfile = { enabled = true },
+    quickfile = { enabled = true },
     scope = { enabled = true },
-    -- scroll = { enabled = true },
+    scroll = { enabled = true },
     statuscolumn = { enabled = true },
     -- words = { enabled = true },
     image = {
       enabled = true,
-      img_dirs = { "90 - System/Assets" }
+      -- See: ../lang/markdown/obsidian-nvim.lua
+      img_dirs = { "90 - System/Assets" },
     },
   },
   keys = {

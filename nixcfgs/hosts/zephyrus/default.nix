@@ -1,5 +1,5 @@
 # ~/.config/nixcfgs/hosts/zephyrus/default.nix
-{config, ...}: {
+{...}: {
   imports = [
     ../../modules/nixos
     ../../modules/nixos/host-machine.nix
@@ -14,7 +14,9 @@
     ../../modules/nixos/chromium.nix
     ../../modules/nixos/obs-studio.nix
     ../../modules/nixos/wine.nix
+    ../../modules/nixos/exp.nix
     ../../modules/nixos/gnome-keyring.nix
+    ../../modules/nixos/udev/basys3.nix
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/display-manager/sddm.nix
@@ -25,14 +27,6 @@
 
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "zephyrus";
-  hardware.enableRedistributableFirmware = true;
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
   networking.modemmanager.enable = false;
-  # Xilinx Artix-7 Basys 3
-  services.udev.extraRules = ''
-    ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="0660", GROUP="dialout", SYMLINK+="basys3"
-  '';
   system.stateVersion = "25.05";
 }

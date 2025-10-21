@@ -3,11 +3,13 @@ return {
     "rmagatti/auto-session",
     event = "BufReadPre",
     cmd = {
-      "SessionSearch",
-      "SessionSave",
+      "AutoSession",
     },
     opts = {
       suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+    },
+    keys = {
+      { "<leader>ps", "<Cmd>AutoSession search<CR>", desc = "List all sessions" },
     },
   },
   -- { import = "plugins.mod.nvim-tree" },
@@ -35,5 +37,5 @@ return {
   --     "Neogit",
   --   },
   -- },
-  { import = "plugins.mod.neo-tree" }
+  { import = "plugins.mod.neo-tree" },
 }

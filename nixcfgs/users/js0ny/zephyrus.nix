@@ -8,7 +8,8 @@
     ./packages/fonts.nix
     ./packages/catppuccin.nix
     ./programs/chromium.nix
-    ./programs/gnome.nix
+    ./programs/emacs.nix
+    # ./programs/gnome.nix
     ./programs/plasma.nix
     ./programs/shell.nix
     ./programs/vscode.nix
