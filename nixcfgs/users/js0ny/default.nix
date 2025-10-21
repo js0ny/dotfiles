@@ -2,12 +2,6 @@
 {pkgs, ...}: let
   username = "js0ny";
 in {
-  imports = [
-    ../../modules/home/programs/fzf.nix
-    ../../modules/home/programs/lsd.nix
-    ../../modules/home/programs/zoxide.nix
-  ];
-  nixpkgs.config.allowUnfree = true;
   home.username = username;
   home.homeDirectory =
     if pkgs.stdenv.isDarwin

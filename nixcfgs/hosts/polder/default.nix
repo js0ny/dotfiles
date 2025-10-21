@@ -2,10 +2,8 @@
 {
   config,
   pkgs,
-  nix-flatpak,
   ...
-}:
-{
+}: {
   imports = [
     # impure build
     /etc/nixos/hardware-configuration.nix
@@ -15,7 +13,7 @@
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
-  boot.kernelParams = [ "console=ttyS0,115200n8" "console=tty0" ];
+  boot.kernelParams = ["console=ttyS0,115200n8" "console=tty0"];
   boot.loader.grub.useOSProber = true;
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
@@ -27,7 +25,7 @@
   services.openssh = {
     enable = true;
     settings = {
-      PermitRootLogin = "yes";
+      PermitRootLogin = "no";
     };
   };
 
@@ -51,7 +49,10 @@
     ];
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [22];
     };
   };
+  environment.systemPackages = with pkgs; [
+    rclone
+  ];
 }
