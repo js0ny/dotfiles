@@ -25,6 +25,7 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs =
@@ -38,6 +39,7 @@
       nur,
       winboat,
       caelestia-shell,
+      agenix,
       ...
     }@inputs:
     let
@@ -59,6 +61,7 @@
         "zp"
         "zephyrus"
         "nixvirt"
+	"polder"
       ];
 
       mkNixosSystem =
@@ -67,6 +70,7 @@
           system = "x86_64-linux";
           inherit specialArgs;
           modules = [
+	    agenix.nixosModules.default
             ./hosts/${hostname}
             { nixpkgs.overlays = overlays; }
           ];

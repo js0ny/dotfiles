@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./configuration.nix
-    ./packages.nix
-    ./fonts.nix
-    ./rime.nix
+    ./core/configuration.nix
+    ./core/packages.nix
   ];
 }
+
