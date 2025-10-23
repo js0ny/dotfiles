@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     gnome-tweaks
     sushi
@@ -14,18 +13,20 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
     gnomeExtensions.gsconnect
+    gnomeExtensions.resource-monitor
+    gnomeExtensions.lunar-calendar
   ];
   programs.gnome-shell.enable = true;
   programs.gnome-shell.extensions = [
-    { package = pkgs.gnomeExtensions.dash-to-dock; }
-    { package = pkgs.gnomeExtensions.caffeine; }
-    { package = pkgs.gnomeExtensions.logo-menu; }
-    { package = pkgs.gnomeExtensions.kimpanel; }
-    { package = pkgs.gnomeExtensions.appindicator; }
-    { package = pkgs.gnomeExtensions.gsconnect; }
-    { package = pkgs.gnomeExtensions.clipboard-indicator; }
-    { package = pkgs.gnomeExtensions.advanced-alttab-window-switcher; }
-    { package = pkgs.gnomeExtensions.blur-my-shell; }
+    {package = pkgs.gnomeExtensions.dash-to-dock;}
+    {package = pkgs.gnomeExtensions.caffeine;}
+    {package = pkgs.gnomeExtensions.logo-menu;}
+    {package = pkgs.gnomeExtensions.kimpanel;}
+    {package = pkgs.gnomeExtensions.appindicator;}
+    {package = pkgs.gnomeExtensions.gsconnect;}
+    {package = pkgs.gnomeExtensions.clipboard-indicator;}
+    {package = pkgs.gnomeExtensions.advanced-alttab-window-switcher;}
+    # {package = pkgs.gnomeExtensions.blur-my-shell;}
   ];
 
   dconf.settings = {
@@ -49,12 +50,33 @@
       symbolic-icon = true;
       use-custom-icon = false;
     };
+    "org/gnome/shell/extensions/clipboard-indicator" = {
+      toggle-menu = ["<Super>v"];
+    };
     "org/gnome/shell" = {
       favorite-apps = [
         "com.mitchellh.ghostty.desktop"
         "firefox.desktop"
         "code.desktop"
       ];
+    };
+    "org/gnome/shell/keybindings" = {
+      toggle-overview = ["<Super>w"];
+      toggle-message-tray = ["<Super>n"];
+      # G14 Compatibility
+      show-screenshot-ui = ["<Shift><Super>s"];
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      activate-window-menu = ["<Alt>F3"];
+      show-desktop = ["<Super>d"];
+      close = ["<Super>q" "<Alt>F4"];
+      switch-windows = ["<Alt>Tab"];
+      switch-windows-backward = ["<Shift><Alt>Tab"];
+      switch-applications = ["<Super>Tab"];
+      switch-applications-backward = ["<Shift><Super>Tab"];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      www = ["<Super>b"];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0" = {
       name = "Open File Explorer";
@@ -78,6 +100,7 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2/"
       ];
     };
+    # Scanned directory in GNOME Search
     "org/freedesktop/tracker/miner/files" = {
       "index-recursive-directories" = [
         "&DESKTOP"
@@ -87,6 +110,9 @@
         "&VIDEOS"
         "/home/js0ny/Obsidian"
       ];
+    };
+    "ca/desrt/dconf-editor" = {
+      show-warning = false;
     };
   };
 

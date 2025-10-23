@@ -65,6 +65,7 @@
     "bindings": {
       "space space": "file_finder::Toggle",
       "space ;": "command_palette::Toggle",
+      "space !": "workspace::NewTerminal",
       "space /": "pane::DeploySearch",
       "space f c": "zed::OpenSettings",
       "space f e c": "zed::OpenSettings",

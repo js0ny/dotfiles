@@ -1,14 +1,23 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
+    # Terminal Emulator
+    ghostty # default
     kitty
-    ghostty
     alacritty
+    warp-terminal
+    # Explorer
     kdePackages.dolphin
-    kdePackages.okular
-    kdePackages.elisa
+    kdePackages.dolphin-plugins # dolphin git integration
+    kdePackages.konsole # dolphin terminal integration
+    yazi # terminal file manager
+    # PDF Viewer
+    kdePackages.okular # default
+    sioyek
+    # Image Viewer
+    nsxiv # default
+    loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
     papirus-icon-theme
-    firefox
+    kdePackages.elisa
     pcloud
     telegram-desktop
     steam
@@ -19,16 +28,10 @@
     (jetbrains.rider.override {
       vmopts = ''-Dawt.toolkit.name=WLToolkit'';
     })
-    warp-terminal
-    # clash-verge-rev
     haruna
-    sioyek
-    vimiv-qt
-    imv
     localsend
     neovide
     cherry-studio
-    vivaldi
     kdePackages.kdeconnect-kde
     picard
     qutebrowser
@@ -40,6 +43,9 @@
     mpv
     neovim-qt
     goldendict-ng
+    kdePackages.kdenlive
+    gimp
+    steam-run
   ];
 
   xdg.desktopEntries = {

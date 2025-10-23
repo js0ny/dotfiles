@@ -1,5 +1,6 @@
 # https://github.com/gmodena/nix-flatpak
-{...}: {
+{ ... }:
+{
   services.flatpak.enable = true;
   services.flatpak.remotes = [
     {
@@ -27,7 +28,6 @@
   services.flatpak.overrides = {
     global = {
       Context = {
-        # Force wayland by default
         filesystems = [
           "/run/current-system/sw/share/fonts:ro"
           "xdg-config/fontconfig:ro"
@@ -39,14 +39,15 @@
         ];
       };
     };
-    "com.qq.QQ".Context.sockets = ["x11"];
+    "com.qq.QQ".Context.sockets = [ "x11" ];
     "com.tencent.WeChat" = {
-      Context.sockets = ["x11"];
+      Context.sockets = [ "x11" ];
       Environment = {
         # WeChat does not support wayland & wayland-ime
         QT_IM_MODULE = "fcitx";
       };
     };
-    "md.obsidian.Obsidian".Context.sockets = ["wayland"];
+    "md.obsidian.Obsidian".Context.sockets = [ "wayland" ];
+    "com.getpostman.Postman".Context.persistent = [ "Postman" ];
   };
 }

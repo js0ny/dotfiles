@@ -20,15 +20,15 @@
     ../../modules/nixos/hardware/udev/basys3.nix
 
     # desktop environment and display manager
-    ../../modules/nixos/desktop/de/kde.nix
-    ../../modules/nixos/desktop/de/hyprland.nix
-    ../../modules/nixos/desktop/dm/sddm.nix
+    ../../modules/nixos/desktop/de/gnome.nix
+    ../../modules/nixos/desktop/dm/gdm.nix
 
     # desktop programs
     ../../modules/nixos/programs/chromium.nix
     ../../modules/nixos/programs/firefox.nix
     ../../modules/nixos/programs/libvirt.nix
     ../../modules/nixos/programs/obs-studio.nix
+    ../../modules/nixos/programs/rime.nix
     ../../modules/nixos/programs/steam.nix
     ../../modules/nixos/programs/waydroid.nix
     ../../modules/nixos/programs/winboat.nix
@@ -50,5 +50,6 @@
 
   # Disable modem
   networking.modemmanager.enable = false;
+  services.flatpak.enable = true;
   system.stateVersion = "25.05";
 }
