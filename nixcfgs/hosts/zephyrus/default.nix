@@ -1,6 +1,5 @@
 # ~/.config/nixcfgs/hosts/zephyrus/default.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     # Host-specific configs
     ./asus.nix
@@ -23,6 +22,7 @@
     # desktop environment and display manager
     ../../modules/nixos/desktop/dm/gdm.nix
     ../../modules/nixos/desktop/de/gnome.nix
+    ../../modules/nixos/desktop/de/niri.nix
 
     # desktop programs
     ../../modules/nixos/programs/chromium.nix

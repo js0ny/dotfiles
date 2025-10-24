@@ -1,6 +1,5 @@
 # ~/.config/nix-config/common/packages-headless.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     rclone
     age

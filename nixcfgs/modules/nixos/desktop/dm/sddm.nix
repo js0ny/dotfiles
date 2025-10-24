@@ -1,5 +1,4 @@
 {pkgs, ...}:
-
 # See https://www.reddit.com/r/NixOS/comments/1kcj34p/how_to_apply_this_sddm_theme_on_nixos/
 let
   custom-sddm-astronaut = pkgs.sddm-astronaut.override {
@@ -9,14 +8,13 @@ let
     #  Font = "M+1 Nerd Font";
     #};
   };
-
 in {
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm = {
     enable = true;
     extraPackages = with pkgs; [
       custom-sddm-astronaut
-     ];
+    ];
 
     theme = "sddm-astronaut-theme";
     settings = {
@@ -30,5 +28,4 @@ in {
     custom-sddm-astronaut
     kdePackages.qtmultimedia
   ];
-
 }

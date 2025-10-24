@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     luajit
     lua-language-server
@@ -8,5 +7,5 @@
   programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
     sumneko.lua
   ];
-  programs.zed-editor.extensions = [ "lua" ];
+  programs.zed-editor.extensions = ["lua"];
 }

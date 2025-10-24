@@ -1,28 +1,28 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ../common/nixos.nix
-      ../common/desktop-linux.nix
-      ../common/packages-fonts.nix
-      ../common/packages-desktop.nix
-      ../common/packages-headless.nix
-      ../common/nvidia.nix
-      ../common/flatpak.nix
-      ../common/wine.nix
-      ../common/firefox.nix
-      ../common/gnome.nix
-      ../common/docker.nix
-    ];
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ../common/nixos.nix
+    ../common/desktop-linux.nix
+    ../common/packages-fonts.nix
+    ../common/packages-desktop.nix
+    ../common/packages-headless.nix
+    ../common/nvidia.nix
+    ../common/flatpak.nix
+    ../common/wine.nix
+    ../common/firefox.nix
+    ../common/gnome.nix
+    ../common/docker.nix
+  ];
 
   networking.hostName = "zp"; # Define your hostname.
-
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -42,6 +42,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
-

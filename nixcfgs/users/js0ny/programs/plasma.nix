@@ -106,6 +106,7 @@
           "org.kde.plasma.pager"
           "org.kde.plasma.windowlist"
           "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.systemmonitor.memory"
         ];
         opacity = "translucent";
         hiding = "none";

@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   boot.extraModprobeConfig = ''
     blacklist nouveau
     options nouveau modeset=0
   '';
-    
+
   services.udev.extraRules = ''
     # Remove NVIDIA USB xHCI Host Controller devices, if present
     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
@@ -16,8 +14,8 @@
     # Remove NVIDIA VGA/3D controller devices
     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
   '';
-  services.xserver.videoDrivers = [ "modesetting" ];
-  boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+  services.xserver.videoDrivers = ["modesetting"];
+  boot.blacklistedKernelModules = ["nouveau" "nvidia" "nvidia_drm" "nvidia_modeset"];
   hardware.nvidia = {
     # enable = false;
     modesetting.enable = false;

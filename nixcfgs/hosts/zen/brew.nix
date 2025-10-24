@@ -1,6 +1,8 @@
-{ config, pkgs, ...}:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   homebrew = {
     enable = true;
     brewPrefix = "/opt/homebrew/bin";
@@ -65,5 +67,4 @@
       "font-maple-mono-nf-cn"
     ];
   };
-
 }

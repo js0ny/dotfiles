@@ -1,11 +1,12 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   username = "js0ny";
-in
-{
+in {
   home.username = username;
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+  home.homeDirectory =
+    if pkgs.stdenv.isDarwin
+    then "/Users/${username}"
+    else "/home/${username}";
 
   home.packages = with pkgs; [
     home-manager

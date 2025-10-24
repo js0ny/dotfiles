@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.sessionVariables = {
     QT_STYLE_OVERRIDE = "adwaita";
   };
@@ -27,15 +26,15 @@
   programs.gnome-shell.enable = true;
   programs.gnome-shell.extensions = [
     # { package = pkgs.gnomeExtensions.dash-to-dock; }
-    { package = pkgs.gnomeExtensions.caffeine; }
-    { package = pkgs.gnomeExtensions.logo-menu; }
-    { package = pkgs.gnomeExtensions.kimpanel; }
-    { package = pkgs.gnomeExtensions.appindicator; }
-    { package = pkgs.gnomeExtensions.gsconnect; }
-    { package = pkgs.gnomeExtensions.clipboard-indicator; }
-    { package = pkgs.gnomeExtensions.advanced-alttab-window-switcher; }
-    { package = pkgs.gnomeExtensions.resource-monitor; }
-    { package = pkgs.gnomeExtensions.lunar-calendar; }
+    {package = pkgs.gnomeExtensions.caffeine;}
+    {package = pkgs.gnomeExtensions.logo-menu;}
+    {package = pkgs.gnomeExtensions.kimpanel;}
+    {package = pkgs.gnomeExtensions.appindicator;}
+    {package = pkgs.gnomeExtensions.gsconnect;}
+    {package = pkgs.gnomeExtensions.clipboard-indicator;}
+    {package = pkgs.gnomeExtensions.advanced-alttab-window-switcher;}
+    {package = pkgs.gnomeExtensions.resource-monitor;}
+    {package = pkgs.gnomeExtensions.lunar-calendar;}
   ];
 
   dconf.settings = {
@@ -62,8 +61,8 @@
       ];
     };
     "org/gnome/shell/keybindings" = {
-      toggle-overview = [ "<Super>w" ];
-      toggle-message-tray = [ "<Super>n" ];
+      toggle-overview = ["<Super>w"];
+      toggle-message-tray = ["<Super>n"];
       # G14 Compatibility
       show-screenshot-ui = [
         "<Shift><Super>s"
@@ -71,17 +70,17 @@
       ];
     };
     "org/gnome/desktop/wm/keybindings" = {
-      activate-window-menu = [ "<Alt>F3" ];
-      show-desktop = [ "<Super>d" ];
+      activate-window-menu = ["<Alt>F3"];
+      show-desktop = ["<Super>d"];
       close = [
         "<Super>q"
         "<Alt>F4"
       ];
-      switch-windows = [ "<Alt>Tab" ];
-      switch-windows-backward = [ "<Shift><Alt>Tab" ];
-      switch-applications = [ "<Super>Tab" ];
-      switch-applications-backward = [ "<Shift><Super>Tab" ];
-      minimize = [ "<Super>m" ];
+      switch-windows = ["<Alt>Tab"];
+      switch-windows-backward = ["<Shift><Alt>Tab"];
+      switch-applications = ["<Super>Tab"];
+      switch-applications-backward = ["<Shift><Super>Tab"];
+      minimize = ["<Super>m"];
       maximize = [
         "<Shift><Super>m"
         "<Super>Up"
@@ -98,7 +97,7 @@
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      www = [ "<Super>b" ];
+      www = ["<Super>b"];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0" = {
       name = "Open File Explorer";
@@ -143,7 +142,7 @@
       use-custom-icon = false;
     };
     "org/gnome/shell/extensions/clipboard-indicator" = {
-      toggle-menu = [ "<Super>v" ];
+      toggle-menu = ["<Super>v"];
     };
     "org/gnome/shell/extensions/lunar-calendar" = {
       yuyan = 0;

@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   virtualisation.waydroid.enable = true;
   nixpkgs.overlays = [
     inputs.nur.overlays.default
@@ -11,9 +14,9 @@
     waydroid-helper
   ];
   systemd = {
-    packages = [ pkgs.waydroid-helper ];
+    packages = [pkgs.waydroid-helper];
     services.waydroid-mount = {
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
       serviceConfig = {
         ExecStart = "${pkgs.waydroid-helper}/bin/waydroid-helper --start-mount";
       };

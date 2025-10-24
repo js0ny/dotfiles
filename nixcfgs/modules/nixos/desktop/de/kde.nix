@@ -5,4 +5,5 @@
     korganizer
     kdepim-addons
   ];
+  services.xserver.desktopManager.cinnamon.enable = true;
 }

@@ -9,5 +9,5 @@
     jnoortheen.nix-ide
   ];
 
-  programs.zed-editor.extensions = [ "nix" ];
+  programs.zed-editor.extensions = ["nix"];
 }

@@ -5,8 +5,7 @@
   pkgs,
   nix-flatpak,
   ...
-}:
-{
+}: {
   imports = [
     # impure build
     /etc/nixos/hardware-configuration.nix

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Managed by Determinate
   nix.enable = false;
   system.stateVersion = 6;
@@ -51,5 +53,4 @@
   ];
 
   programs.zsh.enable = true;
-
 }

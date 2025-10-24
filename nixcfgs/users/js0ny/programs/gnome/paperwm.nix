@@ -1,14 +1,13 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs.gnomeExtensions; [
     paperwm
   ];
   programs.gnome-shell.extensions = [
-    { package = pkgs.gnomeExtensions.paperwm; }
+    {package = pkgs.gnomeExtensions.paperwm;}
   ];
   dconf.settings = {
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      screensaver = [ "" ];
+      screensaver = [""];
     };
     "org/gnome/shell/extensions/paperwm/keybindings" = {
       switch-left = [
@@ -47,11 +46,11 @@
         "<Control><Super>Left"
         "<Shift><Super>j"
       ];
-      center-vertically = [ "" ];
-      drift-left = [ "" ];
-      drift-right = [ "" ];
-      move-up-workspace = [ "<Alt><Super>k" ];
-      move-down-workspace = [ "<Alt><Super>j" ];
+      center-vertically = [""];
+      drift-left = [""];
+      drift-right = [""];
+      move-up-workspace = ["<Control><Super>k"];
+      move-down-workspace = ["<Control><Super>j"];
     };
   };
 }

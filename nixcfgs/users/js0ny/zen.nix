@@ -1,5 +1,4 @@
-{...}:
-{
+{...}: {
   imports = [
     ./default.nix
     ./programs/shell.nix
@@ -14,5 +13,3 @@
 
   home.stateVersion = "25.05";
 }
-
-

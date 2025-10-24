@@ -1,6 +1,5 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{ ... }:
-{
+{...}: {
   imports = [
     # General config
     ./default.nix

@@ -88,5 +88,17 @@
   "telemetry": {
     "diagnostics": false,
     "metrics": false
+  },
+  "languages": {
+    "Nix": {
+      "formatter": {
+        "external": {
+          "command": "alejandra"
+        }
+      },
+      "completions": {
+        "lsp_insert_mode": "replace"
+      }
+    }
   }
 }

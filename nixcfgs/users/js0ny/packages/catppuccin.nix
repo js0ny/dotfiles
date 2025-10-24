@@ -1,20 +1,17 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   my-catppuccin-kde = pkgs.catppuccin-kde.override {
     flavour = [
       "mocha"
       "latte"
     ];
-    accents = [ "pink" ];
-    winDecStyles = [ "classic" ];
+    accents = ["pink"];
+    winDecStyles = ["classic"];
   };
   my-catppuccin-gtk = pkgs.catppuccin-gtk.override {
-    accents = [ "pink" ];
+    accents = ["pink"];
     variant = "mocha";
   };
-in
-{
-
+in {
   home.packages = with pkgs; [
     catppuccin
     my-catppuccin-gtk
