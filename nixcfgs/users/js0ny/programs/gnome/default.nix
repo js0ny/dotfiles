@@ -26,7 +26,7 @@
   ];
   programs.gnome-shell.enable = true;
   programs.gnome-shell.extensions = [
-    { package = pkgs.gnomeExtensions.dash-to-dock; }
+    # { package = pkgs.gnomeExtensions.dash-to-dock; }
     { package = pkgs.gnomeExtensions.caffeine; }
     { package = pkgs.gnomeExtensions.logo-menu; }
     { package = pkgs.gnomeExtensions.kimpanel; }
