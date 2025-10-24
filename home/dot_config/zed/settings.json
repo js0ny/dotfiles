@@ -68,9 +68,19 @@
     "show_parameter_hints": true
   },
   "terminal": {
+    "detect_venv": {
+      "on": {
+        "directories": [".venv"]
+      }
+    },
+    "dock": "bottom",
     "env": {
       "EDITOR": "zed --wait"
-    }
+    },
+    "shell": {
+      "program": "fish"
+    },
+    "option_as_meta": true
   },
   "file_types": {
     "JSON": ["*.code-snippets"]

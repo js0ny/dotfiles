@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-  {
+{...}: {
   system.defaults = {
     finder = {
       AppleShowAllFiles = true;
@@ -64,5 +63,4 @@
       ShowSeconds = true;
     };
   };
-
-  }
+}

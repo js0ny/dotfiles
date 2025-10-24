@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.chromium = {
     enable = true;
     homepageLocation = "https://duckduckgo.com";

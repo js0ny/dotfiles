@@ -1,5 +1,6 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{...}: {
+{ ... }:
+{
   imports = [
     # General config
     ./default.nix
@@ -26,7 +27,8 @@
     ./programs/rime.nix
 
     # Desktop Linux
-    ./programs/gnome.nix
+    ./programs/gnome
+    ./programs/gnome/paperwm.nix
 
     # General Program config
     ../../modules/home/programs/nvim.nix

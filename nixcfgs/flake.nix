@@ -3,6 +3,7 @@
   description = "A simple NixOS flake";
 
   inputs = {
+    nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     flake-utils.url = "github:numtide/flake-utils";
@@ -31,6 +32,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     nix-flatpak,
     nix-darwin,
     home-manager,

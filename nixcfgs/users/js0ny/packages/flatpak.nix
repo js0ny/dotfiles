@@ -1,6 +1,5 @@
 # https://github.com/gmodena/nix-flatpak
-{ ... }:
-{
+{...}: {
   services.flatpak.enable = true;
   services.flatpak.remotes = [
     {
@@ -24,6 +23,7 @@
     # "app.zen_browser.zen"
     # "com.vivaldi.Vivaldi"
     "com.getpostman.Postman"
+    "us.zoom.Zoom"
   ];
   services.flatpak.overrides = {
     global = {
@@ -39,15 +39,15 @@
         ];
       };
     };
-    "com.qq.QQ".Context.sockets = [ "x11" ];
+    "com.qq.QQ".Context.sockets = ["x11"];
     "com.tencent.WeChat" = {
-      Context.sockets = [ "x11" ];
+      Context.sockets = ["x11"];
       Environment = {
         # WeChat does not support wayland & wayland-ime
         QT_IM_MODULE = "fcitx";
       };
     };
-    "md.obsidian.Obsidian".Context.sockets = [ "wayland" ];
-    "com.getpostman.Postman".Context.persistent = [ "Postman" ];
+    "md.obsidian.Obsidian".Context.sockets = ["wayland"];
+    "com.getpostman.Postman".Context.persistent = ["Postman"];
   };
 }

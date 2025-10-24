@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     # Terminal Emulator
     ghostty # default
@@ -14,7 +15,7 @@
     kdePackages.okular # default
     sioyek
     # Image Viewer
-    nsxiv # default
+    imv # default
     loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
     papirus-icon-theme
     kdePackages.elisa
@@ -39,13 +40,14 @@
     qbittorrent
     protonvpn-gui
     proton-pass
-    protonmail-bridge-gui
     mpv
     neovim-qt
     goldendict-ng
     kdePackages.kdenlive
     gimp
     steam-run
+    bottles
+    lutris
   ];
 
   xdg.desktopEntries = {

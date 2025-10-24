@@ -1,5 +1,6 @@
 # ~/.config/nixcfgs/hosts/zephyrus/default.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     # Host-specific configs
     ./asus.nix
@@ -20,8 +21,8 @@
     ../../modules/nixos/hardware/udev/basys3.nix
 
     # desktop environment and display manager
-    ../../modules/nixos/desktop/de/gnome.nix
     ../../modules/nixos/desktop/dm/gdm.nix
+    ../../modules/nixos/desktop/de/gnome.nix
 
     # desktop programs
     ../../modules/nixos/programs/chromium.nix
@@ -46,7 +47,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use unfree software
-  # nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   # Disable modem
   networking.modemmanager.enable = false;

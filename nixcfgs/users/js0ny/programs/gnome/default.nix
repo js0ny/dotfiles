@@ -1,8 +1,16 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
+  home.sessionVariables = {
+    QT_STYLE_OVERRIDE = "adwaita";
+  };
   home.packages = with pkgs; [
     gnome-tweaks
     sushi
     dconf-editor
+    gnome-menus
+    adwaita-qt
+    adwaita-qt6
+    gobject-introspection
     gnomeExtensions.dash-to-dock
     gnomeExtensions.caffeine
     gnomeExtensions.logo-menu
@@ -18,15 +26,16 @@
   ];
   programs.gnome-shell.enable = true;
   programs.gnome-shell.extensions = [
-    {package = pkgs.gnomeExtensions.dash-to-dock;}
-    {package = pkgs.gnomeExtensions.caffeine;}
-    {package = pkgs.gnomeExtensions.logo-menu;}
-    {package = pkgs.gnomeExtensions.kimpanel;}
-    {package = pkgs.gnomeExtensions.appindicator;}
-    {package = pkgs.gnomeExtensions.gsconnect;}
-    {package = pkgs.gnomeExtensions.clipboard-indicator;}
-    {package = pkgs.gnomeExtensions.advanced-alttab-window-switcher;}
-    # {package = pkgs.gnomeExtensions.blur-my-shell;}
+    { package = pkgs.gnomeExtensions.dash-to-dock; }
+    { package = pkgs.gnomeExtensions.caffeine; }
+    { package = pkgs.gnomeExtensions.logo-menu; }
+    { package = pkgs.gnomeExtensions.kimpanel; }
+    { package = pkgs.gnomeExtensions.appindicator; }
+    { package = pkgs.gnomeExtensions.gsconnect; }
+    { package = pkgs.gnomeExtensions.clipboard-indicator; }
+    { package = pkgs.gnomeExtensions.advanced-alttab-window-switcher; }
+    { package = pkgs.gnomeExtensions.resource-monitor; }
+    { package = pkgs.gnomeExtensions.lunar-calendar; }
   ];
 
   dconf.settings = {
@@ -45,14 +54,6 @@
       remember-passwords = false;
       enable-mouse-gestures = true;
     };
-    "org/gnome/shell/extensions/Logo-menu" = {
-      menu-button-icon-image = 23;
-      symbolic-icon = true;
-      use-custom-icon = false;
-    };
-    "org/gnome/shell/extensions/clipboard-indicator" = {
-      toggle-menu = ["<Super>v"];
-    };
     "org/gnome/shell" = {
       favorite-apps = [
         "com.mitchellh.ghostty.desktop"
@@ -61,22 +62,43 @@
       ];
     };
     "org/gnome/shell/keybindings" = {
-      toggle-overview = ["<Super>w"];
-      toggle-message-tray = ["<Super>n"];
+      toggle-overview = [ "<Super>w" ];
+      toggle-message-tray = [ "<Super>n" ];
       # G14 Compatibility
-      show-screenshot-ui = ["<Shift><Super>s"];
+      show-screenshot-ui = [
+        "<Shift><Super>s"
+        "Print"
+      ];
     };
     "org/gnome/desktop/wm/keybindings" = {
-      activate-window-menu = ["<Alt>F3"];
-      show-desktop = ["<Super>d"];
-      close = ["<Super>q" "<Alt>F4"];
-      switch-windows = ["<Alt>Tab"];
-      switch-windows-backward = ["<Shift><Alt>Tab"];
-      switch-applications = ["<Super>Tab"];
-      switch-applications-backward = ["<Shift><Super>Tab"];
+      activate-window-menu = [ "<Alt>F3" ];
+      show-desktop = [ "<Super>d" ];
+      close = [
+        "<Super>q"
+        "<Alt>F4"
+      ];
+      switch-windows = [ "<Alt>Tab" ];
+      switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      switch-applications = [ "<Super>Tab" ];
+      switch-applications-backward = [ "<Shift><Super>Tab" ];
+      minimize = [ "<Super>m" ];
+      maximize = [
+        "<Shift><Super>m"
+        "<Super>Up"
+      ];
+    };
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [
+        "<Super>Left"
+        "<Shift><Super>H"
+      ];
+      toggle-tiled-right = [
+        "<Super>Right"
+        "<Shift><Super>L"
+      ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      www = ["<Super>b"];
+      www = [ "<Super>b" ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0" = {
       name = "Open File Explorer";
@@ -113,6 +135,31 @@
     };
     "ca/desrt/dconf-editor" = {
       show-warning = false;
+    };
+    # Extension settings
+    "org/gnome/shell/extensions/Logo-menu" = {
+      menu-button-icon-image = 23;
+      symbolic-icon = true;
+      use-custom-icon = false;
+    };
+    "org/gnome/shell/extensions/clipboard-indicator" = {
+      toggle-menu = [ "<Super>v" ];
+    };
+    "org/gnome/shell/extensions/lunar-calendar" = {
+      yuyan = 0;
+      gen-zhi = false;
+      jrrilinei = false;
+      show-date = false;
+      show-time = false;
+    };
+    "com/github/Ory0n/Resource_Monitor" = {
+      extensionposition = "left";
+      iconsposition = "left";
+      cpustatus = true;
+      netethstatus = false;
+      netwlanstatus = false;
+      ramalert = true;
+      ramunit = "perc";
     };
   };
 
