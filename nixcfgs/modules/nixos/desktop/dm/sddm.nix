@@ -9,10 +9,10 @@ let
     #};
   };
 in {
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm = {
     enable = true;
-    extraPackages = with pkgs; [
+    wayland.enable = true;
+    extraPackages = [
       custom-sddm-astronaut
     ];
 

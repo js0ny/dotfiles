@@ -30,9 +30,9 @@
 
 }
 element {
-    padding: 1px ;
+    padding: 5px;
     cursor:  pointer;
-    spacing: 5px ;
+    spacing: 15px ;
     border:  0;
 }
 element normal.normal {
