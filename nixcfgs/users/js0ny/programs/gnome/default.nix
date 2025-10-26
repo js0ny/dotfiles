@@ -9,6 +9,7 @@
     gnome-menus
     adwaita-qt
     adwaita-qt6
+    showtime
     gobject-introspection
     gnomeExtensions.dash-to-dock
     gnomeExtensions.caffeine

@@ -46,6 +46,7 @@
     ../../modules/home/dev/nix.nix
     ../../modules/home/dev/python.nix
     ../../modules/home/dev/typst.nix
+    ../../modules/home/dev/verilog.nix
   ];
 
   home.stateVersion = "25.05";

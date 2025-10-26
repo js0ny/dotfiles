@@ -14,7 +14,7 @@
     kdePackages.okular # default
     sioyek
     # Image Viewer
-    imv # default
+    vimiv-qt # Default
     loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
     papirus-icon-theme
     kdePackages.elisa
