@@ -24,10 +24,10 @@
     ./programs/mime.nix
     ./programs/zed-editor.nix
     ./programs/rime.nix
+    ./programs/sdcv.nix
 
     # Desktop Linux
-    ./programs/gnome
-    ./programs/gnome/paperwm.nix
+    ./programs/plasma.nix
 
     # General Program config
     ../../modules/home/programs/nvim.nix
