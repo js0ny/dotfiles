@@ -1,11 +1,12 @@
 {...}: let
-  alias = {"v" = "nvim";};
+  nvimAlias = {"v" = "nvim";};
 in {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
   };
-  programs.fish.shellAbbrs = alias;
-  programs.bash.shellAliases = alias;
-  programs.zsh.shellAliases = alias;
+  programs.fish.shellAbbrs = nvimAlias;
+  programs.bash.shellAliases = nvimAlias;
+  programs.zsh.shellAliases = nvimAlias;
+  programs.nushell.shellAliases = nvimAlias;
 }

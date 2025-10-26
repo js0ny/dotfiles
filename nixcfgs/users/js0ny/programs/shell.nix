@@ -3,7 +3,7 @@
     g = "lazygit";
     ni = "touch";
     cls = "clear";
-    ii = "open";
+    ii = "xdg-open";
     aic = "aichat -s";
     aicc = "aichat -c";
     nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/nixcfgs";
@@ -26,6 +26,13 @@ in {
   programs.bash = {
     enable = true;
     shellAliases = commonAliases;
+  };
+  programs.nushell = {
+    enable = true;
+    shellAliases = commonAliases;
+    extraConfig = ''
+      $env.config.show_banner = false
+    '';
   };
   programs.zed-editor.extensions = ["fish"];
 }
