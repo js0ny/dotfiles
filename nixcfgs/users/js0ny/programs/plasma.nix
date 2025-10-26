@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    kdePackages.yakuake
+    # kdePackages.yakuake
     krunner-vscodeprojects
     jetbrains-runner
   ];
@@ -34,9 +34,10 @@
       };
     };
     shortcuts = {
-      yakuake = {
-        "toggle-window-state" = "Meta+`";
-      };
+      # Use Ghostty Instead
+      # yakuake = {
+      #   "toggle-window-state" = "Meta+`";
+      # };
     };
     input.touchpads = [
       {
