@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.distrobox = {
     enable = true;
     containers = {
@@ -12,6 +16,23 @@
           "sudo mkdir -p /opt/Xilinx"
         ];
       };
+    };
+  };
+  home.packages = with pkgs; [
+    wmname
+  ];
+  xdg.desktopEntries = {
+    "xilinx.vivado" = {
+      name = "Xilinx Vivado 2022.2";
+      type = "Application";
+      terminal = false;
+      exec = "distrobox enter Xilinx -- /opt/Xilinx/Vivado/2022.2/bin/vivado";
+    };
+    "xilinx.vitis" = {
+      name = "Xilinx Vitis 2022.2";
+      type = "Application";
+      terminal = false;
+      exec = "distrobox enter Xilinx -- bash ${config.home.homeDirectory}/.vitis-wr.sh";
     };
   };
 }

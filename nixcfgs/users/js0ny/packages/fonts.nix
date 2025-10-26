@@ -3,7 +3,7 @@
   fonts.fontconfig = {
     defaultFonts = {
       monospace = [
-        "Maple Mono NF"
+        "Maple Mono NF CN"
         "JetBrainsMono Nerd Font"
       ];
       serif = ["LXGW WenKai"];

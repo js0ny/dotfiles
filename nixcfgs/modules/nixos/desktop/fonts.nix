@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   fontPkgs = [
-    pkgs.maple-mono.NF
+    pkgs.maple-mono.CN
     pkgs.sarasa-gothic
     pkgs.lxgw-wenkai
     pkgs.lxgw-neoxihei
@@ -20,7 +20,7 @@ in {
       enable = true;
       defaultFonts = {
         monospace = [
-          "Maple Mono NF"
+          "Maple Mono NF CN"
           "JetBrainsMono Nerd Font"
         ];
         serif = ["LXGW WenKai"];

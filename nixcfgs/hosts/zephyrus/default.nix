@@ -14,7 +14,7 @@
     ../../modules/nixos/desktop/laptop.nix
 
     # hardware drivers
-    ../../modules/nixos/hardware/nvidia-disable.nix
+    ../../modules/nixos/hardware/nvidia.nix
 
     # udev rules
     ../../modules/nixos/hardware/udev/basys3.nix
@@ -22,7 +22,7 @@
     # desktop environment and display manager
     ../../modules/nixos/desktop/dm/sddm.nix
     ../../modules/nixos/desktop/de/kde.nix
-    ../../modules/nixos/desktop/de/sway.nix
+    ../../modules/nixos/desktop/de/niri.nix
 
     # desktop programs
     ../../modules/nixos/programs/chromium.nix

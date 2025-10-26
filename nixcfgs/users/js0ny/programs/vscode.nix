@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  alias = {"c" = "code";};
+  codeAlias = {"c" = "code";};
 in {
   programs.vscode = {
     package = pkgs.vscode;
@@ -16,7 +16,7 @@ in {
       vspacecode.whichkey
     ];
   };
-  programs.fish.shellAbbrs = alias;
-  programs.bash.shellAliases = alias;
-  programs.zsh.shellAliases = alias;
+  programs.fish.shellAbbrs = codeAlias;
+  programs.bash.shellAliases = codeAlias;
+  programs.zsh.shellAliases = codeAlias;
 }

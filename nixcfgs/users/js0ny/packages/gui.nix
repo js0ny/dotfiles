@@ -5,19 +5,26 @@
     kitty
     alacritty
     warp-terminal
+
     # Explorer
     kdePackages.dolphin
     kdePackages.dolphin-plugins # dolphin git integration
     kdePackages.konsole # dolphin terminal integration
     yazi # terminal file manager
+
     # PDF Viewer
     kdePackages.okular # default
     sioyek
+
     # Image Viewer
     vimiv-qt # Default
     loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
-    papirus-icon-theme
+
     kdePackages.elisa
+    mpv
+    haruna
+
+    papirus-icon-theme
     pcloud
     telegram-desktop
     steam
@@ -28,7 +35,6 @@
     (jetbrains.rider.override {
       vmopts = ''-Dawt.toolkit.name=WLToolkit'';
     })
-    haruna
     localsend
     neovide
     cherry-studio
@@ -39,7 +45,6 @@
     qbittorrent
     protonvpn-gui
     proton-pass
-    mpv
     neovim-qt
     goldendict-ng
     kdePackages.kdenlive
@@ -47,6 +52,8 @@
     steam-run
     bottles
     lutris
+    libreoffice
+    vivaldi
   ];
 
   xdg.desktopEntries = {

@@ -4,11 +4,14 @@
     krunner-vscodeprojects
     jetbrains-runner
   ];
+  home.sessionVariables = {
+    QT_STYLE_OVERRIDE = "Breeze";
+  };
   programs.plasma = {
     enable = true;
     session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
     fonts = {
-      fixedWidth.family = "Maple Mono NF";
+      fixedWidth.family = "Maple Mono NF CN";
       fixedWidth.pointSize = 10;
       general.family = "LXGW Neo XiHei";
       general.pointSize = 10;
@@ -121,7 +124,7 @@
   programs.kate.enable = true;
   programs.kate.editor = {
     font = {
-      family = "Maple Mono NF";
+      family = "Maple Mono NF CN";
       pointSize = 10;
     };
     inputMode = "vi";
@@ -134,7 +137,7 @@
         command = "${pkgs.fish}/bin/fish";
         colorScheme = "catppuccin-mocha";
         font = {
-          name = "Maple Mono NF";
+          name = "Maple Mono NF CN";
           size = 12;
         };
       };

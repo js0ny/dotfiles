@@ -7,5 +7,7 @@
     rofimoji
     rofi-power-menu
     swaylock-effects
+    xwayland-satellite
+    wmname
   ];
 }
