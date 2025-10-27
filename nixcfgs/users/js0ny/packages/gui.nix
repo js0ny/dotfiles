@@ -54,6 +54,7 @@
     lutris
     libreoffice
     vivaldi
+    rustdesk
 
     # Email
     protonmail-bridge
