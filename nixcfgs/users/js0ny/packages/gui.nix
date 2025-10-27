@@ -54,7 +54,14 @@
     lutris
     libreoffice
     vivaldi
+
+    # Email
+    protonmail-bridge
+    thunderbird
+    birdtray
   ];
+
+  services.protonmail-bridge.enable = true;
 
   xdg.desktopEntries = {
     # Force wayland when running goldendict-ng

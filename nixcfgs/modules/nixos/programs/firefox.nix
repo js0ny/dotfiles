@@ -18,6 +18,7 @@
       "browser.urlbar.update2.engineAliasRefresh" = true;
       "browser.newtabpage.activity-stream.showSponsored" = false;
       "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+      "toolkit.tabbox.switchByScrolling" = true;
     };
 
     policies = {

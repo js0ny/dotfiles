@@ -22,7 +22,6 @@
     # desktop environment and display manager
     ../../modules/nixos/desktop/dm/sddm.nix
     ../../modules/nixos/desktop/de/kde.nix
-    ../../modules/nixos/desktop/de/niri.nix
 
     # desktop programs
     ../../modules/nixos/programs/chromium.nix
@@ -31,6 +30,7 @@
     ../../modules/nixos/programs/obs-studio.nix
     ../../modules/nixos/programs/rime.nix
     ../../modules/nixos/programs/steam.nix
+    ../../modules/nixos/programs/thunderbird.nix
     ../../modules/nixos/programs/waydroid.nix
     ../../modules/nixos/programs/winboat.nix
     ../../modules/nixos/programs/wine.nix
