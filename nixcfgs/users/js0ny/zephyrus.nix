@@ -19,12 +19,16 @@
     ./programs/firefox.nix
     ./programs/emacs.nix
     ./programs/vscode.nix
-    ./programs/shell.nix
     ./programs/xilinx.nix
     ./programs/mime.nix
     ./programs/zed-editor.nix
     ./programs/rime.nix
     ./programs/sdcv.nix
+
+    # Shell
+    ./programs/shell/bash.nix
+    ./programs/shell/zsh.nix
+    ./programs/shell/fish.nix
 
     # Desktop Linux
     ./programs/plasma.nix
