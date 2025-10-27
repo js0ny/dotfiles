@@ -20,7 +20,7 @@
     ./programs/emacs.nix
     ./programs/vscode.nix
     ./programs/shell.nix
-    ./programs/distrobox.nix
+    ./programs/xilinx.nix
     ./programs/mime.nix
     ./programs/zed-editor.nix
     ./programs/rime.nix
