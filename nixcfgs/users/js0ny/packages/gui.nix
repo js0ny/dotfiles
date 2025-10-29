@@ -52,7 +52,6 @@
     steam-run
     bottles
     lutris
-    libreoffice
     vivaldi
     rustdesk
 

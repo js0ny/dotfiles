@@ -24,6 +24,9 @@
     ./programs/zed-editor.nix
     ./programs/rime.nix
     ./programs/sdcv.nix
+    ./programs/fzf.nix
+    ./programs/libreoffice.nix
+    ./programs/nvim.nix
 
     # Shell
     ./programs/shell/bash.nix
@@ -34,10 +37,8 @@
     ./programs/plasma.nix
 
     # General Program config
-    ../../modules/home/programs/nvim.nix
     ../../modules/home/programs/eza.nix
     ../../modules/home/programs/winboat.nix
-    ../../modules/home/programs/fzf.nix
     ../../modules/home/programs/lsd.nix
     ../../modules/home/programs/starship.nix
     ../../modules/home/programs/zoxide.nix
