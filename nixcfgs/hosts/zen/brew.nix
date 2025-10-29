@@ -21,50 +21,58 @@
     ];
 
     casks = [
-      "visual-studio-code"
-      "kitty"
-      "vivaldi"
-      "neovide"
-      "clash-verge-rev"
+      # Productivity
       "obsidian"
-      "alacritty"
-      "alt-tab"
-      "apparency"
-      "betterdisplay"
+      "raycast"
+      "TickTick"
+
+      # Networking
+      "wireshark-app"
+      "clash-verge-rev"
+
+      # Editor
+      "visual-studio-code"
+
+      # Browsers
+      "firefox"
+
+      # Terminal Emulator
+      "ghostty"
+      "kitty"
+
+      # Fonts
+      "font-maple-mono-nf-cn"
+
+      # Misc
+      "telegram-desktop"
+      "cherry-studio" # LLM Client
+      "steam"
       "discord"
-      "dotnet-sdk"
-      "iina"
-      "iterm2"
-      "karabiner-elements"
-      "keka"
+      "orbstack" # Docker runtime
+
+      # System Enhancement
+      "alt-tab" # Turn cmd-tab to windows behaviour
+      "karabiner-elements" # Keymapping
       "localsend"
-      "ltspice"
-      "orbstack"
+      "squirrel" # Input Method
+      "rustdesk" # Remote Desktop
+      "iina" # MPV Frontend
+      # TODO: I think karabiner is the superset
+      "scroll-reverser" # Natural scrolling for trackpad only
+      "sioyek" # Keyboard-driven PDF Reader
+      "skim" # PDF Reader
+      "keka" # GUI Unarchiver
+      "betterdisplay"
+
+      # Quicklook addons
+      "apparency"
       "qlcolorcode"
-      # "qlimagesize" discontinued.
       "qlmarkdown"
       "qlstephen"
       "qlvideo"
       "qspace-pro"
       "quicklook-json"
       "quicklookase"
-      "raycast"
-      "rider"
-      "rustdesk"
-      "scroll-reverser"
-      "sioyek"
-      "skim"
-      "squirrel"
-      "steam"
-      "telegram-desktop"
-      "Filen"
-      "TickTick"
-      "cherry-studio"
-      "firefox"
-      "wireshark-app"
-      "LibreWolf"
-      "brave-browser"
-      "font-maple-mono-nf-cn"
     ];
   };
 }

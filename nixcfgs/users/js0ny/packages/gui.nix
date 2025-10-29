@@ -54,6 +54,7 @@
     lutris
     vivaldi
     rustdesk
+    kdePackages.krdc
 
     # Email
     protonmail-bridge

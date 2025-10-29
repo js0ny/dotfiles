@@ -16,6 +16,7 @@ in {
     enableCompletion = true;
     dotDir = "${config.xdg.configHome}/zsh";
     shellAliases = aliases;
+    defaultKeymap = "emacs";
     syntaxHighlighting = {
       enable = true;
       patterns = {
@@ -29,18 +30,18 @@ in {
       ];
     };
     initContent = ''
-      # Emacs Hybrid
-      bindkey '^A' beginning-of-line
-      bindkey '^E' end-of-line
-      bindkey '^F' forward-char
-      bindkey '^B' backward-char
-      bindkey '^P' up-line-or-history
-      bindkey '^N' down-line-or-history
-      # bindkey '^R' history-incremental-search-backward # Use fzf
-      bindkey '^K' kill-line
-
-      bindkey -M viins '^?' backward-delete-char
-      bindkey -M viins '^H' backward-kill-word
+      # # Emacs Hybrid
+      # bindkey '^A' beginning-of-line
+      # bindkey '^E' end-of-line
+      # bindkey '^F' forward-char
+      # bindkey '^B' backward-char
+      # bindkey '^P' up-line-or-history
+      # bindkey '^N' down-line-or-history
+      # # bindkey '^R' history-incremental-search-backward # Use fzf
+      # bindkey '^K' kill-line
+      #
+      # bindkey -M viins '^?' backward-delete-char
+      # bindkey -M viins '^H' backward-kill-word
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
     '';
   };

@@ -32,7 +32,7 @@
     ./programs/fzf.nix
     ./programs/libreoffice.nix
     ./programs/nvim.nix
-
+    ./programs/ollama.nix
 
     # Desktop Linux
     ./programs/plasma.nix

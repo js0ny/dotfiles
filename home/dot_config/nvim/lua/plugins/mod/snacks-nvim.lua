@@ -71,14 +71,15 @@ return {
       },
     },
     -- stylua: ignore end
-    -- explorer = {
-    -- },
+    explorer = {
+      enabled = true,
+    },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
     scope = { enabled = true },
-    scroll = { enabled = true },
+    scroll = { enabled = false },
     statuscolumn = { enabled = true },
     -- words = { enabled = true },
     image = {
@@ -88,12 +89,12 @@ return {
     },
   },
   keys = {
-    -- {
-    --   "<leader>ft",
-    --   function()
-    --     require("snacks").explorer()
-    --   end,
-    --   desc = "Toggle File Explorer",
-    -- },
+    {
+      "<leader>ft",
+      function()
+        require("snacks").explorer()
+      end,
+      desc = "Toggle File Explorer",
+    },
   },
 }

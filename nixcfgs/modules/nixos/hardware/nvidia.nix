@@ -15,4 +15,5 @@
     enable = true;
     enable32Bit = true;
   };
+  services.ollama.acceleration = "cuda";
 }

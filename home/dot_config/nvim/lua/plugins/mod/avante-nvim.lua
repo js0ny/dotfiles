@@ -6,14 +6,11 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "openai",
-    openai = {
-      endpoint = "https://aihubmix.com/v1",
-      model = "claude-3-7-sonnet-20250219", -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000,                      -- timeout in milliseconds
-      temperature = 0,                      -- adjust if needed
-      max_tokens = 4096,
-      -- reasoning_effort = "high"    -- only supported for "o" models
+    providers = {
+      openai = {
+        endpoint = "https://openrouter.ai/v1",
+        model = "x-ai/grok-code-fast-1",
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -27,9 +24,9 @@ return {
     --- The below dependencies are optional,
     -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
     "ibhagwan/fzf-lua",
-    "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua",      -- for providers='copilot'
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
     "HakonHarnes/img-clip.nvim",
   },
 }
