@@ -30,9 +30,6 @@
     isNormalUser = true;
     extraGroups = [
       "wheel"
-      "docker"
-      "libvirtd"
-      "dialout"
     ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJToUo2jT3qt7eHIME9e1awabZZVmtKhbxwVz9BMSM2d js0ny@zephyrus"

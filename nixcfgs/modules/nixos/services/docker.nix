@@ -1,7 +1,10 @@
-{pkgs, ...}: {
+{config, ...}: {
   virtualisation = {
     docker.enable = true;
     podman.enable = true;
+  };
+  users.users.${config.var.username} = {
+    extraGroups = ["docker" "podman"];
   };
 
   # systemd.services.docker = {

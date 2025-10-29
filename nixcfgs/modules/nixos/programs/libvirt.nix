@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     virt-manager
     dnsmasq
@@ -13,7 +17,7 @@
       swtpm.enable = true;
     };
   };
-  users.users.js0ny = {
+  users.users.${config.var.username} = {
     extraGroups = ["libvirtd"];
   };
   networking.firewall.trustedInterfaces = ["virbr0"];
