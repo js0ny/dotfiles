@@ -5,7 +5,7 @@ return {
 
   -- use a release tag to download pre-built binaries
   version = "*",
-  event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -47,6 +47,16 @@ return {
 
     snippets = {
       preset = "luasnip",
+    },
+
+    cmdline = {
+      keymap = {
+        preset = "cmdline",
+        ["<CR>"] = { "fallback" },
+      },
+      completion = {
+        menu = { auto_show = true },
+      },
     },
 
     sources = {

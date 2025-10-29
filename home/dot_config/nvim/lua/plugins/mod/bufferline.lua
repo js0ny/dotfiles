@@ -21,6 +21,7 @@ return {
     { "<leader>b7", "<cmd>BufferLineGotoBuffer 7<CR>", desc = "Switch to Buffer #7" },
     { "<leader>b8", "<cmd>BufferLineGotoBuffer 8<CR>", desc = "Switch to Buffer #8" },
     { "<leader>b9", "<cmd>BufferLineGotoBuffer 9<CR>", desc = "Switch to Buffer #9" },
+    { "<leader>b#", "<cmd>BufferLineGotoBuffer #<CR>", desc = "Switch to Buffer #" },
     { "<leader>bb", "<cmd>BufferLinePick<CR>", desc = "Quick Switch Buffers" },
     { "<leader>bD", "<cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
     { "<leader>bxx", "<cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
@@ -48,7 +49,7 @@ return {
       offsets = {
         { filetype = "NvimTree", text = "资源管理器", text_align = "center" },
       },
-      separator_style = "thin",
+      separator_style = "slope",
     },
     highlights = get_highlight(),
   },

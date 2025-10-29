@@ -20,7 +20,7 @@ local config = {
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     -- theme = "catppuccin",
-    theme = vim.g.colors_name,
+    theme = "auto",
     -- IDE-like Global Status
     globalstaus = true,
   },

@@ -93,7 +93,8 @@
     "Nix": {
       "formatter": {
         "external": {
-          "command": "alejandra"
+          "command": "alejandra",
+          "arguments": ["--quiet", "--"]
         }
       },
       "completions": {

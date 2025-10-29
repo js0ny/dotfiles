@@ -1,6 +1,6 @@
 return {
-  { "nvim-lua/plenary.nvim",               lazy = true },
-  { "wakatime/vim-wakatime",               lazy = false },
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "wakatime/vim-wakatime", lazy = false },
   { import = "plugins.mod.toggleterm" },
   { import = "plugins.mod.which-keys-nvim" },
   -- { import = "plugins.mod.copilot-lua" },
@@ -23,6 +23,6 @@ return {
       -- configuration goes here
     },
   },
-  { import = "plugins.mod.image-nvim" },
+  -- { import = "plugins.mod.image-nvim" },
   { import = "plugins.mod.snacks-nvim" },
 }

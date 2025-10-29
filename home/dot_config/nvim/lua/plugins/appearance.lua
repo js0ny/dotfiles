@@ -23,7 +23,7 @@ return {
       integrations = {
         -- lualine = true,
         "lualine",
-        "blink_cmp"
+        "blink_cmp",
       },
     },
   },
@@ -35,7 +35,7 @@ return {
     },
     cmd = "FzfLua colorschemes",
   },
-  { "rebelot/kanagawa.nvim",          cmd = "FzfLua colorschemes" },
+  { "rebelot/kanagawa.nvim", cmd = "FzfLua colorschemes" },
   { -- Modern Status Line
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -76,25 +76,25 @@ return {
   --   },
   -- },
   { import = "plugins.mod.bufferline" }, -- Buffer Top Bar
-  {                                      -- Git Blames, Changes
+  { -- Git Blames, Changes
     "lewis6991/gitsigns.nvim",
     opts = {
       current_line_blame = true,
     },
     event = "BufReadPre",
     keys = {
-      { "<leader>gb", "<cmd>Gitsigns blame<CR>",                     desc = "Blame file" },
-      { "<leader>gd", "<cmd>Gitsigns diffthis<CR>",                  desc = "Diff file" },
+      { "<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Blame file" },
+      { "<leader>gd", "<cmd>Gitsigns diffthis<CR>", desc = "Diff file" },
       { "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Toggle line blame" },
-      { "[g",         "<cmd>Gitsigns prev_hunk<CR>",                 desc = "Prev hunk" },
-      { "]g",         "<cmd>Gitsigns next_hunk<CR>",                 desc = "Next hunk" },
+      { "[g", "<cmd>Gitsigns prev_hunk<CR>", desc = "Prev hunk" },
+      { "]g", "<cmd>Gitsigns next_hunk<CR>", desc = "Next hunk" },
     },
   },
-  -- { -- Highlight and navigate between TODOs
-  --   "folke/todo-comments.nvim",
-  --   cmd = { "TodoTelescope" },
-  --   event = "BufRead",
-  --   opts = {},
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  -- },
+  { -- Highlight and navigate between TODOs
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTelescope" },
+    event = "BufRead",
+    opts = {},
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 }

@@ -66,6 +66,9 @@ return {
       telemetry = {
         enable = false,
       },
+      diagnostics = {
+        globals = { "vim" },
+      },
       -- Lua LS offers a code formatter
       -- Ref: https://github.com/LuaLS/lua-language-server/wiki/Formatter
       -- format = {
