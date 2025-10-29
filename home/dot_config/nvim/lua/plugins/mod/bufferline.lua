@@ -26,7 +26,7 @@ return {
     { "<leader>bD", "<cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
     { "<leader>bxx", "<cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
     { "<leader>bxh", "<cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers Left" },
-    { "<leader>bxi", "<cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers Right" },
+    { "<leader>bxl", "<cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers Right" },
     { "<leader>bX", "<cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
     { "<leader>bt", "<cmd>BufferLineTogglePin<CR>", desc = "Pin Buffer" },
   },

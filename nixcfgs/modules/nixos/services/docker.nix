@@ -3,7 +3,7 @@
     docker.enable = true;
     podman.enable = true;
   };
-  users.users.${config.var.username} = {
+  users.users.js0ny = {
     extraGroups = ["docker" "podman"];
   };
 

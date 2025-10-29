@@ -24,6 +24,7 @@
     ../../modules/nixos/desktop/de/kde.nix
 
     # desktop programs
+    ../../modules/nixos/programs/zsh.nix
     ../../modules/nixos/programs/chromium.nix
     ../../modules/nixos/programs/firefox.nix
     ../../modules/nixos/programs/libvirt.nix

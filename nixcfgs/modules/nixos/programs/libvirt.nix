@@ -17,7 +17,7 @@
       swtpm.enable = true;
     };
   };
-  users.users.${config.var.username} = {
+  users.users.js0ny = {
     extraGroups = ["libvirtd"];
   };
   networking.firewall.trustedInterfaces = ["virbr0"];

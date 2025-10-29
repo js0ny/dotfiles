@@ -43,6 +43,7 @@ bindkey '^K' kill-line
 # Zsh will parse <C-Backspace> to C-h
 bindkey '^H' backward-kill-word
 
+bindkey -M viins '^?' backward-delete-char
 # LEADER CONVENTION
 # ^X defines as a prefix key in shell
 # ^A defines as a prefix key in tmux

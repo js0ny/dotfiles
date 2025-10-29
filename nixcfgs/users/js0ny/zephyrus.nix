@@ -14,6 +14,11 @@
     ./packages/fonts.nix
     ./packages/catppuccin.nix
 
+    # Shell
+    ./programs/shell/bash.nix
+    ./programs/shell/zsh.nix
+    ./programs/shell/fish.nix
+
     # Personal Program
     ./programs/chromium.nix
     ./programs/firefox.nix
@@ -28,10 +33,6 @@
     ./programs/libreoffice.nix
     ./programs/nvim.nix
 
-    # Shell
-    ./programs/shell/bash.nix
-    ./programs/shell/zsh.nix
-    ./programs/shell/fish.nix
 
     # Desktop Linux
     ./programs/plasma.nix

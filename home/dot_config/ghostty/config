@@ -21,7 +21,7 @@ window-decoration = auto
 
 ### Commands
 
-command = fish
+command = zsh
 env = EDITOR=nvim
 
 ### Keybindings

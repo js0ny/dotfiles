@@ -49,7 +49,6 @@ in {
     end
     abbr --add ef edit-fzf
   '';
-  # TODO: Add integraiton for bash, zsh
   programs.bash.bashrcExtra = editFzfPosix;
   programs.zsh.initContent = editFzfPosix;
 }
