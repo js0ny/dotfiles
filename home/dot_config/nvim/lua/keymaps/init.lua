@@ -17,24 +17,14 @@ utils.set_keymaps(keymaps_basic)
 utils.set_keymaps(keymaps_nvim_tree_general)
 utils.set_keymaps(keymaps_modifier)
 
-M.nvim_tree_keymaps = require("keymaps.nvim-tree").plugin
-
--- local function set_markdown_keymaps(bufnr)
---   local opts = { noremap = true, silent = true, buffer = bufnr }
---   vim.keymap.set("v", "`", 'c`<C-r>"`<Esc>', opts)
--- end
-
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "markdown",
---   callback = function()
---     set_markdown_keymaps(0)
---   end,
--- })
+-- Added in neovim 0.11
+-- vim.keymap.del({ "n", "x" }, "grn")
+vim.keymap.del({ "n", "x" }, "gra")
+vim.keymap.del({ "n" }, "gri")
 
 -- which-key.nvim
 if vim.g.loaded_which_key then
   require("keymaps.which")
 end
-require("keymaps.visual-multi")
 
 return M

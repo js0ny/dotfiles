@@ -20,7 +20,7 @@ else
 end
 require("config.keymaps")
 require("config.diagnostics")
-require("config.migration")
+require("config.lsp")
 
 -- If current session is spawn by neovide, do:
 if vim.g.neovide then

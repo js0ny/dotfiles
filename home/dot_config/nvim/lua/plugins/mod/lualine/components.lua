@@ -80,6 +80,9 @@ M.command = {
 M.encoding = {
   "o:encoding",
   color = { fg = colors.scheme.green, gui = "bold" },
+  cond = function()
+    return vim.opt.encoding:get() ~= "utf-8"
+  end,
 }
 
 M.indent = {
