@@ -1,7 +1,7 @@
 // vim:foldmethod=marker:foldmarker=#region,#endregion:foldlevel=0
 // Paste this into surfingkeys advanced settings
 // or use:
-// Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/misc/browser/surfingkeys.js
+// Load settings from: https://raw.githubusercontent.com/js0ny/dotfiles/refs/heads/master/misc/browser/surfingkeys+colemak.js
 // Browse to Extension > Surfingkeys > Allow access to file URLs to enable local file access
 // Windows: file:///C:/Users/username/.dotfiles/tools/browser/surfingkeys.js
 // Linux: file:///home/username/.dotfiles/tools/browser/surfingkeys.js
@@ -186,22 +186,33 @@ const qs = (selector) => document.querySelectorAll(selector);
 // #region Keymap
 // Normal Mode Keymap
 const mapLists = {
-  // Prev History < H - L > Next History
-  H: "S",
-  L: "D",
-  // J,K -> Up/Down HalfPage
-  // J: "d",
-  // K: "e",
+  /// scroll page
+  // Arrow
+  n: "j",
+  e: "k",
+  i: "l",
+  // l <-> i
+  l: "gi", // Focus on first input box by default
+  L: "I",
+  // k <-> n
+  k: "n",
+  K: "N",
+  // j <-> e
+  j: "e",
+  // PrevTab < H - I > NextTab
+  H: "E",
+  I: "R",
+  // E,N -> Up/Down HalfPage
+  N: "d",
+  E: "e",
   // F -> Open Link in New Tab
   F: "af",
   // oH -> Tab History
   oH: "H",
-  // gh/gl -> Prev/Next Tab
-  gh: "E",
-  gl: "R",
-  "<Alt-h>": "E",
-  "<Alt-l>": "R",
-  gi: "i", // Use `gl` to search and focus on input box
+  // gh/gi -> Prev/Next History
+  gh: "S",
+  gi: "D",
+  gl: "i", // Use `gl` to search and focus on input box
   // t -> Open Link in New Tab
   t: "gf",
   // 缩放
@@ -209,12 +220,25 @@ const mapLists = {
   zo: "ze",
   zz: "zr",
 };
+// Visual Mode Keymap
+const vMapLists = {
+  n: "j",
+  N: "J",
+  e: "k",
+  E: "K",
+  i: "l",
+  I: "L",
+  j: "e",
+  J: "E",
+  k: "n",
+  K: "N",
+};
 
 forwardFactory.push(mapLists);
 forwardFactory.map(mapLists);
 
-// vForwardFactory.push(vMapLists);
-// vForwardFactory.map(vMapLists);
+vForwardFactory.push(vMapLists);
+vForwardFactory.map(vMapLists);
 
 // All other unmapped keys should be defined here
 // TODO: Add more mouse click keymap
@@ -225,22 +249,20 @@ api.map("g/", "gU"); // Goto Root Domain
 api.unmap("<space>"); // Leader Key
 
 forwardFactory.pull(mapLists);
-// vForwardFactory.pull(vMapLists);
+vForwardFactory.pull(vMapLists);
 
 api.map("gH", "g/");
-api.map("J", "d");
-api.map("K", "e");
 // #endregion
 
 // #region Omnibar NOTE: Dosn't work
-api.cmap("<Ctrl-a>", "<Ctrl-ArrowUp>");
-api.cmap("<Ctrl-e>", "<Ctrl-ArrowDown>");
-api.cmap("<Ctrl-f>", "<ArrowRight>");
-api.cmap("<Ctrl-b>", "<ArrowLeft>");
-api.cmap("<Alt-f>", "<Ctrl-ArrowRight>");
-api.cmap("<Alt-b>", "<Ctrl-ArrowLeft>");
-api.cmap("<Ctrl-h>", "<Backspace>");
-api.cmap("<Ctrl-d>", "<Delete>");
+// api.cmap("<Ctrl-a>", "<Ctrl-ArrowUp>");
+// api.cmap("<Ctrl-e>", "<Ctrl-ArrowDown>");
+// api.cmap("<Ctrl-f>", "<ArrowRight>");
+// api.cmap("<Ctrl-b>", "<ArrowLeft>");
+// api.cmap("<Alt-f>", "<Ctrl-ArrowRight>");
+// api.cmap("<Alt-b>", "<Ctrl-ArrowLeft>");
+// api.cmap("<Ctrl-h>", "<Backspace>");
+// api.cmap("<Ctrl-d>", "<Delete>");
 // #endregion
 
 // #region Search Alias
@@ -276,7 +298,6 @@ const searchAliases = [
   ["gg", "Google", "https://www.google.com/search?q="],
   ["mc", "Metacritic", "https://www.metacritic.com/search/"],
   ["nx", "NixPackages", "https://search.nixos.org/packages?query="],
-  ["no", "NixOptions", "https://search.nixos.org/options?query="],
   ["ng", "NuGet", "https://www.nuget.org/packages?q="],
   ["np", "npm", "https://www.npmjs.com/search?q="],
   ["pa", "Pacman", "https://archlinux.org/packages/?q="],
@@ -905,13 +926,103 @@ mapkey(
 
 // #region ACE Editor
 addVimMapKey(
+  // Navigation
+  {
+    keys: "k",
+    type: "motion",
+    motion: "findNext",
+    motionArgs: { forward: true, toJumplist: true },
+  },
+  {
+    keys: "K",
+    type: "motion",
+    motion: "findNext",
+    motionArgs: { forward: false, toJumplist: true },
+  },
+  // Word movement
+  {
+    keys: "j",
+    type: "motion",
+    motion: "moveByWords",
+    motionArgs: { forward: true, wordEnd: true, inclusive: true },
+  },
+  {
+    keys: "J",
+    type: "motion",
+    motion: "moveByWords",
+    motionArgs: {
+      forward: true,
+      wordEnd: true,
+      bigWord: true,
+      inclusive: true,
+    },
+  },
+  // Insert mode entries
+  {
+    keys: "l",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "inplace" },
+    context: "normal",
+  },
+  {
+    keys: "gl",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "lastEdit" },
+    context: "normal",
+  },
+  {
+    keys: "L",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "firstNonBlank" },
+    context: "normal",
+  },
+  {
+    keys: "gL",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "bol" },
+    context: "normal",
+  },
+  {
+    keys: "L",
+    type: "action",
+    action: "enterInsertMode",
+    isEdit: true,
+    actionArgs: { insertAt: "startOfSelectedArea" },
+    context: "visual",
+  },
+  {
+    keys: "n",
+    type: "motion",
+    motion: "moveByLines",
+    motionArgs: { forward: true, linewise: true },
+  },
+  {
+    keys: "e",
+    type: "motion",
+    motion: "moveByLines",
+    motionArgs: { forward: false, linewise: true },
+  },
+  {
+    keys: "i",
+    type: "motion",
+    motion: "moveByCharacters",
+    motionArgs: { forward: true },
+  },
   {
     keys: "H",
     type: "keyToKey",
     toKeys: "^",
   },
   {
-    keys: "L",
+    keys: "I",
     type: "keyToKey",
     toKeys: "$",
   },
@@ -925,5 +1036,5 @@ addVimMapKey(
 // #endregion
 
 // #region Hints
-api.Hints.setCharacters("qwertasdfgzx"); // Left-hand keys
+api.Hints.setCharacters("qwfpgarstdcv"); // Left-hand keys
 // #endregion
