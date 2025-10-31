@@ -37,5 +37,5 @@ return {
   --     "Neogit",
   --   },
   -- },
-  -- { import = "plugins.mod.neo-tree" },
+  { import = "plugins.mod.neo-tree" },
 }

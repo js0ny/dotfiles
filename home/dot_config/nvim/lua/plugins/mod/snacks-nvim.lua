@@ -71,9 +71,9 @@ return {
       },
     },
     -- stylua: ignore end
-    explorer = {
-      enabled = true,
-    },
+    -- explorer = {
+    --   enabled = true,
+    -- },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true },
@@ -88,13 +88,13 @@ return {
       img_dirs = { "90 - System/Assets" },
     },
   },
-  keys = {
-    {
-      "<leader>ft",
-      function()
-        require("snacks").explorer()
-      end,
-      desc = "Toggle File Explorer",
-    },
-  },
+  -- keys = {
+  --   {
+  --     "<leader>ft",
+  --     function()
+  --       require("snacks").explorer()
+  --     end,
+  --     desc = "Toggle File Explorer",
+  --   },
+  -- },
 }

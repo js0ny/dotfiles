@@ -11,7 +11,8 @@
       X-KDE-StartupNotify=false
 
       [Desktop Action convertToPDF]
-      Name=转换为 PDF
+      Name=Convert to PDF
+      Name[CN]=转换为 PDF
       Icon=application-pdf
       Exec=soffice --headless --convert-to pdf "%f" --outdir .
     '';

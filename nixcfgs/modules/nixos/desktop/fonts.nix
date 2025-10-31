@@ -1,13 +1,14 @@
 {pkgs, ...}: let
   fontPkgs = [
-    pkgs.maple-mono.CN
-    pkgs.sarasa-gothic
+    pkgs.maple-mono.NF-CN
     pkgs.lxgw-wenkai
     pkgs.lxgw-neoxihei
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts
     pkgs.noto-fonts-emoji
     pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nur.repos.definfo.sarasa-term-sc-nerd
+    pkgs.vollkorn
   ];
 in {
   environment.systemPackages = fontPkgs;
@@ -21,6 +22,7 @@ in {
       defaultFonts = {
         monospace = [
           "Maple Mono NF CN"
+          "Sarasa Term SC Nerd"
           "JetBrainsMono Nerd Font"
         ];
         serif = ["LXGW WenKai"];
