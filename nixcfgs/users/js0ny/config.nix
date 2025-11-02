@@ -5,6 +5,4 @@
     defaultTerminalRunner = "alacritty";
     iconTheme = "Papirus";
   };
-  currentHost = {
-  };
 }
