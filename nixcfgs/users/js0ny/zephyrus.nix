@@ -36,6 +36,7 @@
 
     # Desktop Linux
     ./programs/plasma.nix
+    ./programs/niri.nix
 
     # General Program config
     ../../modules/home/programs/eza.nix

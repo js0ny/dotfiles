@@ -55,6 +55,8 @@
     vivaldi
     rustdesk
     kdePackages.krdc
+    kdePackages.breeze
+    zotero
 
     # Email
     protonmail-bridge

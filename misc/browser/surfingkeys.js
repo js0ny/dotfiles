@@ -202,6 +202,7 @@ const mapLists = {
   "<Alt-h>": "E",
   "<Alt-l>": "R",
   gi: "i", // Use `gl` to search and focus on input box
+  i: "gi",
   // t -> Open Link in New Tab
   t: "gf",
   // 缩放
@@ -218,7 +219,7 @@ forwardFactory.map(mapLists);
 
 // All other unmapped keys should be defined here
 // TODO: Add more mouse click keymap
-api.unmap("gi"); // conflict with `gi` in `mapLists`
+// api.unmap("gi"); // conflict with `gi` in `mapLists`
 api.unmap("C"); // Use `F` instead (Open Link in New Tab)
 api.map("g/", "gU"); // Goto Root Domain
 // TODO: Add SPC keymap as leader (maybe change `,` to `SPC`)

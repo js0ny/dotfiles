@@ -48,4 +48,8 @@
     wl-clipboard
     libnotify
   ];
+
+  xdg.portal = {
+    wlr.enable = true;
+  };
 }

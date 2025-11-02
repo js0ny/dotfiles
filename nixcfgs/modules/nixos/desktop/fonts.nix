@@ -9,6 +9,7 @@
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.nur.repos.definfo.sarasa-term-sc-nerd
     pkgs.vollkorn
+    pkgs.font-awesome
   ];
 in {
   environment.systemPackages = fontPkgs;

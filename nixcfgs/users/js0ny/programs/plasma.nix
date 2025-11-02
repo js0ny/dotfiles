@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     # kdePackages.yakuake
     krunner-vscodeprojects
@@ -20,7 +24,7 @@
       position = "center";
     };
     workspace = {
-      iconTheme = "Papirus";
+      iconTheme = "${config.currentUser.iconTheme}";
       colorScheme = "BreezeDark";
     };
     kwin = {

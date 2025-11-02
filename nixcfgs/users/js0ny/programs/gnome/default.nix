@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.sessionVariables = {
     QT_STYLE_OVERRIDE = "adwaita";
   };
@@ -42,7 +46,7 @@
     "org/gnome/desktop/interface" = {
       clock-show-seconds = true;
       clock-show-weekday = true;
-      icon-theme = "Papirus";
+      icon-theme = "${config.currentUser.iconTheme}";
       accent-color = "pink";
       show-battery-percentage = true;
       cursor-theme = "Adwaita";
@@ -107,12 +111,12 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1" = {
       name = "Open Terminal via Win-R";
-      command = "ghostty";
+      command = "${config.currentUser.defaultTerminal}";
       binding = "<Super>r";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2" = {
       name = "Open Terminal via Ctrl-Alt-T";
-      command = "ghostty";
+      command = "${config.currentUser.defaultTerminal}";
       binding = "<Ctrl><Alt>t";
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {

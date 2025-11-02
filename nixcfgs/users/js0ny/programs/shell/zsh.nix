@@ -11,6 +11,7 @@ in {
   programs.zsh = {
     enable = true;
     autocd = true;
+    # oh-my-zsh.enable = true;
     autosuggestion.enable = true;
     historySubstringSearch.enable = true;
     enableCompletion = true;
@@ -42,6 +43,10 @@ in {
       #
       # bindkey -M viins '^?' backward-delete-char
       # bindkey -M viins '^H' backward-kill-word
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|=*'
+
+      # fzf-tab 模糊匹配
+      zstyle ':fzf-tab:*' use-fzf-default-bindings yes
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
     '';
   };
