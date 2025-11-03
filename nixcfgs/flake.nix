@@ -21,7 +21,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     nur.url = "github:nix-community/NUR";
-    winboat.url = "github:TibixDev/winboat";
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,7 +37,6 @@
     home-manager,
     plasma-manager,
     nur,
-    winboat,
     caelestia-shell,
     agenix,
     ...
@@ -46,7 +44,6 @@
     overlays = [
       nur.overlays.default
       (final: prev: {
-        winboat = winboat.packages.x86_64-linux.winboat;
         caelestia-shell = caelestia-shell.packages.x86_64-linux.caelestia-shell;
       })
     ];

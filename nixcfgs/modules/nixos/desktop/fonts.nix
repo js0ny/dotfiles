@@ -5,7 +5,7 @@
     pkgs.lxgw-neoxihei
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts
-    pkgs.noto-fonts-emoji
+    pkgs.noto-fonts-color-emoji
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.nur.repos.definfo.sarasa-term-sc-nerd
     pkgs.vollkorn

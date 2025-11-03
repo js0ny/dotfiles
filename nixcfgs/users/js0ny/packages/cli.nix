@@ -51,5 +51,6 @@
     powershell-editor-services
     package-version-server
     gemini-cli
+    codex
   ];
 }
