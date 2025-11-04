@@ -1,5 +1,9 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     # General config
     ./default.nix
@@ -55,6 +59,26 @@
     ../../modules/home/dev/typst.nix
     ../../modules/home/dev/verilog.nix
   ];
+
+  home.packages = with pkgs; [
+    rose-pine-cursor
+  ];
+
+  sops = {
+    # enable = true;
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    age.generateKey = true;
+    secrets = {
+      "OPENROUTER_API_KEY" = {
+        key = "openrouter_api";
+      };
+    };
+  };
+
+  home.sessionVariables = {
+    OPENROUTER_API_KEY = "$(cat ${config.sops.secrets."OPENROUTER_API_KEY".path})";
+  };
 
   home.stateVersion = "25.05";
 }

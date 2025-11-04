@@ -25,7 +25,10 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix.url = "github:ryantm/agenix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -38,7 +41,7 @@
     plasma-manager,
     nur,
     caelestia-shell,
-    agenix,
+    sops-nix,
     ...
   } @ inputs: let
     overlays = [
@@ -65,7 +68,7 @@
         system = "x86_64-linux";
         inherit specialArgs;
         modules = [
-          agenix.nixosModules.default
+          sops-nix.nixosModules.sops
           ./hosts/${hostname}
           {nixpkgs.overlays = overlays;}
         ];
@@ -98,6 +101,7 @@
           ./users/js0ny/zephyrus.nix
           plasma-manager.homeModules.plasma-manager
           nix-flatpak.homeManagerModules.nix-flatpak
+          sops-nix.homeManagerModules.sops
         ];
       };
       "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {
