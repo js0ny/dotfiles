@@ -24,6 +24,7 @@
     # "com.vivaldi.Vivaldi"
     "com.getpostman.Postman"
     "us.zoom.Zoom"
+    "com.ticktick.Ticktick"
   ];
   services.flatpak.overrides = {
     global = {
@@ -48,6 +49,7 @@
       };
     };
     "md.obsidian.Obsidian".Context.sockets = ["wayland"];
+    "com.ticktick.Ticktick".Context.sockets = ["wayland"];
     "com.getpostman.Postman".Context.persistent = ["Postman"];
   };
 }

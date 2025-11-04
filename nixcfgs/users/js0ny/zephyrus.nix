@@ -35,8 +35,8 @@
     ./programs/ollama.nix
 
     # Desktop Linux
-    ./programs/plasma.nix
-    ./programs/niri.nix
+    ./programs/desktop/plasma.nix
+    ./programs/desktop/sway.nix
 
     # General Program config
     ../../modules/home/programs/eza.nix

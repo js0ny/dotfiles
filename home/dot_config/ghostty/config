@@ -7,7 +7,7 @@
 font-size = 13
 font-family = "Maple Mono NF CN"
 theme = light:Catppuccin Latte,dark:Catppuccin Mocha
-background-opacity = 0.8
+# background-opacity = 0.8
 
 cursor-style = block_hollow
 cursor-style-blink = true

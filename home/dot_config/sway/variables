@@ -1,0 +1,16 @@
+# vim:ft=swayconfig
+
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+set $term kitty
+set $term_runner kitty
+set $explorer dolphin
+set $explorer_cli "yazi"
+set $icon_theme Papirus
+set $menu rofi
+set $launcher rofi -show drun -icon-theme $icon_theme -show-icons

@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     swaybg
     swayidle
-    mako
+    dunst
     rofi
     rofimoji
     rofi-power-menu

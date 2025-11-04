@@ -1,0 +1,21 @@
+# vim:ft=swayconfig
+
+# https://gitlab.com/that1communist/dotfiles/-/blob/master/.config/sway/modules/win-rules
+
+# for_window [title=".*Picture in picture.*"] floating enable,
+
+set {
+	$ii inhibit_idle focus
+	$game inhibit_idle focus; floating enable; border none; fullscreen enable; shadows disable
+	$popup floating enable; border pixel 1; sticky enable; shadows enable
+	$float floating enable; border pixel 1; shadows enable
+	$video inhibit_idle fullscreen; border none; max_render_time off
+	$important inhibit_idle open; floating enable; border pixel 1
+	$max inhibit_idle visible; floating enable; sticky enable; border pixel 1
+}
+
+
+for_window [title="^Picture in picture.*$"] $popup
+
+# Generic rules for file dialog
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
