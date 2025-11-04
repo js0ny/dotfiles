@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     # Terminal Emulator
     ghostty # default
@@ -57,6 +61,7 @@
     kdePackages.krdc
     kdePackages.breeze
     zotero
+    anki-bin
 
     # Email
     protonmail-bridge
@@ -64,35 +69,42 @@
     birdtray
   ];
 
-  services.protonmail-bridge.enable = true;
+  home.sessionVariables = {
+    ANKI_WAYLAND = 1;
+    GOLDENDICT_FORCE_WAYLAND = 1;
+    NIXOS_OZONE_WL = 1;
+  };
 
   xdg.desktopEntries = {
-    # Force wayland when running goldendict-ng
-    "io.github.xiaoyifang.goldendict_ng" = {
-      name = "GoldenDict-ng";
-      genericName = "Multiformat Dictionary";
-      comment = "A feature-rich dictionary lookup program";
-      icon = "goldendict";
+    "anki" = {
+      name = "Anki";
+      genericName = "Flashcards";
+      comment = "An intelligent spaced-repetition memory training program";
+      icon = "anki";
       type = "Application";
       terminal = false;
       categories = [
-        "Office"
-        "Dictionary"
         "Education"
+        "Languages"
+        "KDE"
         "Qt"
       ];
       mimeType = [
-        "x-scheme-handler/goldendict"
-        "x-scheme-handler/dict"
+        "application/x-apkg"
+        "application/x-anki"
+        "application/x-ankiaddon"
       ];
-      exec = "env GOLDENDICT_FORCE_WAYLAND=1 ${pkgs.goldendict-ng}/bin/goldendict %u";
+      # Should specify wayland and IME used
+      exec = "env ANKI_WAYLAND=1 QT_IM_MODULE=fcitx anki %f";
       settings = {
-        "GenericName[zh_CN]" = "多格式字典";
-        "Comment[zh_CN]" = "多功能字典查询软件";
-        "Keywords" = "dict;dictionary";
-        "Keywords[zh_CN]" = "dict;dictionary;字典;";
-        "StartupWMClass" = "GoldenDict-ng";
+        "TryExec" = "anki";
+        "Version" = "1.0";
+        "X-GNOME-SingleWindow" = "true";
+        "SingleMainWindow" = "true";
+        "StartupWMClass" = "anki";
       };
     };
   };
+
+  services.protonmail-bridge.enable = true;
 }

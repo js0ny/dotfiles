@@ -35,6 +35,7 @@
     ../../modules/nixos/programs/thunderbird.nix
     ../../modules/nixos/programs/waydroid.nix
     ../../modules/nixos/programs/wine.nix
+    ../../modules/nixos/programs/dolphin.nix
 
     # services
     ../../modules/nixos/services/docker.nix
