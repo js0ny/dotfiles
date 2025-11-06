@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  aliases = import ./aliases.nix {pkgs = pkgs;};
+  aliasCfg = import ./aliases.nix {pkgs = pkgs;};
 in {
   programs.fish = {
     enable = true;
@@ -10,9 +10,7 @@ in {
       function tv
           touch $argv[1] && $EDITOR $argv[1]
       end
-      function mtv
-          mkdir -p (dirname $argv[1]) && touch $argv[1] && $EDITOR $argv[1]
-      end
+      ${aliasCfg.fishFx}
 
       fish_vi_key_bindings
 
@@ -44,7 +42,7 @@ in {
       bind -M insert alt-delete kill-line
     '';
     # preferAbbrs = true;
-    shellAbbrs = aliases;
+    shellAbbrs = aliasCfg.aliases;
   };
   programs.zed-editor.extensions = ["fish"];
 }

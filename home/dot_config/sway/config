@@ -25,7 +25,7 @@ output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_19
 #
 
 
-seat seat0 xcursor_theme breeze_cursors 30
+seat seat0 xcursor_theme BreezeX-RosePine-Linux 30
 
 
 # # Floating rules

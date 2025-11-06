@@ -24,15 +24,35 @@
     ii = "xdg-open";
     open = "xdg-open";
   };
-in
-  commonAliases
-  // (
-    if pkgs.stdenv.isLinux
-    then linuxAliases
-    else {}
-  )
-  // (
-    if pkgs.stdenv.isDarwin
-    then darwinAliases
-    else {}
-  )
+  posixFx = ''
+    mt() {
+      mkdir -p $(dirname $1) && touch $1
+    }
+    mtv() {
+      mkdir -p $(dirname $1) && touch $1 && nvim $1
+    }
+  '';
+  fishFx = ''
+    function mt
+        mkdir -p (dirname $argv[1]) && touch $argv[1]
+    end
+
+    function mtv
+        mkdir -p (dirname $argv[1]) && touch $argv[1] && nvim $argv[1]
+    end
+  '';
+in {
+  aliases =
+    commonAliases
+    // (
+      if pkgs.stdenv.isLinux
+      then linuxAliases
+      else {}
+    )
+    // (
+      if pkgs.stdenv.isDarwin
+      then darwinAliases
+      else {}
+    );
+  inherit posixFx fishFx;
+}

@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  aliases = import ./aliases.nix {pkgs = pkgs;};
+  aliasCfg = import ./aliases.nix {pkgs = pkgs;};
 in {
   home.packages = with pkgs; [
     zsh-fzf-tab
@@ -16,19 +16,19 @@ in {
     historySubstringSearch.enable = true;
     enableCompletion = true;
     dotDir = "${config.xdg.configHome}/zsh";
-    # shellAliases = aliases;
+    shellAliases = aliasCfg.aliases;
     defaultKeymap = "emacs";
-    zsh-abbr = {
-      enable = true;
-      abbreviations = aliases;
-    };
+    # zsh-abbr = {
+    #   enable = true;
+    #   abbreviations = aliases;
+    # };
     syntaxHighlighting = {
       enable = true;
       patterns = {
         "rm -rf *" = "fg=blue,bold,bg=red";
       };
       styles = {
-        path = "fg=cyan";
+        path = "fg=cyan,underline";
       };
       highlighters = [
         "main"
@@ -38,11 +38,11 @@ in {
       ];
     };
     initContent = ''
+      ${aliasCfg.posixFx}
       # Options
       # ==========
 
-      # ! This breaks the nixos-rebuild --flake .#something
-      # setopt INTERACTIVE_COMMENTS # Allow comments in interactive mode
+      setopt INTERACTIVE_COMMENTS # Allow comments in interactive mode
 
       # Globbing
       setopt EXTENDED_GLOB        # Extended globbing

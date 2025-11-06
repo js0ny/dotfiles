@@ -5,10 +5,10 @@
         local _file
 
         if command -v fd >/dev/null 2>&1; then
-            _file=$(fd --type f | fzf --height 40% --reverse)
+            _file=$(fd --type f | fzf --height 40% --reverse -1 -q "$1")
         else
             # Fallback to 'find'
-            _file=$(find . -type f | fzf --height 40% --reverse)
+            _file=$(find . -type f | fzf --height 40% --reverse -1 -q "$1")
         fi
 
         # In POSIX shell, if fzf is cancelled (Esc/Ctrl-C),
@@ -34,9 +34,9 @@ in {
         set -l file
 
         if command -q fd
-            set file (fd --type f | fzf --height 40% --reverse)
+            set file (fd --type f | fzf --height 40% --reverse -1 -q "$argv[1]")
         else
-            set file (find . -type f | fzf --height 40% --reverse)
+            set file (find . -type f | fzf --height 40% --reverse -1 -q "$argv[1]")
         end
 
         set -l fzf_status $status

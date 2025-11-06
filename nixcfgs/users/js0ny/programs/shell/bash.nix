@@ -1,8 +1,11 @@
 {pkgs, ...}: let
-  aliases = import ./aliases.nix {pkgs = pkgs;};
+  aliasCfg = import ./aliases.nix {pkgs = pkgs;};
 in {
   programs.bash = {
     enable = true;
-    shellAliases = aliases;
+    shellAliases = aliasCfg.aliases;
+    bashrcExtra = ''
+      ${aliasCfg.posixFx}
+    '';
   };
 }
