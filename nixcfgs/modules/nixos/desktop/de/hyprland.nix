@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  imports = [
+    ./wayland-wm.nix
+  ];
   programs.hyprland = {
     enable = true;
     withUWSM = false;
@@ -6,13 +9,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    caelestia-shell
-    mako
-    rofi
-    xdg-desktop-portal-wlr
+    # caelestia-shell
     xdg-desktop-portal-hyprland
     hyprpolkitagent
-    cliphist
     grimblast
+    xdg-desktop-portal-wlr
   ];
 }

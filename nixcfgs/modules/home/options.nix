@@ -22,6 +22,18 @@
       description = "The default terminal emulator to run CLI softwares directly";
     };
 
+    defaultExplorer = lib.mkOption {
+      type = lib.types.str;
+      default = "thunar";
+      description = "The default file explorer";
+    };
+
+    defaultTerminalExplorer = lib.mkOption {
+      type = lib.types.str;
+      default = "yazi";
+      description = "The default file explorer with TUI";
+    };
+
     iconTheme = lib.mkOption {
       type = lib.types.str;
       default = "Breeze";

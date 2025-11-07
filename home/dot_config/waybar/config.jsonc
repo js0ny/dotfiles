@@ -16,7 +16,7 @@
         // "~/.config/waybar/modules/niri.jsonc"
     ],
     // Choose the order of the modules
-    "modules-left": ["custom/osicon", "sway/workspaces", "wlr/taskbar"],
+    "modules-left": ["custom/osicon", "sway/workspaces", "hyprland/workspaces", "wlr/taskbar"],
     // "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio", "cpu", "memory", "network", "battery", "clock"],
     // "modules-right": ["cpu", "memory", "battery", "network", "tray"],

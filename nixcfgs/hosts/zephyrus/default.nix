@@ -22,7 +22,7 @@
     # desktop environment and display manager
     ../../modules/nixos/desktop/dm/sddm.nix
     ../../modules/nixos/desktop/de/kde.nix
-    ../../modules/nixos/desktop/de/sway.nix
+    ../../modules/nixos/desktop/de/hyprland.nix
 
     # desktop programs
     ../../modules/nixos/programs/zsh.nix
@@ -50,6 +50,13 @@
 
   # Use unfree software
   nixpkgs.config.allowUnfree = true;
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 10;
+    algorithm = "lz4";
+    priority = 100;
+  };
 
   # Disable modem
   networking.modemmanager.enable = false;

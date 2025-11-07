@@ -36,8 +36,10 @@ in {
   home.packages = with pkgs; [
     grim
     slurp
-    grim
-    dunst
     sway-contrib.grimshot
+  ];
+
+  imports = [
+    ./packages.nix
   ];
 }

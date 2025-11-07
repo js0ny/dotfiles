@@ -3,49 +3,25 @@
 # Author: js0ny
 # Sourced by user's zshrc 在用户的 zshrc 中被引用
 
-# read key: `fish_key_reader`
+# read key: `read`
 # get current bindings: `bindkey`
 
-bindkey -v # Vi Keybindings
+# bindkey -v # Vi Keybindings
 
-# Colemak hnei
-#         ^
-#         n
-#   < h       i >
-#         e
-#         v
-# bindkey -M vicmd 'h' vi-backward-char # No change
-# bindkey -M vicmd 'n' down-line-or-history
-# bindkey -M vicmd 'e' up-line-or-history
-# bindkey -M vicmd 'i' vi-forward-char
-#
-# # Similar position to [i] in QWERTY
-# bindkey -M vicmd 'l' vi-insert
-# bindkey -M vicmd 'L' vi-insert-bol
-# # Ne{[k]s}t
-# bindkey -M vicmd 'k' vi-repeat-search
-# bindkey -M vicmd 'K' vi-rev-repeat-search
-# # [J]ump
-# bindkey -M vicmd 'j' vi-forward-word-end
-# bindkey -M vicmd 'J' vi-forward-blank-word-end
-# # Use N to Join
-# bindkey -M vicmd 'N' vi-join
+bindkey '^H' backward-kill-word   # Ctrl-Backspace
+bindkey '^[^?' backward-kill-line # Alt-Backspace
 
-# Emacs Hybrid
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-bindkey '^F' forward-char
-bindkey '^B' backward-char
-bindkey '^P' up-line-or-history
-bindkey '^N' down-line-or-history
-bindkey '^R' history-incremental-search-backward
-bindkey '^K' kill-line
-# Zsh will parse <C-Backspace> to C-h
-bindkey '^H' backward-kill-word
+bindkey '^[[1;5D' backward-word  # Ctrl-Left
+bindkey '^[[1;5C' forward-word   # Ctrl-Right
 
-bindkey -M viins '^?' backward-delete-char
-# LEADER CONVENTION
-# ^X defines as a prefix key in shell
-# ^A defines as a prefix key in tmux
-# ^B defines as a prefix key in Terminal Emulators
-# SPC defines as a prefix key in nvim
+bindkey '^[[1;3D' beginning-of-line # Alt-Left
+bindkey '^[[1;3C' end-of-line # Alt-Right
+
+
+bindkey '^[[H' beginning-of-line # Home
+bindkey '^[[F' end-of-line       # End
+
+
+bindkey '^[[3~' delete-char # Delete
+bindkey '^[[3;5~' kill-word # Ctrl-Delete
+bindkey '^[[3;3~' kill-line # Alt-Delete
