@@ -124,5 +124,13 @@
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w j": "workspace::ActivatePaneDown"
     }
+  },
+  // Sneak
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward"
+    }
   }
 ]

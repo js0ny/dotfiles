@@ -40,7 +40,6 @@ return {
         dashboard.button("p", "󰈞 查找项目", "<cmd>Telescope projects<CR>"),
         dashboard.button("h", " 历史文件", "<cmd>Telescope oldfiles<CR>"),
         dashboard.button("l", " 加载会话", "<cmd>SessionSearch<CR>"),
-        -- FIXME: This does not work on Windows - Make it more portable
         dashboard.button("c", " 转到设置", "<cmd>Telescope find_files cwd=~/.config/nvim<CR>"),
         dashboard.button("SPC q", "󱊷 退出", "<cmd>qa<CR>"),
       }

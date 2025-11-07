@@ -62,6 +62,7 @@
     kdePackages.breeze
     zotero
     anki-bin
+    feishin
 
     # Email
     protonmail-bridge

@@ -9,6 +9,6 @@
     swaylock-effects # Screensaver
     cliphist # Clipboard daemon
     swww # Wallpaper daemon
-    pavucontrol
+    wmname
   ];
 }

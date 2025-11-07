@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./wayland-wm.nix
-  ];
   programs.hyprland = {
     enable = true;
     withUWSM = false;

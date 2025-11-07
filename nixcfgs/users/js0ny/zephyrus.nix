@@ -40,7 +40,7 @@
 
     # Desktop Linux
     ./programs/desktop/plasma.nix
-    ./programs/desktop/wayland-wm/hyprland.nix
+    ./programs/desktop/wayland-wm/niri.nix
 
     # General Program config
     ../../modules/home/programs/eza.nix
