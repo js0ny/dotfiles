@@ -37,6 +37,8 @@
     ./programs/libreoffice.nix
     ./programs/nvim.nix
     ./programs/ollama.nix
+    ./programs/sops.nix
+    ./programs/pdf2zh.nix
 
     # Desktop Linux
     ./programs/desktop/plasma.nix
@@ -63,22 +65,6 @@
   home.packages = with pkgs; [
     rose-pine-cursor
   ];
-
-  sops = {
-    # enable = true;
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
-    age.generateKey = true;
-    secrets = {
-      "OPENROUTER_API_KEY" = {
-        key = "openrouter_api";
-      };
-    };
-  };
-
-  home.sessionVariables = {
-    OPENROUTER_API_KEY = "$(cat ${config.sops.secrets."OPENROUTER_API_KEY".path})";
-  };
 
   home.stateVersion = "25.05";
 }

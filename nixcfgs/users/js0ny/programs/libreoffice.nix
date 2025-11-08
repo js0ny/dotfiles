@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = [pkgs.libreoffice];
   home.file.".local/share/kio/servicemenus/office2pdf.desktop" = {
+    enable = true;
+    executable = true;
     text = ''
       [Desktop Entry]
       Type=Service

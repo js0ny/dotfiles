@@ -1,7 +1,5 @@
 // $DOTFILES/tools/zed/settings.json
-// Date: 2025-01-25
-// Author: js0ny
-// Description: Zed settings (jsonc)
+// vim:ft=jsonc
 
 // Location:
 // GNU/Linux: ~/.config/zed/settings.json
@@ -44,7 +42,7 @@
     "dock": "right"
   },
   "edit_predictions": {
-    "disabled_globs": ["*.bean", "*.env"],
+    "disabled_globs": ["*.bean", "*.env", "secrets.yaml"],
     // "mode": "eager_preview",
     "copilot": {
       "proxy": null,
@@ -75,10 +73,10 @@
     },
     "dock": "bottom",
     "env": {
-      "EDITOR": "zeditor"
+      "EDITOR": "zeditor --wait"
     },
     "shell": {
-      "program": "fish"
+      "program": "zsh"
     },
     "option_as_meta": true
   },

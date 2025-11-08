@@ -3,13 +3,20 @@ return {
   event = "BufRead",
   -- lazy = false,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  ---@module "avante"
+  ---@type avante.Config
   opts = {
+    provider = "openrouter",
+
     -- add any opts here
     -- for example
     providers = {
-      openai = {
-        endpoint = "https://openrouter.ai/v1",
-        model = "x-ai/grok-code-fast-1",
+      ---@type AvanteProvider
+      openrouter = {
+        __inherited_from = "openai",
+        endpoint = "https://openrouter.ai/api/v1",
+        model = "anthropic/claude-sonnet-4.5",
+        api_key_name = "OPENROUTER_API_KEY",
       },
     },
   },
