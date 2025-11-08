@@ -1,0 +1,17 @@
+#!/bin/sh
+
+src=~/.dotfiles/misc/firefox/search.json.mozlz4
+dest=~/.mozilla/firefox/*.default/search.json.mozlz4
+if ! cmp -s "$src" "$dest" 2>/dev/null; then
+  cp "$src" "$dest"
+fi
+
+{{ if .wheel }}
+
+src=~/.dotfiles/misc/firefox/policies.json
+dest=/etc/firefox/policies/policies.json
+if ! cmp -s "$src" "$dest" 2>/dev/null; then
+  sudo cp "$src" "$dest"
+fi
+
+{{ end }}

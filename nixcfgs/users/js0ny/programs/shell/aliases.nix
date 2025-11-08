@@ -1,6 +1,5 @@
 {pkgs}: let
   commonAliases = {
-    g = "lazygit";
     ni = "touch";
     cls = "clear";
     aic = "aichat -s";
@@ -8,6 +7,7 @@
     nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/nixcfgs";
     clip = "wl-copy";
     paste = "wl-paste";
+    ipy = "nix run 'nixpkgs#python313Packages.ipython'"; # IPython
   };
   darwinAliases = {
     reboot = "sudo reboot";

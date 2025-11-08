@@ -1,0 +1,7 @@
+# Condition: work && nowheel
+[".local/bin/ghostty"]
+  type = "file"
+  url = {{ gitHubLatestReleaseAssetURL "pkgforge-dev/ghostty-appimage" (printf "Ghostty-*-x86_64.AppImage") | quote }}
+  executable = true
+  refreshPeriod = "336h"
+  exact = true

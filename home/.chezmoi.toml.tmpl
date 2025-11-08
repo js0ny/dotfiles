@@ -1,17 +1,117 @@
+{{/*
+vim:ft=gotmpl
+*/}}
 {{/* https://github.com/twpayne/dotfiles/blob/master/home/.chezmoi.toml.tmpl  */}}
+
+{{/* Variable Definitions */}}
+{{- $ephemeral := false -}}
 {{- $headless := false  -}}
+{{- $personal := false -}}
+{{- $nix := false -}}
+{{- $work := false -}}
+{{- $wheel := false -}}
+{{- $username := promptStringOnce . "username" "What is your username" -}}
+{{- $email := promptStringOnce . "email" "What is your email address" -}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- $wheel := false -}}
+{{- $diffCmd := "diff" -}}
+{{- $encryptionProvider := "gpg" -}}
 
 {{/* darwin hostname hack */}}
-{{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $hostname := output "scutil" "--get" "LocalHostName" | trim -}}
 {{- end -}}
 
-sourceDir = "~/.dotfiles"
+{{/* Wheel group detection */}}
+{{- $wheel = or
+  (and
+    (eq .chezmoi.os "linux")
+    (output "groups" | regexMatch "\\b(sudo|wheel|admin)\\b")
+  )
+  (and
+    (eq .chezmoi.os "darwin")
+    (output "groups" | regexMatch "\\b(admin|wheel)\\b")
+  )
+  (and
+    (eq .chezmoi.os "windows")
+    (output "powershell.exe" "-NoProfile" "-Command" "net localgroup administrators | Select-String $env:USERNAME")
+  )
+-}}
 
-{{ $email := promptStringOnce . "email" "What is your email address" -}}
-{{ $username := promptStringOnce . "username" "What is your username" -}}
+{{/*
+Determining nix package manager
+If under nix, some dotfiles should be managed via home-manager
+If under nixOS, most scripts that require root access should not be run, as they are managed by nixOS
+*/}}
+{{/* nixOS */}}
+{{ if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.osRelease.id "nixos"}}
+{{ $nix = true }}
+{{ end }}
+{{/* nix on other linux distros */}}
+{{ if isExecutable "/nix/var/nix/profiles/default/bin/nix-env" }}
+{{ $nix = true }}
+{{ end }}
+{{ end }}
+{{ if eq .chezmoi.os "darwin" }}
+{{/* nix-darwin */}}
+{{ if isExecutable "/run/current-system/sw/bin/darwin-rebuild" }}
+{{ $nix = true }}
+{{ end }}
+{{ end }}
+
+{{/*
+Determining headless
+*/}}
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+{{ if not .headless }}
+{{ if eq .chezmoi.os  "linux" }}
+{{/* Fedora Server */}}
+{{ if eq .chezmoi.osRelease.variantID "server" }}
+{{ $headless = true }}
+{{ end }}
+{{/* Treat all Debian hosts as headless */}}
+{{ if eq .chezmoi.osRelease.id "debian" }}
+{{ $headless = true }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{/*
+Determining diff command, fallback to diff
+*/}}
+{{- if lookPath "delta" -}}
+{{-   $diffCmd = "delta" -}}
+{{- else if lookPath "git-delta" -}}
+{{-   $diffCmd = "git-delta" -}}
+{{- end -}}
+
+{{/*
+Determining encryption provider, fallback to gpg
+*/}}
+{{- if lookPath "age" -}}
+{{-   $encryptionProvider = "age" -}}
+{{- else if lookPath "rage" -}}
+{{-   $encryptionProvider = "rage" -}}
+{{- end -}}
+
+sourceDir = "~/.dotfiles"
+encryption = {{ $encryptionProvider | quote }}
 
 [data]
     email = {{ $email | quote }}
     username = {{ $username | quote }}
+    headless = {{ $headless }}
+    nix = {{ $nix }}
+    wheel = {{ $wheel }}
+
+[diff]
+    command = {{ $diffCmd | quote }}
+
+[age]
+    identities = ["~/.ssh/agekey.txt"]
+    recipients = ["age1mcvqpg39t32ll684r4m2l8j0l9zag6endg0h6zjw8svkgdwc4pjqkk5fvj"]

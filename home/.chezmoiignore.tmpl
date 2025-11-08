@@ -1,63 +1,127 @@
+{{/*
+vim:ft=gotmpl
+*/}}
 
-.chezmoiscripts/todo/**
+{{/* Todos */}}
+    .chezmoiscripts/todo/**
 
+{{/* Secret Directory, always ignored, access via templates */}}
+    secrets/**
 
-{{ if ne .chezmoi.os "linux" }}
-.config/awesome
-.config/dunst
-.config/fcitx5
-.config/hypr
-.config/keyd
-.config/mako
-.config/readline
-.config/rofi
-.config/swaylock
-.config/waybar
-.config/wlogout
-.config/krunnerrc
-.config/systemd
-.config/user-dirs.dirs
-.config/user-dirs.locale
-.config/libvirt
-.local/share/kio/
-{{ end }}
+{{/* Install appimages only on non-wheel linux systems */}}
+    {{ if eq .chezmoi.os "linux" }}
+    {{ if .wheel }}
+    .local/bin/ghostty
+    {{ end }}
+    {{ end }}
 
-{{ if eq .chezmoi.os "linux" }}
-{{ if ne .chezmoi.osRelease.id "arch" }}
-.config/*-flags.conf
-{{ end }}
-{{ if eq .chezmoi.osRelease.id "nixos" }}
-.config/bash
-.config/bat
-.config/doom
-.config/dunst
-.config/fastfetch
-.config/fcitx5
-.config/fish
-.config/zsh
-.config/lsd
-.config/keyd
-.config/readline
-.config/krunnerrc
-.bashrc
-.local/share/kio
-{{ end }}
-{{ end }}
+{{/* Headless */}}
+    {{ if .headless }}
+    {{/* Linux */}}
+    .config/awesome
+    .config/dunst
+    .config/fcitx5
+    .config/hypr
+    .config/keyd
+    .config/mako
+    .config/rofi
+    .config/swaylock
+    .config/waybar
+    .config/wlogout
+    .config/krunnerrc
+    .config/user-dirs.locale
+    .local/share/kio/
+    .local/share/fonts/**
+    .chezmoiexternals/linux-fonts.toml
+    {{/* Windows */}}
+    Appdata/Roaming/komorebi
+    .glzr
+    {{ end }}
 
-{{ if ne .chezmoi.os "darwin" }}
-.chezmoiscripts/darwin/**
-Library
-.config/karabiner
-.config/sketchybar
-.config/skhd
-.config/yabai
-.config/powershell
-{{ end }}
+{{/* Managed by home-manager */}}
+    {{ if .nix }}
+    .bashrc
+    .chezmoiscripts/linux/**
+    .chezmoiscripts/unixlike/**
+    .chezmoiexternals/**
+    .config/systemd
+    .config/zsh/**
+    .config/bash
+    .config/lsd
+    .config/keyd
+    .config/fish
+    .config/readline
+    .config/bat
+    .config/krunnerrc
+    .config/fcitx5
+    .local/share/**
+    {{ end }}
 
-{{ if ne .chezmoi.os "windows" }}
-.gitconfig
-.glzr
-.wslconfig
-.wslgconfig
-Appdata/
-{{ end }}
+{{/* Linux */}}
+    {{ if ne .chezmoi.os "linux" }}
+    .chezmoiscripts/linux/**
+    .config/awesome
+    .config/dunst
+    .config/fcitx5
+    .config/hypr
+    .config/keyd
+    .config/mako
+    .config/readline
+    .config/rofi
+    .config/swaylock
+    .config/waybar
+    .config/wlogout
+    .config/krunnerrc
+    .config/systemd
+    .config/user-dirs.dirs
+    .config/user-dirs.locale
+    .config/libvirt
+    .local/share/kio/
+    .local/share/fonts/**
+    .chezmoiexternals/linux-*
+    .local/bin/**
+    {{ end }}
+
+{{/* ArchLinux */}}
+    {{ if eq .chezmoi.os "linux" }}
+    {{ if ne .chezmoi.osRelease.id "arch" }}
+    .config/*-flags.conf
+    {{ end }}
+    {{ end }}
+
+{{/* nixOS */}}
+    {{ if eq .chezmoi.os "linux" }}
+    {{ if eq .chezmoi.osRelease.id "nixos" }}
+    {{/* Only runs scripts in .chezmoiscripts/+nixos/** */}}
+    .chezmoiscripts/linux/**
+    .chezmoiscripts/darwin/**
+    .chezmoiscripts/unixlike/**
+    {{ end }}
+    {{ end }}
+
+{{/* macOS */}}
+    {{ if ne .chezmoi.os "darwin" }}
+    .chezmoiscripts/darwin/**
+    Library
+    .config/karabiner
+    .config/sketchybar
+    .config/skhd
+    .config/yabai
+    .config/powershell
+    {{ end }}
+
+{{/* Windows */}}
+    {{ if ne .chezmoi.os "windows" }}
+    .chezmoiscripts/windows/**
+    .gitconfig
+    .glzr {{/* GlazeWM */}}
+    .wslconfig
+    .wslgconfig
+    Appdata/
+    {{ end }}
+
+{{/* Unix-like Scripts */}}
+    {{ if eq .chezmoi.os "windows"  }}
+    .chezmoiscripts/unixlike/**
+    .chezmoiscripts/+nixos/**
+    {{ end}}

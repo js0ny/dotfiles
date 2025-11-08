@@ -1,0 +1,19 @@
+[".config/zsh/plugins/zsh-autosuggestions"]
+  type = "git-repo"
+  url = "https://github.com/zsh-users/zsh-autosuggestions"
+  refreshPeriod = "336h"
+
+[".config/zsh/plugins/zsh-syntax-highlighting"]
+  type = "git-repo"
+  url = "https://github.com/zsh-users/zsh-syntax-highlighting"
+  refreshPeriod = "336h"
+
+[".config/zsh/plugins/zsh-history-substring-search"]
+  type = "git-repo"
+  url = "https://github.com/zsh-users/zsh-history-substring-search"
+  refreshPeriod = "336h"
+
+[".config/zsh/plugins/zsh-completions"]
+  type = "git-repo"
+  url = "https://github.com/zsh-users/zsh-completions"
+  refreshPeriod = "336h"

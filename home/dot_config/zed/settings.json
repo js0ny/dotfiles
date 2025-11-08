@@ -75,7 +75,7 @@
     },
     "dock": "bottom",
     "env": {
-      "EDITOR": "zed --wait"
+      "EDITOR": "zeditor"
     },
     "shell": {
       "program": "fish"

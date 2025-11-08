@@ -36,7 +36,6 @@
 	editor = nvim
 {{- end }}
 	pager = delta
-	autocrlf = input # Force End of Line in different platforms
 [interactive]
 	diffFilter = delta --color-only
 [delta]

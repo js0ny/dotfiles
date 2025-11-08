@@ -1,5 +1,8 @@
 {pkgs, ...}: let
-  nvimAlias = {"v" = "nvim";};
+  nvimAlias = {
+    "v" = "nvim";
+    "g" = "nvim +Neogit";
+  };
 in {
   programs.neovim = {
     enable = true;

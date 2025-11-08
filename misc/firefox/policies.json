@@ -14,10 +14,6 @@
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/side-view/latest.xpi",
         "installation_mode": "force_installed"
       },
-      "langpack-zh-CN@firefox.mozilla.org": {
-        "install_url": "https://releases.mozilla.org/pub/firefox/releases/144.0/linux-x86_64/xpi/zh-CN.xpi",
-        "installation_mode": "normal_installed"
-      },
       "uBlock0@raymondhill.net": {
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
         "installation_mode": "force_installed"
