@@ -37,7 +37,7 @@ case "$(uname)" in
     #     ;;
 esac
 
-for file in $DOTFILES/home/dot_config/zsh/mod/*.zsh; do
+for file in $ZDOTDIR/mod/*.zsh; do
   source $file
 done
 

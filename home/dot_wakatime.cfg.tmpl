@@ -1,0 +1,29 @@
+[settings]
+debug = false
+hidefilenames = false
+ignore =
+    COMMIT_EDITMSG$
+    PULLREQ_EDITMSG$
+    MERGE_MSG$
+    TAG_EDITMSG$
+exclude =
+    ^COMMIT_EDITMSG$
+    ^TAG_EDITMSG$
+    *.md
+    *.org
+    *.txt
+    *.log
+include =
+    readme.md
+    README.md
+    readme.org
+    README.org
+    readme.txt
+    README.txt
+    readme
+    README
+{{- if .manageSecret }}
+api_key= {{- "secrets/wakatime_api_key.age" | include | decrypt -}}
+{{- else }}
+api_key="YOUR_API_KEY"
+{{- end }}
