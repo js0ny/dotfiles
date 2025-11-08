@@ -11,10 +11,6 @@ if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bash_profile" ]; then
     . "$HOME/.bash_profile"
 fi
 
-if [ -n "$BASH_VERSION" ] && [ -f "$XDG_CONFIG_HOME/bash/bashrc" ]; then
-    . "$XDG_CONFIG_HOME/bash/bashrc"
-fi
-
 pathadd() {
     # 检查是否存在且不在 PATH 中
     if [[ -d "$1" && ":$PATH:" != *":$1:"* ]]; then

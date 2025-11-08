@@ -1,8 +1,15 @@
 #!/bin/sh
 
+# Check if firefox is installed
+if ! command -v firefox &> /dev/null; then
+  echo "[WARNING] Firefox is not installed. Skip this script."
+  exit 0
+fi
+
 src=~/.dotfiles/misc/firefox/search.json.mozlz4
 dest=~/.mozilla/firefox/*.default/search.json.mozlz4
 if ! cmp -s "$src" "$dest" 2>/dev/null; then
+  echo "[INFO] search.json.mozlz4 is updated, copying..."
   cp "$src" "$dest"
 fi
 
@@ -11,7 +18,9 @@ fi
 src=~/.dotfiles/misc/firefox/policies.json
 dest=/etc/firefox/policies/policies.json
 if ! cmp -s "$src" "$dest" 2>/dev/null; then
-  sudo cp "$src" "$dest"
+  echo "[INFO] policies.json is updated, copying..."
+  echo "[ACTION] elevation required"
+  sudo cp "$src" "$dest" && exit 0
 fi
 
 {{ end }}

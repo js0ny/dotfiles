@@ -8,10 +8,15 @@ vim:ft=gotmpl
 {{/* Secret Directory, always ignored, access via templates */}}
     secrets/**
 
-{{/* Install appimages only on non-wheel linux systems */}}
+{{/* Non-wheel */}}
     {{ if eq .chezmoi.os "linux" }}
     {{ if .wheel }}
+    {{/* Install appimages only on non-wheel linux systems */}}
     .local/bin/ghostty
+    {{/* If wheel, source bashrc directly from global bashrc */}}
+    .bashrc
+    .bash_profile
+    .zshenv
     {{ end }}
     {{ end }}
 
@@ -41,6 +46,8 @@ vim:ft=gotmpl
 {{/* Managed by home-manager */}}
     {{ if .nix }}
     .bashrc
+    .bash_profile
+    .zshenv
     .chezmoiscripts/linux/**
     .chezmoiscripts/unixlike/**
     .chezmoiexternals/**

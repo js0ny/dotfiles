@@ -1,0 +1,27 @@
+[".local/share/fonts/maple-nf"]
+  type = "archive"
+  url = {{ gitHubLatestReleaseAssetURL "subframe7536/maple-font" (printf "MapleMono-NF-CN-unhinted.zip") | quote }}
+  refreshPeriod = "672h"
+  exact = true
+  executable = false
+
+[".local/share/fonts/jetbrainsmono-nf"]
+  type = "archive"
+  url = {{ gitHubLatestReleaseAssetURL "ryanoasis/nerd-fonts" (printf "JetBrainsMono.zip") | quote }}
+  refreshPeriod = "672h"
+  exact = true
+  executable = false
+
+[".local/share/fonts/lxgw-wenkai"]
+  type = "archive"
+  url = {{ gitHubLatestReleaseAssetURL "lxgw/LxgwWenKai" (printf "lxgw-wenkai-v*.zip") | quote }}
+  refreshPeriod = "168h"
+  exact = true
+  executable = false
+
+[".local/share/fonts/lxgw-neoxihei"]
+  type = "file"
+  url = {{ gitHubLatestReleaseAssetURL "lxgw/LxgwNeoXiHei" (printf "LXGWNeoXiHei.ttf") | quote }}
+  refreshPeriod = "168h"
+  exact = true
+  executable = false

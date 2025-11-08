@@ -68,7 +68,7 @@ Determining headless
 {{-   $ephemeral = true -}}
 {{-   $headless = true -}}
 {{- end -}}
-{{ if not .headless }}
+{{ if not $headless }}
 {{ if eq .chezmoi.os  "linux" }}
 {{/* Fedora Server */}}
 {{ if eq .chezmoi.osRelease.variantID "server" }}

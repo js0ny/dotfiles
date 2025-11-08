@@ -1,8 +1,12 @@
 #!/bin/sh
 
+echo "[INFO] Running: zsh-set-env.sh"
+
 XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 {{ if .wheel }}
+
+echo "[INFO] "
 
 if [ -f /etc/zshenv ]; then
     sudo cp "$CHEZMOI_SOURCE_DIR/dot_config/zsh/global.zshenv" /etc/zshenv

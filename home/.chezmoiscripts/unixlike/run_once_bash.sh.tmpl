@@ -1,0 +1,12 @@
+#!/bin/sh
+# shellcheck shell=sh
+
+{{ if .wheel }}
+
+echo "[ACTION] Elevation required: "
+echo "              Setting XDG Environment Variables to global scope"
+sudo cp $CHEZMOI_SOURCE_DIR/.chezmoitemplates/bash_profile /etc/profile.d/xdg-compat.sh
+
+{{ else }}
+
+{{ end }}

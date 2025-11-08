@@ -7,7 +7,7 @@
     nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/nixcfgs";
     clip = "wl-copy";
     paste = "wl-paste";
-    ipy = "nix run 'nixpkgs#python313Packages.ipython'"; # IPython
+    py = "nix run 'nixpkgs#python314'"; # Python Interactive Shell
   };
   darwinAliases = {
     reboot = "sudo reboot";
