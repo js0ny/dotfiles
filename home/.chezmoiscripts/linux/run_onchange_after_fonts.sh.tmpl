@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# .chezmoiexternals/linux-fonts.toml hash:
+# {{ include ".chezmoiexternals/linux-fonts.toml" | sha256sum }}
+
+echo "[INFO] Rebuilding fonts cache..."
+
+fc-cache -fv

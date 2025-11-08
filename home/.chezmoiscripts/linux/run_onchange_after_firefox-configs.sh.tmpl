@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# misc/firefox/policies.json hash:
+# {{ include joinPath .chezmoi.homeDir ".dotfiles" "misc/firefox/policies.json" | sha256sum }}
+# misc/firefox/search.json.mozlz4 hash:
+# {{ include joinPath .chezmoi.homeDir ".dotfiles" "misc/firefox/search.json.mozlz4" | sha256sum }}
+
 # Check if firefox is installed
 if ! command -v firefox &> /dev/null; then
   echo "[WARNING] Firefox is not installed. Skip this script."
