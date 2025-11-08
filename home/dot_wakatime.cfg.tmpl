@@ -23,7 +23,7 @@ include =
     readme
     README
 {{- if .manageSecret }}
-api_key= {{- "secrets/wakatime_api_key.age" | include | decrypt -}}
+api_key= {{- "secrets/wakatime_api_key.age" | include | decrypt | trim -}}
 {{- else }}
 api_key="YOUR_API_KEY"
 {{- end }}
