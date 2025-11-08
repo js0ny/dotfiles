@@ -6,7 +6,7 @@
 # read key: `read`
 # get current bindings: `bindkey`
 
-# bindkey -v # Vi Keybindings
+bindkey -e # Emacs Keybindings
 
 bindkey '^H' backward-kill-word   # Ctrl-Backspace
 bindkey '^[^?' backward-kill-line # Alt-Backspace
@@ -25,3 +25,10 @@ bindkey '^[[F' end-of-line       # End
 bindkey '^[[3~' delete-char # Delete
 bindkey '^[[3;5~' kill-word # Ctrl-Delete
 bindkey '^[[3;3~' kill-line # Alt-Delete
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+bindkey '^X^E' edit-command-line
+bindkey '^[e' edit-command-line
+bindkey '^[v' edit-command-line

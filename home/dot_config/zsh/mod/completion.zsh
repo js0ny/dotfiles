@@ -1,3 +1,4 @@
+autoload -U compinit && compinit
 
 ### completion
 ### =================
@@ -17,4 +18,3 @@ zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
 
 # Complete . and .. special directories
 zstyle ':completion:*' special-dirs true
-

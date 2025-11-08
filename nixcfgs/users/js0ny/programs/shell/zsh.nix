@@ -96,6 +96,10 @@ in {
       bindkey '^[[3;5~' kill-word # Ctrl-Delete
       bindkey '^[[3;3~' kill-line # Alt-Delete
 
+      bindkey '^X^E' edit-command-line
+      bindkey '^[e' edit-command-line
+      bindkey '^[v' edit-command-line
+
       # Misc
       # ========
       # source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh

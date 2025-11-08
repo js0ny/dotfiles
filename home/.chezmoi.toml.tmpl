@@ -10,12 +10,36 @@ vim:ft=gotmpl
 {{- $nix := false -}}
 {{- $work := false -}}
 {{- $wheel := false -}}
-{{- $username := promptStringOnce . "username" "What is your username" -}}
-{{- $email := promptStringOnce . "email" "What is your email address" -}}
+{{- $username := "" -}}
+{{- $email := "" -}}
 {{- $hostname := .chezmoi.hostname -}}
 {{- $wheel := false -}}
 {{- $diffCmd := "diff" -}}
-{{- $encryptionProvider := "gpg" -}}
+{{- $encryptionProvider := "age" -}}
+{{- $defaultIdentityPath := joinPath .chezmoi.homeDir ".ssh" "agekey.txt" -}}
+{{- $manageSecret := false -}}
+{{- if stat $defaultIdentityPath -}}
+{{-     $manageSecret = true -}}
+{{ else -}}
+{{-     $manageSecret = promptBoolOnce . "manageSecret" "Do you want to manage secrets" -}}
+{{-     if $manageSecret -}}
+{{-         $defaultIdentityPath = promptStringOnce . "defaultIdentityPath" "What is your default identity path, relative to your home directory" -}}
+{{-         $defaultIdentityPath = joinPath .chezmoi.homeDir $defaultIdentityPath -}}
+{{-     end -}}
+{{- end -}}
+{{- if stat $defaultIdentityPath -}}
+{{- $dataDir := joinPath .chezmoi.homeDir ".dotfiles" "home" -}}
+{{- $dataPath := joinPath $dataDir "secrets" "data.json.age" -}}
+{{- $data := output "age" "--decrypt" "--identity" $defaultIdentityPath $dataPath | fromJson -}}
+{{- $username = $data.username -}}
+{{- $email = $data.email -}}
+{{- end -}}
+{{ if eq $username "" -}}
+{{-     $username = promptStringOnce . "username" "What is your username" -}}
+{{ end -}}
+{{ if eq $email "" -}}
+{{-     $email = promptStringOnce . "email" "What is your email address" -}}
+{{ end -}}
 
 {{/* darwin hostname hack */}}
 {{- if eq .chezmoi.os "darwin" -}}
@@ -44,21 +68,21 @@ If under nix, some dotfiles should be managed via home-manager
 If under nixOS, most scripts that require root access should not be run, as they are managed by nixOS
 */}}
 {{/* nixOS */}}
-{{ if eq .chezmoi.os "linux" }}
-{{ if eq .chezmoi.osRelease.id "nixos"}}
-{{ $nix = true }}
-{{ end }}
+{{- if eq .chezmoi.os "linux" -}}
+{{- if eq .chezmoi.osRelease.id "nixos" }}
+{{- $nix = true -}}
+{{- end -}}
 {{/* nix on other linux distros */}}
-{{ if isExecutable "/nix/var/nix/profiles/default/bin/nix-env" }}
-{{ $nix = true }}
-{{ end }}
-{{ end }}
-{{ if eq .chezmoi.os "darwin" }}
+{{- if isExecutable "/nix/var/nix/profiles/default/bin/nix-env" -}}
+{{- $nix = true -}}
+{{- end -}}
+{{- end -}}
+{{- if eq .chezmoi.os "darwin" -}}
 {{/* nix-darwin */}}
-{{ if isExecutable "/run/current-system/sw/bin/darwin-rebuild" }}
-{{ $nix = true }}
-{{ end }}
-{{ end }}
+{{ if isExecutable "/run/current-system/sw/bin/darwin-rebuild" -}}
+{{ $nix = true -}}
+{{ end -}}
+{{ end -}}
 
 {{/*
 Determining headless
@@ -68,18 +92,18 @@ Determining headless
 {{-   $ephemeral = true -}}
 {{-   $headless = true -}}
 {{- end -}}
-{{ if not $headless }}
-{{ if eq .chezmoi.os  "linux" }}
+{{- if not $headless -}}
+{{- if eq .chezmoi.os  "linux" -}}
 {{/* Fedora Server */}}
-{{ if eq .chezmoi.osRelease.variantID "server" }}
-{{ $headless = true }}
-{{ end }}
+{{- if eq .chezmoi.osRelease.variantID "server" -}}
+{{- $headless = true -}}
+{{- end -}}
 {{/* Treat all Debian hosts as headless */}}
-{{ if eq .chezmoi.osRelease.id "debian" }}
-{{ $headless = true }}
-{{ end }}
-{{ end }}
-{{ end }}
+{{- if eq .chezmoi.osRelease.id "debian" -}}
+{{- $headless = true -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
 
 {{/*
 Determining diff command, fallback to diff
@@ -97,6 +121,8 @@ Determining encryption provider, fallback to gpg
 {{-   $encryptionProvider = "age" -}}
 {{- else if lookPath "rage" -}}
 {{-   $encryptionProvider = "rage" -}}
+{{- else -}}
+{{-   $encryptionProvider = "gpg" -}}
 {{- end -}}
 
 sourceDir = "~/.dotfiles"
@@ -108,10 +134,13 @@ encryption = {{ $encryptionProvider | quote }}
     headless = {{ $headless }}
     nix = {{ $nix }}
     wheel = {{ $wheel }}
+    manageSecret = {{ $manageSecret }}
 
 [diff]
     command = {{ $diffCmd | quote }}
 
 [age]
-    identities = ["~/.ssh/agekey.txt"]
+    identities = [
+        {{ $defaultIdentityPath | quote }}
+        ]
     recipients = ["age1mcvqpg39t32ll684r4m2l8j0l9zag6endg0h6zjw8svkgdwc4pjqkk5fvj"]

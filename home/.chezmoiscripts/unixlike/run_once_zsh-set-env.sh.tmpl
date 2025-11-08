@@ -6,7 +6,8 @@ XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 {{ if .wheel }}
 
-echo "[INFO] "
+echo "[INFO] Setting global zshenv that sets ZDOTDIR if available"
+echo "[ACTION] Elevation required. "
 
 if [ -f /etc/zshenv ]; then
     sudo cp "$CHEZMOI_SOURCE_DIR/dot_config/zsh/global.zshenv" /etc/zshenv

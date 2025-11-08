@@ -43,6 +43,12 @@ for plugin in "${plugins[@]}"; do
   fi
 done
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main pattern brackets root)
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan,underline'
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=blue,bold,bg=red')
+
+export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
+
 # https://unix.stackexchange.com/questions/33994/
 # Use `set -k` to mark leading `#` as a comment character
 set -k

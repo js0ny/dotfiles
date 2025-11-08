@@ -113,3 +113,25 @@ elif [ "$TERM_PROGRAM" = "WezTerm" ]; then
     alias icat="wezterm imgcat"
   fi
 fi
+
+edit-fzf() {
+    # 1. Declare a variable that is local to the function.
+    local _file
+
+    if command -v fd >/dev/null 2>&1; then
+        _file=$(fd --type f | fzf --height 40% --reverse -1 -q "$1")
+    else
+        # Fallback to 'find'
+        _file=$(find . -type f | fzf --height 40% --reverse -1 -q "$1")
+    fi
+
+    # In POSIX shell, if fzf is cancelled (Esc/Ctrl-C),
+    # the command substitution simply returns an empty string.
+    # So, we check if the variable '_file' is non-empty ('-n').
+    if [ -n "$_file" ]; then
+        "$EDITOR" "$_file"
+    else
+        echo "No file selected."
+    fi
+}
+alias ef="edit-fzf"
