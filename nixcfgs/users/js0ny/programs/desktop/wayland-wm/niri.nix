@@ -92,6 +92,11 @@ in {
               app-id = "firefox$";
               title = "^Picture-in-Picture$";
             }
+            # Anki add new flashcard
+            {
+              app-id = "^anki$";
+              title = "^Add$";
+            }
           ];
           open-floating = true;
         }

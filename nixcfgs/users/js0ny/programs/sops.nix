@@ -1,13 +1,34 @@
 {
   pkgs,
   config,
+  lib,
   ...
-}: {
-  home.packages = with pkgs; [
-    sops
-  ];
+}: let
+  secretPaths = {
+    OPENROUTER_API_KEY = config.sops.secrets."OPENROUTER_API_KEY".path;
+    TAVILY_API_KEY = config.sops.secrets."TAVILY_API_KEY".path;
+  };
+
+  posixInit = builtins.concatStringsSep "\n" (
+    lib.mapAttrsToList (name: path: ''
+      if [ -r "${path}" ]; then
+        export ${name}="$(< ${path})"
+      fi
+    '')
+    secretPaths
+  );
+
+  fishInit = builtins.concatStringsSep "\n" (
+    lib.mapAttrsToList (name: path: ''
+      if test -r ${path}
+        set -gx ${name} (< ${path})
+      end
+    '')
+    secretPaths
+  );
+in {
+  home.packages = [pkgs.sops];
   sops = {
-    # enable = true;
     defaultSopsFile = ../../../secrets/secrets.yaml;
     age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
     age.generateKey = true;
@@ -21,8 +42,9 @@
     };
   };
 
-  home.sessionVariables = {
-    OPENROUTER_API_KEY = "$(cat ${config.sops.secrets."OPENROUTER_API_KEY".path})";
-    TAVILY_API_KEY = "$(cat ${config.sops.secrets."TAVILY_API_KEY".path})";
+  programs = {
+    zsh.initContent = posixInit;
+    bash.bashrcExtra = posixInit;
+    fish.interactiveShellInit = fishInit;
   };
 }

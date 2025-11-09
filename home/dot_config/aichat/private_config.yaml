@@ -1,0 +1,21 @@
+# see https://github.com/sigoden/aichat/blob/main/config.example.yaml
+
+model: openrouter:qwen/qwen3-235b-a22b-2507
+clients:
+- type: openai-compatible
+  name: openrouter
+  api_base: https://openrouter.ai/api/v1
+  models:
+    - name: google/gemini-2.5-flash
+    - name: google/gemini-2.5-pro
+    - name: anthropic/claude-sonnet-4.5
+    - name: anthropic/claude-haiku-4.5
+    - name: anthropic/claude-opus-4.1
+    - name: openai/gpt-5
+    - name: openai/gpt-5-mini
+    - name: x-ai/grok-code-fast-1
+    - name: x-ai/grok-4-fast
+    - name: x-ai/grok-4
+    - name: deepseek/deepseek-v3.2-exp
+    - name: qwen/qwen3-235b-a22b-2507
+    - name: qwen/qwen3-max
