@@ -29,6 +29,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri-flake.url = "github:sodiboo/niri-flake";
   };
 
   outputs = {
@@ -42,6 +43,7 @@
     nur,
     caelestia-shell,
     sops-nix,
+    niri-flake,
     ...
   } @ inputs: let
     overlays = [
@@ -102,6 +104,7 @@
           plasma-manager.homeModules.plasma-manager
           nix-flatpak.homeManagerModules.nix-flatpak
           sops-nix.homeManagerModules.sops
+          niri-flake.homeModules.niri
         ];
       };
       "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {

@@ -61,6 +61,7 @@ vim:ft=gotmpl
     .config/bat
     .config/krunnerrc
     .config/fcitx5
+    .config/niri
     .local/share/**
     {{ end }}
 
@@ -136,4 +137,5 @@ vim:ft=gotmpl
 {{/* Secret Management */}}
     {{ if not .manageSecret }}
     .config/aichat
+    .config/pdf2zh
     {{ end }}

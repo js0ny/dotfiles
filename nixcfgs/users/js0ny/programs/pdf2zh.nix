@@ -7,6 +7,10 @@
 
     IMAGE_TAG="${imageTag}"
 
+    OPENROUTER_API_KEY="$OPENROUTER_API_KEY"
+    OPENROUTER_API_BASE="https://openrouter.ai/api/v1"
+    OPENROUTER_DEFAULT_MODEL="google/gemini-2.5-flash"
+
     if ! podman image exists "$IMAGE_TAG"; then
       echo "[pdf2zh] Pulling image $IMAGE_TAG ..."
       podman pull "$IMAGE_TAG"
@@ -16,7 +20,7 @@
       -p 7860:7860 \
       -v "$(pwd):/data" \
       -w /data \
-      "$IMAGE_TAG" "pdf2zh" "$@"
+      "$IMAGE_TAG" "pdf2zh" --openai-compatible-model $OPENROUTER_DEFAULT_MODEL --openai-compatible-base-url $OPENROUTER_API_BASE --openai-compatible-api-key $OPENROUTER_API_KEY "$@"
   '';
   descEn = "PDF scientific paper translation with preserved formats";
   descZh = "基于 AI 完整保留排版的 PDF 文档全文双语翻译";
@@ -32,7 +36,7 @@ in {
   home.packages = [pdf2zhRunner];
 
   home.file.".local/share/kio/servicemenus/pdf2zh.desktop" = {
-    enable = true;
+    enable = false; # TODO: Write a wrapper for status tracking
     executable = true;
     text = ''
       [Desktop Entry]
