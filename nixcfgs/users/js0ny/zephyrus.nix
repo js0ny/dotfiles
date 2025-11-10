@@ -1,9 +1,5 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{
-  pkgs,
-  config,
-  ...
-}: {
+{...}: {
   imports = [
     # General config
     ./default.nix
@@ -22,6 +18,7 @@
     ./programs/shell/bash.nix
     ./programs/shell/zsh.nix
     ./programs/shell/fish.nix
+    ./programs/shell/direnv.nix
 
     # Personal Program
     ./programs/chromium.nix
@@ -46,24 +43,13 @@
 
     # General Program config
     ../../modules/home/programs/eza.nix
-    ../../modules/home/programs/winboat.nix
+    # ../../modules/home/programs/winboat.nix
     ../../modules/home/programs/lsd.nix
     ../../modules/home/programs/starship.nix
     ../../modules/home/programs/zoxide.nix
 
     # Development setup
-    ../../modules/home/dev/c.nix
-    ../../modules/home/dev/go.nix
-    ../../modules/home/dev/java.nix
-    ../../modules/home/dev/lua.nix
     ../../modules/home/dev/nix.nix
-    ../../modules/home/dev/python.nix
-    ../../modules/home/dev/typst.nix
-    ../../modules/home/dev/verilog.nix
-  ];
-
-  home.packages = with pkgs; [
-    rose-pine-cursor
   ];
 
   home.stateVersion = "25.05";

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Terminal Emulator
     ghostty # default
@@ -63,6 +59,7 @@
     zotero
     anki-bin
     feishin
+    rose-pine-cursor
 
     # Email
     protonmail-bridge

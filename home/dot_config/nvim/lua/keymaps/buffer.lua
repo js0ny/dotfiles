@@ -1,3 +1,6 @@
+-- Use leader + m for `major`, inspired by emacs
+-- If under mode = 'n' / 'v': <leader>m and <localleader> will be added by default
+-- If under `i`
 local bufmap = {
   markdown = {
     { mode = "x", keys = "i", cmd = 'c*<C-r>"*', opt = { desc = "Add italic to selected text" } },
@@ -32,7 +35,26 @@ local bufmap = {
     { mode = "x", keys = "d", cmd = 'c+<C-r>"+', opt = { desc = "Add strikethrough to selected text" } },
     { mode = "x", keys = "h", cmd = 'c~<C-r>"~', opt = { desc = "Add highlight to selected text" } },
   },
+  sh = {
+    { mode = "n", keys = "<leader>mx", cmd = "<cmd>!chmod u+x %<CR>", opt = { desc = "Mark the file as executable" } },
+  },
 }
+
+-- Shallow copy
+local function extend(tbl1, tbl2)
+  local t = {}
+  for _, v in ipairs(tbl1 or {}) do
+    table.insert(t, v)
+  end
+  for _, v in ipairs(tbl2 or {}) do
+    table.insert(t, v)
+  end
+  return t
+end
+
+for _, ft in ipairs({ "bash", "zsh", "fish", "python" }) do
+  bufmap[ft] = extend(bufmap[ft], bufmap.sh)
+end
 
 local function setup_buffer_maps(buffer_map)
   -- 遍历 buffer_map 中的每个文件类型

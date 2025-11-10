@@ -97,6 +97,32 @@ in {
               app-id = "^anki$";
               title = "^Add$";
             }
+            # Dolphin compressing files
+            {
+              app-id = "^org.kde.dolphin$";
+              title = "^Compressing.*$";
+            }
+            {
+              app-id = "^thunar$";
+              title = "^File Operation Progress$";
+            }
+            ### IM Medias
+            {
+              app-id = "^QQ$";
+              title = "^图片查看器$";
+            }
+            {
+              app-id = "^org.telegram.desktop$";
+              title = "^Media viewer$";
+            }
+            {
+              app-id = "^wechat$";
+              title = "^图片和视频$";
+            }
+            {
+              app-id = "^org.pulseaudio.pavucontrol$";
+              title = "^Volume Control$";
+            }
           ];
           open-floating = true;
         }

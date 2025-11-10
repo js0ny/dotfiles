@@ -52,5 +52,7 @@
     package-version-server
     gemini-cli
     codex
+    imagemagick
+    miniserve
   ];
 }
