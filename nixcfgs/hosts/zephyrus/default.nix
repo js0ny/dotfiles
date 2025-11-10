@@ -14,7 +14,7 @@
     ../../modules/nixos/desktop/laptop.nix
 
     # hardware drivers
-    ../../modules/nixos/hardware/nvidia.nix
+    ../../modules/nixos/hardware/nvidia-vfio.nix
 
     # udev rules
     ../../modules/nixos/hardware/udev/basys3.nix
