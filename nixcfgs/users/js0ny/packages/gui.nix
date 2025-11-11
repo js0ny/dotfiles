@@ -17,7 +17,6 @@
     sioyek
 
     # Image Viewer
-    vimiv-qt # Default
     loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
 
     kdePackages.elisa

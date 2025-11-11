@@ -1,4 +1,6 @@
-{
+{...}: let
+  gvim = "nvim-qt.desktop";
+in {
   xdg.configFile."mimeapps.list".force = true;
   xdg.mime.enable = true;
   xdg.mimeApps = {
@@ -8,20 +10,24 @@
       # PDF
       "application/pdf" = "org.kde.okular.desktop";
       # Plain text
-      "text/plain" = "nvim-qt.desktop";
+      "text/plain" = gvim;
       # Source Code - C
-      "text/x-csrc" = "nvim-qt.desktop";
-      "text/x-chdr" = "nvim-qt.desktop";
+      "text/x-csrc" = gvim; # .c
+      "text/x-chdr" = gvim; # .h
+      # CSV
+      "text/csv" = gvim;
       # File Explorer
       "inode/directory" = "org.kde.dolphin.desktop";
-      # Image Viewer
+      # Image Viewer:
+      #     gwenview: keyboard driven, high compatibility
       #     loupe: Performance is incredible
-      "image/jpeg" = "vimiv.desktop;org.gnome.Loupe.desktop";
-      "image/jpg" = "vimiv.desktop;org.gnome.Loupe.desktop";
-      "image/png" = "vimiv.desktop;org.gnome.Loupe.desktop";
-      "image/gif" = "vimiv.desktop;org.gnome.Loupe.desktop";
-      "image/bmp" = "vimiv.desktop;org.gnome.Loupe.desktop";
-      "image/webp" = "vimiv.desktop;org.gnome.Loupe.desktop";
+      "image/jpeg" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+      "image/jpg" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+      "image/png" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+      "image/gif" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+      "image/bmp" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+      "image/avif" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+      "image/webp" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
 
       # Audio:
       #     music: elisa: fully featured, good cjk support

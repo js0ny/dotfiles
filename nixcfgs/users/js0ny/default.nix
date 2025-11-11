@@ -17,10 +17,6 @@ in {
     then "/Users/${username}"
     else "/home/${username}";
 
-  home.packages = with pkgs; [
-    home-manager
-  ];
-
   programs.home-manager.enable = true;
 
   home.sessionVariables.TERMINAL = config.currentUser.defaultTerminal;

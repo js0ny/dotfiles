@@ -39,6 +39,20 @@
       }
       {
         matches = [
+          {
+            app-id = "^org.kde.(ark|dolphin)$";
+            title = "^Extracting";
+          }
+        ];
+        open-focused = false;
+        default-floating-position = {
+          x = 50;
+          y = 50;
+          relative-to = "top-right";
+        };
+      }
+      {
+        matches = [
           # Anki add new flashcard
           {
             app-id = "^anki$";
@@ -57,6 +71,10 @@
           {
             app-id = "^QQ$";
             title = "^图片查看器$";
+          }
+          {
+            app-id = "^QQ$";
+            title = "^群聊的聊天记录$";
           }
           {
             app-id = "^org.telegram.desktop$";

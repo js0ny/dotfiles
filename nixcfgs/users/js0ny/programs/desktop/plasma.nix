@@ -3,6 +3,9 @@
   config,
   ...
 }: {
+  imports = [
+    ../gwenview.nix
+  ];
   home.packages = with pkgs; [
     # kdePackages.yakuake
     krunner-vscodeprojects

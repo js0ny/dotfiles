@@ -21,7 +21,7 @@
   fishInit = builtins.concatStringsSep "\n" (
     lib.mapAttrsToList (name: path: ''
       if test -r ${path}
-        set -gx ${name} (< ${path})
+        set -gx "${name}" (cat "${path}")
       end
     '')
     secretPaths
