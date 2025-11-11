@@ -8,6 +8,7 @@
 in {
   imports = [
     ../../modules/home/options.nix
+    ../../modules/home/do-not-track.nix
     ./config.nix
   ];
   home.username = username;
@@ -19,6 +20,8 @@ in {
   home.packages = with pkgs; [
     home-manager
   ];
+
+  programs.home-manager.enable = true;
 
   home.sessionVariables.TERMINAL = config.currentUser.defaultTerminal;
 }
