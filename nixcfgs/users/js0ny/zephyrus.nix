@@ -39,7 +39,7 @@
 
     # Desktop Linux
     ./programs/desktop/plasma.nix
-    ./programs/desktop/wayland-wm/niri.nix
+    ./programs/desktop/wayland-wm/niri
 
     # General Program config
     ../../modules/home/programs/eza.nix
@@ -51,6 +51,13 @@
     # Development setup
     ../../modules/home/dev/nix.nix
   ];
+
+  currentUser.defaultTerminalRunner = "alacritty";
+
+  currentHost = {
+    keyboardBacklightDevice = "asus::kbd_backlight";
+    keyboardBacklightStep = "1";
+  };
 
   home.stateVersion = "25.05";
 }

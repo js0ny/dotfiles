@@ -40,4 +40,16 @@
       description = "Default icon theme";
     };
   };
+  options.currentHost = {
+    keyboardBacklightDevice = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "Device Identifier that used for brightnessctl, get the identifier via brightnessctl --list";
+    };
+    keyboardBacklightStep = lib.mkOption {
+      type = lib.types.str;
+      default = "34%";
+      description = "Step to change keyboard backlight, integer or percentage accepted";
+    };
+  };
 }

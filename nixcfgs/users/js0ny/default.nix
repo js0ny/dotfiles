@@ -21,6 +21,4 @@ in {
   ];
 
   home.sessionVariables.TERMINAL = config.currentUser.defaultTerminal;
-
-  home.stateVersion = "25.05";
 }
