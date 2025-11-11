@@ -66,21 +66,10 @@ opt.conceallevel = 2
 -- opt.laststatus = 0
 -- 3: Global status line (always at the bottom)
 opt.laststatus = 3
+vim.go.laststatus = 3
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 -- hover.nvim
 vim.o.mousemoveevent = true
-
--- Hide zero-width space
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "*",
---   callback = function()
---     vim.opt_local.conceallevel = 2
---     vim.cmd([[
---       syntax match ZeroWidthSpace /\%u200b/ conceal
---       highlight link ZeroWidthSpace Conceal
---     ]])
---   end,
--- })
 
 vim.fn.matchadd("Conceal", [[\%u200b]], 10, -1, { conceal = "" })

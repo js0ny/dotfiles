@@ -1,4 +1,8 @@
 return {
+  -- Picker
+  { import = "plugins.mod.fzf" },
+  -- Explorer
+  { import = "plugins.mod.neo-tree" },
   {
     "rmagatti/auto-session",
     event = "BufReadPre",
@@ -12,9 +16,6 @@ return {
       { "<leader>ps", "<Cmd>AutoSession search<CR>", desc = "List all sessions" },
     },
   },
-  -- { import = "plugins.mod.nvim-tree" },
-  -- { import = "plugins.mod.telescope" },
-  { import = "plugins.mod.fzf" },
   -- {
   --   "ahmedkhalf/project.nvim",
   --   event = "VeryLazy",
@@ -37,5 +38,4 @@ return {
       "Neogit",
     },
   },
-  -- { import = "plugins.mod.neo-tree" },
 }

@@ -22,7 +22,7 @@ local config = {
     -- theme = "catppuccin",
     theme = "auto",
     -- IDE-like Global Status
-    globalstaus = true,
+    globalstaus = true, -- also set vim.go.laststatus = 3
   },
   sections = {
     -- these are to remove the defaults

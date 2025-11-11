@@ -19,6 +19,10 @@
     # udev rules
     ../../modules/nixos/hardware/udev/basys3.nix
 
+    # Services
+    ../../modules/nixos/desktop/wayvnc.nix
+    ../../modules/nixos/core/sshd.nix
+
     # desktop environment and display manager
     ../../modules/nixos/desktop/dm/sddm.nix
     ../../modules/nixos/desktop/de/kde.nix
