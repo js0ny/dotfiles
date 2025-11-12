@@ -41,6 +41,7 @@
     ./programs/dolphin.nix
     ./programs/magick.nix
     ./programs/miniserve.nix
+    ./programs/retroarch.nix
 
     # Desktop Linux
     ./programs/desktop/plasma
