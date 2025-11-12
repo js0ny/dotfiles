@@ -54,5 +54,6 @@
     codex
     imagemagick
     miniserve
+    jq
   ];
 }

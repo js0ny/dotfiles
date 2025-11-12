@@ -33,6 +33,7 @@
           value = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
             installation_mode = "force_installed";
+            private_browsing = true;
           };
         };
       in

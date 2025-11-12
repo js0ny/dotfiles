@@ -5,6 +5,8 @@
 }: {
   home.packages = [pkgs.miniserve];
   home.file.".local/share/kio/servicemenus/miniserve.desktop" = {
+    enable = true;
+    executable = true;
     text = ''
       [Desktop Entry]
       Type=Service

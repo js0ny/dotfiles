@@ -183,17 +183,17 @@
   <Action name="go_back" priority="0"/>
   <Action name="go_forward" priority="0"/>
   <Action name="go_up" priority="0"/>
-  <Action name="go_home" priority="0"/>
+  <Action name="go_home" priority="0" shortcut="Ctrl+Backspace; Home Page"/>
   <Action name="stop" priority="0"/>
-  <Action name="icons" priority="0"/>
-  <Action name="compact" priority="0"/>
+  <Action name="icons" priority="0" shortcut="; "/>
+  <Action name="compact" priority="0" shortcut="; "/>
   <Action name="details" priority="0"/>
   <Action name="view_mode" priority="0"/>
   <Action name="view_settings" priority="0"/>
   <Action name="view_zoom_in" priority="0"/>
   <Action name="view_zoom_reset" priority="0"/>
   <Action name="view_zoom_out" priority="0"/>
-  <Action name="edit_cut" priority="0"/>
+  <Action name="edit_cut" priority="0" shortcut="Ctrl+X"/>
   <Action name="edit_copy" priority="0"/>
   <Action name="edit_paste" priority="0"/>
   <Action name="toggle_search" priority="0"/>
@@ -203,5 +203,10 @@
   <Action iconText="Location" name="copy_location"/>
   <Action icon="user_purple" iconText="sudo" name="act_as_admin"/>
   <Action name="add_to_places" priority="0"/>
+  <Action name="copy_to_inactive_split_view" shortcut="Shift+F5; Ctrl+1"/>
+  <Action name="move_to_inactive_split_view" shortcut="Shift+F6; Ctrl+2"/>
  </ActionProperties>
 </gui>
+<!--
+vim:ft=xml
+-->

@@ -39,9 +39,11 @@
     ./programs/gwenview.nix
     ./programs/yazi.nix
     ./programs/dolphin.nix
+    ./programs/magick.nix
+    ./programs/miniserve.nix
 
     # Desktop Linux
-    ./programs/desktop/plasma.nix
+    ./programs/desktop/plasma
     ./programs/desktop/wayland-wm/niri
 
     # General Program config

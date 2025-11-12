@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
-    ../gwenview.nix
-    ../dolphin.nix
+    ../../gwenview.nix
+    ../../dolphin.nix
   ];
   home.packages = with pkgs; [
     # kdePackages.yakuake

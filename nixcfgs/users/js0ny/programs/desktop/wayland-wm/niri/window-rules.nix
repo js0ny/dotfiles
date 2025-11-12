@@ -1,4 +1,4 @@
-# vim:foldmethod=marker,
+# vim:foldmethod=marker
 {...}: {
   programs.niri = {
     settings.window-rules = [

@@ -116,4 +116,6 @@
   <Action name="view_zoom_out" shortcut="Ctrl+-; -"/>
  </ActionProperties>
 </gui>
-<!-- vim:ft=xml -->
+<!--
+vim:ft=xml
+-->

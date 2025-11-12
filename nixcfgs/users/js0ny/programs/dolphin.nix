@@ -14,7 +14,7 @@
       UseTabForSwitchingSplitView = true;
     };
     VersionControl = {
-      enabledPlugins = "Subversion,Git";
+      EnabledPlugins = "Subversion,Git";
     };
   };
 
@@ -30,4 +30,28 @@
       $DRY_RUN_CMD rm -f ~/.config/dolphinrc-override
     fi
   '';
+
+  home.file.".local/share/kio/servicemenus/move-file.desktop" = {
+    enable = true;
+    executable = true;
+    text = ''
+      [Desktop Entry]
+      Type=Service
+      MimeType=all/all
+      Actions=to-inbox;to-public
+      X-KDE-Submenu=Move file to...
+      X-KDE-Submenu[CN]=将文件移动到
+      Icon=mail-move
+
+      [Desktop Action to-inbox]
+      Name=Inbox
+      Icon=inbox
+      Exec=mv "%f" $HOME/Inbox/
+
+      [Desktop Action to-public]
+      Name=Public
+      Icon=document-share
+      Exec=mv "%f" $HOME/Public/
+    '';
+  };
 }
