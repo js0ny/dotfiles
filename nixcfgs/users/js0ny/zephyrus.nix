@@ -36,6 +36,9 @@
     ./programs/ollama.nix
     ./programs/sops.nix
     ./programs/pdf2zh.nix
+    ./programs/gwenview.nix
+    ./programs/yazi.nix
+    ./programs/dolphin.nix
 
     # Desktop Linux
     ./programs/desktop/plasma.nix

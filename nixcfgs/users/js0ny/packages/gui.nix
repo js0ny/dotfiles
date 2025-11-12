@@ -6,12 +6,6 @@
     alacritty
     warp-terminal
 
-    # Explorer
-    kdePackages.dolphin
-    kdePackages.dolphin-plugins # dolphin git integration
-    kdePackages.konsole # dolphin terminal integration
-    yazi # terminal file manager
-
     # PDF Viewer
     kdePackages.okular # default
     sioyek
