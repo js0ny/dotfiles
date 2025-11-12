@@ -1,10 +1,23 @@
-{pkgs, ...}: let
-  version = "v13.1.3";
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  version = "v13.3.12";
   rimeConfig = pkgs.fetchzip {
     url = "https://github.com/amzxyz/rime_wanxiang/releases/download/${version}/rime-wanxiang-zrm-fuzhu.zip";
-    sha256 = "sha256-UokSOfGCt7C8/F13BEyy02+rJCqyZcYBWrP/m/Me4D4=";
+    # sha256 = lib.fakeHash;
+    sha256 = "sha256-vnhg+//ByZmQ2uxBZTn3cDYKrUFckLAuU8MfB8kSDVA=";
     stripRoot = false;
   };
+
+  # Create a modified version of rimeConfig without custom_phrase.txt
+  rimeConfigFiltered = pkgs.runCommand "rime-config-filtered" {} ''
+    cp -r ${rimeConfig} $out
+    chmod -R u+w $out
+    rm -f $out/custom_phrase.txt
+  '';
+
   rimePath =
     if pkgs.stdenv.isDarwin
     then "Library/Rime"
@@ -24,8 +37,11 @@ in {
       ];
     };
   };
-  home.file.${rimePath} = {
-    source = rimeConfig;
-    recursive = true;
+  home.file = {
+    ${rimePath} = {
+      source = rimeConfigFiltered;
+      recursive = true;
+    };
+    "${rimePath}/custom_phrase.txt".text = "";
   };
 }

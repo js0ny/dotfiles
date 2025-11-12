@@ -97,5 +97,11 @@
     };
   };
 
+  # TODO: This is a dependency of `feishin` (EOL)
+  # Once the new version is published, delete this
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-36.9.5"
+  ];
+
   services.protonmail-bridge.enable = true;
 }

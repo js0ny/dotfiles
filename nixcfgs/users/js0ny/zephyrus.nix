@@ -57,6 +57,8 @@
     ../../modules/home/dev/nix.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   currentUser.defaultTerminalRunner = "alacritty";
 
   currentHost = {
