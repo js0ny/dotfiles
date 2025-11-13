@@ -17,7 +17,15 @@
     mpv
     haruna
 
+    # Email
+    protonmail-bridge
+    thunderbird
+    birdtray
+
+    # Theming
     papirus-icon-theme
+    rose-pine-cursor
+
     pcloud
     telegram-desktop
     steam
@@ -52,12 +60,6 @@
     zotero
     anki-bin
     feishin
-    rose-pine-cursor
-
-    # Email
-    protonmail-bridge
-    thunderbird
-    birdtray
   ];
 
   home.sessionVariables = {

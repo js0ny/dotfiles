@@ -1,6 +1,7 @@
 [mgr]
 show_hidden = true
-linemode = "size_and_mtime"
+linemode = "size_and_mtime" # See ./init.lua Linemode:size_and_mtime
 
 [preview]
 wrap = "yes"
+

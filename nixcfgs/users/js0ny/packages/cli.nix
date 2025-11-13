@@ -46,14 +46,14 @@
     ghostscript
     # Misc ta-lib ddgr protonvpn-cli
     markdown-oxide
-    nushell
     powershell
-    powershell-editor-services
-    package-version-server
     gemini-cli
     codex
     imagemagick
     miniserve
     jq
+    srm
+    mediainfo
+    exiftool
   ];
 }

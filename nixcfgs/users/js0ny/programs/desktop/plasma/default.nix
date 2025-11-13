@@ -11,6 +11,7 @@
     # kdePackages.yakuake
     krunner-vscodeprojects
     jetbrains-runner
+    plasmusic-toolbar
   ];
   home.sessionVariables = {
     QT_STYLE_OVERRIDE = "Breeze";

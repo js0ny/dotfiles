@@ -39,7 +39,7 @@ local bufmap = {
     { mode = "n", keys = "<leader>mx", cmd = "<cmd>!chmod u+x %<CR>", opt = { desc = "Mark the file as executable" } },
   },
   json = {
-    { mode = "n", keys ="<leader>mp", cmd = "<cmd>%!jq", opt = { desc = "Prettify json"} }
+    { mode = "n", keys = "<leader>mp", cmd = "<cmd>%!jq", opt = { desc = "Prettify json" } },
   },
 }
 

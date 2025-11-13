@@ -7,6 +7,7 @@
 in {
   home.packages = with pkgs; [
     zsh-fzf-tab
+    zsh-nix-shell
   ];
   programs.zsh = {
     enable = true;
@@ -46,7 +47,7 @@ in {
 
       # Globbing
       setopt EXTENDED_GLOB        # Extended globbing
-      setopt GLOB_DOTS            # Include dotfiles in globbing
+      # setopt GLOB_DOTS            # Include dotfiles in globbing
 
       # Error correction
       setopt CORRECT              # Suggest corrections for commands

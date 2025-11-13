@@ -73,3 +73,8 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.o.mousemoveevent = true
 
 vim.fn.matchadd("Conceal", [[\%u200b]], 10, -1, { conceal = "" })
+
+-- Grep
+
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
