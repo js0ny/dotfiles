@@ -2,6 +2,8 @@
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+// This is deprecated, see:
+// ~/.dotfiles/nixcfgs/users/js0ny/programs/desktop/wayland-wm/niri/default.nix
 
 
 /// Startup Applications

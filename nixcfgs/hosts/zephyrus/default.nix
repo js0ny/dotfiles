@@ -22,6 +22,7 @@
     # Services
     ../../modules/nixos/desktop/wayvnc.nix
     ../../modules/nixos/core/sshd.nix
+    ../../modules/nixos/desktop/xremap.nix
 
     # desktop environment and display manager
     ../../modules/nixos/desktop/dm/sddm.nix

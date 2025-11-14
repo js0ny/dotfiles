@@ -6,7 +6,7 @@
     nixpkgs-stable.url = "github:nixOS/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-    flake-utils.url = "github:numtide/flake-utils";
+    # flake-utils.url = "github:numtide/flake-utils";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,15 +21,20 @@
       inputs.home-manager.follows = "home-manager";
     };
     nur.url = "github:nix-community/NUR";
+    # caelestia-shell - shell for wms
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # sops - Secrets
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Niri - Wayland Window Manager
     niri-flake.url = "github:sodiboo/niri-flake";
+    # xremap - kay remapper like keyd
+    xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs = {
@@ -44,6 +49,7 @@
     caelestia-shell,
     sops-nix,
     niri-flake,
+    xremap-flake,
     ...
   } @ inputs: let
     overlays = [
@@ -70,6 +76,7 @@
         system = "x86_64-linux";
         inherit specialArgs;
         modules = [
+          xremap-flake.nixosModules.default
           sops-nix.nixosModules.sops
           ./hosts/${hostname}
           {nixpkgs.overlays = overlays;}

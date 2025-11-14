@@ -5,4 +5,9 @@
     korganizer
     kdepim-addons
   ];
+  # NOTE: Upstream does not support running withKDE as root
+  services.xremap = {
+    serviceMode = "user";
+    userName = "js0ny";
+  };
 }

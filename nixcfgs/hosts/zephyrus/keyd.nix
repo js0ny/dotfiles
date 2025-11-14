@@ -1,10 +1,7 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    keyd
-  ];
-
+{...}: {
+  # Disable for now, currently trying xremap and katana
   services.keyd = {
-    enable = true;
+    enable = false;
     keyboards = {
       externalKeyboard = {
         ids = ["0b05:19b6:d167885d"]; # ASUS Keyboard

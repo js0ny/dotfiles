@@ -9,7 +9,7 @@
     # caelestia-shell
     xdg-desktop-portal-hyprland
     hyprpolkitagent
-    grimblast
     xdg-desktop-portal-wlr
   ];
+  services.xremap.withHypr = true;
 }
