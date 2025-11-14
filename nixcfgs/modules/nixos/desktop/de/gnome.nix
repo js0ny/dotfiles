@@ -13,5 +13,4 @@
     papers
     gtop
   ];
-  services.xremap.withGnome = true;
 }

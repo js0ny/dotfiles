@@ -88,13 +88,13 @@ return {
       img_dirs = { "90 - System/Assets" },
     },
   },
-  -- keys = {
-  --   {
-  --     "<leader>ft",
-  --     function()
-  --       require("snacks").explorer()
-  --     end,
-  --     desc = "Toggle File Explorer",
-  --   },
-  -- },
+  keys = {
+    {
+      "<leader>ba",
+      function()
+        require("snacks").dashboard()
+      end,
+      desc = "Toggle Dashboard";
+    },
+  },
 }

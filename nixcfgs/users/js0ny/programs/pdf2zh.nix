@@ -36,7 +36,7 @@ in {
   home.packages = [pdf2zhRunner];
 
   home.file.".local/share/kio/servicemenus/pdf2zh.desktop" = {
-    enable = false; # TODO: Write a wrapper for status tracking
+    enable = true; # TODO: Write a wrapper for status tracking
     executable = true;
     text = ''
       [Desktop Entry]

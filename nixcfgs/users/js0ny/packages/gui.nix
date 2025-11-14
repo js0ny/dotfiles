@@ -37,7 +37,6 @@
       vmopts = ''-Dawt.toolkit.name=WLToolkit'';
     })
     localsend
-    neovide
     cherry-studio
     kdePackages.kdeconnect-kde
     picard

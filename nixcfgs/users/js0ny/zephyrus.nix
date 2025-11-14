@@ -42,6 +42,8 @@
     ./programs/magick.nix
     ./programs/miniserve.nix
     ./programs/retroarch.nix
+    ./programs/neovide.nix
+    ./programs/edit-clipboard.nix
 
     # Desktop Linux
     ./programs/desktop/plasma

@@ -11,5 +11,4 @@
     hyprpolkitagent
     xdg-desktop-portal-wlr
   ];
-  services.xremap.withHypr = true;
 }

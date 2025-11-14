@@ -35,12 +35,12 @@ in {
   imports = [
     ../../rofi.nix
     ./waybar.nix
+    ./swww.nix
   ];
   home.packages = with pkgs; [
     swayidle # Screensaver
     dunst # Notification daemon
     cliphist # Clipboard daemon
-    swww # Wallpaper daemon
     wmname
     # swayidleWrapper
     brightnessctl

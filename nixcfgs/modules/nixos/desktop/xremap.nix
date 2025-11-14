@@ -12,6 +12,7 @@
 
   services.xremap = {
     enable = true;
+    withNiri = true;
     # modmap: single key
     serviceMode = "user";
     userName = "js0ny";
@@ -39,13 +40,33 @@
       ];
       keymap = [
         {
-          name = "Telegram Navigator";
+          name = "IM Navigator - Alt-Up/Down";
           application = {
-            only = ["org.telegram.desktop" "telegram-desktop"];
+            only = ["org.telegram.desktop" "telegram-desktop" "wechat"];
           };
           remap = {
-            "M-j" = "M-down"; # alt.j = macro(C-tab)
-            "M-k" = "M-up"; # alt.k = C-S-tab
+            "M-j" = "M-down";
+            "M-k" = "M-up";
+          };
+        }
+        {
+          name = "IM Navigator - Ctrl-Up/Down";
+          application = {
+            only = ["qq"];
+          };
+          remap = {
+            "M-j" = "C-down";
+            "M-k" = "C-up";
+          };
+        }
+        {
+          name = "Zotero PDF Navigator";
+          application = {
+            only = ["zotero"];
+          };
+          remap = {
+            "M-j" = "KEY_PAGEDOWN";
+            "M-k" = "KEY_PAGEUP";
           };
         }
       ];
