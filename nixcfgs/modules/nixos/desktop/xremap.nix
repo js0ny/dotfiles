@@ -72,4 +72,13 @@
       ];
     };
   };
+
+  # treat the virtual keyboard as internal
+  # https://github.com/xremap/xremap/discussions/656
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [xremap]
+    MatchName=xremap
+    MatchUdevType=keyboard
+    AttrKeyboardIntegration=internal
+  '';
 }

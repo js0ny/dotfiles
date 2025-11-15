@@ -31,7 +31,8 @@
         touchpad = {
           tap = true;
           natural-scroll = true;
-          disabled-on-external-mouse = true;
+          disabled-on-external-mouse = false;
+          dwt = true; # disable on typing
         };
 
         mouse = {};

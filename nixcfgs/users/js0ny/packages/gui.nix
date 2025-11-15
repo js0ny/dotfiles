@@ -29,6 +29,7 @@
     pcloud
     telegram-desktop
     steam
+    signal-desktop
     # Use Wayland for Jetbrains
     (jetbrains.idea-ultimate.override {
       vmopts = ''-Dawt.toolkit.name=WLToolkit'';

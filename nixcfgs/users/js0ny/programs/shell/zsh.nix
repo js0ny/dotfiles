@@ -50,8 +50,8 @@ in {
       # setopt GLOB_DOTS            # Include dotfiles in globbing
 
       # Error correction
-      setopt CORRECT              # Suggest corrections for commands
-      setopt CORRECT_ALL          # Suggest corrections for arguments
+      # setopt CORRECT              # Suggest corrections for commands
+      # setopt CORRECT_ALL          # Suggest corrections for arguments
 
       # edit command line
       autoload -Uz edit-command-line

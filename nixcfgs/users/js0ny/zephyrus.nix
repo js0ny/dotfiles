@@ -22,7 +22,7 @@
 
     # Personal Program
     ./programs/chromium.nix
-    ./programs/firefox.nix
+    ./programs/firefox
     ./programs/emacs.nix
     ./programs/vscode.nix
     ./programs/xilinx.nix

@@ -35,6 +35,8 @@
     niri-flake.url = "github:sodiboo/niri-flake";
     # xremap - kay remapper like keyd
     xremap-flake.url = "github:xremap/nix-flake";
+    # betterfox - preconfigured firefox user.js
+    betterfox-nix.url = "github:HeitorAugustoLN/betterfox-nix";
   };
 
   outputs = {
@@ -50,6 +52,7 @@
     sops-nix,
     niri-flake,
     xremap-flake,
+    betterfox-nix,
     ...
   } @ inputs: let
     overlays = [
@@ -112,6 +115,7 @@
           nix-flatpak.homeManagerModules.nix-flatpak
           sops-nix.homeManagerModules.sops
           niri-flake.homeModules.niri
+          betterfox-nix.modules.homeManager.betterfox
         ];
       };
       "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {
