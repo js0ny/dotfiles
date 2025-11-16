@@ -36,6 +36,7 @@ in {
     ../../rofi.nix
     ./waybar.nix
     ./swww.nix
+    ./kanshi.nix
   ];
   home.packages = with pkgs; [
     swayidle # Screensaver
