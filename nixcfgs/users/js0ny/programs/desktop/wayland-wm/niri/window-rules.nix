@@ -84,8 +84,51 @@
             app-id = "^wechat$";
             title = "^图片和视频$";
           }
+          {
+            app-id = "^CherryStudio$";
+            title = "^Cherry Studio Quick Assistant$";
+          }
         ];
         open-floating = true;
+      }
+      {
+        matches = [
+          {app-id = "^firefox$";}
+        ];
+        open-on-workspace = "master";
+      }
+      {
+        matches = [
+          {app-id = "^code$";}
+          {app-id = "^dev.zed.Zed$";}
+          {app-id = "^Vitis IDE$";}
+          {app-id = "^Vivado$";}
+        ];
+        open-on-workspace = "project";
+      }
+      {
+        matches = [
+          {app-id = "^org.kde.krdc$";}
+          {app-id = "^\.virt-manager-wrapped$";}
+          {title = "^🌐 ssh.*";}
+        ];
+        open-on-workspace = "remote";
+      }
+      {
+        matches = [
+          {app-id = "^org.telegram.desktop$";}
+          {app-id = "^wechat$";}
+          {app-id = "^QQ$";}
+          {app-id = "^io.github.kukuruzka165.materialgram$";}
+          {app-id = "^thunderbird$";}
+        ];
+        open-on-workspace = "info";
+      }
+      {
+        matches = [
+          {app-id = "^feishin$";}
+        ];
+        open-on-workspace = "bg";
       }
     ];
   };

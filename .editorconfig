@@ -25,3 +25,7 @@ indent_style = space
 # Empty ruleset to skip global settings
 # charset = gbk # Not available
 # end_of_line = crlf
+
+[*.nix]
+indent_size = 2
+

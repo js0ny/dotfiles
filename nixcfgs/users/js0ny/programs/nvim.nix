@@ -15,6 +15,7 @@ in {
       imagemagick
     ];
   };
+  home.packages = with pkgs; [lua-language-server];
   programs.fish.shellAbbrs = nvimAlias;
   programs.bash.shellAliases = nvimAlias;
   programs.zsh.shellAliases = nvimAlias;
