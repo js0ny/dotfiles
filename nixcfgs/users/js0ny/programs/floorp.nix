@@ -1,19 +1,30 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  a = pkgs.firefox-addons;
+in {
+  home.file.".floorp/profiles.ini".force = lib.mkForce true;
+  home.file.".floorp/js0ny/search.json.mozlz4".force = lib.mkForce true;
   programs.floorp = {
     enable = true;
-    package = pkgs.floorp;
     policies = {
       DisableTelemetry = true;
       BlockAboutConfig = false;
       DisableFirefoxScreenshots = true;
       DontCheckDefaultBrowser = true;
 
+      Preferences = {
+      };
+
       ExtensionSettings = with builtins; let
         extension = short: uuid: {
           name = uuid;
           value = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
-            installation_mode = "force_installed";
+            updates_disabled = true;
+            private_browsing = true;
           };
         };
       in
@@ -54,7 +65,7 @@
         ];
       };
     };
-    profiles.default = {
+    profiles.js0ny = {
       search.engines = {
         archwiki = {
           name = "ArchWiki";
@@ -113,27 +124,36 @@
           definedAliases = ["@gh"];
         };
       };
-      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        darkreader
-        rsshub-radar
-        proton-pass
-        surfingkeys
-        web-archives
-        #       immersive-translate
-        tampermonkey
-        stylus
-        foxy-gestures
-        google-container
-        refined-github
-        downthemall
-        material-icons-for-github
-        single-file
-        return-youtube-dislikes
-        steam-database
-        bilisponsorblock
-        sponsorblock
-        buster-captcha-solver
-      ];
+      extensions = {
+        packages = with pkgs.firefox-addons; [
+          ublock-origin
+          darkreader
+          rsshub-radar
+          proton-pass
+          proton-vpn
+          surfingkeys_ff
+          view-page-archive # Web Archives
+          tampermonkey
+          styl-us
+          foxy-gestures
+          google-container
+          refined-github-
+          downthemall
+          material-icons-for-github
+          single-file
+          return-youtube-dislikes
+          steam-database
+          bilisponsorblock
+          sponsorblock
+          buster-captcha-solver
+          protondb-for-steam
+          i-dont-care-about-cookies
+          global-speed
+          kiss-translator
+          # sidebery
+        ];
+        force = true;
+      };
     };
   };
 }

@@ -1,4 +1,7 @@
 {...}: let
+  # Why using nvim gui:
+  #   * when `rga-fzf`: nvim wrapper failed to launch
+  #   * nvim wrapper reports error on parsing filename with spaces
   gvim = "nvim-qt.desktop";
 in {
   xdg.configFile."mimeapps.list".force = true;
@@ -14,6 +17,7 @@ in {
       # Source Code - C
       "text/x-csrc" = gvim; # .c
       "text/x-chdr" = gvim; # .h
+      "text/javascript" = gvim;
       # CSV
       "text/csv" = gvim;
       # File Explorer

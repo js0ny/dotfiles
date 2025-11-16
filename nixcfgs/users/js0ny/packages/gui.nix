@@ -27,7 +27,7 @@
     rose-pine-cursor
 
     pcloud
-    telegram-desktop
+    materialgram
     steam
     signal-desktop
     # Use Wayland for Jetbrains

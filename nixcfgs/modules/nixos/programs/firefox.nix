@@ -5,8 +5,8 @@
     languagePacks = ["zh-CN"];
 
     preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
-      "widget.use-xdg-desktop-portal.mime-handler" = 1;
+      # "widget.use-xdg-desktop-portal.file-picker" = 1;
+      # "widget.use-xdg-desktop-portal.mime-handler" = 1;
       "screenshots.browser.component.enabled" = false;
       "toolkit.telemetry.enabled" = false;
       "toolkit.telemetry.archive.enabled" = false;

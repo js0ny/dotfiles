@@ -10,10 +10,16 @@
     enable = true;
     profiles.default = {
       settings = {
+        "browser.toolbars.bookmarks.visibility" = "never";
         "extensions.update.enabled" = true;
         "sidebar.expandOnHover" = true;
         "sidebar.visibility" = "expand-on-hover";
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "toolkit.tabbox.switchByScrolling" = true;
+        "browser.uidensity" = 1;
+        # Disable Menu when pressing <Alt>
+        "ui.key.menuAccessKey" = -1;
+        "ui.key.menuAccessKeyFocuses" = false;
       };
     };
   };

@@ -42,7 +42,13 @@
         {
           name = "IM Navigator - Alt-Up/Down";
           application = {
-            only = ["org.telegram.desktop" "telegram-desktop" "wechat"];
+            only = [
+              "org.telegram.desktop"
+              "telegram-desktop"
+              "io.github.kukuruzka165.materialgram"
+              "materialgram"
+              "wechat"
+            ];
           };
           remap = {
             "M-j" = "M-down";

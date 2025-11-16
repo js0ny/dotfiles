@@ -1,31 +1,75 @@
 {pkgs, ...}: let
-  addons = pkgs.nur.repos.rycee.firefox-addons;
+  addons = pkgs.firefox-addons;
 in {
   # imports = [./lib.nix]; # TODO: Declarative extension permissions
   programs.firefox.profiles.default = {
     extensions.packages = with addons; [
-      ublock-origin
+      # Keybindings & Gestures & User Scripts
+      foxy-gestures
+      shortkeys
+      surfingkeys_ff
+      violentmonkey
+
+      # Theming
+      material-icons-for-github
+
+      # Browsing Enhancement
       darkreader
+      bionic-reader
+      ublock-origin
+      refined-github-
+      global-speed
+      buster-captcha-solver
+      sidebery
+
+      # Cookies
+      cookie-quick-manager
+      cookie-autodelete
+      consent-o-matic # istilldontcareaboutcookies alt
+
+      # Privacy
+      google-container
+      facebook-container
+
+      ### Site Specific
+      # Steam
+      steam-database
+      protondb-for-steam
+      # YouTube
+      return-youtube-dislikes
+      sponsorblock
+      # Bilibili
+      bilisponsorblock
+
+      # Misc
       rsshub-radar
       proton-pass
       proton-vpn
-      surfingkeys
-      web-archives
-      tampermonkey
-      stylus
-      foxy-gestures
-      google-container
-      refined-github
-      downthemall
-      material-icons-for-github
-      single-file
-      return-youtube-dislikes
-      steam-database
-      bilisponsorblock
-      sponsorblock
-      buster-captcha-solver
-      protondb-for-steam
-      i-dont-care-about-cookies
+      styl-us
+      kiss-translator
+
+      # Disabled
+      # view-page-archive # Web Archives
+      # single-file
+      # downthemall
+
+      # Install globally by policies: see modules/nixos/programs/firefox.nix
+      # clearurls
+      # multi-account-container
     ];
+  };
+  programs.firefox = {
+    policies = {
+      ExtensionSettings = [
+        {
+          name = "zotero@chnm.gmu.edu";
+          value = {
+            install_url = "https://download.zotero.org/connector/firefox/release/Zotero_Connector-5.0.189.xpi";
+            installation_mode = "allow";
+            private_browsing = false;
+          };
+        }
+      ];
+    };
   };
 }

@@ -37,6 +37,14 @@
     xremap-flake.url = "github:xremap/nix-flake";
     # betterfox - preconfigured firefox user.js
     betterfox-nix.url = "github:HeitorAugustoLN/betterfox-nix";
+    firefox-addons = {
+      url = "github:petrkozorezov/firefox-addons-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -53,12 +61,18 @@
     niri-flake,
     xremap-flake,
     betterfox-nix,
+    firefox-addons,
+    zen-browser,
     ...
   } @ inputs: let
     overlays = [
       nur.overlays.default
+      firefox-addons.overlays.default
       (final: prev: {
         caelestia-shell = caelestia-shell.packages.x86_64-linux.caelestia-shell;
+      })
+      (final: pref: {
+        zen-browser = zen-browser.packages.x86_64-linux.zen-browser;
       })
     ];
     forSystem = system:
