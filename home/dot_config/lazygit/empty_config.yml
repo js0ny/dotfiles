@@ -1,3 +1,0 @@
-git:
-  paging:
-    pager: delta --dark --paging=never

@@ -20,6 +20,7 @@ in {
       "text/javascript" = gvim;
       # CSV
       "text/csv" = gvim;
+      "text/markdown" = gvim;
       # File Explorer
       "inode/directory" = "org.kde.dolphin.desktop";
       # Image Viewer:

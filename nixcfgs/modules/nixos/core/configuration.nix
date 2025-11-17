@@ -37,4 +37,14 @@
     shell = pkgs.zsh;
   };
   programs.command-not-found.enable = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/js0ny/.dotfiles/nixcfgs";
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep 5 --keep-since 3d";
+    };
+  };
 }
