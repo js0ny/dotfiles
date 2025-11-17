@@ -34,6 +34,11 @@
             app-id = "^gimp$";
             title = "^GIMP Startup$";
           }
+          {
+            # Generic wechat floating window
+            app-id = "^wechat$";
+            title = "^wechat$";
+          }
         ];
         open-focused = false;
       }
