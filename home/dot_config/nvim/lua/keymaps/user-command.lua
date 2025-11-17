@@ -34,3 +34,27 @@ vim.api.nvim_create_user_command("Reload", function()
 end, {
   desc = "Reload Neovim configuration",
 })
+
+local renameCurrentBuffer = function()
+  local old_name = vim.fn.expand("%:p")
+  local new_name = vim.fn.input("New name: ", vim.fn.expand("%:p:h") .. "/")
+
+  if new_name == "" then
+    print("No new name provided")
+    return
+  elseif new_name == old_name then
+    return
+  end
+
+  vim.cmd("write")
+
+  local success, err = os.rename(old_name, new_name)
+  if not success then
+    print("Error renaming file: " .. err)
+    return
+  end
+
+  vim.cmd("edit " .. new_name)
+  vim.cmd("bdelete " .. old_name)
+end
+vim.api.nvim_create_user_command("Rename", renameCurrentBuffer, {})

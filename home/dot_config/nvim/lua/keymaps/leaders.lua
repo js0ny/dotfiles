@@ -4,29 +4,6 @@ local formatFx = function()
   require("conform").format({ async = true })
 end
 
-local renameCurrentBuffer = function()
-  local old_name = vim.fn.expand("%:p")
-  local new_name = vim.fn.input("New name: ", vim.fn.expand("%:p:h") .. "/")
-
-  if new_name == "" then
-    print("No new name provided")
-    return
-  elseif new_name == old_name then
-    return
-  end
-
-  vim.cmd("write")
-
-  local success, err = os.rename(old_name, new_name)
-  if not success then
-    print("Error renaming file: " .. err)
-    return
-  end
-
-  vim.cmd("edit " .. new_name)
-  vim.cmd("bdelete " .. old_name)
-end
-
 -- 通用映射函数
 local function apply_mappings(maps, prefix)
   for _, map in ipairs(maps) do
@@ -38,8 +15,8 @@ local function apply_mappings(maps, prefix)
     table.insert(M, new_map)
   end
 end
-vim.api.nvim_create_user_command("Rename", renameCurrentBuffer, {})
 
+-- stylua: ignore start
 local leader_mappings = {
   general = {
     { keys = "-",     cmd = ":split<CR>",          opts = { desc = "Split to down" } },
@@ -92,7 +69,7 @@ local leader_mappings = {
     { keys = "D",  cmd = "!trash-rm %<CR>",               opts = { desc = "Delete current file" } },
     -- { keys = "t", cmd = ":NvimTreeFindFileToggle<CR>", opts = { desc = "Toggle File Tree" } },
     -- { keys = "o",  cmd = ":!open %<CR>",                  opts = { desc = "Open file in default program" } },
-    { keys = "R",  cmd = renameCurrentBuffer,             opts = { desc = "Rename current file" } },
+    { keys = "R",  cmd = "<cmd>Rename<CR>",               opts = { desc = "Rename current file" } },
     { keys = "x",  cmd = ":Lazy<CR>",                     opts = { desc = "Open extension view" } },
     { keys = "yy", cmd = ":let @+ = expand('%:p')<CR>",   opts = { desc = "Copy file path" } },
     { keys = "yY", cmd = ":let @+ = expand('%')<CR>",     opts = { desc = "Copy relative file path" } },
@@ -152,6 +129,7 @@ local leader_mappings = {
     { keys = "M", cmd = ":resize<CR>:vertical resize<CR>", opts = { desc = "Maximize window size" } },
   },
 }
+-- stylua: ignore end
 
 for key, maps in pairs(leader_mappings) do
   if key == "general" then
