@@ -1,7 +1,8 @@
 -- <leader> is space
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
--- Disable netrw (file explorer) use NvimTree instead
+-- Disable netrw (file explorer) use neo-tree instead
+-- See: lua/plugins/mod/neo-tree.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- Disable Perl

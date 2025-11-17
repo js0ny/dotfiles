@@ -1,6 +1,6 @@
 local mode_arrow = { "n", "v", "s", "x", "o" }
 
-local keymaps_basic = { -- Modification of Original Keymap - Colemak
+local keymaps_basic = {
   -- https://github.com/LazyVim/LazyVim/blob/d1529f650fdd89cb620258bdeca5ed7b558420c7/lua/lazyvim/config/keymaps.lua#L8
   {
     mode = mode_arrow,
@@ -95,6 +95,8 @@ local keymaps_basic = { -- Modification of Original Keymap - Colemak
     cmd = "5e",
     opts = { desc = "Down 5 Lines" },
   },
+  { keys = "<Tab>", cmd = "<C-w><C-w>", opts = { desc = "Focus on other panel" } },
+  { keys = "<CR>", cmd = "%" },
   { keys = "Y", cmd = "y$", opts = { desc = "Yank to End of Line" } },
   { mode = mode_arrow, keys = "J", cmd = "5j" },
   { mode = mode_arrow, keys = "K", cmd = "5k" },

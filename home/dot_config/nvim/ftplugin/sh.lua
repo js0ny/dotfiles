@@ -1,16 +1,9 @@
-vim.keymap.set("n", "<leader>mx", '<cmd>!chmod +x "%"<CR>', {
-  desc = "Mark the file as executable",
-  buffer = true
-})
-vim.keymap.set("i", "<C-m>x", '<cmd>!chmod +x "%"<CR>', {
-  desc = "Mark the file as executable",
-  buffer = true
-})
-vim.keymap.set("n", "<leader>mX", '<cmd>!chmod u+x "%"<CR>', {
-  desc = "Mark the file as executable (current user only)",
-  buffer = true
-})
-vim.keymap.set("i", "<C-m>X", '<cmd>!chmod u+x "%"<CR>', {
-  desc = "Mark the file as executable (current user only)",
-  buffer = true
-})
+local prefmap = {
+  { keys = "x", cmd = '<cmd>!chmod +x "%"<CR>', opts = { desc = "Mark the file as executable" } },
+  { keys = "X", cmd = '<cmd>!chmod u+x "%"<CR>', opts = { desc = "Mark the file as executable (current user only)" } },
+}
+
+local set_buf_keymaps_prefix = require("keymaps.utils").set_buf_keymaps_prefix
+-- local set_buf_keymaps = require("keymaps.utils").set_buf_keymaps
+
+set_buf_keymaps_prefix(prefmap)

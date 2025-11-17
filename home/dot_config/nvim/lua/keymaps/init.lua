@@ -11,7 +11,7 @@ local keymaps_basic = require("keymaps.basic")
 local keymaps_modifier = require("keymaps.modifier")
 local keymaps_terminal = require("keymaps.tmap")
 
-require("keymaps.buffer")
+-- require("keymaps.buffer")
 
 utils.set_keymaps(keymaps_general)
 utils.set_keymaps(keymaps_basic)

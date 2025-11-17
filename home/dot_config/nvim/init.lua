@@ -10,12 +10,12 @@
 require("config.options")
 local term = os.getenv("TERM") or ""
 if vim.g.vscode then -- TODO: VSCode Neovim Integration
-  require("config.vscode")
+  require("profiles.vscode")
 elseif term == "linux" then -- Under tty
-  require("config.tty")
+  require("profiles.tty")
   vim.cmd("colorscheme vim") -- Use minimal colorscheme
 else
-  require("config.plugins")
+  require("profiles.vanilla")
   require("config.colorscheme")
 end
 require("config.keymaps")

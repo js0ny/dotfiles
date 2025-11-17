@@ -86,6 +86,16 @@ local leader_mappings = {
       cmd = ":let @+ = expand('%') . ':' . line('.')<CR>",
       opts = { desc = "Copy relative file path with line number" },
     },
+    { keys= "p",
+      cmd = function()
+        local filepath = vim.fn.expand('%:.')
+        if filepath == '' then
+          vim.notify("No file path (buffer is unnamed)", vim.log.levels.WARN)
+        else
+          vim.notify(filepath, vim.log.levels.INFO)
+        end
+      end, opts = { desc = "Print current file path" }
+    }
   },
   g = { -- +git/version control
   },

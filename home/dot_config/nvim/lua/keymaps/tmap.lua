@@ -1,3 +1,5 @@
+-- Terminal Keymaps
+-- Use <C-w>h|j|k|l to navigate directly
 local M = {
   {
     keys = "<C-w>h",

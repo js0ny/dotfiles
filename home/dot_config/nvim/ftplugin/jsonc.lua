@@ -1,8 +1,8 @@
-vim.keymap.set("n", "<leader>mp", '<cmd>!jq<CR>', {
-  desc = "Pretiffy json",
-  buffer = true
-})
-vim.keymap.set("i", "<C-m>p", '<cmd>%!jq<CR>', {
-  desc = "Pretiffy json",
-  buffer = true
-})
+local prefmap = {
+  { keys = "p", cmd = "<cmd>%!jq<CR>", opts = { desc = "Mark the file as executable" } },
+}
+
+local set_buf_keymaps_prefix = require("keymaps.utils").set_buf_keymaps_prefix
+-- local set_buf_keymaps = require("keymaps.utils").set_buf_keymaps
+
+set_buf_keymaps_prefix(prefmap)
