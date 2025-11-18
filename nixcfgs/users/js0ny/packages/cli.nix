@@ -55,5 +55,7 @@
     srm
     mediainfo
     exiftool
+    ddgr # DuckDuckGo CLI
+    jujutsu
   ];
 }

@@ -52,12 +52,12 @@
   "ui_font_size": 16,
   "buffer_font_size": null,
   "relative_line_numbers": true,
-  "buffer_font_family": "Zed Plex Mono",
+  "buffer_font_family": "Maple Mono NF CN",
   "remove_trailing_whitespace_on_save": true,
   "agent": {
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-3-7-sonnet"
+      "provider": "openrouter",
+      "model": "openai/gpt-5.1-codex"
     }
   },
   "inlay_hints": {
@@ -88,7 +88,11 @@
     "metrics": false
   },
   "languages": {
+    "YAML": {
+      "tab_size": 2
+    },
     "Nix": {
+      "tab_size": 2,
       "formatter": {
         "external": {
           "command": "alejandra",
@@ -98,6 +102,19 @@
       "completions": {
         "lsp_insert_mode": "replace"
       }
+    },
+    "Lua": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "stylua"
+        }
+      }
     }
+  },
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "material-icon-theme": true,
+    "git-firefly": true
   }
 }

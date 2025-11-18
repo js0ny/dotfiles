@@ -105,17 +105,46 @@ in {
     source = rimeConfigFiltered;
     recursive = true;
   };
-  home.file."${rimePath}/default.custom.yaml" = {
-    text = ''
-      patch:
-        schema_list:
-          - schema: wanxiang_pro
-          - schema: latex
-          - schema: jyut6ping3
-          - schema: dioion
-          - schema: gekion
+  # yaml 最后留出一行
+  home.file = {
+    "${rimePath}/default.custom.yaml" = {
+      text = ''
+        patch:
+          # 方案列表
+          schema_list:
+            - schema: wanxiang_pro
+            - schema: latex
+            - schema: jyut6ping3
+            - schema: dioion
+            - schema: gekion
+          # 切换中英：
+          # 不同的选项表示：打字打到一半时按下了 CapsLock、Shift、Control 后：
+          # commit_code  上屏原始的编码，然后切换到英文
+          # commit_text  上屏拼出的词句，然后切换到英文
+          # clear        清除未上屏内容，然后切换到英文
+          # inline_ascii 切换到临时英文模式，按回车上屏后回到中文状态
+          # noop         屏蔽快捷键，不切换中英，但不要屏蔽 CapsLock
+          ascii_composer/switch_key:
+            Shift_L: noop
+            Shift_R: commit_code
+          key_binder/bindings:
+            # emacs editing:
+            - { when: composing, accept: Control+p, send: Up }
+            - { when: composing, accept: Control+n, send: Down }
+            - { when: composing, accept: Control+b, send: Left }
+            - { when: composing, accept: Control+f, send: Right }
 
-    '';
-    enable = true;
+      '';
+      enable = true;
+    };
+    "${rimePath}/wanxiang_pro.custom.yaml" = {
+      text = ''
+        patch:
+          key_binder/sequence:
+            pin: "Alt+p" # 使用 Alt-p 而不是 Ctrl-p 置顶候选项（见 ./default.custom.yaml 中 emacs editing）
+
+      '';
+      enable = true;
+    };
   };
 }

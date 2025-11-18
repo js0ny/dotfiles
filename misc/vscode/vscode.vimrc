@@ -77,3 +77,6 @@ nnoremap ]g editor.action.editor.nextChange
 " " Use C-w C-w as original C-w
 " noremap <C-w><C-w> workbench.action.closeActiveEditor
 " noremap <C-w><A-n> workbench.action.togglePanel
+
+" camelCaseMotion
+noremap w <leader>w
