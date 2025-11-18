@@ -23,4 +23,17 @@
       };
     };
   };
+
+  xdg.desktopEntries."firefox-private" = {
+    name = "Firefox Private Window";
+    genericName = "Web Browser";
+    icon = "firefox-nightly";
+    type = "Application";
+    terminal = false;
+    categories = [
+      "Network"
+      "WebBrowser"
+    ];
+    exec = "firefox --private-window %U";
+  };
 }

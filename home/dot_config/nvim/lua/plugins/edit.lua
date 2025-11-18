@@ -15,7 +15,7 @@ return {
   },
   { import = "plugins.mod.img-clip" },
   { import = "plugins.mod.mc" }, -- Multiple-cursors
-  { import = "plugins.mod.autopairs" },
+  { import = "plugins.mod.blink-pairs" },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
