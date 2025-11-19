@@ -58,5 +58,6 @@
     ddgr # DuckDuckGo CLI
     jujutsu
     github-copilot-cli
+    yt-dlp
   ];
 }

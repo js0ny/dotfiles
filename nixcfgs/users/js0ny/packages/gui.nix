@@ -33,7 +33,6 @@ in {
       loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
 
       kdePackages.elisa
-      mpv
       haruna
 
       # Email
@@ -83,6 +82,8 @@ in {
       cider-2
       kicad
       blender
+      qmk
+      logisim-evolution
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

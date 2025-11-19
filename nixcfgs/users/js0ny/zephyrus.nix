@@ -45,6 +45,7 @@
     ./programs/neovide.nix
     ./programs/edit-clipboard.nix
     ./programs/discord.nix
+    ./programs/mpv.nix
 
     # Desktop Linux
     ./programs/desktop/plasma

@@ -26,6 +26,8 @@ in {
     "Mod+Shift+W".action =
       spawn "${launcher}" "-show" "window" "-icon-theme" "${iconTheme}" "-show-icons";
 
+    "Mod+V".action = spawn-sh "cliphist list | ${launcher} -dmenu | cliphist decode | wl-copy";
+
     "Mod+E".hotkey-overlay.title = "Run file explorer";
     "Mod+E".action = spawn "${explorer}";
     "Mod+Shift+E".hotkey-overlay.title = "Run terminal explorer";
@@ -193,8 +195,10 @@ in {
 
     "Mod+Shift+S".action.screenshot = {show-pointer = true;};
     "Print".action.screenshot = {show-pointer = true;};
-    # "Ctrl+Print".action.screenshot-screen  = {true};
+    "Ctrl+Print".action.screenshot-screen = {show-pointer = true;};
+    "Mod+Alt+S".action.screenshot-screen = {show-pointer = true;};
     "Alt+Print".action.screenshot-window = {write-to-disk = true;};
+    "Mod+S".action.screenshot-window = {write-to-disk = true;};
 
     "Mod+Escape".allow-inhibiting = false;
     "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;

@@ -58,4 +58,5 @@ in {
     extraPortals = with pkgs; [xdg-desktop-portal-wlr xdg-desktop-portal-gtk];
   };
   services.blueman-applet.enable = true;
+  services.cliphist.enable = true;
 }

@@ -52,6 +52,7 @@ in {
       # ==========
       # Remove / from word characters, for easier path navigation (using backward-word, forward-word, etc)
       export WORDCHARS=''${WORDCHARS//\//}
+      export WORDCHARS=''${WORDCHARS//\#/}
 
       # Options
       # ==========
