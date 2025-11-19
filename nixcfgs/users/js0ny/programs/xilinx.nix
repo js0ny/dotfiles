@@ -44,6 +44,17 @@ in {
 
         exec /opt/Xilinx/Vitis/2022.2/bin/vitis "$@"
       '';
+      executable = true;
+      enable = true;
+    };
+    # Redirect Vivado log and journal files to /tmp to avoid filling up the cwd
+    # Note: Untested
+    "${xilinxBoxHome}/.Xilinx/Vivado/Vivado_init.tcl" = {
+      enable = true;
+      text = ''
+        set_param general.journaldir /tmp
+        set_param general.logdir /tmp
+      '';
     };
   };
   xdg.desktopEntries = {
