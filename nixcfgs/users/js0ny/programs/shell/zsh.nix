@@ -38,8 +38,21 @@ in {
         "root"
       ];
     };
+
+    history = {
+      ignorePatterns = [
+        ''tmp''
+        ''Authorization:''
+      ];
+    };
+
     initContent = ''
       ${aliasCfg.posixFx}
+      # Misc
+      # ==========
+      # Remove / from word characters, for easier path navigation (using backward-word, forward-word, etc)
+      export WORDCHARS=''${WORDCHARS//\//}
+
       # Options
       # ==========
 
@@ -100,6 +113,11 @@ in {
       bindkey '^X^E' edit-command-line
       bindkey '^[e' edit-command-line
       bindkey '^[v' edit-command-line
+
+      bindkey '^[[Z' reverse-menu-complete # Shift-Tab
+      # bindkey -M menuselect '^[[Z' reverse-menu-complete # Shift-Tab in menu select mode
+
+      bindkey '^[#' pound-insert # Alt-# to comment line
 
       # Misc
       # ========
