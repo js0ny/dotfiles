@@ -45,6 +45,7 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixcord.url = "github:kaylorben/nixcord";
   };
 
   outputs = {
@@ -63,6 +64,7 @@
     betterfox-nix,
     firefox-addons,
     zen-browser,
+    nixcord,
     ...
   } @ inputs: let
     overlays = [
@@ -130,6 +132,7 @@
           sops-nix.homeManagerModules.sops
           niri-flake.homeModules.niri
           betterfox-nix.modules.homeManager.betterfox
+          nixcord.homeModules.nixcord
         ];
       };
       "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {

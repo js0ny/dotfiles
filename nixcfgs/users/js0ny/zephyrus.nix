@@ -44,6 +44,7 @@
     ./programs/retroarch.nix
     ./programs/neovide.nix
     ./programs/edit-clipboard.nix
+    ./programs/discord.nix
 
     # Desktop Linux
     ./programs/desktop/plasma
@@ -58,6 +59,7 @@
 
     # Development setup
     ../../modules/home/dev/nix.nix
+    ../../modules/home/dev/java.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

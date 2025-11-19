@@ -2,7 +2,7 @@
   # Why using nvim gui:
   #   * when `rga-fzf`: nvim wrapper failed to launch
   #   * nvim wrapper reports error on parsing filename with spaces
-  gvim = "nvim-qt.desktop";
+  gvim = "neovide.desktop";
 in {
   xdg.configFile."mimeapps.list".force = true;
   xdg.mime.enable = true;
@@ -18,6 +18,7 @@ in {
       "text/x-csrc" = gvim; # .c
       "text/x-chdr" = gvim; # .h
       "text/javascript" = gvim;
+      "text/x-python" = gvim;
       # CSV
       "text/csv" = gvim;
       "text/markdown" = gvim;

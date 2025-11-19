@@ -15,8 +15,7 @@
     "com.tencent.WeChat"
     # "eu.betterbird.Betterbird"
     # "com.baidu.NetDisk"
-    "com.discordapp.Discord"
-    "com.spotify.Client"
+    # "com.discordapp.Discord"
     "com.google.EarthPro"
     "com.wps.Office"
     "md.obsidian.Obsidian"
@@ -24,7 +23,7 @@
     # "com.vivaldi.Vivaldi"
     "com.getpostman.Postman"
     "us.zoom.Zoom"
-    "com.ticktick.Ticktick"
+    "com.ticktick.TickTick"
   ];
   services.flatpak.overrides = {
     global = {
@@ -50,6 +49,9 @@
     };
     "md.obsidian.Obsidian".Context.sockets = ["wayland"];
     "com.ticktick.Ticktick".Context.sockets = ["wayland"];
-    "com.getpostman.Postman".Context.persistent = ["Postman"];
+    "com.getpostman.Postman".Context = {
+      persistent = ["Postman"];
+      sockets = ["wayland"];
+    };
   };
 }

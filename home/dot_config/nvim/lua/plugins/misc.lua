@@ -3,7 +3,7 @@ return {
   { "wakatime/vim-wakatime", lazy = false },
   { import = "plugins.mod.toggleterm" },
   { import = "plugins.mod.which-keys-nvim" },
-  -- { import = "plugins.mod.copilot-lua" },
+  { import = "plugins.mod.copilot-lua" },
   { import = "plugins.mod.avante-nvim" },
   {
     "kawre/leetcode.nvim",
@@ -25,4 +25,9 @@ return {
   },
   -- { import = "plugins.mod.image-nvim" },
   { import = "plugins.mod.snacks-nvim" },
+  {
+    "vyfor/cord.nvim",
+    build = ":Cord update",
+    -- opts = {}
+  },
 }

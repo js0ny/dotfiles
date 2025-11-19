@@ -9,15 +9,17 @@ return {
       auto_trigger = true,
       hide_during_completion = vim.g.ai_cmp,
       keymap = {
-        accept = "<M-f>",
+        accept = "<M-l>", -- Inspired from zed
         next = "<M-]>",
         prev = "<M-[>",
       },
     },
-    panel = { enabled = false },
+    panel = { enabled = true },
     filetypes = {
       markdown = true,
       help = true,
+      beancount = false,
+      yaml = false,
     },
   },
 }

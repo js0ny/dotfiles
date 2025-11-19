@@ -224,3 +224,5 @@ sethandler <C-C> i:ide
 sethandler <C-V> n-v:vim i:ide
 sethandler <C-.> a:ide
 sethandler <A-<CR>> a:ide
+
+nnoremap cd :action RenameElement<CR>

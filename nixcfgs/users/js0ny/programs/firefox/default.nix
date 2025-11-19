@@ -20,6 +20,9 @@
         # Disable Menu when pressing <Alt>
         "ui.key.menuAccessKey" = -1;
         "ui.key.menuAccessKeyFocuses" = false;
+        # Disable Translations
+        "browser.translations.enable" = false;
+        "browser.translations.automaticallyPopup" = false;
       };
     };
   };

@@ -47,9 +47,15 @@ in {
     brightnessctl
     playerctl
     powerprofiles-next
+    blueman
   ];
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
   };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [xdg-desktop-portal-wlr xdg-desktop-portal-gtk];
+  };
+  services.blueman-applet.enable = true;
 }

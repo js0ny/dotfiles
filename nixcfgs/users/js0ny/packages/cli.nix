@@ -57,5 +57,6 @@
     exiftool
     ddgr # DuckDuckGo CLI
     jujutsu
+    github-copilot-cli
   ];
 }

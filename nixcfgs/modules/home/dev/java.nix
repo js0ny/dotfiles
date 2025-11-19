@@ -8,5 +8,10 @@
     vscjava.vscode-spring-initializr
     vscjava.vscode-java-pack
   ];
-  programs.zed-editor.extensions = ["java"];
+  programs.zed-editor = {
+    extensions = ["java"];
+    extraPackages = with pkgs; [
+      jdt-language-server
+    ];
+  };
 }

@@ -47,6 +47,7 @@ in {
 
       pcloud
       materialgram
+      ayugram-desktop
       steam
       signal-desktop
       # Use Wayland for Jetbrains
@@ -71,13 +72,17 @@ in {
       steam-run
       bottles
       lutris
-      vivaldi
       rustdesk
       kdePackages.krdc
       kdePackages.breeze
       zotero
       anki-bin
       feishin
+      bruno
+      bruno-cli
+      cider-2
+      kicad
+      blender
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

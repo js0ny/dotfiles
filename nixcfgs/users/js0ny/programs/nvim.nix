@@ -13,9 +13,12 @@ in {
       # image support
       pkg-config
       imagemagick
+      stylua
+      nodejs-slim_24 # for copilot-lua
+      lua-language-server
     ];
   };
-  home.packages = with pkgs; [lua-language-server];
+  # home.packages = with pkgs; [lua-language-server];
   programs.fish.shellAbbrs = nvimAlias;
   programs.bash.shellAliases = nvimAlias;
   programs.zsh.shellAliases = nvimAlias;

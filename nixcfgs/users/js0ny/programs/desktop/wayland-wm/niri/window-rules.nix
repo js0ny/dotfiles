@@ -122,9 +122,11 @@
       {
         matches = [
           {app-id = "^org.telegram.desktop$";}
+          {app-id = "^io.github.kukuruzka165.materialgram$";}
+          {app-id = "^com.ayugram.desktop$";}
           {app-id = "^wechat$";}
           {app-id = "^QQ$";}
-          {app-id = "^io.github.kukuruzka165.materialgram$";}
+          {app-id = "^discord$";}
           {app-id = "^thunderbird$";}
         ];
         open-on-workspace = "info";
@@ -132,6 +134,7 @@
       {
         matches = [
           {app-id = "^feishin$";}
+          {app-id = "^Cider$";}
         ];
         open-on-workspace = "bg";
       }

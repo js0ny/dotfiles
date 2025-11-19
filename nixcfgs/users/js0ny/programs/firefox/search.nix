@@ -110,5 +110,11 @@
       icon = "https://nixos.org/favicon.ico";
       definedAliases = ["hm"];
     };
+    flathub = {
+      name = "Flathub";
+      urls = [{template = "https://flathub.org/apps/search?q={searchTerms}";}];
+      icon = "https://flathub.org/favicon.ico";
+      definedAliases = ["flatpak" "flathub"];
+    };
   };
 }

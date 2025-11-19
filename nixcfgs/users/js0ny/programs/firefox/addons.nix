@@ -30,6 +30,7 @@ in {
       # Privacy
       google-container
       facebook-container
+      dont-track-me-google1
 
       ### Site Specific
       # Steam
