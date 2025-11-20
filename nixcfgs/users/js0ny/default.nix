@@ -19,5 +19,16 @@ in {
 
   programs.home-manager.enable = true;
 
+  xdg.configFile = {
+    "nixpkgs/config.nix" = {
+      text = ''{allowUnfree = true;} '';
+      enable = true;
+    };
+    "nix/nix.conf" = {
+      text = ''use-xdg-base-directories = true '';
+      enable = true;
+    };
+  };
+
   home.sessionVariables.TERMINAL = config.currentUser.defaultTerminal;
 }

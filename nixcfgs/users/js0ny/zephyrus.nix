@@ -49,6 +49,7 @@
     ./programs/thunderbird.nix
     ./programs/obs-studio.nix
     ./programs/ghostty.nix
+    ./programs/obsidian
 
     # Desktop Linux
     ./programs/desktop/plasma

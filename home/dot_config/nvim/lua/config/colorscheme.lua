@@ -35,11 +35,9 @@ end
 
 if get_system_theme() == 'dark' then
   vim.o.background = 'dark'
-  vim.cmd.colorscheme("rose-pine")
+  vim.cmd.colorscheme("catppuccin-mocha")
 else
   vim.o.background = 'light'
-  vim.cmd.colorscheme("rose-pine")
+  vim.cmd.colorscheme("catppuccin-latte")
 end
-
-vim.cmd.colorscheme("rose-pine-moon")
 

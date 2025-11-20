@@ -54,4 +54,5 @@ in {
   };
   services.cliphist.enable = true;
   services.dunst.enable = true;
+  catppuccin.dunst.enable = false;
 }
