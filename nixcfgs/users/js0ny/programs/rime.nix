@@ -87,21 +87,7 @@
     then "Library/Rime"
     else ".local/share/fcitx5/rime";
 in {
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5 = {
-      waylandFrontend = true;
-      addons = with pkgs; [
-        fcitx5-rime
-        kdePackages.fcitx5-configtool
-        kdePackages.fcitx5-qt
-        fcitx5-gtk
-        qt6Packages.fcitx5-chinese-addons
-      ];
-    };
-  };
-  catppuccin.fcitx5.enable = false;
+  imports = [./fcitx.nix];
   home.file.${rimePath} = {
     source = rimeConfigFiltered;
     recursive = true;
