@@ -24,6 +24,8 @@
       "s" = "screenshot";
       "S" = "screenshot video";
       "f" = "cycle fullscreen";
+      "n" = "playlist-next";
+      "p" = "playlist-prev";
     };
   };
 }

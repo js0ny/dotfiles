@@ -1,12 +1,20 @@
 # ~/.config/nix-config/common/packages-headless.nix
 {pkgs, ...}: {
+  programs.bat.enable = true;
+  programs.btop.enable = true;
+  programs.delta.enable = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.pagers = [{pager = "delta --dark --paging=never";}];
+    };
+  };
+
   home.packages = with pkgs; [
     rclone
     age
     aichat
     beancount
-    bat
-    btop
     gnumake
     chezmoi
     cmake
@@ -15,7 +23,6 @@
     dust
     fd
     ffmpeg
-    delta
     glow
     hyperfine
     just
@@ -35,8 +42,6 @@
     fastfetch
     fzf
     kitty
-    zsh
-    fish
     zoxide
     wakatime-cli
     sdcv

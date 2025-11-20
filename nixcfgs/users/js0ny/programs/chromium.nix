@@ -11,12 +11,19 @@
       "--enable-features=TouchpadOverscrollHistoryNavigation"
     ];
     extensions = [
-      {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
+      {id = "logpjaacgmcbpdkdchjiaagddngobkck";} # Shrotkeys
+      {id = "bggfcpfjbdkhfhfmkjpbhnkhnpjjeomc";} # Material Icons for GitHub
+      {id = "ddkjiahejlhfcafbddmgiahcphecmpfh";} # uBlock Origin Lite
       {id = "ghmbeldphafepmbegfdlkpapadhbakde";} # proton pass
       {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # dark reader
       {id = "gfbliohnnapiefjpjlpjnehglfpaknnc";} # surfingkeys
-      {id = "bpoadfkcbjbfhfodiogcnhhhpibjhbnh";} # immersive translate
       {id = "dhdgffkkebhmkfjojejmpbldmpobfkfo";} # tampermonkey
+      {id = "jlgkpaicikihijadgifklkbpdajbkhjo";} # CrxMouse: Mouse Gestures
+      {id = "mnjggcdmjocbbbhaepdhchncahnbgone";} # SponsorBlock for Youtube
+      {id = "clngdbkpkpeebahjckkjfobafhncgmne";} # Stylus
+      {id = "jpbjcnkcffbooppibceonlgknpkniiff";} # Global Speed
+      {id = "bdiifdefkgmcblbcghdlonllpjhhjgof";} # Kiss Translator
+      {id = "gebbhagfogifgggkldgodflihgfeippi";} # Return YouTube Dislike
     ];
   };
 }

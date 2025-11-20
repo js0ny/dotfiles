@@ -86,6 +86,14 @@
             title = "^Media viewer$";
           }
           {
+            app-id = "^com.ayugram.desktop$";
+            title = "^Media viewer$";
+          }
+          {
+            app-id = "^io.github.kukuruzka165.materialgram$";
+            title = "^Media viewer$";
+          }
+          {
             app-id = "^wechat$";
             title = "^图片和视频$";
           }

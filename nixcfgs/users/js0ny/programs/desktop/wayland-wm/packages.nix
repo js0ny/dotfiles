@@ -34,29 +34,24 @@
 in {
   imports = [
     ../../rofi.nix
-    ./waybar.nix
+    ./waybar
     ./swww.nix
     ./kanshi.nix
+    ./swaylock.nix
   ];
   home.packages = with pkgs; [
     swayidle # Screensaver
-    dunst # Notification daemon
     cliphist # Clipboard daemon
-    wmname
     # swayidleWrapper
     brightnessctl
     playerctl
     powerprofiles-next
     blueman
   ];
-  programs.swaylock = {
-    enable = true;
-    package = pkgs.swaylock-effects;
-  };
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-wlr xdg-desktop-portal-gtk];
   };
-  services.blueman-applet.enable = true;
   services.cliphist.enable = true;
+  services.dunst.enable = true;
 }

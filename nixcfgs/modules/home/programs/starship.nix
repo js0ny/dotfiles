@@ -1,4 +1,5 @@
 {...}: {
+  catppuccin.starship.enable = false;
   programs.starship = {
     enable = true;
     enableBashIntegration = true;

@@ -28,6 +28,7 @@
     ../../modules/nixos/desktop/dm/sddm.nix
     ../../modules/nixos/desktop/de/kde.nix
     ../../modules/nixos/desktop/de/niri.nix
+    ../../modules/nixos/desktop/de/hyprland.nix
 
     # desktop programs
     ../../modules/nixos/programs/zsh.nix

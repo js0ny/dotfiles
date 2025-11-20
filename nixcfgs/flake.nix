@@ -46,6 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixcord.url = "github:kaylorben/nixcord";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
@@ -65,6 +66,7 @@
     firefox-addons,
     zen-browser,
     nixcord,
+    catppuccin,
     ...
   } @ inputs: let
     overlays = [
@@ -133,6 +135,7 @@
           niri-flake.homeModules.niri
           betterfox-nix.modules.homeManager.betterfox
           nixcord.homeModules.nixcord
+          catppuccin.homeModules.catppuccin
         ];
       };
       "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {

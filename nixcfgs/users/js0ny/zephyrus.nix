@@ -46,10 +46,14 @@
     ./programs/edit-clipboard.nix
     ./programs/discord.nix
     ./programs/mpv.nix
+    ./programs/thunderbird.nix
+    ./programs/obs-studio.nix
+    ./programs/ghostty.nix
 
     # Desktop Linux
     ./programs/desktop/plasma
     ./programs/desktop/wayland-wm/niri
+    ./programs/desktop/wayland-wm/hyprland.nix
 
     # General Program config
     ../../modules/home/programs/eza.nix

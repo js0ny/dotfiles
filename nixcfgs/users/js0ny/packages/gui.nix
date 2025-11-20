@@ -20,7 +20,6 @@ in {
   home.packages = with pkgs;
     [
       # Terminal Emulator
-      ghostty # default
       kitty
       alacritty
       warp-terminal

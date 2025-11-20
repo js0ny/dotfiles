@@ -2,7 +2,9 @@
   addons = pkgs.firefox-addons;
 in {
   # imports = [./lib.nix]; # TODO: Declarative extension permissions
+  catppuccin.firefox.enable = true;
   programs.firefox.profiles.default = {
+    extensions.force = true;
     extensions.packages = with addons; [
       # Keybindings & Gestures & User Scripts
       foxy-gestures
@@ -12,6 +14,7 @@ in {
 
       # Theming
       material-icons-for-github
+      firefox-color
 
       # Browsing Enhancement
       darkreader

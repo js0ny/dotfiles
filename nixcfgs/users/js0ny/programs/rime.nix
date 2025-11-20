@@ -101,6 +101,7 @@ in {
       ];
     };
   };
+  catppuccin.fcitx5.enable = false;
   home.file.${rimePath} = {
     source = rimeConfigFiltered;
     recursive = true;

@@ -18,4 +18,10 @@ in {
     my-catppuccin-kde
     catppuccin-fcitx5
   ];
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "pink";
+  };
 }

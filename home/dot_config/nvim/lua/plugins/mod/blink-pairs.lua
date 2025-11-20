@@ -15,7 +15,15 @@ return {
       disabled_filetypes = {},
       -- https://github.com/Saghen/blink.pairs/blob/main/lua/blink/pairs/config/mappings.lua#24
       -- Battery included!
-      pairs = {},
+      pairs = {
+        ["'"] = {
+          "''",
+          when = function(ctx)
+            return ctx:text_before_cursor(1) == "'"
+          end,
+          languages = { "nix" },
+        },
+      },
     },
     highlights = {
       enabled = true,
