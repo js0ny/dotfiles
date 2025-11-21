@@ -1,10 +1,10 @@
 keys:
-  - &host_zephyrus age1amkejw3q2aqf8yvh9mkqw8ad4g89mkuudyhv5k6k7s722fa85d6skem8vc
-  - &user_js0ny age1mcvqpg39t32ll684r4m2l8j0l9zag6endg0h6zjw8svkgdwc4pjqkk5fvj
+  - &host_zephyrus age1z2km2vu3mw6usw8p2rhjzkugddmsvk0ypwjw76cscyy3ar3tnufqtrv3nu
+  - &host_zen age135k4636aftqw524cuspnwd7hrcneu7q37k3upllaeuk9ud3k738sesr3wh
 
 creation_rules:
   - path_regex: secrets/.*\.yaml
     key_groups:
       - age:
-        - *user_js0ny
         - *host_zephyrus
+        - *host_zen

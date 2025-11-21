@@ -16,7 +16,7 @@ vim:ft=gotmpl
 {{- $wheel := false -}}
 {{- $diffCmd := "diff" -}}
 {{- $encryptionProvider := "age" -}}
-{{- $defaultIdentityPath := joinPath .chezmoi.homeDir ".ssh" "agekey.txt" -}}
+{{- $defaultIdentityPath := joinPath .chezmoi.homeDir ".config" "age" "key.txt" -}}
 {{- $manageSecret := false -}}
 {{- if stat $defaultIdentityPath -}}
 {{-     $manageSecret = true -}}
@@ -143,4 +143,7 @@ encryption = {{ $encryptionProvider | quote }}
     identities = [
         {{ $defaultIdentityPath | quote }}
         ]
-    recipients = ["age1mcvqpg39t32ll684r4m2l8j0l9zag6endg0h6zjw8svkgdwc4pjqkk5fvj"]
+    recipients = [
+        "age1mcvqpg39t32ll684r4m2l8j0l9zag6endg0h6zjw8svkgdwc4pjqkk5fvj",
+        "age1z2km2vu3mw6usw8p2rhjzkugddmsvk0ypwjw76cscyy3ar3tnufqtrv3nu",
+    ]
