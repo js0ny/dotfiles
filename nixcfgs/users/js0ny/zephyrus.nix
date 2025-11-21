@@ -23,7 +23,7 @@
     # Personal Program
     ./programs/chromium.nix
     ./programs/firefox
-    ./programs/emacs.nix
+    # ./programs/emacs.nix
     ./programs/vscode.nix
     ./programs/xilinx.nix
     ./programs/mime.nix
@@ -50,6 +50,8 @@
     ./programs/obs-studio.nix
     ./programs/ghostty.nix
     ./programs/obsidian
+    ./programs/aichat.nix
+    ./programs/tmux.nix
 
     # Desktop Linux
     ./programs/desktop/plasma
@@ -77,6 +79,11 @@
   currentHost = {
     keyboardBacklightDevice = "asus::kbd_backlight";
     keyboardBacklightStep = "1";
+  };
+
+  xdg.configFile."libvirt/libvirt.conf" = {
+    text = ''uri_default = "qemu:///system"'';
+    enable = true;
   };
 
   home.stateVersion = "25.05";
