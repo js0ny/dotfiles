@@ -61,6 +61,35 @@ in {
       # clearurls
       # multi-account-container
     ];
+    userChrome = ''
+      /* Sidebery Friendly Minimalist Style */
+      :root {
+        --tab-min-height: 30px !important;
+        --toolbarbutton-inner-padding: 6px !important;
+      }
+      #TabsToolbar {
+        visibility: collapse !important;
+      }
+
+      #sidebar-header { display: none; }
+      #sidebar-box {
+          padding: 0 !important;
+      }
+
+      /* disable: <div class="buttons-wrapper"> */
+      .buttons-wrapper {
+          display: none !important;
+      }
+
+      #sidebar-button {
+          display: none !important;
+      }
+
+      #sidebar-panel-header {
+          display: none !important;
+      }
+
+    '';
   };
   programs.firefox = {
     policies = {

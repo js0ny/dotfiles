@@ -18,6 +18,7 @@
     ./programs/rime.nix
     ./programs/sdcv.nix
     ./programs/fzf.nix
+    ./programs/sops.nix
     ./programs/nvim.nix
     ./programs/pdf2zh/uv.nix
     ./programs/yazi.nix

@@ -30,6 +30,7 @@
       cursor-invert-fg-bg = true;
 
       window-decoration = "auto";
+      macos-option-as-alt = "left";
 
       # title = "👻";
 
