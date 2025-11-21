@@ -19,8 +19,11 @@
         dirvish
         nix-ts-mode
         flycheck
+        highlight-indent-guides
       ];
   };
+  # TODO: tdlib version is too high
+  # See: https://github.com/zevlg/telega.el/issues/374
   home.packages = with pkgs; [
     tdlib
   ];

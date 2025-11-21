@@ -3,6 +3,7 @@
   lib,
   ...
 }: let
+  # FIXME: This will block the desktop files
   mkFcitxIM = builtins.map (
     p:
       lib.hiPrio (
@@ -13,6 +14,30 @@
             $out/bin/${p.meta.mainProgram or p.pname} \
             --set GTK_IM_MODULE fcitx \
             --set QT_IM_MODULE fcitx
+        ''
+      )
+  );
+  # Wrap Electron apps to use Wayland when NIXOS_OZONE_WL is set
+  # This only works for apps that does not patched by upstream
+  mkElectronWayland = builtins.map (
+    p:
+      lib.hiPrio (
+        pkgs.runCommand "${p.name}-wrapped"
+        {
+          nativeBuildInputs = [pkgs.makeWrapper];
+          meta = p.meta;
+        }
+        ''
+          mkdir -p $out/bin
+          # ln -s ${p}/share $out/share
+          makeWrapper ${lib.getExe p} $out/bin/${p.meta.mainProgram or p.pname} \
+            --inherit-argv0 \
+            --run '
+              if [ -n "$NIXOS_OZONE_WL" ] && [ -n "$WAYLAND_DISPLAY" ]; then
+                NIX_WAYLAND_FLAGS="--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true"
+              fi
+            ' \
+            --add-flags "\$NIX_WAYLAND_FLAGS"
         ''
       )
   );
@@ -81,12 +106,15 @@ in {
       cider-2
       kicad
       blender
-      qmk
       logisim-evolution
+      onlyoffice-desktopeditors
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt
       pkgs.anki
+    ])
+    ++ (mkElectronWayland [
+      pkgs.ticktick
     ]);
 
   home.sessionVariables = {

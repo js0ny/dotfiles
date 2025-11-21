@@ -28,9 +28,6 @@ in {
       patterns = {
         "rm -rf *" = "fg=blue,bold,bg=red";
       };
-      styles = {
-        path = "fg=cyan,underline";
-      };
       highlighters = [
         "main"
         "pattern"

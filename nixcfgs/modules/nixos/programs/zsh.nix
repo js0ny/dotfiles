@@ -6,5 +6,6 @@
     zsh-autoenv.enable = true;
     autosuggestions.enable = true;
   };
+  catppuccin.zsh-syntax-highlighting.enable = false;
   environment.pathsToLink = ["/share/zsh"];
 }

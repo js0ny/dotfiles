@@ -1,5 +1,30 @@
 # https://github.com/gmodena/nix-flatpak
-{...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  electronApps = [
+    "com.getpostman.Postman"
+    # "com.ticktick.TickTick"
+  ];
+
+  waylandFlags = "\${NIXOS_OZONE_WL:+\${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}";
+
+  appWrappers = lib.listToAttrs (map (appid: {
+      name = "flatpak/exports/bin/${appid}";
+      value = {
+        text = ''
+          #!/bin/sh
+          exec flatpak run ${appid} ${waylandFlags} "$@"
+        '';
+        executable = true;
+        force = true;
+      };
+    })
+    electronApps);
+in {
   services.flatpak.enable = true;
   services.flatpak.remotes = [
     {
@@ -23,7 +48,7 @@
     # "com.vivaldi.Vivaldi"
     "com.getpostman.Postman"
     "us.zoom.Zoom"
-    "com.ticktick.TickTick"
+    # "com.ticktick.TickTick" # cannot run on wayland under flatpak
   ];
   services.flatpak.overrides = {
     global = {
@@ -50,8 +75,18 @@
     "md.obsidian.Obsidian".Context.sockets = ["wayland"];
     "com.ticktick.Ticktick".Context.sockets = ["wayland"];
     "com.getpostman.Postman".Context = {
-      persistent = ["Postman"];
+      persistent = ["Postman"]; # Don't create `~/Postman` folder under home
       sockets = ["wayland"];
     };
   };
+  xdg.dataFile = appWrappers;
+  home.activation.patchFlatpakDesktopFiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${lib.concatMapStringsSep "\n" (appid: ''
+        DESKTOP_FILE="${config.xdg.dataHome}/flatpak/exports/share/applications/${appid}.desktop"
+        if [ -f "$DESKTOP_FILE" ]; then
+          $DRY_RUN_CMD ${pkgs.gnused}/bin/sed -i "s|^\(Exec=.*${appid}\)|\\1 ${waylandFlags}|g" "$DESKTOP_FILE"
+        fi
+      '')
+      electronApps}
+  '';
 }

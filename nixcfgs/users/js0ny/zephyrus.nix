@@ -56,6 +56,8 @@
     ./programs/desktop/wayland-wm/niri
     ./programs/desktop/wayland-wm/hyprland.nix
 
+    ../../modules/home/do-not-track.nix
+
     # General Program config
     ../../modules/home/programs/eza.nix
     # ../../modules/home/programs/winboat.nix
