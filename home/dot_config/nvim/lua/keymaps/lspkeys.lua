@@ -13,9 +13,9 @@ local M = {
 }
 -- stylua: ignore end
 
-local function smart_split(func)
+local function smart_split(func, reverse)
   local width = vim.api.nvim_win_get_width(0)
-  if width > 80 then
+  if width > 80 and not reverse then
     vim.api.nvim_command("vsp")
   else
     vim.api.nvim_command("sp")
@@ -28,7 +28,7 @@ vim.keymap.set("n", "<C-w>d", function()
 end, { desc = "Go to Definition (Smart Split)" })
 
 vim.keymap.set("n", "<C-w>D", function()
-  smart_split(vim.lsp.buf.declaration)
+  smart_split(vim.lsp.buf.declaration, true)
 end, { desc = "Go to Declaration (Smart Split)" })
 
 return M

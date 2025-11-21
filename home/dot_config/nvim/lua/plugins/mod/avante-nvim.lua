@@ -15,7 +15,13 @@ return {
       openrouter = {
         __inherited_from = "openai",
         endpoint = "https://openrouter.ai/api/v1",
-        model = "openai/gpt-5.1-codex",
+        model = "anthropic/claude-sonnet-4.5",
+        model_names = {
+          "openai/gpt-5.1-codex",
+          "google/gemini-3-pro-preview",
+          "anthropic/claude-sonnet-4.5",
+          "x-ai/grok-code-fast-1",
+        },
         api_key_name = "OPENROUTER_API_KEY",
       },
     },

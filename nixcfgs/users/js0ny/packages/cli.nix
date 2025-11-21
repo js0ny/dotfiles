@@ -64,5 +64,6 @@
     jujutsu
     github-copilot-cli
     yt-dlp
+    bluetui
   ];
 }

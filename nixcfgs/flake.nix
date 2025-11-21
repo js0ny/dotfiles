@@ -99,6 +99,7 @@
         modules = [
           xremap-flake.nixosModules.default
           sops-nix.nixosModules.sops
+          catppuccin.nixosModules.catppuccin
           ./hosts/${hostname}
           {nixpkgs.overlays = overlays;}
         ];

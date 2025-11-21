@@ -26,7 +26,7 @@
         serverInfo.enable = true;
         showMeYourName = {
           enable = true;
-          mode = "nick-user";
+          includedNames = "{friend, nick} [{display}] (@{user})";
         };
         silentMessageToggle.enable = true;
         silentTyping.enable = true;

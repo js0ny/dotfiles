@@ -9,6 +9,7 @@ in {
     zsh-fzf-tab
     zsh-nix-shell
   ];
+  catppuccin.zsh-syntax-highlighting.enable = false;
   programs.zsh = {
     enable = true;
     autocd = true;
