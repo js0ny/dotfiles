@@ -1,10 +1,21 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.ghostty = {
     enable = true;
+    package =
+      if pkgs.stdenv.isLinux
+      then pkgs.ghostty
+      else pkgs.ghostty-bin;
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
-    systemd.enable = true;
+    systemd.enable =
+      if pkgs.stdenv.isDarwin
+      then false
+      else true;
     # Not ready
     settings = {
       command = "${config.currentUser.defaultShell}";

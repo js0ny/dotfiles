@@ -2,7 +2,10 @@
   catppuccin.zed.enable = false;
   programs.zed-editor = {
     enable = true;
-    package = pkgs.zed-editor-fhs;
+    package =
+      if pkgs.stdenv.isLinux
+      then pkgs.zed-editor-fhs
+      else pkgs.zed-editor;
     extensions = [
       "catppuccin"
       "material-icon-theme"

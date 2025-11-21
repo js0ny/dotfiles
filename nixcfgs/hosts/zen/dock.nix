@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   system.defaults.dock = {
     appswitcher-all-displays = true;
     autohide = true;
@@ -8,15 +8,14 @@
     mineffect = "suck";
     minimize-to-application = true;
     persistent-apps = [
-      {app = "/Applications/Vivaldi.app";}
-      {app = "/Applications/kitty.app";}
+      {app = "${pkgs.firefox}/Applications/Firefox.app";}
+      {app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";}
       {app = "/Applications/Obsidian.app";}
-      {app = "Applications/Visual Studio Code.app";}
       # { app = "/Applications/LibreWolf.app"; }
       # { spacer = { small = false; }; }
       # { spacer = { small = true; }; }
       # { folder = "/System/Applications/Utilities"; }
-      # { folder = "/Users/js0ny/Downloads/"; }
+      # {folder = "/Users/js0ny/Downloads/";}
     ];
     persistent-others = [
       "/Users/js0ny/Downloads"

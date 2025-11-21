@@ -1,6 +1,15 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  profileDir =
+    if pkgs.stdenv.isDarwin
+    then "Library/Application Support/Firefox/Profiles"
+    else ".mozilla/firefox";
+in {
   # Overwrite search.json.mozlz4
-  home.file.".mozilla/firefox/default/search.json.mozlz4".force = lib.mkForce true;
+  home.file."${profileDir}/default/search.json.mozlz4".force = lib.mkForce true;
   programs.firefox.profiles.default.search.engines = {
     alternativeto = {
       name = "AlternativeTo";

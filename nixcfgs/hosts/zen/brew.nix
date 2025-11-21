@@ -30,14 +30,7 @@
       "wireshark-app"
       "clash-verge-rev"
 
-      # Editor
-      "visual-studio-code"
-
-      # Browsers
-      "firefox"
-
       # Terminal Emulator
-      "ghostty"
       "kitty"
 
       # Fonts
@@ -54,7 +47,7 @@
       "alt-tab" # Turn cmd-tab to windows behaviour
       "karabiner-elements" # Keymapping
       "localsend"
-      "squirrel" # Input Method
+      "squirrel-app" # Input Method
       "rustdesk" # Remote Desktop
       "iina" # MPV Frontend
       # TODO: I think karabiner is the superset

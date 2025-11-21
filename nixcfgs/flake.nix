@@ -157,6 +157,8 @@
         extraSpecialArgs = specialArgs;
         modules = [
           ./users/js0ny/zen.nix
+          catppuccin.homeModules.catppuccin
+          betterfox-nix.modules.homeManager.betterfox
         ];
       };
     };

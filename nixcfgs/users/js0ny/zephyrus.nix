@@ -35,7 +35,7 @@
     ./programs/nvim.nix
     ./programs/ollama.nix
     ./programs/sops.nix
-    ./programs/pdf2zh.nix
+    ./programs/pdf2zh/container.nix
     ./programs/gwenview.nix
     ./programs/yazi.nix
     ./programs/dolphin.nix

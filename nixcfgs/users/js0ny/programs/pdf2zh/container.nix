@@ -1,3 +1,4 @@
+# Only use this method in NixOS or non-FHS environment
 {pkgs, ...}: let
   imageTag = "ghcr.io/pdfmathtranslate/pdfmathtranslate-next";
   # version = "2.6.4";
