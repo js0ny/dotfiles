@@ -109,7 +109,7 @@ in {
       logisim-evolution
       onlyoffice-desktopeditors
       wayland-bongocat
-      nur.repos.lonerOrz.antigravity
+      antigravity
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

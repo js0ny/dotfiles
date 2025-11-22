@@ -65,5 +65,7 @@
     github-copilot-cli
     yt-dlp
     bluetui
+    asciinema
+    ansi2html
   ];
 }

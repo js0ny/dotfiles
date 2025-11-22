@@ -9,4 +9,6 @@
     smartmontools
     v4l-utils
   ];
+
+  programs.gpu-screen-recorder.enable = true;
 }
