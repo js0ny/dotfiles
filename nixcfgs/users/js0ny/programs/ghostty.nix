@@ -46,7 +46,6 @@
         "alt+shift+_=new_split:down"
         "alt+shift+enter=new_split:auto"
         "global:super+backquote=toggle_quick_terminal"
-        "alt+shift+n=new_window"
       ];
 
       ### Misc

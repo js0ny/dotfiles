@@ -118,6 +118,9 @@ in {
 
       bindkey '^[#' pound-insert # Alt-# to comment line
 
+      bindkey '^]' vi-find-next-char
+      bindkey '^[^]' vi-find-prev-char
+
       # Misc
       # ========
       # source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh

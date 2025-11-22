@@ -108,6 +108,8 @@ in {
       blender
       logisim-evolution
       onlyoffice-desktopeditors
+      wayland-bongocat
+      nur.repos.lonerOrz.antigravity
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

@@ -1,8 +1,7 @@
 {
   currentUser = {
     defaultShell = "zsh";
-    defaultTerminal = "ghostty";
-    defaultTerminalRunner = "alacritty";
+    defaultTerminal = "kitty";
     iconTheme = "Papirus";
     defaultExplorer = "dolphin";
     defaultTerminalExplorer = "yazi";

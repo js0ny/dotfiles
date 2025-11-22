@@ -23,7 +23,7 @@
     # Personal Program
     ./programs/chromium.nix
     ./programs/firefox
-    # ./programs/emacs.nix
+    ./programs/emacs.nix
     ./programs/vscode.nix
     ./programs/xilinx.nix
     ./programs/mime.nix
@@ -52,11 +52,12 @@
     ./programs/obsidian
     ./programs/aichat.nix
     ./programs/tmux.nix
+    ./programs/kitty.nix
 
     # Desktop Linux
     ./programs/desktop/plasma
     ./programs/desktop/wayland-wm/niri
-    ./programs/desktop/wayland-wm/hyprland.nix
+    ./programs/desktop/wayland-wm/hyprland
 
     ../../modules/home/do-not-track.nix
 

@@ -25,8 +25,8 @@
         {argv = ["waybar"];}
         {argv = ["dunst"];}
         {argv = ["fcitx5"];}
+        {argv = ["swww-daemon"];}
         # polkit/portal helpers
-        {argv = ["${pkgs.kdePackages.xdg-desktop-portal-kde}/libexec/xdg-desktop-portal-kde"];}
         {argv = ["${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"];}
       ];
 

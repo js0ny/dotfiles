@@ -55,4 +55,12 @@ in {
   services.cliphist.enable = true;
   services.dunst.enable = true;
   catppuccin.dunst.enable = false;
+  home.pointerCursor = {
+    enable = true;
+    gtk.enable = true;
+    x11.enable = true;
+    size = 24;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+  };
 }

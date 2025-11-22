@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   programs.tmux = {
     enable = true;
-    prefix = "C-q";
-    shortcut = "q";
+    prefix = "C-a";
+    shortcut = "a";
     keyMode = "vi";
     historyLimit = 10000;
     mouse = true;

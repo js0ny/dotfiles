@@ -38,12 +38,12 @@ return {
   },
   config = function()
     require("multiple-cursors").setup({
-      pre_hook = function()
-        require("nvim-autopairs").disable()
-      end,
-      post_hook = function()
-        require("nvim-autopairs").enable()
-      end,
+      -- pre_hook = function()
+      --   require("blink.pairs.mapping").disable()
+      -- end,
+      -- post_hook = function()
+      --   require("blink.pairs.mapping").enable()
+      -- end,
     })
   end,
 }
