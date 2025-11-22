@@ -41,6 +41,9 @@ in {
       macos_option_as_alt = true;
       macos_quit_when_last_window_closed = true;
       enabled_layouts = "splits";
+      shell = config.currentUser.defaultShell;
+      allow_remote_control = "socket-only";
+      listen_on = "unix:/tmp/kitty.sock";
     };
     keybindings = {
       "cmd+c" = "copy_and_clear_or_interrupt";
@@ -55,18 +58,18 @@ in {
       "${alt}+8" = "goto_tab 8";
       "${alt}+9" = "goto_tab 9"; # if less than 9 tabs, goes to last tab
       "${alt}+0" = "goto_tab -1"; # previously active tab
-      "${alt}+shift+\\" = "launch --location=hsplit";
-      "${alt}+shift+-" = "launch --location=vsplit";
+      "${alt}+shift+\\" = "launch --location=vsplit";
+      "${alt}+shift+-" = "launch --location=hsplit";
       "ctrl+shift+h" = "kitty_scrollback_nvim";
       "ctrl+shift+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
-      "alt+shift+h" = "move_window left";
-      "alt+shift+l" = "move_window right";
-      "alt+shift+k" = "move_window up";
-      "alt+shift+j" = "move_window down";
-      "ctrl+q>h" = "move_window left";
-      "ctrl+q>l" = "move_window right";
-      "ctrl+q>k" = "move_window up";
-      "ctrl+q>j" = "move_window down";
+      "alt+shift+h" = "focus left";
+      "alt+shift+l" = "focus right";
+      "alt+shift+k" = "focus up";
+      "alt+shift+j" = "focus down";
+      "ctrl+q>h" = "focus left";
+      "ctrl+q>l" = "focus right";
+      "ctrl+q>k" = "focus up";
+      "ctrl+q>j" = "focus down";
     };
     extraConfig = ''
       mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
