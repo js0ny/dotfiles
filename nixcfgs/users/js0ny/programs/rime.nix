@@ -133,5 +133,54 @@ in {
       '';
       enable = true;
     };
+    "${rimePath}/squirrel.custom.yaml" = {
+      text = ''
+        patch:
+          # style/candidate_list_layout: linear
+          app_options:
+            md.obsidian:
+              vim_mode: true
+            com.neovide.neovide:
+              vim_mode: true
+              ascii_mode: true
+            com.microsoft.VSCode:
+              vim_mode: true
+              ascii_mode: true
+            com.jetbrains.rider:
+              vim_mode: true
+              ascii_mode: true
+            com.jetbrains.CLion:
+              vim_mode: true
+              ascii_mode: true
+            info.sioyek.sioyek:
+              ascii_mode: true
+            com.raycast.macos:
+              ascii_mode: true
+            net.kovidgoyal.kitty:
+              ascii_mode: true
+              vim_mode: true
+            com.mitchellh.ghostty:
+              ascii_mode: true
+              vim_mode: true
+            com.github.wez.wezterm:
+              ascii_mode: true
+            dev.zed.Zed:
+              vim_mode: true
+              ascii_mode: true
+
+      '';
+      enable = true;
+    };
   };
+
+  home.activation.deployRime =
+    if pkgs.stdenv.isDarwin
+    then
+      lib.hm.dag.entryAfter ["writeBoundary"] ''
+        /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
+      ''
+    else
+      lib.hm.entryAfter ["writeBoundary"] ''
+        qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://onfig/addon/rime/deploy" ""
+      '';
 }

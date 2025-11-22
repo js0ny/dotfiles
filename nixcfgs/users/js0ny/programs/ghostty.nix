@@ -5,10 +5,6 @@
 }: {
   programs.ghostty = {
     enable = true;
-    package =
-      if pkgs.stdenv.isLinux
-      then pkgs.ghostty
-      else pkgs.ghostty-bin;
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableFishIntegration = true;

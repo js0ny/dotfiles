@@ -75,8 +75,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  currentUser.defaultTerminalRunner = "alacritty";
-
   currentHost = {
     keyboardBacklightDevice = "asus::kbd_backlight";
     keyboardBacklightStep = "1";

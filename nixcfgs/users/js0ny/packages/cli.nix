@@ -10,62 +10,63 @@
     };
   };
 
-  home.packages = with pkgs; [
-    rclone
-    age
-    aichat
-    beancount
-    gnumake
-    chezmoi
-    cmake
-    curlie
-    duf
-    dust
-    fd
-    ffmpeg
-    glow
-    hyperfine
-    just
-    lazygit
-    lsd
-    pandoc
-    dos2unix
-    nushell
-    procs
-    ripgrep
-    ripgrep-all
-    tlrc
-    zoxide
-    vim
-    wget
-    git
-    fastfetch
-    fzf
-    kitty
-    zoxide
-    wakatime-cli
-    sdcv
-    # Langs
-    # lua luajit
-    lua51Packages.luarocks
-    ghostscript
-    # Misc ta-lib ddgr protonvpn-cli
-    markdown-oxide
-    powershell
-    gemini-cli
-    codex
-    imagemagick
-    miniserve
-    jq
-    srm
-    mediainfo
-    exiftool
-    ddgr # DuckDuckGo CLI
-    jujutsu
-    github-copilot-cli
-    yt-dlp
-    bluetui
-    asciinema
-    ansi2html
-  ];
+  home.packages = with pkgs;
+    [
+      rclone
+      age
+      aichat
+      beancount
+      gnumake
+      chezmoi
+      cmake
+      curlie
+      duf
+      dust
+      fd
+      ffmpeg
+      glow
+      hyperfine
+      just
+      lazygit
+      lsd
+      pandoc
+      dos2unix
+      nushell
+      procs
+      ripgrep
+      ripgrep-all
+      tlrc
+      zoxide
+      vim
+      wget
+      git
+      fastfetch
+      fzf
+      kitty
+      zoxide
+      wakatime-cli
+      sdcv
+      # Misc ta-lib ddgr protonvpn-cli
+      markdown-oxide
+      powershell
+      gemini-cli
+      codex
+      imagemagick
+      miniserve
+      jq
+      srm
+      mediainfo
+      exiftool
+      ddgr # DuckDuckGo CLI
+      jujutsu
+      github-copilot-cli
+      yt-dlp
+      asciinema
+      ansi2html
+    ]
+    ++ (
+      if pkgs.stdenv.isDarwin
+      then with pkgs; [duti]
+      else with pkgs; [bluetui]
+    );
 }

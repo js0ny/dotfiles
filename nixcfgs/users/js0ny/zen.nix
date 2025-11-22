@@ -14,6 +14,7 @@
 
     # Programs
     ./programs/firefox
+    ./programs/emacs.nix
     ./programs/zed-editor.nix
     ./programs/rime.nix
     ./programs/sdcv.nix
@@ -25,6 +26,10 @@
     ./programs/edit-clipboard.nix
     ./programs/neovide.nix
     ./programs/ghostty.nix
+    ./programs/tmux.nix
+    ./programs/kitty.nix
+    # ./programs/retroarch.nix # Package broken on macOS
+    ./programs/duti.nix
 
     ../../modules/home/do-not-track.nix
     ../../modules/home/darwin.nix

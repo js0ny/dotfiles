@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   homebrew = {
     enable = true;
     brewPrefix = "/opt/homebrew/bin";
@@ -31,7 +27,6 @@
       "clash-verge-rev"
 
       # Terminal Emulator
-      "kitty"
 
       # Fonts
       "font-maple-mono-nf-cn"

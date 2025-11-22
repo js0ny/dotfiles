@@ -20,5 +20,12 @@
   i18n.inputMethod.enable = false;
 
   programs.ghostty.systemd.enable = false;
-  programs.ghostty.package = pkgs.ghostty-bin;
+  programs.ghostty.package = lib.mkForce pkgs.ghostty-bin;
+
+  home.file.".ssh/config".text = ''
+    # ~/.ssh/config
+    Host *
+    	UseKeychain yes
+    	AddKeysToAgent yes
+  '';
 }
