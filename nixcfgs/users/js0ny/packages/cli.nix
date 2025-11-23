@@ -63,6 +63,10 @@
       yt-dlp
       asciinema
       ansi2html
+      httpie
+      gron
+      jless
+      unar
     ]
     ++ (
       if pkgs.stdenv.isDarwin

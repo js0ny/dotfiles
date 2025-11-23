@@ -39,6 +39,9 @@ in {
       "TAVILY_API_KEY" = {
         key = "tavily_api";
       };
+      "ANKI_SYNC_KEY" = {
+        key = "anki_sync_key";
+      };
     };
   };
 

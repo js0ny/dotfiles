@@ -180,7 +180,7 @@ in {
         /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
       ''
     else
-      lib.hm.entryAfter ["writeBoundary"] ''
-        qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://onfig/addon/rime/deploy" ""
+      lib.hm.dag.entryAfter ["writeBoundary"] ''
+        # ${pkgs.kdePackages.qttools}/bin/qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://onfig/addon/rime/deploy" ""
       '';
 }

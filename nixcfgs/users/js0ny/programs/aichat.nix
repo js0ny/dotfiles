@@ -5,7 +5,7 @@
       model = "openrouter:qwen/qwen3-235b-a22b-2507";
       clients = [
         {
-          type = "openai-compatbile";
+          type = "openai-compatible";
           name = "openrouter";
           api_base = "https://openrouter.ai/api/v1";
           models = [

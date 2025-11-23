@@ -93,13 +93,10 @@ in {
       kdePackages.kdenlive
       gimp
       steam-run
-      bottles
-      lutris
       rustdesk
-      kdePackages.krdc
+      remmina
       kdePackages.breeze
       zotero
-      anki-bin
       feishin
       bruno
       bruno-cli
@@ -109,11 +106,11 @@ in {
       logisim-evolution
       onlyoffice-desktopeditors
       wayland-bongocat
+      kdePackages.qttools
       antigravity
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt
-      pkgs.anki
     ])
     ++ (mkElectronWayland [
       pkgs.ticktick
@@ -132,4 +129,5 @@ in {
   ];
 
   services.protonmail-bridge.enable = true;
+  services.remmina.enable = true;
 }

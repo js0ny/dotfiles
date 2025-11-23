@@ -48,6 +48,9 @@
             app-id = "^org.kde.(ark|dolphin)$";
             title = "^Extracting";
           }
+          {
+            app-id = "^steam$";
+          }
         ];
         open-focused = false;
         default-floating-position = {
@@ -122,6 +125,7 @@
       {
         matches = [
           {app-id = "^org.kde.krdc$";}
+          {app-id = "^org.remmina.Remmina$";}
           {app-id = "^\.virt-manager-wrapped$";}
           {title = "^🌐 ssh.*";}
         ];
