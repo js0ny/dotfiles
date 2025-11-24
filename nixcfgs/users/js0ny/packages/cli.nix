@@ -18,7 +18,6 @@
       beancount
       gnumake
       chezmoi
-      cmake
       curlie
       duf
       dust
@@ -73,4 +72,8 @@
       then with pkgs; [duti]
       else with pkgs; [bluetui]
     );
+
+  programs.nix-index.enable = true;
+  programs.nix-index.symlinkToCacheHome = true;
+  programs.nix-index-database.comma.enable = true;
 }

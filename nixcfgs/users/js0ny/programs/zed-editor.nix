@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  catppuccin.zed.enable = false;
   programs.zed-editor = {
     enable = true;
     package =

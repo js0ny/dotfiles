@@ -19,5 +19,8 @@ in {
     enable = true;
     flavor = "mocha";
     accent = "pink";
+    zed.enable = false;
+    zsh-syntax-highlighting.enable = false;
+    nvim.enable = false; # Defined in lua config
   };
 }

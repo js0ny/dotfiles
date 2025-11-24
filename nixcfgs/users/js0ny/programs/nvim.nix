@@ -16,6 +16,7 @@ in {
       stylua
       nodejs-slim_24 # for copilot-lua
       lua-language-server
+      vimPlugins.nvim-treesitter-parsers.diff
     ];
   };
   # home.packages = with pkgs; [lua-language-server];
@@ -23,6 +24,4 @@ in {
   programs.bash.shellAliases = nvimAlias;
   programs.zsh.shellAliases = nvimAlias;
   programs.nushell.shellAliases = nvimAlias;
-
-  catppuccin.nvim.enable = false; # Defined in lua config
 }

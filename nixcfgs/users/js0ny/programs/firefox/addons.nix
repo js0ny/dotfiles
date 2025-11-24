@@ -91,6 +91,7 @@ in {
 
     '';
   };
+
   programs.firefox = {
     policies = {
       ExtensionSettings = [

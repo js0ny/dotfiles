@@ -47,6 +47,10 @@
     };
     nixcord.url = "github:kaylorben/nixcord";
     catppuccin.url = "github:catppuccin/nix";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -67,6 +71,7 @@
     zen-browser,
     nixcord,
     catppuccin,
+    nix-index-database,
     ...
   } @ inputs: let
     overlays = [
@@ -137,6 +142,7 @@
           betterfox-nix.modules.homeManager.betterfox
           nixcord.homeModules.nixcord
           catppuccin.homeModules.catppuccin
+          nix-index-database.homeModules.nix-index
         ];
       };
       "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {
@@ -161,6 +167,17 @@
           catppuccin.homeModules.catppuccin
           betterfox-nix.modules.homeManager.betterfox
           sops-nix.homeManagerModules.sops
+        ];
+      };
+    };
+    # Export nixos modules for private use
+    nixosModules = {
+      server = {...}: {
+        imports = [
+          ./modules/nixos
+          ./modules/nixos/server.nix
+          ./modules/nixos/core/sshd.nix
+          ./modules/nixos/programs/zsh.nix
         ];
       };
     };

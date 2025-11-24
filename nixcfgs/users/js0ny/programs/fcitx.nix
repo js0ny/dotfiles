@@ -280,5 +280,5 @@
         };
       };
     };
-  catppuccin.fcitx5.enable = false;
+  catppuccin.fcitx5.enable = true;
 }

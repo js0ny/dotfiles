@@ -6,10 +6,8 @@
     curl
     git
     tmux
-    nix-index
     file
     unzip
     zip
-    pkg-config
   ];
 }
