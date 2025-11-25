@@ -43,7 +43,7 @@ in {
     # "com.discordapp.Discord"
     "com.google.EarthPro"
     "com.wps.Office"
-    "md.obsidian.Obsidian"
+    # "md.obsidian.Obsidian"
     # "app.zen_browser.zen"
     # "com.vivaldi.Vivaldi"
     "com.getpostman.Postman"

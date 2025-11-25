@@ -14,7 +14,7 @@
             {name = "google/gemini-3-pro-preview";}
             {name = "anthropic/claude-sonnet-4.5";}
             {name = "anthropic/claude-haiku-4.5";}
-            {name = "anthropic/claude-opus-4.1";}
+            {name = "anthropic/claude-opus-4.5";}
             {name = "openai/gpt-5.1";}
             {name = "openai/gpt-5.1-codex";}
             {name = "openai/gpt-5-mini";}

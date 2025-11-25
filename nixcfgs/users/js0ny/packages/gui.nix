@@ -9,6 +9,7 @@
       lib.hiPrio (
         pkgs.runCommand "${p.name}-wrapped" {nativeBuildInputs = with pkgs; [makeWrapper];} ''
           mkdir -p $out/bin
+          ln -s ${p}/share $out/share
           makeWrapper \
             ${p}/bin/${p.meta.mainProgram or p.pname} \
             $out/bin/${p.meta.mainProgram or p.pname} \
@@ -29,7 +30,7 @@
         }
         ''
           mkdir -p $out/bin
-          # ln -s ${p}/share $out/share
+          ln -s ${p}/share $out/share
           makeWrapper ${lib.getExe p} $out/bin/${p.meta.mainProgram or p.pname} \
             --inherit-argv0 \
             --run '
@@ -100,7 +101,6 @@ in {
       feishin
       bruno
       bruno-cli
-      cider-2
       kicad
       blender
       logisim-evolution
@@ -108,12 +108,16 @@ in {
       wayland-bongocat
       kdePackages.qttools
       antigravity
+      nur.repos.forkprince.helium-nightly
+      prismlauncher
+      obsidian
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt
     ])
     ++ (mkElectronWayland [
-      pkgs.ticktick
+      # pkgs.ticktick
+      pkgs.cider-2
     ]);
 
   home.sessionVariables = {
@@ -127,6 +131,20 @@ in {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-36.9.5"
   ];
+
+  # TODO: This is a workaround since upstram did not implement p.name for ticktick
+  # xdg.desktopEntries."ticktick" = {
+  #   name = "TickTick";
+  #   exec = "${lib.getExe pkgs.ticktick} %U";
+  #   terminal = false;
+  #   type = "Application";
+  #   icon = "ticktick";
+  #   categories = ["Office"];
+  #   comment = "TickTick is a powerful to-do & task management app with seamless cloud synchronization across all your devices. Whether you need to schedule an agenda, make memos, share shopping lists, collaborate in a team, or even develop a new habit, TickTick is always here to help you get stuff done and keep life on track.";
+  #   settings = {
+  #     StartupWMClass = "TickTick";
+  #   };
+  # };
 
   services.protonmail-bridge.enable = true;
   services.remmina.enable = true;

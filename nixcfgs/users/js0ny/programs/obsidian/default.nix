@@ -3,7 +3,7 @@
     ./vimrc-support.nix
   ];
   programs.obsidian = {
-    enable = true;
+    enable = false;
     vaults."HomeManagerDryRun" = {
       enable = true;
       target = "HomeManagerDryRun"; # relative to $HOME

@@ -19,6 +19,7 @@ in {
       "text/x-chdr" = gvim; # .h
       "text/javascript" = gvim;
       "text/x-python" = gvim;
+      "application/yaml" = gvim; # .yaml, .yml
       # CSV
       "text/csv" = gvim;
       "text/markdown" = gvim;
