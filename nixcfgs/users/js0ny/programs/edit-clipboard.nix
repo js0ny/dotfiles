@@ -5,6 +5,31 @@
     # Reads clipboard content, opens it in $EDITOR, and writes back to clipboard
 
     edit-clipboard() {
+        # Parse command line arguments
+        while [ $# -gt 0 ]; do
+            case "$1" in
+                --minimal)
+                    NVIM_MINIMAL=1
+                    shift
+                    ;;
+                --editor)
+                    if [ -n "$2" ] && [ "''${2#-}" = "$2" ]; then
+                        EDITOR="$2"
+                        shift 2
+                    else
+                        echo "Error: --editor requires an argument" >&2
+                        return 1
+                    fi
+                    ;;
+                *)
+                    echo "Error: Unknown option: $1" >&2
+                    echo "Usage: edit-clipboard [--popup] [--editor <editor>]" >&2
+                    return 1
+                    ;;
+            esac
+        done
+
+
         # Detect clipboard command based on platform
         if command -v pbpaste >/dev/null 2>&1; then
             # macOS
@@ -57,6 +82,8 @@
 
         # Cleanup
         rm -f "$TMPFILE"
+
+        exit 0
     }
 
     if [ "''${0##*/}" = "edit-clipboard" ] || [ "''${0##*/}" = "edit-clipboard.sh" ]; then

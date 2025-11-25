@@ -2,6 +2,16 @@
 {...}: {
   programs.niri = {
     settings.window-rules = [
+      {
+        matches = [
+          {
+            app-id = "^edit-clipboard-popup$";
+          }
+        ];
+
+        open-floating = true;
+        opacity = 0.8;
+      }
       # {{{ float, opacity 0.8, top right: Picture-in-Picture // waybar childs
       {
         matches = [

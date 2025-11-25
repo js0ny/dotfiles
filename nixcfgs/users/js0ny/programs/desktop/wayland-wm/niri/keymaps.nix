@@ -1,4 +1,9 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   term = config.currentUser.defaultTerminal;
   termRunner = config.currentUser.defaultTerminalRunner;
   iconTheme = config.currentUser.iconTheme;
@@ -7,8 +12,29 @@
   launcher = "rofi";
   kbdBacklightDev = config.currentHost.keyboardBacklightDevice;
   kbdBacklightStep = config.currentHost.keyboardBacklightStep;
+  nirictl = import ./scripts.nix {inherit pkgs;};
 in {
+  home.packages = [
+    nirictl.focusOrLaunch
+  ];
   programs.niri.settings.binds = with config.lib.niri.actions; {
+    # === Application Runner ===
+    "Mod+B".hotkey-overlay.title = "Focus or launch web browser";
+    "Mod+B".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "firefox" "firefox";
+    "Mod+Shift+B".hotkey-overlay.title = "Launch web browser in private mode";
+    "Mod+Shift+B".action = spawn "firefox" "--private-window";
+    "Mod+Shift+A".hotkey-overlay.title = "Focus or launch CherryStudio (AI assistant)";
+    "Mod+Shift+A".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "CherryStudio" "cherry-studio";
+    "Mod+O".hotkey-overlay.title = "Focus or launch Obsidian";
+    "Mod+O".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "obsidian" "obsidian";
+    # TODO: Change "org.kde.dolphin" to a more generic explorer app id via config.currentUser
+    "Mod+E".hotkey-overlay.title = "Focus or launch file explorer";
+    "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";
+
+    "Mod+Semicolon".action = spawn "neovide" "${config.home.homeDirectory}/Atelier";
+    "Mod+Apostrophe".action =
+      spawn-sh "EDITOR_MINIMAL=1 ${termRunner} -o close_on_child_death=yes --class=edit-clipboard-popup -e edit-clipboard --minimal";
+
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 
     "Mod+Return".hotkey-overlay.title = "Open a Terminal: ${term}";
@@ -22,16 +48,11 @@ in {
     "Alt+Space".action =
       spawn "${launcher}" "-show" "drun" "-icon-theme" "${iconTheme}" "-show-icons";
 
-    "Mod+Shift+W".hotkey-overlay.title = "Search open Window: rofi";
-    "Mod+Shift+W".action =
+    "Mod+W".hotkey-overlay.title = "Search open Window: rofi";
+    "Mod+W".action =
       spawn "${launcher}" "-show" "window" "-icon-theme" "${iconTheme}" "-show-icons";
 
     "Mod+V".action = spawn-sh "cliphist list | ${launcher} -dmenu | cliphist decode | wl-copy";
-
-    "Mod+E".hotkey-overlay.title = "Run file explorer";
-    "Mod+E".action = spawn "${explorer}";
-    "Mod+Shift+E".hotkey-overlay.title = "Run terminal explorer";
-    "Mod+Shift+E".action = spawn "${termRunner}" "-e" "${explorerTerm}";
 
     "XF86AudioRaiseVolume".allow-when-locked = true;
     "XF86AudioRaiseVolume".action =
@@ -174,8 +195,6 @@ in {
 
     "Mod+BracketLeft".action = consume-or-expel-window-left;
     "Mod+BracketRight".action = consume-or-expel-window-right;
-    "Mod+Comma".action = consume-window-into-column;
-    "Mod+Period".action = expel-window-from-column;
 
     "Mod+R".action = switch-preset-column-width;
     "Mod+Shift+R".action = switch-preset-window-height;
@@ -191,7 +210,8 @@ in {
     "Mod+Shift+Equal".action = set-window-height "+10%";
     "Mod+F".action = toggle-window-floating;
     "Mod+Shift+F".action = switch-focus-between-floating-and-tiling;
-    "Mod+W".action = toggle-column-tabbed-display;
+    "Mod+G".hotkey-overlay.title = "Toggle Grouped Display";
+    "Mod+G".action = toggle-column-tabbed-display;
 
     "Mod+Shift+S".action.screenshot = {show-pointer = true;};
     "Print".action.screenshot = {show-pointer = true;};
