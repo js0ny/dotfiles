@@ -57,6 +57,8 @@
     ./programs/kitty.nix
     ./programs/wine.nix
     ./programs/anki.nix
+    ./programs/libvirt.nix
+    ./programs/block-desktop-entries.nix
 
     # Desktop Linux
     ./programs/desktop/plasma
