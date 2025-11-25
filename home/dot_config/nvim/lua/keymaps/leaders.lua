@@ -111,7 +111,6 @@ local leader_mappings = {
     { keys = "W", cmd = ":wall<CR>:qa!<CR>", opts = { desc = "Write all and Force Quit" } },
   },
   t = { -- +toggle/test
-    { keys = "f", cmd = ":NvimTreeToggle",   opts = { desc = "Toggle File Explorer" } },
     { keys = "F", cmd = ":FormatToggle<CR>", opts = { desc = "Toggle autoformat-on-save" } },
   },
   u = { -- +ui

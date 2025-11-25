@@ -71,9 +71,9 @@ return {
       },
     },
     -- stylua: ignore end
-    -- explorer = {
-    --   enabled = true,
-    -- },
+    explorer = {
+      enabled = true,
+    },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true },
@@ -94,7 +94,14 @@ return {
       function()
         require("snacks").dashboard()
       end,
-      desc = "Toggle Dashboard";
+      desc = "Toggle Dashboard",
+    },
+    {
+      "<leader>ft",
+      function()
+        require("snacks").explorer()
+      end,
+      desc = "Toggle File Tree",
     },
   },
 }

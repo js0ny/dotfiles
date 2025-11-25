@@ -2,7 +2,7 @@ return {
   -- Picker
   { import = "plugins.mod.fzf" },
   -- Explorer
-  { import = "plugins.mod.neo-tree" },
+  -- { import = "plugins.mod.neo-tree" },
   {
     "rmagatti/auto-session",
     event = "BufReadPre",
@@ -40,5 +40,18 @@ return {
     cmd = {
       "Neogit",
     },
+  },
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      delete_to_trash = true,
+      default_file_explorer = true,
+    },
+    -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
 }
