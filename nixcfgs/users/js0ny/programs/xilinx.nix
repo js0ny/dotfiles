@@ -4,12 +4,16 @@
   ...
 }: let
   xilinxBoxHome = "${config.home.homeDirectory}/.local/distrobox/Xilinx";
-  vivadoLauncher = pkgs.writeShellScriptBin "vivado-launcher-2022.2" ''
-    #!${pkgs.stdenv.shell}
-    ${pkgs.wmname}/bin/wmname LG3D
+  vivadoLauncher = version:
+    pkgs.writeShellScriptBin "vivado-launcher-${version}" ''
+      #!${pkgs.stdenv.shell}
+      ${pkgs.wmname}/bin/wmname LG3D
 
-    exec ${pkgs.distrobox}/bin/distrobox enter Xilinx -- /opt/Xilinx/Vivado/2022.2/bin/vivado
-  '';
+      exec ${pkgs.distrobox}/bin/distrobox enter Xilinx -- /opt/Xilinx/Vivado/${version}/bin/vivado
+    '';
+  # Do not launch 2015 and 2022 simultaneously to avoid conflicts
+  vivadoLauncher2022 = vivadoLauncher "2022.2";
+  vivadoLauncher2015 = vivadoLauncher "2015.2";
 in {
   programs.distrobox = {
     enable = true;
@@ -51,8 +55,8 @@ in {
     # Note: Untested
     "${xilinxBoxHome}/.Xilinx/Vivado/Vivado_init.tcl" = {
       enable = true;
+      # set_param general.journaldir /tmp
       text = ''
-        set_param general.journaldir /tmp
         set_param general.logdir /tmp
       '';
     };
@@ -64,12 +68,21 @@ in {
       terminal = false;
       icon = "vivado_logo";
       categories = ["Development"];
-      exec = "${vivadoLauncher}/bin/vivado-launcher-2022.2";
+      exec = "${vivadoLauncher2022}/bin/vivado-launcher-2022.2";
+    };
+    "xilinx.vivado.2015" = {
+      name = "Xilinx Vivado 2015.2";
+      type = "Application";
+      terminal = false;
+      icon = "vivado_logo";
+      categories = ["Development"];
+      exec = "${vivadoLauncher2015}/bin/vivado-launcher-2015.2";
     };
     "xilinx.vitis" = {
       name = "Xilinx Vitis 2022.2";
       type = "Application";
       terminal = false;
+      icon = "vivado_logo";
       categories = ["Development"];
       exec = "env GDK_BACKEND=x11 distrobox enter Xilinx -- bash ${xilinxBoxHome}/.vitis-wr.sh";
     };
