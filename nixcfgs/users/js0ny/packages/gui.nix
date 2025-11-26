@@ -42,6 +42,20 @@
         ''
       )
   );
+  # run wmname LG3D
+  mkLegacyJavaGUIApp = builtins.map (
+    p:
+      lib.hiPrio (
+        pkgs.runCommand "${p.name}-wrapped" {nativeBuildInputs = with pkgs; [makeWrapper wmname];} ''
+          mkdir -p $out/bin
+          ln -s ${p}/share $out/share
+          makeWrapper \
+            ${p}/bin/${p.meta.mainProgram or p.pname} \
+            $out/bin/${p.meta.mainProgram or p.pname} \
+            --run 'wmname LG3D'
+        ''
+      )
+  );
 in {
   home.packages = with pkgs;
     [
@@ -103,7 +117,6 @@ in {
       bruno-cli
       kicad
       blender
-      logisim-evolution
       onlyoffice-desktopeditors
       wayland-bongocat
       kdePackages.qttools
@@ -111,6 +124,7 @@ in {
       nur.repos.forkprince.helium-nightly
       prismlauncher
       obsidian
+      file-roller
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt
@@ -118,6 +132,9 @@ in {
     ++ (mkElectronWayland [
       # pkgs.ticktick
       pkgs.cider-2
+    ])
+    ++ (mkLegacyJavaGUIApp [
+      pkgs.logisim-evolution
     ]);
 
   home.sessionVariables = {

@@ -5,7 +5,7 @@
       {
         matches = [
           {
-            app-id = "^edit-clipboard-popup$";
+            app-id = "^.*terminal-popup$";
           }
         ];
 
@@ -100,7 +100,7 @@
           }
           {
             app-id = "^com.ayugram.desktop$";
-            title = "^Media viewer$";
+            title = "^m|Media viewer$";
           }
           {
             app-id = "^io.github.kukuruzka165.materialgram$";

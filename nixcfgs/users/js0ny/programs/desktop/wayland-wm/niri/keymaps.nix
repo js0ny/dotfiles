@@ -9,7 +9,7 @@
   iconTheme = config.currentUser.iconTheme;
   explorer = config.currentUser.defaultExplorer;
   explorerTerm = config.currentUser.defaultTerminalExplorer;
-  launcher = "rofi";
+  launcher = "walker";
   kbdBacklightDev = config.currentHost.keyboardBacklightDevice;
   kbdBacklightStep = config.currentHost.keyboardBacklightStep;
   nirictl = import ./scripts.nix {inherit pkgs;};
@@ -23,6 +23,7 @@ in {
     "Mod+B".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "firefox" "firefox";
     "Mod+Shift+B".hotkey-overlay.title = "Launch web browser in private mode";
     "Mod+Shift+B".action = spawn "firefox" "--private-window";
+    "Mod+A".action = spawn-sh "${termRunner} --class=terminal-popup -e aichat --session";
     "Mod+Shift+A".hotkey-overlay.title = "Focus or launch CherryStudio (AI assistant)";
     "Mod+Shift+A".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "CherryStudio" "cherry-studio";
     "Mod+O".hotkey-overlay.title = "Focus or launch Obsidian";
@@ -30,10 +31,12 @@ in {
     # TODO: Change "org.kde.dolphin" to a more generic explorer app id via config.currentUser
     "Mod+E".hotkey-overlay.title = "Focus or launch file explorer";
     "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";
+    "Mod+T".action = spawn-sh "${termRunner} --class=terminal-popup";
+    "Mod+Shift+T".action = spawn-sh "${termRunner} --class=${termRunner}-terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
 
     "Mod+Semicolon".action = spawn "neovide" "${config.home.homeDirectory}/Atelier";
     "Mod+Apostrophe".action =
-      spawn-sh "EDITOR_MINIMAL=1 ${termRunner} -o close_on_child_death=yes --class=edit-clipboard-popup -e edit-clipboard --minimal";
+      spawn-sh "EDITOR_MINIMAL=1 ${termRunner} -o close_on_child_death=yes --class=terminal-popup -e edit-clipboard --minimal";
 
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 
@@ -42,17 +45,19 @@ in {
 
     "Mod+D".hotkey-overlay.title = "Run an Application: rofi";
     "Mod+D".action =
-      spawn "${launcher}" "-show" "drun" "-icon-theme" "${iconTheme}" "-show-icons";
+      spawn "${launcher}" "-m" "desktopapplications";
 
     "Alt+Space".hotkey-overlay.title = "Run an Application: rofi";
     "Alt+Space".action =
-      spawn "${launcher}" "-show" "drun" "-icon-theme" "${iconTheme}" "-show-icons";
+      spawn "${launcher}" "-m" "desktopapplications";
 
     "Mod+W".hotkey-overlay.title = "Search open Window: rofi";
     "Mod+W".action =
-      spawn "${launcher}" "-show" "window" "-icon-theme" "${iconTheme}" "-show-icons";
+      spawn "${launcher}" "-m" "windows";
 
-    "Mod+V".action = spawn-sh "cliphist list | ${launcher} -dmenu | cliphist decode | wl-copy";
+    "Mod+V".action =
+      # spawn-sh "cliphist list | ${launcher} -dmenu | cliphist decode | wl-copy";
+      spawn "${launcher}" "-m" "clipboard";
 
     "XF86AudioRaiseVolume".allow-when-locked = true;
     "XF86AudioRaiseVolume".action =

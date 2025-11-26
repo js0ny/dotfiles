@@ -44,6 +44,7 @@ in {
       shell = config.currentUser.defaultShell;
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty.sock";
+      confirm_os_window_close = 0;
     };
     keybindings = {
       "cmd+c" = "copy_and_clear_or_interrupt";

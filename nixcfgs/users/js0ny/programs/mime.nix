@@ -3,6 +3,47 @@
   #   * when `rga-fzf`: nvim wrapper failed to launch
   #   * nvim wrapper reports error on parsing filename with spaces
   gvim = "neovide.desktop";
+  simpleText = [
+    "text/plain"
+    "text/x-csrc" # .c
+    "text/x-chdr" # .h
+    "text/javascript"
+    "text/x-python"
+    "application/yaml" # .yaml, .yml
+  ];
+  image = [
+    "image/jpeg"
+    "image/jpg"
+    "image/png"
+    "image/gif"
+    "image/bmp"
+    "image/avif"
+    "image/webp"
+  ];
+  audio = [
+    "audio/flac"
+    "audio/vnd.wave" # .wav
+  ];
+  browser = [
+    "text/html"
+    "x-scheme-handler/http"
+    "x-scheme-handler/https"
+  ];
+  archive = [
+    "application/zip"
+    "application/x-rar"
+    "application/x-7z-compressed"
+    "application/x-tar"
+    "application/x-zstd-compressed-tar" # .tar.zst
+  ];
+
+  # Image Viewer:
+  #     gwenview: keyboard driven, high compatibility
+  #     loupe: Performance is incredible
+  imageViewers = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+  audioPlayers = "mpv.desktop;org.kde.elisa";
+  browsers = "firefox.desktop;chromium-browser.desktop";
+  archiveManager = "org.gnome.FileRoller.desktop;org.kde.ark.desktop;peazip.desktop";
 in {
   xdg.configFile."mimeapps.list".force = true;
   xdg.mime.enable = true;
@@ -25,30 +66,34 @@ in {
       "text/markdown" = gvim;
       # File Explorer
       "inode/directory" = "org.kde.dolphin.desktop";
-      # Image Viewer:
-      #     gwenview: keyboard driven, high compatibility
-      #     loupe: Performance is incredible
-      "image/jpeg" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
-      "image/jpg" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
-      "image/png" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
-      "image/gif" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
-      "image/bmp" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
-      "image/avif" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
-      "image/webp" = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+      "image/jpeg" = imageViewers;
+      "image/jpg" = imageViewers;
+      "image/png" = imageViewers;
+      "image/gif" = imageViewers;
+      "image/bmp" = imageViewers;
+      "image/avif" = imageViewers;
+      "image/webp" = imageViewers;
 
       # Audio:
       #     music: elisa: fully featured, good cjk support
       #     audio: mpv: simple and fast
-      "audio/flac" = "mpv.desktop;org.kde.elisa";
-      "audio/vnd.wave" = "mpv.desktop;org.kde.elisa"; # .wav
+      "audio/flac" = audioPlayers;
+      "audio/vnd.wave" = audioPlayers; # .wav
 
       # Browser
-      "text/html" = "firefox.desktop;chromium-browser.desktop";
-      "x-scheme-handler/http" = "firefox.desktop;chromium-browser.desktop";
-      "x-scheme-handler/https" = "firefox.desktop;chromium-browser.desktop";
+      "text/html" = browsers;
+      "x-scheme-handler/http" = browsers;
+      "x-scheme-handler/https" = browsers;
       # URL Scheme
       "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
       "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
+
+      # Archives
+      "application/zip" = archiveManager;
+      "application/x-rar" = archiveManager;
+      "application/x-7z-compressed" = archiveManager;
+      "application/x-tar" = archiveManager;
+      "application/x-zstd-compressed-tar" = archiveManager; # .tar.zst
     };
   };
   home.sessionVariables.BROWSER = "firefox";

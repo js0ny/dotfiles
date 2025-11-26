@@ -47,6 +47,7 @@
               "telegram-desktop"
               "io.github.kukuruzka165.materialgram"
               "materialgram"
+              "com.ayugram.desktop"
               "wechat"
             ];
           };

@@ -33,7 +33,7 @@
   '';
 in {
   imports = [
-    ../../rofi.nix
+    ../../walker.nix
     ./waybar
     ./swww.nix
     ./kanshi.nix

@@ -2,15 +2,28 @@
   programs.walker = {
     enable = true;
     runAsService = true;
-    providers.prefixes = [
-      {
-        provider = "websearch";
-        prefix = "+";
-      }
-      {
-        provider = "providerlist";
-        prefix = "_";
-      }
-    ];
+    config = {
+      keybinds = {
+        next = ["Down" "ctrl j"];
+        previous = ["Up" "ctrl k"];
+      };
+      providers = {
+        default = [
+          "websearch"
+          "desktopapplications"
+          "calc"
+        ];
+        prefixes = [
+          {
+            provider = "websearch";
+            prefix = "+";
+          }
+          {
+            provider = "providerlist";
+            prefix = "_";
+          }
+        ];
+      };
+    };
   };
 }

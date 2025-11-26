@@ -51,6 +51,12 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    elephant.url = "github:abenz1267/elephant";
+
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
   outputs = {
@@ -72,6 +78,7 @@
     nixcord,
     catppuccin,
     nix-index-database,
+    walker,
     ...
   } @ inputs: let
     overlays = [
@@ -96,6 +103,9 @@
       "nixvirt"
       "polder"
     ];
+    darwinHosts = [
+      "zen"
+    ];
 
     mkNixosSystem = hostname:
       nixpkgs.lib.nixosSystem {
@@ -109,27 +119,22 @@
           {nixpkgs.overlays = overlays;}
         ];
       };
+    mkDarwinSystem = hostname:
+      nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        inherit specialArgs;
+        modules = [
+          ./hosts/${hostname}
+          {nixpkgs.overlays = overlays;}
+        ];
+      };
   in {
     # This will automatically generate nixOS config for `nixosHosts'
     # Include the module ./hosts/${hostname} by default.
     nixosConfigurations = nixpkgs.lib.genAttrs nixosHosts mkNixosSystem;
-
-    darwinConfigurations."zen" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      inherit specialArgs;
-      modules = [
-        ./hosts/zen
-      ];
-    };
+    darwinConfigurations = nixpkgs.lib.genAttrs darwinHosts mkDarwinSystem;
 
     homeConfigurations = {
-      js0ny = home-manager.lib.homeManagerConfiguration {
-        pkgs = forSystem "x86_64-linux";
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./users/js0ny
-        ];
-      };
       "js0ny@zephyrus" = home-manager.lib.homeManagerConfiguration {
         pkgs = forSystem "x86_64-linux";
         extraSpecialArgs = specialArgs;
@@ -143,20 +148,7 @@
           nixcord.homeModules.nixcord
           catppuccin.homeModules.catppuccin
           nix-index-database.homeModules.nix-index
-        ];
-      };
-      "js0ny@nixvirt" = home-manager.lib.homeManagerConfiguration {
-        pkgs = forSystem "x86_64-linux";
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./users/js0ny/nixvirt.nix
-        ];
-      };
-      "js0ny@polder" = home-manager.lib.homeManagerConfiguration {
-        pkgs = forSystem "x86_64-linux";
-        extraSpecialArgs = specialArgs;
-        modules = [
-          ./users/js0ny/polder.nix
+          walker.homeManagerModules.default
         ];
       };
       "js0ny@zen" = home-manager.lib.homeManagerConfiguration {
