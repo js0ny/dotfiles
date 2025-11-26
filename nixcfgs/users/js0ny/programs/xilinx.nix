@@ -9,7 +9,13 @@
       #!${pkgs.stdenv.shell}
       ${pkgs.wmname}/bin/wmname LG3D
 
-      exec ${pkgs.distrobox}/bin/distrobox enter Xilinx -- /opt/Xilinx/Vivado/${version}/bin/vivado
+      CACHE="${config.xdg.cacheHome}/vivado"
+      mkdir -p "$CACHE"
+
+      exec ${pkgs.distrobox}/bin/distrobox enter Xilinx -- /opt/Xilinx/Vivado/${version}/bin/vivado \
+        -log "$CACHE/vivado.log" \
+        -journal "$CACHE/vivado.jou" \
+        "$@"
     '';
   # Do not launch 2015 and 2022 simultaneously to avoid conflicts
   vivadoLauncher2022 = vivadoLauncher "2022.2";
