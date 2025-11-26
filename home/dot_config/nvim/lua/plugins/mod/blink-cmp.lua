@@ -52,10 +52,24 @@ return {
     cmdline = {
       keymap = {
         preset = "cmdline",
+        ["<Tab>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "show",
+          "fallback",
+        },
         ["<CR>"] = { "fallback" },
+        ["<C-f>"] = { "select_and_accept", "fallback" },
+        ["<C-a>"] = {},
       },
       completion = {
         menu = { auto_show = true },
+        documentation = { auto_show = true, auto_show_delay_ms = 1000 },
       },
     },
 
