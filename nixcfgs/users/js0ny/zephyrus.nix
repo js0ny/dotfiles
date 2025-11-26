@@ -59,6 +59,8 @@
     ./programs/anki.nix
     ./programs/libvirt.nix
     ./programs/block-desktop-entries.nix
+    ./programs/pwa.nix
+    ./programs/walker.nix
 
     # Desktop Linux
     ./programs/desktop/plasma
