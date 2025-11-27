@@ -5,8 +5,10 @@
     cargo
     clippy
     rustfmt
-    make
+    gnumake
     cmake
+    llvm
+    gcc
   ];
 
   programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
