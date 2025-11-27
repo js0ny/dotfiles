@@ -22,6 +22,7 @@
       "float, center, size 50%, class:^(QQ)$, title:^(群聊的聊天记录)$"
       "float, center, size 50%, class:^(CherryStudio)$, title:^(Cherry Studio Quick Assistant)$"
       "float, center, size 50%, class:^(anki)$, title:^(Add)$"
+      "float, center, size 50%, class:^(kitty-terminal-popup)$"
       "float, center, title:^(Open File|打开文件|Select a File|选择文件|Choose wallpaper|Open Folder|Save As|保存|Library|File Upload)(.*)$"
       "float, center, class:^(qt6ct)$"
       # no focus

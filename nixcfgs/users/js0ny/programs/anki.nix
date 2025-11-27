@@ -9,7 +9,7 @@
     addons = with pkgs.ankiAddons; [
       anki-connect
       review-heatmap
-      recolor
+      # recolor # Use stylix
     ];
     sync = {
       autoSync = true;

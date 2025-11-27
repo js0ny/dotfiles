@@ -74,6 +74,11 @@ in {
       "image/avif" = imageViewers;
       "image/webp" = imageViewers;
 
+      # Microsoft Office
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "onlyoffice-desktopeditors.desktop";
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation" = "onlyoffice-desktopeditors.desktop";
+
       # Audio:
       #     music: elisa: fully featured, good cjk support
       #     audio: mpv: simple and fast

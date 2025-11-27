@@ -57,6 +57,8 @@
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
     };
+
+    stylix.url = "github:nix-community/stylix";
   };
 
   outputs = {
@@ -79,6 +81,7 @@
     catppuccin,
     nix-index-database,
     walker,
+    stylix,
     ...
   } @ inputs: let
     overlays = [
@@ -149,6 +152,7 @@
           catppuccin.homeModules.catppuccin
           nix-index-database.homeModules.nix-index
           walker.homeManagerModules.default
+          stylix.homeModules.stylix
         ];
       };
       "js0ny@zen" = home-manager.lib.homeManagerConfiguration {
@@ -159,6 +163,7 @@
           catppuccin.homeModules.catppuccin
           betterfox-nix.modules.homeManager.betterfox
           sops-nix.homeManagerModules.sops
+          stylix.homeModules.stylix
         ];
       };
     };

@@ -47,6 +47,7 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard
     libnotify
+    gnome-disk-utility
   ];
 
   xdg.portal = {

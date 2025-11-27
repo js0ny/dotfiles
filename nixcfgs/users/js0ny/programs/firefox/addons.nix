@@ -48,7 +48,7 @@ in {
       # Misc
       rsshub-radar
       proton-pass
-      proton-vpn
+      # proton-vpn
       styl-us
       kiss-translator
 

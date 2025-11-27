@@ -47,4 +47,8 @@
       extraArgs = "--keep 5 --keep-since 3d";
     };
   };
+
+  nix.extraOptions = ''
+    use-xdg-base-directories = true
+  '';
 }

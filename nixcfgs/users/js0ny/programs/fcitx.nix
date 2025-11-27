@@ -197,30 +197,31 @@
                 "Vertical Candidate List" = ''True'';
                 # Use mouse wheel to go to prev or next page
                 "WheelForPaging" = ''True'';
+                # NOTE: manged by stylix
                 # Font
-                "Font" = ''"LXGW WenKai Medium 14"'';
-                # Menu Font
-                "MenuFont" = ''"LXGW WenKai 14"'';
-                # Tray Font
-                "TrayFont" = ''"Sans Bold 10"'';
-                # Tray Label Outline Color
-                "TrayOutlineColor" = ''''; #000000
-                # Tray Label Text Color
-                "TrayTextColor" = ''''; #ffffff
+                # "Font" = ''"LXGW WenKai Medium 14"'';
+                # # Menu Font
+                # "MenuFont" = ''"LXGW WenKai 14"'';
+                # # Tray Font
+                # "TrayFont" = ''"Sans Bold 10"'';
+                # # Tray Label Outline Color
+                # "TrayOutlineColor" = ''''; #000000
+                # # Tray Label Text Color
+                # "TrayTextColor" = ''''; #ffffff
+                # Theme
+                # "Theme" = ''plasma'';
+                # # Dark Theme
+                # "DarkTheme" = ''plasma'';
+                # # Follow system light/dark color scheme
+                # "UseDarkTheme" = ''True'';
+                # # Follow system accent color if it is supported by theme and desktop
+                # "UseAccentColor" = ''True'';
                 # Prefer Text Icon
                 "PreferTextIcon" = ''False'';
                 # Show Layout Name In Icon
                 "ShowLayoutNameInIcon" = ''True'';
                 # Use input method language to display text
                 "UseInputMethodLanguageToDisplayText" = ''True'';
-                # Theme
-                "Theme" = ''plasma'';
-                # Dark Theme
-                "DarkTheme" = ''plasma'';
-                # Follow system light/dark color scheme
-                "UseDarkTheme" = ''True'';
-                # Follow system accent color if it is supported by theme and desktop
-                "UseAccentColor" = ''True'';
                 # Use Per Screen DPI on X11
                 "PerScreenDPI" = ''False'';
                 # Force font DPI on Wayland
@@ -280,5 +281,4 @@
         };
       };
     };
-  catppuccin.fcitx5.enable = true;
 }

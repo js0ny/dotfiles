@@ -31,7 +31,7 @@ return {
       },
       ["<C-f>"] = { "select_and_accept" },
       ["<C-b>"] = { "hide", "fallback" },
-      ["<CR>"] = { "accept", "fallback" },
+      ["<CR>"] = { "fallback" },
     },
     completion = {
       menu = { border = "single" },
@@ -69,7 +69,7 @@ return {
       },
       completion = {
         menu = { auto_show = true },
-        documentation = { auto_show = true, auto_show_delay_ms = 1000 },
+        -- documentation = { auto_show = true }, --, auto_show_delay_ms = 1000 },
       },
     },
 

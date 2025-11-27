@@ -38,6 +38,7 @@ in {
     ./swww.nix
     ./kanshi.nix
     ./swaylock.nix
+    ./polkit.nix
   ];
   home.packages = with pkgs; [
     swayidle # Screensaver
@@ -54,13 +55,6 @@ in {
   };
   services.cliphist.enable = true;
   services.dunst.enable = true;
+  services.network-manager-applet.enable = true;
   catppuccin.dunst.enable = false;
-  home.pointerCursor = {
-    enable = true;
-    gtk.enable = true;
-    x11.enable = true;
-    size = 24;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-  };
 }

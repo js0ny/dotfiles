@@ -66,6 +66,7 @@
       gron
       jless
       unar
+      trash-cli
     ]
     ++ (
       if pkgs.stdenv.isDarwin

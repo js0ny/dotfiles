@@ -124,11 +124,6 @@
 
     userSettings = {
       icon_theme = "Material Icon Theme";
-      theme = {
-        mode = "system";
-        light = "Catppuccin Latte";
-        dark = "Catppuccin Mocha";
-      };
       tabs = {
         show_diagnostics = "errors";
         show_close_button = "hover";
@@ -157,10 +152,16 @@
           proxy_no_verify = null;
         };
       };
-      ui_font_size = 16;
-      buffer_font_size = null;
-      relative_line_numbers = true;
-      buffer_font_family = "Maple Mono NF CN";
+      # NOTE: managed by stylix
+      # ui_font_size = 16;
+      # buffer_font_size = null;
+      # relative_line_numbers = true;
+      # buffer_font_family = "Maple Mono NF CN";
+      # theme = {
+      #   mode = "system";
+      #   light = "Catppuccin Latte";
+      #   dark = "Catppuccin Mocha";
+      # };
       remove_trailing_whitespace_on_save = true;
       agent = {
         default_model = {

@@ -9,6 +9,5 @@
     # caelestia-shell
     xdg-desktop-portal-hyprland
     hyprpolkitagent
-    xdg-desktop-portal-wlr
   ];
 }

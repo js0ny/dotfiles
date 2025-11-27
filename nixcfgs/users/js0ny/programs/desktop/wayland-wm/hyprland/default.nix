@@ -2,6 +2,8 @@
   home.packages = with pkgs; [
     grimblast
   ];
+  # TODO: Try to isolate these variables to just Hyprland and its children
+  # Maybe use systemctl --user import-environment?
   imports = [
     ../packages.nix
     ./keymaps.nix
@@ -19,20 +21,21 @@
       ecosystem = {
         no_update_news = true;
       };
-      exec-once = [
-        "waybar"
-        "dunst"
-        "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
-      ];
+      # exec-once = [
+      #   "waybar"
+      #   "dunst"
+      #   "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
+      # ];
       general = {
-        gaps_in = 0;
-        gaps_out = 0;
+        gaps_in = 2;
+        gaps_out = 2;
 
-        border_size = 5;
+        border_size = 2;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = "$lavender $pink 45deg";
-        "col.inactive_border" = "$overlay1";
+        # NOTE: use stylix
+        # "col.active_border" = "$lavender $pink 45deg";
+        # "col.inactive_border" = "$overlay1";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = true;
@@ -108,7 +111,7 @@
       };
 
       decoration = {
-        rounding = 20;
+        rounding = 10;
 
         # Change transparency of focused and unfocused windows
         # active_opacity = 1
@@ -120,7 +123,7 @@
           enabled = true;
           range = 4;
           render_power = 3;
-          color = "$base";
+          # color = "$base"; # NOTE: use stylix
         };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur

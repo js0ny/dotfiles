@@ -12,7 +12,7 @@
     ./packages/gui.nix
     ./packages/flatpak.nix
     ./packages/fonts.nix
-    ./packages/catppuccin.nix
+    ./packages/stylix.nix
 
     # Shell
     ./programs/shell/bash.nix
@@ -63,9 +63,8 @@
     ./programs/walker.nix
 
     # Desktop Linux
-    ./programs/desktop/plasma
-    ./programs/desktop/wayland-wm/niri
     ./programs/desktop/wayland-wm/hyprland
+    ./programs/desktop/wayland-wm/niri
 
     ../../modules/home/do-not-track.nix
 
@@ -79,6 +78,7 @@
     # Development setup
     ../../modules/home/dev/nix.nix
     ../../modules/home/dev/java.nix
+    ../../modules/home/dev/rust.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

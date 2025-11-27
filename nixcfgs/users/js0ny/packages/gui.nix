@@ -163,6 +163,8 @@ in {
   #   };
   # };
 
+  programs.alacritty.enable = true;
+
   services.protonmail-bridge.enable = true;
   services.remmina.enable = true;
 }

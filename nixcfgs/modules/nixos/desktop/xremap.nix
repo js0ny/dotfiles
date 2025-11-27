@@ -12,7 +12,7 @@
 
   services.xremap = {
     enable = true;
-    withNiri = true;
+    withHypr = true;
     # modmap: single key
     serviceMode = "user";
     userName = "js0ny";
@@ -39,23 +39,23 @@
         }
       ];
       keymap = [
-        {
-          name = "IM Navigator - Alt-Up/Down";
-          application = {
-            only = [
-              "org.telegram.desktop"
-              "telegram-desktop"
-              "io.github.kukuruzka165.materialgram"
-              "materialgram"
-              "com.ayugram.desktop"
-              "wechat"
-            ];
-          };
-          remap = {
-            "M-j" = "M-down";
-            "M-k" = "M-up";
-          };
-        }
+        # {
+        #   name = "IM Navigator - Alt-Up/Down";
+        #   application = {
+        #     only = [
+        #       "org.telegram.desktop"
+        #       "telegram-desktop"
+        #       "io.github.kukuruzka165.materialgram"
+        #       "materialgram"
+        #       "com.ayugram.desktop"
+        #       "wechat"
+        #     ];
+        #   };
+        #   remap = {
+        #     "M-j" = "M-down";
+        #     "M-k" = "M-up";
+        #   };
+        # }
         {
           name = "IM Navigator - Ctrl-Up/Down";
           application = {

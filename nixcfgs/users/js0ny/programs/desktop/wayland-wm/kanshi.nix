@@ -19,7 +19,7 @@ in {
           criteria = lg4k60;
           alias = "lg4k60";
           mode = "3840x2160@59.997";
-          scale = 1.6666;
+          scale = 1.875; # Hyprland doesn't support 1.75 scale
         };
       }
       # Profiles

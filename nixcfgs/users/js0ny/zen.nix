@@ -4,7 +4,7 @@
 
     # Packages
     ./packages/cli.nix
-    ./packages/catppuccin.nix
+    ./packages/stylix.nix
 
     # Shell
     ./programs/shell/bash.nix

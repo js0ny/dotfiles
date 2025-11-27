@@ -18,7 +18,7 @@
         "pulseaudio"
         "cpu"
         "memory"
-        "network"
+        # "network"  # Use nm-applet instead
         "battery"
         "clock"
       ];
@@ -99,6 +99,7 @@
       cpu = {
         format = "{usage}% ";
         tooltip = false;
+        on-click = "kitty -e btop";
       };
       memory = {
         format = "{}% ";
@@ -216,7 +217,7 @@
       };
       "custom/osicon" = {
         format = "<span size='x-large'></span>";
-        on-click-right = "rofi -show drun -icon-theme Papirus -show-icons";
+        on-click = "walker -m desktopapplications";
       };
     }
   ];

@@ -24,4 +24,6 @@ in {
   programs.bash.shellAliases = nvimAlias;
   programs.zsh.shellAliases = nvimAlias;
   programs.nushell.shellAliases = nvimAlias;
+
+  home.sessionVariables.EDITOR = "nvim";
 }
