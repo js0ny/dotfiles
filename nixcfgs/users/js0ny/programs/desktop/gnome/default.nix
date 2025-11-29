@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   home.sessionVariables = {
@@ -46,7 +47,7 @@
     "org/gnome/desktop/interface" = {
       clock-show-seconds = true;
       clock-show-weekday = true;
-      icon-theme = "${config.currentUser.iconTheme}";
+      icon-theme = "${config.my.desktop.style.iconTheme.dark}";
       accent-color = "pink";
       show-battery-percentage = true;
       cursor-theme = "Adwaita";
@@ -111,12 +112,12 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1" = {
       name = "Open Terminal via Win-R";
-      command = "${config.currentUser.defaultTerminal}";
+      command = "${lib.getExe config.my.desktop.preferredApps.terminal.package}";
       binding = "<Super>r";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2" = {
       name = "Open Terminal via Ctrl-Alt-T";
-      command = "${config.currentUser.defaultTerminal}";
+      command = "${lib.getExe config.my.desktop.preferredApps.terminal.package}";
       binding = "<Ctrl><Alt>t";
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {

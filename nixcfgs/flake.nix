@@ -118,6 +118,7 @@
           xremap-flake.nixosModules.default
           sops-nix.nixosModules.sops
           catppuccin.nixosModules.catppuccin
+          stylix.nixosModules.default
           ./hosts/${hostname}
           {nixpkgs.overlays = overlays;}
         ];

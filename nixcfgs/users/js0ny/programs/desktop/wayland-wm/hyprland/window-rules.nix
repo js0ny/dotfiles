@@ -11,6 +11,7 @@
 
       # Right Top
       "float, pin, size 25%, move 73% 10%, class:^(org.pulseaudio.pavucontrol)$"
+      "float, pin, size 25%, move 73% 10%, class:^(.bluetooth-manager-wrapped)$"
       # Right Top + no focus
       "noinitialfocus, float, pin, size 25%, move 73% 10%, class:^(org.kde.(dolphin|ark))$, title:^(Extracting|Compressing)(.*)$"
       "noinitialfocus, float, pin, size 25%, move 73% 10%, class:^(thunar)$, title:^(File Operation Progress)$"

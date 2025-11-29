@@ -4,14 +4,13 @@
   lib,
   ...
 }: let
-  term = config.currentUser.defaultTerminal;
-  termRunner = config.currentUser.defaultTerminalRunner;
-  iconTheme = config.currentUser.iconTheme;
-  explorer = config.currentUser.defaultExplorer;
-  explorerTerm = config.currentUser.defaultTerminalExplorer;
+  term = lib.getExe config.my.desktop.preferredApps.terminal.package;
+  iconTheme = config.my.desktop.style.iconTheme.dark;
+  explorer = lib.getExe config.my.desktop.preferredApps.fileManager.gui;
+  explorerTerm = lib.getExe config.my.desktop.preferredApps.fileManager.tui;
   launcher = "walker";
-  kbdBacklightDev = config.currentHost.keyboardBacklightDevice;
-  kbdBacklightStep = config.currentHost.keyboardBacklightStep;
+  kbdBacklightDev = config.my.hardware.keyboardBacklight.device;
+  kbdBacklightStep = config.my.hardware.keyboardBacklight.step;
   mainMod = "SUPER";
   screenshotPath = "$HOME/Pictures/Screenshots/\"$(%Y-%m-%d_%H-%M-%S.png)\"";
   my = import ./scripts.nix {inherit pkgs;};
@@ -22,7 +21,7 @@ in {
     bind = [
       # === Run Applications ===
       "$mainMod, return, exec, ${term}"
-      "$mainMod SHIFT, return, exec, ${termRunner} --directory ~/Atelier -e nvim"
+      "$mainMod SHIFT, return, exec, ${term} --directory ~/Atelier -e nvim"
       "$mainMod, B, exec, ${lib.getExe my.launch-or-focus} firefox firefox"
       "$mainMod SHIFT, B, exec, firefox --private-window"
       "$mainMod, A, exec, kitty --class=kitty-terminal-popup -e aichat --session"
@@ -34,11 +33,11 @@ in {
       ''$mainMod SHIFT, F, exec, hyprctl --batch "dispatch togglefloating ;  dispatch resizeactive exact 1440 810 ; dispatch centerwindow 1;"''
       "$mainMod SHIFT, M, fullscreen"
       "$mainMod, W, exec, ${launcher} -m windows"
-      "$mainMod, Apostrophe, exec, EDITOR_MINIMAL=1 ${termRunner} -o close_on_child_death=yes --class=${termRunner}-terminal-popup -e edit-clipboard --minimal"
+      "$mainMod, Apostrophe, exec, EDITOR_MINIMAL=1 ${term} -o close_on_child_death=yes --class=${term}-terminal-popup -e edit-clipboard --minimal"
       "$mainMod, V, exec, ${launcher} -m clipboard"
       "alt, space, exec, ${launcher} -m desktopapplications"
       "$mainMod, E, exec, ${explorer}"
-      "$mainMod SHIFT, E, exec, ${termRunner} -e ${explorerTerm}"
+      "$mainMod SHIFT, E, exec, ${term} -e ${explorerTerm}"
       "CTRL ALT, DELETE, exec, uwsm exit"
       "$mainMod, P, pseudo"
       "$mainMod, Y, togglesplit"

@@ -1,9 +1,10 @@
 {
-  config,
   pkgs,
+  config,
+  lib,
   ...
 }: let
-  aliasCfg = import ./aliases.nix {pkgs = pkgs;};
+  aliasCfg = import ./aliases.nix {inherit pkgs config lib;};
 in {
   home.packages = with pkgs; [
     zsh-fzf-tab

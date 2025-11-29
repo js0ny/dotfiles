@@ -12,6 +12,8 @@
       runAsRoot = true;
       swtpm.enable = true;
     };
+    onShutdown = "shutdown";
+    onBoot = "ignore";
   };
   users.users.js0ny = {
     extraGroups = ["libvirtd"];

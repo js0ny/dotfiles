@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
+  xdg.configFile."zed/snippets".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/lsp-snippets/snippets";
   programs.zed-editor = {
     enable = true;
     package =

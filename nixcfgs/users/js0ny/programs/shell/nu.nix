@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  aliases = import ./aliases.nix {pkgs = pkgs;};
-in {
+{...}: {
   programs.nushell = {
     enable = true;
     shellAliases = {

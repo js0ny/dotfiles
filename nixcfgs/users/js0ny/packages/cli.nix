@@ -16,7 +16,6 @@
       age
       aichat
       beancount
-      gnumake
       chezmoi
       curlie
       duf
@@ -67,6 +66,7 @@
       jless
       unar
       trash-cli
+      aria2
     ]
     ++ (
       if pkgs.stdenv.isDarwin

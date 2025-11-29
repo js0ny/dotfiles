@@ -1,5 +1,10 @@
-{pkgs, ...}: let
-  aliasCfg = import ./aliases.nix {pkgs = pkgs;};
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  aliasCfg = import ./aliases.nix {inherit pkgs config lib;};
 in {
   programs.fish = {
     enable = true;
@@ -42,7 +47,11 @@ in {
       bind -M insert alt-delete kill-line
     '';
     # preferAbbrs = true;
-    shellAbbrs = aliasCfg.aliases;
+    shellAbbrs =
+      aliasCfg.aliases
+      // {
+        l = "ls -lah";
+      };
   };
   programs.zed-editor.extensions = ["fish"];
 }

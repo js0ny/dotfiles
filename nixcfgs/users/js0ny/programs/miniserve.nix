@@ -1,8 +1,12 @@
 {
   pkgs,
   config,
+  lib,
   ...
-}: {
+}: let
+  term = lib.getExe config.my.desktop.preferredApps.terminal.package;
+  termArg = config.my.desktop.preferredApps.terminal.execArg;
+in {
   home.packages = [pkgs.miniserve];
   home.file.".local/share/kio/servicemenus/miniserve.desktop" = {
     enable = true;
@@ -20,7 +24,7 @@
       Name=Map Directory to Port 8080
       Name[CN]=将目录映射到网上(8080)
       Icon=network-server
-      Exec=${config.currentUser.defaultTerminalRunner} -t "miniserve" -e miniserve "%f" --port 8080
+      Exec=${term} --title "miniserve" ${termArg} miniserve "%f" --port 8080
     '';
   };
 }

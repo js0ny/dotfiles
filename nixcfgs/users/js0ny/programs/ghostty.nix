@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   programs.ghostty = {
@@ -14,7 +15,7 @@
       else true;
     # Not ready
     settings = {
-      command = "${config.currentUser.defaultShell}";
+      command = "${lib.getExe config.my.desktop.preferredApps.interactiveShell}";
       font-size = 13;
       font-family = "Maple Mono NF CN";
       # theme = light:Catppuccin Latte,dark:Catppuccin Mocha;

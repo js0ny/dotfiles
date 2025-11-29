@@ -67,10 +67,10 @@ in {
       neovim.enable = false;
       firefox = {
         profileNames = ["default"];
-        colorTheme.enable = false; # Firefox Color
       };
     };
 
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
     image = ./wallpaper.jpg;
     polarity = "dark";
   };

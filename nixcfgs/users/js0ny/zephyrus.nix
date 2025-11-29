@@ -1,5 +1,9 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     # General config
     ./default.nix
@@ -10,6 +14,7 @@
     # Packages
     ./packages/cli.nix
     ./packages/gui.nix
+    ./packages/devtools.nix
     ./packages/flatpak.nix
     ./packages/fonts.nix
     ./packages/stylix.nix
@@ -83,10 +88,31 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  currentHost = {
-    keyboardBacklightDevice = "asus::kbd_backlight";
-    keyboardBacklightStep = "1";
+  my = {
+    desktop = {
+      preferredApps = {
+        shell = pkgs.zsh;
+        interactiveShell = pkgs.fish;
+        terminal = {
+          package = pkgs.kitty;
+          execArg = "-e";
+        };
+        fileManager = {
+          gui = pkgs.kdePackages.dolphin;
+          tui = pkgs.yazi;
+        };
+      };
+    };
+    hardware = {
+      keyboardBacklight = {
+        device = "asus::kbd_backlight";
+        step = "1";
+      };
+      isHeadless = false;
+    };
   };
+
+  home.sessionVariables.TERMINAL = config.my.desktop.preferredApps.terminal.package;
 
   home.stateVersion = "25.05";
 }

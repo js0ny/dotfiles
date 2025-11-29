@@ -79,7 +79,43 @@ in {
       sockets = ["wayland"];
     };
   };
-  xdg.dataFile = appWrappers;
+  # xdg.dataFile = appWrappers;
+  xdg.dataFile =
+    {
+      # Patch for Hyprland (scale XWayland by hand)
+      "flatpak/exports/bin/com.qq.QQ" = {
+        text = ''
+          #!/bin/sh
+
+          EXTRA_APP_ARGS=""
+
+          if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
+              EXTRA_APP_ARGS="--force-device-scale-factor=1.5"
+          fi
+
+          exec flatpak run --branch=stable --arch=x86_64 com.qq.QQ "$EXTRA_APP_ARGS" "$@"
+        '';
+        enable = true;
+        executable = true;
+      };
+      "flatpak/exports/share/applications/com.qq.QQ.desktop" = {
+        text = ''
+          [Desktop Entry]
+          Name=QQ
+          Exec=${config.xdg.dataHome}/flatpak/exports/bin/com.qq.QQ
+          Terminal=false
+          Type=Application
+          Icon=com.qq.QQ
+          StartupWMClass=QQ
+          Categories=Network;
+          Comment=QQ
+          X-Flatpak=com.qq.QQ
+        '';
+        enable = true;
+        force = true;
+      };
+    }
+    // appWrappers;
   home.activation.patchFlatpakDesktopFiles = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${lib.concatMapStringsSep "\n" (appid: ''
         DESKTOP_FILE="${config.xdg.dataHome}/flatpak/exports/share/applications/${appid}.desktop"

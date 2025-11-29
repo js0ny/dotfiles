@@ -20,5 +20,5 @@ return {
     opts = {},
     -- dev = true,
     -- dir = "~/Source/Forks/luasnip-latex-snippets.nvim/"
-  }
+  },
 }

@@ -4,14 +4,12 @@
   lib,
   ...
 }: let
-  term = config.currentUser.defaultTerminal;
-  termRunner = config.currentUser.defaultTerminalRunner;
-  iconTheme = config.currentUser.iconTheme;
-  explorer = config.currentUser.defaultExplorer;
-  explorerTerm = config.currentUser.defaultTerminalExplorer;
+  term = lib.getExe config.my.desktop.preferredApps.terminal.package;
+  # TODO: Don't default to dark
+  iconTheme = config.my.desktop.style.iconTheme.dark;
   launcher = "walker";
-  kbdBacklightDev = config.currentHost.keyboardBacklightDevice;
-  kbdBacklightStep = config.currentHost.keyboardBacklightStep;
+  kbdBacklightDev = config.my.hardware.keyboardBacklight.device;
+  kbdBacklightStep = config.my.hardware.keyboardBacklight.step;
   nirictl = import ./scripts.nix {inherit pkgs;};
 in {
   home.packages = [
@@ -23,7 +21,7 @@ in {
     "Mod+B".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "firefox" "firefox";
     "Mod+Shift+B".hotkey-overlay.title = "Launch web browser in private mode";
     "Mod+Shift+B".action = spawn "firefox" "--private-window";
-    "Mod+A".action = spawn-sh "${termRunner} --class=terminal-popup -e aichat --session";
+    "Mod+A".action = spawn-sh "${term} --class=terminal-popup -e aichat --session";
     "Mod+Shift+A".hotkey-overlay.title = "Focus or launch CherryStudio (AI assistant)";
     "Mod+Shift+A".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "CherryStudio" "cherry-studio";
     "Mod+O".hotkey-overlay.title = "Focus or launch Obsidian";
@@ -31,12 +29,12 @@ in {
     # TODO: Change "org.kde.dolphin" to a more generic explorer app id via config.currentUser
     "Mod+E".hotkey-overlay.title = "Focus or launch file explorer";
     "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";
-    "Mod+T".action = spawn-sh "${termRunner} --class=terminal-popup";
-    "Mod+Shift+T".action = spawn-sh "${termRunner} --class=${termRunner}-terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
+    "Mod+T".action = spawn-sh "${term} --class=terminal-popup";
+    "Mod+Shift+T".action = spawn-sh "${term} --class=${term}-terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
 
     "Mod+Semicolon".action = spawn "neovide" "${config.home.homeDirectory}/Atelier";
     "Mod+Apostrophe".action =
-      spawn-sh "EDITOR_MINIMAL=1 ${termRunner} -o close_on_child_death=yes --class=terminal-popup -e edit-clipboard --minimal";
+      spawn-sh "EDITOR_MINIMAL=1 ${term} -o close_on_child_death=yes --class=terminal-popup -e edit-clipboard --minimal";
 
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 

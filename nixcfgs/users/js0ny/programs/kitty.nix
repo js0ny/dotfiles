@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   alt =
@@ -8,6 +9,7 @@
     then "cmd"
     else "alt";
 in {
+  xdg.configFile."kitty/kitty.conf".force = true;
   programs.kitty = {
     enable = true;
     shellIntegration = {
@@ -41,7 +43,7 @@ in {
       macos_option_as_alt = true;
       macos_quit_when_last_window_closed = true;
       enabled_layouts = "splits";
-      shell = config.currentUser.defaultShell;
+      shell = lib.getExe config.my.desktop.preferredApps.interactiveShell;
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty.sock";
       confirm_os_window_close = 0;
@@ -81,5 +83,34 @@ in {
         "kitty_scrollback_nvim" = "kitten /home/js0ny/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py";
       }
       else {};
+  };
+  programs = {
+    bash.bashrcExtra = ''
+      if [ "$TERM" = "xterm-kitty" ]; then
+          alias ssh="kitty +kitten ssh"
+          alias icat="kitty +kitten icat"
+      fi
+      if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+          alias clip="kitty +kitten clipboard"
+      fi
+    '';
+    zsh.initContent = ''
+      if [ "$TERM" = "xterm-kitty" ]; then
+          alias ssh="kitty +kitten ssh"
+          alias icat="kitty +kitten icat"
+      fi
+      if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+          alias clip="kitty +kitten clipboard"
+      fi
+    '';
+    fish.interactiveShellInit = ''
+      if test "$TERM" = "xterm-kitty"
+          abbr --add ssh "kitty +kitten ssh"
+          abbr --add icat "kitty +kitten icat"
+      end;
+      if test -n "$SSH_CLIENT" -o -n "$SSH_TTY"
+          abbr --add clip "kitty +kitten clipboard"
+      end;
+    '';
   };
 }

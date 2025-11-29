@@ -1,5 +1,14 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   codeAlias = {"c" = "code";};
+  codeReleasesConfigDir = [
+    "Code"
+    "VSCodium"
+    "Antigravity"
+  ];
 in {
   programs.vscode = {
     package = pkgs.vscode;
@@ -16,6 +25,17 @@ in {
       vspacecode.whichkey
     ];
   };
+
+  # Remove default snippet dir before running this to avoid conflicts
+  xdg.configFile = builtins.listToAttrs (map (dir: {
+      name = "${dir}/User/snippets";
+      value = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/lsp-snippets/snippets";
+        force = true;
+        # recursive = true;
+      };
+    })
+    codeReleasesConfigDir);
 
   catppuccin.vscode.profiles.default.enable = false;
   programs.fish.shellAbbrs = codeAlias;

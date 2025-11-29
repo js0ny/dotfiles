@@ -29,7 +29,7 @@
       position = "center";
     };
     workspace = {
-      iconTheme = "${config.currentUser.iconTheme}";
+      iconTheme = "${config.my.desktop.style.iconTheme.dark}";
       colorScheme = "BreezeDark";
     };
     kwin = {

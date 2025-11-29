@@ -20,6 +20,7 @@
         nix-ts-mode
         flycheck
         highlight-indent-guides
+        magit
       ];
   };
   # TODO: tdlib version is too high
