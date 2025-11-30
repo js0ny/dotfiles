@@ -8,7 +8,7 @@
     mineffect = "suck";
     minimize-to-application = true;
     persistent-apps = [
-      {app = "${pkgs.firefox}/Applications/Firefox.app";}
+      {app = "${pkgs.firefox-bin}/Applications/Firefox.app";}
       {app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";}
       {app = "/Applications/Obsidian.app";}
       # { app = "/Applications/LibreWolf.app"; }

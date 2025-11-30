@@ -165,6 +165,7 @@
           betterfox-nix.modules.homeManager.betterfox
           sops-nix.homeManagerModules.sops
           stylix.homeModules.stylix
+          nix-index-database.homeModules.nix-index
         ];
       };
     };

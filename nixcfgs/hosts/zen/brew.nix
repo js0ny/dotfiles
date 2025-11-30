@@ -25,6 +25,7 @@
       # Networking
       "wireshark-app"
       "clash-verge-rev"
+      "protonvpn"
 
       # Terminal Emulator
 
@@ -37,6 +38,7 @@
       "steam"
       "discord"
       "orbstack" # Docker runtime
+      "proton-drive"
 
       # System Enhancement
       "alt-tab" # Turn cmd-tab to windows behaviour
