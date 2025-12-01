@@ -5,7 +5,7 @@
       "la" = "ls -a";
       "lt" = "lsd --tree";
       "l" = "ls -la";
-      "ll" = "ls -lh";
+      "ll" = "ls -l";
     };
     extraConfig = ''
       $env.config.show_banner = false

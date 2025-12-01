@@ -7,27 +7,25 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri;
+    package = pkgs.niri-unstable;
 
     settings = {
       prefer-no-csd = true;
       screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
       workspaces = {
-        "master" = {};
-        "project" = {};
-        "remote" = {};
-        "info" = {};
-        "bg" = {};
+        "1-master" = {};
+        "2-project" = {};
+        "3-alt" = {};
+        "4-info" = {};
+        "5-bg" = {};
       };
 
       spawn-at-startup = [
-        {argv = ["waybar"];}
-        {argv = ["dunst"];}
         {argv = ["fcitx5"];}
         {argv = ["swww-daemon"];}
         # polkit/portal helpers
-        {argv = ["${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"];}
+        # {argv = ["${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"];}
       ];
 
       input = {

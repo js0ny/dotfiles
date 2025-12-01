@@ -12,12 +12,12 @@ return {
       "BufReadPre",
     },
     opts = {
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "latex" },
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "markdown" },
       highlight = { enable = true },
       indent = { enable = true },
     },
-    config = function()
-      require('nvim-treesitter.configs').setup({ highlight = { enable = true } })
-    end
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
 }

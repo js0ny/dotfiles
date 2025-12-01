@@ -17,6 +17,11 @@ in {
       nodejs-slim_24 # for copilot-lua
       lua-language-server
       vimPlugins.nvim-treesitter-parsers.diff
+      # Dependency of snacks.image
+      tectonic
+      vimPlugins.nvim-treesitter-parsers.latex
+      mermaid-cli
+      ghostscript
     ];
   };
   # home.packages = with pkgs; [lua-language-server];

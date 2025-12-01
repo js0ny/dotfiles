@@ -75,7 +75,7 @@ return {
       enable = false,
     },
     templates = {
-      folder = "_Global/LuaTemplates",
+      folder = "90 - System/LuaTemplates",
       date_format = "%Y-%m-%d",
       time_format = "%H:%M",
       substitutions = {
@@ -87,51 +87,71 @@ return {
     },
     ---@return table
     frontmatter = {
+      -- Update frontmatter in order
       func = function(note)
-        -- Add the title of the note as an alias.
-        if note.title then
-          note:add_alias(note.title)
-        end
+        local meta = note.metadata or {}
 
-        -- Force to use UUID as the note id.
-        local note_id = uuid()
-        if note.metadata.id == nil then
+        -- ID: Rule: Generate if not present, never overwrite
+        local note_id = meta.uuid
+        if note_id == nil then
           note_id = uuid()
-        else
-          note_id = note.metadata.id
         end
 
-        local out = {
-          -- id = note_id,
-          aliases = note.aliases,
-          tags = note.tags,
-          title = note.id,
-          -- date = os.date("%Y-%m-%dT00:00:00"),
-          -- mtime = os.date("%Y-%m-%dT%H:%M:%S"),
-        }
+        -- Aliases: Always ensure filename is in aliases
+        local aliases = meta.aliases or note.aliases or {}
+        if type(aliases) ~= "table" then
+          aliases = { aliases }
+        end
 
-        -- `note.metadata` contains any manually added fields in the frontmatter.
-        -- So here we just make sure those fields are kept in the frontmatter.
-        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-          for k, v in pairs(note.metadata) do
-            out[k] = v
+        if note.title and note.id and note.title ~= note.id then
+          local is_duplicate = false
+          for _, v in pairs(aliases) do
+            if v == note.id then
+              is_duplicate = true
+              break
+            end
+          end
+
+          if not is_duplicate then
+            table.insert(aliases, note.id)
           end
         end
 
-        -- Force to update mtime.
+        local out = {
+          uuid = note_id,
+          aliases = aliases,
+          tags = meta.tags or note.tags,
+          title = meta.title or note.id, -- 优先保留 metadata 中的 title，否则用 note.id
+        }
+
+        -- 5. 合并其他自定义 Metadata
+        -- 使用 vim.tbl_extend "force" 策略：
+        -- 将 current_metadata 中的所有字段强制合并到 out 中。
+        -- 这样可以确保：所有手动添加的字段（如 author, category 等）都不会丢失。
+        -- 同时，如果 metadata 里本来就有 id，这里会再次确认覆盖，保证一致性。
+        out = vim.tbl_extend("force", out, meta)
+
+        -- 6. 强制更新 mtime (这是你希望每次保存都更新的)
         out.mtime = os.date("%Y-%m-%dT%H:%M:%S")
+
+        -- 7. 保持 date (创建时间) 不变
+        -- 如果 metadata 里没有 date，也许你想补一个？如果不需要，可以删掉下面这行
+        if out.date == nil then
+          out.date = os.date("%Y-%m-%dT%H:%M:%S")
+        end
+
         return out
       end,
     },
     daily_notes = {
-      folder = "_Global/Periodic",
+      folder = "00 - Journal/Daily",
       date_format = "%Y-%m-%d",
-      default_tags = { "daily" },
+      -- default_tags = { "daily" },
       template = nil,
     },
     -- see below for full list of options 👇
     attachments = {
-      img_folder = "_Global/Assets",
+      img_folder = "90 - System/Assets",
       img_name_func = function()
         return string.format("%s-", os.time())
       end,

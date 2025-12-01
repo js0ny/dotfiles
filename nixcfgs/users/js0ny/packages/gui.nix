@@ -125,6 +125,7 @@ in {
       prismlauncher
       obsidian
       file-roller
+      siyuan
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

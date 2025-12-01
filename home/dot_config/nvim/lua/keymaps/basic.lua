@@ -96,7 +96,6 @@ local keymaps_basic = {
     cmd = "5e",
     opts = { desc = "Down 5 Lines" },
   },
-  { keys = "<Tab>", cmd = "<C-w><C-w>", opts = { desc = "Focus on other panel" } },
   -- { keys = "<CR>", cmd = "%" },
   { keys = "Y", cmd = "y$", opts = { desc = "Yank to End of Line" } },
   { mode = mode_arrow, keys = "J", cmd = "5j" },

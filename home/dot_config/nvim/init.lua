@@ -10,6 +10,13 @@
 require("config.options")
 
 local minimal = os.getenv("NVIM_MINIMAL") or os.getenv("EDITOR_POPUP")
+local disable_ai = os.getenv("DISABLE_AI_ASSISTANT") or "0"
+
+if disable_ai == "1" then
+  vim.g.ai_enabled = false
+else
+  vim.g.ai_enabled = true
+end
 
 if minimal == "1" then
   -- require("profiles.minimal")
@@ -50,6 +57,7 @@ if vim.g.neovide then
   vim.g.neovide_input_macos_option_key_is_meta = "only_left"
 end
 
+-- TODO: Refractor this part to submodules
 -- 存储输入法状态的变量
 vim.g.input_layout = nil
 

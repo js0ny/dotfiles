@@ -21,7 +21,7 @@ in {
     "Mod+B".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "firefox" "firefox";
     "Mod+Shift+B".hotkey-overlay.title = "Launch web browser in private mode";
     "Mod+Shift+B".action = spawn "firefox" "--private-window";
-    "Mod+A".action = spawn-sh "${term} --class=terminal-popup -e aichat --session";
+    "Mod+A".action = spawn-sh "${term} --class=kitty-terminal-popup -e aichat --session";
     "Mod+Shift+A".hotkey-overlay.title = "Focus or launch CherryStudio (AI assistant)";
     "Mod+Shift+A".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "CherryStudio" "cherry-studio";
     "Mod+O".hotkey-overlay.title = "Focus or launch Obsidian";
@@ -29,17 +29,20 @@ in {
     # TODO: Change "org.kde.dolphin" to a more generic explorer app id via config.currentUser
     "Mod+E".hotkey-overlay.title = "Focus or launch file explorer";
     "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";
-    "Mod+T".action = spawn-sh "${term} --class=terminal-popup";
-    "Mod+Shift+T".action = spawn-sh "${term} --class=${term}-terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
+    "Mod+Alt+Return".action = spawn-sh "${term} --class=kitty-terminal-popup";
+    "Mod+Shift+Alt+Return".action = spawn-sh "${term} --class=kitty--terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
 
-    "Mod+Semicolon".action = spawn "neovide" "${config.home.homeDirectory}/Atelier";
+    "Mod+Shift+Return".action = spawn "neovide" "${config.home.homeDirectory}/Atelier";
     "Mod+Apostrophe".action =
-      spawn-sh "EDITOR_MINIMAL=1 ${term} -o close_on_child_death=yes --class=terminal-popup -e edit-clipboard --minimal";
+      spawn-sh "EDITOR_MINIMAL=1 ${term} -o close_on_child_death=yes --class=kitty-terminal-popup -e edit-clipboard --minimal";
 
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 
     "Mod+Return".hotkey-overlay.title = "Open a Terminal: ${term}";
     "Mod+Return".action = spawn "${term}";
+
+    "Mod+Alt+i".hotkey-overlay.title = "Hyprlock";
+    "Mod+Alt+i".action = spawn "hyprlock";
 
     "Mod+D".hotkey-overlay.title = "Run an Application: rofi";
     "Mod+D".action =
@@ -177,24 +180,24 @@ in {
     "Mod+Ctrl+Shift+WheelScrollDown".action = move-column-right;
     "Mod+Ctrl+Shift+WheelScrollUp".action = move-column-left;
 
-    "Mod+1".action = focus-workspace "master";
-    "Mod+2".action = focus-workspace "project";
-    "Mod+3".action = focus-workspace "remote";
-    "Mod+4".action = focus-workspace "info";
-    "Mod+5".action = focus-workspace 6;
-    "Mod+6".action = focus-workspace 7;
-    "Mod+7".action = focus-workspace 8;
-    "Mod+8".action = focus-workspace 9;
-    "Mod+9".action = focus-workspace "bg";
-    "Mod+Shift+1".action.move-column-to-workspace = "master";
-    "Mod+Shift+2".action.move-column-to-workspace = "project";
-    "Mod+Shift+3".action.move-column-to-workspace = "remote";
-    "Mod+Shift+4".action.move-column-to-workspace = "info";
-    "Mod+Shift+5".action.move-column-to-workspace = 6;
-    "Mod+Shift+6".action.move-column-to-workspace = 7;
-    "Mod+Shift+7".action.move-column-to-workspace = 8;
-    "Mod+Shift+8".action.move-column-to-workspace = 9;
-    "Mod+Shift+9".action.move-column-to-workspace = "bg";
+    "Mod+1".action = focus-workspace "1-master";
+    "Mod+2".action = focus-workspace "2-project";
+    "Mod+3".action = focus-workspace "3-alt";
+    "Mod+4".action = focus-workspace "4-info";
+    "Mod+5".action = focus-workspace "5-bg";
+    "Mod+6".action = focus-workspace 6;
+    "Mod+7".action = focus-workspace 7;
+    "Mod+8".action = focus-workspace 8;
+    "Mod+9".action = focus-workspace 9;
+    "Mod+Shift+1".action.move-column-to-workspace = "1-master";
+    "Mod+Shift+2".action.move-column-to-workspace = "2-project";
+    "Mod+Shift+3".action.move-column-to-workspace = "3-alt";
+    "Mod+Shift+4".action.move-column-to-workspace = "4-info";
+    "Mod+Shift+5".action.move-column-to-workspace = "5-bg";
+    "Mod+Shift+6".action.move-column-to-workspace = 6;
+    "Mod+Shift+7".action.move-column-to-workspace = 7;
+    "Mod+Shift+8".action.move-column-to-workspace = 8;
+    "Mod+Shift+9".action.move-column-to-workspace = 9;
 
     "Mod+BracketLeft".action = consume-or-expel-window-left;
     "Mod+BracketRight".action = consume-or-expel-window-right;

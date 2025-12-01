@@ -85,6 +85,7 @@
     ...
   } @ inputs: let
     overlays = [
+      niri-flake.overlays.niri
       nur.overlays.default
       firefox-addons.overlays.default
       (final: prev: {

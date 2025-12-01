@@ -21,6 +21,10 @@
         flycheck
         highlight-indent-guides
         magit
+        elfeed
+        elfeed-org
+        olivetti
+        org-modern
       ];
   };
   # TODO: tdlib version is too high

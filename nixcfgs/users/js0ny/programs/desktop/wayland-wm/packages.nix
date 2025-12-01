@@ -37,8 +37,11 @@ in {
     ./waybar
     ./swww.nix
     ./kanshi.nix
-    ./swaylock.nix
+    # ./swaylock.nix
     ./polkit.nix
+    ./hyprlock.nix
+    ./swayidle.nix
+    ./sunsetr.nix
   ];
   home.packages = with pkgs; [
     swayidle # Screensaver

@@ -44,13 +44,13 @@ opt.termguicolors = true
 
 --- Fold
 opt.foldmethod = "expr"
--- Folding provided by treesitter
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- Use builtin Treesitter foldexpr
+-- See: https://github.com/nvim-treesitter/nvim-treesitter/commit/dd7bb795c48b5b9795bde0537bb29ddf9fb7b42d
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- Disable fold at start
 opt.foldlevelstart = 99
 opt.foldlevel = 99
-opt.foldenable = false
-opt.foldlevelstart = 1
+opt.foldenable = true
 
 -- Hide Command Line if empty
 opt.cmdheight = 0
@@ -79,3 +79,5 @@ vim.fn.matchadd("Conceal", [[\%u200b]], 10, -1, { conceal = "" })
 
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
+
+vim.o.exrc = true

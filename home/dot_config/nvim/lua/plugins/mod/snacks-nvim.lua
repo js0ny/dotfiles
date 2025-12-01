@@ -86,6 +86,10 @@ return {
       enabled = true,
       -- See: ../lang/markdown/obsidian-nvim.lua
       img_dirs = { "90 - System/Assets" },
+      math = {
+        enabled = true,
+        font_size = "small",
+      },
     },
   },
   keys = {

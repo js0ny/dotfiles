@@ -121,7 +121,7 @@
         matches = [
           {app-id = "^firefox$";}
         ];
-        open-on-workspace = "master";
+        open-on-workspace = "1-master";
       }
       {
         matches = [
@@ -130,7 +130,7 @@
           {app-id = "^Vitis IDE$";}
           {app-id = "^Vivado$";}
         ];
-        open-on-workspace = "project";
+        open-on-workspace = "2-project";
       }
       {
         matches = [
@@ -139,7 +139,7 @@
           {app-id = "^\.virt-manager-wrapped$";}
           {title = "^🌐 ssh.*";}
         ];
-        open-on-workspace = "remote";
+        open-on-workspace = "3-alt";
       }
       {
         matches = [
@@ -151,14 +151,14 @@
           {app-id = "^discord$";}
           {app-id = "^thunderbird$";}
         ];
-        open-on-workspace = "info";
+        open-on-workspace = "4-info";
       }
       {
         matches = [
           {app-id = "^feishin$";}
           {app-id = "^Cider$";}
         ];
-        open-on-workspace = "bg";
+        open-on-workspace = "5-bg";
       }
     ];
   };

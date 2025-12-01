@@ -4,16 +4,11 @@
   lib,
   ...
 }: {
-  home.sessionVariables = {
-    QT_STYLE_OVERRIDE = "adwaita";
-  };
   home.packages = with pkgs; [
     gnome-tweaks
     sushi
     dconf-editor
     gnome-menus
-    adwaita-qt
-    adwaita-qt6
     showtime
     gobject-introspection
     gnomeExtensions.dash-to-dock
@@ -50,7 +45,6 @@
       icon-theme = "${config.my.desktop.style.iconTheme.dark}";
       accent-color = "pink";
       show-battery-percentage = true;
-      cursor-theme = "Adwaita";
     };
     "org/gnome/epiphany" = {
       ask-for-default = false;
@@ -167,6 +161,4 @@
       ramunit = "perc";
     };
   };
-
-  # qt.style.name = "adwaita";
 }
