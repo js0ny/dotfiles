@@ -23,6 +23,9 @@
         # Disable Translations
         "browser.translations.enable" = false;
         "browser.translations.automaticallyPopup" = false;
+        # CJK IME Optimisation
+        "browser.urlbar.keepPanelOpenDuringImeComposition" = true;
+        "browser.tabs.closeTabByDblclick" = true;
       };
     };
   };

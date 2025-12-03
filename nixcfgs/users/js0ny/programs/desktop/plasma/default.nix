@@ -56,7 +56,7 @@ in {
     #   colorScheme = "BreezeDark";
     # };
     kwin = {
-      virtualDesktops.number = 8;
+      virtualDesktops.number = 9;
       titlebarButtons = {
         left = [
           "more-window-actions"

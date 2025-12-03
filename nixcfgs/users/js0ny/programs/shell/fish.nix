@@ -36,6 +36,10 @@ in {
       bind -M insert ctrl-k kill-line
       bind -M insert ctrl-w backward-kill-path-component
 
+      if [ $TERM_PROGRAM = "konsole" ]
+          bind -M insert ctrl-h backward-kill-word
+      end
+
 
       # ctrl + backspace
       bind -M insert ctrl-backspace backward-kill-path-component

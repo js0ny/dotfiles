@@ -125,6 +125,11 @@
           shift-s = "vim::PushSneakBackward";
         };
       }
+      {
+        bindings = {
+          "alt-x" = "command_palette::Toggle";
+        };
+      }
     ];
 
     userSettings = {

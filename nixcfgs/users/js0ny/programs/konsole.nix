@@ -16,6 +16,9 @@
           name = "Maple Mono NF CN";
           size = 12;
         };
+        extraConfig = {
+          General.Environment = "TERM=xterm-256color,COLORTERM=truecolor,TERM_PROGRAM=konsole,";
+        };
       };
     };
   };
