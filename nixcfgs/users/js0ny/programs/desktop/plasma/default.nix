@@ -1,23 +1,46 @@
 {
   pkgs,
   config,
+  lib,
   ...
-}: {
+}: let
+  iconFixRule = entryName: wmclass: {
+    description = "Fix icon for ${entryName}";
+    match = {
+      # TODO: Add regex matching
+      window-class = {
+        value = wmclass;
+        type = "exact";
+      };
+    };
+    apply = {
+      desktopfile = entryName;
+    };
+  };
+  iconFixList = {
+    "virt-manager" = "python3.13 .virt-manager-wrapped";
+    "proton.vpn.app.gtk" = "python3.13 .protonvpn-app-wrapped";
+  };
+in {
   imports = [
     ../../gwenview.nix
     ../../dolphin.nix
+    ./keymaps.nix
+    ./calendar.nix
   ];
   home.packages = with pkgs; [
     # kdePackages.yakuake
     krunner-vscodeprojects
     jetbrains-runner
     plasmusic-toolbar
+    kdePackages.wallpaper-engine-plugin
+    plasma-plugin-blurredwallpaper
+    kdePackages.krohnkite
   ];
-  home.sessionVariables = {
-    QT_STYLE_OVERRIDE = "Breeze";
-  };
   programs.plasma = {
     enable = true;
+    # Apply the icon fix rules
+    window-rules = lib.mkForce (lib.mapAttrsToList iconFixRule iconFixList);
     session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
     fonts = {
       fixedWidth.family = "Maple Mono NF CN";
@@ -43,10 +66,6 @@
       };
     };
     shortcuts = {
-      # Use Ghostty Instead
-      # yakuake = {
-      #   "toggle-window-state" = "Meta+`";
-      # };
     };
     input.touchpads = [
       {
@@ -87,7 +106,7 @@
                 launchers = [
                   # "applications:org.kde.dolphin.desktop"
                   "applications:firefox.desktop"
-                  "applications:com.mitchellh.ghostty.desktop"
+                  "applications:kitty.desktop"
                 ];
               };
             };
@@ -131,7 +150,7 @@
     accessibility.changeColors.mode = "InvertLightness";
     general.mouseMode = "TextSelect";
   };
-  programs.kate.enable = true;
+  programs.kate.enable = false;
   programs.kate.editor = {
     font = {
       family = "Maple Mono NF CN";

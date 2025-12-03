@@ -2,7 +2,7 @@
 # See https://www.reddit.com/r/NixOS/comments/1kcj34p/how_to_apply_this_sddm_theme_on_nixos/
 let
   custom-sddm-astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "astronaut";
+    embeddedTheme = "black_hole";
     #themeConfig = {
     #  Background = "path/to/background.jpg";
     #  Font = "M+1 Nerd Font";

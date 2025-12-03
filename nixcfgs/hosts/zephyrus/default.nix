@@ -24,7 +24,7 @@
     ../../modules/nixos/desktop/xremap.nix
 
     # desktop environment and display manager
-    ../../modules/nixos/desktop/dm/tuigreet.nix
+    ../../modules/nixos/desktop/dm/sddm.nix
     ../../modules/nixos/desktop/de/niri.nix
     ../../modules/nixos/desktop/de/kde.nix
 

@@ -127,6 +127,7 @@ in {
       file-roller
       steamtinkerlaunch
       scanmem
+      dex
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt
@@ -168,5 +169,5 @@ in {
   programs.alacritty.enable = true;
 
   services.protonmail-bridge.enable = true;
-  services.remmina.enable = true;
+  services.remmina.enable = false; # Don't auto start the service
 }
