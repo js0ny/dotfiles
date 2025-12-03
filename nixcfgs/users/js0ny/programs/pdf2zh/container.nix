@@ -1,4 +1,9 @@
 # Only use this method in NixOS or non-FHS environment
+# For FHS environments, see ./uv.nix
+# Configure the options via environment variables:
+# PDF2ZH_API_BASE: The base URL of the OpenRouter-compatible API (default: https://openrouter.ai/api/v1)
+# PDF2ZH_MODEL: The model to use (default: google/gemini-2.5-flash)
+# PDF2ZH_API_KEY or OPENROUTER_API_KEY: The API key for authentication (one of them must be set)
 {pkgs, ...}: let
   imageTag = "ghcr.io/pdfmathtranslate/pdfmathtranslate-next";
   # version = "2.6.4";
@@ -8,20 +13,70 @@
 
     IMAGE_TAG="${imageTag}"
 
-    OPENROUTER_API_KEY="$OPENROUTER_API_KEY"
-    OPENROUTER_API_BASE="https://openrouter.ai/api/v1"
-    OPENROUTER_DEFAULT_MODEL="google/gemini-2.5-flash"
+    API_BASE="''${PDF2ZH_API_BASE:-https://openrouter.ai/api/v1}"
+    MODEL="''${PDF2ZH_MODEL:-google/gemini-2.5-flash}"
+    if [[ -n "''${PDF2ZH_API_KEY:-}"  ]]; then
+      API_KEY="$PDF2ZH_API_KEY"
+    elif [[ -n "''${OPENROUTER_API_KEY:-}" ]]; then
+      API_KEY="$OPENROUTER_API_KEY"
+    else
+      echo "Error: Neither OPENROUTER_API_KEY nor PDF2ZH_API_KEY is set." >&2
+      echo "Please export one of them explicitly or use a .env file helper." >&2
+      exit 1
+    fi
+
+    if ! command -v podman &> /dev/null; then
+      echo "Error: podman is not installed or not in PATH." >&2
+      exit 1
+    fi
 
     if ! podman image exists "$IMAGE_TAG"; then
       echo "[pdf2zh] Pulling image $IMAGE_TAG ..."
       podman pull "$IMAGE_TAG"
     fi
 
-    podman run --rm -it \
+    echo "[pdf2zh] Using Model: $MODEL"
+
+    exec podman run \
+      --rm \
+      -it \
       -p 7860:7860 \
       -v "$(pwd):/data" \
       -w /data \
-      "$IMAGE_TAG" "pdf2zh" --openai-compatible-model $OPENROUTER_DEFAULT_MODEL --openai-compatible-base-url $OPENROUTER_API_BASE --openai-compatible-api-key $OPENROUTER_API_KEY "$@"
+      -e OPENROUTER_API_KEY="$API_KEY" \
+      "$IMAGE_TAG" \
+      pdf2zh \
+      --openaicompatible \
+      --openai-compatible-model "$MODEL" \
+      --openai-compatible-base-url "$API_BASE" \
+      --openai-compatible-api-key "$API_KEY" \
+      "$@"
+  '';
+  pdf2zhUnwrapped = pkgs.writeShellScriptBin "pdf2zh-unwrapped" ''
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    IMAGE_TAG="${imageTag}"
+
+    if ! command -v podman &> /dev/null; then
+      echo "Error: podman is not installed or not in PATH." >&2
+      exit 1
+    fi
+
+    if ! podman image exists "$IMAGE_TAG"; then
+      echo "[pdf2zh] Pulling image $IMAGE_TAG ..."
+      podman pull "$IMAGE_TAG"
+    fi
+
+    exec podman run \
+      --rm \
+      -it \
+      -p 7860:7860 \
+      -v "$(pwd):/data" \
+      -w /data \
+      "$IMAGE_TAG" \
+      pdf2zh-unwrapped \
+      "$@"
   '';
   descEn = "PDF scientific paper translation with preserved formats";
   descZh = "基于 AI 完整保留排版的 PDF 文档全文双语翻译";
@@ -34,7 +89,7 @@ in {
     description = " ${descEn} - ${descZh}，支持 Google/DeepL/Ollama/OpenAI 等服务，提供 CLI/GUI/Docker";
   };
 
-  home.packages = [pdf2zhRunner];
+  home.packages = [pdf2zhRunner pdf2zhUnwrapped];
 
   home.file.".local/share/kio/servicemenus/pdf2zh.desktop" = {
     enable = true; # TODO: Write a wrapper for status tracking
