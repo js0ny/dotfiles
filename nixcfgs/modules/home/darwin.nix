@@ -21,6 +21,7 @@
 
   programs.ghostty.systemd.enable = false;
   programs.ghostty.package = lib.mkForce pkgs.ghostty-bin;
+  programs.firefox.package = lib.mkForce pkgs.firefox-bin;
 
   home.file.".ssh/config".text = ''
     # ~/.ssh/config
@@ -28,4 +29,9 @@
     	UseKeychain yes
     	AddKeysToAgent yes
   '';
+
+  stylix = {
+    # cursor.enable = lib.mkForce false;
+    icons.enable = lib.mkForce false;
+  };
 }

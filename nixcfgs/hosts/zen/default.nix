@@ -6,4 +6,6 @@
     ./system.nix
   ];
   time.timeZone = "Europe/London";
+
+  services.tailscale.enable = true;
 }

@@ -10,9 +10,11 @@
     ./programs/shell/bash.nix
     ./programs/shell/zsh.nix
     ./programs/shell/fish.nix
+    ./programs/shell/carapace.nix
     ./programs/shell/direnv.nix
 
     # Programs
+    ./programs/aichat.nix
     ./programs/firefox
     ./programs/emacs.nix
     ./programs/zed-editor.nix
@@ -28,6 +30,7 @@
     ./programs/ghostty.nix
     ./programs/tmux.nix
     ./programs/kitty.nix
+    ./programs/anki.nix
     # ./programs/retroarch.nix # Package broken on macOS
     ./programs/duti.nix
 
