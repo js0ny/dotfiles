@@ -3,14 +3,20 @@
   #   * when `rga-fzf`: nvim wrapper failed to launch
   #   * nvim wrapper reports error on parsing filename with spaces
   gvim = "neovide.desktop";
-  simpleText = [
-    "text/plain"
-    "text/x-csrc" # .c
-    "text/x-chdr" # .h
-    "text/javascript"
-    "text/x-python"
-    "application/yaml" # .yaml, .yml
-  ];
+  simpleText =
+    [
+      "text/plain"
+      "text/x-csrc" # .c
+      "text/x-chdr" # .h
+      "text/javascript"
+      "text/x-python"
+      "application/yaml" # .yaml, .yml
+      "text/x-patch" # .patch .diff
+    ]
+    ++ [
+      "text/csv"
+      "text/markdown"
+    ];
   image = [
     "image/jpeg"
     "image/jpg"
@@ -44,62 +50,40 @@
   audioPlayers = "mpv.desktop;org.kde.elisa";
   browsers = "firefox.desktop;chromium-browser.desktop";
   archiveManager = "org.gnome.FileRoller.desktop;org.kde.ark.desktop;peazip.desktop";
+  mkAssoc = app: mimes:
+    builtins.listToAttrs (map (mime: {
+        name = mime;
+        value = app;
+      })
+      mimes);
 in {
   xdg.configFile."mimeapps.list".force = true;
   xdg.mime.enable = true;
   xdg.mimeApps = {
     enable = true;
     # In Dolphin, middle click to open with 2nd order default app
-    defaultApplications = {
-      # PDF
-      "application/pdf" = "org.kde.okular.desktop";
-      # Plain text
-      "text/plain" = gvim;
-      # Source Code - C
-      "text/x-csrc" = gvim; # .c
-      "text/x-chdr" = gvim; # .h
-      "text/javascript" = gvim;
-      "text/x-python" = gvim;
-      "application/yaml" = gvim; # .yaml, .yml
-      # CSV
-      "text/csv" = gvim;
-      "text/markdown" = gvim;
-      # File Explorer
-      "inode/directory" = "org.kde.dolphin.desktop";
-      "image/jpeg" = imageViewers;
-      "image/jpg" = imageViewers;
-      "image/png" = imageViewers;
-      "image/gif" = imageViewers;
-      "image/bmp" = imageViewers;
-      "image/avif" = imageViewers;
-      "image/webp" = imageViewers;
-
-      # Microsoft Office
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "onlyoffice-desktopeditors.desktop";
-      "application/vnd.openxmlformats-officedocument.presentationml.presentation" = "onlyoffice-desktopeditors.desktop";
-
+    defaultApplications =
+      mkAssoc "org.kde.okular.desktop" ["application/pdf"]
+      // mkAssoc gvim simpleText
+      // {
+        "inode/directory" = "org.kde.dolphin.desktop";
+      }
+      // mkAssoc imageViewers image
+      // mkAssoc "onlyoffice-desktopeditors.desktop" [
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      ]
       # Audio:
       #     music: elisa: fully featured, good cjk support
       #     audio: mpv: simple and fast
-      "audio/flac" = audioPlayers;
-      "audio/vnd.wave" = audioPlayers; # .wav
-
-      # Browser
-      "text/html" = browsers;
-      "x-scheme-handler/http" = browsers;
-      "x-scheme-handler/https" = browsers;
-      # URL Scheme
-      "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
-      "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
-
-      # Archives
-      "application/zip" = archiveManager;
-      "application/x-rar" = archiveManager;
-      "application/x-7z-compressed" = archiveManager;
-      "application/x-tar" = archiveManager;
-      "application/x-zstd-compressed-tar" = archiveManager; # .tar.zst
-    };
+      // mkAssoc audioPlayers audio
+      // mkAssoc browsers browser
+      // mkAssoc "org.telegram.desktop.desktop" [
+        "x-scheme-handler/tg"
+        "x-scheme-handler/tonsite"
+      ]
+      // mkAssoc archiveManager archive;
   };
   home.sessionVariables.BROWSER = "firefox";
 }

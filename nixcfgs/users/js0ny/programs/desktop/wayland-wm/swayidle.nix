@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   services.swayidle = {
     enable = true;
+    systemdTarget = "waylandwm-session.target";
     timeouts = [
       {
         timeout = 300;

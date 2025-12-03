@@ -28,10 +28,10 @@
     krunner = {
       position = "center";
     };
-    workspace = {
-      iconTheme = "${config.my.desktop.style.iconTheme.dark}";
-      colorScheme = "BreezeDark";
-    };
+    # workspace = {
+    #   iconTheme = "${config.my.desktop.style.iconTheme.dark}";
+    #   colorScheme = "BreezeDark";
+    # };
     kwin = {
       virtualDesktops.number = 8;
       titlebarButtons = {
@@ -138,19 +138,5 @@
       pointSize = 10;
     };
     inputMode = "vi";
-  };
-  programs.konsole = {
-    enable = true;
-    defaultProfile = "Default";
-    profiles = {
-      Default = {
-        command = "${pkgs.fish}/bin/fish";
-        colorScheme = "catppuccin-mocha";
-        font = {
-          name = "Maple Mono NF CN";
-          size = 12;
-        };
-      };
-    };
   };
 }

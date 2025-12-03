@@ -18,6 +18,8 @@
     };
   };
 
+  imports = [./konsole.nix];
+
   # Manually merge dolphin config to existing file
   home.activation.mergeDolphinrc = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ -f ~/.config/dolphinrc-override ]; then

@@ -22,10 +22,7 @@
       };
 
       spawn-at-startup = [
-        {argv = ["fcitx5"];}
-        {argv = ["swww-daemon"];}
-        # polkit/portal helpers
-        # {argv = ["${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"];}
+        {argv = ["systemctl" " --user" "start" "waylandwm-session.target"];}
       ];
 
       input = {

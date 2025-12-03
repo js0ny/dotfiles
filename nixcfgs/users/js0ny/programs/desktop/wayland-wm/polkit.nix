@@ -2,7 +2,7 @@
   systemd.user.services.hyprpolkitagent = {
     Unit = {
       Description = "Hyprland Polkit Authentication Agent";
-      PartOf = ["graphical-session.target"];
+      PartOf = ["waylandwm-session.target"];
       After = ["graphical-session.target"];
     };
 
@@ -15,7 +15,7 @@
     };
 
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = ["waylandwm-session.target"];
     };
   };
 }

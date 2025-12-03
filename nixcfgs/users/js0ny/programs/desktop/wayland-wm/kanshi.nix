@@ -4,6 +4,7 @@
 in {
   services.kanshi = {
     enable = true;
+    systemdTarget = "niri.service";
     settings = [
       # Outputs
       {

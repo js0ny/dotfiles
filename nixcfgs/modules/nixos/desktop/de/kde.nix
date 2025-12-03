@@ -10,4 +10,8 @@
     serviceMode = "user";
     userName = "js0ny";
   };
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    kate # kate and kwrite
+  ];
 }

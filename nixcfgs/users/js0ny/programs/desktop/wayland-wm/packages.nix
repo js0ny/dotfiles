@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   #   swayidleWrapper = pkgs.writeShellScriptBin "swayidle-wrapper" ''
   #     ${pkgs.swayidle}/bin/swayidle -w \
   #              timeout 300 'swaylock -f' \
@@ -42,6 +46,8 @@ in {
     ./hyprlock.nix
     ./swayidle.nix
     ./sunsetr.nix
+    ./systemd.nix
+    ./dunst.nix
   ];
   home.packages = with pkgs; [
     swayidle # Screensaver
@@ -50,14 +56,15 @@ in {
     brightnessctl
     playerctl
     powerprofiles-next
-    blueman
   ];
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-wlr xdg-desktop-portal-gtk];
   };
-  services.cliphist.enable = true;
-  services.dunst.enable = true;
+  # TODO: Allow launching components from all wayland-wm sessions
+  # services.cliphist.enable = true; # use elephant + walker
   services.network-manager-applet.enable = true;
-  catppuccin.dunst.enable = false;
+  services.blueman-applet.enable = true;
+  services.blueman-applet.systemdTargets = ["niri.service"];
+  systemd.user.services.network-manager-applet.Install.WantedBy = lib.mkForce ["niri.service"];
 }

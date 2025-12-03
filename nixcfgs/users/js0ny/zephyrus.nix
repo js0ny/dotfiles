@@ -68,7 +68,7 @@
     ./programs/walker.nix
 
     # Desktop Linux
-    ./programs/desktop/wayland-wm/hyprland
+    ./programs/desktop/plasma
     ./programs/desktop/wayland-wm/niri
 
     ../../modules/home/do-not-track.nix

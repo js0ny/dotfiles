@@ -26,7 +26,7 @@
     # desktop environment and display manager
     ../../modules/nixos/desktop/dm/tuigreet.nix
     ../../modules/nixos/desktop/de/niri.nix
-    ../../modules/nixos/desktop/de/hyprland.nix
+    ../../modules/nixos/desktop/de/kde.nix
 
     # desktop programs
     ../../modules/nixos/programs/zsh.nix
