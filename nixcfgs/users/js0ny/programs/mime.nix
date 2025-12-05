@@ -44,6 +44,12 @@
     "application/x-tar"
     "application/x-zstd-compressed-tar" # .tar.zst
   ];
+  video = [
+    "video/mp4"
+    "video/quicktime" # .mov
+    "video/x-matroska" # .mkv
+    "video/mp2t" # .ts .mts .m2ts
+  ];
 
   # Image Viewer:
   #     gwenview: keyboard driven, high compatibility
@@ -91,7 +97,8 @@ in {
         "x-scheme-handler/tg"
         "x-scheme-handler/tonsite"
       ]
-      // mkAssoc archiveManager archive;
+      // mkAssoc archiveManager archive
+      // mkAssoc "mpv.desktop" video;
   };
   home.sessionVariables.BROWSER = "firefox";
 

@@ -3,8 +3,6 @@ local M = {}
 require("keymaps.user-command")
 local utils = require("keymaps.utils")
 
-local keymaps_nvim_tree_general = require("keymaps.nvim-tree").global
-
 local keymaps_general = vim.tbl_extend("force", {}, require("keymaps.leaders"), require("keymaps.lspkeys"))
 -- Tables cannot be merged since `mode` are set in some keymaps of `keymaps_basic`
 local keymaps_basic = require("keymaps.basic")
@@ -15,7 +13,6 @@ local keymaps_terminal = require("keymaps.tmap")
 
 utils.set_keymaps(keymaps_general)
 utils.set_keymaps(keymaps_basic)
--- utils.set_keymaps(keymaps_nvim_tree_general)
 utils.set_keymaps(keymaps_modifier)
 utils.set_keymaps(keymaps_terminal)
 

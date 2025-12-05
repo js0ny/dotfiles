@@ -94,10 +94,11 @@ Determining headless
 {{- end -}}
 {{- if not $headless -}}
 {{- if eq .chezmoi.os  "linux" -}}
-{{/* Fedora Server */}}
+{{/* Fedora Server
 {{- if eq .chezmoi.osRelease.variantID "server" -}}
-{{- $headless = true -}}
+{{- $headless = true
 {{- end -}}
+*/}}
 {{/* Treat all Debian hosts as headless */}}
 {{- if eq .chezmoi.osRelease.id "debian" -}}
 {{- $headless = true -}}
