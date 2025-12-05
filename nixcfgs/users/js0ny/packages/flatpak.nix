@@ -84,6 +84,7 @@ in {
     {
       # Patch for Hyprland (scale XWayland by hand)
       "flatpak/exports/bin/com.qq.QQ" = {
+   	force = true;
         text = ''
           #!/bin/sh
 

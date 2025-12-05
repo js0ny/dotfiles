@@ -22,6 +22,7 @@ in {
     zed.enable = false;
     zsh-syntax-highlighting.enable = false;
     nvim.enable = false; # Defined in lua config
+    sioyek.enable = true; # Stylix does not support sioyek yet, use ctpn as fallback
   };
   stylix = {
     enable = true;

@@ -66,9 +66,10 @@
     ./programs/block-desktop-entries.nix
     ./programs/pwa.nix
     ./programs/walker.nix
+    ./programs/sioyek.nix
 
     # Desktop Linux
-    ./programs/desktop/plasma
+    ./programs/desktop/gnome
     ./programs/desktop/wayland-wm/niri
 
     ../../modules/home/do-not-track.nix
@@ -112,7 +113,11 @@
     };
   };
 
-  home.sessionVariables.TERMINAL = config.my.desktop.preferredApps.terminal.package;
+  home.sessionVariables = {
+    TERMINAL = config.my.desktop.preferredApps.terminal.package;
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
 
   home.stateVersion = "25.05";
 }
