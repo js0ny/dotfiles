@@ -12,6 +12,8 @@
       "text/x-python"
       "application/yaml" # .yaml, .yml
       "text/x-patch" # .patch .diff
+      "text/x-devicetree-source" # .dts
+      "text/x-nix" # .nix (custom defined below)
     ]
     ++ [
       "text/csv"
@@ -92,4 +94,17 @@ in {
       // mkAssoc archiveManager archive;
   };
   home.sessionVariables.BROWSER = "firefox";
+
+  xdg.dataFile = {
+    "mime/packages/nix.xml".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+        <mime-type type="text/x-nix">
+          <comment>Nix Source Code</comment>
+          <glob pattern="*.nix"/>
+          <sub-class-of type="text/plain"/>
+        </mime-type>
+      </mime-info>
+    '';
+  };
 }
