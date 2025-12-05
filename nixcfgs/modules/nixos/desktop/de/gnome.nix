@@ -11,7 +11,7 @@
     evince # Document Viewer (Legacy)
     totem # GNOME Videos (legacy)
     papers # Document Viewer
-    tour
+    gnome-tour
     baobab # Disk Usage Analyzer, use dust instead
     epiphany # GNOME Web
   ];

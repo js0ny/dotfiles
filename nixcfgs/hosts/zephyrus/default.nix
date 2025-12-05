@@ -8,6 +8,7 @@
 
     # core config and packages
     ../../modules/nixos
+    ../../modules/nixos/core/nix-ld.nix
 
     # this is a laptop
     ../../modules/nixos/desktop

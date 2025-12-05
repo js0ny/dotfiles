@@ -68,6 +68,7 @@
       trash-cli
       aria2
       gocryptfs
+      uv
     ]
     ++ (
       if pkgs.stdenv.isDarwin
