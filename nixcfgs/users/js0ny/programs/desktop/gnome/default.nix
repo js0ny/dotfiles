@@ -3,46 +3,42 @@
   config,
   lib,
   ...
-}: {
-  home.packages = with pkgs; [
-    gnome-tweaks
-    sushi
-    dconf-editor
-    gnome-menus
-    showtime
-    gobject-introspection
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.caffeine
-    gnomeExtensions.logo-menu
-    gnomeExtensions.kimpanel
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.advanced-alttab-window-switcher
-    gnomeExtensions.paperwm
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.appindicator
-    gnomeExtensions.gsconnect
-    gnomeExtensions.resource-monitor
-    gnomeExtensions.lunar-calendar
+}: let
+  extensions = with pkgs.gnomeExtensions; [
+    # dash-to-dock
+    caffeine
+    logo-menu
+    kimpanel
+    appindicator
+    gsconnect
+    clipboard-indicator
+    advanced-alttab-window-switcher
+    resource-monitor
+    lunar-calendar
   ];
+in {
+  home.packages = with pkgs;
+    [
+      gnome-tweaks
+      sushi
+      dconf-editor
+      gnome-menus
+      showtime
+      gobject-introspection
+    ]
+    ++ extensions;
   programs.gnome-shell.enable = true;
-  programs.gnome-shell.extensions = [
-    # { package = pkgs.gnomeExtensions.dash-to-dock; }
-    {package = pkgs.gnomeExtensions.caffeine;}
-    {package = pkgs.gnomeExtensions.logo-menu;}
-    {package = pkgs.gnomeExtensions.kimpanel;}
-    {package = pkgs.gnomeExtensions.appindicator;}
-    {package = pkgs.gnomeExtensions.gsconnect;}
-    {package = pkgs.gnomeExtensions.clipboard-indicator;}
-    {package = pkgs.gnomeExtensions.advanced-alttab-window-switcher;}
-    {package = pkgs.gnomeExtensions.resource-monitor;}
-    {package = pkgs.gnomeExtensions.lunar-calendar;}
-  ];
+  programs.gnome-shell.extensions = let
+    extensionHelper = p: {
+      package = p;
+    };
+  in
+    map extensionHelper extensions;
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       clock-show-seconds = true;
       clock-show-weekday = true;
-      icon-theme = "${config.my.desktop.style.iconTheme.dark}";
       accent-color = "pink";
       show-battery-percentage = true;
     };
@@ -68,6 +64,10 @@
         "<Shift><Super>s"
         "Print"
       ];
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      # Win + Right Mouse Button to Resize Window
+      resize-with-right-button = true;
     };
     "org/gnome/desktop/wm/keybindings" = {
       activate-window-menu = ["<Alt>F3"];
@@ -105,9 +105,9 @@
       binding = "<Super>e";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1" = {
-      name = "Open Terminal via Win-R";
+      name = "Open Terminal via Win-CR";
       command = "${lib.getExe config.my.desktop.preferredApps.terminal.package}";
-      binding = "<Super>r";
+      binding = "<Super>Return";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2" = {
       name = "Open Terminal via Ctrl-Alt-T";

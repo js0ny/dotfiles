@@ -11,6 +11,7 @@
     pciutils
     usbutils
     v4l-utils
+    f2fs-tools
   ];
 
   programs.gpu-screen-recorder.enable = true;

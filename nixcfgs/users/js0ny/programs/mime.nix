@@ -23,7 +23,7 @@
     "image/png"
     "image/gif"
     "image/bmp"
-    "image/avif"
+    # "image/avif"
     "image/webp"
   ];
   audio = [
@@ -74,6 +74,12 @@ in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         "application/vnd.openxmlformats-officedocument.presentationml.presentation"
       ]
+      // {
+        # NOTE:
+        # Gwenview cannot open avif images properly
+        # See: https://github.com/NixOS/nixpkgs/issues/351863
+        "image/avif" = "org.gnome.Loupe.desktop;mpv.desktop";
+      }
       # Audio:
       #     music: elisa: fully featured, good cjk support
       #     audio: mpv: simple and fast

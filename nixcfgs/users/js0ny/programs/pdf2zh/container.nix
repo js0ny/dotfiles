@@ -7,77 +7,78 @@
 {pkgs, ...}: let
   imageTag = "ghcr.io/pdfmathtranslate/pdfmathtranslate-next";
   # version = "2.6.4";
-  pdf2zhRunner = pkgs.writeShellScriptBin "pdf2zh" ''
-    #!/usr/bin/env bash
-    set -euo pipefail
+  mkPdf2zh = {
+    name,
+    withEnv,
+  }:
+    pkgs.writeShellApplication {
+      inherit name;
 
-    IMAGE_TAG="${imageTag}"
+      runtimeInputs = [pkgs.podman];
 
-    API_BASE="''${PDF2ZH_API_BASE:-https://openrouter.ai/api/v1}"
-    MODEL="''${PDF2ZH_MODEL:-google/gemini-2.5-flash}"
-    if [[ -n "''${PDF2ZH_API_KEY:-}"  ]]; then
-      API_KEY="$PDF2ZH_API_KEY"
-    elif [[ -n "''${OPENROUTER_API_KEY:-}" ]]; then
-      API_KEY="$OPENROUTER_API_KEY"
-    else
-      echo "Error: Neither OPENROUTER_API_KEY nor PDF2ZH_API_KEY is set." >&2
-      echo "Please export one of them explicitly or use a .env file helper." >&2
-      exit 1
-    fi
+      text = ''
 
-    if ! command -v podman &> /dev/null; then
-      echo "Error: podman is not installed or not in PATH." >&2
-      exit 1
-    fi
+        IMAGE_TAG="${imageTag}"
 
-    if ! podman image exists "$IMAGE_TAG"; then
-      echo "[pdf2zh] Pulling image $IMAGE_TAG ..."
-      podman pull "$IMAGE_TAG"
-    fi
+        if ! podman image exists "$IMAGE_TAG"; then
+          echo "[pdf2zh] Pulling image $IMAGE_TAG ..."
+          podman pull "$IMAGE_TAG"
+        fi
 
-    echo "[pdf2zh] Using Model: $MODEL"
+        PODMAN_ENV_ARGS=()
+        CMD_ARGS=()
 
-    exec podman run \
-      --rm \
-      -it \
-      -p 7860:7860 \
-      -v "$(pwd):/data" \
-      -w /data \
-      -e OPENROUTER_API_KEY="$API_KEY" \
-      "$IMAGE_TAG" \
-      pdf2zh \
-      --openaicompatible \
-      --openai-compatible-model "$MODEL" \
-      --openai-compatible-base-url "$API_BASE" \
-      --openai-compatible-api-key "$API_KEY" \
-      "$@"
-  '';
-  pdf2zhUnwrapped = pkgs.writeShellScriptBin "pdf2zh-unwrapped" ''
-    #!/usr/bin/env bash
-    set -euo pipefail
+        ${
+          if withEnv
+          then ''
+            API_BASE="''${PDF2ZH_API_BASE:-https://openrouter.ai/api/v1}"
+            MODEL="''${PDF2ZH_MODEL:-google/gemini-2.5-flash}"
 
-    IMAGE_TAG="${imageTag}"
+            if [[ -n "''${PDF2ZH_API_KEY:-}" ]]; then
+              API_KEY="$PDF2ZH_API_KEY"
+            elif [[ -n "''${OPENROUTER_API_KEY:-}" ]]; then
+              API_KEY="$OPENROUTER_API_KEY"
+            else
+              echo "Error: Neither OPENROUTER_API_KEY nor PDF2ZH_API_KEY is set." >&2
+              echo "Please export one of them explicitly." >&2
+              exit 1
+            fi
 
-    if ! command -v podman &> /dev/null; then
-      echo "Error: podman is not installed or not in PATH." >&2
-      exit 1
-    fi
+            echo "[pdf2zh] Using Model: $MODEL"
 
-    if ! podman image exists "$IMAGE_TAG"; then
-      echo "[pdf2zh] Pulling image $IMAGE_TAG ..."
-      podman pull "$IMAGE_TAG"
-    fi
+            PODMAN_ENV_ARGS+=("-e" "OPENROUTER_API_KEY=$API_KEY")
 
-    exec podman run \
-      --rm \
-      -it \
-      -p 7860:7860 \
-      -v "$(pwd):/data" \
-      -w /data \
-      "$IMAGE_TAG" \
-      pdf2zh-unwrapped \
-      "$@"
-  '';
+            CMD_ARGS+=(
+              "--openaicompatible"
+              "--openai-compatible-model" "$MODEL"
+              "--openai-compatible-base-url" "$API_BASE"
+              "--openai-compatible-api-key" "$API_KEY"
+            )
+          ''
+          else ""
+        }
+
+        exec podman run \
+          --rm \
+          -it \
+          -p 7860:7860 \
+          -v "$(pwd):/data" \
+          -w /data \
+          "''${PODMAN_ENV_ARGS[@]}" \
+          "$IMAGE_TAG" \
+          pdf2zh \
+          "''${CMD_ARGS[@]}" \
+          "$@"
+      '';
+    };
+  pdf2zhRunner = mkPdf2zh {
+    name = "pdf2zh";
+    withEnv = true;
+  };
+  pdf2zhUnwrapped = mkPdf2zh {
+    name = "pdf2zh-unwrapped";
+    withEnv = false;
+  };
   descEn = "PDF scientific paper translation with preserved formats";
   descZh = "基于 AI 完整保留排版的 PDF 文档全文双语翻译";
 in {

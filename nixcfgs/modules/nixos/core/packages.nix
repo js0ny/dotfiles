@@ -10,4 +10,11 @@
     unzip
     zip
   ];
+# Explicitly define default EDITOR
+  programs.nano.enable = false;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+  };
 }

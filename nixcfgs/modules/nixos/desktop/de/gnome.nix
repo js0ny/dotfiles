@@ -8,9 +8,11 @@
     gobject-introspection
   ];
   environment.gnome.excludePackages = with pkgs; [
-    evince
-    totem
-    papers
-    gtop
+    evince # Document Viewer (Legacy)
+    totem # GNOME Videos (legacy)
+    papers # Document Viewer
+    tour
+    baobab # Disk Usage Analyzer, use dust instead
+    epiphany # GNOME Web
   ];
 }

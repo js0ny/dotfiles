@@ -55,7 +55,7 @@
       srm
       mediainfo
       exiftool
-      ddgr # DuckDuckGo CLI
+      ddgr
       jujutsu
       github-copilot-cli
       yt-dlp
@@ -67,6 +67,7 @@
       unar
       trash-cli
       aria2
+      gocryptfs
     ]
     ++ (
       if pkgs.stdenv.isDarwin

@@ -119,5 +119,9 @@
     VISUAL = "nvim";
   };
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   home.stateVersion = "25.05";
 }

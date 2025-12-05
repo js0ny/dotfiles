@@ -16,4 +16,5 @@ in {
   programs.fish.shellAliases = zoxideAliases;
   programs.bash.shellAliases = zoxideAliases;
   programs.zsh.shellAliases = zoxideAliases;
+  home.sessionVariables._ZO_EXCLUDE_DIRS = "/sys/*:/nix/*:/dev/*:/tmp/*:/proc/*";
 }
