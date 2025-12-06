@@ -13,6 +13,12 @@
     nur.repos.ataraxiasjel.waydroid-script
     waydroid-helper
   ];
+
+  networking = {
+    firewall.trustedInterfaces = ["waydroid0"];
+    nat.enable = true;
+  };
+
   systemd = {
     packages = [pkgs.waydroid-helper];
     services.waydroid-mount = {

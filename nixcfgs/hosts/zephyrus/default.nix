@@ -9,6 +9,7 @@
     # core config and packages
     ../../modules/nixos
     ../../modules/nixos/core/nix-ld.nix
+    ../../modules/nixos/core/nftables.nix
 
     # this is a laptop
     ../../modules/nixos/desktop
