@@ -23,6 +23,7 @@
 in {
   imports = [
     ./vimrc-support.nix
+    ./obsidian-grep.nix
   ];
   programs.obsidian = {
     enable = false;

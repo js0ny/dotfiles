@@ -51,6 +51,7 @@ in {
       # proton-vpn
       styl-us
       kiss-translator
+      auto-tab-discard
 
       # Disabled
       # view-page-archive # Web Archives

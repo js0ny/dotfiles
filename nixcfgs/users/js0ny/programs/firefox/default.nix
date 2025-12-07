@@ -17,15 +17,22 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "toolkit.tabbox.switchByScrolling" = true;
         "browser.uidensity" = 1;
-        # Disable Menu when pressing <Alt>
+        ### Disable Menu when pressing <Alt>
         "ui.key.menuAccessKey" = -1;
         "ui.key.menuAccessKeyFocuses" = false;
-        # Disable Translations
+        ### Disable Translations
         "browser.translations.enable" = false;
         "browser.translations.automaticallyPopup" = false;
-        # CJK IME Optimisation
+        ### CJK IME Optimisation
         "browser.urlbar.keepPanelOpenDuringImeComposition" = true;
         "browser.tabs.closeTabByDblclick" = true;
+        ### Session
+        # * 0: Blank Page
+        # * 1: Home Page
+        # * 2: Last Visited Pages
+        # * 3: Restore Previous Session
+        "browser.startup.page" = 3;
+        "browser.sessionstore.resume_from_crash" = true;
       };
     };
   };
