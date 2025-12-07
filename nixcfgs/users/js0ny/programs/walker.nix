@@ -4,8 +4,8 @@
     runAsService = true;
     config = {
       keybinds = {
-        next = ["Down" "ctrl j"];
-        previous = ["Up" "ctrl k"];
+        next = ["Down" "ctrl j" "ctrl n"];
+        previous = ["Up" "ctrl k" "ctrl p"];
       };
       providers = {
         default = [

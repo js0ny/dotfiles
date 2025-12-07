@@ -59,7 +59,7 @@ in {
   ];
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-wlr xdg-desktop-portal-gtk];
+    extraPortals = with pkgs; [xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-desktop-portal-gnome];
   };
   # TODO: Allow launching components from all wayland-wm sessions
   # services.cliphist.enable = true; # use elephant + walker

@@ -17,6 +17,9 @@
     lunar-calendar
   ];
 in {
+  imports = [
+    ../../walker.nix
+  ];
   home.packages = with pkgs;
     [
       gnome-tweaks
@@ -51,9 +54,8 @@ in {
     };
     "org/gnome/shell" = {
       favorite-apps = [
-        "com.mitchellh.ghostty.desktop"
+        "kitty.desktop"
         "firefox.desktop"
-        "code.desktop"
       ];
     };
     "org/gnome/shell/keybindings" = {
@@ -98,6 +100,9 @@ in {
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       www = ["<Super>b"];
+      home = ["<Super>e"];
+      screenreader = [""];
+      screensaver = [""];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0" = {
       name = "Open File Explorer";
@@ -114,11 +119,17 @@ in {
       command = "${lib.getExe config.my.desktop.preferredApps.terminal.package}";
       binding = "<Ctrl><Alt>t";
     };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-3" = {
+      name = "Open Picker";
+      command = "walker";
+      binding = "<Alt>space";
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0/"
+        # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-3/"
       ];
     };
     # Scanned directory in GNOME Search

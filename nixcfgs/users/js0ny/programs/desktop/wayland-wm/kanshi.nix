@@ -1,3 +1,8 @@
+# kanshi: wayland output configuration manager
+# switch profiles via
+# kanshictl switch <profile-name>
+# to get all profiles:
+# rg "profile (\w*)" ~/.config/kanshi/config -o -r "\$1"
 {...}: let
   g14-internal = "Samsung Display Corp. ATNA40CU05-0  Unknown";
   lg4k60 = "LG Electronics LG HDR 4K 0x0004DC58";
@@ -42,6 +47,21 @@ in {
           }
           {
             criteria = lg4k60;
+            status = "enable";
+          }
+        ];
+      }
+      {
+        profile.name = "dual";
+        profile.outputs = [
+          {
+            criteria = lg4k60;
+            position = "0,0";
+            status = "enable";
+          }
+          {
+            criteria = g14-internal;
+            position = "3840,0";
             status = "enable";
           }
         ];

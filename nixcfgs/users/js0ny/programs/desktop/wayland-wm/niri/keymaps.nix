@@ -46,15 +46,11 @@ in {
     "Mod+Alt+i".hotkey-overlay.title = "Hyprlock";
     "Mod+Alt+i".action = spawn "hyprlock";
 
-    "Mod+D".hotkey-overlay.title = "Run an Application: rofi";
-    "Mod+D".action =
-      spawn "${launcher}" "-m" "desktopapplications";
-
-    "Alt+Space".hotkey-overlay.title = "Run an Application: rofi";
+    "Alt+Space".hotkey-overlay.title = "Run an Application: ${launcher}";
     "Alt+Space".action =
-      spawn "${launcher}" "-m" "desktopapplications";
+      spawn "${launcher}";
 
-    "Mod+W".hotkey-overlay.title = "Search open Window: rofi";
+    "Mod+W".hotkey-overlay.title = "Search open Window: ${launcher}";
     "Mod+W".action =
       spawn "${launcher}" "-m" "windows";
 
