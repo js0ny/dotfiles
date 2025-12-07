@@ -26,6 +26,8 @@ in {
     "Mod+Shift+A".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "CherryStudio" "cherry-studio";
     "Mod+O".hotkey-overlay.title = "Focus or launch Obsidian";
     "Mod+O".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "obsidian" "obsidian";
+    # See: programs/obsidian/obsidian-grep.nix
+    "Mod+Shift+O".action = spawn-sh "${term} --class=kitty-terminal-popup -e obsidian-grep && ${lib.getExe nirictl.focusOrLaunch} obsidian obsidian";
     # TODO: Change "org.kde.dolphin" to a more generic explorer app id via config.currentUser
     "Mod+E".hotkey-overlay.title = "Focus or launch file explorer";
     "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";

@@ -16,14 +16,6 @@
       {
         matches = [
           {
-            app-id = "^firefox$";
-            title = "^Picture-in-Picture$";
-          }
-          {
-            # Applies to all chromium
-            title = "^Picture in picture$";
-          }
-          {
             app-id = "^org.pulseaudio.pavucontrol$";
             title = "^Volume Control$";
           }
@@ -35,6 +27,39 @@
           x = 50;
           y = 50;
           relative-to = "top-right";
+        };
+      }
+      {
+        matches = [
+          {
+            app-id = "^firefox$";
+            title = "^Picture-in-Picture$";
+          }
+          {
+            # Applies to all chromium
+            title = "^Picture in picture$";
+          }
+        ];
+
+        open-floating = true;
+        opacity = 0.8;
+        default-floating-position = {
+          x = 50;
+          y = 50;
+          relative-to = "bottom-right";
+        };
+      }
+      {
+        matches = [
+          {
+            app-id = "^mpv$";
+          }
+        ];
+
+        default-floating-position = {
+          x = 50;
+          y = 50;
+          relative-to = "bottom-right";
         };
       }
       # }}}
