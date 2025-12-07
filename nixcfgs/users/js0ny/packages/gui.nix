@@ -81,7 +81,6 @@ in {
 
       # Theming
       papirus-icon-theme
-      rose-pine-cursor
 
       pcloud
       materialgram
@@ -89,9 +88,9 @@ in {
       steam
       signal-desktop
       # Use Wayland for Jetbrains
-      (jetbrains.idea-ultimate.override {
-        vmopts = ''-Dawt.toolkit.name=WLToolkit'';
-      })
+      # (jetbrains.idea-ultimate.override {
+      #   vmopts = ''-Dawt.toolkit.name=WLToolkit'';
+      # })
       (jetbrains.rider.override {
         vmopts = ''-Dawt.toolkit.name=WLToolkit'';
       })
@@ -110,7 +109,6 @@ in {
       steam-run
       rustdesk
       remmina
-      kdePackages.breeze
       zotero
       feishin
       bruno
@@ -118,7 +116,7 @@ in {
       kicad
       blender
       onlyoffice-desktopeditors
-      wayland-bongocat
+      # wayland-bongocat
       kdePackages.qttools
       antigravity
       nur.repos.forkprince.helium-nightly

@@ -39,7 +39,6 @@ in {
       tab_bar_min_tabs = 2;
       tab_title_template = "{f'{title[:30]}…' if title.rindex(title[-1]) + 1 > 30 else (title.center(6) if (title.rindex(title[-1]) + 1) % 2 == 0 else title.center(5))}";
       active_tab_font_style = "bold";
-      # macOS # TODO: true or "yes", untested
       macos_option_as_alt = true;
       macos_quit_when_last_window_closed = true;
       enabled_layouts = "splits";

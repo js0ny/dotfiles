@@ -26,9 +26,12 @@ in {
   };
 
   dconf.settings = {
-    "org/virt-manager/virt-manager/xmleditor-enabled" = true;
-    "org/virt-manager/virt-manager/firmware" = "uefi";
-    # X11 keycodes for XK_Alt_L (65513) and XK_Control_L (65507)
-    "org/virt-manager/virt-manager/console/grab-keys" = "65513,65507";
+    "org/virt-manager/virt-manager" = {
+      xmleditor-enabled = true;
+      firmware = "uefi";
+    };
+    "org/virt-manager/virt-manager/console" = {
+      "grab-keys" = "65513,65507";
+    };
   };
 }

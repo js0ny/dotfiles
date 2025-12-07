@@ -32,7 +32,7 @@
     ./programs/firefox
     ./programs/emacs.nix
     ./programs/vscode.nix
-    ./programs/xilinx.nix
+    # ./programs/xilinx.nix
     ./programs/mime.nix
     ./programs/zed-editor.nix
     ./programs/rime.nix
@@ -83,8 +83,6 @@
 
     # Development setup
     ../../modules/home/dev/nix.nix
-    ../../modules/home/dev/java.nix
-    ../../modules/home/dev/rust.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

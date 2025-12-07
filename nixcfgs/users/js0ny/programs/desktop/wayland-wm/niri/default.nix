@@ -7,7 +7,8 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
+    # pkgs.niri: use nixpkgs
+    package = pkgs.niri;
 
     settings = {
       prefer-no-csd = true;
