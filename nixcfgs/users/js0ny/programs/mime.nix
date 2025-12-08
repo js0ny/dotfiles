@@ -71,7 +71,7 @@ in {
     enable = true;
     # In Dolphin, middle click to open with 2nd order default app
     defaultApplications =
-      mkAssoc "org.kde.okular.desktop" ["application/pdf"]
+      mkAssoc "sioyek.desktop;org.kde.okular;" ["application/pdf"]
       // mkAssoc gvim simpleText
       // {
         "inode/directory" = "org.kde.dolphin.desktop";

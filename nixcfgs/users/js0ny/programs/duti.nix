@@ -7,12 +7,14 @@
   iina = "com.colliderli.iina";
   # firefox = "org.nixos.firefox";
   keka = "com.aone.keka";
+  sioyek = "info.sioyek.sioyek";
 
   defaultApps = {
     "${gvim}" = ["md" "json" "js" "txt" "xml"];
     "${iina}" = ["mp4" "mkv"];
     # "${firefox}" = ["html"];
     "${keka}" = ["7z" "zip" "rar" "tar"];
+    "${sioyek}" = ["pdf"];
   };
 
   duti = "${pkgs.duti}/bin/duti";

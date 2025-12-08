@@ -20,13 +20,14 @@ in {
   programs.home-manager.enable = true;
 
   xdg.configFile = {
-    "nixpkgs/config.nix" = {
-      text = ''{allowUnfree = true;} '';
-      enable = true;
-    };
-    "nix/nix.conf" = {
-      text = ''use-xdg-base-directories = true '';
-      enable = true;
-    };
+    "nixpkgs/config.nix".text = ''{ allowUnfree = true; }'';
+  };
+  nix.package = pkgs.nix;
+  nix.settings = {
+    use-xdg-base-directories = true;
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 }

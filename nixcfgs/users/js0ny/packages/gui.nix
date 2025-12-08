@@ -126,6 +126,7 @@ in {
       steamtinkerlaunch
       scanmem
       dex
+      piliplus
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

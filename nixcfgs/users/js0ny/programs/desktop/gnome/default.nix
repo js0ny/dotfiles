@@ -19,6 +19,7 @@
 in {
   imports = [
     ../../walker.nix
+    # ./copyous.nix
   ];
   home.packages = with pkgs;
     [

@@ -20,10 +20,14 @@
   };
 
   # system.copySystemConfiguration = true;
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    trusted-users = ["js0ny" "root"];
+    use-xdg-base-directories = true;
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.js0ny = {
@@ -47,8 +51,4 @@
       extraArgs = "--keep 5 --keep-since 3d";
     };
   };
-
-  nix.extraOptions = ''
-    use-xdg-base-directories = true
-  '';
 }
