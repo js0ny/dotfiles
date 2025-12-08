@@ -31,6 +31,7 @@
     ./programs/tmux.nix
     ./programs/kitty.nix
     ./programs/anki.nix
+    ./programs/sioyek.nix
     # ./programs/retroarch.nix # Package broken on macOS
     ./programs/duti.nix
 
