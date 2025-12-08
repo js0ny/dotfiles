@@ -84,7 +84,7 @@ in {
     {
       # Patch for Hyprland (scale XWayland by hand)
       "flatpak/exports/bin/com.qq.QQ" = {
-   	force = true;
+        force = true;
         text = ''
           #!/bin/sh
 
@@ -111,6 +111,45 @@ in {
           Categories=Network;
           Comment=QQ
           X-Flatpak=com.qq.QQ
+        '';
+        enable = true;
+        force = true;
+      };
+      "flatpak/exports/bin/com.tencent.WeChat" = {
+        force = true;
+        text = ''
+          #!/bin/sh
+
+          EXTRA_ENVS=""
+
+          if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
+              EXTRA_ENVS="QT_SCALE_FACTOR=1.5"
+          fi
+
+          if [ -n "$EXTRA_ENVS" ]; then
+              exec flatpak run --env=$EXTRA_ENVS --branch=stable --arch=x86_64 com.tencent.WeChat "$@"
+          else
+              exec flatpak run --branch=stable --arch=x86_64 com.tencent.WeChat "$@"
+          fi
+        '';
+        enable = true;
+        executable = true;
+      };
+      "flatpak/exports/share/applications/com.tencent.WeChat.desktop" = {
+        text = ''
+          [Desktop Entry]
+          Name=WeChat
+          Name[zh_CN]=微信
+          Exec=${config.xdg.dataHome}/flatpak/exports/bin/com.tencent.WeChat
+          Terminal=false
+          Type=Application
+          Icon=com.tencent.WeChat
+          StartupWMClass=WeChat
+          Categories=Network;
+          Keywords=wechat;weixin;
+          Comment=WeChat Desktop
+          Comment[zh_CN]=微信桌面版
+          X-Flatpak=com.tencent.WeChat
         '';
         enable = true;
         force = true;
