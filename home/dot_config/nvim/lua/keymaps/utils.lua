@@ -34,7 +34,7 @@ end
 
 M.set_buf_keymaps_prefix = function(maps)
   local n_prefix = "<leader>m"
-  local i_prefix = "<C-m>"
+  local i_prefix = "<C-;>" -- Using C-M will stuck when <CR>
   if not maps then
     return
   end

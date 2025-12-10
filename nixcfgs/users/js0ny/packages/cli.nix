@@ -20,6 +20,7 @@
       curlie
       duf
       dust
+      ncdu
       fd
       ffmpeg
       glow

@@ -19,6 +19,8 @@
     ./packages/fonts.nix
     ./packages/stylix.nix
 
+    ./programs/antidots.nix
+
     # Shell
     ./programs/shell/bash.nix
     ./programs/shell/zsh.nix
@@ -122,4 +124,11 @@
   ];
 
   home.stateVersion = "25.05";
+
+  # File manager(nautilus) / file chooser bookmarks
+  gtk.gtk3.bookmarks = [
+    "file:///home/js0ny/Academia Academia"
+    "file:///home/js0ny/Atelier Atelier"
+    "file:///home/js0ny/Downloads Downloads"
+  ];
 }
