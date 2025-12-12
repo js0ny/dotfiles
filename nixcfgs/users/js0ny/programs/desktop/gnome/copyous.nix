@@ -1,4 +1,3 @@
-# 大败而归，等打包了
 {
   pkgs,
   lib,
@@ -15,4 +14,11 @@ in {
     gsound
   ];
   xdg.dataFile."copyous@boerdereinar.dev/highlight.min.js".source = highlightJs;
+  dconf.settings = {
+    # TODO: Add more settings here later.
+    "org/gnome/shell/extensions/copyous" = {
+      open-clipboard-dialog-shortcut = ["<Super>v"];
+      show-at-pointer = true;
+    };
+  };
 }

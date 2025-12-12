@@ -69,9 +69,12 @@
     ./programs/pwa.nix
     ./programs/walker.nix
     ./programs/sioyek.nix
+    ./programs/celluloid.nix
 
     # Desktop Linux
     ./programs/desktop/gnome
+    ./programs/desktop/gnome/paperwm.nix
+    ./programs/desktop/gnome/copyous.nix
     ./programs/desktop/wayland-wm/niri
 
     ../../modules/home/do-not-track.nix

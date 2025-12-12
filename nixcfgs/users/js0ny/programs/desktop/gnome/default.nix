@@ -11,7 +11,6 @@
     kimpanel
     appindicator
     gsconnect
-    clipboard-indicator
     advanced-alttab-window-switcher
     resource-monitor
     lunar-calendar
@@ -19,16 +18,13 @@
 in {
   imports = [
     ../../walker.nix
-    # ./copyous.nix
+    ./copyous.nix
   ];
   home.packages = with pkgs;
     [
       gnome-tweaks
       sushi
       dconf-editor
-      gnome-menus
-      showtime
-      gobject-introspection
     ]
     ++ extensions;
   programs.gnome-shell.enable = true;
@@ -171,6 +167,7 @@ in {
       netwlanstatus = false;
       ramalert = true;
       ramunit = "perc";
+      customleftclickstatus = "missioncenter";
     };
   };
 }

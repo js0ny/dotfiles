@@ -72,7 +72,6 @@ in {
       loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
 
       kdePackages.elisa
-      haruna
 
       # Email
       protonmail-bridge
@@ -127,6 +126,9 @@ in {
       scanmem
       dex
       piliplus
+      foliate
+      newsflash
+      mission-center
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

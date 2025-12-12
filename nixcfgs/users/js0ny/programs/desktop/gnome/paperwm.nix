@@ -10,6 +10,10 @@
       screensaver = [""];
     };
     "org/gnome/shell/extensions/paperwm/keybindings" = {
+      close-window = ["<Super>q"];
+      new-window = [];
+      switch-next = [];
+      switch-previous = [];
       switch-left = [
         "<Super>Left"
         "<Super>h"
@@ -22,35 +26,27 @@
         "<Super>Down"
         "<Super>j"
       ];
-      move-left = [
-        "<Control><Super>comma"
-        "<Shift><Super>comma"
-        "<Control><Super>Left"
-        "<Shift><Super>h"
+      switch-up = [
+        "<Super>Up"
+        "<Super>k"
       ];
-      move-right = [
-        "<Control><Super>comma"
-        "<Shift><Super>comma"
-        "<Control><Super>Left"
-        "<Shift><Super>l"
-      ];
-      move-up = [
-        "<Control><Super>comma"
-        "<Shift><Super>comma"
-        "<Control><Super>Left"
-        "<Shift><Super>k"
-      ];
-      move-down = [
-        "<Control><Super>comma"
-        "<Shift><Super>comma"
-        "<Control><Super>Left"
-        "<Shift><Super>j"
-      ];
+      move-left = ["<Shift><Super>h"];
+      move-right = ["<Shift><Super>l"];
+      move-up = [""];
+      move-down = [""];
+      switch-down-or-else-workspace = ["<Super><Shift>j"];
+      switch-up-or-else-workspace = ["<Super><Shift>k"];
       center-vertically = [""];
       drift-left = [""];
       drift-right = [""];
       move-up-workspace = ["<Control><Super>k"];
       move-down-workspace = ["<Control><Super>j"];
+      slurp-in = ["<Super>bracketleft"];
+      barf-out = ["<Super>bracketright"];
+      barf-out-active = [];
+    };
+    "org/gnome/shell/extensions/paperwm" = {
+      winprops = [''{"wm_class":"dev.benz.walker","scratch_layer":true}''];
     };
   };
 }

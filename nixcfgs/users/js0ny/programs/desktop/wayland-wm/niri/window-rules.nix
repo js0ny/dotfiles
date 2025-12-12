@@ -39,6 +39,10 @@
             # Applies to all chromium
             title = "^Picture in picture$";
           }
+          {
+            title = "^Friends List$";
+            app-id = "^steam$";
+          }
         ];
 
         open-floating = true;
