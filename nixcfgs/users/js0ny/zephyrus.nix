@@ -117,7 +117,7 @@
   };
 
   home.sessionVariables = {
-    TERMINAL = config.my.desktop.preferredApps.terminal.package;
+    TERMINAL = "xdg-terminal-exec";
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
@@ -128,10 +128,19 @@
 
   home.stateVersion = "25.05";
 
-  # File manager(nautilus) / file chooser bookmarks
+  # File manager(nautilus) / file chooser bookmarks under GTK file dialogs
   gtk.gtk3.bookmarks = [
     "file:///home/js0ny/Academia Academia"
     "file:///home/js0ny/Atelier Atelier"
     "file:///home/js0ny/Downloads Downloads"
   ];
+
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = [
+        "kitty.desktop"
+      ];
+    };
+  };
 }

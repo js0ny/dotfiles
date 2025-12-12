@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
   # FIXME: This will block the desktop files
@@ -85,6 +86,7 @@ in {
       materialgram
       ayugram-desktop
       steam
+      adwsteamgtk
       signal-desktop
       # Use Wayland for Jetbrains
       # (jetbrains.idea-ultimate.override {
@@ -105,13 +107,10 @@ in {
       goldendict-ng
       kdePackages.kdenlive
       gimp
-      steam-run
       rustdesk
       remmina
       zotero
       feishin
-      bruno
-      bruno-cli
       kicad
       blender
       onlyoffice-desktopeditors
@@ -126,9 +125,9 @@ in {
       scanmem
       dex
       piliplus
-      foliate
       newsflash
       mission-center
+      calibre
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt
@@ -171,4 +170,6 @@ in {
 
   services.protonmail-bridge.enable = true;
   services.remmina.enable = false; # Don't auto start the service
+
+  gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 }

@@ -1,23 +1,21 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }: let
   extensions = with pkgs.gnomeExtensions; [
-    # dash-to-dock
+    dash-to-dock
     caffeine
-    logo-menu
     kimpanel
     appindicator
     gsconnect
     advanced-alttab-window-switcher
     resource-monitor
     lunar-calendar
+    arcmenu
   ];
 in {
   imports = [
-    ../../walker.nix
     ./copyous.nix
   ];
   home.packages = with pkgs;
@@ -97,6 +95,7 @@ in {
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       www = ["<Super>b"];
+      help = [""];
       home = ["<Super>e"];
       screenreader = [""];
       screensaver = [""];
@@ -108,25 +107,31 @@ in {
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1" = {
       name = "Open Terminal via Win-CR";
-      command = "${lib.getExe config.my.desktop.preferredApps.terminal.package}";
+      command = "xdg-terminal";
       binding = "<Super>Return";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2" = {
       name = "Open Terminal via Ctrl-Alt-T";
-      command = "${lib.getExe config.my.desktop.preferredApps.terminal.package}";
+      command = "xdg-terminal";
       binding = "<Ctrl><Alt>t";
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-3" = {
-      name = "Open Picker";
-      command = "walker";
-      binding = "<Alt>space";
+    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-3" = {
+    #   name = "Open Picker";
+    #   command = "walker";
+    #   binding = "<Alt>space";
+    # };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-4" = {
+      name = "Open Obsidian";
+      command = "Obsidian";
+      binding = "<Super>O";
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-1/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-2/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-3/"
+        # "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-3/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom-4/"
       ];
     };
     # Scanned directory in GNOME Search
@@ -137,7 +142,9 @@ in {
         "&MUSIC"
         "&PICTURES"
         "&VIDEOS"
-        "/home/js0ny/Obsidian"
+        "/home/${config.home.username}/Obsidian"
+        "/home/${config.home.username}/Atelier"
+        "/home/${config.home.username}/Academia"
       ];
     };
     "ca/desrt/dconf-editor" = {
@@ -168,6 +175,31 @@ in {
       ramalert = true;
       ramunit = "perc";
       customleftclickstatus = "missioncenter";
+    };
+    "org/gnome/shell/extensions/arcmenu" = {
+      "menu-button-icon" = "nix-snowflake-white";
+      "menu-button-icon-size" = 25;
+      "runner-hotkey" = ["<Alt>space"];
+    };
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      # shortcut: Hit to focus the dock
+      # disable this behaviour as it conflicts with *QUIT*
+      # Default: <Super>Q
+      shortcut = [];
+      # scroll action: mouse scroll on dock icons
+      # Default: 'do-nothing
+      # Options: 'do-nothing', 'cycle-windows', 'switch-workspace'
+      scroll-action = "cycle-windows";
+      dock-position = "BOTTOM";
+    };
+    "org/gnome/shell/extensions/advanced-alttab-window-switcher" = {
+      # Show Hotkeys F1-F12 for Direct Activation
+      switcher-popup-hot-keys = true;
+      # Tooltip Titles:
+      # 1: Disabled
+      # 2: Show Above/Below Item (Default)
+      # 3: Show Centered
+      switcher-popup-tooltip-title = 3;
     };
   };
 }

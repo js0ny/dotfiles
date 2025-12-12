@@ -14,6 +14,11 @@
     tokei
     socat
     shellcheck
+    bruno
+    bruno-cli
+    httpie
+    gron
+    jless
   ];
   home.sessionVariables = {
     CARGO_HOME = "${config.xdg.dataHome}/cargo";

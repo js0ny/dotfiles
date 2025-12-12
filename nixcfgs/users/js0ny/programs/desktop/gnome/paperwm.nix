@@ -44,6 +44,9 @@
       slurp-in = ["<Super>bracketleft"];
       barf-out = ["<Super>bracketright"];
       barf-out-active = [];
+      # Use AATWS
+      live-alt-tab = [];
+      live-alt-tab-backward = [];
     };
     "org/gnome/shell/extensions/paperwm" = {
       winprops = [''{"wm_class":"dev.benz.walker","scratch_layer":true}''];

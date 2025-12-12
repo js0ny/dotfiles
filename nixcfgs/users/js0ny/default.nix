@@ -19,8 +19,8 @@ in {
 
   programs.home-manager.enable = true;
 
-  xdg.configFile = {
-    "nixpkgs/config.nix".text = ''{ allowUnfree = true; }'';
+  nixpkgs.config = {
+    allowUnfree = true;
   };
   nix.package = pkgs.nix;
   nix.settings = {

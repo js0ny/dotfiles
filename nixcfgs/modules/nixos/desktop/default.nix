@@ -49,8 +49,5 @@
     libnotify
     gnome-disk-utility
   ];
-
-  xdg.portal = {
-    wlr.enable = true;
-  };
+  xdg.terminal-exec.enable = true;
 }

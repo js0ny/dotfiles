@@ -20,5 +20,8 @@ in {
       open-clipboard-dialog-shortcut = ["<Super>v"];
       show-at-pointer = true;
     };
+    "org/gnome/shell" = {
+      enabled-extensions = ["copyous@boerdereinar.dev"];
+    };
   };
 }

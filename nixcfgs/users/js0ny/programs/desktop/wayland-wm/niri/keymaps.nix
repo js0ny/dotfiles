@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  term = lib.getExe config.my.desktop.preferredApps.terminal.package;
+  term = "xdg-terminal-exec";
   # TODO: Don't default to dark
   iconTheme = config.my.desktop.style.iconTheme.dark;
   launcher = "walker";
