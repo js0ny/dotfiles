@@ -18,6 +18,7 @@
     ./packages/flatpak.nix
     ./packages/fonts.nix
     ./packages/stylix.nix
+    ./packages/media-tools.nix
 
     ./programs/antidots.nix
 
@@ -70,6 +71,7 @@
     ./programs/walker.nix
     ./programs/sioyek.nix
     ./programs/celluloid.nix
+    ./programs/picard.nix
 
     # Desktop Linux
     ./programs/desktop/gnome

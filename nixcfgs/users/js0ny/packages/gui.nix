@@ -98,7 +98,6 @@ in {
       localsend
       cherry-studio
       kdePackages.kdeconnect-kde
-      picard
       qutebrowser
       ryubing
       qbittorrent

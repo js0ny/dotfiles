@@ -54,17 +54,11 @@
       miniserve
       jq
       srm
-      mediainfo
-      exiftool
       ddgr
       jujutsu
       github-copilot-cli
-      yt-dlp
       asciinema
       ansi2html
-      httpie
-      gron
-      jless
       unar
       trash-cli
       aria2
@@ -74,7 +68,11 @@
     ++ (
       if pkgs.stdenv.isDarwin
       then with pkgs; [duti]
-      else with pkgs; [bluetui]
+      else
+        with pkgs; [
+          bluetui
+          steam-run
+        ]
     );
 
   programs.nix-index.enable = true;
