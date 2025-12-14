@@ -1,5 +1,11 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  username = config.home.username;
+in {
   imports = [
     # General config
     ./default.nix
@@ -125,13 +131,11 @@
     "$HOME/.local/bin"
   ];
 
-  home.stateVersion = "25.05";
-
   # File manager(nautilus) / file chooser bookmarks under GTK file dialogs
   gtk.gtk3.bookmarks = [
-    "file:///home/js0ny/Academia Academia"
-    "file:///home/js0ny/Atelier Atelier"
-    "file:///home/js0ny/Downloads Downloads"
+    "file:///home/${username}/Academia Academia"
+    "file:///home/${username}/Atelier Atelier"
+    "file:///home/${username}/Downloads Downloads"
   ];
 
   xdg.terminal-exec = {
@@ -142,4 +146,6 @@
       ];
     };
   };
+
+  home.stateVersion = "25.05";
 }

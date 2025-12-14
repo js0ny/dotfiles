@@ -67,4 +67,5 @@ in {
   services.blueman-applet.enable = true;
   services.blueman-applet.systemdTargets = ["niri.service"];
   systemd.user.services.network-manager-applet.Install.WantedBy = lib.mkForce ["niri.service"];
+  programs.wleave.enable = true;
 }

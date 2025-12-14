@@ -22,7 +22,6 @@ in {
     [
       gnome-tweaks
       sushi
-      dconf-editor
     ]
     ++ extensions;
   programs.gnome-shell.enable = true;
@@ -146,9 +145,6 @@ in {
         "/home/${config.home.username}/Atelier"
         "/home/${config.home.username}/Academia"
       ];
-    };
-    "ca/desrt/dconf-editor" = {
-      show-warning = false;
     };
     # Extension settings
     "org/gnome/shell/extensions/Logo-menu" = {

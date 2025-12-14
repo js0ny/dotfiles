@@ -121,6 +121,7 @@ in {
       newsflash
       mission-center
       calibre
+      dconf-editor
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt
@@ -165,4 +166,11 @@ in {
   services.remmina.enable = false; # Don't auto start the service
 
   gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+
+  dconf.settings = {
+    "ca/desrt/dconf-editor" = {
+      show-warning = false;
+    };
+  };
+  programs.waveterm.enable = true;
 }
