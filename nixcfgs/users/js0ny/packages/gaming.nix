@@ -17,4 +17,7 @@
     # Memory Scanner (Cheat Engine Alt.)
     scanmem
   ];
+  imports = [
+    ../programs/retroarch.nix
+  ];
 }
