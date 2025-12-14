@@ -85,8 +85,6 @@ in {
       pcloud
       materialgram
       ayugram-desktop
-      steam
-      adwsteamgtk
       signal-desktop
       # Use Wayland for Jetbrains
       # (jetbrains.idea-ultimate.override {
@@ -99,7 +97,6 @@ in {
       cherry-studio
       kdePackages.kdeconnect-kde
       qutebrowser
-      ryubing
       qbittorrent
       protonvpn-gui
       proton-pass
@@ -117,11 +114,8 @@ in {
       kdePackages.qttools
       antigravity
       nur.repos.forkprince.helium-nightly
-      prismlauncher
       obsidian
       file-roller
-      steamtinkerlaunch
-      scanmem
       dex
       piliplus
       newsflash

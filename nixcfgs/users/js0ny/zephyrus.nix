@@ -1,9 +1,5 @@
 # ~/.config/nixcfgs/users/js0ny/default.nix
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # General config
     ./default.nix
@@ -19,6 +15,7 @@
     ./packages/fonts.nix
     ./packages/stylix.nix
     ./packages/media-tools.nix
+    ./packages/gaming.nix
 
     ./programs/antidots.nix
 
