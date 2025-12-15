@@ -129,10 +129,10 @@ in {
     ++ (mkElectronWayland [
       # pkgs.ticktick
       pkgs.cider-2
-    ])
-    ++ (mkLegacyJavaGUIApp [
-      pkgs.logisim-evolution
     ]);
+  # ++ (mkLegacyJavaGUIApp [
+  #   pkgs.logisim-evolution
+  # ]);
 
   home.sessionVariables = {
     ANKI_WAYLAND = 1;

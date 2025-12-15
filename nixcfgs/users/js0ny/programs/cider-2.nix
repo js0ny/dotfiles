@@ -31,9 +31,51 @@
         closeToTray = true;
         checkForUpdates = false;
       };
+      visual = {
+        appearance = "auto";
+        # default: Mojave
+        useAdaptiveColors = true;
+        # TODO: Change to "native" when using simple WM
+        # Electron does not render the three buttons in title bar when "native"
+        titleBarStyle = "default";
+        layoutType = "default";
+        fonts = {
+          # Figtree: Built-in font for Cider
+          main = "Figtree";
+          lyrics = "system-ui";
+        };
+        immersive = {
+          useAnimatedBackground = true;
+          useAnimatedArtwork = false;
+          backgroundType = "default";
+          layoutType = "sonoma";
+          layoutTypePortrait = "sonoma";
+        };
+        ui_custom = {
+          useSystemAccentColor = true;
+        };
+      };
+      audio = {
+        showBitrateBadge = true;
+        ciderAudio = {
+          enabled = true;
+          showInToolbar = true;
+          showBadges = true;
+        };
+      };
+      lyrics = {
+        translationEnabled = true;
+        translationLanguage = "zh";
+      };
       updates = {
         # Managed by Nix, disable built-in update checks
         checkForUpdates = false;
+      };
+      connectivity = {
+        discord = {
+          enabled = true;
+          client = "Cider";
+        };
       };
     };
   };
