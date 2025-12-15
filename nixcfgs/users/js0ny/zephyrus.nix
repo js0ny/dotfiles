@@ -75,7 +75,7 @@ in {
     ./programs/sioyek.nix
     ./programs/celluloid.nix
     ./programs/picard.nix
-    ./programs/cider2.nix
+    ./programs/cider-2.nix
 
     # Desktop Linux
     ./programs/desktop/gnome
