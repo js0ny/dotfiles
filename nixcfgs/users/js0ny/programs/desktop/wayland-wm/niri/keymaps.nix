@@ -227,6 +227,8 @@ in {
     "Mod+Escape".allow-inhibiting = false;
     "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
 
+    "Mod+Grave".action = focus-workspace-previous;
+
     "Ctrl+Alt+Delete".action = quit;
   };
 }

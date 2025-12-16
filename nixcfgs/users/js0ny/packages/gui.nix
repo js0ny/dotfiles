@@ -66,13 +66,11 @@ in {
       warp-terminal
 
       # PDF Viewer
-      kdePackages.okular # default
+      kdePackages.okular
       sioyek
 
       # Image Viewer
       loupe # SUPER FAST 有催人跑的感觉 w/ GPU Accel.
-
-      kdePackages.elisa
 
       # Email
       protonmail-bridge
@@ -83,8 +81,6 @@ in {
       papirus-icon-theme
 
       pcloud
-      materialgram
-      ayugram-desktop
       signal-desktop
       # Use Wayland for Jetbrains
       # (jetbrains.idea-ultimate.override {

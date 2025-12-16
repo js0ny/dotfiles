@@ -38,7 +38,7 @@ in {
     ./programs/firefox
     ./programs/emacs.nix
     ./programs/vscode.nix
-    # ./programs/xilinx.nix
+    ./programs/xilinx.nix
     ./programs/mime.nix
     ./programs/zed-editor.nix
     ./programs/rime.nix
@@ -76,6 +76,7 @@ in {
     ./programs/celluloid.nix
     ./programs/picard.nix
     ./programs/cider-2.nix
+    ./programs/telegram.nix
 
     # Desktop Linux
     ./programs/desktop/gnome
