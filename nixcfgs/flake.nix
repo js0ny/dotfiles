@@ -104,8 +104,6 @@
     nixosHosts = [
       "zp"
       "zephyrus"
-      "nixvirt"
-      "polder"
     ];
     darwinHosts = [
       "zen"

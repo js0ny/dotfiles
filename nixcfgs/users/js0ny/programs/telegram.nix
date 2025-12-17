@@ -3,86 +3,90 @@
   lib,
   ...
 }: let
+  mod =
+    if pkgs.stdenv.isDarwin
+    then "meta"
+    else "alt";
   shortcuts = builtins.toJSON [
     {
       command = "previous_chat";
-      keys = "alt+k";
+      keys = "${mod}+k";
     }
     {
       command = "next_chat";
-      keys = "alt+j";
+      keys = "${mod}+j";
     }
     {
       command = "self_chat";
-      keys = "alt+0";
+      keys = "${mod}+0";
     }
     {
       command = "pinned_chat1";
-      keys = "alt+1";
+      keys = "${mod}+1";
     }
     {
       command = "all_chats";
-      keys = "alt+1";
+      keys = "${mod}+1";
     }
     {
       command = "pinned_chat2";
-      keys = "alt+2";
+      keys = "${mod}+2";
     }
     {
       command = "folder1";
-      keys = "alt+2";
+      keys = "${mod}+2";
     }
     {
       command = "pinned_chat3";
-      keys = "alt+3";
+      keys = "${mod}+3";
     }
     {
       command = "folder2";
-      keys = "alt+3";
+      keys = "${mod}+3";
     }
     {
       command = "pinned_chat4";
-      keys = "alt+4";
+      keys = "${mod}+4";
     }
     {
       command = "folder3";
-      keys = "alt+4";
+      keys = "${mod}+4";
     }
     {
       command = "pinned_chat5";
-      keys = "alt+5";
+      keys = "${mod}+5";
     }
     {
       command = "folder4";
-      keys = "alt+5";
+      keys = "${mod}+5";
     }
     {
       command = "pinned_chat6";
-      keys = "alt+6";
+      keys = "${mod}+6";
     }
     {
       command = "folder5";
-      keys = "alt+6";
+      keys = "${mod}+6";
     }
     {
       command = "pinned_chat7";
-      keys = "alt+7";
+      keys = "${mod}+7";
     }
     {
       command = "folder6";
-      keys = "alt+7";
+      keys = "${mod}+7";
     }
     {
       command = "pinned_chat8";
-      keys = "alt+8";
+      keys = "${mod}+8";
     }
     {
       command = "last_folder";
-      keys = "alt+8";
+      keys = "${mod}+8";
     }
     {
       command = "show_archive";
-      keys = "alt+9";
+      keys = "${mod}+9";
     }
   ];
 in {
@@ -95,4 +99,10 @@ in {
     "materialgram/tdata/shortcuts-custom.json".text = shortcuts;
     "TelegramDesktop/tdata/shortcuts-custom.json".text = shortcuts;
   };
+  home.file =
+    if pkgs.stdenv.isDarwin
+    then {
+      "Library/Application Support/Telegram Desktop/tdata/shortcuts-custom.json".text = shortcuts;
+    }
+    else {};
 }

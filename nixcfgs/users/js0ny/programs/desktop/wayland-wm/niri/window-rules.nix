@@ -7,10 +7,26 @@
           {
             app-id = "^.*terminal-popup$";
           }
+          {
+            app-id = "^fsearch$";
+          }
         ];
 
         open-floating = true;
         opacity = 0.8;
+      }
+      {
+        matches = [
+          {
+            app-id = "^org.gnome.NautilusPreviewer$";
+          }
+          {
+            app-id = "^org.gnome.Nautilus$";
+            title = "^Select Document$";
+          }
+        ];
+
+        open-floating = true;
       }
       # {{{ float, opacity 0.8, top right: Picture-in-Picture // waybar childs
       {

@@ -22,5 +22,6 @@
     baobab # Disk Usage Analyzer, use dust instead
     epiphany # GNOME Web
     gnome-system-monitor # use mission-center
+    gnome-terminal
   ];
 }

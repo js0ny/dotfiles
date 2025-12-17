@@ -71,8 +71,8 @@ in {
       };
     };
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
     image = ./wallpaper.jpg;
-    polarity = "dark";
+    polarity = "light";
   };
 }

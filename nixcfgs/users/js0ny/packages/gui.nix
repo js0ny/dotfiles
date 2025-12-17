@@ -118,6 +118,7 @@ in {
       mission-center
       calibre
       dconf-editor
+      fsearch # Everything-like search tool
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

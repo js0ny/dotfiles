@@ -21,22 +21,24 @@ in {
     "Mod+B".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "firefox" "firefox";
     "Mod+Shift+B".hotkey-overlay.title = "Launch web browser in private mode";
     "Mod+Shift+B".action = spawn "firefox" "--private-window";
-    "Mod+A".action = spawn-sh "${term} --class=kitty-terminal-popup -e aichat --session";
+    "Mod+A".action = spawn-sh "${term} --class=terminal-popup -e aichat --session";
     "Mod+Shift+A".hotkey-overlay.title = "Focus or launch CherryStudio (AI assistant)";
     "Mod+Shift+A".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "CherryStudio" "cherry-studio";
     "Mod+O".hotkey-overlay.title = "Focus or launch Obsidian";
     "Mod+O".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "obsidian" "obsidian";
     # See: programs/obsidian/obsidian-grep.nix
-    "Mod+Shift+O".action = spawn-sh "${term} --class=kitty-terminal-popup -e obsidian-grep && ${lib.getExe nirictl.focusOrLaunch} obsidian obsidian";
+    "Mod+Shift+O".action = spawn-sh "${term} --app-id=terminal-popup -e obsidian-grep && ${lib.getExe nirictl.focusOrLaunch} obsidian obsidian";
     # TODO: Change "org.kde.dolphin" to a more generic explorer app id via config.currentUser
-    "Mod+E".hotkey-overlay.title = "Focus or launch file explorer";
-    "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";
-    "Mod+Alt+Return".action = spawn-sh "${term} --class=kitty-terminal-popup";
-    "Mod+Shift+Alt+Return".action = spawn-sh "${term} --class=kitty--terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
+    "Mod+E".hotkey-overlay.title = "Launch file explorer";
+    # "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";
+    "Mod+E".action = spawn-sh "xdg-open ~";
+    "Mod+Shift+E".action = spawn "fsearch";
+    "Mod+Shift+Return".action = spawn-sh "${term} --app-id=terminal-popup";
+    # "Mod+Shift+Alt+Return".action = spawn-sh "${term} --app-id=kitty--terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
 
-    "Mod+Shift+Return".action = spawn "neovide" "${config.home.homeDirectory}/Atelier";
+    "Mod+Alt+Return".action = spawn "neovide" "${config.home.homeDirectory}/Atelier";
     "Mod+Apostrophe".action =
-      spawn-sh "EDITOR_MINIMAL=1 ${term} -o close_on_child_death=yes --class=kitty-terminal-popup -e edit-clipboard --minimal";
+      spawn-sh "EDITOR_MINIMAL=1 ${term} -o close_on_child_death=yes --app-id=terminal-popup -e edit-clipboard --minimal";
 
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 

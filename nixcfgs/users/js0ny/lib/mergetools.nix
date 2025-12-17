@@ -39,6 +39,59 @@
       fi
     '';
   };
+  mkMergedJson = {
+    name,
+    target,
+    settings,
+  }: let
+    jsonContent = builtins.toJSON settings;
+    patchFile = "${target}.nix-managed";
+  in {
+    home.file."${patchFile}".text = jsonContent;
+
+    home.activation."merge-${name}" = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      TARGET="$HOME/${target}"
+      PATCH="$HOME/${patchFile}"
+
+      if [ -f "$PATCH" ]; then
+        verboseEcho "Merging Nix managed JSON config into: $TARGET"
+
+        run mkdir -p "$(dirname "$TARGET")"
+
+        if [ ! -f "$TARGET" ]; then
+          echo "{}" > "$TARGET"
+        fi
+
+        run ${pkgs.yq-go}/bin/yq -i -o json -P --indent 2 ". *= load(\"$PATCH\")" "$TARGET"
+      fi
+    '';
+  };
+  mkMergedIni = {
+    name,
+    target,
+    settings,
+  }: let
+    iniContent = lib.generators.toINI {} settings;
+    patchFile = "${target}.nix-managed";
+  in {
+    home.file."${patchFile}".text = iniContent;
+
+    home.activation."merge-${name}" = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      TARGET="$HOME/${target}"
+      PATCH="$HOME/${patchFile}"
+      if [ -f "$PATCH" ]; then
+        verboseEcho "Merging Nix managed INI config into: $TARGET"
+
+        run mkdir -p "$(dirname "$TARGET")"
+
+        if [ ! -f "$TARGET" ]; then
+          echo "" > "$TARGET"
+        fi
+
+      run ${pkgs.crudini}/bin/crudini --merge "$TARGET" < "$PATCH"
+      fi
+    '';
+  };
 in {
-  inherit mkMergedYaml;
+  inherit mkMergedYaml mkMergedJson mkMergedIni;
 }

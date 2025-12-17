@@ -77,6 +77,8 @@ in {
     ./programs/picard.nix
     ./programs/cider-2.nix
     ./programs/telegram.nix
+    ./programs/feishin.nix
+    ./programs/fsearch.nix
 
     # Desktop Linux
     ./programs/desktop/gnome

@@ -74,7 +74,8 @@ in {
       mkAssoc "sioyek.desktop;org.kde.okular;" ["application/pdf"]
       // mkAssoc gvim simpleText
       // {
-        "inode/directory" = "org.kde.dolphin.desktop";
+        # "inode/directory" = "org.kde.dolphin.desktop";
+        "inode/directory" = "org.gnome.Nautilus.desktop";
       }
       // mkAssoc imageViewers image
       // mkAssoc "onlyoffice-desktopeditors.desktop" [

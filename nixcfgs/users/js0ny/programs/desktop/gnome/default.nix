@@ -22,6 +22,7 @@ in {
     [
       gnome-tweaks
       sushi
+      nautilus-open-any-terminal
     ]
     ++ extensions;
   programs.gnome-shell.enable = true;

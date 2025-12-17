@@ -33,6 +33,18 @@
         # * 3: Restore Previous Session
         "browser.startup.page" = 3;
         "browser.sessionstore.resume_from_crash" = true;
+        ### Sync
+        "services.sync.declinedEngines" = "creditcards,passwords,addresses,prefs,addons";
+        "services.sync.engine.addons" = false;
+        "services.sync.engine.addresses" = false;
+        "services.sync.engine.bookmarks" = true;
+        "services.sync.engine.creditcards" = false;
+        "services.sync.engine.history" = true;
+        "services.sync.engine.passwords" = false;
+        "services.sync.engine.prefs" = false;
+        "services.sync.engine.prefs.modified" = false;
+        "services.sync.engine.tabs" = true;
+        "services.sync.engins.tabs.filteredSchemes" = "about|resource|chrome|file|blob|moz-extension|data";
       };
     };
   };
