@@ -24,6 +24,10 @@
             app-id = "^org.gnome.Nautilus$";
             title = "^Select Document$";
           }
+          {
+            app-id = "^org.gnome.Settings.GlobalShortcutsProvider$";
+            title = "^Add Keyboard Shortcuts$";
+          }
         ];
 
         open-floating = true;

@@ -119,6 +119,7 @@ in {
       calibre
       dconf-editor
       fsearch # Everything-like search tool
+      kdePackages.elisa
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

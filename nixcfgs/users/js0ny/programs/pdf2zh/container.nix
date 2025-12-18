@@ -32,7 +32,7 @@
           if withEnv
           then ''
             API_BASE="''${PDF2ZH_API_BASE:-https://openrouter.ai/api/v1}"
-            MODEL="''${PDF2ZH_MODEL:-google/gemini-2.5-flash}"
+            MODEL="''${PDF2ZH_MODEL:-google/gemini-3-flash-preview}"
 
             if [[ -n "''${PDF2ZH_API_KEY:-}" ]]; then
               API_KEY="$PDF2ZH_API_KEY"

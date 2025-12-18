@@ -15,6 +15,7 @@
     gobject-introspection
   ];
   environment.gnome.excludePackages = with pkgs; [
+    # LibAdwaita sucks
     evince # Document Viewer (Legacy)
     totem # GNOME Videos (legacy)
     papers # Document Viewer
@@ -23,5 +24,10 @@
     epiphany # GNOME Web
     gnome-system-monitor # use mission-center
     gnome-terminal
+    showtime # Media player
+    gnome-music
+    gnome-connections
+    gnome-font-viewer
+    gnome-maps
   ];
 }

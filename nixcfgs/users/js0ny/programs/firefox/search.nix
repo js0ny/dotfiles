@@ -123,7 +123,13 @@ in {
       name = "Flathub";
       urls = [{template = "https://flathub.org/apps/search?q={searchTerms}";}];
       icon = "https://flathub.org/favicon.ico";
-      definedAliases = ["flatpak" "flathub"];
+      definedAliases = ["@flatpak" "@flathub"];
+    };
+    open-webui = {
+      name = "LLM Query Search";
+      urls = [{template = "https://ai.js0ny.net/?models=google%2Fgemini-3-flash-preview&q={searchTerms}";}];
+      icon = "https://www.openwebui.com/favicon.ico";
+      definedAliases = ["owu" "open-webui" "@ai"];
     };
   };
 }

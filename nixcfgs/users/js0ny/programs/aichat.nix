@@ -12,6 +12,7 @@
             {name = "google/gemini-2.5-flash";}
             {name = "google/gemini-2.5-pro";}
             {name = "google/gemini-3-pro-preview";}
+            {name = "google/gemini-3-flash-preview";}
             {name = "anthropic/claude-sonnet-4.5";}
             {name = "anthropic/claude-haiku-4.5";}
             {name = "anthropic/claude-opus-4.5";}

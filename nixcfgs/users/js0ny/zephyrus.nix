@@ -79,6 +79,7 @@ in {
     ./programs/telegram.nix
     ./programs/feishin.nix
     ./programs/fsearch.nix
+    ./programs/elisa.nix
 
     # Desktop Linux
     ./programs/desktop/gnome

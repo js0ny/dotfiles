@@ -33,6 +33,7 @@ in {
     # "Mod+E".action = spawn "${lib.getExe nirictl.focusOrLaunch}" "org.kde.dolphin" "dolphin";
     "Mod+E".action = spawn-sh "xdg-open ~";
     "Mod+Shift+E".action = spawn "fsearch";
+    "Mod+Alt+E".action = spawn "${term} yazi";
     "Mod+Shift+Return".action = spawn-sh "${term} --app-id=terminal-popup";
     # "Mod+Shift+Alt+Return".action = spawn-sh "${term} --app-id=kitty--terminal-popup --working-directory='${config.home.homeDirectory}/.config/shells/nohist' -e nix develop";
 
@@ -111,8 +112,8 @@ in {
     "Mod+Up".action = focus-window-up;
     "Mod+Right".action = focus-column-right;
     "Mod+H".action = focus-column-left;
-    "Mod+J".action = focus-window-down;
-    "Mod+K".action = focus-window-up;
+    "Mod+J".action = focus-window-or-workspace-down;
+    "Mod+K".action = focus-window-or-workspace-up;
     "Mod+L".action = focus-column-right;
 
     "Mod+Shift+Left".action = move-column-left;
@@ -120,8 +121,8 @@ in {
     "Mod+Shift+Up".action = move-window-up;
     "Mod+Shift+Right".action = move-column-right;
     "Mod+Shift+H".action = move-column-left;
-    "Mod+Shift+J".action = move-window-down;
-    "Mod+Shift+K".action = move-window-up;
+    "Mod+Shift+J".action = move-window-to-workspace-down;
+    "Mod+Shift+K".action = move-window-to-workspace-up;
     "Mod+Shift+L".action = move-column-right;
 
     "Mod+Home".action = focus-column-first;
@@ -219,10 +220,11 @@ in {
     "Mod+G".hotkey-overlay.title = "Toggle Grouped Display";
     "Mod+G".action = toggle-column-tabbed-display;
 
-    "Mod+Shift+S".action.screenshot = {show-pointer = true;};
-    "Print".action.screenshot = {show-pointer = true;};
-    "Ctrl+Print".action.screenshot-screen = {show-pointer = true;};
-    "Mod+Alt+S".action.screenshot-screen = {show-pointer = true;};
+    # Disable pointer by default, toggle with `p` key
+    "Mod+Shift+S".action.screenshot = {show-pointer = false;};
+    "Print".action.screenshot = {show-pointer = false;};
+    "Ctrl+Print".action.screenshot-screen = {show-pointer = false;};
+    "Mod+Alt+S".action.screenshot-screen = {show-pointer = false;};
     "Alt+Print".action.screenshot-window = {write-to-disk = true;};
     "Mod+S".action.screenshot-window = {write-to-disk = true;};
 
