@@ -131,5 +131,11 @@ in {
       icon = "https://www.openwebui.com/favicon.ico";
       definedAliases = ["owu" "open-webui" "@ai"];
     };
+    searxng = {
+      name = "SearXNG";
+      urls = [{template = "https://searx.js0ny.net/?q={searchTerms}";}];
+      icon = "https://searx.js0ny.net/favicon.ico";
+      definedAliases = ["sx" "@searxng"];
+    };
   };
 }

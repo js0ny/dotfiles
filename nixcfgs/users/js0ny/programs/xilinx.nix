@@ -34,7 +34,7 @@ in {
           "sudo mkdir -p /opt/Xilinx"
           "echo 'source /opt/Xilinx/Vivado/2022.2/settings64.sh' >> ${xilinxBoxHome}/.bashrc"
           "echo 'source /opt/Xilinx/Vitis/2022.2/settings64.sh' >> ${xilinxBoxHome}/.bashrc"
-          "echo 'alias vitis=\"${xilinxBoxHome}/.vitis-wr.sh\"' >> ${xilinxBoxHome}/.bashrc"
+          # "echo 'alias vitis=\"${xilinxBoxHome}/.vitis-wr.sh\"' >> ${xilinxBoxHome}/.bashrc"
         ];
       };
     };
