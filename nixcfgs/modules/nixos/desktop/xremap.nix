@@ -1,4 +1,24 @@
-{...}: {
+{...}: let
+  _nuphyAir75V2Inputs = [
+    "usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-event-kbd"
+    "usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-hidraw"
+    "usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-if01-event-kbd"
+    "usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-if01-event-mouse"
+    "usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-if01-hidraw"
+    "usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-if01-mouse"
+    "usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-if02-hidraw"
+    "usb-NuPhy_NuPhy_Air75_V2-event-if01"
+    "usb-NuPhy_NuPhy_Air75_V2-event-kbd"
+    "usb-NuPhy_NuPhy_Air75_V2-hidraw"
+    "usb-NuPhy_NuPhy_Air75_V2-if01-event-joystick"
+    "usb-NuPhy_NuPhy_Air75_V2-if01-event-kbd"
+    "usb-NuPhy_NuPhy_Air75_V2-if01-event-mouse"
+    "usb-NuPhy_NuPhy_Air75_V2-if01-hidraw"
+    "usb-NuPhy_NuPhy_Air75_V2-if01-mouse"
+    "usb-NuPhy_NuPhy_Air75_V2-if02-hidraw"
+  ];
+  nuphyAir75V2Inputs = map (name: "/dev/input/by-id/" + name) _nuphyAir75V2Inputs;
+in {
   imports = [
     ../hardware/uinput.nix
   ];
@@ -12,7 +32,7 @@
 
   services.xremap = {
     enable = true;
-    withHypr = true;
+    withGnome = true;
     # modmap: single key
     serviceMode = "user";
     userName = "js0ny";
@@ -21,13 +41,7 @@
         {
           name = "Global";
           device = {
-            not = [
-              ### QMK Keyboards
-              # Nuphy Air 75 V2
-              "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-if01-event-kbd"
-              "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-event-kbd"
-              "/dev/input/by-id/usb-Nordic_Semiconductor_NuPhy_Air75_V2_Dongle-if01-event-mouse"
-            ];
+            not = nuphyAir75V2Inputs;
           };
           remap = {
             "KEY_CAPSLOCK" = {
@@ -37,29 +51,36 @@
             };
           };
         }
+        {
+          # Mouse Key code:
+          # * BTN_EXTRA -> Forward button
+          # * BTN_SIDE  -> Back button
+          name = "Mouse";
+          device = {
+            not = nuphyAir75V2Inputs;
+          };
+          remap = {
+            "BTN_EXTRA" = "KEY_ENTER";
+          };
+        }
       ];
       keymap = [
-        # {
-        #   name = "IM Navigator - Alt-Up/Down";
-        #   application = {
-        #     only = [
-        #       "org.telegram.desktop"
-        #       "telegram-desktop"
-        #       "io.github.kukuruzka165.materialgram"
-        #       "materialgram"
-        #       "com.ayugram.desktop"
-        #       "wechat"
-        #     ];
-        #   };
-        #   remap = {
-        #     "M-j" = "M-down";
-        #     "M-k" = "M-up";
-        #   };
-        # }
+        {
+          name = "IM Navigator - Alt-Up/Down";
+          application = {
+            only = [
+              "wechat"
+            ];
+          };
+          remap = {
+            "M-j" = "M-down";
+            "M-k" = "M-up";
+          };
+        }
         {
           name = "IM Navigator - Ctrl-Up/Down";
           application = {
-            only = ["qq"];
+            only = ["QQ"];
           };
           remap = {
             "M-j" = "C-down";
@@ -69,7 +90,7 @@
         {
           name = "Zotero PDF Navigator";
           application = {
-            only = ["zotero"];
+            only = ["Zotero"];
           };
           remap = {
             "M-j" = "KEY_PAGEDOWN";

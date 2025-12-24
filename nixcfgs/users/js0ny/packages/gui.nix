@@ -4,7 +4,6 @@
   config,
   ...
 }: let
-  # FIXME: This will block the desktop files
   mkFcitxIM = builtins.map (
     p:
       lib.hiPrio (
@@ -137,12 +136,6 @@ in {
     GOLDENDICT_FORCE_WAYLAND = 1;
     NIXOS_OZONE_WL = 1;
   };
-
-  # TODO: This is a dependency of `feishin` (EOL)
-  # Once the new version is published, delete this
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-36.9.5"
-  ];
 
   # TODO: This is a workaround since upstram did not implement p.name for ticktick
   # xdg.desktopEntries."ticktick" = {

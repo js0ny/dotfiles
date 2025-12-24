@@ -142,6 +142,7 @@ in {
     "file:///home/${username}/Atelier Atelier"
     "file:///home/${username}/Downloads Downloads"
   ];
+  xdg.configFile."gtk-3.0/bookmarks".force = true;
 
   xdg.terminal-exec = {
     enable = true;

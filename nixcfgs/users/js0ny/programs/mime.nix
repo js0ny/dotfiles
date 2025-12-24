@@ -14,6 +14,7 @@
       "text/x-patch" # .patch .diff
       "text/x-devicetree-source" # .dts
       "text/x-nix" # .nix (custom defined below)
+      "text/x-pdx-descriptor" # .mod (custom defined below)
     ]
     ++ [
       "text/csv"
@@ -113,6 +114,22 @@ in {
           <sub-class-of type="text/plain"/>
         </mime-type>
       </mime-info>
+    '';
+    # Mod descriptor file for Paradox games
+    "mime/packages/pdx-mod-descriptor.xml".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+          <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+            <mime-type type="text/x-pdx-descriptor">
+              <comment>Paradox Mod Descriptor</comment>
+              <sub-class-of type="text/plain"/>
+              <glob pattern="*.mod" weight="80"/> <magic priority="80">
+                <match value="name=" type="string" offset="0:200"/>
+                <match value="tags=" type="string" offset="0:200"/>
+                <match value="version=" type="string" offset="0:200"/>
+                <match value="supported_version=" type="string" offset="0:200"/>
+              </magic>
+            </mime-type>
+          </mime-info>
     '';
   };
 }
