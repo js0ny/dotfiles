@@ -6,6 +6,13 @@
     {package = pkgs.gnomeExtensions.paperwm;}
   ];
   dconf.settings = {
+    # Inspect window class with <Alt>F2 -> `lg`
+    "org/gnome/shell/extensions/paperwm" = {
+      winprops = [
+        ''{"wm_class":"dev.benz.walker","scratch_layer":true}''
+        ''{"wm_class":"org.pulseaudio.pavucontrol","scratch_layer":true}''
+      ];
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       screensaver = [""];
     };
@@ -47,9 +54,6 @@
       # Use AATWS
       live-alt-tab = [];
       live-alt-tab-backward = [];
-    };
-    "org/gnome/shell/extensions/paperwm" = {
-      winprops = [''{"wm_class":"dev.benz.walker","scratch_layer":true}''];
     };
   };
 }
