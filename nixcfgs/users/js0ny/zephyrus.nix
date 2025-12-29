@@ -41,7 +41,7 @@ in {
     # ./programs/xilinx.nix
     ./programs/mime.nix
     ./programs/zed-editor.nix
-    ./programs/rime.nix
+    ./programs/rime
     ./programs/sdcv.nix
     ./programs/fzf.nix
     ./programs/libreoffice.nix

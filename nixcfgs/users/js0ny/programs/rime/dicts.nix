@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   version = "v13.3.12";
   rimeWanxiang = pkgs.fetchzip {
     url = "https://github.com/amzxyz/rime_wanxiang/releases/download/${version}/rime-wanxiang-zrm-fuzhu.zip";
@@ -87,7 +83,6 @@
     then "Library/Rime"
     else ".local/share/fcitx5/rime";
 in {
-  imports = [./fcitx.nix];
   home.file.${rimePath} = {
     source = rimeConfigFiltered;
     recursive = true;
@@ -172,15 +167,4 @@ in {
       enable = true;
     };
   };
-
-  home.activation.deployRime =
-    if pkgs.stdenv.isDarwin
-    then
-      lib.hm.dag.entryAfter ["writeBoundary"] ''
-        /Library/Input\ Methods/Squirrel.app/Contents/MacOS/Squirrel --reload
-      ''
-    else
-      lib.hm.dag.entryAfter ["writeBoundary"] ''
-        # ${pkgs.kdePackages.qttools}/bin/qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://config/addon/rime/deploy" ""
-      '';
 }

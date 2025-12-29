@@ -18,7 +18,7 @@
     ./programs/firefox
     ./programs/emacs.nix
     ./programs/zed-editor.nix
-    ./programs/rime.nix
+    ./programs/rime
     ./programs/sdcv.nix
     ./programs/fzf.nix
     ./programs/sops.nix
@@ -46,6 +46,17 @@
 
     ../../modules/home/dev/nix.nix
   ];
+
+  targets.darwin.defaults = {
+    ".GlobalPreferences" = {
+      # Accent Colour: Pink
+      "AppleAccentColor" = 6;
+      # Folder Colour
+      "AppleIconAppearanceTintColor" = "Yellow";
+      # Icon & Widget Style
+      "AppleInterfaceStyle" = "Dark";
+    };
+  };
 
   home.stateVersion = "25.05";
 }
