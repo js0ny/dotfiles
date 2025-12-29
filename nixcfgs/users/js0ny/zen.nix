@@ -33,7 +33,8 @@
     ./programs/anki.nix
     ./programs/sioyek.nix
     # ./programs/retroarch.nix # Package broken on macOS
-    ./programs/duti.nix
+    ./programs/darwin/duti.nix
+    ./programs/darwin/alt-tab.nix
 
     ../../modules/home/do-not-track.nix
     ../../modules/home/darwin.nix
