@@ -10,7 +10,7 @@
   sioyek = "info.sioyek.sioyek";
 
   defaultApps = {
-    "${gvim}" = ["md" "json" "js" "txt" "xml"];
+    "${gvim}" = ["md" "json" "js" "txt" "xml" "nix" "yaml" "lock"];
     "${iina}" = ["mp4" "mkv"];
     # "${firefox}" = ["html"];
     "${keka}" = ["7z" "zip" "rar" "tar"];

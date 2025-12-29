@@ -35,6 +35,7 @@
     # ./programs/retroarch.nix # Package broken on macOS
     ./programs/darwin/duti.nix
     ./programs/darwin/alt-tab.nix
+    ./programs/darwin/iina.nix
 
     ../../modules/home/do-not-track.nix
     ../../modules/home/darwin.nix
