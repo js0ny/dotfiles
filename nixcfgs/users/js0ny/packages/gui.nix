@@ -81,13 +81,7 @@ in {
 
       pcloud
       signal-desktop
-      # Use Wayland for Jetbrains
-      # (jetbrains.idea-ultimate.override {
-      #   vmopts = ''-Dawt.toolkit.name=WLToolkit'';
-      # })
-      (jetbrains.rider.override {
-        vmopts = ''-Dawt.toolkit.name=WLToolkit'';
-      })
+      siyuan
       localsend
       cherry-studio
       kdePackages.kdeconnect-kde
@@ -119,6 +113,14 @@ in {
       dconf-editor
       fsearch # Everything-like search tool
       kdePackages.elisa
+
+      # Use Wayland for Jetbrains
+      # (jetbrains.idea-ultimate.override {
+      #   vmopts = ''-Dawt.toolkit.name=WLToolkit'';
+      # })
+      (jetbrains.rider.override {
+        vmopts = ''-Dawt.toolkit.name=WLToolkit'';
+      })
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

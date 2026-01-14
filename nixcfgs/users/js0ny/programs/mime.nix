@@ -26,7 +26,7 @@
     "image/png"
     "image/gif"
     "image/bmp"
-    # "image/avif"
+    "image/avif"
     "image/webp"
   ];
   audio = [
@@ -55,7 +55,10 @@
   # Image Viewer:
   #     gwenview: keyboard driven, high compatibility
   #     loupe: Performance is incredible
-  imageViewers = "org.kde.gwenview.desktop;org.gnome.Loupe.desktop";
+  # NOTE:
+  # Gwenview cannot open avif images properly
+  # See: https://github.com/NixOS/nixpkgs/issues/351863
+  imageViewers = "org.gnome.Loupe.desktop;mpv.desktop;org.kde.gwenview.desktop";
   audioPlayers = "mpv.desktop;org.kde.elisa";
   browsers = "firefox.desktop;chromium-browser.desktop";
   archiveManager = "org.gnome.FileRoller.desktop;org.kde.ark.desktop;peazip.desktop";
@@ -84,12 +87,6 @@ in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         "application/vnd.openxmlformats-officedocument.presentationml.presentation"
       ]
-      // {
-        # NOTE:
-        # Gwenview cannot open avif images properly
-        # See: https://github.com/NixOS/nixpkgs/issues/351863
-        "image/avif" = "org.gnome.Loupe.desktop;mpv.desktop";
-      }
       # Audio:
       #     music: elisa: fully featured, good cjk support
       #     audio: mpv: simple and fast

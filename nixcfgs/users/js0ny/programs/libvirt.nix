@@ -28,7 +28,6 @@ in {
   dconf.settings = {
     "org/virt-manager/virt-manager" = {
       xmleditor-enabled = true;
-      firmware = "uefi";
     };
     "org/virt-manager/virt-manager/console" = {
       "grab-keys" = "65513,65507";

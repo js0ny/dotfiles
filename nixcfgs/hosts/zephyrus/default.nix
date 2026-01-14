@@ -51,8 +51,8 @@
   # Hostname
   networking.hostName = "zephyrus";
 
-  # Use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # TODO: Use LTS kernel
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # Use unfree software
   nixpkgs.config.allowUnfree = true;
