@@ -125,10 +125,10 @@
             app-id = "^anki$";
             title = "^Add$";
           }
-          # Dolphin compressing files
+          # Dolphin file operations
           {
             app-id = "^org.kde.dolphin$";
-            title = "^Compressing.*$";
+            title = "^(Copying|Compressing).*$";
           }
           {
             app-id = "^thunar$";

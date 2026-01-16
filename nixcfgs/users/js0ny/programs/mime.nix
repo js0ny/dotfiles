@@ -32,6 +32,7 @@
   audio = [
     "audio/flac"
     "audio/vnd.wave" # .wav
+    "audio/x-vorbis+ogg" # .ogg
   ];
   browser = [
     "text/html"
