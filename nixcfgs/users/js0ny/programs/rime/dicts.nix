@@ -261,6 +261,12 @@ in {
         山海旅探\tujhllvtj\t1000
         此事平平无奇\tciuipypywuqi\t1000
         此事平平无奇\tciui\t1000
+        玉玉\tyvyv\t1000
+        玉玉了\tyvyvle\t1000
+        玉玉症\tyvyvvg\t1000
+        温都尔汗\twfduerhj\t1000
+        哈基米\thajimi\t1000
+        乌角鲨\twujcua\t1000
       '';
       # 词序有点问题，10 也比默认词典的高，感觉得换成 user.dict.yaml
       # 仏\tfo\t10
@@ -270,7 +276,8 @@ in {
       # 仏山\tfouj\t10
       enable = true;
     };
-    # 一个用 user.dict.yaml 格式写的词典样例，写起来太麻烦了，作者似乎也没弄转换器
+    # TODO: 一个用 user.dict.yaml 格式写的词典样例，写起来太麻烦了，作者似乎也没弄转换器
+    # 似乎没有用，后续研究
     "${rimePath}/user.dict.yaml" = {
       text = ''
         # vim:noexpandtab

@@ -32,6 +32,7 @@
     ./programs/kitty.nix
     ./programs/anki.nix
     ./programs/sioyek.nix
+    ./programs/telegram.nix
     # ./programs/retroarch.nix # Package broken on macOS
     ./programs/darwin/duti.nix
     ./programs/darwin/alt-tab.nix
