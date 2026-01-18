@@ -177,11 +177,12 @@ in {
     "${rimePath}/custom_phrase.txt" = {
       text = builtins.replaceStrings ["\\t"] ["\t"] ''
         #给自定义用户词扩展一个换行:\n, 制表符：\t, 回车符：\r, 空格：\s
-        nixos\tNixOS\t1000
+        NixOS\tnixos\t1000
         国族\tgozu\t1000
         许珀尔玻瑞亚\txvpoerborvya\t1000
         许珀尔玻瑞亚\thyperborea\t1000
         苏格兰低地\tsugeljdidi\t1000
+        英葡联盟\tyypulmmg\t1000
         辉格主义\thvgevuyi\t1000
         伦敦条约\tlpdptcyt\t1000
         凯皮帽\tklpimk\t1000
@@ -258,6 +259,8 @@ in {
         羊陆之交\tyhluvijc\t1000
         小丑牌\tbalatro\t1000
         山海旅探\tujhllvtj\t1000
+        此事平平无奇\tciuipypywuqi\t1000
+        此事平平无奇\tciui\t1000
       '';
       # 词序有点问题，10 也比默认词典的高，感觉得换成 user.dict.yaml
       # 仏\tfo\t10

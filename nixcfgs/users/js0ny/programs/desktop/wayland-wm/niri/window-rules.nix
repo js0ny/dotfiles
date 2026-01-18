@@ -60,6 +60,10 @@
             title = "^Picture in picture$";
           }
           {
+            title = "^Recordings & Screenshots$";
+            app-id = "^steam$";
+          }
+          {
             title = "^Friends List$";
             app-id = "^steam$";
           }
