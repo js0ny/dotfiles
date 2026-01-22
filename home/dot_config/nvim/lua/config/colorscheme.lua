@@ -41,7 +41,7 @@ local function get_system_theme()
   return background
 end
 
-vim.cmd.colorscheme("gruvbox-material")
+vim.cmd.colorscheme("catppuccin")
 
 -- if get_system_theme() == 'dark' then
 --   vim.o.background = 'dark'
