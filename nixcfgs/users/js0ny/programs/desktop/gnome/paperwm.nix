@@ -13,6 +13,7 @@
         ''{"wm_class":"dev.benz.walker","scratch_layer":true}''
         ''{"wm_class":"org.pulseaudio.pavucontrol","scratch_layer":true}''
         ''{"wm_class":"mpv","scratch_layer":true}''
+        ''{"wm_class":"org.gnome.NautilusPreviewer","scratch_layer":true}''
         ''{"wm_class":"terminal-popup","scratch_layer":true}''
         ''{"wm_class":"fsearch","scratch_layer":true}''
         ''{"wm_class":"QQ","title":"资料卡","scratch_layer":true}''
