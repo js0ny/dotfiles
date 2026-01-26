@@ -267,6 +267,11 @@ in {
         温都尔汗\twfduerhj\t1000
         哈基米\thajimi\t1000
         乌角鲨\twujcua\t1000
+        卡尔曼滤波\tkaermjlvbo\t1000
+        结社法\tjxuefa\t1000
+        胜兵必骄\tugbybijc\t1000
+        败兵必哀\tblbybiai\t1000
+        凉爽的夏夜\tlduddexwye\t1000
       '';
       # 词序有点问题，10 也比默认词典的高，感觉得换成 user.dict.yaml
       # 仏\tfo\t10

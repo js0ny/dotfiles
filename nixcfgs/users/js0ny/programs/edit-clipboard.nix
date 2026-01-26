@@ -62,6 +62,7 @@
         # Read clipboard into temp file
         $PASTE_CMD > "$TMPFILE" || {
             echo "Error: Failed to read from clipboard" >&2
+            notify-send --app-name "edit-clipboard" "Error: Failed to read from clipboard"
             rm -f "$TMPFILE"
             return 1
         }

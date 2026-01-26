@@ -90,7 +90,7 @@ in {
       protonvpn-gui
       proton-pass
       goldendict-ng
-      kdePackages.kdenlive
+      # kdePackages.kdenlive # Cannot build on my machine
       gimp
       rustdesk
       remmina
@@ -113,6 +113,8 @@ in {
       dconf-editor
       fsearch # Everything-like search tool
       kdePackages.elisa
+      lollypop
+      showmethekey
 
       # Use Wayland for Jetbrains
       # (jetbrains.idea-ultimate.override {

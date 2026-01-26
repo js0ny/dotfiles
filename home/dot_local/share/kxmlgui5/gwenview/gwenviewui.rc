@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
-<gui name="gwenview" version="70">
+<gui name="gwenview" version="71">
  <MenuBar>
   <Menu name="file">
    <Action name="file_save"/>
@@ -83,6 +83,10 @@
    <Separator/>
    <Action name="go_start_page"/>
   </Menu>
+  <Menu name="settings">
+   <text>Settings</text>
+   <Action group="show_merge" name="window-colorscheme-menu"/>
+  </Menu>
  </MenuBar>
  <ToolBar name="mainToolBar" noMerge="1">
   <text>Main Toolbar</text>
@@ -101,21 +105,18 @@
   <Action name="hamburger_menu"/>
  </ToolBar>
  <ActionProperties scheme="Default">
+  <Action name="edit_cut" shortcut="Ctrl+X"/>
+  <Action name="file_quit" shortcut="Ctrl+Q; Q"/>
   <Action name="fullscreen" priority="0"/>
   <Action name="go_next" shortcut="]; N"/>
-  <Action name="edit_cut" shortcut="Ctrl+X"/>
   <Action name="go_previous" shortcut="[; P"/>
-  <Action name="file_quit" shortcut="Ctrl+Q; Q"/>
-  <Action name="view_zoom_to_fit" shortcut="Z"/>
-  <Action name="toggle_thumbnailbar" shortcut="Ctrl+B; T"/>
   <Action name="open_kcommand_bar" shortcut="Ctrl+Alt+I; Ctrl+Shift+P"/>
-  <Action name="view" shortcut="V; Space"/>
   <Action name="toggle_operations_sidebar" shortcut="E"/>
+  <Action name="toggle_thumbnailbar" shortcut="Ctrl+B; T"/>
+  <Action name="view" shortcut="V; Space"/>
   <Action name="view_toggle_spotlightmode" shortcut="O"/>
   <Action name="view_zoom_in" shortcut="=; Ctrl+="/>
   <Action name="view_zoom_out" shortcut="Ctrl+-; -"/>
+  <Action name="view_zoom_to_fit" shortcut="Z"/>
  </ActionProperties>
 </gui>
-<!--
-vim:ft=xml
--->

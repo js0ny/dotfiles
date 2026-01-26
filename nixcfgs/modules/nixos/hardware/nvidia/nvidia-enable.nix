@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -15,5 +19,5 @@
     enable = true;
     enable32Bit = true;
   };
-  services.ollama.acceleration = "cuda";
+  services.ollama.package = pkgs.ollama-cuda;
 }

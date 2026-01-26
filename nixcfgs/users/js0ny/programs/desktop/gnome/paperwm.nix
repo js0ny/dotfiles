@@ -7,14 +7,20 @@
   ];
   dconf.settings = {
     # Inspect window class with <Alt>F2 -> `lg`
+    # scratch_layer: true makes the window float above others
     "org/gnome/shell/extensions/paperwm" = {
       winprops = [
         ''{"wm_class":"dev.benz.walker","scratch_layer":true}''
         ''{"wm_class":"org.pulseaudio.pavucontrol","scratch_layer":true}''
+        ''{"wm_class":"mpv","scratch_layer":true}''
+        ''{"wm_class":"terminal-popup","scratch_layer":true}''
+        ''{"wm_class":"fsearch","scratch_layer":true}''
+        ''{"wm_class":"QQ","title":"资料卡","scratch_layer":true}''
+        ''{"wm_class":"","title":"Floating Window - Show Me The Key","scratch_layer":true}''
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      screensaver = [""];
+      screensaver = ["<Alt><Super>i"];
     };
     "org/gnome/shell/extensions/paperwm/keybindings" = {
       close-window = ["<Super>q"];
