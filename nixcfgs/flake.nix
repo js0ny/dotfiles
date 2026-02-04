@@ -59,6 +59,10 @@
     };
 
     stylix.url = "github:nix-community/stylix";
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -82,6 +86,7 @@
     nix-index-database,
     walker,
     stylix,
+    nixpak,
     ...
   } @ inputs: let
     overlays = [

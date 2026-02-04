@@ -71,7 +71,7 @@ in {
       };
     };
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/deep-oceanic-next.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/material-palenight.yaml";
     image = ./wallpaper.jpg;
     polarity = "dark";
   };

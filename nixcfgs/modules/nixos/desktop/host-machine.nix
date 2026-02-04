@@ -12,6 +12,7 @@
     usbutils
     v4l-utils
     f2fs-tools
+    openvpn
   ];
 
   programs.gpu-screen-recorder.enable = true;

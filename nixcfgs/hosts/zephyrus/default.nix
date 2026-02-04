@@ -16,7 +16,7 @@
     ../../modules/nixos/desktop/laptop.nix
 
     # hardware drivers
-    ../../modules/nixos/hardware/nvidia/nvidia-enable.nix
+    ../../modules/nixos/hardware/nvidia/nvidia-disable.nix
 
     # udev rules
     ../../modules/nixos/hardware/udev/basys3.nix

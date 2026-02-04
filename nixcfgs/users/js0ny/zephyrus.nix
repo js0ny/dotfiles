@@ -80,6 +80,7 @@ in {
     ./programs/feishin.nix
     ./programs/fsearch.nix
     ./programs/elisa.nix
+    ./programs/lollypop.nix
 
     # Desktop Linux
     ./programs/desktop/gnome
@@ -152,6 +153,8 @@ in {
       ];
     };
   };
+
+  programs.distrobox.enable = true;
 
   home.stateVersion = "25.05";
 }

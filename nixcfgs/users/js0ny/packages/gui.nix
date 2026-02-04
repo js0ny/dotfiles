@@ -113,7 +113,6 @@ in {
       dconf-editor
       fsearch # Everything-like search tool
       kdePackages.elisa
-      lollypop
       showmethekey
 
       # Use Wayland for Jetbrains
