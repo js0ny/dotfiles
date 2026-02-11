@@ -67,5 +67,6 @@ in {
   in {
     "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
     "/usr/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
+    "/home/js0ny/.local/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
   };
 }

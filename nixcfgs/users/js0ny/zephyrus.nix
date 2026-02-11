@@ -72,7 +72,7 @@ in {
     ./programs/block-desktop-entries.nix
     ./programs/pwa.nix
     ./programs/walker.nix
-    ./programs/sioyek.nix
+    ./programs/sioyek
     ./programs/celluloid.nix
     ./programs/picard.nix
     ./programs/cider-2.nix

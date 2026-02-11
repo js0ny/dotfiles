@@ -1,14 +1,33 @@
-{...}: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  sioyekCopyScript = pkgs.writeShellApplication {
+    name = "sioyek-copy-page";
+    runtimeInputs = with pkgs;
+      [poppler-utils]
+      ++ (
+        if pkgs.stdenv.isLinux
+        then with pkgs; [wl-clipboard libnotify]
+        else []
+      );
+    text = builtins.readFile ./sioyek-copy-page.sh;
+  };
+in {
+  xdg.configFile."sioyek/prefs_user.config".text = ''
+    new_command _copy_page_to_clipboard ${lib.getExe sioyekCopyScript} %{page_number} %{file_path}
+    default_dark_mode 1
+    font_size 14
+    case_sensitive_search 0
+    super_fast_search 1
+    search_url_d https://duckduckgo.com/?q=
+    search_url_e https://ai.js0ny.net/?models=qwen%2Fqwen3-235b-a22b-2507&q=explain-
+  '';
   programs.sioyek = {
     enable = true;
     # prefs_user.config
-    config = {
-      default_dark_mode = "1";
-      font_size = "14";
-      case_sensitive_search = "0";
-      super_fast_search = "1";
-      search_url_d = "https://duckduckgo.com/?q=";
-    };
     bindings = {
       ## Movement
       "screen_down" = "J";
@@ -51,6 +70,9 @@
 
       "command" = "<A-x>";
       "search" = "<C-f>";
+
+      ## User Defined Commands
+      "_copy_page_to_clipboard" = "<A-c>";
     };
   };
 }
