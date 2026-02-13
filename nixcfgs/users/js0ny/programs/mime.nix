@@ -98,7 +98,8 @@ in {
         "x-scheme-handler/tonsite"
       ]
       // mkAssoc archiveManager archive
-      // mkAssoc "mpv.desktop" video;
+      // mkAssoc "mpv.desktop" video
+      // {"application/epub+zip" = "com.github.johnfactotum.Foliate.desktop";};
   };
   home.sessionVariables.BROWSER = "firefox";
 

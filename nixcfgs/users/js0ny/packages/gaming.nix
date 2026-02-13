@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  noname = pkgs.callPackage ../../../pkgs/noname/default.nix {};
   mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
   mkMergedJson = mergetools.mkMergedJson;
   mkMergedIni = mergetools.mkMergedIni;
@@ -113,6 +114,8 @@ in {
 
     # Memory Scanner (Cheat Engine Alt.)
     scanmem
+
+    noname
   ];
   imports = [
     ../programs/retroarch.nix

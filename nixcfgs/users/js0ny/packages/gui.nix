@@ -114,6 +114,7 @@ in {
       fsearch # Everything-like search tool
       kdePackages.elisa
       showmethekey
+      readest
 
       # Use Wayland for Jetbrains
       # (jetbrains.idea-ultimate.override {

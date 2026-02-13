@@ -64,6 +64,7 @@
       aria2
       gocryptfs
       uv
+      opencode
     ]
     ++ (
       if pkgs.stdenv.isDarwin

@@ -9,5 +9,7 @@
     SAM_CLI_TELEMETRY = "0";
     AZURE_CORE_COLLECT_TELEMETRY = "0";
     GEMINI_TELEMETRY_ENABLED = "false";
+    SCARF_NO_ANALYTICS = "true";
+    ANONYMIZED_TELEMETRY = "false";
   };
 }

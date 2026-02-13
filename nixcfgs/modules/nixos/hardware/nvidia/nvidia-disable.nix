@@ -20,5 +20,6 @@
     # enable = false;
     modesetting.enable = false;
     powerManagement.enable = false;
+    dynamicBoost.enable = false;
   };
 }

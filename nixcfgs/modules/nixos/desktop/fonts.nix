@@ -67,6 +67,6 @@ in {
   in {
     "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
     "/usr/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
-    "/home/js0ny/.local/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
+    # Note: Binding to $HOME is not recommended since this binding process executes before mounting $HOME
   };
 }
