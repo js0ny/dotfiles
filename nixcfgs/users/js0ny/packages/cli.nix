@@ -65,6 +65,7 @@
       gocryptfs
       uv
       opencode
+      p7zip
     ]
     ++ (
       if pkgs.stdenv.isDarwin

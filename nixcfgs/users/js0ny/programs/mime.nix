@@ -99,7 +99,12 @@ in {
       ]
       // mkAssoc archiveManager archive
       // mkAssoc "mpv.desktop" video
-      // {"application/epub+zip" = "com.github.johnfactotum.Foliate.desktop";};
+      // {
+        "application/epub+zip" = "com.github.johnfactotum.Foliate.desktop";
+        # Loupe does not support dds
+        # .dds Microsoft DirectDraw Surface
+        "image/x-dds" = "mpv.desktop";
+      };
   };
   home.sessionVariables.BROWSER = "firefox";
 

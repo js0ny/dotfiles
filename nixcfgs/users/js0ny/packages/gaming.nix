@@ -116,6 +116,8 @@ in {
     scanmem
 
     noname
+
+    steamcmd
   ];
   imports = [
     ../programs/retroarch.nix

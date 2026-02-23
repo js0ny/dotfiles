@@ -96,9 +96,10 @@
       (final: prev: {
         caelestia-shell = caelestia-shell.packages.x86_64-linux.caelestia-shell;
       })
-      (final: pref: {
+      (final: prev: {
         zen-browser = zen-browser.packages.x86_64-linux.zen-browser;
       })
+      (import ./overlays/steamcmd.nix)
     ];
     forSystem = system:
       import nixpkgs {

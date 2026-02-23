@@ -221,6 +221,7 @@ in {
   };
   xdg.configFile."run-or-raise/shortcuts.conf". text = ''
     <Super>b,firefox,,
+    <Shift><Super>b,firefox --private-window,,
     <Super>o,obsidian,,
     <Shift><Super>e,fsearch,,
     <Alt><Super>e,xdg-terminal-exec --app-id=terminal-popup yazi

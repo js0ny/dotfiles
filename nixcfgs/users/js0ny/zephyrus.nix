@@ -81,6 +81,7 @@ in {
     ./programs/fsearch.nix
     ./programs/elisa.nix
     ./programs/lollypop.nix
+    ./programs/gallery-dl.nix
 
     # Desktop Linux
     ./programs/desktop/gnome
@@ -96,6 +97,8 @@ in {
     ../../modules/home/programs/lsd.nix
     ../../modules/home/programs/starship.nix
     ../../modules/home/programs/zoxide.nix
+
+    ../../modules/home/dev/c.nix
 
     # Development setup
     ../../modules/home/dev/nix.nix

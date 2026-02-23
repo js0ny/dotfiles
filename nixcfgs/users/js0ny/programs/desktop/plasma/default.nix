@@ -124,6 +124,7 @@ in {
                 showSeconds = "Always";
                 showWeekNumbers = true;
                 use24hFormat = 2;
+                dateDisplayFormat = "BelowTime";
               };
             };
           }
