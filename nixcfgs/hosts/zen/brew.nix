@@ -26,6 +26,7 @@
       "wireshark-app"
       "clash-verge-rev"
       "protonvpn"
+      "openvpn-connect"
 
       # Terminal Emulator
 

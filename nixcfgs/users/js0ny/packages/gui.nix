@@ -123,6 +123,9 @@ in {
       (jetbrains.rider.override {
         vmopts = ''-Dawt.toolkit.name=WLToolkit'';
       })
+      (jetbrains.clion.override {
+        vmopts = ''-Dawt.toolkit.name=WLToolkit'';
+      })
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

@@ -10,7 +10,12 @@
   # Set your time zone.
   time.timeZone = "Europe/London";
 
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
