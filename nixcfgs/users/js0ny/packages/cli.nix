@@ -66,6 +66,7 @@
       uv
       opencode
       p7zip
+      visidata
     ]
     ++ (
       if pkgs.stdenv.isDarwin
