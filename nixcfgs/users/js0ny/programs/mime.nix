@@ -114,6 +114,7 @@ in {
       <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
         <mime-type type="text/x-nix">
           <comment>Nix Source Code</comment>
+          <comment xml:lang="zh_CN">Nix 源代码</comment>
           <glob pattern="*.nix"/>
           <sub-class-of type="text/plain"/>
         </mime-type>
@@ -125,12 +126,27 @@ in {
           <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
             <mime-type type="text/x-pdx-descriptor">
               <comment>Paradox Mod Descriptor</comment>
+              <comment xml:lang="zh_CN">Paradox Mod 描述文件</comment>
               <sub-class-of type="text/plain"/>
               <glob pattern="*.mod" weight="80"/> <magic priority="80">
                 <match value="name=" type="string" offset="0:200"/>
                 <match value="tags=" type="string" offset="0:200"/>
                 <match value="version=" type="string" offset="0:200"/>
                 <match value="supported_version=" type="string" offset="0:200"/>
+              </magic>
+            </mime-type>
+          </mime-info>
+    '';
+    # Nintendo CTR Importable Archive (CIA) File
+    "mime/packages/ctr-cia.xml".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+          <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+            <mime-type type="application/x-ctr-importable-archive">
+              <comment>Nintendo 3DS CTR Importable Archive</comment>
+              <comment xml:lang="zh_CN">任天堂3DS CTR可导入档案 (CIA)</comment>
+              <glob pattern="*.cia"/>
+              <magic priority="50">
+                <match type="string" offset="0" value="\x20\x20\x00\x00\x00\x00\x00\x00"/>
               </magic>
             </mime-type>
           </mime-info>

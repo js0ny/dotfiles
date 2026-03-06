@@ -115,6 +115,7 @@ in {
       kdePackages.elisa
       showmethekey
       readest
+      openclaw
 
       # Use Wayland for Jetbrains
       # (jetbrains.idea-ultimate.override {
@@ -171,4 +172,7 @@ in {
     };
   };
   programs.waveterm.enable = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "openclaw-2026.2.26"
+  ];
 }
