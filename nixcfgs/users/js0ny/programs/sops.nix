@@ -42,6 +42,26 @@ in {
       "ANKI_SYNC_KEY" = {
         key = "anki_sync_key";
       };
+      # OpenClaw secrets
+      "OPENCLAW_GATEWAY_TOKEN" = {
+        key = "openclaw_gateway_token";
+      };
+      "OPENCLAW_TGBOT_TOKEN" = {
+        key = "openclaw_tgbot_token";
+      };
+      "TELEGRAM_USER_ID_AMS" = {
+        key = "telegram_userid_ams";
+      };
+      # Optional OpenClaw secrets (uncomment as needed)
+      # "DISCORD_BOT_TOKEN" = {
+      #   key = "discord_bot_token";
+      # };
+      # "OPENAI_API_KEY" = {
+      #   key = "openai_api_key";
+      # };
+      # "GOOGLE_PLACES_API_KEY" = {
+      #   key = "google_places_api_key";
+      # };
     };
   };
 

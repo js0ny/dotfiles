@@ -11,7 +11,7 @@
       review-heatmap
       # recolor # Use stylix
     ];
-    sync = {
+    profiles."User 1".sync = {
       autoSync = true;
       autoSyncMediaMinutes = 15;
       username = "ankiweb.unusable450@passmail.net";

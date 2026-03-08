@@ -47,3 +47,6 @@ nvim-healthcheck.txt
 private_pid
 private_security
 private_fish_variables
+
+# NixOS local secrets
+nixcfgs/secrets/local.nix

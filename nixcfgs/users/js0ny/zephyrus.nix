@@ -82,6 +82,7 @@ in {
     ./programs/elisa.nix
     ./programs/lollypop.nix
     ./programs/gallery-dl.nix
+    ./programs/readest.nix
 
     # Desktop Linux
     ./programs/desktop/gnome

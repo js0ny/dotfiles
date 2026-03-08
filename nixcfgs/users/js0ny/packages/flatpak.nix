@@ -39,7 +39,7 @@ in {
     "com.qq.QQ"
     "com.tencent.WeChat"
     # "eu.betterbird.Betterbird"
-    # "com.baidu.NetDisk"
+    "com.baidu.NetDisk"
     # "com.discordapp.Discord"
     "com.google.EarthPro"
     "com.wps.Office"
