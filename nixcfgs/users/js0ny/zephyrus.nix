@@ -1,4 +1,3 @@
-# ~/.config/nixcfgs/users/js0ny/default.nix
 {
   pkgs,
   config,
@@ -105,6 +104,8 @@ in {
 
     # Development setup
     ../../modules/home/dev/nix.nix
+
+    ../../modules/home/linux.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

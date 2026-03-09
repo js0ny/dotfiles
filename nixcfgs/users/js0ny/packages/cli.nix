@@ -1,5 +1,9 @@
 # ~/.config/nix-config/common/packages-headless.nix
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.bat.enable = true;
   programs.btop.enable = true;
   programs.delta.enable = true;
@@ -67,6 +71,8 @@
       opencode
       p7zip
       visidata
+      proton-pass-cli
+      pass
     ]
     ++ (
       if pkgs.stdenv.isDarwin
@@ -81,4 +87,8 @@
   programs.nix-index.enable = true;
   programs.nix-index.symlinkToCacheHome = true;
   programs.nix-index-database.comma.enable = true;
+
+  home.sessionVariables = {
+    PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
+  };
 }

@@ -6,5 +6,6 @@
   environment.systemPackages = [
     pkgs.smartmontools
   ];
+  # davfs2 is for WebDAV mounts.
   services.davfs2.enable = true;
 }
