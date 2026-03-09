@@ -84,6 +84,21 @@
           }
         ];
 
+        open-floating = true;
+        default-floating-position = {
+          x = 50;
+          y = 50;
+          relative-to = "bottom-right";
+        };
+      }
+      {
+        matches = [
+          {
+            app-id = "^org.gnome.Loupe$";
+          }
+        ];
+
+        open-floating = true;
         default-floating-position = {
           x = 50;
           y = 50;

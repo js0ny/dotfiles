@@ -59,6 +59,11 @@
     };
 
     stylix.url = "github:nix-community/stylix";
+    nix-openclaw = {
+      url = "github:openclaw/nix-openclaw";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     nixpak = {
       url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -86,10 +91,12 @@
     nix-index-database,
     walker,
     stylix,
+    nix-openclaw,
     nixpak,
     ...
   } @ inputs: let
     overlays = [
+      nix-openclaw.overlays.default
       niri-flake.overlays.niri
       nur.overlays.default
       firefox-addons.overlays.default
@@ -148,6 +155,7 @@
         pkgs = forSystem "x86_64-linux";
         extraSpecialArgs = specialArgs;
         modules = [
+          nix-openclaw.homeManagerModules.openclaw
           ./users/js0ny/zephyrus.nix
           plasma-manager.homeModules.plasma-manager
           nix-flatpak.homeManagerModules.nix-flatpak
@@ -165,6 +173,7 @@
         pkgs = forSystem "aarch64-darwin";
         extraSpecialArgs = specialArgs;
         modules = [
+          nix-openclaw.homeManagerModules.openclaw
           ./users/js0ny/zen.nix
           catppuccin.homeModules.catppuccin
           betterfox-nix.modules.homeManager.betterfox
