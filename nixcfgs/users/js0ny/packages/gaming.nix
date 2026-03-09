@@ -118,6 +118,9 @@ in {
     noname
 
     steamcmd
+
+    # Celeste mod manager (for Steam version)
+    (olympus.override { celesteWrapper = "steam-run"; })
   ];
   imports = [
     ../programs/retroarch.nix
