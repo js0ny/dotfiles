@@ -83,7 +83,7 @@ in {
     ./programs/lollypop.nix
     ./programs/gallery-dl.nix
     ./programs/readest.nix
-    ./programs/openclaw.nix
+    # ./programs/openclaw.nix
     ./programs/libmagic.nix
 
     # Desktop Linux

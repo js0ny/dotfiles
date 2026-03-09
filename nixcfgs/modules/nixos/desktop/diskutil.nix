@@ -6,4 +6,5 @@
   environment.systemPackages = [
     pkgs.smartmontools
   ];
+  services.davfs2.enable = true;
 }

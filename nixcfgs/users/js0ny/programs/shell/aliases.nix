@@ -16,6 +16,7 @@
     aic = "aichat -s";
     aicc = "aichat -c";
     py = "nix run 'nixpkgs#python3'";
+    oc = "opencode";
   };
 
   darwinAliases = {

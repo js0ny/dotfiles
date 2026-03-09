@@ -12,6 +12,7 @@
     Service = {
       Type = "simple";
       ExecStart = "${pkgs.sunsetr}/bin/sunsetr -b";
+      ExecStop = "${pkgs.sunsetr}/bin/sunsetr stop";
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;
