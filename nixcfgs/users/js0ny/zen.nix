@@ -38,7 +38,6 @@
     ./programs/darwin/alt-tab.nix
     ./programs/darwin/iina.nix
 
-    ../../modules/home/do-not-track.nix
     ../../modules/home/darwin.nix
 
     ../../modules/home/programs/lsd.nix

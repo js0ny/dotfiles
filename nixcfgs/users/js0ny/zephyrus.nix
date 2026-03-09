@@ -91,8 +91,6 @@ in {
     ./programs/desktop/gnome/copyous.nix
     ./programs/desktop/wayland-wm/niri
 
-    ../../modules/home/do-not-track.nix
-
     # General Program config
     ../../modules/home/programs/eza.nix
     # ../../modules/home/programs/winboat.nix

@@ -9,7 +9,6 @@ in {
   imports = [
     ../../modules/home/options.nix
     ../../modules/home/do-not-track.nix
-    # ./config.nix
   ];
   home.username = username;
   home.homeDirectory =

@@ -45,7 +45,8 @@
 
     # services
     ../../modules/nixos/services/docker.nix
-    ../../modules/nixos/services/exp.nix
+    ../../modules/nixos/services/syncthing.nix
+    ../../modules/nixos/services/tailscale.nix
   ];
 
   # Hostname
