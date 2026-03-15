@@ -48,6 +48,7 @@ in {
     ./sunsetr.nix
     ./systemd.nix
     ./dunst.nix
+    ./volume-notify.nix
   ];
   home.packages = with pkgs; [
     swayidle # Screensaver

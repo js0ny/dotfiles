@@ -61,16 +61,19 @@ in {
       # spawn-sh "cliphist list | ${launcher} -dmenu | cliphist decode | wl-copy";
       spawn "${launcher}" "-m" "clipboard";
 
+    # See ../volume-notify.nix
     "XF86AudioRaiseVolume".allow-when-locked = true;
     "XF86AudioRaiseVolume".action =
-      spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
+      spawn "volume-notify" "up";
     "XF86AudioLowerVolume".allow-when-locked = true;
     "XF86AudioLowerVolume".action =
-      spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";
+      spawn "volume-notify" "down";
     "XF86AudioMute".allow-when-locked = true;
-    "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+    "XF86AudioMute".action =
+      spawn "volume-notify" "mute";
     "XF86AudioMicMute".allow-when-locked = true;
-    "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
+    "XF86AudioMicMute".action =
+      spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
 
     "XF86MonBrightnessUp" = {
       action = spawn "brightnessctl" "set" "10%+";
