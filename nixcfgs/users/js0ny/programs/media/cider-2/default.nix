@@ -17,11 +17,13 @@
     echo "marketplaceID: 12" >> "$out/theme.yml"
     echo 'version: "25.02"' >> "$out/theme.yml"
   '';
-  mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
+  mergetools =
+    import ../../../../../modules/lib/mergetools.nix
+    {inherit pkgs lib config;};
   mkMergedYaml = mergetools.mkMergedYaml;
   ciderSpaConfig = mkMergedYaml {
     name = "cider-spa-config";
-    target = ".config/sh.cider.genten/spa-config.yml";
+    target = "${config.home.homeDirectory}/.config/sh.cider.genten/spa-config.yml";
     settings = {
       general = {
         language = "zh-CN";
@@ -35,8 +37,8 @@
         appearance = "auto";
         # default: Mojave
         useAdaptiveColors = true;
-        # TODO: Change to "native" when using simple WM
-        # Electron does not render the three buttons in title bar when "native"
+        # NOTE: "native" breaks window controls on tiling WMs (Electron bug).
+        # "default" works on both GNOME and Niri, so keep it.
         titleBarStyle = "default";
         layoutType = "default";
         fonts = {
@@ -81,7 +83,7 @@
   };
 in {
   imports = [
-    ../../../modules/home/programs/cider-2.nix
+    ./lib.nix
     ciderSpaConfig
   ];
 

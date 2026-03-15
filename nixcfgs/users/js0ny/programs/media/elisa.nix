@@ -4,11 +4,11 @@
   lib,
   ...
 }: let
-  mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
+  mergetools = import ../../../../modules/lib/mergetools.nix {inherit pkgs lib config;};
   mkMergeIni = mergetools.mkMergedIni;
   elisarc = mkMergeIni {
     name = "elisarc";
-    target = ".config/elisarc";
+    target = "${config.home.homeDirectory}/.config/elisarc";
     settings = {
       ElisaFileIndexer = {
         "RootPath[$e]" = "$HOME/Music";

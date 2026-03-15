@@ -14,7 +14,7 @@
         exit 1
       }
 
-      # TODO: Add tag search support
+      # DEPRECATED: Consider removing in favour of Obsidian's official CLI.
       rg --line-number --color=always "" |
       fzf --ansi \
           --delimiter : \

@@ -4,11 +4,11 @@
   config,
   ...
 }: let
-  mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
+  mergetools = import ../../../../modules/lib/mergetools.nix {inherit pkgs lib config;};
   mkMergedJson = mergetools.mkMergedJson;
   feishinConfig = mkMergedJson {
     name = "feishin-config";
-    target = ".config/feishin/config.json";
+    target = "${config.home.homeDirectory}/.config/feishin/config.json";
     settings = {
       theme = "system";
       window_has_frame = false;

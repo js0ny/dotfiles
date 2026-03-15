@@ -4,11 +4,11 @@
   config,
   ...
 }: let
-  mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
+  mergetools = import ../../../../modules/lib/mergetools.nix {inherit pkgs lib config;};
   mkMergedJson = mergetools.mkMergedJson;
   readestSettings = mkMergedJson {
     name = "readest-settings";
-    target = ".config/com.bilingify.readest/settings.json";
+    target = "${config.home.homeDirectory}/.config/com.bilingify.readest/settings.json";
     settings = {
       globalViewSettings = {
         serifFont = "LXGW WenKai GB Screen";

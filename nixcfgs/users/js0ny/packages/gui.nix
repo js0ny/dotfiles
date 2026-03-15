@@ -117,6 +117,8 @@ in {
       readest
       openclaw
 
+      kid3
+
       # Use Wayland for Jetbrains
       # (jetbrains.idea-ultimate.override {
       #   vmopts = ''-Dawt.toolkit.name=WLToolkit'';

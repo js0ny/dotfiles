@@ -115,7 +115,6 @@ M.progress = {
   "progress",
 }
 
--- TODO: Implement orgmode
 M.orgmode = {
   function()
     return _G.orgmode.statusline()

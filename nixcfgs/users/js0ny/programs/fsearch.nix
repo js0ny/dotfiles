@@ -4,12 +4,12 @@
   config,
   ...
 }: let
-  mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
+  mergetools = import ../../../modules/lib/mergetools.nix {inherit pkgs lib config;};
   mkMergeIni = mergetools.mkMergedIni;
   # username = config.home.username;
   fsearchConf = mkMergeIni {
     name = "fsearch-conf";
-    target = ".config/fsearch/fsearch.conf";
+    target = "${config.home.homeDirectory}/.config/fsearch/fsearch.conf";
     settings = {
       Interface = {
         single_click_open = false;

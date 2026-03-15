@@ -32,19 +32,51 @@ in {
     ./programs/shell/carapace.nix
     ./programs/shell/direnv.nix
 
-    # Personal Program
-    ./programs/chromium.nix
-    ./programs/firefox
-    ./programs/emacs.nix
-    ./programs/vscode.nix
+    # Browsers
+    ./programs/browsers/chromium.nix
+    ./programs/browsers/firefox
+
+    # Editors
+    ./programs/editors/emacs.nix
+    ./programs/editors/nvim.nix
+    ./programs/editors/neovide.nix
+    ./programs/editors/vscode.nix
+    ./programs/editors/zed-editor.nix
+
+    # Terminals
+    ./programs/terminals/ghostty.nix
+    ./programs/terminals/kitty.nix
+    ./programs/terminals/tmux.nix
+
+    # Media
+    ./programs/media/cider-2
+    ./programs/media/celluloid.nix
+    ./programs/media/elisa.nix
+    ./programs/media/feishin.nix
+    ./programs/media/gallery-dl.nix
+    ./programs/media/lollypop.nix
+    ./programs/media/mpv.nix
+    ./programs/media/obs-studio.nix
+    ./programs/media/picard.nix
+
+    # Productivity
+    ./programs/productivity/anki.nix
+    ./programs/productivity/libreoffice.nix
+    ./programs/productivity/obsidian
+    ./programs/productivity/readest.nix
+    ./programs/productivity/sdcv.nix
+    ./programs/productivity/sioyek
+    ./programs/productivity/thunderbird.nix
+
+    # Social
+    ./programs/social/discord.nix
+    ./programs/social/telegram.nix
+
+    # Utilities & misc
     # ./programs/xilinx.nix
     ./programs/mime.nix
-    ./programs/zed-editor.nix
     ./programs/rime
-    ./programs/sdcv.nix
     ./programs/fzf.nix
-    ./programs/libreoffice.nix
-    ./programs/nvim.nix
     ./programs/ollama.nix
     ./programs/sops.nix
     ./programs/pdf2zh/container.nix
@@ -54,34 +86,14 @@ in {
     ./programs/magick.nix
     ./programs/miniserve.nix
     ./programs/retroarch.nix
-    ./programs/neovide.nix
     ./programs/edit-clipboard.nix
-    ./programs/discord.nix
-    ./programs/mpv.nix
-    ./programs/thunderbird.nix
-    ./programs/obs-studio.nix
-    ./programs/ghostty.nix
-    ./programs/obsidian
     ./programs/aichat.nix
-    ./programs/tmux.nix
-    ./programs/kitty.nix
     ./programs/wine.nix
-    ./programs/anki.nix
     ./programs/libvirt.nix
     ./programs/block-desktop-entries.nix
     ./programs/pwa.nix
     ./programs/walker.nix
-    ./programs/sioyek
-    ./programs/celluloid.nix
-    ./programs/picard.nix
-    ./programs/cider-2.nix
-    ./programs/telegram.nix
-    ./programs/feishin.nix
     ./programs/fsearch.nix
-    ./programs/elisa.nix
-    ./programs/lollypop.nix
-    ./programs/gallery-dl.nix
-    ./programs/readest.nix
     # ./programs/openclaw.nix
     ./programs/libmagic.nix
 

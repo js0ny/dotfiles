@@ -73,6 +73,8 @@
       visidata
       proton-pass-cli
       pass
+      # rar: Unfree, the only way (afaik) to unarchive some very old partition rars
+      rar
     ]
     ++ (
       if pkgs.stdenv.isDarwin

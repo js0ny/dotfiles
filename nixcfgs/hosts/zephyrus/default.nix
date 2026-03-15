@@ -10,6 +10,7 @@
     ../../modules/nixos
     ../../modules/nixos/core/nix-ld.nix
     ../../modules/nixos/core/nftables.nix
+    ../../modules/nixos/core/binfmt.nix
 
     # this is a laptop
     ../../modules/nixos/desktop
@@ -47,6 +48,8 @@
     ../../modules/nixos/services/docker.nix
     ../../modules/nixos/services/syncthing.nix
     ../../modules/nixos/services/tailscale.nix
+    # TODO: Configure restic backup (see the file for setup instructions)
+    # ../../modules/nixos/services/restic.nix
   ];
 
   # Hostname

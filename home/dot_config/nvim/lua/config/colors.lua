@@ -1,7 +1,7 @@
 -- This file *currently* contains the colorscheme for lualine (status line)
 
 local M = {}
--- TODO: Change the palatte when the colorscheme changes
+-- NOTE: Currently only handles catppuccin latte/mocha palettes
 
 if vim.g.colors_name == "catppuccin-latte" then
   M.scheme = require("catppuccin.palettes.latte")

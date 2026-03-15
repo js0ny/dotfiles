@@ -4,11 +4,11 @@
   config,
   ...
 }: let
-  mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
+  mergetools = import ../../../modules/lib/mergetools.nix {inherit pkgs lib config;};
   mkMergedJson = mergetools.mkMergedJson;
   cherryStudioConfig = mkMergedJson {
     name = "cherry-studio-config";
-    target = ".config/cherry-studio/config.json";
+    target = "${config.home.homeDirectory}/.config/cherry-studio/config.json";
     settings = {
       enableDeveloperMode = true;
       enableDataCollection = false;

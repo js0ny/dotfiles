@@ -28,6 +28,6 @@
   systemd.user.tmpfiles.rules = [
     "d ${config.xdg.dataHome}/cargo 0755 ${config.home.username} users -"
     "d ${config.xdg.dataHome}/go 0755 ${config.home.username} users -"
-    "f ${config.xdg.stateHome}/python 0755 ${config.home.username} users -"
+    "d ${config.xdg.stateHome}/python 0755 ${config.home.username} users -"
   ];
 }

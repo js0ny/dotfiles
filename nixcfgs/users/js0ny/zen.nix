@@ -15,24 +15,24 @@
 
     # Programs
     ./programs/aichat.nix
-    ./programs/firefox
-    ./programs/emacs.nix
-    ./programs/zed-editor.nix
+    ./programs/browsers/firefox
+    ./programs/editors/emacs.nix
+    ./programs/editors/zed-editor.nix
     ./programs/rime
-    ./programs/sdcv.nix
+    ./programs/productivity/sdcv.nix
     ./programs/fzf.nix
     ./programs/sops.nix
-    ./programs/nvim.nix
+    ./programs/editors/nvim.nix
     ./programs/pdf2zh/uv.nix
     ./programs/yazi.nix
     ./programs/edit-clipboard.nix
-    ./programs/neovide.nix
-    ./programs/ghostty.nix
-    ./programs/tmux.nix
-    ./programs/kitty.nix
-    ./programs/anki.nix
-    ./programs/sioyek
-    ./programs/telegram.nix
+    ./programs/editors/neovide.nix
+    ./programs/terminals/ghostty.nix
+    ./programs/terminals/tmux.nix
+    ./programs/terminals/kitty.nix
+    ./programs/productivity/anki.nix
+    ./programs/productivity/sioyek
+    ./programs/social/telegram.nix
     # ./programs/retroarch.nix # Package broken on macOS
     ./programs/darwin/duti.nix
     ./programs/darwin/alt-tab.nix

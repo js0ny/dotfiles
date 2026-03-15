@@ -5,10 +5,10 @@
   ...
 }: let
   noname = pkgs.callPackage ../../../pkgs/noname/default.nix {};
-  mergetools = import ../lib/mergetools.nix {inherit pkgs lib config;};
+  mergetools = import ../../../modules/lib/mergetools.nix {inherit pkgs lib config;};
   mkMergedJson = mergetools.mkMergedJson;
   mkMergedIni = mergetools.mkMergedIni;
-  pdxrel = ".local/share/Paradox Interactive";
+  pdxrel = "${config.home.homeDirectory}/.local/share/Paradox Interactive";
   # pdxbase = "${config.home.homeDirectory}/${pdxrel}";
   euvbase = "${config.home.homeDirectory}/.local/share/Steam/steamapps/compatdata/3450310/pfx/drive_c/users/steamuser/Documents/Paradox Interactive/Europa Universalis V";
   paradoxLauncherUserSettings = mkMergedJson {
@@ -29,7 +29,7 @@
   # 经典 $HOME 下拉屎
   pdxSdkSettingsV3 = mkMergedJson {
     name = "pdxSdkaccountJsonV3";
-    target = "PDX/SDK/victoria3/account.json";
+    target = "${config.home.homeDirectory}/PDX/SDK/victoria3/account.json";
     settings = {
       telemetryEnabled = false;
     };
@@ -43,7 +43,7 @@
   };
   pdxSdkTelemetryV3 = mkMergedJson {
     name = "pdxSdktelemetryConsentV3";
-    target = "PDX/SDK/victoria3/telemetry_consent.json";
+    target = "${config.home.homeDirectory}/PDX/SDK/victoria3/telemetry_consent.json";
     settings = {
       telemetry_consent_choice = "denied";
     };
@@ -65,7 +65,7 @@
   };
   prismLauncherCfg = mkMergedIni {
     name = "prism-launcher-config";
-    target = ".local/share/PrismLauncher/prismlauncher.cfg";
+    target = "${config.home.homeDirectory}/.local/share/PrismLauncher/prismlauncher.cfg";
     settings = {
       General = {
         Language = "zh";
@@ -85,7 +85,7 @@
   };
   ryujinxConfig = mkMergedJson {
     name = "ryujinx-config";
-    target = ".config/Ryujinx/Config.json";
+    target = "${config.home.homeDirectory}/.config/Ryujinx/Config.json";
     settings = {
       game_dir = [
         "${config.home.homeDirectory}/Games/ROM/Nintendo - Nintendo Switch"
