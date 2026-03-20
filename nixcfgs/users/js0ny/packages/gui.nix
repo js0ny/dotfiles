@@ -129,6 +129,10 @@ in {
       (jetbrains.clion.override {
         vmopts = ''-Dawt.toolkit.name=WLToolkit'';
       })
+
+      seafile-client
+      seadrive-gui
+      seafile-shared
     ]
     ++ (mkFcitxIM [
       pkgs.neovim-qt

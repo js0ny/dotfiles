@@ -6,6 +6,7 @@
   username = config.home.username;
 in {
   imports = [
+    ./programs/cleaner.nix
     # General config
     ./default.nix
 

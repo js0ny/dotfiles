@@ -75,6 +75,7 @@
       pass
       # rar: Unfree, the only way (afaik) to unarchive some very old partition rars
       rar
+      newsboat
     ]
     ++ (
       if pkgs.stdenv.isDarwin

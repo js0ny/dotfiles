@@ -8,6 +8,7 @@
     pkgs.noto-fonts-color-emoji
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.nur.repos.definfo.sarasa-term-sc-nerd
+    pkgs.nur.repos.guanran928.harmonyos-sans
     pkgs.vollkorn
     pkgs.font-awesome
   ];

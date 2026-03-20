@@ -30,8 +30,8 @@ in {
 
     fonts = {
       sansSerif = {
-        package = pkgs.lxgw-neoxihei;
-        name = "LXGW Neo XiHei";
+        package = pkgs.nur.repos.guanran928.harmonyos-sans;
+        name = "HarmonyOS Sans";
       };
 
       serif = {
@@ -71,7 +71,7 @@ in {
       };
     };
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/material-palenight.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
     image = ./wallpaper.jpg;
     polarity = "dark";
   };
