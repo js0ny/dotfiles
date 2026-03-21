@@ -46,7 +46,7 @@ in {
     # "md.obsidian.Obsidian"
     # "app.zen_browser.zen"
     # "com.vivaldi.Vivaldi"
-    "com.getpostman.Postman"
+    # "com.getpostman.Postman"
     "us.zoom.Zoom"
     # "com.ticktick.TickTick" # cannot run on wayland under flatpak
   ];

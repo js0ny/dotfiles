@@ -223,9 +223,9 @@ lib.mkIf pkgs.stdenv.isLinux {
               # Show Layout Name In Icon
               "ShowLayoutNameInIcon" = ''True'';
               # Use input method language to display text
-              "UseInputMethodLanguageToDisplayText" = ''True'';
+              "UseInputMethodLanguageToDisplayText" = ''False'';
               # Use Per Screen DPI on X11
-              "PerScreenDPI" = ''False'';
+              "PerScreenDPI" = ''True'';
               # Force font DPI on Wayland
               "ForceWaylandDPI" = ''0'';
               # Enable fractional scale under Wayland
