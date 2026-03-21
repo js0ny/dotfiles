@@ -2,19 +2,22 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   mkNixPak = inputs.nixpak.lib.nixpak {
     inherit (pkgs) lib;
     inherit pkgs;
   };
-in
-{
-  # Expose sandboxed app(s) through nixpkgs overlay.
+
+  callNixPak = path:
+    pkgs.callPackage path {
+      inherit mkNixPak;
+    };
+in {
   nixpkgs.overlays = [
     (_: prev: {
-      nixpaks.qq = prev.callPackage ./qq.nix {
-        inherit mkNixPak;
+      nixpaks = {
+        qq = callNixPak ./qq.nix;
+        termius = callNixPak ./termius.nix;
       };
     })
   ];

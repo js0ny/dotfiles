@@ -85,6 +85,7 @@ in {
 
       pcloud
       nixpaks.qq
+      nixpaks.termius
       signal-desktop
       siyuan
       localsend
