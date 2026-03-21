@@ -36,7 +36,7 @@ in {
     # { appId = "com.google.Chrome"; origin = "flathub" }
     # "com.google.Chrome"
     # "com.valvesoftware.Steam"
-    "com.qq.QQ"
+    # "com.qq.QQ"
     "com.tencent.WeChat"
     # "eu.betterbird.Betterbird"
     "com.baidu.NetDisk"

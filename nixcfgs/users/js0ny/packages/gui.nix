@@ -57,6 +57,10 @@
       )
   );
 in {
+  imports = [
+    ../../../hardening/nixpaks/default.nix
+  ];
+
   home.packages = with pkgs;
     [
       # Terminal Emulator
@@ -80,6 +84,7 @@ in {
       papirus-icon-theme
 
       pcloud
+      nixpaks.qq
       signal-desktop
       siyuan
       localsend
