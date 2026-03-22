@@ -45,7 +45,7 @@ set statusline=%<%f\ %h%m%r\ %=\ [%l,%v]\ [%p%%]\ [\ %Y]\ [󱑉\ %{strftime('
 "if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
 "if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
 "
-"set viminfo+=n$XDG_STATE_HOME/vim/viminfo
+set viminfo+=n$XDG_STATE_HOME/vim/viminfo
 "set packpath^=$XDG_DATA_HOME/vim
 "set packpath+=$XDG_DATA_HOME/vim/after
 "set backupdir=$XDG_STATE_HOME/vim/backup
