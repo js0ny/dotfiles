@@ -93,5 +93,6 @@
 
   home.sessionVariables = {
     PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
+    CODEX_HOME = "${config.xdg.configHome}/codex";
   };
 }

@@ -33,22 +33,8 @@ in {
     }
   ];
   services.flatpak.packages = [
-    # { appId = "com.google.Chrome"; origin = "flathub" }
-    # "com.google.Chrome"
-    # "com.valvesoftware.Steam"
-    # "com.qq.QQ"
-    "com.tencent.WeChat"
-    # "eu.betterbird.Betterbird"
     "com.baidu.NetDisk"
-    # "com.discordapp.Discord"
-    "com.google.EarthPro"
     "com.wps.Office"
-    # "md.obsidian.Obsidian"
-    # "app.zen_browser.zen"
-    # "com.vivaldi.Vivaldi"
-    # "com.getpostman.Postman"
-    "us.zoom.Zoom"
-    # "com.ticktick.TickTick" # cannot run on wayland under flatpak
   ];
   services.flatpak.overrides = {
     global = {

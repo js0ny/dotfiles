@@ -68,6 +68,7 @@ in {
     ./programs/productivity/sdcv.nix
     ./programs/productivity/sioyek
     ./programs/productivity/thunderbird.nix
+    ./programs/productivity/zoom-us.nix
 
     # Social
     ./programs/social/discord.nix

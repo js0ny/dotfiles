@@ -18,6 +18,7 @@ in {
       nixpaks = {
         qq = callNixPak ./qq.nix;
         termius = callNixPak ./termius.nix;
+        zoom-us = callNixPak ./zoom-us.nix;
       };
     })
   ];

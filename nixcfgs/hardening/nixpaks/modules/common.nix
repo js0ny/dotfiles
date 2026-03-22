@@ -186,7 +186,7 @@ in {
     bubblewrap = {
       network = lib.mkDefault true;
       sockets = {
-        # do not force wayland
+        wayland = true;
         pulse = true;
       };
 

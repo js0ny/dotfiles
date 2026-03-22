@@ -42,20 +42,22 @@
 
       bubblewrap = {
         bind.rw = [
-          sloth.xdgDocumentsDir
-          sloth.xdgDownloadDir
-          sloth.xdgMusicDir
-          sloth.xdgVideosDir
-          sloth.xdgPicturesDir
+          [
+            (sloth.concat' sloth.homeDir "/.sandbox/downloads")
+            sloth.xdgDownloadDir
+          ]
+          [
+            (sloth.concat' sloth.homeDir "/.sandbox/exchange")
+            (sloth.concat' sloth.homeDir "/Shared")
+          ]
         ];
         bind.ro = [
           "${pkgs.libx11}/lib"
           "${pkgs.libxcb}/lib"
           "${pkgs.krb5.lib}/lib"
           "${pkgs.stdenv.cc.cc.lib}/lib"
-          # "${pkgs.fcitx5-gtk}/lib"
-          # "${pkgs.kdePackages.fcitx5-qt}/lib"
-          # (sloth.envOr "XAUTHORITY" (sloth.concat' sloth.runtimeDir "/.Xauthority"))
+          (sloth.concat'
+            sloth.xdgPicturesDir "/Screenshots")
         ];
         sockets = {
           x11 = false;

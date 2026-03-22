@@ -1,3 +1,4 @@
+# FIXME: Cursor & CEF not working.
 {
   lib,
   pkgs,
@@ -6,21 +7,18 @@
   makeDesktopItem,
   ...
 }: let
-  appId = "com.terminus.Termius";
+  appId = "us.zoom.Zoom";
 
   wrapped = mkNixPak {
     config = {sloth, ...}: {
       app = {
         package = buildEnv {
-          name = "nixpak-termius";
+          name = "nixpak-zoom";
           paths = with pkgs; [
-            termius
-            libglvnd
-            mesa
-            stdenv.cc.cc.lib
+            zoom-us
           ];
         };
-        binPath = "bin/termius-app";
+        binPath = "bin/zoom";
       };
       flatpak.appId = appId;
 
@@ -43,12 +41,6 @@
           (sloth.concat' sloth.homeDir "/Public")
         ];
         bind.ro = [
-          "${pkgs.libglvnd}/lib"
-          "${pkgs.mesa}/lib"
-          "${pkgs.stdenv.cc.cc.lib}/lib"
-          "/etc/passwd"
-          "/etc/group"
-          "/etc/nsswitch.conf"
         ];
         sockets = {
           x11 = false;
@@ -56,8 +48,7 @@
           pipewire = true;
         };
         env = {
-          LD_LIBRARY_PATH = "${pkgs.libglvnd}/lib:${pkgs.mesa}/lib:${pkgs.stdenv.cc.cc.lib}/lib";
-          LIBGL_DRIVERS_PATH = "${pkgs.mesa}/lib/dri";
+          # LD_LIBRARY_PATH =
         };
       };
     };
@@ -70,20 +61,32 @@ in
       wrapped.config.script
       (makeDesktopItem {
         name = appId;
-        desktopName = "Termius";
-        genericName = "Cross-platform SSH client";
-        comment = "The SSH client that works on Desktop and Mobile";
-        exec = "${exePath} --ozone-platform-hint=auto %U";
+        desktopName = "Zoom Workplace";
+        genericName = "Zoom Video Conference";
+        comment = "Zoom Video Conference";
+        exec = "${exePath} %U";
         terminal = false;
-        icon = "${pkgs.termius}/share/icons/hicolor/1024x1024/termius-app.png";
+        icon = "${pkgs.zoom-us}/share/pixmaps/Zoom.png";
         startupNotify = true;
-        startupWMClass = "Termius";
+        startupWMClass = "zoom";
         type = "Application";
         categories = [
           "Network"
+          "Application"
+        ];
+        mimeTypes = [
+          "x-scheme-handler/zoommtg"
+          "x-scheme-handler/zoomus"
+          "x-scheme-handler/tel"
+          "x-scheme-handler/callto"
+          "x-scheme-handler/zoomphonecall"
+          "x-scheme-handler/zoomphonesms"
+          "x-scheme-handler/zoomcontactcentercall"
+          "application/x-zoom"
         ];
         extraConfig = {
           X-Flatpak = appId;
+          X-KDE-Protocols = "zoommtg;zoomus;tel;callto;zoomphonecall;zoomphonesms;zoomcontactcentercall;";
         };
       })
     ];
