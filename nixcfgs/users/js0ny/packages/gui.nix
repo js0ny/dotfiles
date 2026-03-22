@@ -66,7 +66,6 @@ in {
       # Terminal Emulator
       kitty
       alacritty
-      warp-terminal
 
       # PDF Viewer
       kdePackages.okular
@@ -83,7 +82,6 @@ in {
       # Theming
       papirus-icon-theme
 
-      pcloud
       nixpaks.qq
       nixpaks.termius
       signal-desktop
@@ -106,7 +104,6 @@ in {
       onlyoffice-desktopeditors
       # wayland-bongocat
       kdePackages.qttools
-      nur.repos.forkprince.helium-nightly
       obsidian
       file-roller
       dex

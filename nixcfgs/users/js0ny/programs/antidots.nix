@@ -29,6 +29,7 @@ in {
     W3M_DIR = "${xdg-state}/w3m";
     WAKATIME_HOME = "${xdg-config}/wakatime"; # ~/.wakatime
     WGETRC = "${xdg-config}/wget/wgetrc";
+    WINEPREFIX = "${xdg-data}/wineprefixes/default";
   };
   xdg.configFile."npm/npmrc".text = ''
     prefix=${xdg-data}/npm
@@ -41,5 +42,6 @@ in {
   '';
   systemd.user.tmpfiles.rules = [
     "d ${xdg-config}/wakatime 0700 ${user} users -"
+    "d ${xdg-data}/wineprefixes 0700 ${user} users -"
   ];
 }

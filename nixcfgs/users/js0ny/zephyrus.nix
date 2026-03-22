@@ -25,6 +25,7 @@ in {
 
     ./programs/antidots.nix
     ./programs/sandboxed.nix
+    ./programs/pcloud.nix
 
     # Shell
     ./programs/shell/bash.nix
@@ -90,7 +91,6 @@ in {
     ./programs/dolphin.nix
     ./programs/magick.nix
     ./programs/miniserve.nix
-    ./programs/retroarch.nix
     ./programs/edit-clipboard.nix
     ./programs/aichat.nix
     ./programs/wine.nix
