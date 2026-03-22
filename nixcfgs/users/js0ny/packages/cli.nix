@@ -90,9 +90,4 @@
   programs.nix-index.enable = true;
   programs.nix-index.symlinkToCacheHome = true;
   programs.nix-index-database.comma.enable = true;
-
-  home.sessionVariables = {
-    PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
-    CODEX_HOME = "${config.xdg.configHome}/codex";
-  };
 }

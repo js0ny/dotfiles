@@ -100,14 +100,12 @@ in {
       gimp
       rustdesk
       remmina
-      zotero
       feishin
       kicad
       blender
       onlyoffice-desktopeditors
       # wayland-bongocat
       kdePackages.qttools
-      antigravity
       nur.repos.forkprince.helium-nightly
       obsidian
       file-roller

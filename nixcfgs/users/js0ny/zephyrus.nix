@@ -10,8 +10,6 @@ in {
     # General config
     ./default.nix
 
-    ./programs/sandboxed.nix
-
     # Use Gnome-keyring for GUI setup
     ../../modules/home/gnome-keyrings.nix
 
@@ -26,6 +24,7 @@ in {
     ./packages/gaming.nix
 
     ./programs/antidots.nix
+    ./programs/sandboxed.nix
 
     # Shell
     ./programs/shell/bash.nix
@@ -71,6 +70,7 @@ in {
     ./programs/productivity/sioyek
     ./programs/productivity/thunderbird.nix
     ./programs/productivity/zoom-us.nix
+    ./programs/productivity/zotero.nix
 
     # Social
     ./programs/social/discord.nix
