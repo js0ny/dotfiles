@@ -10,6 +10,8 @@ in {
     # General config
     ./default.nix
 
+    ./programs/sandboxed.nix
+
     # Use Gnome-keyring for GUI setup
     ../../modules/home/gnome-keyrings.nix
 
@@ -73,6 +75,7 @@ in {
     # Social
     ./programs/social/discord.nix
     ./programs/social/telegram.nix
+    ./programs/social/wechat.nix
 
     # Utilities & misc
     # ./programs/xilinx.nix

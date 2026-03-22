@@ -107,6 +107,7 @@
         zen-browser = zen-browser.packages.x86_64-linux.zen-browser;
       })
       (import ./overlays/steamcmd.nix)
+      (import ./overlays/wechat-uos-sandboxed.nix)
     ];
     forSystem = system:
       import nixpkgs {

@@ -58,7 +58,7 @@
   );
 in {
   imports = [
-    ../../../hardening/nixpaks/default.nix
+    ../../../hardening/nixpaks
   ];
 
   home.packages = with pkgs;
